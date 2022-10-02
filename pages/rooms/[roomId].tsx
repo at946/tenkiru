@@ -8,7 +8,7 @@ const Page: NextPage = () => {
   const router = useRouter()
 
   const copyUrl = async () => {
-    await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}${router.query.roomId}`)
+    await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${router.query.roomId}`)
     await alert('URLをクリップボードにコピーしました。\n参加者にURLをお知らせしましょう。')
   }
 

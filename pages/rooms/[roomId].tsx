@@ -50,9 +50,7 @@ const Page: NextPage = () => {
   return (
     <div className='has-text-centered'>
       <section className='section'>
-        <RoomInfo roomId={roomId} />
-      </section>
-      <section className="section">
+        <RoomInfo className="mb-5" roomId={roomId} />
         <Field memberEstimates={memberEstimates} />
       </section>
     </div>

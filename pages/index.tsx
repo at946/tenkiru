@@ -8,7 +8,7 @@ const Home: NextPage = () => {
       <section className='section'>
         <h1 className="title has-text-primary">Tenkir</h1>
         <h2 className='subtitle has-text-dark'>Online Planning Poker Tool</h2>
-        <Link href={`/${encodeURIComponent(v4())}`}>
+        <Link href={`/rooms/${encodeURIComponent(v4())}`}>
           <a className='button is-rounded is-outlined is-primary mt-5'>Create a room</a>
         </Link>
       </section>

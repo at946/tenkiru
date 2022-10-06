@@ -1,27 +1,59 @@
+import { useEffect, useState } from 'react';
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { io, Socket } from 'socket.io-client'
+import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
+import RoomInfo from '../../components/roomInfo'
+import Field from '../../components/field'
+
+let socket: Socket<ServerToClientEvents, ClientToServerEvents>
 
 const Page: NextPage = () => {
   const router = useRouter()
+  const [memberEstimates, setMemberEstimates] = useState({})
 
-  const copyUrl = async () => {
-    await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${router.query.roomId}`)
-    await alert('URLをクリップボードにコピーしました。\n参加者にURLをお知らせしましょう。')
+  const roomId = ((): string => {
+    switch (typeof router.query.roomId) {
+      case 'string':
+        return router.query.roomId
+      case 'object':
+        return router.query.roomId[0]
+      default:
+        return ''
+    }
+  })()
+
+  useEffect(() => { socketInitializer(roomId) }, [roomId])
+
+  const socketInitializer = (roomId: string) => {
+    (async() => {
+      if (!roomId) return
+      
+      await fetch('/api/socket')
+      socket = io()
+
+      socket.on('connect', () => {
+        console.log('connect')
+        socket.emit('join-room', roomId)
+      })
+
+      socket.on('update-member-estimates', (memberEstimates) => {
+        setMemberEstimates(memberEstimates)
+      })
+
+      socket.on('disconnect', () => {
+        console.log('disconnect')
+      })
+    })()
   }
 
   return (
     <div className='has-text-centered'>
       <section className='section'>
-        <p>
-          <span>Room ID: </span>
-          <span>{ router.query.roomId }</span>
-          <a  onClick={copyUrl}>
-            <FontAwesomeIcon icon={faArrowUpFromBracket} className="ml-2" />
-          </a>
-        </p>
+        <RoomInfo roomId={roomId} />
+      </section>
+      <section className="section">
+        <Field memberEstimates={memberEstimates} />
       </section>
     </div>
   )

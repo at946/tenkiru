@@ -5,12 +5,12 @@ interface Style {
 }
 
 interface Props {
-  number: number | null
+  value: number | string | null
   additionalClassName?: string
   additionalStyle?: Style
 }
 
-const Card: NextPage<Props> = ({ number, additionalClassName, additionalStyle }) => {
+const Card: NextPage<Props> = ({ value, additionalClassName, additionalStyle }) => {
   const className: string = `
     box
     is-flex
@@ -32,7 +32,7 @@ const Card: NextPage<Props> = ({ number, additionalClassName, additionalStyle })
       className={`${className} ${additionalClassName || ''}`}
       style={{...style, ...additionalStyle }}
     >
-      { number }
+      { value }
     </div>
   )
 }

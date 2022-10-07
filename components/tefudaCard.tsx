@@ -2,19 +2,19 @@ import { NextPage } from "next";
 import Card from "./card";
 
 interface Props {
-  number: number
+  value: number | string
   isSelected: boolean
-  selectCard: (val: number) => void
+  selectCard: (value: number | string) => void
 }
 
-const TefudaCard: NextPage<Props> = ({ number, isSelected, selectCard }) => {
+const TefudaCard: NextPage<Props> = ({ value, isSelected, selectCard }) => {
   const selected = () => {
-    selectCard(number)
+    selectCard(value)
   }
 
   return (
     <a onClick={selected}>
-      <Card number={number} additionalClassName={isSelected ? 'has-background-danger has-text-white' : ''} />
+      <Card value={value} additionalClassName={isSelected ? 'has-background-danger has-text-white' : ''} />
     </a>
   )
 }

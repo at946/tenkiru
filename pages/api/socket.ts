@@ -11,8 +11,12 @@ type NextApiResponseSocketIO = NextApiResponse & {
   };
 }
 
-interface memberEstimates {
+interface membersCards {
   [prop: string]: any
+}
+
+interface Rooms {
+  [props: string]: membersCards
 }
 
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
@@ -22,33 +26,56 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     console.log('Socket is initializing')
     
     const io = new SocketIOServer<ClientToServerEvents, ServerToClientEvents>(res.socket.server as any);
+    const rooms: Rooms = {}
+
+    const cleanRoom = (roomId: string): void => {
+      const membersCards: membersCards = rooms[roomId] || {}
+      const roomMembers: string[] = Array.from(io.of('/').adapter.rooms.get(roomId) || new Set())
+      
+      const memberIds: string[] = Object.keys(membersCards)
+      memberIds.map((memberId) => {
+        if (!roomMembers.find(v => v === memberId)) {
+          // すでに退出済みなので削除
+          delete membersCards[memberId]
+        } else {
+          if (!membersCards[memberId]) {
+            // まだ場にカードを出していないメンバーは後ろに並び直させる
+            delete membersCards[memberId]
+            membersCards[memberId] = null
+          }
+        }
+      })
+
+      roomMembers.map((memberId) => {
+        if (!membersCards[memberId]) {
+          membersCards[memberId] = null
+        }
+      })
+
+      rooms[roomId] = membersCards
+    }
 
     io.on('connection', (socket) => {
-
-      const getRoomMemberEstimates = (roomId: string): Object => {
-        const memberIds = io.of('/').adapter.rooms.get(roomId) || new Set()
-        const memberEstimates: memberEstimates = {} 
-        memberIds.forEach((memberId) => {
-          memberEstimates[memberId] = null
-        })
-        return memberEstimates
-      }
-
       socket.on('join-room', roomId => {
         socket.join(roomId)
-        const roomMemberEstimates = getRoomMemberEstimates(roomId)
-        io.to(roomId).emit('update-member-estimates', roomMemberEstimates)
+        cleanRoom(roomId)
+        io.to(roomId).emit('update-members-cards', rooms[roomId])
+      })
+
+      socket.on('put-down-a-card', (roomId, number) => {
+        rooms[roomId][socket.id] = number
+        cleanRoom(roomId)
+        io.to(roomId).emit('update-members-cards', rooms[roomId])
       })
 
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
-          const roomMemberEstimates: memberEstimates = getRoomMemberEstimates(roomId)
-          delete roomMemberEstimates[socket.id]
-          io.to(roomId).emit('update-member-estimates', roomMemberEstimates)
+          if (!rooms[roomId]) return
+          delete rooms[roomId][socket.id]
+          io.to(roomId).emit('update-members-cards', rooms[roomId])
         })
       })
     })
-
     res.socket.server.io = io
   }
   res.end()

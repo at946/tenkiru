@@ -1,12 +1,21 @@
 import { NextPage } from "next";
-import Card from './card';
+import TefudaCard from './tefudaCard';
 
-const Tefuda: NextPage = () => {
+interface Props {
+  selectedCard: number | null
+  putDownCard: (number: number) => void
+}
+
+const Tefuda: NextPage<Props> = ({ selectedCard, putDownCard }) => {
+  const selectCard = (number: number): void => {
+    putDownCard(number)
+  }
+  
   return (
-    <div className="is-flex" style={{ overflowX: 'scroll' }}>
+    <div className="is-flex is-justify-content-center has-background-light box is-shadowless">
       {
-        [1, 2, 3, 5, 8, 13, 21].map(val =>
-          <Card key={val} val={val} />
+        [1, 2, 3, 5, 8, 13, 21].map(number =>
+          <TefudaCard key={number} number={number} isSelected={ (number === selectedCard) } selectCard={selectCard} />
         )
       }
     </div>

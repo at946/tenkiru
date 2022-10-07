@@ -11,7 +11,8 @@ let socket: Socket<ServerToClientEvents, ClientToServerEvents>
 
 const Page: NextPage = () => {
   const router = useRouter()
-  const [memberEstimates, setMemberEstimates] = useState({})
+  const [membersCards, setMembersCards] = useState({})
+  const [selectedCard, setSelectedCard] = useState<number | null>(null)
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -38,8 +39,9 @@ const Page: NextPage = () => {
         socket.emit('join-room', roomId)
       })
 
-      socket.on('update-member-estimates', (memberEstimates) => {
-        setMemberEstimates(memberEstimates)
+      socket.on('update-members-cards', (membersCards) => {
+        setMembersCards(membersCards)
+        setSelectedCard(membersCards[socket.id])
       })
 
       socket.on('disconnect', () => {
@@ -48,14 +50,18 @@ const Page: NextPage = () => {
     })()
   }
 
+  const putDownCard = (number: number): void => {
+    socket.emit('put-down-a-card', roomId, number)
+  }
+
   return (
     <div className='has-text-centered'>
       <section className='section'>
-        <RoomInfo className="mb-5" roomId={roomId} />
-        <Table memberEstimates={memberEstimates} />
+        <RoomInfo className="mb-6" roomId={roomId} />
+        <Table memberEstimates={membersCards} />
       </section>
       <section className="section">
-        <Tefuda />
+        <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />
       </section>
     </div>
   )

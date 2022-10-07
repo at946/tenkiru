@@ -13,6 +13,7 @@ const Page: NextPage = () => {
   const router = useRouter()
   const [membersCards, setMembersCards] = useState({})
   const [selectedCard, setSelectedCard] = useState<number | null>(null)
+  const [cardsAreOpen, setCardsAreOpen] = useState(false)
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -44,6 +45,10 @@ const Page: NextPage = () => {
         setSelectedCard(membersCards[socket.id])
       })
 
+      socket.on('update-cards-state', (cardsAreOpen: boolean) => {
+        setCardsAreOpen(cardsAreOpen)
+      })
+
       socket.on('disconnect', () => {
         console.log('disconnect')
       })
@@ -51,14 +56,18 @@ const Page: NextPage = () => {
   }
 
   const putDownCard = (value: number | string): void => {
-    socket.emit('put-down-a-card', roomId, value)
+    if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, value)
+  }
+
+  const openCardsOnTable = (): void => {
+    socket.emit('open-cards-on-table', roomId)
   }
 
   return (
     <div className='has-text-centered'>
       <section className='section'>
         <RoomInfo className="mb-6" roomId={roomId} />
-        <Table membersCards={membersCards} />
+        <Table membersCards={membersCards} cardsAreOpen={cardsAreOpen} openCardsOnTable={openCardsOnTable} />
       </section>
       <section className="section">
         <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />

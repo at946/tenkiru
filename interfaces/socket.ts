@@ -8,5 +8,5 @@ export interface ServerToClientEvents {
 
 export interface ClientToServerEvents {
   'join-room': (roomId: string) => void
-  'put-down-a-card': (roomId: string, number: number) => void
+  'put-down-a-card': (roomId: string, number: number | string) => void
 }

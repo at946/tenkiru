@@ -50,15 +50,15 @@ const Page: NextPage = () => {
     })()
   }
 
-  const putDownCard = (number: number): void => {
-    socket.emit('put-down-a-card', roomId, number)
+  const putDownCard = (value: number | string): void => {
+    socket.emit('put-down-a-card', roomId, value)
   }
 
   return (
     <div className='has-text-centered'>
       <section className='section'>
         <RoomInfo className="mb-6" roomId={roomId} />
-        <Table memberEstimates={membersCards} />
+        <Table membersCards={membersCards} />
       </section>
       <section className="section">
         <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />

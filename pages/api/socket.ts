@@ -68,6 +68,16 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-members-cards', rooms[roomId])
       })
 
+      socket.on('open-cards-on-table', roomId => {
+        const membersCards = rooms[roomId]
+        Object.keys(membersCards).map((memberId) => {
+          if (!!membersCards[memberId]) {
+            io.to(roomId).emit('update-cards-state', true)
+            return
+          }
+        })
+      })
+
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
           if (!rooms[roomId]) return

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Card from './card';
+import TableCard from './tableCard';
 
 interface MemberEstimates {
   [prop: string]: any
@@ -14,7 +14,11 @@ const Table: NextPage<Props> = ({memberEstimates}) => {
     <div className="box has-background-success is-flex is-flex-wrap-wrap is-justify-content-center">
       {
         Object.keys(memberEstimates).map(memberId =>
-          <Card key={memberId} val={memberEstimates[memberId]} />
+          <TableCard
+            key={memberId}
+            state={memberEstimates[memberId] === null ? 'none' : 'close'}
+            number={memberEstimates[memberId]}
+          />
         )
       }
     </div>

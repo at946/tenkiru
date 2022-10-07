@@ -9,16 +9,16 @@ interface Props {
   memberEstimates: MemberEstimates
 }
 
-const Field: NextPage<Props> = ({memberEstimates}) => {
+const Table: NextPage<Props> = ({memberEstimates}) => {
   return (
     <div className="box has-background-success is-flex is-flex-wrap-wrap is-justify-content-center">
       {
         Object.keys(memberEstimates).map(memberId =>
-          <Card key={memberId} estimate={memberEstimates[memberId]} />
+          <Card key={memberId} val={memberEstimates[memberId]} />
         )
       }
     </div>
   )
 }
 
-export default Field
+export default Table

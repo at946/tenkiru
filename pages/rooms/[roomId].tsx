@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import { io, Socket } from 'socket.io-client'
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import RoomInfo from '../../components/roomInfo'
-import Field from '../../components/field'
+import Table from '../../components/table'
+import Tefuda from '../../components/tefuda'
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>
 
@@ -51,7 +52,10 @@ const Page: NextPage = () => {
     <div className='has-text-centered'>
       <section className='section'>
         <RoomInfo className="mb-5" roomId={roomId} />
-        <Field memberEstimates={memberEstimates} />
+        <Table memberEstimates={memberEstimates} />
+      </section>
+      <section className="section">
+        <Tefuda />
       </section>
     </div>
   )

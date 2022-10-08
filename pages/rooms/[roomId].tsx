@@ -49,6 +49,12 @@ const Page: NextPage = () => {
         setCardsAreOpen(cardsAreOpen)
       })
 
+      socket.on('replay', (membersCards) => {
+        setMembersCards(membersCards)
+        setSelectedCard(null)
+        setCardsAreOpen(false)
+      })
+
       socket.on('disconnect', () => {
         console.log('disconnect')
       })
@@ -63,11 +69,15 @@ const Page: NextPage = () => {
     socket.emit('open-cards-on-table', roomId)
   }
 
+  const cleanCardsOnTable = (): void => {
+    socket.emit('clean-cards-on-table', roomId)
+  }
+
   return (
     <div className='has-text-centered'>
       <section className='section'>
         <RoomInfo className="mb-6" roomId={roomId} />
-        <Table membersCards={membersCards} cardsAreOpen={cardsAreOpen} openCardsOnTable={openCardsOnTable} />
+        <Table membersCards={membersCards} cardsAreOpen={cardsAreOpen} openCardsOnTable={openCardsOnTable} cleanCardsOnTable={cleanCardsOnTable} />
       </section>
       <section className="section">
         <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />

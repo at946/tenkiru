@@ -9,11 +9,16 @@ interface Props {
   membersCards: MembersCards
   cardsAreOpen: boolean
   openCardsOnTable: () => void
+  cleanCardsOnTable: () => void
 }
 
-const Table: NextPage<Props> = ({membersCards, cardsAreOpen, openCardsOnTable}) => {
+const Table: NextPage<Props> = ({membersCards, cardsAreOpen, openCardsOnTable, cleanCardsOnTable}) => {
   const open = (): void => {
     openCardsOnTable()
+  }
+
+  const replay = (): void => {
+    cleanCardsOnTable()
   }
 
   return (
@@ -30,9 +35,13 @@ const Table: NextPage<Props> = ({membersCards, cardsAreOpen, openCardsOnTable}) 
           )
         }
       </div>
-      { !cardsAreOpen && (
-        <button className="button is-rounded" onClick={open}>OPEN</button> 
-      )}
+      {
+        cardsAreOpen ? (
+          <button className="button is-rounded" onClick={replay}>Replay</button>
+          ) : (
+          <button className="button is-rounded" onClick={open}>Open</button> 
+        )
+      }
     </div>
   )
 }

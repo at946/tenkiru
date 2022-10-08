@@ -1,6 +1,6 @@
 import { Server as NetServer, Socket } from 'net';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Server as SocketIOServer } from 'Socket.IO';
+import { Server as SocketIOServer } from 'socket.io';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 
 type NextApiResponseSocketIO = NextApiResponse & {

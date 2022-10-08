@@ -18,7 +18,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_GA_ID
 
-RUN yarn build
+RUN yarn build && yarn postBuild
 
 # If using npm comment out above and use below instead
 # RUN npm run build

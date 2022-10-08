@@ -15,6 +15,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 # then put the value on your fly.toml
 # Example:
 # ARG NEXT_PUBLIC_EXAMPLE="value here"
+ARG NEXT_PUBLIC_BASE_URL
 
 RUN yarn build
 

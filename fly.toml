@@ -8,6 +8,7 @@ processes = []
 [build]
   [build.args]
     NEXT_PUBLIC_BASE_URL = "https://tenkir.fly.dev"
+    NEXT_PUBLIC_GA_ID = "G-TVFMHTGBKE"
 
 [env]
   PORT = "8080"

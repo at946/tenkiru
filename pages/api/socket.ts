@@ -55,6 +55,15 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       rooms[roomId] = membersCards
     }
 
+    const replayRoom = (roomId: string): void => {
+      const roomMembers: string[] = Array.from(io.of('/').adapter.rooms.get(roomId) || new Set())
+      const membersCards: membersCards = {}
+      roomMembers.map((memberId) => {
+        membersCards[memberId] = null
+      })
+      rooms[roomId] = membersCards
+    }
+
     io.on('connection', (socket) => {
       socket.on('join-room', roomId => {
         socket.join(roomId)
@@ -76,6 +85,11 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
             return
           }
         })
+      })
+
+      socket.on('clean-cards-on-table', roomId => {
+        replayRoom(roomId)
+        io.to(roomId).emit('replay', rooms[roomId])
       })
 
       socket.on('disconnecting', () => {

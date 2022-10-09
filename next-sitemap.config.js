@@ -6,4 +6,4 @@ const config = {
   exclude: ['/rooms/*'],
 };
 
-module.exports = config
+module.exports = config;

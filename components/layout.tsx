@@ -1,5 +1,5 @@
-import { NextPage } from "next";
-import { ReactNode } from "react";
+import { NextPage } from 'next';
+import { ReactNode } from 'react';
 import MyHead from '../components/myHead';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -16,7 +16,7 @@ const Layout: NextPage<Props> = ({ children }: Props) => {
       <main>{children}</main>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

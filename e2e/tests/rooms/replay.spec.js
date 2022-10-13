@@ -37,7 +37,7 @@ describe('rooms/replay', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page2.waitForSelector('[data-testid="tableCard"]')
+    await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tefudaCards = await page.$$('[data-testid="tefudaCard"]');
     await tefudaCards[0].click();
@@ -68,6 +68,6 @@ describe('rooms/replay', () => {
     expect(tableCardValue).toBe('');
     expect(tableCardClassName).toContain('tableCard_blank');
 
-    await page2.close()
+    await page2.close();
   });
 });

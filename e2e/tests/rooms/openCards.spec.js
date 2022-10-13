@@ -18,7 +18,7 @@ describe('rooms/openCards', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page2.waitForSelector('[data-testid="tableCard"]')
+    await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCardsValue = await page.$$eval('[data-testid="tableCard"]', (els) =>
       els.map((el) => el.innerText),
@@ -59,7 +59,7 @@ describe('rooms/openCards', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page2.waitForSelector('[data-testid="tableCard"]')
+    await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCardsValue = await page2.$$eval('[data-testid="tableCard"]', (els) =>
       els.map((el) => el.innerText),
@@ -103,6 +103,7 @@ describe('rooms/openCards', () => {
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]');
 
     await tefudaCards[0].click();
+    await page.waitForTimeout(100); // github actions
 
     let tableCardValue = await page.$eval('[data-testid="tableCard"]', (el) => el.innerText);
     let tefudaCardsClassName = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');

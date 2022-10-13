@@ -9,6 +9,7 @@ describe('rooms/replay', () => {
     expect(await page.$('[data-testid="replayButton"]')).toBeNull();
 
     await page.click('[data-testid="openButton"]');
+    await page.waitForSelector('[data-testid="replayButton"]');
 
     let tefudaCardsClassName = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');
     let tableCardValue = await page.$eval('[data-testid="tableCard"]', (el) => el.innerText);
@@ -37,7 +38,7 @@ describe('rooms/replay', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page2.waitForSelector('[data-testid="tableCard"]')
+    await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tefudaCards = await page.$$('[data-testid="tefudaCard"]');
     await tefudaCards[0].click();
@@ -68,6 +69,6 @@ describe('rooms/replay', () => {
     expect(tableCardValue).toBe('');
     expect(tableCardClassName).toContain('tableCard_blank');
 
-    await page2.close()
+    await page2.close();
   });
 });

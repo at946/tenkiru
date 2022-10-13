@@ -4,7 +4,7 @@ describe('rooms/memberSelectsCard', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page2.waitForSelector('[data-testid="tableCard"]')
+    await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
     let tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
@@ -32,6 +32,6 @@ describe('rooms/memberSelectsCard', () => {
     expect(tableCardsClassName[1]).not.toContain('tableCard_close');
     expect(tableCardsClassName[1]).not.toContain('tableCard_open');
 
-    await page2.close()
+    await page2.close();
   });
 });

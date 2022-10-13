@@ -1,16 +1,13 @@
 import { NextPage } from 'next';
-
-interface Style {
-  [prop: string]: any;
-}
+import styles from './card.module.scss';
 
 interface Props {
   value: number | string | null;
   additionalClassName?: string;
-  additionalStyle?: Style;
+  testId?: string;
 }
 
-const Card: NextPage<Props> = ({ value, additionalClassName, additionalStyle }) => {
+const Card: NextPage<Props> = ({ value, additionalClassName, testId }) => {
   const className: string = `
     box
     is-flex
@@ -19,18 +16,13 @@ const Card: NextPage<Props> = ({ value, additionalClassName, additionalStyle }) 
     is-size-3
     has-text-weight-bold
     m-2
+    ${styles.card}
   `;
-
-  const style: Style = {
-    width: '100px',
-    minWidth: '100px',
-    aspectRatio: '1 / 1.4',
-  };
 
   return (
     <div
       className={`${className} ${additionalClassName || ''}`}
-      style={{ ...style, ...additionalStyle }}
+      data-testid={testId}
     >
       {value}
     </div>

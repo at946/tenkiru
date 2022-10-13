@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Card from './card';
+import styles from './tableCard.module.scss';
 
 interface Props {
   putDown: boolean;
@@ -8,20 +9,21 @@ interface Props {
 }
 
 const TableCard: NextPage<Props> = ({ putDown, isOpen, value }) => {
+  let displayValue: number | string | null = ''
+  let additionalClassName: string = ''
+
   if (putDown) {
     if (isOpen) {
-      return <Card value={value} />;
+      displayValue = value
+      additionalClassName = 'tableCard_open'
     } else {
-      return <Card value={null} additionalClassName='has-background-primary' />;
+      additionalClassName = styles.close
     }
   } else {
-    return (
-      <Card
-        value={null}
-        additionalStyle={{ border: 'dashed 2px black', background: 'rgba(0,0,0,0)' }}
-      />
-    );
+    additionalClassName = styles.blank
   }
+
+  return <Card value={displayValue} additionalClassName={additionalClassName} testId='tableCard' />
 };
 
 export default TableCard;

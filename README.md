@@ -9,6 +9,10 @@ yarn install
 yarn dev
 open http://localhost:3000
 ```
+or
+```bash
+docker compose up
+```
 
 ## test
 

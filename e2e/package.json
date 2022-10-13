@@ -9,6 +9,6 @@
     "puppeteer": "^18.2.1"
   },
   "scripts": {
-    "test": "rm -rf screenshots && mkdir screenshots && jest -i"
+    "test": "rm -rf screenshots && mkdir screenshots && jest -i --bail"
   }
 }

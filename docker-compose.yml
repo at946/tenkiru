@@ -18,3 +18,5 @@ services:
       - TARGET_URL=http://gateway.docker.internal:3000
     depends_on:
       - app
+    profiles:
+      - extra

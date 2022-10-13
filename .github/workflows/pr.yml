@@ -40,7 +40,7 @@ jobs:
         run: yarn test
         working-directory: ./e2e
         env:
-          SITE_URL: http://localhost:3000
+          TARGET_URL: http://localhost:3000
       - name: notify success to slack
         uses: rtCamp/action-slack-notify@v2
         env:

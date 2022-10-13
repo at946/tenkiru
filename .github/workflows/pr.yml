@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
+        # with:
+        #   ref: ${{ github.event.pull_request.head.ref }}
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
@@ -28,7 +28,7 @@ jobs:
         with:
           eslint: true
           prettier: true
-          auto_fix: false
+          auto_fix: true
       - name: start next app
         run: |
           yarn build

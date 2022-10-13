@@ -1,7 +1,7 @@
 describe('rooms/shareRoom', () => {
   test('ルームページで、ルームIDを知れること', async () => {
     await page.goto(urls.room1);
-    await page.waitForTimeout(200);
+    await page.waitForSelector('[data-testid="tableCard"]');
     expect(await page.$eval('[data-testid="roomId"]', (el) => el.innerText)).toBe('room1');
   });
 
@@ -21,13 +21,13 @@ describe('rooms/shareRoom', () => {
 
   test('シェアされたルームページのURLに直接アクセスしたとき、ルームに入れること', async () => {
     await page.goto(urls.room1);
+    await page.waitForSelector('[data-testid="tableCard"]');
     expect(await page.url()).toBe(urls.room1);
-    await page.waitForTimeout(200);
     expect(await page.$eval('[data-testid="roomId"]', (el) => el.innerText)).toBe('room1');
 
     await page.goto(urls.room2);
+    await page.waitForSelector('[data-testid="tableCard"]');
     expect(await page.url()).toBe(urls.room2);
-    await page.waitForTimeout(200);
     expect(await page.$eval('[data-testid="roomId"]', (el) => el.innerText)).toBe('room2');
   });
 });

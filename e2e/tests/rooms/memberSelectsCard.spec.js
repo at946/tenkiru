@@ -1,9 +1,10 @@
 describe('rooms/memberSelectsCard', () => {
   test('ルームページで、他のメンバーがカードを選択したとき、カードが場に伏せて置かれること', async () => {
-    const page2 = await browser.newPage();
     await page.goto(urls.room1);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page.waitForTimeout(500);
+    await page2.waitForSelector('[data-testid="tableCard"]')
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
     let tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
@@ -30,5 +31,7 @@ describe('rooms/memberSelectsCard', () => {
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
     expect(tableCardsClassName[1]).not.toContain('tableCard_close');
     expect(tableCardsClassName[1]).not.toContain('tableCard_open');
+
+    await page2.close()
   });
 });

@@ -1,7 +1,7 @@
 describe('rooms/replay', () => {
   test('ルームページで、カードをオープンしたあと、リプレイできること', async () => {
     await page.goto(urls.room1);
-    await page.waitForTimeout(500);
+    await page.waitForSelector('[data-testid="tableCard"]');
 
     let tefudaCards = await page.$$('[data-testid="tefudaCard"]');
     await tefudaCards[0].click();
@@ -10,7 +10,6 @@ describe('rooms/replay', () => {
 
     await page.click('[data-testid="openButton"]');
 
-    await takeScreenshot(1);
     let tefudaCardsClassName = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');
     let tableCardValue = await page.$eval('[data-testid="tableCard"]', (el) => el.innerText);
     let tableCardClassName = await getAttribute.$(page, '[data-testid="tableCard"]', 'class');
@@ -35,9 +34,10 @@ describe('rooms/replay', () => {
 
   test('ルームページで、カードをオープンしたあと、他のメンバーがリプレイできること', async () => {
     await page.goto(urls.room1);
+    await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page.waitForTimeout(500);
+    await page2.waitForSelector('[data-testid="tableCard"]')
 
     let tefudaCards = await page.$$('[data-testid="tefudaCard"]');
     await tefudaCards[0].click();
@@ -67,5 +67,7 @@ describe('rooms/replay', () => {
     expect(tefudaCardsClassName[0]).not.toContain('tefudaCard_selected');
     expect(tableCardValue).toBe('');
     expect(tableCardClassName).toContain('tableCard_blank');
+
+    await page2.close()
   });
 });

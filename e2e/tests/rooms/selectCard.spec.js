@@ -1,9 +1,10 @@
 describe('rooms/selectCard', () => {
   test('ルームページで、カードを選択したとき、カードが場に伏せて置かれること', async () => {
-    const page2 = await browser.newPage();
     await page.goto(urls.room1);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    const page2 = await browser.newPage();
     await page2.goto(urls.room1);
-    await page.waitForTimeout(500);
+    await page2.waitForSelector('[data-testid="tableCard"]')
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
     let tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
@@ -22,12 +23,15 @@ describe('rooms/selectCard', () => {
     expect(tableCards.length).toBe(2);
     expect(tableCardsClassName[0]).toContain('tableCard_close');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
+
+    await page2.close()
   });
 
   test('ルームページで、カードを選択したとき、選択したカードが選択状態だとわかること', async () => {
     const page2 = await browser.newPage();
     await page.goto(urls.room1);
     await page2.goto(urls.room1);
+    await page.waitForSelector('[data-testid="tableCard"]')
 
     let classNameOfTefudaCards = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');
 
@@ -46,5 +50,7 @@ describe('rooms/selectCard', () => {
 
     expect(classNameOfTefudaCards[0]).not.toContain('tefudaCard_selected');
     expect(classNameOfTefudaCards[1]).toContain('tefudaCard_selected');
+
+    await page2.close()
   });
 });

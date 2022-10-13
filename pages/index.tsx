@@ -11,7 +11,7 @@ const Home: NextPage<Props> = ({ roomId }: Props) => {
     <div className='has-text-centered'>
       <section className='section'>
         <h1 className='title has-text-primary'>Tenkir</h1>
-        <h2 className='subtitle has-text-dark'>Online planning poker tool</h2>
+        <h2 className='subtitle has-text-dark'>Online planning poker tool.</h2>
         <Link href={`/rooms/${encodeURIComponent(roomId)}`}>
           <a
             className='button is-rounded is-outlined is-primary mt-5'

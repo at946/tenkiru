@@ -1,0 +1,57 @@
+name: 'プルリクエストでLintとE2E'
+on:
+  pull_request:
+
+# permissions:
+#   checks: write
+#   contents: write
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - uses: actions/cache@v2
+        id: cache_node_modules
+        with:
+          path: node_modules
+          key: ${{ hashFiles('yarn.lock') }}
+      - run: yarn --frozen-lockfile
+        if: steps.cache_node_modules.outputs.cache-hit != true
+      - name: lint
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          prettier: true
+          auto_fix: true
+      - name: start next app
+        run: |
+          yarn build
+          yarn start &
+      - name: start e2e tests
+        run: yarn test
+        working-directory: ./e2e
+        env:
+          SITE_URL: http://localhost:3000
+      - name: notify success to slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: |
+            Success
+            https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+      - name: notify failure to slack
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: |
+            Failure
+            https://github.com/${{ github.repository }}/pull/${{ github.event.number }}

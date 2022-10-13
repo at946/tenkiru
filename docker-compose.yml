@@ -9,3 +9,14 @@ services:
       - .:/app
     ports:
       - 3000:3000
+
+  e2e:
+    build: e2e
+    volumes:
+      - ./e2e:/e2e
+    environment:
+      - TARGET_URL=http://gateway.docker.internal:3000
+    depends_on:
+      - app
+    profiles:
+      - extra

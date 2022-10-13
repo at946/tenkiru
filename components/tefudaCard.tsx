@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Card from './card';
+import styles from './tefudaCard.module.scss';
 
 interface Props {
   value: number | string;
@@ -16,7 +17,8 @@ const TefudaCard: NextPage<Props> = ({ value, isSelected, selectCard }) => {
     <a onClick={selected}>
       <Card
         value={value}
-        additionalClassName={isSelected ? 'has-background-danger has-text-white' : ''}
+        additionalClassName={isSelected ? styles.selected : ''}
+        testId='tefudaCard'
       />
     </a>
   );

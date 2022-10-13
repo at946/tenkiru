@@ -103,6 +103,7 @@ describe('rooms/openCards', () => {
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]');
 
     await tefudaCards[0].click();
+    await page.waitForTimeout(100) // github actions
 
     let tableCardValue = await page.$eval('[data-testid="tableCard"]', (el) => el.innerText);
     let tefudaCardsClassName = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');

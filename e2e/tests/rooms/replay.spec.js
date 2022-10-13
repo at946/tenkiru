@@ -9,6 +9,7 @@ describe('rooms/replay', () => {
     expect(await page.$('[data-testid="replayButton"]')).toBeNull();
 
     await page.click('[data-testid="openButton"]');
+    await page.waitForSelector('[data-testid="replayButton"]');
 
     let tefudaCardsClassName = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');
     let tableCardValue = await page.$eval('[data-testid="tableCard"]', (el) => el.innerText);

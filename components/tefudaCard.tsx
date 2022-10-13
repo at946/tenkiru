@@ -18,7 +18,7 @@ const TefudaCard: NextPage<Props> = ({ value, isSelected, selectCard }) => {
       <Card
         value={value}
         additionalClassName={isSelected ? styles.selected : ''}
-        testId="tefudaCard"
+        testId='tefudaCard'
       />
     </a>
   );

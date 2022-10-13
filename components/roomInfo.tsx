@@ -23,7 +23,7 @@ const RoomInfo: NextPage<Props> = ({ className, roomId }) => {
     <p className={className}>
       <span>Room ID: </span>
       <a onClick={copyUrl}>
-        <span data-testid="roomId">{roomId}</span>
+        <span data-testid='roomId'>{roomId}</span>
         <FontAwesomeIcon icon={faArrowUpFromBracket} className='ml-2' />
       </a>
     </p>

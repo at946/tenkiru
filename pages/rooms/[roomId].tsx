@@ -78,16 +78,30 @@ const Page: NextPage = () => {
   return (
     <div className='has-text-centered'>
       <section className='section'>
-        <RoomInfo className='mb-6' roomId={roomId} />
-        <Table
-          membersCards={membersCards}
-          cardsAreOpen={cardsAreOpen}
-          openCardsOnTable={openCardsOnTable}
-          cleanCardsOnTable={cleanCardsOnTable}
-        />
+        <div className="container">
+          <RoomInfo className='mb-6' roomId={roomId} />
+          <Table
+            membersCards={membersCards}
+            cardsAreOpen={cardsAreOpen}
+            openCardsOnTable={openCardsOnTable}
+            cleanCardsOnTable={cleanCardsOnTable}
+          />
+        </div>
       </section>
       <section className='section'>
-        <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />
+        <div className="container">
+          <div className="tabs is-toggle is-centered">
+            <ul>
+              <li className="is-active" data-testid="memberTypePlayer">
+                <a>Player</a>
+              </li>
+              <li className="" data-testid="memberTypeAudience">
+                <a>Audience</a>
+              </li>
+            </ul>
+          </div>
+          <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />
+        </div>
       </section>
     </div>
   );

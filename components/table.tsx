@@ -39,11 +39,19 @@ const Table: NextPage<Props> = ({
         ))}
       </div>
       {cardsAreOpen ? (
-        <button className='button is-rounded is-light is-primary' onClick={replay} data-testid="replayButton">
+        <button
+          className='button is-rounded is-light is-primary'
+          onClick={replay}
+          data-testid='replayButton'
+        >
           Replay
         </button>
       ) : (
-        <button className='button is-rounded is-light is-primary' onClick={open} data-testid="openButton">
+        <button
+          className='button is-rounded is-light is-primary'
+          onClick={open}
+          data-testid='openButton'
+        >
           Open
         </button>
       )}

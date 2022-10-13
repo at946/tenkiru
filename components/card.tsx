@@ -20,10 +20,7 @@ const Card: NextPage<Props> = ({ value, additionalClassName, testId }) => {
   `;
 
   return (
-    <div
-      className={`${className} ${additionalClassName || ''}`}
-      data-testid={testId}
-    >
+    <div className={`${className} ${additionalClassName || ''}`} data-testid={testId}>
       {value}
     </div>
   );

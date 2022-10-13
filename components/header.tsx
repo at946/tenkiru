@@ -7,7 +7,9 @@ const Header: NextPage = () => {
       <div className='container'>
         <div className='navbar-brand'>
           <Link href='/'>
-            <a className='navbar-item has-text-primary has-text-weight-bold' data-testid="logo">Tenkir</a>
+            <a className='navbar-item has-text-primary has-text-weight-bold' data-testid='logo'>
+              Tenkir
+            </a>
           </Link>
         </div>
       </div>

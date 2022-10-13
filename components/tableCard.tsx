@@ -9,21 +9,21 @@ interface Props {
 }
 
 const TableCard: NextPage<Props> = ({ putDown, isOpen, value }) => {
-  let displayValue: number | string | null = ''
-  let additionalClassName: string = ''
+  let displayValue: number | string | null = '';
+  let additionalClassName: string = '';
 
   if (putDown) {
     if (isOpen) {
-      displayValue = value
-      additionalClassName = 'tableCard_open'
+      displayValue = value;
+      additionalClassName = 'tableCard_open';
     } else {
-      additionalClassName = styles.close
+      additionalClassName = styles.close;
     }
   } else {
-    additionalClassName = styles.blank
+    additionalClassName = styles.blank;
   }
 
-  return <Card value={displayValue} additionalClassName={additionalClassName} testId='tableCard' />
+  return <Card value={displayValue} additionalClassName={additionalClassName} testId='tableCard' />;
 };
 
 export default TableCard;

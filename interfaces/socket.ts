@@ -1,4 +1,4 @@
-import { Member } from './member'
+import { Member, MemberType } from './member'
 import { Card } from './card'
 
 export interface ServerToClientEvents {
@@ -12,4 +12,5 @@ export interface ClientToServerEvents {
   'put-down-a-card': (roomId: string, card: Card) => void;
   'open-cards': (roomId: string) => void;
   'clear-cards': (roomId: string) => void;
+  'change-member-type': (roomId: string, memberType: MemberType) => void;
 }

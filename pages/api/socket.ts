@@ -99,6 +99,16 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-members', room.members)
       });
 
+      socket.on('change-member-type', (roomId, memberType) => {
+        const room: Room | undefined = rooms.find(v => v.id === roomId)
+        if (!room) return
+        const member: Member | undefined = room.members.find(v => v.id === socket.id)
+        if (!member) return
+        member.type = memberType
+        cleanRoom(roomId)
+        io.to(roomId).emit('update-members', room.members)
+      })
+
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
           const room: Room | undefined = rooms.find(v => v.id === roomId)

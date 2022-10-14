@@ -5,11 +5,10 @@ import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'bulma-toast';
 
 interface Props {
-  className?: string;
   roomId: string;
 }
 
-const RoomInfo: NextPage<Props> = ({ className, roomId }) => {
+const RoomInfo: NextPage<Props> = ({ roomId }) => {
   const copyUrl = async () => {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`);
     toast({
@@ -20,7 +19,7 @@ const RoomInfo: NextPage<Props> = ({ className, roomId }) => {
   };
 
   return (
-    <p className={className}>
+    <p>
       <span>Room ID: </span>
       <a onClick={copyUrl}>
         <span data-testid='roomId'>{roomId}</span>

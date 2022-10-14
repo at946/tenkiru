@@ -15,6 +15,8 @@ const Table: NextPage<Props> = ({
   openCardsOnTable,
   cleanCardsOnTable,
 }) => {
+  const players = members.filter(v => v.type === 'player')
+
   const open = (): void => {
     openCardsOnTable();
   };
@@ -26,12 +28,12 @@ const Table: NextPage<Props> = ({
   return (
     <div className='box has-background-success'>
       <div className='is-flex is-flex-wrap-wrap is-justify-content-center mb-4'>
-        {members.map((member) => (
+        {players.map(player => (
           <TableCard
-            key={member.id}
-            putDown={member.card !== null}
+            key={player.id}
+            putDown={player.card !== null}
             isOpen={cardsAreOpen}
-            card={member.card}
+            card={player.card}
           />
         ))}
       </div>

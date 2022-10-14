@@ -105,6 +105,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         const member: Member | undefined = room.members.find(v => v.id === socket.id)
         if (!member) return
         member.type = memberType
+        member.card = null
         cleanRoom(roomId)
         io.to(roomId).emit('update-members', room.members)
       })

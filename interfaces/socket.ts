@@ -1,16 +1,15 @@
-interface membersCards {
-  [props: string]: number;
-}
+import { Member } from './member'
+import { Card } from './card'
 
 export interface ServerToClientEvents {
-  'update-members-cards': (membersCards: membersCards) => void;
-  'update-cards-state': (cardsAreOpen: boolean) => void;
-  replay: (membersCards: membersCards) => void;
+  'update-members': (members: Member[]) => void;
+  'update-cards-are-open': (cardsAreOpen: boolean) => void;
+  'replay': (members: Member[]) => void;
 }
 
 export interface ClientToServerEvents {
   'join-room': (roomId: string) => void;
-  'put-down-a-card': (roomId: string, number: number | string) => void;
-  'open-cards-on-table': (roomId: string) => void;
-  'clean-cards-on-table': (roomId: string) => void;
+  'put-down-a-card': (roomId: string, card: Card) => void;
+  'open-cards': (roomId: string) => void;
+  'clear-cards': (roomId: string) => void;
 }

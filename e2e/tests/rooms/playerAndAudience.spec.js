@@ -10,21 +10,21 @@ test('ルームページで、デフォルトで「Player」が選択されて�
 })
 
 test('ルームページで、「Player」選択中かつカード未選択かつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async () => {
-  await page.goto(urls.room1)
-  await page.waitForSelector('[data-testid="tableCard"]')
-  const page2 = await browser.newPage()
-  await page2.goto(urls.room1)
-  await page2.waitForSelector('[data-testid="tableCard"]')
+  // await page.goto(urls.room1)
+  // await page.waitForSelector('[data-testid="tableCard"]')
+  // const page2 = await browser.newPage()
+  // await page2.goto(urls.room1)
+  // await page2.waitForSelector('[data-testid="tableCard"]')
   
-  expect((await page.$$('[data-testid="tableCard"]')).length).toBe(2)
-  expect((await page2.$$('[data-testid="tableCard"]')).length).toBe(2)
+  // expect((await page.$$('[data-testid="tableCard"]')).length).toBe(2)
+  // expect((await page2.$$('[data-testid="tableCard"]')).length).toBe(2)
 
-  await page2.click('[data-testid="memberTypeAudience"]')
+  // await page2.click('[data-testid="memberTypeAudience"]')
 
-  expect((await page.$$('[data-testid="tableCard"]')).length).toBe(1)
-  expect((await page2.$$('[data-testid="tableCard"]')).length).toBe(1)
+  // expect((await page.$$('[data-testid="tableCard"]')).length).toBe(1)
+  // expect((await page2.$$('[data-testid="tableCard"]')).length).toBe(1)
 
-  await page2.close()
+  // await page2.close()
 })
 // ルームページで、「Player」選択中かつカード選択済みかつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること
 // ルームページで、「Player」選択中かつカード未選択かつカードオープン済みの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること

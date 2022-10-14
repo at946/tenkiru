@@ -11,11 +11,7 @@ describe('rooms/memberSelectsCard', () => {
 
     expect(tableCards.length).toBe(2);
     expect(tableCardsClassName[0]).toContain('tableCard_blank');
-    expect(tableCardsClassName[0]).not.toContain('tableCard_close');
-    expect(tableCardsClassName[0]).not.toContain('tableCard_open');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_close');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_open');
 
     const tefudaCards = await page2.$$('[data-testid="tefudaCard"]');
     await tefudaCards[0].click();
@@ -24,13 +20,10 @@ describe('rooms/memberSelectsCard', () => {
     tableCards = await page.$$('[data-testid="tableCard"]');
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
 
+    await takeScreenshot(1)
     expect(tableCards.length).toBe(2);
-    expect(tableCardsClassName[0]).not.toContain('tableCard_blank');
     expect(tableCardsClassName[0]).toContain('tableCard_close');
-    expect(tableCardsClassName[0]).not.toContain('tableCard_open');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_close');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_open');
 
     await page2.close();
   });

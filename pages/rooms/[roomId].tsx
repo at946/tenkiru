@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { io, Socket } from 'socket.io-client';
-import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import RoomInfo from '../../components/roomInfo';
 import Table from '../../components/table';
 import Tefuda from '../../components/tefuda';
+import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
+import { Member } from '../../interfaces/member';
+import { Card } from '../../interfaces/card'
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
   const router = useRouter();
-  const [membersCards, setMembersCards] = useState({});
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
-  const [cardsAreOpen, setCardsAreOpen] = useState(false);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [selectedCard, setSelectedCard] = useState<Card>(null);
+  const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -42,17 +44,20 @@ const Page: NextPage = () => {
         socket.emit('join-room', roomId);
       });
 
-      socket.on('update-members-cards', (membersCards) => {
-        setMembersCards(membersCards);
-        setSelectedCard(membersCards[socket.id]);
+      socket.on('update-members', (members) => {
+        setMembers(members);
+        const me: Member | undefined = members.find(v => v.id === socket.id)
+        if (!!me) {
+          setSelectedCard(me.card)
+        }
       });
 
-      socket.on('update-cards-state', (cardsAreOpen: boolean) => {
+      socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
         setCardsAreOpen(cardsAreOpen);
       });
 
       socket.on('replay', (membersCards) => {
-        setMembersCards(membersCards);
+        setMembers(membersCards);
         setSelectedCard(null);
         setCardsAreOpen(false);
       });
@@ -63,16 +68,16 @@ const Page: NextPage = () => {
     })();
   };
 
-  const putDownCard = (value: number | string): void => {
-    if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, value);
+  const putDownCard = (card: number | string): void => {
+    if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, card);
   };
 
   const openCardsOnTable = (): void => {
-    socket.emit('open-cards-on-table', roomId);
+    socket.emit('open-cards', roomId);
   };
 
   const cleanCardsOnTable = (): void => {
-    socket.emit('clean-cards-on-table', roomId);
+    socket.emit('clear-cards', roomId);
   };
 
   return (
@@ -81,7 +86,7 @@ const Page: NextPage = () => {
         <div className="container">
           <RoomInfo className='mb-6' roomId={roomId} />
           <Table
-            membersCards={membersCards}
+            members={members}
             cardsAreOpen={cardsAreOpen}
             openCardsOnTable={openCardsOnTable}
             cleanCardsOnTable={cleanCardsOnTable}

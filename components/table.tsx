@@ -1,19 +1,16 @@
 import { NextPage } from 'next';
 import TableCard from './tableCard';
-
-interface MembersCards {
-  [prop: string]: number | string | null;
-}
+import { Member } from '../interfaces/member'
 
 interface Props {
-  membersCards: MembersCards;
+  members: Member[];
   cardsAreOpen: boolean;
   openCardsOnTable: () => void;
   cleanCardsOnTable: () => void;
 }
 
 const Table: NextPage<Props> = ({
-  membersCards,
+  members,
   cardsAreOpen,
   openCardsOnTable,
   cleanCardsOnTable,
@@ -29,12 +26,12 @@ const Table: NextPage<Props> = ({
   return (
     <div className='box has-background-success'>
       <div className='is-flex is-flex-wrap-wrap is-justify-content-center mb-4'>
-        {Object.keys(membersCards).map((memberId) => (
+        {members.map((member) => (
           <TableCard
-            key={memberId}
-            putDown={membersCards[memberId] !== null}
+            key={member.id}
+            putDown={member.card !== null}
             isOpen={cardsAreOpen}
-            value={membersCards[memberId]}
+            card={member.card}
           />
         ))}
       </div>

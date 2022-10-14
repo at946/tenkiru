@@ -1,8 +1,9 @@
 import { NextPage } from 'next';
 import TefudaCard from './tefudaCard';
+import { Card } from '../interfaces/card'
 
 interface Props {
-  selectedCard: number | null;
+  selectedCard: Card;
   putDownCard: (number: number | string) => void;
 }
 

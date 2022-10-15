@@ -1,9 +1,9 @@
 describe('rooms/memberSelectsCard', () => {
-  let roomUrl
+  let roomUrl;
 
   beforeEach(() => {
-    roomUrl = urls.room()
-  })
+    roomUrl = urls.room();
+  });
   test('ルームページで、他のメンバーがカードを選択したとき、カードが場に伏せて置かれること', async () => {
     await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');

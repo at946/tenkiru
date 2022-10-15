@@ -1,9 +1,9 @@
 describe('rooms/replay', () => {
-  let roomUrl
+  let roomUrl;
 
   beforeEach(() => {
-    roomUrl = urls.room()
-  })
+    roomUrl = urls.room();
+  });
   test('ルームページで、カードをオープンしたあと、リプレイできること', async () => {
     await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');

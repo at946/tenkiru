@@ -11,19 +11,15 @@ interface Props {
 
 const TefudaCard: NextPage<Props> = ({ value, isSelected, isDisabled, selectCard }) => {
   const selected = () => {
-    if (isDisabled) return
+    if (isDisabled) return;
     selectCard(value);
   };
 
-  const className = isSelected ? styles.selected : isDisabled ? styles.disabled : ''
+  const className = isSelected ? styles.selected : isDisabled ? styles.disabled : '';
 
   return (
     <a onClick={selected}>
-      <Card
-        value={value}
-        additionalClassName={className}
-        testId='tefudaCard'
-      />
+      <Card value={value} additionalClassName={className} testId='tefudaCard' />
     </a>
   );
 };

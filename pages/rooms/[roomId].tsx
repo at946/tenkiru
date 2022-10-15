@@ -4,18 +4,18 @@ import { useRouter } from 'next/router';
 import { io, Socket } from 'socket.io-client';
 import RoomInfo from '../../components/roomInfo';
 import Table from '../../components/table';
-import MemberTypeToggle from '../../components/memberTypeToggle'
+import MemberTypeToggle from '../../components/memberTypeToggle';
 import Tefuda from '../../components/tefuda';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import { Member, MemberType } from '../../interfaces/member';
-import { Card } from '../../interfaces/card'
+import { Card } from '../../interfaces/card';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
   const router = useRouter();
   const [members, setMembers] = useState<Member[]>([]);
-  const [type, setType] = useState<MemberType>('player')
+  const [type, setType] = useState<MemberType>('player');
   const [selectedCard, setSelectedCard] = useState<Card>(null);
   const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
 
@@ -48,10 +48,10 @@ const Page: NextPage = () => {
 
       socket.on('update-members', (members) => {
         setMembers(members);
-        const me: Member | undefined = members.find(v => v.id === socket.id)
+        const me: Member | undefined = members.find((v) => v.id === socket.id);
         if (!!me) {
-          setType(me.type)
-          setSelectedCard(me.card)
+          setType(me.type);
+          setSelectedCard(me.card);
         }
       });
 
@@ -80,8 +80,8 @@ const Page: NextPage = () => {
   };
 
   const changeMemberType = (memberType: MemberType): void => {
-    socket.emit('change-member-type', roomId, memberType)
-  }
+    socket.emit('change-member-type', roomId, memberType);
+  };
 
   const putDownCard = (card: number | string): void => {
     if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, card);
@@ -90,8 +90,8 @@ const Page: NextPage = () => {
   return (
     <div className='has-text-centered'>
       <section className='section'>
-        <div className="container">
-          <div className="mb-4">
+        <div className='container'>
+          <div className='mb-4'>
             <RoomInfo roomId={roomId} />
           </div>
           <Table
@@ -103,9 +103,13 @@ const Page: NextPage = () => {
         </div>
       </section>
       <section className='section'>
-        <div className="container">
+        <div className='container'>
           <MemberTypeToggle type={type} changeMemberType={changeMemberType} />
-          <Tefuda selectedCard={selectedCard} canSelected={!cardsAreOpen && type === 'player'} putDownCard={putDownCard} />
+          <Tefuda
+            selectedCard={selectedCard}
+            canSelected={!cardsAreOpen && type === 'player'}
+            putDownCard={putDownCard}
+          />
         </div>
       </section>
     </div>

@@ -1,9 +1,9 @@
 describe('rooms/leaveRoom', () => {
-  let roomUrl
+  let roomUrl;
 
   beforeEach(() => {
-    roomUrl = urls.room()
-  })
+    roomUrl = urls.room();
+  });
 
   test('ルームページで、別のページに遷移したとき、ルームから抜け出すこと', async () => {
     await page.goto(roomUrl);
@@ -16,7 +16,7 @@ describe('rooms/leaveRoom', () => {
     expect(tableCards.length).toBe(2);
 
     await page2.goto(urls.top);
-    await page2.waitForNavigation()
+    await page2.waitForNavigation();
 
     tableCards = await page.$$('[data-testid="tableCard"]');
     expect(tableCards.length).toBe(1);

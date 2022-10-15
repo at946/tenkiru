@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import TefudaCard from './tefudaCard';
-import { Card } from '../interfaces/card'
+import { Card } from '../interfaces/card';
 
 interface Props {
   selectedCard: Card;

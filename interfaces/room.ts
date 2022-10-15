@@ -1,7 +1,7 @@
-import { Member } from './member'
+import { Member } from './member';
 
 export interface Room {
-  id: string,
-  members: Member[],
-  cardsAreOpen: boolean
+  id: string;
+  members: Member[];
+  cardsAreOpen: boolean;
 }

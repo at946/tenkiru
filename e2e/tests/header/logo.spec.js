@@ -8,7 +8,7 @@ describe('header/logo', () => {
   });
 
   test('ルームページで、ヘッダーのサービス名を選択したとき、トップページへ遷移すること', async () => {
-    const roomUrl = urls.room()
+    const roomUrl = urls.room();
     await page.goto(roomUrl);
     expect(page.url()).toBe(roomUrl);
     await page.click('[data-testid="logo"]');

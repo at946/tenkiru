@@ -1,14 +1,14 @@
 describe('rooms/shareRoom', () => {
-  let roomUrl, roomId
+  let roomUrl, roomId;
 
   const getRoomIdFromRoomUrl = (roomUrl) => {
-    return roomUrl.replace(`${urls.top}rooms/`, '')
-  }
+    return roomUrl.replace(`${urls.top}rooms/`, '');
+  };
 
   beforeEach(() => {
-    roomUrl = urls.room()
-    roomId = getRoomIdFromRoomUrl(roomUrl)
-  })
+    roomUrl = urls.room();
+    roomId = getRoomIdFromRoomUrl(roomUrl);
+  });
 
   test('ルームページで、ルームIDを知れること', async () => {
     await page.goto(roomUrl);
@@ -37,10 +37,12 @@ describe('rooms/shareRoom', () => {
     expect(await page.url()).toBe(roomUrl);
     expect(await page.$eval('[data-testid="roomId"]', (el) => el.innerText)).toBe(roomId);
 
-    const otherRoomUrl = urls.room()
+    const otherRoomUrl = urls.room();
     await page.goto(otherRoomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     expect(await page.url()).toBe(otherRoomUrl);
-    expect(await page.$eval('[data-testid="roomId"]', (el) => el.innerText)).toBe(getRoomIdFromRoomUrl(otherRoomUrl));
+    expect(await page.$eval('[data-testid="roomId"]', (el) => el.innerText)).toBe(
+      getRoomIdFromRoomUrl(otherRoomUrl),
+    );
   });
 });

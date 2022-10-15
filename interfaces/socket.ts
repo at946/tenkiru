@@ -1,10 +1,10 @@
-import { Member, MemberType } from './member'
-import { Card } from './card'
+import { Member, MemberType } from './member';
+import { Card } from './card';
 
 export interface ServerToClientEvents {
   'update-members': (members: Member[]) => void;
   'update-cards-are-open': (cardsAreOpen: boolean) => void;
-  'replay': (members: Member[]) => void;
+  replay: (members: Member[]) => void;
 }
 
 export interface ClientToServerEvents {

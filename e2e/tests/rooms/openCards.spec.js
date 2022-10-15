@@ -1,9 +1,9 @@
 describe('rooms/openCards', () => {
-  let roomUrl
+  let roomUrl;
 
   beforeEach(() => {
-    roomUrl = urls.room()
-  })
+    roomUrl = urls.room();
+  });
   test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async () => {
     await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');

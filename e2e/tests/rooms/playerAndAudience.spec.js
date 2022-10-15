@@ -1,6 +1,12 @@
 describe('rooms/playerAndAudience', () => {
+  let roomUrl
+
+  beforeEach(() => {
+    roomUrl = urls.room()
+  })
+
   test('ルームページで、デフォルトで「Player」が選択されていること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
 
     expect(await page.$eval('[data-testid="memberTypePlayer"]', el => el.innerText)).toBe('Player')
@@ -10,10 +16,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Player」選択中かつカード未選択かつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
     
     let tableCards = await page.$$('[data-testid="tableCard"]')
@@ -25,10 +31,10 @@ describe('rooms/playerAndAudience', () => {
     expect(await getAttribute.$(page, '[data-testid="memberTypeAudience"]', 'class')).not.toContain('is-active')
 
     await page.click('[data-testid="memberTypeAudience"]')
+    await page.waitForTimeout(100)
 
     tableCards = await page.$$('[data-testid="tableCard"]')
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class')
-    await takeScreenshot(1)
     expect(tableCards.length).toBe(1)
     expect(tableCardsClassName[0]).toContain('tableCard_blank')
     expect(await getAttribute.$(page, '[data-testid="memberTypePlayer"]', 'class')).not.toContain('is-active')
@@ -44,10 +50,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Player」選択中かつカード選択済みかつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
 
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]')
@@ -79,10 +85,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Player」選択中かつカード未選択かつカードオープン済みの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
 
     const tefudaCards = await page2.$$('[data-testid="tefudaCard"]')
@@ -116,10 +122,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Player」選択中かつカード選択済みかつカードオープン済みの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
 
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]')
@@ -153,10 +159,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Audience」選択中かつカード未選択かつカード未オープンの状態で、「Player」を選択したとき、自分のテーブルカードが現れ、手札カードを選べるようになること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
 
     await page.click('[data-testid="memberTypeAudience"]')
@@ -189,10 +195,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Audience」選択中かつカード選択済みかつカード未オープンの状態で、「Player」を選択したとき、自分のテーブルカードが現れ、手札カードを選べるようになること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
 
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]')
@@ -232,10 +238,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Audience」選択中かつカード未選択かつカードオープン済みの状態で、「Player」を選択したとき、自分のテーブルカードが現れること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
 
     await page.click('[data-testid="memberTypeAudience"]')
@@ -271,10 +277,10 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、「Audience」選択中かつカード選択済みかつカードオープン済みの状態で、「Player」を選択したとき、自分のテーブルカードが現れること', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
     const page2 = await browser.newPage()
-    await page2.goto(urls.room1)
+    await page2.goto(roomUrl)
     await page2.waitForSelector('[data-testid="tableCard"]')
 
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]')
@@ -310,7 +316,7 @@ describe('rooms/playerAndAudience', () => {
   })
 
   test('ルームページで、メンバーが自分ひとりのときに「Audience」を選択しても問題ないこと', async () => {
-    await page.goto(urls.room1)
+    await page.goto(roomUrl)
     await page.waitForSelector('[data-testid="tableCard"]')
 
     await page.click('[data-testid="memberTypeAudience"]')
@@ -322,14 +328,18 @@ describe('rooms/playerAndAudience', () => {
     expect(await page.$('[data-testid="replayButton"]')).toBeNull()
 
     await page.click('[data-testid="memberTypePlayer"]')
+
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]')
-    tefudaCards[2].click()
+    await tefudaCards[2].click()
     await page.click('[data-testid="openButton"]')
     await page.click('[data-testid="memberTypeAudience"]')
 
     expect((await page.$$('[data-testid="tableCard"]')).length).toBe(0)
+    expect(await page.$('[data-testid="replayButton"]')).not.toBeNull()
+    expect(await page.$('[data-testid="openButton"]')).toBeNull()
 
     await page.click('[data-testid="replayButton"]')
+
     expect(await page.$('[data-testid="replayButton"]')).toBeNull()
     expect(await page.$('[data-testid="openButton"]')).not.toBeNull()
 

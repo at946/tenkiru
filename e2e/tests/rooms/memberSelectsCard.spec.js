@@ -1,9 +1,14 @@
 describe('rooms/memberSelectsCard', () => {
+  let roomUrl
+
+  beforeEach(() => {
+    roomUrl = urls.room()
+  })
   test('ルームページで、他のメンバーがカードを選択したとき、カードが場に伏せて置かれること', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
-    await page2.goto(urls.room1);
+    await page2.goto(roomUrl);
     await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
@@ -20,7 +25,6 @@ describe('rooms/memberSelectsCard', () => {
     tableCards = await page.$$('[data-testid="tableCard"]');
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
 
-    await takeScreenshot(1)
     expect(tableCards.length).toBe(2);
     expect(tableCardsClassName[0]).toContain('tableCard_close');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');

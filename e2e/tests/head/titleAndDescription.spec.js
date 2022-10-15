@@ -10,7 +10,7 @@ describe('metatag/title', () => {
   });
 
   test('ルームページで、タイトルが「Tenkir」であること', async () => {
-    await page.goto(urls.room1);
+    await page.goto(urls.room());
     expect(await page.title()).toBe(title);
     expect(await page.$eval('meta[name="description"]', (el) => el.content)).toBe(description);
   });

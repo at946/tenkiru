@@ -1,6 +1,11 @@
 describe('rooms/openCards', () => {
+  let roomUrl
+
+  beforeEach(() => {
+    roomUrl = urls.room()
+  })
   test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
 
     let tableCardClassName = await getAttribute.$(page, '[data-testid="tableCard"]', 'class');
@@ -14,10 +19,10 @@ describe('rooms/openCards', () => {
   });
 
   test('ルームページで、誰かがカードを場に出している状態で、オープンボタンを選択したとき、場に出たカードがオープンすること', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
-    await page2.goto(urls.room1);
+    await page2.goto(roomUrl);
     await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCardsValue = await page.$$eval('[data-testid="tableCard"]', (els) =>
@@ -55,10 +60,10 @@ describe('rooms/openCards', () => {
   });
 
   test('ルームページで、誰かがカードを場にでしている状態で、他のメンバーがカードをオープンできること', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
-    await page2.goto(urls.room1);
+    await page2.goto(roomUrl);
     await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCardsValue = await page2.$$eval('[data-testid="tableCard"]', (els) =>
@@ -97,7 +102,7 @@ describe('rooms/openCards', () => {
   });
 
   test('ルームページで、カードをオープンした後、カードの選択を変更できないこと', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
 
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]');
@@ -137,7 +142,7 @@ describe('rooms/openCards', () => {
   });
 
   test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
 
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]');

@@ -11,7 +11,7 @@ describe('footer/copyright', () => {
   });
 
   test('ルームページで、フッターのコピーライトを選択したとき、開発者のTwitterプロフィールページへ遷移すること', async () => {
-    await page.goto(urls.room1);
+    await page.goto(urls.room());
     expect(await page.$eval('[data-testid="copyright"]', (el) => el.innerText)).toBe('@asato');
     expect(await page.$eval('[data-testid="copyright"]', (el) => el.getAttribute('href'))).toBe(
       'https://twitter.com/at_946',

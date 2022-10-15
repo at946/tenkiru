@@ -14,11 +14,11 @@ const DeckSelect: NextPage<Props> = ({ deckType, select }) => {
 
   return (
     <div className='select is-primary is-rounded mb-2'>
-      <select data-testid='deckSelect' onChange={change}>
-        <option value='fibonacci' selected={deckType === 'fibonacci'}>
+      <select data-testid='deckSelect' value={deckType} onChange={change}>
+        <option value='fibonacci'>
           Fibonacci
         </option>
-        <option value='sequential' selected={deckType === 'sequential'}>
+        <option value='sequential'>
           1 to 10
         </option>
       </select>

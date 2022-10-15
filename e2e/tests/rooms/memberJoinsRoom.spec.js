@@ -45,4 +45,20 @@ describe('rooms/memberJoinsRoom', () => {
     expect(await page2.$('[data-testid="openButton"]')).toBeNull();
     expect(await page2.$('[data-testid="replayButton"]')).not.toBeNull();
   });
+
+  test('ルームページで、デッキがFibonacci以外を選択された状態で入室したとき、そのデッキが手札に表示されること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+
+    await page.select('[data-testid="deckSelect"]', 'sequential')
+
+    const page2 = await browser.newPage();
+    await page2.goto(roomUrl);
+    await page2.waitForSelector('[data-testid="tableCard"]');
+
+    expect(await page2.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('sequential')
+    expect(await page2.$$eval('[data-testid="tefudaCard"]', els => els.map(el => el.innerText))).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?'])
+
+    await page2.close()
+  })
 });

@@ -88,7 +88,7 @@ describe('rooms/playerAndAudience', () => {
     );
 
     await page.click('[data-testid="memberTypeAudience"]');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     tableCards = await page.$$('[data-testid="tableCard"]');
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
@@ -320,7 +320,7 @@ describe('rooms/playerAndAudience', () => {
     );
 
     await page.click('[data-testid="memberTypePlayer"]');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     tableCards = await page.$$('[data-testid="tableCard"]');
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');

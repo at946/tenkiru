@@ -18,9 +18,10 @@ const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, clean
   const playerNumberCards: number[] = playerCards.filter<number>(
     (v): v is number => typeof v === 'number',
   );
-  const minCard = Math.min(...playerNumberCards);
-  const maxCard = Math.max(...playerNumberCards);
-  const avgValue =
+  const summaryTagsAreVisible: Boolean = cardsAreOpen && playerNumberCards.length > 0;
+  const minCard: number = Math.min(...playerNumberCards);
+  const maxCard: number = Math.max(...playerNumberCards);
+  const avgValue: number =
     Math.round((playerNumberCards.reduce((a, b) => a + b, 0) / playerNumberCards.length) * 10) / 10;
 
   const open = (): void => {
@@ -43,7 +44,7 @@ const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, clean
           />
         ))}
       </div>
-      {cardsAreOpen && (
+      {summaryTagsAreVisible && (
         <div className='mb-4'>
           <SummaryTags minCard={minCard} avgValue={avgValue} maxCard={maxCard} />
         </div>

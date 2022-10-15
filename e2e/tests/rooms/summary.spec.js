@@ -133,21 +133,21 @@ describe('rooms/summary', () => {
   });
 
   test('ルームページで、場に数字のカードが出ていないとき、サマリーが表示されないこと', async () => {
-    await page.goto(roomUrl)
-    await page.waitForSelector('[data-testid="tableCard"]')
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
 
-    const tefudaCards = await page.$$('[data-testid="tefudaCard"]')
-    await tefudaCards[tefudaCards.length - 1].click() // ?を選択
-    await page.click('[data-testid="openButton"]')
+    const tefudaCards = await page.$$('[data-testid="tefudaCard"]');
+    await tefudaCards[tefudaCards.length - 1].click(); // ?を選択
+    await page.click('[data-testid="openButton"]');
 
-    expect(await page.$('[data-testid="max"]')).toBeNull()
-    expect(await page.$('[data-testid="min"]')).toBeNull()
-    expect(await page.$('[data-testid="avg"]')).toBeNull()
+    expect(await page.$('[data-testid="max"]')).toBeNull();
+    expect(await page.$('[data-testid="min"]')).toBeNull();
+    expect(await page.$('[data-testid="avg"]')).toBeNull();
 
-    await page.click('[data-testid="memberTypeAudience"]')
+    await page.click('[data-testid="memberTypeAudience"]');
 
-    expect(await page.$('[data-testid="max"]')).toBeNull()
-    expect(await page.$('[data-testid="min"]')).toBeNull()
-    expect(await page.$('[data-testid="avg"]')).toBeNull()
-  })
+    expect(await page.$('[data-testid="max"]')).toBeNull();
+    expect(await page.$('[data-testid="min"]')).toBeNull();
+    expect(await page.$('[data-testid="avg"]')).toBeNull();
+  });
 });

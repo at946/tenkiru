@@ -18,7 +18,7 @@ const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, clean
   const playerNumberCards: number[] = playerCards.filter<number>(
     (v): v is number => typeof v === 'number',
   );
-  const summaryTagsAreVisible: Boolean = cardsAreOpen && playerNumberCards.length > 0
+  const summaryTagsAreVisible: Boolean = cardsAreOpen && playerNumberCards.length > 0;
   const minCard: number = Math.min(...playerNumberCards);
   const maxCard: number = Math.max(...playerNumberCards);
   const avgValue: number =

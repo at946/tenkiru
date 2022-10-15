@@ -1,29 +1,24 @@
 import { NextPage } from 'next';
 import TefudaCard from './tefudaCard';
 import { Card } from '../interfaces/card';
+import DeckSelect from './deckSelect';
+import TefudaCards from './tefudaCards';
 
 interface Props {
   selectedCard: Card;
-  canSelected: Boolean;
-  putDownCard: (number: number | string) => void;
+  canSelected: boolean;
+  putDownCard: (card: Card) => void;
 }
 
 const Tefuda: NextPage<Props> = ({ selectedCard, canSelected, putDownCard }) => {
-  const selectCard = (number: number | string): void => {
-    putDownCard(number);
+  const selectCard = (card: Card): void => {
+    putDownCard(card);
   };
 
   return (
-    <div className='is-flex is-flex-wrap-wrap is-justify-content-center has-background-warning box is-shadowless'>
-      {[1, 2, 3, 5, 8, 13, 21, '?'].map((number) => (
-        <TefudaCard
-          key={number}
-          value={number}
-          isSelected={number === selectedCard}
-          isDisabled={!canSelected}
-          selectCard={selectCard}
-        />
-      ))}
+    <div className="box has-background-warning is-shadowless">
+      <DeckSelect />
+      <TefudaCards selectedCard={selectedCard} canSelected={canSelected} select={selectCard} />
     </div>
   );
 };

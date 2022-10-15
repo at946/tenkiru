@@ -83,7 +83,7 @@ const Page: NextPage = () => {
     socket.emit('change-member-type', roomId, memberType);
   };
 
-  const putDownCard = (card: number | string): void => {
+  const putDownCard = (card: Card): void => {
     if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, card);
   };
 

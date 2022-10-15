@@ -14,7 +14,7 @@ const Tefuda: NextPage<Props> = ({ selectedCard, canSelected, putDownCard }) => 
   };
 
   return (
-    <div className='is-flex is-flex-wrap-wrap is-justify-content-center has-background-light box is-shadowless'>
+    <div className='is-flex is-flex-wrap-wrap is-justify-content-center has-background-warning box is-shadowless'>
       {[1, 2, 3, 5, 8, 13, 21, '?'].map((number) => (
         <TefudaCard
           key={number}

@@ -44,11 +44,5 @@ describe('rooms/memberJoinsRoom', () => {
 
     expect(await page2.$('[data-testid="openButton"]')).toBeNull();
     expect(await page2.$('[data-testid="replayButton"]')).not.toBeNull();
-    const tefudaCards2ClassName = await getAttribute.$$(
-      page2,
-      '[data-testid="tefudaCard"]',
-      'class',
-    );
-    expect(tefudaCards2ClassName[0]).toContain('tefudaCard_disabled');
   });
 });

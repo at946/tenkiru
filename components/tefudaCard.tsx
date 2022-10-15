@@ -15,7 +15,7 @@ const TefudaCard: NextPage<Props> = ({ value, isSelected, isDisabled, selectCard
     selectCard(value);
   };
 
-  const className = isSelected ? styles.selected : isDisabled ? styles.disabled : '';
+  const className = isSelected ? styles.selected : '';
 
   return (
     <a onClick={selected}>

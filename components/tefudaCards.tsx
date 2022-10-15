@@ -1,27 +1,31 @@
-import { NextPage } from "next";
-import { Card } from "../interfaces/card";
-import TefudaCard from "./tefudaCard";
+import { NextPage } from 'next';
+import Decks from '../data/deck';
+import { Card, Deck, DeckType } from '../interfaces/card';
+import TefudaCard from './tefudaCard';
 
 interface Props {
-  selectedCard: Card
-  canSelected: boolean
-  select: (card: Card) => void
+  deckType: DeckType;
+  selectedCard: Card;
+  canSelected: boolean;
+  select: (card: Card) => void;
 }
 
-const TefudaCards: NextPage<Props> = ({ selectedCard, canSelected, select }) => {
+const TefudaCards: NextPage<Props> = ({ deckType, selectedCard, canSelected, select }) => {
+  const Deck: Deck = Decks[deckType];
+
   return (
     <div className='is-flex is-flex-wrap-wrap is-justify-content-center'>
-      {[1, 2, 3, 5, 8, 13, 21, '?'].map((card) => (
+      {Deck.map((card) => (
         <TefudaCard
           key={card}
-          value={card}
+          card={card}
           isSelected={card === selectedCard}
           isDisabled={!canSelected}
           selectCard={select}
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default TefudaCards
+export default TefudaCards;

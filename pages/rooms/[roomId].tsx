@@ -8,7 +8,7 @@ import MemberTypeToggle from '../../components/memberTypeToggle';
 import Tefuda from '../../components/tefuda';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import { Member, MemberType } from '../../interfaces/member';
-import { Card } from '../../interfaces/card';
+import { Card, DeckType } from '../../interfaces/card';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -18,6 +18,7 @@ const Page: NextPage = () => {
   const [type, setType] = useState<MemberType>('player');
   const [selectedCard, setSelectedCard] = useState<Card>(null);
   const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
+  const [deckType, setDeckType] = useState<DeckType>('fibonacci');
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -55,6 +56,10 @@ const Page: NextPage = () => {
         }
       });
 
+      socket.on('update-deck-type', (newDeckType: DeckType) => {
+        setDeckType(newDeckType);
+      });
+
       socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
         setCardsAreOpen(cardsAreOpen);
       });
@@ -69,6 +74,10 @@ const Page: NextPage = () => {
         console.log('disconnect');
       });
     })();
+  };
+
+  const changeDeckType = (newDeckType: DeckType): void => {
+    socket.emit('change-deck-type', roomId, newDeckType);
   };
 
   const openCardsOnTable = (): void => {
@@ -106,9 +115,11 @@ const Page: NextPage = () => {
         <div className='container'>
           <MemberTypeToggle type={type} changeMemberType={changeMemberType} />
           <Tefuda
+            deckType={deckType}
             selectedCard={selectedCard}
             canSelected={!cardsAreOpen && type === 'player'}
             putDownCard={putDownCard}
+            changeDeckType={changeDeckType}
           />
         </div>
       </section>

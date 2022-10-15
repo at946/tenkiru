@@ -1,25 +1,26 @@
 import { NextPage } from 'next';
+import { Card as IFCard } from '../interfaces/card';
 import Card from './card';
 import styles from './tefudaCard.module.scss';
 
 interface Props {
-  value: number | string;
+  card: IFCard;
   isSelected: boolean;
   isDisabled: boolean;
-  selectCard: (value: number | string) => void;
+  selectCard: (card: IFCard) => void;
 }
 
-const TefudaCard: NextPage<Props> = ({ value, isSelected, isDisabled, selectCard }) => {
+const TefudaCard: NextPage<Props> = ({ card, isSelected, isDisabled, selectCard }) => {
   const selected = () => {
     if (isDisabled) return;
-    selectCard(value);
+    selectCard(card);
   };
 
   const className = isSelected ? styles.selected : '';
 
   return (
     <a onClick={selected}>
-      <Card value={value} additionalClassName={className} testId='tefudaCard' />
+      <Card value={card} additionalClassName={className} testId='tefudaCard' />
     </a>
   );
 };

@@ -49,6 +49,7 @@ const Table: NextPage<Props> = ({
         <button
           className='button is-rounded is-light is-primary'
           onClick={open}
+          disabled={!players.find(v => v.card !== null)}
           data-testid='openButton'
         >
           Open

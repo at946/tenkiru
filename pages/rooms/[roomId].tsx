@@ -105,7 +105,7 @@ const Page: NextPage = () => {
       <section className='section'>
         <div className="container">
           <MemberTypeToggle type={type} changeMemberType={changeMemberType} />
-          <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />
+          <Tefuda selectedCard={selectedCard} canSelected={!cardsAreOpen && type === 'player'} putDownCard={putDownCard} />
         </div>
       </section>
     </div>

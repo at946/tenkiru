@@ -86,6 +86,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       socket.on('open-cards', (roomId) => {
         const room: Room | undefined = rooms.find(v => v.id === roomId)
         if (!room) return
+        if (!room.members.find(v => v.card !== null)) return
         room.cardsAreOpen = true
         io.to(roomId).emit('update-cards-are-open', true)
       });

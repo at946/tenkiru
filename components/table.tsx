@@ -1,6 +1,9 @@
 import { NextPage } from 'next';
 import TableCard from './tableCard';
 import { Member } from '../interfaces/member';
+import TableButton from './tableButton';
+import SummaryTags from './summaryTags';
+import { Card } from '../interfaces/card';
 
 interface Props {
   members: Member[];
@@ -10,7 +13,15 @@ interface Props {
 }
 
 const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, cleanCardsOnTable }) => {
-  const players = members.filter((v) => v.type === 'player');
+  const players: Member[] = members.filter((v) => v.type === 'player');
+  const playerCards: Card[] = players.map((v) => v.card);
+  const playerNumberCards: number[] = playerCards.filter<number>(
+    (v): v is number => typeof v === 'number',
+  );
+  const minCard = Math.min(...playerNumberCards);
+  const maxCard = Math.max(...playerNumberCards);
+  const avgValue =
+    Math.round((playerNumberCards.reduce((a, b) => a + b, 0) / playerNumberCards.length) * 10) / 10;
 
   const open = (): void => {
     openCardsOnTable();
@@ -32,24 +43,17 @@ const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, clean
           />
         ))}
       </div>
-      {cardsAreOpen ? (
-        <button
-          className='button is-rounded is-light is-primary'
-          onClick={replay}
-          data-testid='replayButton'
-        >
-          Replay
-        </button>
-      ) : (
-        <button
-          className='button is-rounded is-light is-primary'
-          onClick={open}
-          disabled={!players.find((v) => v.card !== null)}
-          data-testid='openButton'
-        >
-          Open
-        </button>
+      {cardsAreOpen && (
+        <div className='mb-4'>
+          <SummaryTags minCard={minCard} avgValue={avgValue} maxCard={maxCard} />
+        </div>
       )}
+      <TableButton
+        cardsAreOpen={cardsAreOpen}
+        openButtonIsClickable={!!players.find((v) => v.card !== null)}
+        clickOpenButton={open}
+        clickReplayButton={replay}
+      />
     </div>
   );
 };

@@ -16,7 +16,6 @@ describe('rooms/leaveRoom', () => {
     expect(tableCards.length).toBe(2);
 
     await page2.goto(urls.top);
-    await page2.waitForNavigation();
 
     tableCards = await page.$$('[data-testid="tableCard"]');
     expect(tableCards.length).toBe(1);

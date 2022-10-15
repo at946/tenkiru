@@ -1,12 +1,14 @@
 import { NextPage } from 'next';
 import TefudaCard from './tefudaCard';
+import { Card } from '../interfaces/card';
 
 interface Props {
-  selectedCard: number | null;
+  selectedCard: Card;
+  canSelected: Boolean;
   putDownCard: (number: number | string) => void;
 }
 
-const Tefuda: NextPage<Props> = ({ selectedCard, putDownCard }) => {
+const Tefuda: NextPage<Props> = ({ selectedCard, canSelected, putDownCard }) => {
   const selectCard = (number: number | string): void => {
     putDownCard(number);
   };
@@ -18,6 +20,7 @@ const Tefuda: NextPage<Props> = ({ selectedCard, putDownCard }) => {
           key={number}
           value={number}
           isSelected={number === selectedCard}
+          isDisabled={!canSelected}
           selectCard={selectCard}
         />
       ))}

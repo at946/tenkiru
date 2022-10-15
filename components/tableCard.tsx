@@ -1,20 +1,21 @@
 import { NextPage } from 'next';
 import Card from './card';
 import styles from './tableCard.module.scss';
+import { Card as IFCard } from '../interfaces/card';
 
 interface Props {
   putDown: boolean;
   isOpen: boolean;
-  value: number | string | null;
+  card: IFCard;
 }
 
-const TableCard: NextPage<Props> = ({ putDown, isOpen, value }) => {
-  let displayValue: number | string | null = '';
+const TableCard: NextPage<Props> = ({ putDown, isOpen, card }) => {
+  let displayCard: IFCard = '';
   let additionalClassName: string = '';
 
   if (putDown) {
     if (isOpen) {
-      displayValue = value;
+      displayCard = card;
       additionalClassName = 'tableCard_open';
     } else {
       additionalClassName = styles.close;
@@ -23,7 +24,7 @@ const TableCard: NextPage<Props> = ({ putDown, isOpen, value }) => {
     additionalClassName = styles.blank;
   }
 
-  return <Card value={displayValue} additionalClassName={additionalClassName} testId='tableCard' />;
+  return <Card value={displayCard} additionalClassName={additionalClassName} testId='tableCard' />;
 };
 
 export default TableCard;

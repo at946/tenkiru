@@ -2,18 +2,22 @@ import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { io, Socket } from 'socket.io-client';
-import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import RoomInfo from '../../components/roomInfo';
 import Table from '../../components/table';
+import MemberTypeToggle from '../../components/memberTypeToggle';
 import Tefuda from '../../components/tefuda';
+import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
+import { Member, MemberType } from '../../interfaces/member';
+import { Card } from '../../interfaces/card';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
   const router = useRouter();
-  const [membersCards, setMembersCards] = useState({});
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
-  const [cardsAreOpen, setCardsAreOpen] = useState(false);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [type, setType] = useState<MemberType>('player');
+  const [selectedCard, setSelectedCard] = useState<Card>(null);
+  const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -42,17 +46,21 @@ const Page: NextPage = () => {
         socket.emit('join-room', roomId);
       });
 
-      socket.on('update-members-cards', (membersCards) => {
-        setMembersCards(membersCards);
-        setSelectedCard(membersCards[socket.id]);
+      socket.on('update-members', (members) => {
+        setMembers(members);
+        const me: Member | undefined = members.find((v) => v.id === socket.id);
+        if (!!me) {
+          setType(me.type);
+          setSelectedCard(me.card);
+        }
       });
 
-      socket.on('update-cards-state', (cardsAreOpen: boolean) => {
+      socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
         setCardsAreOpen(cardsAreOpen);
       });
 
       socket.on('replay', (membersCards) => {
-        setMembersCards(membersCards);
+        setMembers(membersCards);
         setSelectedCard(null);
         setCardsAreOpen(false);
       });
@@ -63,31 +71,46 @@ const Page: NextPage = () => {
     })();
   };
 
-  const putDownCard = (value: number | string): void => {
-    if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, value);
-  };
-
   const openCardsOnTable = (): void => {
-    socket.emit('open-cards-on-table', roomId);
+    socket.emit('open-cards', roomId);
   };
 
   const cleanCardsOnTable = (): void => {
-    socket.emit('clean-cards-on-table', roomId);
+    socket.emit('clear-cards', roomId);
+  };
+
+  const changeMemberType = (memberType: MemberType): void => {
+    socket.emit('change-member-type', roomId, memberType);
+  };
+
+  const putDownCard = (card: number | string): void => {
+    if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, card);
   };
 
   return (
     <div className='has-text-centered'>
       <section className='section'>
-        <RoomInfo className='mb-6' roomId={roomId} />
-        <Table
-          membersCards={membersCards}
-          cardsAreOpen={cardsAreOpen}
-          openCardsOnTable={openCardsOnTable}
-          cleanCardsOnTable={cleanCardsOnTable}
-        />
+        <div className='container'>
+          <div className='mb-4'>
+            <RoomInfo roomId={roomId} />
+          </div>
+          <Table
+            members={members}
+            cardsAreOpen={cardsAreOpen}
+            openCardsOnTable={openCardsOnTable}
+            cleanCardsOnTable={cleanCardsOnTable}
+          />
+        </div>
       </section>
       <section className='section'>
-        <Tefuda selectedCard={selectedCard} putDownCard={putDownCard} />
+        <div className='container'>
+          <MemberTypeToggle type={type} changeMemberType={changeMemberType} />
+          <Tefuda
+            selectedCard={selectedCard}
+            canSelected={!cardsAreOpen && type === 'player'}
+            putDownCard={putDownCard}
+          />
+        </div>
       </section>
     </div>
   );

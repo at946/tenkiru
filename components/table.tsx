@@ -1,23 +1,17 @@
 import { NextPage } from 'next';
 import TableCard from './tableCard';
-
-interface MembersCards {
-  [prop: string]: number | string | null;
-}
+import { Member } from '../interfaces/member';
 
 interface Props {
-  membersCards: MembersCards;
+  members: Member[];
   cardsAreOpen: boolean;
   openCardsOnTable: () => void;
   cleanCardsOnTable: () => void;
 }
 
-const Table: NextPage<Props> = ({
-  membersCards,
-  cardsAreOpen,
-  openCardsOnTable,
-  cleanCardsOnTable,
-}) => {
+const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, cleanCardsOnTable }) => {
+  const players = members.filter((v) => v.type === 'player');
+
   const open = (): void => {
     openCardsOnTable();
   };
@@ -29,12 +23,12 @@ const Table: NextPage<Props> = ({
   return (
     <div className='box has-background-success'>
       <div className='is-flex is-flex-wrap-wrap is-justify-content-center mb-4'>
-        {Object.keys(membersCards).map((memberId) => (
+        {players.map((player) => (
           <TableCard
-            key={memberId}
-            putDown={membersCards[memberId] !== null}
+            key={player.id}
+            putDown={player.card !== null}
             isOpen={cardsAreOpen}
-            value={membersCards[memberId]}
+            card={player.card}
           />
         ))}
       </div>
@@ -50,6 +44,7 @@ const Table: NextPage<Props> = ({
         <button
           className='button is-rounded is-light is-primary'
           onClick={open}
+          disabled={!players.find((v) => v.card !== null)}
           data-testid='openButton'
         >
           Open

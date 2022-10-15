@@ -1,9 +1,14 @@
 describe('rooms/selectCard', () => {
+  let roomUrl;
+
+  beforeEach(() => {
+    roomUrl = urls.room();
+  });
   test('ルームページで、カードを選択したとき、カードが場に伏せて置かれること', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
-    await page2.goto(urls.room1);
+    await page2.goto(roomUrl);
     await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
@@ -28,10 +33,11 @@ describe('rooms/selectCard', () => {
   });
 
   test('ルームページで、カードを選択したとき、選択したカードが選択状態だとわかること', async () => {
-    const page2 = await browser.newPage();
-    await page.goto(urls.room1);
-    await page2.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
+    const page2 = await browser.newPage();
+    await page2.goto(roomUrl);
+    await page2.waitForSelector('[data-testid="tableCard"]');
 
     let classNameOfTefudaCards = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');
 

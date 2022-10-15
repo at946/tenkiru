@@ -1,6 +1,8 @@
 import { Server as NetServer, Socket } from 'net';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Server as SocketIOServer } from 'socket.io';
+import { Room } from '../../interfaces/room';
+import { Member } from '../../interfaces/member';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 
 type NextApiResponseSocketIO = NextApiResponse & {
@@ -11,14 +13,6 @@ type NextApiResponseSocketIO = NextApiResponse & {
   };
 };
 
-interface membersCards {
-  [prop: string]: any;
-}
-
-interface Rooms {
-  [props: string]: membersCards;
-}
-
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
   if (res.socket.server.io) {
     console.log('Socket is already running.');
@@ -28,77 +22,108 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     const io = new SocketIOServer<ClientToServerEvents, ServerToClientEvents>(
       res.socket.server as any,
     );
-    const rooms: Rooms = {};
+    const rooms: Room[] = [];
 
     const cleanRoom = (roomId: string): void => {
-      const membersCards: membersCards = rooms[roomId] || {};
-      const roomMembers: string[] = Array.from(io.of('/').adapter.rooms.get(roomId) || new Set());
+      // roomsと接続中のソケット情報を使って、現在のルームの状況を整理する
+      // - すでにdisconnectしたメンバーの削除
+      // - カード選択状況に応じたメンバーの並び替え
+      let room: Room | undefined = rooms.find((v) => v.id === roomId);
+      if (!room) return;
+      const members: Member[] = room.members;
+      const newMembers: Member[] = [];
+      const roomSocketIds: string[] = Array.from(io.of('/').adapter.rooms.get(roomId) || new Set());
 
-      const memberIds: string[] = Object.keys(membersCards);
-      memberIds.map((memberId) => {
-        if (!roomMembers.find((v) => v === memberId)) {
-          // すでに退出済みなので削除
-          delete membersCards[memberId];
+      members.forEach((member) => {
+        if (!roomSocketIds.find((v) => v === member.id)) return;
+        if (!!member.card) {
+          newMembers.unshift(member);
         } else {
-          if (!membersCards[memberId]) {
-            // まだ場にカードを出していないメンバーは後ろに並び直させる
-            delete membersCards[memberId];
-            membersCards[memberId] = null;
-          }
+          newMembers.push(member);
         }
       });
 
-      roomMembers.map((memberId) => {
-        if (!membersCards[memberId]) {
-          membersCards[memberId] = null;
-        }
-      });
-
-      rooms[roomId] = membersCards;
+      room.members = newMembers;
     };
 
-    const replayRoom = (roomId: string): void => {
-      const roomMembers: string[] = Array.from(io.of('/').adapter.rooms.get(roomId) || new Set());
-      const membersCards: membersCards = {};
-      roomMembers.map((memberId) => {
-        membersCards[memberId] = null;
+    const clearCards = (roomId: string): void => {
+      // ルームメンバーのカードをすべて初期化する
+      let room: Room | undefined = rooms.find((v) => v.id === roomId);
+      if (!room) return;
+      const members: Member[] = room.members;
+      members.forEach((member) => {
+        member.card = null;
       });
-      rooms[roomId] = membersCards;
     };
 
     io.on('connection', (socket) => {
       socket.on('join-room', (roomId) => {
         socket.join(roomId);
+        const newMember: Member = { id: socket.id, type: 'player', card: null };
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) {
+          const newRoom: Room = { id: roomId, members: [newMember], cardsAreOpen: false };
+          rooms.push(newRoom);
+          io.to(roomId).emit('update-members', newRoom.members);
+        } else {
+          room.members.push(newMember);
+          cleanRoom(roomId);
+          io.to(roomId).emit('update-members', room.members);
+          io.to(roomId).emit('update-cards-are-open', room.cardsAreOpen);
+        }
+      });
+
+      socket.on('put-down-a-card', (roomId, card) => {
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        const member: Member | undefined = room.members.find((v) => v.id === socket.id);
+        if (!member) return;
+        member.card = card;
         cleanRoom(roomId);
-        io.to(roomId).emit('update-members-cards', rooms[roomId]);
+        io.to(roomId).emit('update-members', room.members);
       });
 
-      socket.on('put-down-a-card', (roomId, number) => {
-        rooms[roomId][socket.id] = number;
+      socket.on('open-cards', (roomId) => {
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        if (!room.members.find((v) => v.card !== null)) return;
+        room.cardsAreOpen = true;
+        io.to(roomId).emit('update-cards-are-open', true);
+      });
+
+      socket.on('clear-cards', (roomId) => {
+        clearCards(roomId);
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        room.cardsAreOpen = false;
+        io.to(roomId).emit('update-cards-are-open', false);
+        io.to(roomId).emit('update-members', room.members);
+      });
+
+      socket.on('change-member-type', (roomId, memberType) => {
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        const member: Member | undefined = room.members.find((v) => v.id === socket.id);
+        if (!member) return;
+        member.type = memberType;
+        member.card = null;
         cleanRoom(roomId);
-        io.to(roomId).emit('update-members-cards', rooms[roomId]);
-      });
-
-      socket.on('open-cards-on-table', (roomId) => {
-        const membersCards = rooms[roomId];
-        Object.keys(membersCards).map((memberId) => {
-          if (!!membersCards[memberId]) {
-            io.to(roomId).emit('update-cards-state', true);
-            return;
-          }
-        });
-      });
-
-      socket.on('clean-cards-on-table', (roomId) => {
-        replayRoom(roomId);
-        io.to(roomId).emit('replay', rooms[roomId]);
+        io.to(roomId).emit('update-members', room.members);
       });
 
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
-          if (!rooms[roomId]) return;
-          delete rooms[roomId][socket.id];
-          io.to(roomId).emit('update-members-cards', rooms[roomId]);
+          const room: Room | undefined = rooms.find((v) => v.id === roomId);
+          if (!room) return;
+          const memberIndex = room.members.findIndex((v) => v.id === socket.id);
+          if (memberIndex < 0) return;
+          room.members.splice(memberIndex, 1);
+          if (room.members.length === 0) {
+            const roomIndex = rooms.findIndex((v) => v.id === room.id);
+            rooms.splice(roomIndex, 1);
+          } else {
+            io.to(roomId).emit('update-members', room.members);
+          }
         });
       });
     });

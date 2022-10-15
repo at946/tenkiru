@@ -1,9 +1,14 @@
 describe('rooms/memberSelectsCard', () => {
+  let roomUrl;
+
+  beforeEach(() => {
+    roomUrl = urls.room();
+  });
   test('ルームページで、他のメンバーがカードを選択したとき、カードが場に伏せて置かれること', async () => {
-    await page.goto(urls.room1);
+    await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     const page2 = await browser.newPage();
-    await page2.goto(urls.room1);
+    await page2.goto(roomUrl);
     await page2.waitForSelector('[data-testid="tableCard"]');
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
@@ -11,11 +16,7 @@ describe('rooms/memberSelectsCard', () => {
 
     expect(tableCards.length).toBe(2);
     expect(tableCardsClassName[0]).toContain('tableCard_blank');
-    expect(tableCardsClassName[0]).not.toContain('tableCard_close');
-    expect(tableCardsClassName[0]).not.toContain('tableCard_open');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_close');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_open');
 
     const tefudaCards = await page2.$$('[data-testid="tefudaCard"]');
     await tefudaCards[0].click();
@@ -25,12 +26,8 @@ describe('rooms/memberSelectsCard', () => {
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
 
     expect(tableCards.length).toBe(2);
-    expect(tableCardsClassName[0]).not.toContain('tableCard_blank');
     expect(tableCardsClassName[0]).toContain('tableCard_close');
-    expect(tableCardsClassName[0]).not.toContain('tableCard_open');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_close');
-    expect(tableCardsClassName[1]).not.toContain('tableCard_open');
 
     await page2.close();
   });

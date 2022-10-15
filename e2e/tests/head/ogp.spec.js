@@ -21,7 +21,7 @@ describe('metatag/ogp', () => {
   });
 
   test('ルームページで、descriptionが正しいこと', async () => {
-    await page.goto(urls.room1);
+    await page.goto(urls.room());
     expect(await page.$eval('meta[property="og:site_name"]', (el) => el.content)).toBe(title);
     expect(await page.$eval('meta[property="og:type"]', (el) => el.content)).toBe('website');
     expect(await page.$eval('meta[property="og:url"]', (el) => el.content)).toBe(

@@ -13,19 +13,20 @@ interface Props {
 }
 
 const TefudaCards: NextPage<Props> = ({ deckType, selectedCard, canSelected, select }) => {
-  const Deck: Deck | undefined = Decks.find(deck => deck.key === deckType);
+  const Deck: Deck | undefined = Decks.find((deck) => deck.key === deckType);
 
   return (
     <div className='is-flex is-flex-wrap-wrap is-justify-content-center'>
-      {!!Deck && Deck.cards.map((card) => (
-        <TefudaCard
-          key={card}
-          card={card}
-          isSelected={card === selectedCard}
-          isDisabled={!canSelected}
-          selectCard={select}
-        />
-      ))}
+      {!!Deck &&
+        Deck.cards.map((card) => (
+          <TefudaCard
+            key={card}
+            card={card}
+            isSelected={card === selectedCard}
+            isDisabled={!canSelected}
+            selectCard={select}
+          />
+        ))}
     </div>
   );
 };

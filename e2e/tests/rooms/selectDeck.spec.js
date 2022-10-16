@@ -73,7 +73,7 @@ describe('rooms/selectDeck', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
 
     await page.select('[data-testid="deckSelect"]', 'sequential');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
     const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
@@ -87,7 +87,7 @@ describe('rooms/selectDeck', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
 
     await page.select('[data-testid="deckSelect"]', 'tShirtSize');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('tShirtSize');
     const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
@@ -109,7 +109,7 @@ describe('rooms/selectDeck', () => {
     ).toEqual(['1', '2', '3', '5', '8', '13', '21', '?']);
 
     await page2.select('[data-testid="deckSelect"]', 'sequential');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
     expect(

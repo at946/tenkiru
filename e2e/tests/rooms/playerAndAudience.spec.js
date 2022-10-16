@@ -179,6 +179,7 @@ describe('rooms/playerAndAudience', () => {
     );
 
     await page.click('[data-testid="memberTypeAudience"]');
+    await page.waitForTimeout(100)
 
     tableCards = await page.$$('[data-testid="tableCard"]');
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');

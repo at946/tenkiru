@@ -3,7 +3,7 @@ on:
   pull_request:
 
 jobs:
-  codeFormat:
+  job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,24 +17,12 @@ jobs:
           key: ${{ hashFiles('yarn.lock') }}
       - run: yarn --frozen-lockfile
         if: steps.cache_node_modules.outputs.cache-hit != true
-      - uses: wearerequired/lint-action@v2
+      - name: lint
+        uses: wearerequired/lint-action@v2
         with:
           eslint: true
           prettier: true
           auto_fix: true
-      - name: notify failure to slack
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: |
-            Failure code format
-            https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
-  test:
-    needs: codeFormat
-    runs-on: ubuntu-latest
-    steps:
       - name: start next app
         run: |
           yarn build

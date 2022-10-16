@@ -62,15 +62,31 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         const newMember: Member = { id: socket.id, type: 'player', card: null };
         const room: Room | undefined = rooms.find((v) => v.id === roomId);
         if (!room) {
-          const newRoom: Room = { id: roomId, members: [newMember], cardsAreOpen: false };
+          const newRoom: Room = {
+            id: roomId,
+            members: [newMember],
+            cardsAreOpen: false,
+            deckType: 'fibonacci',
+          };
           rooms.push(newRoom);
           io.to(roomId).emit('update-members', newRoom.members);
+          io.to(roomId).emit('update-deck-type', newRoom.deckType);
         } else {
           room.members.push(newMember);
           cleanRoom(roomId);
           io.to(roomId).emit('update-members', room.members);
+          io.to(roomId).emit('update-deck-type', room.deckType);
           io.to(roomId).emit('update-cards-are-open', room.cardsAreOpen);
         }
+      });
+
+      socket.on('change-deck-type', (roomId, newDeckType) => {
+        const room = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        room.deckType = newDeckType;
+        clearCards(roomId);
+        io.to(roomId).emit('update-deck-type', newDeckType);
+        io.to(roomId).emit('update-members', room.members);
       });
 
       socket.on('put-down-a-card', (roomId, card) => {

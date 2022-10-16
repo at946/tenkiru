@@ -33,7 +33,7 @@ const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, clean
   };
 
   return (
-    <div className='box has-background-success'>
+    <div className='box has-background-success is-shadowless'>
       <div className='is-flex is-flex-wrap-wrap is-justify-content-center mb-4'>
         {players.map((player) => (
           <TableCard

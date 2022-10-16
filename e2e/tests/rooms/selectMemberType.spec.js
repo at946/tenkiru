@@ -120,7 +120,7 @@ describe('rooms/selectMemberType', () => {
     await tefudaCards[1].click();
 
     await page.click('[data-testid="openButton"]');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
     let tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');

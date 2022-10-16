@@ -7,8 +7,10 @@ import Table from '../../components/table';
 import MemberTypeToggle from '../../components/memberTypeToggle';
 import Tefuda from '../../components/tefuda';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
-import { Member, MemberType } from '../../interfaces/member';
-import { Card, DeckType } from '../../interfaces/card';
+import { Member } from '../../interfaces/member';
+import { MemberType } from '../../interfaces/memberType';
+import { Card } from '../../interfaces/card';
+import { DeckType } from '../../interfaces/deckType';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 

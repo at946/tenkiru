@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
 import TableCard from './tableCard';
-import { Member } from '../interfaces/member';
 import TableButton from './tableButton';
 import SummaryTags from './summaryTags';
+import { Member } from '../interfaces/member';
 import { Card } from '../interfaces/card';
 
 interface Props {

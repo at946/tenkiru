@@ -8,9 +8,9 @@ import MemberTypeToggle from '../../components/memberTypeToggle';
 import Tefuda from '../../components/tefuda';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import { Member } from '../../interfaces/member';
-import { MemberType } from '../../interfaces/memberType'
+import { MemberType } from '../../interfaces/memberType';
 import { Card } from '../../interfaces/card';
-import { DeckType } from '../../interfaces/deckType'
+import { DeckType } from '../../interfaces/deckType';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 

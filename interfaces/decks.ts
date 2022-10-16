@@ -1,3 +1,3 @@
-import { Deck } from "./deck";
+import { Deck } from './deck';
 
-export type Decks = Deck[]
+export type Decks = Deck[];

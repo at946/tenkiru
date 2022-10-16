@@ -4,7 +4,7 @@ const Decks: Decks = [
   {
     key: 'fibonacci',
     displayName: 'Fibonacci',
-    cards: [1, 2, 3, 5, 8, 13, 21, '?']
+    cards: [1, 2, 3, 5, 8, 13, 21, '?'],
   },
   {
     key: 'sequential',
@@ -15,7 +15,7 @@ const Decks: Decks = [
     key: 'tShirtSize',
     displayName: 'T shirt size',
     cards: ['XS', 'S', 'M', 'L', 'XL', '?'],
-  }
-]
+  },
+];
 
 export default Decks;

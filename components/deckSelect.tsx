@@ -18,7 +18,9 @@ const DeckSelect: NextPage<Props> = ({ deckType, select }) => {
     <div className='select is-primary is-rounded mb-2'>
       <select data-testid='deckSelect' value={deckType} onChange={change}>
         {Decks.map((deck: Deck) => (
-          <option key={deck.key} value={deck.key}>{ deck.displayName }</option>
+          <option key={deck.key} value={deck.key}>
+            {deck.displayName}
+          </option>
         ))}
       </select>
     </div>

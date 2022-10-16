@@ -50,15 +50,17 @@ describe('rooms/memberJoinsRoom', () => {
     await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
 
-    await page.select('[data-testid="deckSelect"]', 'sequential')
+    await page.select('[data-testid="deckSelect"]', 'sequential');
 
     const page2 = await browser.newPage();
     await page2.goto(roomUrl);
     await page2.waitForSelector('[data-testid="tableCard"]');
 
-    expect(await page2.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('sequential')
-    expect(await page2.$$eval('[data-testid="tefudaCard"]', els => els.map(el => el.innerText))).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?'])
+    expect(await page2.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
+    expect(
+      await page2.$$eval('[data-testid="tefudaCard"]', (els) => els.map((el) => el.innerText)),
+    ).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?']);
 
-    await page2.close()
-  })
+    await page2.close();
+  });
 });

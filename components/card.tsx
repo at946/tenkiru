@@ -1,8 +1,9 @@
 import { NextPage } from 'next';
+import { Card } from '../interfaces/card';
 import styles from './card.module.scss';
 
 interface Props {
-  value: number | string | null;
+  value: Card;
   additionalClassName?: string;
   testId?: string;
 }

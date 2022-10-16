@@ -65,7 +65,7 @@ describe('rooms/summary', () => {
 
     page2.close();
     page3.close();
-  });
+  }, 10000);
 
   test('ルームページで、「？」のカードがある状態で、カードをオープンしたとき、場に出されたカードの最大値、最小値、平均値が正しく表示されること', async () => {
     await page.goto(roomUrl);

@@ -1,7 +1,8 @@
 import { NextPage } from 'next';
-import { Card, DeckType } from '../interfaces/card';
 import DeckSelect from './deckSelect';
 import TefudaCards from './tefudaCards';
+import { Card } from '../interfaces/card';
+import { DeckType } from '../interfaces/deckType';
 
 interface Props {
   deckType: DeckType;

@@ -73,12 +73,27 @@ describe('rooms/selectDeck', () => {
     await page.waitForSelector('[data-testid="tableCard"]');
 
     await page.select('[data-testid="deckSelect"]', 'sequential');
+    await page.waitForTimeout(100)
 
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
     const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
       els.map((el) => el.innerText),
     );
     expect(tefudaCardsValue).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?']);
+  });
+
+  test('ルームページで、「T-shirt size」を選択したとき、1-10の数列のカードが並ぶこと', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+
+    await page.select('[data-testid="deckSelect"]', 'tShirtSize');
+    await page.waitForTimeout(100)
+
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('tShirtSize');
+    const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(tefudaCardsValue).toEqual(['XS', 'S', 'M', 'L', 'XL', '?']);
   });
 
   test('ルームページで、別のメンバーがデッキを選択したとき、自分の手札に反映されること', async () => {
@@ -94,6 +109,7 @@ describe('rooms/selectDeck', () => {
     ).toEqual(['1', '2', '3', '5', '8', '13', '21', '?']);
 
     await page2.select('[data-testid="deckSelect"]', 'sequential');
+    await page.waitForTimeout(100)
 
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
     expect(

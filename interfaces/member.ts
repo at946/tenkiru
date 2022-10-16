@@ -1,3 +1,4 @@
+import { MemberType } from './memberType';
 import { Card } from './card';
 
 export interface Member {
@@ -5,5 +6,3 @@ export interface Member {
   type: MemberType;
   card: Card;
 }
-
-export type MemberType = 'player' | 'audience';

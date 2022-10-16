@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
 import React from 'react';
-import Decks from '../data/deck';
-import { Deck } from '../interfaces/deck';
-import { DeckType } from '../interfaces/deckType';
+import Decks from '../../../data/deck';
+import { Deck } from '../../../interfaces/deck';
+import { DeckType } from '../../../interfaces/deckType';
 
 interface Props {
   deckType: DeckType;

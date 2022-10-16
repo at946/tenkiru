@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import Card from './card';
+import Card from '../card';
 import styles from './tableCard.module.scss';
-import { Card as IFCard } from '../interfaces/card';
+import { Card as IFCard } from '../../../interfaces/card';
 
 interface Props {
   putDown: boolean;

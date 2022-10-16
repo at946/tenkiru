@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
-import Decks from '../data/deck';
-import { Card } from '../interfaces/card';
-import { Deck } from '../interfaces/deck';
-import { DeckType } from '../interfaces/deckType';
+import Decks from '../../../data/deck';
+import { Card } from '../../../interfaces/card';
+import { Deck } from '../../../interfaces/deck';
+import { DeckType } from '../../../interfaces/deckType';
 import TefudaCard from './tefudaCard';
 
 interface Props {

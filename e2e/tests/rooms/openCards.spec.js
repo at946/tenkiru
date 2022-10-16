@@ -148,6 +148,7 @@ describe('rooms/openCards', () => {
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]');
     await tefudaCards[0].click();
     await page.click('[data-testid="openButton"]');
+    await page.waitForTimeout(100);
 
     expect(await page.$('[data-testid="openButton"]')).toBeNull();
   });

@@ -5,25 +5,25 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 interface Props {
-  roomId: string
+  roomId: string;
 }
 
 const CreateRoomButton: NextPage<Props> = ({ roomId }) => {
-  const [isHovering, setIsHovering] = useState<boolean>(false)
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   return (
     <Link href={`/rooms/${encodeURIComponent(roomId)}`}>
-    <a
-      className='button is-rounded is-outlined is-primary mt-5'
-      data-testid='createRoomButton'
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className="mr-2" />
-      <span>Create a room</span>
-    </a>
-  </Link>
-);
+      <a
+        className='button is-rounded is-outlined is-primary mt-5'
+        data-testid='createRoomButton'
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
+        <span>Create a room</span>
+      </a>
+    </Link>
+  );
 };
 
 export default CreateRoomButton;

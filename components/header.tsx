@@ -3,9 +3,10 @@ import Link from 'next/link';
 import styles from './header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faMugSaucer } from '@fortawesome/free-solid-svg-icons';
 
 const Header: NextPage = () => {
-  const shareText = encodeURIComponent('Tenkir\n' + process.env.NEXT_PUBLIC_BASE_URL);
+  const shareText = encodeURIComponent(process.env.NEXT_PUBLIC_BASE_URL);
 
   return (
     <nav className='navbar px-5' role='navigation' aria-label='main navigation'>
@@ -27,6 +28,15 @@ const Header: NextPage = () => {
               data-testid='shareTwitter'
             >
               <FontAwesomeIcon icon={faTwitter} />
+            </a>
+            <a
+              href='https://www.buymeacoffee.com/at946'
+              target='_blank'
+              rel='noreferrer'
+              className={`${styles.buymeacoffee} navbar-item`}
+              data-testid='buymeacoffee'
+            >
+              <FontAwesomeIcon icon={faMugSaucer} />
             </a>
           </div>
         </div>

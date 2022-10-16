@@ -1,5 +1,5 @@
 describe('header/shareTwitter', () => {
-  const shareText = encodeURIComponent(`Tenkir\nhttp://localhost:3000`);
+  const shareText = encodeURIComponent(`http://localhost:3000`);
 
   test('トップページで、ヘッダーのTwitterアイコンを選択したとき、Twitterのシェアページへ遷移すること', async () => {
     await page.goto(urls.top);

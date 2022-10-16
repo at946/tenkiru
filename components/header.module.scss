@@ -1,5 +1,15 @@
 .twitter {
-  &:hover {
-    color: #1da1f2 !important;
+  &:hover,
+  &:focus {
+    color: white !important;
+    background: #1da1f2 !important;
+  }
+}
+
+.buymeacoffee {
+  &:hover,
+  &:focus {
+    color: white !important;
+    background: #ffdd00 !important;
   }
 }

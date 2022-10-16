@@ -1,5 +1,7 @@
-import { Member, MemberType } from './member';
-import { Card, DeckType } from './card';
+import { Member } from './member';
+import { MemberType } from './memberType';
+import { Card } from './card';
+import { DeckType } from './deckType';
 
 export interface ServerToClientEvents {
   'update-members': (members: Member[]) => void;

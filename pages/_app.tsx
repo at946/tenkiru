@@ -1,7 +1,7 @@
 import '../styles/globals.scss';
 import { GA_TRACKING_ID, pageview } from '../lib/gtag';
 import type { AppProps } from 'next/app';
-import Layout from '../components/layout';
+import Layout from '../components/common/layout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { config } from '@fortawesome/fontawesome-svg-core';

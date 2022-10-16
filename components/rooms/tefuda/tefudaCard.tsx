@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import { Card as IFCard } from '../interfaces/card';
-import Card from './card';
+import { Card as IFCard } from '../../../interfaces/card';
+import Card from '../card';
 import styles from './tefudaCard.module.scss';
 
 interface Props {

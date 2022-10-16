@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { MemberType } from '../interfaces/memberType';
+import { MemberType } from '../../interfaces/memberType';
 
 interface Props {
   type: MemberType;

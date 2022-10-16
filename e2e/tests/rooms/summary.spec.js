@@ -130,7 +130,7 @@ describe('rooms/summary', () => {
 
     page2.close();
     page3.close();
-  });
+  }, 10000);
 
   test('ルームページで、場に数字のカードが出ていないとき、サマリーが表示されないこと', async () => {
     await page.goto(roomUrl);

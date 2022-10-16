@@ -1,8 +1,10 @@
 @import './color.scss';
+$navbar-breakpoint: 0px;
 @import 'bulma/bulma';
 
 html,
 body {
+  display: block !important; // dev の <style data-next-hide-fouc="true">body{display:none}</style> 対応
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,

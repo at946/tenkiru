@@ -11,12 +11,15 @@ import { Member } from '../../interfaces/member';
 import { MemberType } from '../../interfaces/memberType';
 import { Card } from '../../interfaces/card';
 import { DeckType } from '../../interfaces/deckType';
+import { useAppDispatch } from '../../store/hooks';
+import { updateMembers } from '../../store/membersSlice';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
   const router = useRouter();
-  const [members, setMembers] = useState<Member[]>([]);
+  const dispatch = useAppDispatch()
+  // const [members, setMembers] = useState<Member[]>([]);
   const [type, setType] = useState<MemberType>('player');
   const [selectedCard, setSelectedCard] = useState<Card>(null);
   const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
@@ -50,7 +53,7 @@ const Page: NextPage = () => {
       });
 
       socket.on('update-members', (members) => {
-        setMembers(members);
+        dispatch(updateMembers(members))
         const me: Member | undefined = members.find((v) => v.id === socket.id);
         if (!!me) {
           setType(me.type);
@@ -66,8 +69,8 @@ const Page: NextPage = () => {
         setCardsAreOpen(cardsAreOpen);
       });
 
-      socket.on('replay', (membersCards) => {
-        setMembers(membersCards);
+      socket.on('replay', (members) => {
+        dispatch(updateMembers(members))
         setSelectedCard(null);
         setCardsAreOpen(false);
       });
@@ -106,7 +109,6 @@ const Page: NextPage = () => {
             <RoomInfo roomId={roomId} />
           </div>
           <Table
-            members={members}
             cardsAreOpen={cardsAreOpen}
             openCardsOnTable={openCardsOnTable}
             cleanCardsOnTable={cleanCardsOnTable}

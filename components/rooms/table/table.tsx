@@ -4,15 +4,16 @@ import TableButton from './tableButton';
 import SummaryTags from './summaryTags';
 import { Member } from '../../../interfaces/member';
 import { Card } from '../../../interfaces/card';
+import { useAppSelector } from '../../../store/hooks';
 
 interface Props {
-  members: Member[];
   cardsAreOpen: boolean;
   openCardsOnTable: () => void;
   cleanCardsOnTable: () => void;
 }
 
-const Table: NextPage<Props> = ({ members, cardsAreOpen, openCardsOnTable, cleanCardsOnTable }) => {
+const Table: NextPage<Props> = ({ cardsAreOpen, openCardsOnTable, cleanCardsOnTable }) => {
+  const members = useAppSelector((state) => state.members.members)
   const players: Member[] = members.filter((v) => v.type === 'player');
   const playerCards: Card[] = players.map((v) => v.card);
   const playerNumberCards: number[] = playerCards.filter<number>(

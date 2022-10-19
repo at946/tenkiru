@@ -167,7 +167,7 @@ describe('rooms/selectMemberType', () => {
     await tefudaCards[2].click();
 
     await page.click('[data-testid="openButton"]');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
     let tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
@@ -360,7 +360,7 @@ describe('rooms/selectMemberType', () => {
     await tefudaCards2[1].click();
     await page.click('[data-testid="openButton"]');
     await page.click('[data-testid="memberTypeAudience"]');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     let tableCards = await page.$$('[data-testid="tableCard"]');
     let tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
@@ -374,7 +374,7 @@ describe('rooms/selectMemberType', () => {
     );
 
     await page.click('[data-testid="memberTypePlayer"]');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     tableCards = await page.$$('[data-testid="tableCard"]');
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
@@ -421,7 +421,7 @@ describe('rooms/selectMemberType', () => {
     expect(await page.$('[data-testid="openButton"]')).toBeNull();
 
     await page.click('[data-testid="replayButton"]');
-    await page.waitForSelector('[data-testid="openButton"]')
+    await page.waitForSelector('[data-testid="openButton"]');
 
     expect(await page.$('[data-testid="replayButton"]')).toBeNull();
     expect(await page.$('[data-testid="openButton"]')).not.toBeNull();

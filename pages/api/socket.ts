@@ -51,8 +51,8 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       let room: Room | undefined = rooms.find((v) => v.id === roomId);
       if (!room) return;
       room.members.forEach((member) => {
-        member.selectedCard = null
-      })
+        member.selectedCard = null;
+      });
     };
 
     io.on('connection', (socket) => {
@@ -69,7 +69,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           };
           rooms.push(newRoom);
           io.to(roomId).emit('update-members', newRoom.members);
-          io.to(roomId).emit('update-cards-are-open', newRoom.cardsAreOpen)
+          io.to(roomId).emit('update-cards-are-open', newRoom.cardsAreOpen);
           io.to(roomId).emit('update-deck-type', newRoom.deckType);
         } else {
           room.members.push(newMember);

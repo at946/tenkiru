@@ -10,7 +10,7 @@ interface Props {
 }
 
 const DeckSelect: NextPage<Props> = ({ select }) => {
-  const deckType: DeckType = useAppSelector(state => state.room.deckType)
+  const deckType: DeckType = useAppSelector((state) => state.room.deckType);
 
   const change: React.ChangeEventHandler<HTMLSelectElement> = (e): void => {
     select(e.target.value as DeckType);

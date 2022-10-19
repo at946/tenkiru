@@ -7,8 +7,8 @@ interface Props {
 }
 
 const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
-  const type = useAppSelector(state => state.user.type)
-  
+  const type = useAppSelector((state) => state.user.type);
+
   return (
     <div className='tabs is-toggle is-centered'>
       <ul>

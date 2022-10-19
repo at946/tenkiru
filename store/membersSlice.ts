@@ -2,21 +2,21 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Member } from '../interfaces/member';
 
 export interface MembersState {
-  members: Member[]
+  members: Member[];
 }
 
 const initialState: MembersState = {
-  members: []
-}
+  members: [],
+};
 
 export const membersSlice = createSlice({
   name: 'members',
   initialState,
   reducers: {
     updateMembers: (state, action: PayloadAction<Member[]>) => {
-      state.members = action.payload
+      state.members = action.payload;
     },
-  }
-})
+  },
+});
 
-export const { updateMembers } = membersSlice.actions
+export const { updateMembers } = membersSlice.actions;

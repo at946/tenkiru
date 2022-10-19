@@ -5,4 +5,4 @@ export type Member = {
   id: string;
   type: MemberType;
   selectedCard: Card;
-}
+};

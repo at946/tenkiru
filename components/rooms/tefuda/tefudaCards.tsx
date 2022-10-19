@@ -11,19 +11,13 @@ interface Props {
 }
 
 const TefudaCards: NextPage<Props> = ({ putDownCard }) => {
-  const deckType: DeckType = useAppSelector(state => state.room.deckType)
+  const deckType: DeckType = useAppSelector((state) => state.room.deckType);
   const Deck: Deck | undefined = Decks.find((deck) => deck.key === deckType);
 
   return (
     <div className='is-flex is-flex-wrap-wrap is-justify-content-center'>
       {!!Deck &&
-        Deck.cards.map((card) => (
-          <TefudaCard
-            key={card}
-            card={card}
-            putDownCard={putDownCard}
-          />
-        ))}
+        Deck.cards.map((card) => <TefudaCard key={card} card={card} putDownCard={putDownCard} />)}
     </div>
   );
 };

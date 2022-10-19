@@ -11,8 +11,8 @@ interface Props {
 const TableCard: NextPage<Props> = ({ card }) => {
   let displayCard: IFCard = '';
   let additionalClassName: string = '';
-  const isBlank = card === null
-  const isOpen = useAppSelector(state => state.room.cardsAreOpen)
+  const isBlank = card === null;
+  const isOpen = useAppSelector((state) => state.room.cardsAreOpen);
 
   if (isBlank) {
     additionalClassName = styles.blank;

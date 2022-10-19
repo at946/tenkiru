@@ -11,23 +11,23 @@ interface Props {
 }
 
 const TefudaCard: NextPage<Props> = ({ card, putDownCard }) => {
-  const selectedCard: IFCard = useAppSelector(state => state.user.selectedCard)
-  const isSelected: boolean = card === selectedCard
+  const selectedCard: IFCard = useAppSelector((state) => state.user.selectedCard);
+  const isSelected: boolean = card === selectedCard;
 
-  const userType: MemberType = useAppSelector(state => state.user.type)
-  const cardsAreOpen: boolean = useAppSelector(state => state.room.cardsAreOpen)
-  const isDisabled: boolean = cardsAreOpen || userType !== 'player'
+  const userType: MemberType = useAppSelector((state) => state.user.type);
+  const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
+  const isDisabled: boolean = cardsAreOpen || userType !== 'player';
 
   const select = () => {
     if (isDisabled || isSelected) return;
-    putDownCard(card)
-  }
+    putDownCard(card);
+  };
 
   let className = '';
   if (isSelected) {
-    className = styles.selected
+    className = styles.selected;
   } else if (isDisabled) {
-    className = styles.disabled
+    className = styles.disabled;
   }
 
   return (

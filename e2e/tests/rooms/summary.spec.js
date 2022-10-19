@@ -58,7 +58,7 @@ describe('rooms/summary', () => {
     expect(await page.$('[data-testid="avg"]')).toBeNull();
 
     await page.click('[data-testid="openButton"]');
-    await page.waitForSelector('[data-testid="max"]')
+    await page.waitForSelector('[data-testid="max"]');
 
     expect(await page.$eval('[data-testid="max"]', (el) => el.innerText)).toBe('Max\n3');
     expect(await page.$eval('[data-testid="min"]', (el) => el.innerText)).toBe('Min\n2');

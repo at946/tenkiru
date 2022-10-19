@@ -20,7 +20,7 @@ import { DeckType } from '../../interfaces/deckType';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { updateMembers } from '../../store/membersSlice';
 import { selectCard, updateType } from '../../store/userSlice';
-import { setCardsAreOpen } from '../../store/roomSlice';
+import { setCardsAreOpen, setDeckType } from '../../store/roomSlice';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -28,7 +28,6 @@ const Page: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch()
   const cardsAreOpen = useAppSelector(state => state.room.cardsAreOpen)
-  const [deckType, setDeckType] = useState<DeckType>('fibonacci');
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -43,6 +42,7 @@ const Page: NextPage = () => {
 
   useEffect(() => {
     socketInitializer(roomId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId]);
 
   const socketInitializer = (roomId: string) => {
@@ -66,7 +66,7 @@ const Page: NextPage = () => {
       });
 
       socket.on('update-deck-type', (newDeckType: DeckType) => {
-        setDeckType(newDeckType);
+        dispatch(setDeckType(newDeckType))
       });
 
       socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
@@ -122,7 +122,6 @@ const Page: NextPage = () => {
         <div className='container'>
           <MemberTypeToggle changeMemberType={changeMemberType} />
           <Tefuda
-            deckType={deckType}
             putDownCard={putDownCard}
             changeDeckType={changeDeckType}
           />

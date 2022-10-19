@@ -5,13 +5,11 @@ import { Card } from '../../../interfaces/card';
 import { DeckType } from '../../../interfaces/deckType';
 
 interface Props {
-  deckType: DeckType;
   putDownCard: (card: Card) => void;
   changeDeckType: (newDeckType: DeckType) => void;
 }
 
 const Tefuda: NextPage<Props> = ({
-  deckType,
   putDownCard,
   changeDeckType,
 }) => {
@@ -21,11 +19,8 @@ const Tefuda: NextPage<Props> = ({
 
   return (
     <div className='box has-background-warning is-shadowless'>
-      <DeckSelect deckType={deckType} select={changeDeckType} />
-      <TefudaCards
-        deckType={deckType}
-        select={selectCard}
-      />
+      <DeckSelect select={changeDeckType} />
+      <TefudaCards select={selectCard} />
     </div>
   );
 };

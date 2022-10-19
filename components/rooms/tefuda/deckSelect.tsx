@@ -3,13 +3,15 @@ import React from 'react';
 import Decks from '../../../data/deck';
 import { Deck } from '../../../interfaces/deck';
 import { DeckType } from '../../../interfaces/deckType';
+import { useAppSelector } from '../../../store/hooks';
 
 interface Props {
-  deckType: DeckType;
   select: (deckType: DeckType) => void;
 }
 
-const DeckSelect: NextPage<Props> = ({ deckType, select }) => {
+const DeckSelect: NextPage<Props> = ({ select }) => {
+  const deckType: DeckType = useAppSelector(state => state.room.deckType)
+
   const change: React.ChangeEventHandler<HTMLSelectElement> = (e): void => {
     select(e.target.value as DeckType);
   };

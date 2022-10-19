@@ -8,11 +8,11 @@ import { useAppSelector } from '../../../store/hooks';
 import TefudaCard from './tefudaCard';
 
 interface Props {
-  deckType: DeckType;
   select: (card: Card) => void;
 }
 
-const TefudaCards: NextPage<Props> = ({ deckType, select }) => {
+const TefudaCards: NextPage<Props> = ({ select }) => {
+  const deckType: DeckType = useAppSelector(state => state.room.deckType)
   const Deck: Deck | undefined = Decks.find((deck) => deck.key === deckType);
   const selectedCard: Card = useAppSelector(state => state.user.selectedCard)
   const userType: MemberType = useAppSelector(state => state.user.type)

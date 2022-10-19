@@ -1,26 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { io, Socket } from 'socket.io-client';
+
+// components
 import RoomInfo from '../../components/rooms/roomInfo';
 import Table from '../../components/rooms/table/table';
 import MemberTypeToggle from '../../components/rooms/memberTypeToggle';
 import Tefuda from '../../components/rooms/tefuda/tefuda';
+
+// interfaces
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import { Member } from '../../interfaces/member';
 import { MemberType } from '../../interfaces/memberType';
 import { Card } from '../../interfaces/card';
 import { DeckType } from '../../interfaces/deckType';
 
+// store
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { updateMembers } from '../../store/membersSlice';
+import { selectCard, updateType } from '../../store/userSlice';
+import { setCardsAreOpen, setDeckType } from '../../store/roomSlice';
+
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
   const router = useRouter();
-  const [members, setMembers] = useState<Member[]>([]);
-  const [type, setType] = useState<MemberType>('player');
-  const [selectedCard, setSelectedCard] = useState<Card>(null);
-  const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
-  const [deckType, setDeckType] = useState<DeckType>('fibonacci');
+  const dispatch = useAppDispatch();
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -35,6 +41,7 @@ const Page: NextPage = () => {
 
   useEffect(() => {
     socketInitializer(roomId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId]);
 
   const socketInitializer = (roomId: string) => {
@@ -50,26 +57,19 @@ const Page: NextPage = () => {
       });
 
       socket.on('update-members', (members) => {
-        setMembers(members);
+        dispatch(updateMembers(members));
         const me: Member | undefined = members.find((v) => v.id === socket.id);
-        if (!!me) {
-          setType(me.type);
-          setSelectedCard(me.card);
-        }
+        if (!me) return;
+        dispatch(updateType(me.type));
+        dispatch(selectCard(me.selectedCard));
       });
 
       socket.on('update-deck-type', (newDeckType: DeckType) => {
-        setDeckType(newDeckType);
+        dispatch(setDeckType(newDeckType));
       });
 
       socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
-        setCardsAreOpen(cardsAreOpen);
-      });
-
-      socket.on('replay', (membersCards) => {
-        setMembers(membersCards);
-        setSelectedCard(null);
-        setCardsAreOpen(false);
+        dispatch(setCardsAreOpen(cardsAreOpen));
       });
 
       socket.on('disconnect', () => {
@@ -82,12 +82,12 @@ const Page: NextPage = () => {
     socket.emit('change-deck-type', roomId, newDeckType);
   };
 
-  const openCardsOnTable = (): void => {
+  const openCards = (): void => {
     socket.emit('open-cards', roomId);
   };
 
-  const cleanCardsOnTable = (): void => {
-    socket.emit('clear-cards', roomId);
+  const replay = (): void => {
+    socket.emit('replay', roomId);
   };
 
   const changeMemberType = (memberType: MemberType): void => {
@@ -95,7 +95,7 @@ const Page: NextPage = () => {
   };
 
   const putDownCard = (card: Card): void => {
-    if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, card);
+    socket.emit('put-down-a-card', roomId, card);
   };
 
   return (
@@ -105,24 +105,13 @@ const Page: NextPage = () => {
           <div className='mb-4'>
             <RoomInfo roomId={roomId} />
           </div>
-          <Table
-            members={members}
-            cardsAreOpen={cardsAreOpen}
-            openCardsOnTable={openCardsOnTable}
-            cleanCardsOnTable={cleanCardsOnTable}
-          />
+          <Table openCards={openCards} replay={replay} />
         </div>
       </section>
       <section className='section'>
         <div className='container'>
-          <MemberTypeToggle type={type} changeMemberType={changeMemberType} />
-          <Tefuda
-            deckType={deckType}
-            selectedCard={selectedCard}
-            canSelected={!cardsAreOpen && type === 'player'}
-            putDownCard={putDownCard}
-            changeDeckType={changeDeckType}
-          />
+          <MemberTypeToggle changeMemberType={changeMemberType} />
+          <Tefuda putDownCard={putDownCard} changeDeckType={changeDeckType} />
         </div>
       </section>
     </div>

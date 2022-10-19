@@ -58,6 +58,7 @@ describe('rooms/summary', () => {
     expect(await page.$('[data-testid="avg"]')).toBeNull();
 
     await page.click('[data-testid="openButton"]');
+    await page.waitForSelector('[data-testid="max"]');
 
     expect(await page.$eval('[data-testid="max"]', (el) => el.innerText)).toBe('Max\n3');
     expect(await page.$eval('[data-testid="min"]', (el) => el.innerText)).toBe('Min\n2');
@@ -90,6 +91,7 @@ describe('rooms/summary', () => {
     expect(await page.$('[data-testid="avg"]')).toBeNull();
 
     await page.click('[data-testid="openButton"]');
+    await page.waitForSelector('[data-testid="max"]');
 
     expect(await page.$eval('[data-testid="max"]', (el) => el.innerText)).toBe('Max\n2');
     expect(await page.$eval('[data-testid="min"]', (el) => el.innerText)).toBe('Min\n1');
@@ -117,6 +119,7 @@ describe('rooms/summary', () => {
     await tefudaCards2[3].click(); // 5を選択
     await tefudaCards3[5].click(); // 13を選択
     await page.click('[data-testid="openButton"]');
+    await page.waitForSelector('[data-testid="max"]');
 
     expect(await page.$eval('[data-testid="max"]', (el) => el.innerText)).toBe('Max\n13');
     expect(await page.$eval('[data-testid="min"]', (el) => el.innerText)).toBe('Min\n3');

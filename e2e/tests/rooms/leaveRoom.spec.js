@@ -21,7 +21,7 @@ describe('rooms/leaveRoom', () => {
     expect(tableCards.length).toBe(1);
 
     await page2.close();
-  });
+  }, 7000);
 
   test('ルームページで、ブラウザを閉じたとき、ルームから抜け出すこと', async () => {
     await page.goto(roomUrl);

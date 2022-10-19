@@ -2,18 +2,19 @@ import { NextPage } from 'next';
 import Card from '../card';
 import styles from './tableCard.module.scss';
 import { Card as IFCard } from '../../../interfaces/card';
+import { useAppSelector } from '../../../store/hooks';
 
 interface Props {
   putDown: boolean;
-  isOpen: boolean;
   card: IFCard;
 }
 
-const TableCard: NextPage<Props> = ({ putDown, isOpen, card }) => {
+const TableCard: NextPage<Props> = ({ putDown, card }) => {
   let displayCard: IFCard = '';
   let additionalClassName: string = '';
+  const isOpen = useAppSelector(state => state.room.cardsAreOpen)
 
-  if (putDown) {
+  if (card !== null) {
     if (isOpen) {
       displayCard = card;
       additionalClassName = 'tableCard_open';

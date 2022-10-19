@@ -1,18 +1,18 @@
 import { NextPage } from 'next';
+import { useAppSelector } from '../../../store/hooks';
 
 interface Props {
-  cardsAreOpen: boolean;
   openButtonIsClickable: boolean;
   clickOpenButton: () => void;
   clickReplayButton: () => void;
 }
 
 const TableButton: NextPage<Props> = ({
-  cardsAreOpen,
   openButtonIsClickable,
   clickOpenButton,
   clickReplayButton,
 }) => {
+  const cardsAreOpen = useAppSelector(state => state.room.cardsAreOpen)
   return (
     <div>
       {cardsAreOpen ? (

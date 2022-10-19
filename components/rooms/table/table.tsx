@@ -7,20 +7,20 @@ import { Card } from '../../../interfaces/card';
 import { useAppSelector } from '../../../store/hooks';
 
 interface Props {
-  cardsAreOpen: boolean;
   openCardsOnTable: () => void;
   cleanCardsOnTable: () => void;
 }
 
-const Table: NextPage<Props> = ({ cardsAreOpen, openCardsOnTable, cleanCardsOnTable }) => {
+const Table: NextPage<Props> = ({ openCardsOnTable, cleanCardsOnTable }) => {
   const members = useAppSelector(state => state.members.members)
+  const cardsAreOpen = useAppSelector(state => state.room.cardsAreOpen)
 
   const players: Member[] = members.filter((v) => v.type === 'player');
   const playerCards: Card[] = players.map((v) => v.selectedCard);
   const playerNumberCards: number[] = playerCards.filter<number>(
     (v): v is number => typeof v === 'number',
   );
-  const summaryTagsAreVisible: Boolean = cardsAreOpen && playerNumberCards.length > 0;
+  const summaryTagsAreVisible: boolean = cardsAreOpen && playerNumberCards.length > 0;
   const minCard: number = Math.min(...playerNumberCards);
   const maxCard: number = Math.max(...playerNumberCards);
   const avgValue: number =
@@ -41,7 +41,6 @@ const Table: NextPage<Props> = ({ cardsAreOpen, openCardsOnTable, cleanCardsOnTa
           <TableCard
             key={player.id}
             putDown={player.selectedCard !== null}
-            isOpen={cardsAreOpen}
             card={player.selectedCard}
           />
         ))}
@@ -52,7 +51,6 @@ const Table: NextPage<Props> = ({ cardsAreOpen, openCardsOnTable, cleanCardsOnTa
         </div>
       )}
       <TableButton
-        cardsAreOpen={cardsAreOpen}
         openButtonIsClickable={!!players.find((v) => v.selectedCard !== null)}
         clickOpenButton={open}
         clickReplayButton={replay}

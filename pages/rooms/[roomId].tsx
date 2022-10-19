@@ -2,25 +2,32 @@ import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { io, Socket } from 'socket.io-client';
+
+// components
 import RoomInfo from '../../components/rooms/roomInfo';
 import Table from '../../components/rooms/table/table';
 import MemberTypeToggle from '../../components/rooms/memberTypeToggle';
 import Tefuda from '../../components/rooms/tefuda/tefuda';
+
+// interfaces
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import { Member } from '../../interfaces/member';
 import { MemberType } from '../../interfaces/memberType';
 import { Card } from '../../interfaces/card';
 import { DeckType } from '../../interfaces/deckType';
-import { useAppDispatch } from '../../store/hooks';
+
+// store
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { updateMembers } from '../../store/membersSlice';
 import { selectCard, updateType } from '../../store/userSlice';
+import { setCardsAreOpen } from '../../store/roomSlice';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch()
-  const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
+  const cardsAreOpen = useAppSelector(state => state.room.cardsAreOpen)
   const [deckType, setDeckType] = useState<DeckType>('fibonacci');
 
   const roomId = ((): string => {
@@ -63,13 +70,13 @@ const Page: NextPage = () => {
       });
 
       socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
-        setCardsAreOpen(cardsAreOpen);
+        dispatch(setCardsAreOpen(cardsAreOpen))
       });
 
       socket.on('replay', (members) => {
         dispatch(updateMembers(members))
         dispatch(selectCard(null))
-        setCardsAreOpen(false);
+        dispatch(setCardsAreOpen(false));
       });
 
       socket.on('disconnect', () => {
@@ -106,7 +113,6 @@ const Page: NextPage = () => {
             <RoomInfo roomId={roomId} />
           </div>
           <Table
-            cardsAreOpen={cardsAreOpen}
             openCardsOnTable={openCardsOnTable}
             cleanCardsOnTable={cleanCardsOnTable}
           />
@@ -117,7 +123,6 @@ const Page: NextPage = () => {
           <MemberTypeToggle changeMemberType={changeMemberType} />
           <Tefuda
             deckType={deckType}
-            canSelected={!cardsAreOpen}
             putDownCard={putDownCard}
             changeDeckType={changeDeckType}
           />

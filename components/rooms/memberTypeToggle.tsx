@@ -9,23 +9,19 @@ interface Props {
 const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
   const type = useAppSelector(state => state.user.type)
   
-  const click = (memberType: MemberType): void => {
-    changeMemberType(memberType);
-  };
-
   return (
     <div className='tabs is-toggle is-centered'>
       <ul>
         <li
           className={type === 'player' ? 'is-active' : ''}
-          onClick={() => click('player')}
+          onClick={() => changeMemberType('player')}
           data-testid='memberTypePlayer'
         >
           <a>Player</a>
         </li>
         <li
           className={type === 'audience' ? 'is-active' : ''}
-          onClick={() => click('audience')}
+          onClick={() => changeMemberType('audience')}
           data-testid='memberTypeAudience'
         >
           <a>Audience</a>

@@ -1,10 +1,9 @@
 import { Server as NetServer, Socket } from 'net';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Server as SocketIOServer } from 'socket.io';
+import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import { Room } from '../../interfaces/room';
 import { Member } from '../../interfaces/member';
-import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
-import { Card } from '../../interfaces/card';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {

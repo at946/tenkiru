@@ -7,7 +7,6 @@ export interface ServerToClientEvents {
   'update-members': (members: Member[]) => void;
   'update-deck-type': (deckType: DeckType) => void;
   'update-cards-are-open': (cardsAreOpen: boolean) => void;
-  'replay': (members: Member[]) => void;
 }
 
 export interface ClientToServerEvents {

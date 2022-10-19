@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { io, Socket } from 'socket.io-client';
@@ -27,7 +27,6 @@ let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 const Page: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch()
-  const cardsAreOpen = useAppSelector(state => state.room.cardsAreOpen)
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -73,12 +72,6 @@ const Page: NextPage = () => {
         dispatch(setCardsAreOpen(cardsAreOpen))
       });
 
-      socket.on('replay', (members) => {
-        dispatch(updateMembers(members))
-        dispatch(selectCard(null))
-        dispatch(setCardsAreOpen(false));
-      });
-
       socket.on('disconnect', () => {
         console.log('disconnect');
       });
@@ -89,11 +82,11 @@ const Page: NextPage = () => {
     socket.emit('change-deck-type', roomId, newDeckType);
   };
 
-  const openCardsOnTable = (): void => {
+  const openCards = (): void => {
     socket.emit('open-cards', roomId);
   };
 
-  const cleanCardsOnTable = (): void => {
+  const replay = (): void => {
     socket.emit('replay', roomId);
   };
 
@@ -102,7 +95,7 @@ const Page: NextPage = () => {
   };
 
   const putDownCard = (card: Card): void => {
-    if (!cardsAreOpen) socket.emit('put-down-a-card', roomId, card);
+    socket.emit('put-down-a-card', roomId, card);
   };
 
   return (
@@ -112,10 +105,7 @@ const Page: NextPage = () => {
           <div className='mb-4'>
             <RoomInfo roomId={roomId} />
           </div>
-          <Table
-            openCardsOnTable={openCardsOnTable}
-            cleanCardsOnTable={cleanCardsOnTable}
-          />
+          <Table openCards={openCards} replay={replay} />
         </div>
       </section>
       <section className='section'>

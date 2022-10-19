@@ -9,18 +9,11 @@ interface Props {
   changeDeckType: (newDeckType: DeckType) => void;
 }
 
-const Tefuda: NextPage<Props> = ({
-  putDownCard,
-  changeDeckType,
-}) => {
-  const selectCard = (card: Card): void => {
-    putDownCard(card);
-  };
-
+const Tefuda: NextPage<Props> = ({ putDownCard, changeDeckType }) => {
   return (
     <div className='box has-background-warning is-shadowless'>
       <DeckSelect select={changeDeckType} />
-      <TefudaCards select={selectCard} />
+      <TefudaCards putDownCard={putDownCard} />
     </div>
   );
 };

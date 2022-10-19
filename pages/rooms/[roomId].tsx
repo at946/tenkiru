@@ -13,15 +13,13 @@ import { Card } from '../../interfaces/card';
 import { DeckType } from '../../interfaces/deckType';
 import { useAppDispatch } from '../../store/hooks';
 import { updateMembers } from '../../store/membersSlice';
+import { selectCard, updateType } from '../../store/userSlice';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch()
-  // const [members, setMembers] = useState<Member[]>([]);
-  const [type, setType] = useState<MemberType>('player');
-  const [selectedCard, setSelectedCard] = useState<Card>(null);
   const [cardsAreOpen, setCardsAreOpen] = useState<boolean>(false);
   const [deckType, setDeckType] = useState<DeckType>('fibonacci');
 
@@ -54,11 +52,10 @@ const Page: NextPage = () => {
 
       socket.on('update-members', (members) => {
         dispatch(updateMembers(members))
-        const me: Member | undefined = members.find((v) => v.id === socket.id);
-        if (!!me) {
-          setType(me.type);
-          setSelectedCard(me.card);
-        }
+        const me: Member | undefined = members.find(v => v.id === socket.id)
+        if (!me) return
+        dispatch(updateType(me.type))
+        dispatch(selectCard(me.selectedCard))
       });
 
       socket.on('update-deck-type', (newDeckType: DeckType) => {
@@ -71,7 +68,7 @@ const Page: NextPage = () => {
 
       socket.on('replay', (members) => {
         dispatch(updateMembers(members))
-        setSelectedCard(null);
+        dispatch(selectCard(null))
         setCardsAreOpen(false);
       });
 
@@ -90,7 +87,7 @@ const Page: NextPage = () => {
   };
 
   const cleanCardsOnTable = (): void => {
-    socket.emit('clear-cards', roomId);
+    socket.emit('replay', roomId);
   };
 
   const changeMemberType = (memberType: MemberType): void => {
@@ -117,11 +114,10 @@ const Page: NextPage = () => {
       </section>
       <section className='section'>
         <div className='container'>
-          <MemberTypeToggle type={type} changeMemberType={changeMemberType} />
+          <MemberTypeToggle changeMemberType={changeMemberType} />
           <Tefuda
             deckType={deckType}
-            selectedCard={selectedCard}
-            canSelected={!cardsAreOpen && type === 'player'}
+            canSelected={!cardsAreOpen}
             putDownCard={putDownCard}
             changeDeckType={changeDeckType}
           />

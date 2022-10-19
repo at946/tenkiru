@@ -1,12 +1,14 @@
 import { NextPage } from 'next';
 import { MemberType } from '../../interfaces/memberType';
+import { useAppSelector } from '../../store/hooks';
 
 interface Props {
-  type: MemberType;
   changeMemberType: (memberType: MemberType) => void;
 }
 
-const memberTypeToggle: NextPage<Props> = ({ type, changeMemberType }) => {
+const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
+  const type = useAppSelector(state => state.user.type)
+  
   const click = (memberType: MemberType): void => {
     changeMemberType(memberType);
   };
@@ -33,4 +35,4 @@ const memberTypeToggle: NextPage<Props> = ({ type, changeMemberType }) => {
   );
 };
 
-export default memberTypeToggle;
+export default MemberTypeToggle;

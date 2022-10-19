@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from './store';
 import { Member } from '../interfaces/member';
 
 export interface MembersState {
@@ -21,5 +20,3 @@ export const membersSlice = createSlice({
 })
 
 export const { updateMembers } = membersSlice.actions
-export const selectMembers = (state: RootState) => state.members.members
-export default membersSlice.reducer

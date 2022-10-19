@@ -13,9 +13,10 @@ interface Props {
 }
 
 const Table: NextPage<Props> = ({ cardsAreOpen, openCardsOnTable, cleanCardsOnTable }) => {
-  const members = useAppSelector((state) => state.members.members)
+  const members = useAppSelector(state => state.members.members)
+
   const players: Member[] = members.filter((v) => v.type === 'player');
-  const playerCards: Card[] = players.map((v) => v.card);
+  const playerCards: Card[] = players.map((v) => v.selectedCard);
   const playerNumberCards: number[] = playerCards.filter<number>(
     (v): v is number => typeof v === 'number',
   );
@@ -39,9 +40,9 @@ const Table: NextPage<Props> = ({ cardsAreOpen, openCardsOnTable, cleanCardsOnTa
         {players.map((player) => (
           <TableCard
             key={player.id}
-            putDown={player.card !== null}
+            putDown={player.selectedCard !== null}
             isOpen={cardsAreOpen}
-            card={player.card}
+            card={player.selectedCard}
           />
         ))}
       </div>
@@ -52,7 +53,7 @@ const Table: NextPage<Props> = ({ cardsAreOpen, openCardsOnTable, cleanCardsOnTa
       )}
       <TableButton
         cardsAreOpen={cardsAreOpen}
-        openButtonIsClickable={!!players.find((v) => v.card !== null)}
+        openButtonIsClickable={!!players.find((v) => v.selectedCard !== null)}
         clickOpenButton={open}
         clickReplayButton={replay}
       />

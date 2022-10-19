@@ -1,1 +1,1 @@
-export type Card = string | number | null;
+export type Card = number | string | null

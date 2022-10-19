@@ -1,8 +1,8 @@
 import { MemberType } from './memberType';
 import { Card } from './card';
 
-export interface Member {
+export type Member = {
   id: string;
   type: MemberType;
-  card: Card;
+  selectedCard: Card;
 }

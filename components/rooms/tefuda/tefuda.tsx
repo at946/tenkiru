@@ -3,10 +3,10 @@ import DeckSelect from './deckSelect';
 import TefudaCards from './tefudaCards';
 import { Card } from '../../../interfaces/card';
 import { DeckType } from '../../../interfaces/deckType';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 interface Props {
   deckType: DeckType;
-  selectedCard: Card;
   canSelected: boolean;
   putDownCard: (card: Card) => void;
   changeDeckType: (newDeckType: DeckType) => void;
@@ -14,11 +14,12 @@ interface Props {
 
 const Tefuda: NextPage<Props> = ({
   deckType,
-  selectedCard,
   canSelected,
   putDownCard,
   changeDeckType,
 }) => {
+  const type = useAppSelector(state => state.user.type)
+
   const selectCard = (card: Card): void => {
     putDownCard(card);
   };
@@ -28,8 +29,7 @@ const Tefuda: NextPage<Props> = ({
       <DeckSelect deckType={deckType} select={changeDeckType} />
       <TefudaCards
         deckType={deckType}
-        selectedCard={selectedCard}
-        canSelected={canSelected}
+        canSelected={canSelected && type === 'player'}
         select={selectCard}
       />
     </div>

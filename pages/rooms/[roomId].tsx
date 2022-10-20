@@ -17,7 +17,7 @@ import { Card } from '../../interfaces/card';
 import { DeckType } from '../../interfaces/deckType';
 
 // store
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import { updateMembers } from '../../store/membersSlice';
 import { selectCard, updateType } from '../../store/userSlice';
 import { setCardsAreOpen, setDeckType } from '../../store/roomSlice';

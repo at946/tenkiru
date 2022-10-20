@@ -1,3 +1,5 @@
+import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
 import React from 'react';
 import Decks from '../../../data/deck';
@@ -17,14 +19,21 @@ const DeckSelect: NextPage<Props> = ({ select }) => {
   };
 
   return (
-    <div className='select is-primary is-rounded mb-2'>
-      <select data-testid='deckSelect' value={deckType} onChange={change}>
-        {Decks.map((deck: Deck) => (
-          <option key={deck.key} value={deck.key}>
-            {deck.displayName}
-          </option>
-        ))}
-      </select>
+    <div className="is-flex is-justify-content-center is-align-items-center mb-2">
+      <div className='select is-primary is-rounded'>
+        <select data-testid='deckSelect' value={deckType} onChange={change}>
+          {Decks.map((deck: Deck) => (
+            <option key={deck.key} value={deck.key}>
+              {deck.displayName}
+            </option>
+          ))}
+        </select>
+      </div>
+      { deckType === 'custom' && (
+        <button className="button is-rounded is-inverted is-primary ml-2" data-testid="customDeckSettingIcon">
+          <FontAwesomeIcon icon={faScrewdriverWrench} />
+        </button>
+      )}
     </div>
   );
 };

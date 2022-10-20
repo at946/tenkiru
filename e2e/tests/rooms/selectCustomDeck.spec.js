@@ -20,8 +20,32 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardValues[1]).toBe('2')
     expect(tefudaCardValues[2]).toBe('3')
   })
-  // ルームページで、カスタムデッキ以外を選択しているとき、カスタムデッキの設定アイコンが表示されないこと
-  // ルームページで、カスタムデッキを選択している状態で、カスタムデッキの設定アイコンを選択したとき、カスタムデッキ設定モーダルが表示されること
+
+  test('ルームページで、カスタムデッキ以外を選択しているとき、カスタムデッキの設定アイコンが表示されないこと', async () => {
+    await page.goto(roomUrl)
+    await page.waitForSelector('[data-testid="tableCard"]')
+
+    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('fibonacci')
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull()
+
+    await page.select('[data-testid="deckSelect"]', 'sequential')
+
+    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('sequential')
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull()
+
+    await page.select('[data-testid="deckSelect"]', 'tShirtSize')
+
+    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('tShirtSize')
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull()
+  })
+
+  test('ルームページで、カスタムデッキを選択している状態で、カスタムデッキの設定アイコンを選択したとき、カスタムデッキ設定モーダルが表示されること', async () => {
+    await page.goto(roomUrl)
+    await page.waitForSelector('[data-testid="tableCard"]')
+    await page.select('[data-testid="deckSelect"]', 'custom')
+
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).not.toBeNull()
+  })
   // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定のテキストエリアに文字を入力できること
   // ルームページで、カスタムデッキ設定モーダルで、閉じるアイコンを選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること
   // ルームページで、カスタムデッキ設定モーダルで、モーダル外を選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること

@@ -22,7 +22,11 @@ const CustomDeckSetting: NextPage = () => {
 
       {modalIsActive && (
         <div className='modal is-active' data-testid='customDeckSettingModal'>
-          <div className='modal-background' onClick={() => setModalIsActive(false)}></div>
+          <div
+            className='modal-background'
+            onClick={() => setModalIsActive(false)}
+            data-testid='customDeckSettingModalBackground'
+          ></div>
           <div className='modal-content'>
             <div className='box'>
               <textarea
@@ -37,6 +41,7 @@ const CustomDeckSetting: NextPage = () => {
             className='modal-close is-large'
             aria-label='close'
             onClick={() => setModalIsActive(false)}
+            data-testid='customDeckSettingModalCloseButton'
           ></button>
         </div>
       )}

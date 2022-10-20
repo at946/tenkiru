@@ -31,11 +31,13 @@ describe('rooms/customDeck', () => {
     expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull();
 
     await page.select('[data-testid="deckSelect"]', 'sequential');
+    await page.waitForTimeout(100);
 
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
     expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull();
 
     await page.select('[data-testid="deckSelect"]', 'tShirtSize');
+    await page.waitForTimeout(100);
 
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('tShirtSize');
     expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull();
@@ -71,9 +73,66 @@ describe('rooms/customDeck', () => {
       '1\n3\n5\n7\n9',
     );
   });
-  //
-  // ルームページで、カスタムデッキ設定モーダルで、閉じるアイコンを選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること
-  // ルームページで、カスタムデッキ設定モーダルで、モーダル外を選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること
+
+  test('ルームページで、カスタムデッキ設定モーダルで、閉じるアイコンを選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+
+    let tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(tefudaCardValues.length).toBe(3);
+    expect(tefudaCardValues[0]).toBe('1');
+    expect(tefudaCardValues[1]).toBe('2');
+    expect(tefudaCardValues[2]).toBe('3');
+
+    await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingTextarea"]', '1\n3\n5\n7\n9');
+    await page.click('[data-testid="customDeckSettingModalCloseButton"]');
+
+    tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(tefudaCardValues.length).toBe(3);
+    expect(tefudaCardValues[0]).toBe('1');
+    expect(tefudaCardValues[1]).toBe('2');
+    expect(tefudaCardValues[2]).toBe('3');
+  });
+
+  test('ルームページで、カスタムデッキ設定モーダルで、モーダル外を選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+
+    let tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(tefudaCardValues.length).toBe(3);
+    expect(tefudaCardValues[0]).toBe('1');
+    expect(tefudaCardValues[1]).toBe('2');
+    expect(tefudaCardValues[2]).toBe('3');
+
+    await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingTextarea"]', '1\n3\n5\n7\n9');
+    await page.click('[data-testid="customDeckSettingModalBackground"]');
+
+    tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(tefudaCardValues.length).toBe(3);
+    expect(tefudaCardValues[0]).toBe('1');
+    expect(tefudaCardValues[1]).toBe('2');
+    expect(tefudaCardValues[2]).toBe('3');
+  });
   // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアが未入力のとき、「Save」ボタンを選択できないこと
   // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアが空白行のみのとき、「Save」ボタンを選択できないこと
   // ルームページで、カスタムデッキ設定モーダルで、「Save」ボタンを選択したとき、カスタムデッキ設定のテキストエリアの改行区切りでデッキに反映されること

@@ -16,6 +16,11 @@ const Decks: Decks = [
     displayName: 'T shirt size',
     cards: ['XS', 'S', 'M', 'L', 'XL', '?'],
   },
+  {
+    key: 'custom',
+    displayName: 'Custom',
+    cards: [1, 2, 3]
+  }
 ];
 
 export default Decks;

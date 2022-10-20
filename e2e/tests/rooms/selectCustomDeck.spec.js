@@ -1,5 +1,25 @@
 describe('rooms/customDeck', () => {
-  // ルームページで、デッキとしてカスタムデッキを選択したとき、デフォルトで「1, 2, 3」のカードが表示されること
+  let roomUrl;
+
+  beforeEach(() => {
+    roomUrl = urls.room();
+  });
+
+  test('ルームページで、デッキとしてカスタムデッキを選択したとき、デフォルトで「1, 2, 3」のカードが表示されること', async () => {
+    await page.goto(roomUrl)
+    await page.waitForSelector('[data-testid="tableCard"]')
+
+    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('fibonacci')
+
+    await page.select('[data-testid="deckSelect"]', 'custom')
+
+    const tefudaCardValues = await  page.$$eval('[data-testid="tefudaCard"]', els => els.map(el => el.innerText))
+    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('custom')
+    expect(tefudaCardValues.length).toBe(3)
+    expect(tefudaCardValues[0]).toBe('1')
+    expect(tefudaCardValues[1]).toBe('2')
+    expect(tefudaCardValues[2]).toBe('3')
+  })
   // ルームページで、カスタムデッキ以外を選択しているとき、カスタムデッキの設定アイコンが表示されないこと
   // ルームページで、カスタムデッキを選択している状態で、カスタムデッキの設定アイコンを選択したとき、カスタムデッキ設定モーダルが表示されること
   // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定のテキストエリアに文字を入力できること

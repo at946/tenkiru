@@ -84,9 +84,12 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         const room = rooms.find((v) => v.id === roomId);
         if (!room) return;
         room.deckType = newDeckType;
+        if (newDeckType === 'custom' && !room.customDeck) room.customDeck = [1, 2, 3];
         clearCards(roomId);
         io.to(roomId).emit('update-members', room.members);
         io.to(roomId).emit('update-deck-type', room.deckType);
+        if (!room.customDeck) return;
+        io.to(roomId).emit('update-custom-deck', room.customDeck);
       });
 
       socket.on('put-down-a-card', (roomId, card) => {

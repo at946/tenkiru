@@ -12,12 +12,14 @@ interface Props {
 
 const TefudaCards: NextPage<Props> = ({ putDownCard }) => {
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
-  const Deck: Deck | undefined = Decks.find((deck) => deck.key === deckType);
+  const deckCards: Card[] | undefined = Decks.find((deck) => deck.key === deckType)?.cards;
+  const customDeckCards: Card[] | undefined = useAppSelector((state) => state.room.customDeck);
+  const cards: Card[] | undefined = deckType === 'custom' ? customDeckCards : deckCards;
 
   return (
     <div className='is-flex is-flex-wrap-wrap is-justify-content-center'>
-      {!!Deck &&
-        Deck.cards.map((card) => <TefudaCard key={card} card={card} putDownCard={putDownCard} />)}
+      {!!cards &&
+        cards.map((card) => <TefudaCard key={card} card={card} putDownCard={putDownCard} />)}
     </div>
   );
 };

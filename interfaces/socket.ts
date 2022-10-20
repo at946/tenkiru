@@ -6,6 +6,7 @@ import { Card } from './card';
 export interface ServerToClientEvents {
   'update-members': (members: Member[]) => void;
   'update-deck-type': (deckType: DeckType) => void;
+  'update-custom-deck': (deck: Card[]) => void;
   'update-cards-are-open': (cardsAreOpen: boolean) => void;
 }
 

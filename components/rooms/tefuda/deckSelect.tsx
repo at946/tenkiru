@@ -17,7 +17,7 @@ const DeckSelect: NextPage<Props> = ({ select }) => {
   };
 
   return (
-    <div className="is-flex is-justify-content-center is-align-items-center mb-2">
+    <div className='is-flex is-justify-content-center is-align-items-center mb-2'>
       <div className='select is-primary is-rounded'>
         <select data-testid='deckSelect' value={deckType} onChange={change}>
           {Decks.map((deck: Deck) => (
@@ -27,9 +27,7 @@ const DeckSelect: NextPage<Props> = ({ select }) => {
           ))}
         </select>
       </div>
-      { deckType === 'custom' && (
-        <CustomDeckSetting />
-      )}
+      {deckType === 'custom' && <CustomDeckSetting />}
     </div>
   );
 };

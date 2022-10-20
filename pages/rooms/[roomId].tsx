@@ -20,7 +20,7 @@ import { DeckType } from '../../interfaces/deckType';
 import { useAppDispatch } from '../../store/hooks';
 import { updateMembers } from '../../store/membersSlice';
 import { selectCard, updateType } from '../../store/userSlice';
-import { setCardsAreOpen, setDeckType } from '../../store/roomSlice';
+import { setCardsAreOpen, setCustomDeck, setDeckType } from '../../store/roomSlice';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -66,6 +66,10 @@ const Page: NextPage = () => {
 
       socket.on('update-deck-type', (newDeckType: DeckType) => {
         dispatch(setDeckType(newDeckType));
+      });
+
+      socket.on('update-custom-deck', (deck: Card[]) => {
+        dispatch(setCustomDeck(deck));
       });
 
       socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {

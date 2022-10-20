@@ -6,53 +6,72 @@ describe('rooms/customDeck', () => {
   });
 
   test('ルームページで、デッキとしてカスタムデッキを選択したとき、デフォルトで「1, 2, 3」のカードが表示されること', async () => {
-    await page.goto(roomUrl)
-    await page.waitForSelector('[data-testid="tableCard"]')
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
 
-    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('fibonacci')
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('fibonacci');
 
-    await page.select('[data-testid="deckSelect"]', 'custom')
+    await page.select('[data-testid="deckSelect"]', 'custom');
 
-    const tefudaCardValues = await  page.$$eval('[data-testid="tefudaCard"]', els => els.map(el => el.innerText))
-    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('custom')
-    expect(tefudaCardValues.length).toBe(3)
-    expect(tefudaCardValues[0]).toBe('1')
-    expect(tefudaCardValues[1]).toBe('2')
-    expect(tefudaCardValues[2]).toBe('3')
-  })
+    const tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(tefudaCardValues.length).toBe(3);
+    expect(tefudaCardValues[0]).toBe('1');
+    expect(tefudaCardValues[1]).toBe('2');
+    expect(tefudaCardValues[2]).toBe('3');
+  });
 
   test('ルームページで、カスタムデッキ以外を選択しているとき、カスタムデッキの設定アイコンが表示されないこと', async () => {
-    await page.goto(roomUrl)
-    await page.waitForSelector('[data-testid="tableCard"]')
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
 
-    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('fibonacci')
-    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull()
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('fibonacci');
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull();
 
-    await page.select('[data-testid="deckSelect"]', 'sequential')
+    await page.select('[data-testid="deckSelect"]', 'sequential');
 
-    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('sequential')
-    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull()
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull();
 
-    await page.select('[data-testid="deckSelect"]', 'tShirtSize')
+    await page.select('[data-testid="deckSelect"]', 'tShirtSize');
 
-    expect(await page.$eval('[data-testid="deckSelect"]', el => el.value)).toBe('tShirtSize')
-    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull()
-  })
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('tShirtSize');
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).toBeNull();
+  });
 
   test('ルームページで、カスタムデッキを選択している状態で、カスタムデッキの設定アイコンを選択したとき、カスタムデッキ設定モーダルが表示されること', async () => {
-    await page.goto(roomUrl)
-    await page.waitForSelector('[data-testid="tableCard"]')
-    await page.select('[data-testid="deckSelect"]', 'custom')
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
 
-    expect(await page.$('[data-testid="customDeckSettingIcon"]')).not.toBeNull()
-    expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull()
+    expect(await page.$('[data-testid="customDeckSettingIcon"]')).not.toBeNull();
+    expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull();
 
-    await page.click('[data-testid="customDeckSettingIcon"]')
+    await page.click('[data-testid="customDeckSettingIcon"]');
 
-    expect(await page.$('[data-testid="customDeckSettingModal"]')).not.toBeNull()
-  })
+    expect(await page.$('[data-testid="customDeckSettingModal"]')).not.toBeNull();
+  });
 
-  // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定のテキストエリアに文字を入力できること
+  test('ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定のテキストエリアに文字を入力できること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+
+    expect(await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => el.value)).toBe(
+      '1\n2\n3',
+    );
+
+    await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingTextarea"]', '1\n3\n5\n7\n9');
+
+    expect(await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => el.value)).toBe(
+      '1\n3\n5\n7\n9',
+    );
+  });
+  //
   // ルームページで、カスタムデッキ設定モーダルで、閉じるアイコンを選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること
   // ルームページで、カスタムデッキ設定モーダルで、モーダル外を選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること
   // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアが未入力のとき、「Save」ボタンを選択できないこと
@@ -66,4 +85,4 @@ describe('rooms/customDeck', () => {
   // ルームページで、カスタムデッキを選択している状態で、新しいメンバーが入室してきたとき、そのメンバーのデッキも他のメンバーと同じカスタムデッキが表示されること
   // ルームページで、一度カスタムデッキを設定し、別のデッキを選択し直したあと、もう一度カスタムデッキを選択したとき、前回設定したカスタムデッキが手札に表示されること
   // ルームページで、カスタムデッキを設定したあと、別のルームに入室し直したとき、前のルームのカスタムデッキの設定は引き継がれないこと
-})
+});

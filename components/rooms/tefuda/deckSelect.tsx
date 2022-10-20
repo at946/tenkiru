@@ -1,11 +1,9 @@
-import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
-import React from 'react';
 import Decks from '../../../data/deck';
 import { Deck } from '../../../interfaces/deck';
 import { DeckType } from '../../../interfaces/deckType';
 import { useAppSelector } from '../../../store/hooks';
+import CustomDeckSetting from './customDeckSetting';
 
 interface Props {
   select: (deckType: DeckType) => void;
@@ -30,9 +28,7 @@ const DeckSelect: NextPage<Props> = ({ select }) => {
         </select>
       </div>
       { deckType === 'custom' && (
-        <button className="button is-rounded is-inverted is-primary ml-2" data-testid="customDeckSettingIcon">
-          <FontAwesomeIcon icon={faScrewdriverWrench} />
-        </button>
+        <CustomDeckSetting />
       )}
     </div>
   );

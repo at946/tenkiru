@@ -45,7 +45,13 @@ describe('rooms/customDeck', () => {
     await page.select('[data-testid="deckSelect"]', 'custom')
 
     expect(await page.$('[data-testid="customDeckSettingIcon"]')).not.toBeNull()
+    expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull()
+
+    await page.click('[data-testid="customDeckSettingIcon"]')
+
+    expect(await page.$('[data-testid="customDeckSettingModal"]')).not.toBeNull()
   })
+
   // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定のテキストエリアに文字を入力できること
   // ルームページで、カスタムデッキ設定モーダルで、閉じるアイコンを選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること
   // ルームページで、カスタムデッキ設定モーダルで、モーダル外を選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること

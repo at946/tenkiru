@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Decks from '../../../data/deck';
+import { Card } from '../../../interfaces/card';
 import { Deck } from '../../../interfaces/deck';
 import { DeckType } from '../../../interfaces/deckType';
 import { useAppSelector } from '../../../store/hooks';
@@ -7,9 +8,10 @@ import CustomDeckSetting from './customDeckSetting';
 
 interface Props {
   select: (deckType: DeckType) => void;
+  updateCustomDeck: (deck: Card[]) => void;
 }
 
-const DeckSelect: NextPage<Props> = ({ select }) => {
+const DeckSelect: NextPage<Props> = ({ select, updateCustomDeck }) => {
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
 
   const change: React.ChangeEventHandler<HTMLSelectElement> = (e): void => {
@@ -27,7 +29,7 @@ const DeckSelect: NextPage<Props> = ({ select }) => {
           ))}
         </select>
       </div>
-      {deckType === 'custom' && <CustomDeckSetting />}
+      {deckType === 'custom' && <CustomDeckSetting updateCustomDeck={updateCustomDeck} />}
     </div>
   );
 };

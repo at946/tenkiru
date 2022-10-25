@@ -102,6 +102,10 @@ const Page: NextPage = () => {
     socket.emit('put-down-a-card', roomId, card);
   };
 
+  const updateCustomDeck = (deck: Card[]): void => {
+    socket.emit('update-custom-deck', roomId, deck);
+  };
+
   return (
     <div className='has-text-centered'>
       <section className='section'>
@@ -115,7 +119,11 @@ const Page: NextPage = () => {
       <section className='section'>
         <div className='container'>
           <MemberTypeToggle changeMemberType={changeMemberType} />
-          <Tefuda putDownCard={putDownCard} changeDeckType={changeDeckType} />
+          <Tefuda
+            putDownCard={putDownCard}
+            changeDeckType={changeDeckType}
+            updateCustomDeck={updateCustomDeck}
+          />
         </div>
       </section>
     </div>

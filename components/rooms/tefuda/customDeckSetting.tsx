@@ -5,7 +5,11 @@ import { Card } from '../../../interfaces/card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 
-const CustomDeckSetting: NextPage = () => {
+interface Props {
+  updateCustomDeck: (values: Array<string | number>) => void;
+}
+
+const CustomDeckSetting: NextPage<Props> = ({ updateCustomDeck }) => {
   const [modalIsActive, setModalIsActive] = useState<boolean>(false);
   const customDeckCards: Card[] | undefined = useAppSelector((state) => state.room.customDeck);
   const [customDeckText, setCustomDeckText] = useState<string>(customDeckCards?.join('\n') || '');
@@ -16,6 +20,11 @@ const CustomDeckSetting: NextPage = () => {
 
   const closeModal = (): void => {
     setCustomDeckText(customDeckCards?.join('\n') || '');
+    setModalIsActive(false);
+  };
+
+  const saveCustomDeck = (): void => {
+    updateCustomDeck(customDeckText.split('\n'));
     setModalIsActive(false);
   };
 
@@ -52,6 +61,7 @@ const CustomDeckSetting: NextPage = () => {
                   <button
                     className='button is-primary is-rounded'
                     data-testid='customDeckSettingModalSaveButton'
+                    onClick={saveCustomDeck}
                     disabled={!customDeckText.replace(/\s+/g, '')}
                   >
                     Save

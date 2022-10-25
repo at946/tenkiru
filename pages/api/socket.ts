@@ -130,6 +130,13 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-members', room.members);
       });
 
+      socket.on('update-custom-deck', (roomId, deck) => {
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        room.customDeck = deck;
+        io.to(roomId).emit('update-custom-deck', room.customDeck);
+      });
+
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
           const room: Room | undefined = rooms.find((v) => v.id === roomId);

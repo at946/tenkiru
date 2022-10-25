@@ -17,4 +17,5 @@ export interface ClientToServerEvents {
   'open-cards': (roomId: string) => void;
   replay: (roomId: string) => void;
   'change-member-type': (roomId: string, memberType: MemberType) => void;
+  'update-custom-deck': (roomId: string, deck: Card[]) => void;
 }

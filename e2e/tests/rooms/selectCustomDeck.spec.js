@@ -201,7 +201,28 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardsValue[2]).toBe('100');
     expect(tefudaCardsValue[3]).toBe('?');
   });
-  // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアに空白行がある状態で、「Save」ボタンを選択したとき、空白行は無視されてデッキに反映されること
+
+  test('ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアに空白行がある状態で、「Save」ボタンを選択したとき、空白行は無視されてデッキに反映されること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '1\n \n50\n　\n100\n\n?');
+    await page.click('[data-testid="customDeckSettingModalSaveButton"]');
+
+    const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    await takeScreenshot(1);
+    expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull();
+    expect(tefudaCardsValue.length).toBe(4);
+    expect(tefudaCardsValue[0]).toBe('1');
+    expect(tefudaCardsValue[1]).toBe('50');
+    expect(tefudaCardsValue[2]).toBe('100');
+    expect(tefudaCardsValue[3]).toBe('?');
+  });
   // ルームページで、カスタムデッキの内容を更新したとき、他のメンバーのデッキの内容も更新されること
   // ルームページで、カスタムデッキを選択している状態で、カードを選択しオープンすることができること
   // ルームページで、カスタムデッキを選択しておりカードがオープンしている状態で、場に数字のカードがあるとき、Max/Min/Avgのサマリが正しく計算されて表示されること

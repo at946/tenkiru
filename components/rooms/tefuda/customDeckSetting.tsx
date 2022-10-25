@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
-  updateCustomDeck: (values: Array<string | number>) => void;
+  updateCustomDeck: (deck: Card[]) => void;
 }
 
 const CustomDeckSetting: NextPage<Props> = ({ updateCustomDeck }) => {
@@ -24,7 +24,8 @@ const CustomDeckSetting: NextPage<Props> = ({ updateCustomDeck }) => {
   };
 
   const saveCustomDeck = (): void => {
-    updateCustomDeck(customDeckText.split('\n'));
+    const newCustomDeck: Card[] = customDeckText.split('\n').filter((v) => !!v.replace(/\s+/g, ''));
+    updateCustomDeck(newCustomDeck);
     setModalIsActive(false);
   };
 

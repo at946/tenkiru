@@ -12,6 +12,7 @@ describe('rooms/customDeck', () => {
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('fibonacci');
 
     await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForTimeout(100);
 
     const tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
       els.map((el) => el.innerText),
@@ -47,6 +48,7 @@ describe('rooms/customDeck', () => {
     await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
 
     expect(await page.$('[data-testid="customDeckSettingIcon"]')).not.toBeNull();
     expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull();
@@ -60,18 +62,19 @@ describe('rooms/customDeck', () => {
     await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
     await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
     await page.click('[data-testid="customDeckSettingIcon"]');
 
-    expect(await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => el.value)).toBe(
-      '1\n2\n3',
-    );
+    expect(
+      await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => el.value),
+    ).toBe('1\n2\n3');
 
-    await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => (el.value = ''));
-    await page.type('[data-testid="customDeckSettingTextarea"]', '1\n3\n5\n7\n9');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '1\n3\n5\n7\n9');
 
-    expect(await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => el.value)).toBe(
-      '1\n3\n5\n7\n9',
-    );
+    expect(
+      await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => el.value),
+    ).toBe('1\n3\n5\n7\n9');
   });
 
   test('ルームページで、カスタムデッキ設定モーダルで、閉じるアイコンを選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること', async () => {
@@ -90,8 +93,8 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardValues[1]).toBe('2');
     expect(tefudaCardValues[2]).toBe('3');
 
-    await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => (el.value = ''));
-    await page.type('[data-testid="customDeckSettingTextarea"]', '1\n3\n5\n7\n9');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '1\n3\n5\n7\n9');
     await page.click('[data-testid="customDeckSettingModalCloseButton"]');
 
     tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
@@ -102,6 +105,12 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardValues[0]).toBe('1');
     expect(tefudaCardValues[1]).toBe('2');
     expect(tefudaCardValues[2]).toBe('3');
+
+    await page.click('[data-testid="customDeckSettingIcon"]');
+
+    expect(
+      await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => el.value),
+    ).toBe('1\n2\n3');
   });
 
   test('ルームページで、カスタムデッキ設定モーダルで、モーダル外を選択したとき、カスタムデッキは変更されずカスタムデッキ設定モーダルが閉じること', async () => {
@@ -120,9 +129,9 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardValues[1]).toBe('2');
     expect(tefudaCardValues[2]).toBe('3');
 
-    await page.$eval('[data-testid="customDeckSettingTextarea"]', (el) => (el.value = ''));
-    await page.type('[data-testid="customDeckSettingTextarea"]', '1\n3\n5\n7\n9');
-    await page.click('[data-testid="customDeckSettingModalBackground"]');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '1\n3\n5\n7\n9');
+    await page.mouse.click(100, 100);
 
     tefudaCardValues = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
       els.map((el) => el.innerText),
@@ -132,9 +141,46 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardValues[0]).toBe('1');
     expect(tefudaCardValues[1]).toBe('2');
     expect(tefudaCardValues[2]).toBe('3');
+
+    await takeScreenshot(1);
+    await page.click('[data-testid="customDeckSettingIcon"]');
+    await takeScreenshot(2);
+
+    expect(
+      await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => el.value),
+    ).toBe('1\n2\n3');
   });
-  // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアが未入力のとき、「Save」ボタンを選択できないこと
-  // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアが空白行のみのとき、「Save」ボタンを選択できないこと
+
+  test('ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアが未入力のとき、「Save」ボタンを選択できないこと', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingModalTextarea"]');
+    await page.keyboard.down('ControlLeft');
+    await page.keyboard.press('KeyA');
+    await page.keyboard.up('ControlLeft');
+    await page.keyboard.press('Backspace');
+
+    expect(
+      await page.$eval('[data-testid="customDeckSettingModalSaveButton"]', (el) => el.disabled),
+    ).toBeTruthy();
+  });
+
+  test('ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアが空白行のみのとき、「Save」ボタンを選択できないこと', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '\n \n　\n\t\n');
+
+    expect(
+      await page.$eval('[data-testid="customDeckSettingModalSaveButton"]', (el) => el.disabled),
+    ).toBeTruthy();
+  });
   // ルームページで、カスタムデッキ設定モーダルで、「Save」ボタンを選択したとき、カスタムデッキ設定のテキストエリアの改行区切りでデッキに反映されること
   // ルームページで、カスタムデッキ設定モーダルで、カスタムデッキ設定テキストエリアに空白行がある状態で、「Save」ボタンを選択したとき、空白行は無視されてデッキに反映されること
   // ルームページで、カスタムデッキの内容を更新したとき、他のメンバーのデッキの内容も更新されること

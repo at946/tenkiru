@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../store/hooks';
 import { Card } from '../../../interfaces/card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +8,16 @@ import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 const CustomDeckSetting: NextPage = () => {
   const [modalIsActive, setModalIsActive] = useState<boolean>(false);
   const customDeckCards: Card[] | undefined = useAppSelector((state) => state.room.customDeck);
-  const customDeckText: string = customDeckCards?.join('\n') || '';
+  const [customDeckText, setCustomDeckText] = useState<string>(customDeckCards?.join('\n') || '');
+
+  useEffect(() => {
+    setCustomDeckText(customDeckCards?.join('\n') || '');
+  }, [customDeckCards]);
+
+  const closeModal = (): void => {
+    setCustomDeckText(customDeckCards?.join('\n') || '');
+    setModalIsActive(false);
+  };
 
   return (
     <div>
@@ -22,25 +31,39 @@ const CustomDeckSetting: NextPage = () => {
 
       {modalIsActive && (
         <div className='modal is-active' data-testid='customDeckSettingModal'>
-          <div
-            className='modal-background'
-            onClick={() => setModalIsActive(false)}
-            data-testid='customDeckSettingModalBackground'
-          ></div>
+          <div className='modal-background' onClick={closeModal}></div>
           <div className='modal-content'>
             <div className='box'>
-              <textarea
-                rows={10}
-                defaultValue={customDeckText}
-                className='textarea'
-                data-testid='customDeckSettingTextarea'
-              />
+              <div className='field'>
+                <div className='control'>
+                  <textarea
+                    rows={10}
+                    value={customDeckText}
+                    className='textarea'
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      setCustomDeckText(e.target.value)
+                    }
+                    data-testid='customDeckSettingModalTextarea'
+                  />
+                </div>
+              </div>
+              <div className='field'>
+                <div className='control'>
+                  <button
+                    className='button is-primary is-rounded'
+                    data-testid='customDeckSettingModalSaveButton'
+                    disabled={!customDeckText.replace(/\s+/g, '')}
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <button
             className='modal-close is-large'
             aria-label='close'
-            onClick={() => setModalIsActive(false)}
+            onClick={closeModal}
             data-testid='customDeckSettingModalCloseButton'
           ></button>
         </div>

@@ -215,7 +215,6 @@ describe('rooms/customDeck', () => {
     const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
       els.map((el) => el.innerText),
     );
-    await takeScreenshot(1);
     expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull();
     expect(tefudaCardsValue.length).toBe(4);
     expect(tefudaCardsValue[0]).toBe('1');
@@ -223,8 +222,58 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardsValue[2]).toBe('100');
     expect(tefudaCardsValue[3]).toBe('?');
   });
-  // ルームページで、カスタムデッキの内容を更新したとき、他のメンバーのデッキの内容も更新されること
-  // ルームページで、カスタムデッキを選択している状態で、カードを選択しオープンすることができること
+
+  test('ルームページで、カスタムデッキの内容を更新したとき、他のメンバーのデッキの内容も更新されること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    const page2 = await browser.newPage();
+    await page2.goto(roomUrl);
+    await page2.waitForSelector('[data-testid="tableCard"]');
+
+    await page2.select('[data-testid="deckSelect"]', 'custom');
+    await page2.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page2.click('[data-testid="customDeckSettingIcon"]');
+    await page2.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page2.type('[data-testid="customDeckSettingModalTextarea"]', '1\n \n50\n　\n100\n\n?');
+    await page2.click('[data-testid="customDeckSettingModalSaveButton"]');
+
+    const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull();
+    expect(tefudaCardsValue.length).toBe(4);
+    expect(tefudaCardsValue[0]).toBe('1');
+    expect(tefudaCardsValue[1]).toBe('50');
+    expect(tefudaCardsValue[2]).toBe('100');
+    expect(tefudaCardsValue[3]).toBe('?');
+
+    await page2.close();
+  });
+
+  test('ルームページで、カスタムデッキを選択している状態で、カードを選択しオープンすることができること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+
+    let tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
+    expect(tableCardsClassName.length).toBe(1);
+    expect(tableCardsClassName[0]).toContain('tableCard_blank');
+
+    const tefudaCards = await page.$$('[data-testid="tefudaCard"]');
+    await tefudaCards[0].click();
+    await page.click('[data-testid="openButton"]');
+    await page.waitForSelector('[data-testid="replayButton"]');
+
+    tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
+    tableCardsValue = await page.$$eval('[data-testid="tableCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(tableCardsClassName.length).toBe(1);
+    expect(tableCardsClassName[0]).toContain('tableCard_open');
+    expect(tableCardsValue[0]).toBe('1');
+  });
+  //
   // ルームページで、カスタムデッキを選択しておりカードがオープンしている状態で、場に数字のカードがあるとき、Max/Min/Avgのサマリが正しく計算されて表示されること
   // ルームページで、カスタムデッキを選択しておりカードがオープンしている状態で、場に数字のカードがないとき、Max/Min/Avgのサマリが正しく計算されて表示されること
   // ルームページで、カスタムデッキを選択している状態で、新しいメンバーが入室してきたとき、そのメンバーのデッキも他のメンバーと同じカスタムデッキが表示されること

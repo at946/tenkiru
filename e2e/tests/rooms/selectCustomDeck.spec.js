@@ -273,8 +273,32 @@ describe('rooms/customDeck', () => {
     expect(tableCardsClassName[0]).toContain('tableCard_open');
     expect(tableCardsValue[0]).toBe('1');
   });
-  //
-  // ルームページで、カスタムデッキを選択しておりカードがオープンしている状態で、場に数字のカードがあるとき、Max/Min/Avgのサマリが正しく計算されて表示されること
+
+  test('ルームページで、カスタムデッキを選択しておりカードがオープンしている状態で、場に数字のカードがあるとき、Max/Min/Avgのサマリが正しく計算されて表示されること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    const page2 = await browser.newPage();
+    await page2.goto(roomUrl);
+    await page2.waitForSelector('[data-testid="tableCard"]');
+
+    await page2.select('[data-testid="deckSelect"]', 'custom');
+    await page2.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page2.click('[data-testid="customDeckSettingIcon"]');
+    await page2.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page2.type('[data-testid="customDeckSettingModalTextarea"]', '1\n50\n100\n?');
+    await page2.click('[data-testid="customDeckSettingModalSaveButton"]');
+
+    await (await page2.$$('[data-testid="tefudaCard"]'))[1].click();
+    await (await page.$$('[data-testid="tefudaCard"]'))[2].click();
+    await page.click('[data-testid="openButton"]');
+    await page.waitForSelector('[data-testid="replayButton"]');
+
+    expect(await page.$eval('[data-testid="max"]', (el) => el.innerText)).toBe('Max\n100');
+    expect(await page.$eval('[data-testid="min"]', (el) => el.innerText)).toBe('Min\n50');
+    expect(await page.$eval('[data-testid="avg"]', (el) => el.innerText)).toBe('Avg\n75');
+
+    await page2.close();
+  });
   // ルームページで、カスタムデッキを選択しておりカードがオープンしている状態で、場に数字のカードがないとき、Max/Min/Avgのサマリが正しく計算されて表示されること
   // ルームページで、カスタムデッキを選択している状態で、新しいメンバーが入室してきたとき、そのメンバーのデッキも他のメンバーと同じカスタムデッキが表示されること
   // ルームページで、一度カスタムデッキを設定し、別のデッキを選択し直したあと、もう一度カスタムデッキを選択したとき、前回設定したカスタムデッキが手札に表示されること

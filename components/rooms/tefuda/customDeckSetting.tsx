@@ -24,7 +24,10 @@ const CustomDeckSetting: NextPage<Props> = ({ updateCustomDeck }) => {
   };
 
   const saveCustomDeck = (): void => {
-    const newCustomDeck: Card[] = customDeckText.split('\n').filter((v) => !!v.replace(/\s+/g, ''));
+    const newCustomDeck: Card[] = customDeckText
+      .split('\n')
+      .filter((v) => !!v.replace(/\s+/g, ''))
+      .map((v) => Number(v) || v);
     updateCustomDeck(newCustomDeck);
     setModalIsActive(false);
   };

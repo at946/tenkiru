@@ -354,6 +354,42 @@ describe('rooms/customDeck', () => {
 
     await page2.close();
   });
-  // ルームページで、一度カスタムデッキを設定し、別のデッキを選択し直したあと、もう一度カスタムデッキを選択したとき、前回設定したカスタムデッキが手札に表示されること
+
+  test('ルームページで、一度カスタムデッキを設定し、別のデッキを選択し直したあと、もう一度カスタムデッキを選択したとき、前回設定したカスタムデッキが手札に表示されること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '1\n3\n5\n7\n9');
+    await page.click('[data-testid="customDeckSettingModalSaveButton"]');
+    await page.select('[data-testid="deckSelect"]', 'fibonacci');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]', { hidden: true });
+
+    let tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('fibonacci');
+    expect(tefudaCardsValue.length).toBe(8);
+    expect(tefudaCardsValue[0]).toBe('1');
+    expect(tefudaCardsValue[1]).toBe('2');
+    expect(tefudaCardsValue[6]).toBe('21');
+    expect(tefudaCardsValue[7]).toBe('?');
+
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+
+    tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(tefudaCardsValue.length).toBe(5);
+    expect(tefudaCardsValue[0]).toBe('1');
+    expect(tefudaCardsValue[1]).toBe('3');
+    expect(tefudaCardsValue[3]).toBe('7');
+    expect(tefudaCardsValue[4]).toBe('9');
+  });
+  //
   // ルームページで、カスタムデッキを設定したあと、別のルームに入室し直したとき、前のルームのカスタムデッキの設定は引き継がれないこと
 });

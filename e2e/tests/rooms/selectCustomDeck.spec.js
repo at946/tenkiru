@@ -390,6 +390,36 @@ describe('rooms/customDeck', () => {
     expect(tefudaCardsValue[3]).toBe('7');
     expect(tefudaCardsValue[4]).toBe('9');
   });
-  //
-  // ルームページで、カスタムデッキを設定したあと、別のルームに入室し直したとき、前のルームのカスタムデッキの設定は引き継がれないこと
+
+  test('ルームページで、カスタムデッキを設定したあと、別のルームに入室し直したとき、前のルームのカスタムデッキの設定は引き継がれないこと', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+    const page2 = await browser.newPage();
+    await page2.goto(roomUrl);
+    await page2.waitForSelector('[data-testid="tableCard"]');
+
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '1\n3\n5\n7\n9');
+    await page.click('[data-testid="customDeckSettingModalSaveButton"]');
+
+    await page.click('[data-testid="logo"]');
+    await page.waitForSelector('[data-testid="createRoomButton"]');
+    await page.click('[data-testid="createRoomButton"]');
+    await page.waitForSelector('[data-testid="tableCard"]');
+
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+
+    const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(tefudaCardsValue.length).toBe(3);
+    expect(tefudaCardsValue[0]).toBe('1');
+    expect(tefudaCardsValue[1]).toBe('2');
+    expect(tefudaCardsValue[2]).toBe('3');
+  });
 });

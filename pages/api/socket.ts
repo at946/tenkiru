@@ -77,6 +77,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           io.to(roomId).emit('update-members', room.members);
           io.to(roomId).emit('update-cards-are-open', room.cardsAreOpen);
           io.to(roomId).emit('update-deck-type', room.deckType);
+          if (!!room.customDeck) io.to(roomId).emit('update-custom-deck', room.customDeck);
         }
       });
 

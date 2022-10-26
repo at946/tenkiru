@@ -325,7 +325,35 @@ describe('rooms/customDeck', () => {
 
     await page2.close();
   });
-  // ルームページで、カスタムデッキを選択している状態で、新しいメンバーが入室してきたとき、そのメンバーのデッキも他のメンバーと同じカスタムデッキが表示されること
+
+  test('ルームページで、カスタムデッキを選択している状態で、新しいメンバーが入室してきたとき、そのメンバーのデッキも他のメンバーと同じカスタムデッキが表示されること', async () => {
+    await page.goto(roomUrl);
+    await page.waitForSelector('[data-testid="tableCard"]');
+
+    await page.select('[data-testid="deckSelect"]', 'custom');
+    await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
+    await page.click('[data-testid="customDeckSettingIcon"]');
+    await page.$eval('[data-testid="customDeckSettingModalTextarea"]', (el) => (el.value = ''));
+    await page.type('[data-testid="customDeckSettingModalTextarea"]', '1\n \n50\n　\n100\n\n?');
+    await page.click('[data-testid="customDeckSettingModalSaveButton"]');
+
+    const page2 = await browser.newPage();
+    await page2.goto(roomUrl);
+    await page2.waitForSelector('[data-testid="tableCard"]');
+
+    const tefudaCardsValue = await page2.$$eval('[data-testid="tefudaCard"]', (els) =>
+      els.map((el) => el.innerText),
+    );
+    expect(await page2.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('custom');
+    expect(await page2.$('[data-testid="customDeckSettingModal"]')).toBeNull();
+    expect(tefudaCardsValue.length).toBe(4);
+    expect(tefudaCardsValue[0]).toBe('1');
+    expect(tefudaCardsValue[1]).toBe('50');
+    expect(tefudaCardsValue[2]).toBe('100');
+    expect(tefudaCardsValue[3]).toBe('?');
+
+    await page2.close();
+  });
   // ルームページで、一度カスタムデッキを設定し、別のデッキを選択し直したあと、もう一度カスタムデッキを選択したとき、前回設定したカスタムデッキが手札に表示されること
   // ルームページで、カスタムデッキを設定したあと、別のルームに入室し直したとき、前のルームのカスタムデッキの設定は引き継がれないこと
 });

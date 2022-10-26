@@ -77,6 +77,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           io.to(roomId).emit('update-members', room.members);
           io.to(roomId).emit('update-cards-are-open', room.cardsAreOpen);
           io.to(roomId).emit('update-deck-type', room.deckType);
+          if (!!room.customDeck) io.to(roomId).emit('update-custom-deck', room.customDeck);
         }
       });
 
@@ -84,9 +85,12 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         const room = rooms.find((v) => v.id === roomId);
         if (!room) return;
         room.deckType = newDeckType;
+        if (newDeckType === 'custom' && !room.customDeck) room.customDeck = [1, 2, 3];
         clearCards(roomId);
         io.to(roomId).emit('update-members', room.members);
         io.to(roomId).emit('update-deck-type', room.deckType);
+        if (!room.customDeck) return;
+        io.to(roomId).emit('update-custom-deck', room.customDeck);
       });
 
       socket.on('put-down-a-card', (roomId, card) => {
@@ -125,6 +129,13 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         member.selectedCard = null;
         cleanRoom(roomId);
         io.to(roomId).emit('update-members', room.members);
+      });
+
+      socket.on('update-custom-deck', (roomId, deck) => {
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        room.customDeck = deck;
+        io.to(roomId).emit('update-custom-deck', room.customDeck);
       });
 
       socket.on('disconnecting', () => {

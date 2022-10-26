@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Card } from '../interfaces/card';
 import { DeckType } from '../interfaces/deckType';
 
 export interface RoomState {
   cardsAreOpen: boolean;
   deckType: DeckType;
+  customDeck?: Card[];
 }
 
 const initialState: RoomState = {
@@ -21,7 +23,10 @@ export const roomSlice = createSlice({
     setDeckType: (state, action: PayloadAction<DeckType>) => {
       state.deckType = action.payload;
     },
+    setCustomDeck: (state, action: PayloadAction<Card[]>) => {
+      state.customDeck = action.payload;
+    },
   },
 });
 
-export const { setCardsAreOpen, setDeckType } = roomSlice.actions;
+export const { setCardsAreOpen, setDeckType, setCustomDeck } = roomSlice.actions;

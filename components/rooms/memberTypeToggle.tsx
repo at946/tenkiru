@@ -11,9 +11,9 @@ const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
   const type = useAppSelector((state) => state.user.type);
 
   const clickMemberType = (memberType: MemberType): void => {
-    event({ action: `change_member_type_${memberType}`, category: 'engagement', label: '' })
-    changeMemberType(memberType)
-  }
+    event({ action: `change_member_type_${memberType}`, category: 'engagement', label: '' });
+    changeMemberType(memberType);
+  };
 
   return (
     <div className='tabs is-toggle is-centered'>

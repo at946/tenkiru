@@ -11,7 +11,7 @@ interface Props {
 const RoomInfo: NextPage<Props> = ({ roomId }) => {
   const copyUrl = async () => {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`);
-    event({ action: 'copy_room_url', category: 'engagement', label: '' })
+    event({ action: 'copy_room_url', category: 'engagement', label: '' });
     toast({
       message: 'Copied!!',
       type: 'is-success',

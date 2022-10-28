@@ -16,7 +16,7 @@ const CreateRoomButton: NextPage<Props> = ({ roomId }) => {
     <Link href={`/rooms/${encodeURIComponent(roomId)}`}>
       <a
         className='button is-rounded is-outlined is-primary mt-5'
-        // onClick={() => event({ action: 'create_room', category: 'engagement', label: ''})}
+        onClick={() => event({ action: 'create_room', category: 'engagement', label: ''})}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         data-testid='createRoomButton'

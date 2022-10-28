@@ -193,7 +193,6 @@ describe('rooms/customDeck', () => {
     const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
       els.map((el) => el.innerText),
     );
-    await takeScreenshot(1);
     expect(await page.$('[data-testid="customDeckSettingModal"]')).toBeNull();
     expect(tefudaCardsValue.length).toBe(4);
     expect(tefudaCardsValue[0]).toBe('1');
@@ -394,9 +393,6 @@ describe('rooms/customDeck', () => {
   test('ルームページで、カスタムデッキを設定したあと、別のルームに入室し直したとき、前のルームのカスタムデッキの設定は引き継がれないこと', async () => {
     await page.goto(roomUrl);
     await page.waitForSelector('[data-testid="tableCard"]');
-    const page2 = await browser.newPage();
-    await page2.goto(roomUrl);
-    await page2.waitForSelector('[data-testid="tableCard"]');
 
     await page.select('[data-testid="deckSelect"]', 'custom');
     await page.waitForSelector('[data-testid="customDeckSettingIcon"]');
@@ -409,6 +405,7 @@ describe('rooms/customDeck', () => {
     await page.waitForSelector('[data-testid="createRoomButton"]');
     await page.click('[data-testid="createRoomButton"]');
     await page.waitForSelector('[data-testid="tableCard"]');
+    await page.waitForTimeout(100);
 
     await page.select('[data-testid="deckSelect"]', 'custom');
     await page.waitForSelector('[data-testid="customDeckSettingIcon"]');

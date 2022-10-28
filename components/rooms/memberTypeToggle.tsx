@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import { MemberType } from '../../interfaces/memberType';
+import { event } from '../../lib/gtag';
 import { useAppSelector } from '../../store/hooks';
 
 interface Props {
@@ -9,19 +10,24 @@ interface Props {
 const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
   const type = useAppSelector((state) => state.user.type);
 
+  const clickMemberType = (memberType: MemberType): void => {
+    event({ action: `change_member_type_${memberType}`, category: 'engagement', label: '' });
+    changeMemberType(memberType);
+  };
+
   return (
     <div className='tabs is-toggle is-centered'>
       <ul>
         <li
           className={type === 'player' ? 'is-active' : ''}
-          onClick={() => changeMemberType('player')}
+          onClick={() => clickMemberType('player')}
           data-testid='memberTypePlayer'
         >
           <a>Player</a>
         </li>
         <li
           className={type === 'audience' ? 'is-active' : ''}
-          onClick={() => changeMemberType('audience')}
+          onClick={() => clickMemberType('audience')}
           data-testid='memberTypeAudience'
         >
           <a>Audience</a>

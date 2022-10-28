@@ -29,7 +29,7 @@ let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 const Page: NextPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const deckType: DeckType = useAppSelector(state => state.room.deckType)
+  const deckType: DeckType = useAppSelector((state) => state.room.deckType);
 
   const roomId = ((): string => {
     switch (typeof router.query.roomId) {
@@ -90,7 +90,7 @@ const Page: NextPage = () => {
   };
 
   const openCards = (): void => {
-    event({ action: `open_with_${deckType}_deck`, category: 'engagement', label: '' })
+    event({ action: `open_with_${deckType}_deck`, category: 'engagement', label: '' });
     socket.emit('open-cards', roomId);
   };
 

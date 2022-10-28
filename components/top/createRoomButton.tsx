@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
-import { event } from '../../lib/gtag'
+import { event } from '../../lib/gtag';
 
 interface Props {
   roomId: string;

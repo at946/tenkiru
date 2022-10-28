@@ -405,7 +405,7 @@ describe('rooms/customDeck', () => {
     await page.waitForSelector('[data-testid="createRoomButton"]');
     await page.click('[data-testid="createRoomButton"]');
     await page.waitForSelector('[data-testid="tableCard"]');
-    await page.waitForTimeout(100)
+    await page.waitForTimeout(100);
 
     await page.select('[data-testid="deckSelect"]', 'custom');
     await page.waitForSelector('[data-testid="customDeckSettingIcon"]');

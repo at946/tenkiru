@@ -1,9 +1,5 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import styles from './header.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faMugSaucer } from '@fortawesome/free-solid-svg-icons';
 
 const Header: NextPage = () => {
   const shareText = encodeURIComponent(process.env.NEXT_PUBLIC_BASE_URL);
@@ -21,22 +17,17 @@ const Header: NextPage = () => {
         <div className='navbar-menu'>
           <div className='navbar-end'>
             <a
-              href={`https://twitter.com/intent/tweet?text=${shareText}`}
-              className={`${styles.twitter} navbar-item`}
-              target='_blank'
-              rel='noreferrer'
-              data-testid='shareTwitter'
-            >
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a
-              href='https://www.buymeacoffee.com/at946'
-              target='_blank'
-              rel='noreferrer'
-              className={`${styles.buymeacoffee} navbar-item`}
-              data-testid='buymeacoffee'
-            >
-              <FontAwesomeIcon icon={faMugSaucer} />
+              href="https://www.buymeacoffee.com/at946"
+              className="navbar-item"
+              target="_blank"
+              rel="noreferrer"
+              data-testid="buymeacoffee"
+              >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=at946&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                alt="Buy me a coffee"
+              />
             </a>
           </div>
         </div>

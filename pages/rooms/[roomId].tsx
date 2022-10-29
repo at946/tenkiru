@@ -28,7 +28,7 @@ import Head from 'next/head';
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
-  const description: string = "プランニングポーカーやろ〜。Tenkirに集合〜🙌"
+  const description: string = 'プランニングポーカーやろ〜。Tenkirに集合〜🙌';
   const router = useRouter();
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
@@ -115,8 +115,8 @@ const Page: NextPage = () => {
   return (
     <main>
       <Head>
-        <meta key="description" name='description' content={description} />
-        <meta key="og:description" property="og:description" content={description} />
+        <meta key='description' name='description' content={description} />
+        <meta key='og:description' property='og:description' content={description} />
       </Head>
       <div className='has-text-centered'>
         <section className='section'>

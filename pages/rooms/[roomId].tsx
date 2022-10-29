@@ -23,10 +23,12 @@ import { selectCard, updateType } from '../../store/userSlice';
 import { setCardsAreOpen, setCustomDeck, setDeckType } from '../../store/roomSlice';
 
 import { event } from '../../lib/gtag';
+import Head from 'next/head';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
 const Page: NextPage = () => {
+  const description: string = 'プランニングポーカーやろ〜。Tenkirに集合〜🙌';
   const router = useRouter();
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
@@ -111,26 +113,32 @@ const Page: NextPage = () => {
   };
 
   return (
-    <div className='has-text-centered'>
-      <section className='section'>
-        <div className='container'>
-          <div className='mb-4'>
-            <RoomInfo roomId={roomId} />
+    <main>
+      <Head>
+        <meta key='description' name='description' content={description} />
+        <meta key='og:description' property='og:description' content={description} />
+      </Head>
+      <div className='has-text-centered'>
+        <section className='section'>
+          <div className='container'>
+            <div className='mb-4'>
+              <RoomInfo roomId={roomId} />
+            </div>
+            <Table openCards={openCards} replay={replay} />
           </div>
-          <Table openCards={openCards} replay={replay} />
-        </div>
-      </section>
-      <section className='section'>
-        <div className='container'>
-          <MemberTypeToggle changeMemberType={changeMemberType} />
-          <Tefuda
-            putDownCard={putDownCard}
-            changeDeckType={changeDeckType}
-            updateCustomDeck={updateCustomDeck}
-          />
-        </div>
-      </section>
-    </div>
+        </section>
+        <section className='section'>
+          <div className='container'>
+            <MemberTypeToggle changeMemberType={changeMemberType} />
+            <Tefuda
+              putDownCard={putDownCard}
+              changeDeckType={changeDeckType}
+              updateCustomDeck={updateCustomDeck}
+            />
+          </div>
+        </section>
+      </div>
+    </main>
   );
 };
 

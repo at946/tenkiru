@@ -11,7 +11,7 @@ describe('metatag/title', () => {
   });
 
   test('ルームページで、タイトルが「Tenkir」であること', async () => {
-    const description ='プランニングポーカーやろー🙌';
+    const description ='プランニングポーカーやろ〜。Tenkirに集合〜🙌';
 
     await page.goto(urls.room());
     expect(await page.title()).toBe(title);

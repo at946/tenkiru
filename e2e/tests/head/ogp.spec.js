@@ -22,7 +22,7 @@ describe('metatag/ogp', () => {
   });
 
   test('ルームページで、OGが正しいこと', async () => {
-    const description ='プランニングポーカーやろー🙌';
+    const description ='プランニングポーカーやろ〜。Tenkirに集合〜🙌';
     
     await page.goto(urls.room());
     expect(await page.$eval('meta[property="og:site_name"]', (el) => el.content)).toBe(title);

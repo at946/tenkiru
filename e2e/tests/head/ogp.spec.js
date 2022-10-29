@@ -1,9 +1,10 @@
 describe('metatag/ogp', () => {
   const title = 'Tenkir';
-  const description =
+
+  test('トップページで、OGが正しいこと', async () => {
+    const description =
     'Tenkir（テンキル）はオンラインプランニングポーカーツールです。チームメンバーでわいわい使ってね。';
 
-  test('トップページで、descriptionが正しいこと', async () => {
     await page.goto(urls.top);
     expect(await page.$eval('meta[property="og:site_name"]', (el) => el.content)).toBe(title);
     expect(await page.$eval('meta[property="og:type"]', (el) => el.content)).toBe('website');
@@ -20,7 +21,9 @@ describe('metatag/ogp', () => {
     expect(await page.$eval('meta[property="twitter:card"]', (el) => el.content)).toBe('summary');
   });
 
-  test('ルームページで、descriptionが正しいこと', async () => {
+  test('ルームページで、OGが正しいこと', async () => {
+    const description ='プランニングポーカーやろー🙌';
+    
     await page.goto(urls.room());
     expect(await page.$eval('meta[property="og:site_name"]', (el) => el.content)).toBe(title);
     expect(await page.$eval('meta[property="og:type"]', (el) => el.content)).toBe('website');

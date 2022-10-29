@@ -1,9 +1,6 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import styles from './header.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faMugSaucer } from '@fortawesome/free-solid-svg-icons';
+import Script from 'next/script';
 
 const Header: NextPage = () => {
   const shareText = encodeURIComponent(process.env.NEXT_PUBLIC_BASE_URL);
@@ -21,22 +18,17 @@ const Header: NextPage = () => {
         <div className='navbar-menu'>
           <div className='navbar-end'>
             <a
-              href={`https://twitter.com/intent/tweet?text=${shareText}`}
-              className={`${styles.twitter} navbar-item`}
-              target='_blank'
-              rel='noreferrer'
-              data-testid='shareTwitter'
-            >
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a
               href='https://www.buymeacoffee.com/at946'
+              className='navbar-item'
               target='_blank'
               rel='noreferrer'
-              className={`${styles.buymeacoffee} navbar-item`}
               data-testid='buymeacoffee'
             >
-              <FontAwesomeIcon icon={faMugSaucer} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src='https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png'
+                alt='Buy me a coffee'
+              />
             </a>
           </div>
         </div>

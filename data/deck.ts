@@ -3,7 +3,7 @@ import { Deck } from '../interfaces/deck';
 const fibonacci: Deck = {
   key: 'fibonacci',
   displayName: 'Fibonacci',
-  cards: [1, 2, 3, 5, 8, 13, 21, '?'],
+  cards: [0, 1, 2, 3, 5, 8, 13, 21, '?'],
 };
 
 const sequential: Deck = {

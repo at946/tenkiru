@@ -13,7 +13,7 @@ describe('rooms/selectDeck', () => {
     const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
       els.map((el) => el.innerText),
     );
-    expect(tefudaCardsValue).toEqual(['1', '2', '3', '5', '8', '13', '21', '?']);
+    expect(tefudaCardsValue).toEqual(['0', '1', '2', '3', '5', '8', '13', '21', '?']);
   });
 
   test('ルームページで、デッキを変更するとき、カードの選択が解除されること', async () => {
@@ -65,7 +65,7 @@ describe('rooms/selectDeck', () => {
     const tefudaCardsValue = await page.$$eval('[data-testid="tefudaCard"]', (els) =>
       els.map((el) => el.innerText),
     );
-    expect(tefudaCardsValue).toEqual(['1', '2', '3', '5', '8', '13', '21', '?']);
+    expect(tefudaCardsValue).toEqual(['0', '1', '2', '3', '5', '8', '13', '21', '?']);
   });
 
   test('ルームページで、「Sequential」を選択したとき、1-10の数列のカードが並ぶこと', async () => {
@@ -106,7 +106,7 @@ describe('rooms/selectDeck', () => {
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('fibonacci');
     expect(
       await page.$$eval('[data-testid="tefudaCard"]', (els) => els.map((el) => el.innerText)),
-    ).toEqual(['1', '2', '3', '5', '8', '13', '21', '?']);
+    ).toEqual(['0', '1', '2', '3', '5', '8', '13', '21', '?']);
 
     await page2.select('[data-testid="deckSelect"]', 'sequential');
     await page.waitForTimeout(100);
@@ -114,7 +114,7 @@ describe('rooms/selectDeck', () => {
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
     expect(
       await page.$$eval('[data-testid="tefudaCard"]', (els) => els.map((el) => el.innerText)),
-    ).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?']);
+    ).toEqual(['0', '1', '2', '3', '5', '8', '13', '21', '?']);
 
     await page2.close();
   });

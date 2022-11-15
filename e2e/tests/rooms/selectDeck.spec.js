@@ -114,7 +114,7 @@ describe('rooms/selectDeck', () => {
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('sequential');
     expect(
       await page.$$eval('[data-testid="tefudaCard"]', (els) => els.map((el) => el.innerText)),
-    ).toEqual(['0', '1', '2', '3', '5', '8', '13', '21', '?']);
+    ).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?']);
 
     await page2.close();
   });

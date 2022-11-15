@@ -52,7 +52,7 @@ describe('rooms/openCards', () => {
       els.map((el) => el.innerText),
     );
     tableCardsClassName = await getAttribute.$$(page, '[data-testid="tableCard"]', 'class');
-    expect(tableCardsValue[0]).toBe('1');
+    expect(tableCardsValue[0]).toBe('0');
     expect(tableCardsClassName[0]).toContain('tableCard_open');
     expect(tableCardsValue[1]).toBe('');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
@@ -93,7 +93,7 @@ describe('rooms/openCards', () => {
       els.map((el) => el.innerText),
     );
     tableCardsClassName = await getAttribute.$$(page2, '[data-testid="tableCard"]', 'class');
-    expect(tableCardsValue[0]).toBe('2');
+    expect(tableCardsValue[0]).toBe('1');
     expect(tableCardsClassName[0]).toContain('tableCard_open');
     expect(tableCardsValue[1]).toBe('');
     expect(tableCardsClassName[1]).toContain('tableCard_blank');
@@ -128,7 +128,7 @@ describe('rooms/openCards', () => {
 
     tableCardValue = await page.$eval('[data-testid="tableCard"]', (el) => el.innerText);
     tefudaCardsClassName = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');
-    expect(tableCardValue).toBe('2');
+    expect(tableCardValue).toBe('1');
     expect(tefudaCardsClassName[0]).not.toContain('tefudaCard_selected');
     expect(tefudaCardsClassName[1]).toContain('tefudaCard_selected');
 
@@ -136,7 +136,7 @@ describe('rooms/openCards', () => {
 
     tableCardValue = await page.$eval('[data-testid="tableCard"]', (el) => el.innerText);
     tefudaCardsClassName = await getAttribute.$$(page, '[data-testid="tefudaCard"]', 'class');
-    expect(tableCardValue).toBe('2');
+    expect(tableCardValue).toBe('1');
     expect(tefudaCardsClassName[0]).not.toContain('tefudaCard_selected');
     expect(tefudaCardsClassName[1]).toContain('tefudaCard_selected');
   });

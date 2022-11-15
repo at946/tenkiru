@@ -19,9 +19,9 @@ describe('rooms/summary', () => {
     const tefudaCards2 = await page2.$$('[data-testid="tefudaCard"]');
     const tefudaCards3 = await page3.$$('[data-testid="tefudaCard"]');
 
-    await tefudaCards[2].click(); // 3を選択
-    await tefudaCards2[3].click(); // 5を選択
-    await tefudaCards3[5].click(); // 13を選択
+    await tefudaCards[3].click(); // 3を選択
+    await tefudaCards2[4].click(); // 5を選択
+    await tefudaCards3[6].click(); // 13を選択
 
     expect(await page.$('[data-testid="max"]')).toBeNull();
     expect(await page.$('[data-testid="min"]')).toBeNull();
@@ -50,8 +50,8 @@ describe('rooms/summary', () => {
     const tefudaCards = await page.$$('[data-testid="tefudaCard"]');
     const tefudaCards2 = await page2.$$('[data-testid="tefudaCard"]');
 
-    await tefudaCards[1].click(); // 2を選択
-    await tefudaCards2[2].click(); // 3を選択
+    await tefudaCards[2].click(); // 2を選択
+    await tefudaCards2[3].click(); // 3を選択
 
     expect(await page.$('[data-testid="max"]')).toBeNull();
     expect(await page.$('[data-testid="min"]')).toBeNull();
@@ -82,9 +82,9 @@ describe('rooms/summary', () => {
     const tefudaCards2 = await page2.$$('[data-testid="tefudaCard"]');
     const tefudaCards3 = await page3.$$('[data-testid="tefudaCard"]');
 
-    await tefudaCards[0].click(); // 1を選択
+    await tefudaCards[1].click(); // 1を選択
     await tefudaCards2[tefudaCards2.length - 1].click(); // ?を選択
-    await tefudaCards3[1].click(); // 2を選択
+    await tefudaCards3[2].click(); // 2を選択
 
     expect(await page.$('[data-testid="max"]')).toBeNull();
     expect(await page.$('[data-testid="min"]')).toBeNull();
@@ -115,9 +115,9 @@ describe('rooms/summary', () => {
     const tefudaCards2 = await page2.$$('[data-testid="tefudaCard"]');
     const tefudaCards3 = await page3.$$('[data-testid="tefudaCard"]');
 
-    await tefudaCards[2].click(); // 3を選択
-    await tefudaCards2[3].click(); // 5を選択
-    await tefudaCards3[5].click(); // 13を選択
+    await tefudaCards[3].click(); // 3を選択
+    await tefudaCards2[4].click(); // 5を選択
+    await tefudaCards3[6].click(); // 13を選択
     await page.click('[data-testid="openButton"]');
     await page.waitForSelector('[data-testid="max"]');
 

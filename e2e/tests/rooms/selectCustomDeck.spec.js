@@ -370,11 +370,12 @@ describe('rooms/customDeck', () => {
       els.map((el) => el.innerText),
     );
     expect(await page.$eval('[data-testid="deckSelect"]', (el) => el.value)).toBe('fibonacci');
-    expect(tefudaCardsValue.length).toBe(8);
-    expect(tefudaCardsValue[0]).toBe('1');
-    expect(tefudaCardsValue[1]).toBe('2');
-    expect(tefudaCardsValue[6]).toBe('21');
-    expect(tefudaCardsValue[7]).toBe('?');
+    expect(tefudaCardsValue.length).toBe(9);
+    expect(tefudaCardsValue[0]).toBe('0');
+    expect(tefudaCardsValue[1]).toBe('1');
+    expect(tefudaCardsValue[2]).toBe('2');
+    expect(tefudaCardsValue[7]).toBe('21');
+    expect(tefudaCardsValue[8]).toBe('?');
 
     await page.select('[data-testid="deckSelect"]', 'custom');
     await page.waitForSelector('[data-testid="customDeckSettingIcon"]');

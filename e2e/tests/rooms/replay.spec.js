@@ -22,7 +22,7 @@ describe('rooms/replay', () => {
 
     expect(await page.$('[data-testid="replayButton"]')).not.toBeNull();
     expect(tefudaCardsClassName[0]).toContain('tefudaCard_selected');
-    expect(tableCardValue).toBe('1');
+    expect(tableCardValue).toBe('0');
     expect(tableCardClassName).toContain('tableCard_open');
 
     await page.click('[data-testid="replayButton"]');
@@ -58,7 +58,7 @@ describe('rooms/replay', () => {
 
     expect(await page.$('[data-testid="replayButton"]')).not.toBeNull();
     expect(tefudaCardsClassName[0]).toContain('tefudaCard_selected');
-    expect(tableCardValue).toBe('1');
+    expect(tableCardValue).toBe('0');
     expect(tableCardClassName).toContain('tableCard_open');
 
     await page2.click('[data-testid="replayButton"]');

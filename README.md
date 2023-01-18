@@ -1,6 +1,6 @@
 ## Tenkir
 
-[Tenkir（テンキル）](https://tenkir.fly.dev/) はオンラインプランニングポーカーツールです。チームメンバーでわいわい使ってね。
+[Tenkir（テンキル）](https://tenkir.fly.dev/) はオンラインでプランニングポーカーを楽しめるツールです。チームメンバーでわいわい使ってね。
 
 ## Getting Started
 
@@ -20,4 +20,9 @@ docker compose up
 
 ```bash
 docker compose run e2e yarn test
+```
+## code formatter
+
+```bash
+docker compose run app yarn format:fix
 ```

@@ -17,7 +17,7 @@ const Footer: NextPage = () => {
             </a>
           </Link>
           <a
-            href='https://twitter.com/mitecolle'
+            href='https://twitter.com/at_946'
             target='_blank'
             rel='noreferrer'
             className='tag is-white'

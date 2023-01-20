@@ -21,6 +21,7 @@ docker compose up
 ```bash
 docker compose run e2e yarn test
 ```
+
 ## code formatter
 
 ```bash

@@ -13,14 +13,14 @@ describe('footer/links', () => {
   test('トップページで、フッターの利用規約を選択したとき、利用規約ページへ遷移すること', async () => {
     await page.goto(urls.top);
     await page.click('[data-testid="link_to_tos"]');
-    await page.waitForNavigation();
+    await page.waitForTimeout(1000);
     expect(page.url()).toBe(urls.tos);
   });
 
   test('トップページで、フッターのプライバシーポリシーを選択したとき、プライバシーポリシーページへ遷移すること', async () => {
     await page.goto(urls.top);
     await page.click('[data-testid="link_to_pp"]');
-    await page.waitForNavigation();
+    await page.waitForTimeout(1000);
     expect(page.url()).toBe(urls.pp);
   });
 

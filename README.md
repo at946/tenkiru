@@ -13,6 +13,7 @@ open http://localhost:3000
 or
 
 ```bash
+docker compose run app yarn install
 docker compose up
 ```
 
@@ -20,6 +21,10 @@ docker compose up
 
 ```bash
 docker compose run e2e yarn test
+```
+
+```bash
+docker compose run playwright yarn test
 ```
 
 ## code formatter

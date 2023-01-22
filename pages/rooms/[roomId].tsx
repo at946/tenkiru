@@ -20,7 +20,7 @@ import { DeckType } from '../../interfaces/deckType';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { updateMembers } from '../../store/membersSlice';
 import { selectCard, updateType } from '../../store/userSlice';
-import { setCardsAreOpen, setCustomDeck, setDeckType } from '../../store/roomSlice';
+import { setCardsAreOpen, setDeckType } from '../../store/roomSlice';
 
 import { event } from '../../lib/gtag';
 import Head from 'next/head';
@@ -73,10 +73,6 @@ const Page: NextPage = () => {
         dispatch(setDeckType(newDeckType));
       });
 
-      socket.on('update-custom-deck', (deck: Card[]) => {
-        dispatch(setCustomDeck(deck));
-      });
-
       socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
         dispatch(setCardsAreOpen(cardsAreOpen));
       });
@@ -108,10 +104,6 @@ const Page: NextPage = () => {
     socket.emit('put-down-a-card', roomId, card);
   };
 
-  const updateCustomDeck = (deck: Card[]): void => {
-    socket.emit('update-custom-deck', roomId, deck);
-  };
-
   return (
     <main>
       <Head>
@@ -133,7 +125,6 @@ const Page: NextPage = () => {
             <Tefuda
               putDownCard={putDownCard}
               changeDeckType={changeDeckType}
-              updateCustomDeck={updateCustomDeck}
             />
           </div>
         </section>

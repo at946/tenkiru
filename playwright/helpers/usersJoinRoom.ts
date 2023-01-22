@@ -1,12 +1,12 @@
 import { Browser, expect, Page } from "@playwright/test"
 
-const usersJoinRoom = async (page: Page, roomUrl: string, browser: Browser, additionalUserCount: number): Promise<Page[]> => {
-  await page.goto(roomUrl)
+const usersJoinRoom = async (page: Page, roomURL: string, browser: Browser, additionalUserCount: number): Promise<Page[]> => {
+  await page.goto(roomURL)
   const pages = []
 
   for (var i = 0; i < additionalUserCount; i++) {
     const newPage = await browser.newPage()
-    newPage.goto(roomUrl)
+    newPage.goto(roomURL)
     pages.push(newPage)
   }
 

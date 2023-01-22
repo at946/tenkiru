@@ -6,7 +6,6 @@ import { Card } from './card';
 export interface ServerToClientEvents {
   'update-members': (members: Member[]) => void;
   'update-deck-type': (deckType: DeckType) => void;
-  'update-custom-deck': (deck: Card[]) => void;
   'update-cards-are-open': (cardsAreOpen: boolean) => void;
 }
 
@@ -17,5 +16,4 @@ export interface ClientToServerEvents {
   'open-cards': (roomId: string) => void;
   replay: (roomId: string) => void;
   'change-member-type': (roomId: string, memberType: MemberType) => void;
-  'update-custom-deck': (roomId: string, deck: Card[]) => void;
 }

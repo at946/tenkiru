@@ -12,8 +12,7 @@ interface Props {
 const TefudaCards: NextPage<Props> = ({ putDownCard }) => {
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
   const deckCards: Card[] | undefined = Decks.find((deck) => deck.key === deckType)?.cards;
-  const customDeckCards: Card[] | undefined = useAppSelector((state) => state.room.customDeck);
-  const cards: Card[] | undefined = deckType === 'custom' ? customDeckCards : deckCards;
+  const cards: Card[] | undefined = deckCards;
 
   return (
     <div className='is-flex is-flex-wrap-wrap is-justify-content-center'>

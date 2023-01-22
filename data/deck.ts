@@ -18,12 +18,6 @@ const tShirtSize: Deck = {
   cards: ['XS', 'S', 'M', 'L', 'XL', '?'],
 };
 
-const custom: Deck = {
-  key: 'custom',
-  displayName: 'Custom',
-  cards: [],
-};
-
-const Decks: Deck[] = [fibonacci, sequential, tShirtSize, custom];
+const Decks: Deck[] = [fibonacci, sequential, tShirtSize];
 
 export default Decks;

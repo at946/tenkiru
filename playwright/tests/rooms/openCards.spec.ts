@@ -1,13 +1,10 @@
 import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
+import usersJoinRoom from '../../helpers/usersJoinRoom';
 
 test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async ({ page, browser }) => {
-  const roomURL = urls.room()
-  await page.goto(roomURL)
-  const page2 = await browser.newPage()
-  await page2.goto(roomURL)
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(2)
-  await expect(page2.locator('data-testid=tableCard')).toHaveCount(2)
+  const roomUrl = urls.room()
+  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1)
   
   const tableCards = page.locator('data-testid=tableCard')
   await expect(tableCards).toHaveCount(2)
@@ -18,12 +15,8 @@ test('ルームページで、誰もカードを場に出していないとき�
 })
 
 test('ルームページで、誰かがカードを場に出している状態で、オープンボタンを選択したとき、場に出たカードがオープンすること', async ({ page, browser }) => {
-  const roomURL = urls.room()
-  await page.goto(roomURL)
-  const page2 = await browser.newPage()
-  await page2.goto(roomURL)
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(2)
-  await expect(page2.locator('data-testid=tableCard')).toHaveCount(2)
+  const roomUrl = urls.room()
+  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1)
 
   // 片方が手札から0のカードを選択
   const tefudaCards = page2.locator('data-testid=tefudaCard')
@@ -49,12 +42,8 @@ test('ルームページで、誰かがカードを場に出している状態�
 })
 
 test('ルームページで、カードをオープンした後、カードの選択を変更できないこと', async ({ page, browser }) => {
-  const roomURL = urls.room()
-  await page.goto(roomURL)
-  const page2 = await browser.newPage()
-  await page2.goto(roomURL)
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(2)
-  await expect(page2.locator('data-testid=tableCard')).toHaveCount(2)
+  const roomUrl = urls.room()
+  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1)
 
   // 片方が手札から1のカードを選択
   const tefudaCards = page2.locator('data-testid=tefudaCard')
@@ -73,12 +62,8 @@ test('ルームページで、カードをオープンした後、カードの�
 })
 
 test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async ({ page, browser }) => {
-  const roomURL = urls.room()
-  await page.goto(roomURL)
-  const page2 = await browser.newPage()
-  await page2.goto(roomURL)
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(2)
-  await expect(page2.locator('data-testid=tableCard')).toHaveCount(2)
+  const roomUrl = urls.room()
+  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1)
 
   // 片方が手札から1のカードを選択
   const tefudaCards = page2.locator('data-testid=tefudaCard')

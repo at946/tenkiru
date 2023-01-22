@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
 
 test('ルームページで、同じ部屋に他のメンバーが入ってきたとき、カード置き場が増えること', async ({ page, browser }) => {
   const roomURL = urls.room()

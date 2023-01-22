@@ -38,3 +38,10 @@ next-env.d.ts
 # e2e tests
 e2e/node_modules
 e2e/screenshots
+
+# playwright
+playwright/node_modules
+playwright/screenshots
+playwright/test-results
+playwright/playwright-report
+playwright/.cache

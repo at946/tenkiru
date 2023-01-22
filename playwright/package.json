@@ -1,0 +1,10 @@
+{
+  "license": "UNLICENCED",
+  "devDependencies": {
+    "@playwright/test": "^1.29.2",
+    "playwright": "^1.29.2"
+  },
+  "scripts": {
+    "test": "yarn playwright test"
+  }
+}

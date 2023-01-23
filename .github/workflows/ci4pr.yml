@@ -27,7 +27,7 @@ jobs:
       - name: prepare for playwright
         run: |
           yarn install
-          playwright install
+          npx playwright install
         working-directory: ./playwright
       - name: start next app
         run: |

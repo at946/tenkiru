@@ -30,12 +30,12 @@ jobs:
           yarn start &
         env:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
-      - name: yarn for e2e
-        run: yarn install
-        working-directory: ./e2e
+      - name: prepare for playwright
+        run: yarn install && playwright install
+        working-directory: ./playwright
       - name: start e2e tests
         run: yarn test
-        working-directory: ./e2e
+        working-directory: ./playwright
         env:
           TARGET_URL: http://localhost:3000
       - name: notify success to slack

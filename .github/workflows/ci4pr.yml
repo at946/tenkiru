@@ -24,15 +24,17 @@ jobs:
           eslint: true
           prettier: true
           auto_fix: true
+      - name: prepare for playwright
+        run: |
+          yarn install
+          playwright install
+        working-directory: ./playwright
       - name: start next app
         run: |
           yarn build
           yarn start &
         env:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
-      - name: prepare for playwright
-        run: yarn install && playwright install
-        working-directory: ./playwright
       - name: start e2e tests
         run: yarn test
         working-directory: ./playwright

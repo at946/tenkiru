@@ -35,10 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# e2e tests
-e2e/node_modules
-e2e/screenshots
-
 # playwright
 playwright/node_modules
 playwright/screenshots

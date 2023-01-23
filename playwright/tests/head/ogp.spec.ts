@@ -8,6 +8,7 @@ test('トップページで、OGが正しいこと', async ({ page }) => {
 
   await page.goto(urls.top)
   await expect(page).toHaveTitle(title)
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', description)
   await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute('content', title)
   await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website')
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', 'http://localhost:3000')
@@ -22,6 +23,7 @@ test('ルームページで、OGが正しいこと', async ({ page }) => {
 
   await page.goto(urls.room())
   await expect(page).toHaveTitle(title)
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', description)
   await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute('content', title)
   await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website')
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', 'http://localhost:3000')

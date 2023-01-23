@@ -1,21 +1,27 @@
-import { Browser, expect, Page } from "@playwright/test"
+import { Browser, expect, Page } from '@playwright/test';
 
-const usersJoinRoom = async (page: Page, roomURL: string, browser: Browser, additionalUserCount: number): Promise<Page[]> => {
-  await page.goto(roomURL)
-  const pages = []
+const usersJoinRoom = async (
+  page: Page,
+  roomURL: string,
+  browser: Browser,
+  additionalUserCount: number,
+): Promise<Page[]> => {
+  await page.goto(roomURL);
+  const pages = [];
 
   for (var i = 0; i < additionalUserCount; i++) {
-    const newPage = await browser.newPage()
-    newPage.goto(roomURL)
-    pages.push(newPage)
+    const newPage = await browser.newPage();
+    await newPage.goto(roomURL);
+    pages.push(newPage);
   }
 
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(1 + additionalUserCount)
+  const userCount = additionalUserCount + 1;
+  await expect(page.locator('data-testid=tableCard')).toHaveCount(userCount);
   for (var i = 0; i < pages.length; i++) {
-    await expect(pages[i].locator('data-testid=tableCard')).toHaveCount(1 + additionalUserCount)
+    await expect(pages[i].locator('data-testid=tableCard')).toHaveCount(userCount);
   }
 
-  return pages
-}
+  return pages;
+};
 
-export default usersJoinRoom
+export default usersJoinRoom;

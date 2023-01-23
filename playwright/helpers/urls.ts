@@ -1,10 +1,10 @@
 const baseUrl: string = process.env.TARGET_URL || 'http://localhost:3000';
 
 interface URLs {
-  top: string,
-  room: () => string,
-  tos: string,
-  pp: string,
+  top: string;
+  room: () => string;
+  tos: string;
+  pp: string;
 }
 
 const urls: URLs = {

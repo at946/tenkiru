@@ -20,10 +20,6 @@ docker compose up
 ## test
 
 ```bash
-docker compose run e2e yarn test
-```
-
-```bash
 docker compose run playwright yarn test
 ```
 

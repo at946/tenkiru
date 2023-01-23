@@ -14,7 +14,7 @@ test('トップページで、ヘッダーのコーヒーアイコンを選択�
 test('ルームページで、ヘッダーのコーヒーアイコンを選択したとき、buymeacoffeeのページへ遷移すること', async ({
   page,
 }) => {
-  await userJoinRoom(page, urls.room())
+  await userJoinRoom(page, urls.room());
   const buymeacoffeeLink = page.locator('data-testid=buymeacoffee');
   await expect(buymeacoffeeLink).toHaveAttribute('href', 'https://www.buymeacoffee.com/at946');
   await expect(buymeacoffeeLink).toHaveAttribute('target', '_blank');

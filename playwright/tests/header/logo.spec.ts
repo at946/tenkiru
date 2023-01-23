@@ -15,7 +15,7 @@ test('ルームページで、ヘッダーのサービス名を選択したと�
   page,
 }) => {
   const roomURL = urls.room();
-  await userJoinRoom(page, roomURL)
+  await userJoinRoom(page, roomURL);
   await expect(page).toHaveURL(roomURL);
   await page.click('[data-testid="logo"]');
   await expect(page).toHaveURL(urls.top);

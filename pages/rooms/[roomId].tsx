@@ -122,10 +122,7 @@ const Page: NextPage = () => {
         <section className='section'>
           <div className='container'>
             <MemberTypeToggle changeMemberType={changeMemberType} />
-            <Tefuda
-              putDownCard={putDownCard}
-              changeDeckType={changeDeckType}
-            />
+            <Tefuda putDownCard={putDownCard} changeDeckType={changeDeckType} />
           </div>
         </section>
       </div>

@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
 
 test('トップページで、フッターのコピーライトを選択したとき、開発者のTwitterプロフィールページへ遷移すること', async ({ page }) => {
   await page.goto(urls.top)

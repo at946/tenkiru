@@ -71,7 +71,7 @@ test('ルームページで、デッキがFibonacci以外を選択された状�
 
   await expect(page2.locator('data-testid=deckSelect')).toHaveValue('sequential');
   const tefudaCards = page2.locator('data-testid=tefudaCard');
-  const expectTefudaCards = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?'];
+  const expectTefudaCards = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?'];
   for (var i = 0; i < (await tefudaCards.count()); i++) {
     await expect(tefudaCards.nth(i)).toHaveText(expectTefudaCards[i]);
   }

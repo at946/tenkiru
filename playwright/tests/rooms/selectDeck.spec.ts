@@ -79,18 +79,19 @@ test('ルームページで、「Sequential」を選択したとき、1-10の数
 
   await expect(page.locator('data-testid=deckSelect')).toHaveValue('sequential');
   const tefudaCards = page.locator('data-testid=tefudaCard');
-  await expect(tefudaCards).toHaveCount(11);
-  await expect(tefudaCards.nth(0)).toHaveText('1');
-  await expect(tefudaCards.nth(1)).toHaveText('2');
-  await expect(tefudaCards.nth(2)).toHaveText('3');
-  await expect(tefudaCards.nth(3)).toHaveText('4');
-  await expect(tefudaCards.nth(4)).toHaveText('5');
-  await expect(tefudaCards.nth(5)).toHaveText('6');
-  await expect(tefudaCards.nth(6)).toHaveText('7');
-  await expect(tefudaCards.nth(7)).toHaveText('8');
-  await expect(tefudaCards.nth(8)).toHaveText('9');
-  await expect(tefudaCards.nth(9)).toHaveText('10');
-  await expect(tefudaCards.nth(10)).toHaveText('?');
+  await expect(tefudaCards).toHaveCount(12);
+  await expect(tefudaCards.nth(0)).toHaveText('0');
+  await expect(tefudaCards.nth(1)).toHaveText('1');
+  await expect(tefudaCards.nth(2)).toHaveText('2');
+  await expect(tefudaCards.nth(3)).toHaveText('3');
+  await expect(tefudaCards.nth(4)).toHaveText('4');
+  await expect(tefudaCards.nth(5)).toHaveText('5');
+  await expect(tefudaCards.nth(6)).toHaveText('6');
+  await expect(tefudaCards.nth(7)).toHaveText('7');
+  await expect(tefudaCards.nth(8)).toHaveText('8');
+  await expect(tefudaCards.nth(9)).toHaveText('9');
+  await expect(tefudaCards.nth(10)).toHaveText('10');
+  await expect(tefudaCards.nth(11)).toHaveText('?');
 });
 
 test('ルームページで、「T-shirt size」を選択したとき、1-10の数列のカードが並ぶこと', async ({

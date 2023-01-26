@@ -22,5 +22,7 @@ RUN apt update \
         libxkbcommon0 \
         libasound2 \
         libwayland-client0
-RUN npx playwright install
+# ※ 注意 ※
+# ここを playwright/package.json のバージョンと揃えないとテストが動かない
+RUN npx playwright@1.29.2 install
 RUN yarn install

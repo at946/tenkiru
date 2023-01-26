@@ -22,5 +22,8 @@ RUN apt update \
         libxkbcommon0 \
         libasound2 \
         libwayland-client0
-RUN npx playwright install
-RUN yarn install
+
+COPY ./package.json .
+COPY ./yarn.lock .
+RUN yarn install \
+    && ./node_modules/.bin/playwright install

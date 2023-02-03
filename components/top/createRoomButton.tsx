@@ -1,3 +1,5 @@
+'use client';
+
 import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';

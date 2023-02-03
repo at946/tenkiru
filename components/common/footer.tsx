@@ -5,22 +5,18 @@ const Footer: NextPage = () => {
   return (
     <footer className='footer mt-auto py-5 has-background-white'>
       <div className='content has-text-centered'>
-        <div className='tags is-centered mb-1'>
-          <Link href='/tos'>
-            <a className='tag is-white' data-testid='link_to_tos'>
-              利用規約
-            </a>
+        <div className='buttons is-centered mb-1'>
+          <Link href='/tos' className='button is-text is-small' data-testid='link_to_tos'>
+            利用規約
           </Link>
-          <Link href='/pp'>
-            <a className='tag is-white' data-testid='link_to_pp'>
-              プライバシーポリシー
-            </a>
+          <Link href='/pp' className='button is-text is-small' data-testid='link_to_pp'>
+            プライバシーポリシー
           </Link>
           <a
             href='https://twitter.com/at_946'
             target='_blank'
             rel='noreferrer'
-            className='tag is-white'
+            className='button is-text is-small'
             data-testid='link_to_inquiry'
           >
             お問い合わせ
@@ -30,7 +26,6 @@ const Footer: NextPage = () => {
           href='https://twitter.com/at_946'
           target='_blank'
           rel='noopener noreferrer'
-          className='has-text-black'
           data-testid='copyright'
         >
           @asato

@@ -13,17 +13,16 @@ const CreateRoomButton: NextPage<Props> = ({ roomId }) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
   return (
-    <Link href={`/rooms/${encodeURIComponent(roomId)}`}>
-      <a
-        className='button is-rounded is-outlined is-primary mt-5'
-        onClick={() => event({ action: 'create_room', category: 'engagement', label: '' })}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        data-testid='createRoomButton'
-      >
-        <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
-        <span>Create a room</span>
-      </a>
+    <Link
+      href={`/rooms/${encodeURIComponent(roomId)}`}
+      className='button is-rounded is-outlined is-primary mt-5'
+      onClick={() => event({ action: 'create_room', category: 'engagement', label: '' })}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      data-testid='createRoomButton'
+    >
+      <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
+      <span>Create a room</span>
     </Link>
   );
 };

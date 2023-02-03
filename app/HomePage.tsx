@@ -1,12 +1,12 @@
-import type { NextPage, GetServerSideProps } from 'next';
-import { v4 } from 'uuid';
+'use client';
+
 import CreateRoomButton from '../components/top/createRoomButton';
 
-type Props = {
+interface Props {
   roomId: string;
-};
+}
 
-const Home: NextPage<Props> = ({ roomId }: Props) => {
+export default function HomePage({ roomId }: Props) {
   return (
     <div className='has-text-centered'>
       <section className='section'>
@@ -16,15 +16,4 @@ const Home: NextPage<Props> = ({ roomId }: Props) => {
       </section>
     </div>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const props: Props = {
-    roomId: v4(),
-  };
-  return {
-    props: props,
-  };
-};
-
-export default Home;
+}

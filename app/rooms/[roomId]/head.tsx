@@ -1,8 +1,7 @@
-const title: string = 'Tenkir';
-const description: string =
-  'Tenkir（テンキル）はオンラインプランニングポーカーツールです。チームメンバーでわいわい使ってね。';
+const Head = () => {
+  const title: string = 'Tenkir';
+  const description: string = 'プランニングポーカーやろ〜。Tenkirに集合〜🙌';
 
-export default function Head() {
   return (
     <>
       <title>{title}</title>
@@ -18,4 +17,6 @@ export default function Head() {
       <meta property='twitter:card' content='summary' />
     </>
   );
-}
+};
+
+export default Head;

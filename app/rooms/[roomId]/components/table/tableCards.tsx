@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import TableCard from './tableCard';
-import { Member } from '../../../interfaces/member';
-import { useAppSelector } from '../../../store/hooks';
+import { Member } from '../../../../../interfaces/member';
+import { useAppSelector } from '../../../../../store/hooks';
 
 const TableCards: NextPage = () => {
   const members: Member[] = useAppSelector((state) => state.members.members);

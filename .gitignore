@@ -41,3 +41,6 @@ playwright/screenshots
 playwright/test-results
 playwright/playwright-report
 playwright/.cache
+
+# vscode
+.vscode

@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { Card } from '../../interfaces/card';
+import { Card } from '../../../../interfaces/card';
 import styles from './card.module.scss';
 
 interface Props {

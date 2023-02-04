@@ -1,6 +1,8 @@
+'use client';
+
 import { NextPage } from 'next';
 
-const PP: NextPage = () => {
+const PPPage: NextPage = () => {
   return (
     <section className='section'>
       <h1 className='title is-4'>プライバシーポリシー</h1>
@@ -98,4 +100,4 @@ const PP: NextPage = () => {
   );
 };
 
-export default PP;
+export default PPPage;

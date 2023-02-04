@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import { Card as IFCard } from '../../../interfaces/card';
-import { MemberType } from '../../../interfaces/memberType';
-import { useAppSelector } from '../../../store/hooks';
+import { Card as IFCard } from '../../../../../interfaces/card';
+import { MemberType } from '../../../../../interfaces/memberType';
+import { useAppSelector } from '../../../../../store/hooks';
 import Card from '../card';
 import styles from './tefudaCard.module.scss';
 

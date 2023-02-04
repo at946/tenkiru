@@ -1,12 +1,13 @@
 'use client';
 
+import { NextPage } from 'next';
 import CreateRoomButton from '../components/top/createRoomButton';
 
 interface Props {
   roomId: string;
 }
 
-export default function HomePage({ roomId }: Props) {
+const HomePage: NextPage<Props> = ({ roomId }) => {
   return (
     <div className='has-text-centered'>
       <section className='section'>
@@ -16,4 +17,6 @@ export default function HomePage({ roomId }: Props) {
       </section>
     </div>
   );
-}
+};
+
+export default HomePage;

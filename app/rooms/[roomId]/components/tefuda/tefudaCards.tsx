@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import TefudaCard from './tefudaCard';
-import Decks from '../../../data/deck';
-import { Card } from '../../../interfaces/card';
-import { DeckType } from '../../../interfaces/deckType';
-import { useAppSelector } from '../../../store/hooks';
+import Decks from '../../../../../data/deck';
+import { Card } from '../../../../../interfaces/card';
+import { DeckType } from '../../../../../interfaces/deckType';
+import { useAppSelector } from '../../../../../store/hooks';
 
 interface Props {
   putDownCard: (card: Card) => void;

@@ -6,8 +6,6 @@ interface Params {
   };
 }
 
-const Page = async ({ params }: Params) => {
+export default async function Page({ params }: Params) {
   return <RoomPage roomId={params.roomId} />;
-};
-
-export default Page;
+}

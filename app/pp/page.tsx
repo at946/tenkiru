@@ -1,8 +1,5 @@
-import { NextPage } from 'next';
 import PPPage from './PPPage';
 
-const Page: NextPage = () => {
+export default function Page() {
   return <PPPage />;
-};
-
-export default Page;
+}

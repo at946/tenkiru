@@ -14,11 +14,7 @@ type NextApiResponseSocketIO = NextApiResponse & {
 };
 
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
-  if (res.socket.server.io) {
-    console.log('Socket is already running.');
-  } else {
-    console.log('Socket is initializing');
-
+  if (!res.socket.server.io) {
     const io = new SocketIOServer<ClientToServerEvents, ServerToClientEvents>(
       res.socket.server as any,
     );

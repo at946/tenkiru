@@ -2,11 +2,14 @@ import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
 
 const title: string = 'Tenkir';
+const description: string =
+  'Tenkirは無料のオンラインプランニングポーカーアプリです。' +
+  'XPやスクラムなどのアジャイルなプロジェクト管理に最適です。' +
+  'チームでの見積もりをリアルタイムで共有できます。' +
+  '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
+  '直感的なUIと使いやすさが魅力です。';
 
 test('トップページで、OGが正しいこと', async ({ page }) => {
-  const description: string =
-    'Tenkir（テンキル）はオンラインプランニングポーカーツールです。チームメンバーでわいわい使ってね。';
-
   await page.goto(urls.top);
   await expect(page).toHaveTitle(title);
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', description);
@@ -29,8 +32,6 @@ test('トップページで、OGが正しいこと', async ({ page }) => {
 });
 
 test('ルームページで、OGが正しいこと', async ({ page }) => {
-  const description = 'プランニングポーカーやろ〜。Tenkirに集合〜🙌';
-
   await page.goto(urls.room());
   await expect(page).toHaveTitle(title);
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', description);

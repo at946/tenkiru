@@ -1,11 +1,12 @@
-interface Props {
-  description?: string;
-}
-
-const HeadTags = ({
-  description = 'Tenkir（テンキル）はオンラインプランニングポーカーツールです。チームメンバーでわいわい使ってね。',
-}: Props) => {
+const HeadTags = () => {
   const title = 'Tenkir';
+  const description =
+    'Tenkirは無料のオンラインプランニングポーカーアプリです。' +
+    'XPやスクラムなどのアジャイルなプロジェクト管理に最適です。' +
+    'チームでの見積もりをリアルタイムで共有できます。' +
+    '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
+    '直感的なUIと使いやすさが魅力です。';
+
   return (
     <>
       <title>{title}</title>

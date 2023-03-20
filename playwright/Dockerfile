@@ -1,7 +1,9 @@
 FROM node:19.4
 ENV HOST=0.0.0.0 \
     TZ=Asia/Tokyo \
-    LANGUAGE=ja
+    LANGUAGE=ja \
+    LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8
 
 WORKDIR /playwright
 

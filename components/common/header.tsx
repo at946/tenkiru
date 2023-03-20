@@ -1,5 +1,7 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 
 const Header: NextPage = () => {
   return (
@@ -17,17 +19,14 @@ const Header: NextPage = () => {
         <div className='navbar-menu'>
           <div className='navbar-end'>
             <a
-              href='https://www.buymeacoffee.com/at946'
+              href='https://note.com/_at_946/n/nb84babf02d87'
               className='navbar-item'
               target='_blank'
               rel='noreferrer'
-              data-testid='buymeacoffee'
+              data-testid='support'
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src='https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png'
-                alt='Buy me a coffee'
-              />
+              <FontAwesomeIcon icon={faMugHot} className='mr-1' />
+              <span>support</span>
             </a>
           </div>
         </div>

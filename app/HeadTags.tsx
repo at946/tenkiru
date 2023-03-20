@@ -20,7 +20,7 @@ const HeadTags = () => {
       <meta key='og:description' property='og:description' content={description} />
       <meta property='og:image' content={`${process.env.NEXT_PUBLIC_BASE_URL}/ogp.jpg`} />
       <meta property='twitter:card' content='summary' />
-      <meta name="google-site-verification" content="Ah3duN64SajYBZS8Bc46SiFiEddyFhimdaawZmc20Z4" />
+      <meta name='google-site-verification' content='Ah3duN64SajYBZS8Bc46SiFiEddyFhimdaawZmc20Z4' />
     </>
   );
 };

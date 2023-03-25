@@ -17,7 +17,7 @@ test('トップページで、OGが正しいこと', async ({ page }) => {
   await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website');
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
     'content',
-    'http://localhost:3000',
+    'http://localhost:3000/',
   );
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', title);
   await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
@@ -28,7 +28,7 @@ test('トップページで、OGが正しいこと', async ({ page }) => {
     'content',
     'http://localhost:3000/ogp.jpg',
   );
-  await expect(page.locator('meta[property="twitter:card"]')).toHaveAttribute('content', 'summary');
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary');
 });
 
 test('ルームページで、OGが正しいこと', async ({ page }) => {
@@ -39,7 +39,7 @@ test('ルームページで、OGが正しいこと', async ({ page }) => {
   await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'website');
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
     'content',
-    'http://localhost:3000',
+    'http://localhost:3000/',
   );
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', title);
   await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
@@ -50,5 +50,5 @@ test('ルームページで、OGが正しいこと', async ({ page }) => {
     'content',
     'http://localhost:3000/ogp.jpg',
   );
-  await expect(page.locator('meta[property="twitter:card"]')).toHaveAttribute('content', 'summary');
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary');
 });

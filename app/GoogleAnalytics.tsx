@@ -11,7 +11,7 @@ const usePageView = () => {
 
   useEffect(() => {
     if (!GA_TRACKING_ID || pathname === null) return;
-    const url: string = `${pathname}${searchParams?.toString() ?? ''}`
+    const url: string = `${pathname}${searchParams?.toString() ?? ''}`;
     pageview(url);
   }, [pathname, searchParams]);
 };

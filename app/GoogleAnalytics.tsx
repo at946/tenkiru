@@ -1,17 +1,17 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
+import { ReadonlyURLSearchParams, usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect } from 'react';
 import { GA_TRACKING_ID, pageview } from '../lib/gtag';
 
 const usePageView = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const pathname: string | null = usePathname();
+  const searchParams: ReadonlyURLSearchParams | null = useSearchParams();
 
   useEffect(() => {
-    if (!GA_TRACKING_ID) return;
-    const url = pathname + searchParams.toString();
+    if (!GA_TRACKING_ID || pathname === null) return;
+    const url: string = `${pathname}${searchParams?.toString() ?? ''}`
     pageview(url);
   }, [pathname, searchParams]);
 };

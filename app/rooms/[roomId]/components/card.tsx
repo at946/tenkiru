@@ -10,7 +10,6 @@ interface Props {
 
 const Card: NextPage<Props> = ({ value, additionalClassName, testId }) => {
   const className: string = `
-    box
     is-flex
     is-justify-content-center
     is-align-items-center

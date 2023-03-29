@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { io, Socket } from 'socket.io-client';
 
 // interfaces
-import { ClientToServerEvents, ServerToClientEvents } from '../../../interfaces/socket';
-import { Member } from '../../../interfaces/member';
-import { MemberType } from '../../../interfaces/memberType';
-import { Card } from '../../../interfaces/card';
-import { DeckType } from '../../../interfaces/deckType';
+import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
+import { Member } from '@/interfaces/member';
+import { MemberType } from '@/interfaces/memberType';
+import { Card } from '@/interfaces/card';
+import { DeckType } from '@/interfaces/deckType';
 
 // components
 import RoomInfo from './components/roomInfo';
@@ -17,12 +17,12 @@ import MemberTypeToggle from './components/memberTypeToggle';
 import Tefuda from './components/tefuda/tefuda';
 
 // stores
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { updateMembers } from '../../../store/membersSlice';
-import { selectCard, updateType } from '../../../store/userSlice';
-import { setCardsAreOpen, setDeckType } from '../../../store/roomSlice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { updateMembers } from '@/store/membersSlice';
+import { selectCard, updateType } from '@/store/userSlice';
+import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 
-import { event } from '../../../lib/gtag';
+import { event } from '@/lib/gtag';
 import { NextPage } from 'next';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
@@ -35,43 +35,42 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
 
-  useEffect(() => {
-    socketInitializer();
+  const socketInitializerCallback = useCallback(() => {
+    if (!roomId) return;
+
+    fetch('/api/socket').then(() => {
+      socket = io();
+
+      socket.on('update-members', onUpdateMembers);
+      socket.on('update-deck-type', onUpdateDeckType);
+      socket.on('update-cards-are-open', onUpdateCardsAreOpen);
+
+      socket.emit('join-room', roomId);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId]);
 
-  const socketInitializer = () => {
-    (async () => {
-      if (!roomId) return;
+  useEffect(() => {
+    socketInitializerCallback();
+    return () => {
+      socket.close();
+    };
+  }, [socketInitializerCallback]);
 
-      await fetch('/api/socket');
-      socket = io();
+  const onUpdateMembers = (members: Member[]) => {
+    dispatch(updateMembers(members));
+    const me: Member | undefined = members.find((v) => v.id === socket.id);
+    if (!me) return;
+    dispatch(updateType(me.type));
+    dispatch(selectCard(me.selectedCard));
+  };
 
-      socket.on('connect', () => {
-        console.log('connect');
-        socket.emit('join-room', roomId);
-      });
+  const onUpdateDeckType = (newDeckType: DeckType) => {
+    dispatch(setDeckType(newDeckType));
+  };
 
-      socket.on('update-members', (members) => {
-        dispatch(updateMembers(members));
-        const me: Member | undefined = members.find((v) => v.id === socket.id);
-        if (!me) return;
-        dispatch(updateType(me.type));
-        dispatch(selectCard(me.selectedCard));
-      });
-
-      socket.on('update-deck-type', (newDeckType: DeckType) => {
-        dispatch(setDeckType(newDeckType));
-      });
-
-      socket.on('update-cards-are-open', (cardsAreOpen: boolean) => {
-        dispatch(setCardsAreOpen(cardsAreOpen));
-      });
-
-      socket.on('disconnect', () => {
-        console.log('disconnect');
-      });
-    })();
+  const onUpdateCardsAreOpen = (cardsAreOpen: boolean) => {
+    dispatch(setCardsAreOpen(cardsAreOpen));
   };
 
   const changeDeckType = (newDeckType: DeckType): void => {

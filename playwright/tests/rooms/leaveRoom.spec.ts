@@ -2,7 +2,10 @@ import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
 import usersJoinRoom from '../../helpers/usersJoinRoom';
 
-test('ルームページで、別のページに遷移したとき、ルームから抜け出すこと', async ({ page, browser }) => {
+test('ルームページで、別のページに遷移したとき、ルームから抜け出すこと', async ({
+  page,
+  browser,
+}) => {
   const roomURL = urls.room();
   const [page2] = await usersJoinRoom(page, roomURL, browser, 1);
 

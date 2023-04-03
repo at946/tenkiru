@@ -31,9 +31,9 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: 'html',
+  reporter: process.env.CI ? 'github' : [['html', { open: 'never' }], ['dot'] ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  maxFailures: 1,
+  // maxFailures: 1,
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
@@ -44,9 +44,12 @@ const config: PlaywrightTestConfig = {
     trace: 'on-first-retry',
 
     // take a screenshot on test failed
-    screenshot: 'only-on-failure',
+    screenshot: {
+      mode: 'only-on-failure',
+      fullPage: true,
+    },
 
-    headless: true,
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -102,7 +105,7 @@ const config: PlaywrightTestConfig = {
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: 'test-results/',
+  // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
   // webServer: {

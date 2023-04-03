@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
-import userJoinRoom from '../../helpers/userJoinRoom';
 import usersJoinRoom from '../../helpers/usersJoinRoom';
 
 test('ルームページで、デフォルトで「Player」が選択されていること', async ({ context }) => {
@@ -217,9 +216,9 @@ test('ルームページで、「Audience」選択中かつカードオープン
 });
 
 test('ルームページで、メンバーが自分ひとりのときに「Audience」を選択しても問題ないこと', async ({
-  page,
+  context,
 }) => {
-  await userJoinRoom(page, urls.room());
+  const [page] = await usersJoinRoom(context, urls.room(), 1);
 
   const tableCards = page.locator('data-testid=tableCard');
   const tefudaCards = page.locator('data-testid=tefudaCard');

@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
-import userJoinRoom from '../../helpers/userJoinRoom';
 import usersJoinRoom from '../../helpers/usersJoinRoom';
 
-test('ルームページで、デッキはデフォルトで「Fibonacci」が選択されていること', async ({ page }) => {
-  await userJoinRoom(page, urls.room());
+test('ルームページで、デッキはデフォルトで「Fibonacci」が選択されていること', async ({
+  context,
+}) => {
+  const [page] = await usersJoinRoom(context, urls.room(), 1);
 
   await expect(page.locator('data-testid=deckSelect')).toHaveValue('fibonacci');
   const tefudaCards = page.locator('data-testid=tefudaCard');
@@ -20,8 +21,8 @@ test('ルームページで、デッキはデフォルトで「Fibonacci」が�
   await expect(tefudaCards.nth(8)).toHaveText('?');
 });
 
-test('ルームページで、デッキを変更するとき、カードの選択が解除されること', async ({ page }) => {
-  await userJoinRoom(page, urls.room());
+test('ルームページで、デッキを変更するとき、カードの選択が解除されること', async ({ context }) => {
+  const [page] = await usersJoinRoom(context, urls.room(), 1);
   const tefudaCards = page.locator('data-testid=tefudaCard');
   await tefudaCards.nth(0).click();
 
@@ -33,9 +34,9 @@ test('ルームページで、デッキを変更するとき、カードの選�
 });
 
 test('ルームページで、デッキを変更するとき、カードがオープン状態でも場がリセットされること', async ({
-  page,
+  context,
 }) => {
-  await userJoinRoom(page, urls.room());
+  const [page] = await usersJoinRoom(context, urls.room(), 1);
   await page.locator('data-testid=tefudaCard').nth(0).click();
   await page.click('data-testid=openButton');
 
@@ -51,9 +52,9 @@ test('ルームページで、デッキを変更するとき、カードがオ�
 });
 
 test('ルームページで、「Fibonacci」を選択したとき、フィボナッチ数列のカードが並ぶこと', async ({
-  page,
+  context,
 }) => {
-  await userJoinRoom(page, urls.room());
+  const [page] = await usersJoinRoom(context, urls.room(), 1);
   await page.selectOption('data-testid=deckSelect', 'sequential');
   await page.selectOption('data-testid=deckSelect', 'fibonacci');
 
@@ -72,9 +73,9 @@ test('ルームページで、「Fibonacci」を選択したとき、フィボ�
 });
 
 test('ルームページで、「Sequential」を選択したとき、1-10の数列のカードが並ぶこと', async ({
-  page,
+  context,
 }) => {
-  await userJoinRoom(page, urls.room());
+  const [page] = await usersJoinRoom(context, urls.room(), 1);
   await page.selectOption('data-testid=deckSelect', 'sequential');
 
   await expect(page.locator('data-testid=deckSelect')).toHaveValue('sequential');
@@ -95,9 +96,9 @@ test('ルームページで、「Sequential」を選択したとき、1-10の数
 });
 
 test('ルームページで、「T-shirt size」を選択したとき、1-10の数列のカードが並ぶこと', async ({
-  page,
+  context,
 }) => {
-  await userJoinRoom(page, urls.room());
+  const [page] = await usersJoinRoom(context, urls.room(), 1);
   await page.selectOption('data-testid=deckSelect', 'tShirtSize');
 
   await expect(page.locator('data-testid=deckSelect')).toHaveValue('tShirtSize');

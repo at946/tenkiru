@@ -112,12 +112,11 @@ test('ルームページで、「T-shirt size」を選択したとき、1-10の�
 });
 
 test('ルームページで、別のメンバーがデッキを選択したとき、自分の手札に反映されること', async ({
-  page,
-  browser,
+  context,
 }) => {
-  const [page2] = await usersJoinRoom(page, urls.room(), browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const deckSelect = page.locator('data-testid=deckSelect');
+  const deckSelect = page1.locator('data-testid=deckSelect');
   await expect(deckSelect).toHaveValue('fibonacci');
 
   await page2.selectOption('data-testid=deckSelect', 'sequential');

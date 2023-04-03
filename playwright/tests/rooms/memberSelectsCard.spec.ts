@@ -3,13 +3,12 @@ import urls from '../../helpers/urls';
 import usersJoinRoom from '../../helpers/usersJoinRoom';
 
 test('ルームページで、他のメンバーがカードを選択したとき、カードが場に伏せて置かれること', async ({
-  page,
-  browser,
+  context,
 }) => {
   const roomURL = urls.room();
-  const [page2] = await usersJoinRoom(page, roomURL, browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, roomURL, 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
+  const tableCards = page1.locator('data-testid=tableCard');
   await expect(tableCards).toHaveCount(2);
   await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
   await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);

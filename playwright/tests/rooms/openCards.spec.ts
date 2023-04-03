@@ -3,13 +3,12 @@ import urls from '../../helpers/urls';
 import usersJoinRoom from '../../helpers/usersJoinRoom';
 
 test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async ({
-  page,
-  browser,
+  context,
 }) => {
   const roomUrl = urls.room();
-  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
+  const tableCards = page1.locator('data-testid=tableCard');
   await expect(tableCards).toHaveCount(2);
   await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
   await expect(tableCards.nth(0)).toHaveText('');
@@ -18,18 +17,17 @@ test('ルームページで、誰もカードを場に出していないとき�
 });
 
 test('ルームページで、誰かがカードを場に出している状態で、オープンボタンを選択したとき、場に出たカードがオープンすること', async ({
-  page,
-  browser,
+  context,
 }) => {
   const roomUrl = urls.room();
-  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
 
   // 片方が手札から0のカードを選択
   const tefudaCards = page2.locator('data-testid=tefudaCard');
   await tefudaCards.nth(0).click();
 
   // この段階ではテーブルカードは1枚選択済み、1枚未選択
-  const tableCards = page.locator('data-testid=tableCard');
+  const tableCards = page1.locator('data-testid=tableCard');
   await expect(tableCards).toHaveCount(2);
   await expect(tableCards.nth(0)).toHaveClass(/tableCard_close/);
   await expect(tableCards.nth(0)).toHaveText('');
@@ -37,7 +35,7 @@ test('ルームページで、誰かがカードを場に出している状態�
   await expect(tableCards.nth(1)).toHaveText('');
 
   // カードをオープン
-  await page.click('data-testid=openButton');
+  await page1.click('data-testid=openButton');
 
   // 0と未選択のカード
   await expect(tableCards).toHaveCount(2);
@@ -48,19 +46,18 @@ test('ルームページで、誰かがカードを場に出している状態�
 });
 
 test('ルームページで、カードをオープンした後、カードの選択を変更できないこと', async ({
-  page,
-  browser,
+  context,
 }) => {
   const roomUrl = urls.room();
-  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
 
   // 片方が手札から1のカードを選択
   const tefudaCards = page2.locator('data-testid=tefudaCard');
   await tefudaCards.nth(1).click();
 
   // カードをオープン
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(2);
-  await page.locator('data-testid=openButton').click();
+  await expect(page1.locator('data-testid=tableCard')).toHaveCount(2);
+  await page1.locator('data-testid=openButton').click();
 
   // 手札カードを選択できないこと
   await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
@@ -71,20 +68,19 @@ test('ルームページで、カードをオープンした後、カードの�
 });
 
 test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async ({
-  page,
-  browser,
+  context,
 }) => {
   const roomUrl = urls.room();
-  const [page2] = await usersJoinRoom(page, roomUrl, browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
 
   // 片方が手札から1のカードを選択
   const tefudaCards = page2.locator('data-testid=tefudaCard');
   await tefudaCards.nth(2).click();
 
   // カードをオープン
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(2);
-  await page.locator('data-testid=openButton').click();
+  await expect(page1.locator('data-testid=tableCard')).toHaveCount(2);
+  await page1.locator('data-testid=openButton').click();
 
   // オープンボタンが非表示になること
-  await expect(page.locator('data-testid=openButton')).toHaveCount(0);
+  await expect(page1.locator('data-testid=openButton')).toHaveCount(0);
 });

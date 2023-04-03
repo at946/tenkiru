@@ -3,28 +3,27 @@ import urls from '../../helpers/urls';
 import userJoinRoom from '../../helpers/userJoinRoom';
 import usersJoinRoom from '../../helpers/usersJoinRoom';
 
-test('ルームページで、デフォルトで「Player」が選択されていること', async ({ page, browser }) => {
-  await usersJoinRoom(page, urls.room(), browser, 1);
+test('ルームページで、デフォルトで「Player」が選択されていること', async ({ context }) => {
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
+  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
   await expect(memberTypePlayer).toHaveText('Player');
   await expect(memberTypePlayer).toHaveClass('is-active');
 
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
+  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
   await expect(memberTypeAudience).toHaveText('Audience');
   await expect(memberTypeAudience).not.toHaveClass('is-active');
 });
 
 test('ルームページで、「Player」選択中かつカード未選択かつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
-  page,
-  browser,
+  context,
 }) => {
-  const [page2] = await usersJoinRoom(page, urls.room(), browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
+  const tableCards = page1.locator('data-testid=tableCard');
+  const tefudaCards = page1.locator('data-testid=tefudaCard');
+  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
+  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
 
   await expect(tableCards).toHaveCount(2);
   await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
@@ -48,15 +47,14 @@ test('ルームページで、「Player」選択中かつカード未選択か�
 });
 
 test('ルームページで、「Player」選択中かつカード選択済みかつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
-  page,
-  browser,
+  context,
 }) => {
-  const [page2] = await usersJoinRoom(page, urls.room(), browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
+  const tableCards = page1.locator('data-testid=tableCard');
+  const tefudaCards = page1.locator('data-testid=tefudaCard');
+  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
+  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
 
   await tefudaCards.nth(0).click();
 
@@ -82,18 +80,17 @@ test('ルームページで、「Player」選択中かつカード選択済み�
 });
 
 test('ルームページで、「Player」選択中かつカード未選択かつカードオープン済みの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
-  page,
-  browser,
+  context,
 }) => {
-  const [page2] = await usersJoinRoom(page, urls.room(), browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
+  const tableCards = page1.locator('data-testid=tableCard');
+  const tefudaCards = page1.locator('data-testid=tefudaCard');
+  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
+  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
 
   await page2.locator('data-testid=tefudaCard').nth(1).click();
-  await page.locator('data-testid=openButton').click();
+  await page1.locator('data-testid=openButton').click();
 
   await expect(tableCards).toHaveCount(2);
   await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
@@ -117,18 +114,17 @@ test('ルームページで、「Player」選択中かつカード未選択か�
 });
 
 test('ルームページで、「Player」選択中かつカード選択済みかつカードオープン済みの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
-  page,
-  browser,
+  context,
 }) => {
-  const [page2] = await usersJoinRoom(page, urls.room(), browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
+  const tableCards = page1.locator('data-testid=tableCard');
+  const tefudaCards = page1.locator('data-testid=tefudaCard');
+  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
+  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
 
   await tefudaCards.nth(1).click();
-  await page.locator('data-testid=openButton').click();
+  await page1.locator('data-testid=openButton').click();
 
   await expect(tableCards).toHaveCount(2);
   await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
@@ -152,15 +148,14 @@ test('ルームページで、「Player」選択中かつカード選択済み�
 });
 
 test('ルームページで、「Audience」選択中かつカード未オープンの状態で、「Player」を選択したとき、自分のテーブルカードが現れ、手札カードを選べるようになること', async ({
-  page,
-  browser,
+  context,
 }) => {
-  const [page2] = await usersJoinRoom(page, urls.room(), browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
+  const tableCards = page1.locator('data-testid=tableCard');
+  const tefudaCards = page1.locator('data-testid=tefudaCard');
+  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
+  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
 
   await memberTypeAudience.click();
 
@@ -186,20 +181,19 @@ test('ルームページで、「Audience」選択中かつカード未オープ
 });
 
 test('ルームページで、「Audience」選択中かつカードオープン済みの状態で、「Player」を選択したとき、自分のテーブルカードが現れること', async ({
-  page,
-  browser,
+  context,
 }) => {
-  const [page2] = await usersJoinRoom(page, urls.room(), browser, 1);
+  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
+  const tableCards = page1.locator('data-testid=tableCard');
+  const tefudaCards = page1.locator('data-testid=tefudaCard');
+  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
+  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
 
   await memberTypeAudience.click();
 
   await page2.locator('data-testid=tefudaCard').nth(0).click();
-  await page.locator('data-testid=openButton').click();
+  await page1.locator('data-testid=openButton').click();
 
   await expect(tableCards).toHaveCount(1);
   await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);

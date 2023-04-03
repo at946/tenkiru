@@ -1,25 +1,19 @@
-import { Browser, expect, Page } from '@playwright/test';
+import { BrowserContext, expect, Page } from '@playwright/test';
 
 const usersJoinRoom = async (
-  page: Page,
+  context: BrowserContext,
   roomURL: string,
-  browser: Browser,
-  additionalUserCount: number,
+  usersCount: number,
 ): Promise<Page[]> => {
-  await page.goto(roomURL);
-  const pages = [];
+  const pages: Page[] = [];
 
-  for (var i = 0; i < additionalUserCount; i++) {
-    const newPage = await browser.newPage();
-    await newPage.goto(roomURL);
-    pages.push(newPage);
-  }
-
-  const userCount = additionalUserCount + 1;
-  await expect(page.locator('data-testid=tableCard')).toHaveCount(userCount);
-  for (var i = 0; i < pages.length; i++) {
-    await expect(pages[i].locator('data-testid=tableCard')).toHaveCount(userCount);
-  }
+  await Promise.all(
+    Array.from({ length: usersCount }, async () => {
+      const newPage = await context.newPage();
+      await newPage.goto(roomURL, { waitUntil: 'load' });
+      pages.push(newPage);
+    }),
+  );
 
   return pages;
 };

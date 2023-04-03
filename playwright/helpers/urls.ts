@@ -1,5 +1,3 @@
-const baseUrl: string = process.env.TARGET_URL || 'http://localhost:3000';
-
 interface URLs {
   top: string;
   room: () => string;
@@ -8,10 +6,10 @@ interface URLs {
 }
 
 const urls: URLs = {
-  top: `${baseUrl}/`,
-  room: () => `${baseUrl}/rooms/${Math.random().toString(32).substring(2)}`,
-  tos: `${baseUrl}/tos`,
-  pp: `${baseUrl}/pp`,
+  top: '/',
+  room: (): string => `/rooms/${Math.random().toString(32).substring(2)}`,
+  tos: '/tos',
+  pp: '/pp',
 };
 
 export default urls;

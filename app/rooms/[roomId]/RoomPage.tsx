@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 
 // interfaces
@@ -34,6 +34,7 @@ interface Props {
 const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
+  const [isConnected, setIsConnected] = useState(false);
 
   const socketInitializerCallback = useCallback(() => {
     if (!roomId) return;
@@ -41,9 +42,11 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     fetch('/api/socket').then(() => {
       socket = io();
 
+      socket.on('connect', () => setIsConnected(true));
       socket.on('update-members', onUpdateMembers);
       socket.on('update-deck-type', onUpdateDeckType);
       socket.on('update-cards-are-open', onUpdateCardsAreOpen);
+      socket.on('disconnect', () => setIsConnected(false));
 
       socket.emit('join-room', roomId);
     });
@@ -95,22 +98,26 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <div className='has-text-centered'>
-      <section className='section'>
-        <div className='container'>
-          <div className='mb-4'>
+    <>
+      <div className='has-text-centered'>
+        <section className='my-6'>
+          <div className='container'>
             <RoomInfo roomId={roomId} />
+            {isConnected && (
+              <div className='mt-4'>
+                <Table openCards={openCards} replay={replay} />
+              </div>
+            )}
           </div>
-          <Table openCards={openCards} replay={replay} />
-        </div>
-      </section>
-      <section className='section'>
-        <div className='container'>
-          <MemberTypeToggle changeMemberType={changeMemberType} />
-          <Tefuda putDownCard={putDownCard} changeDeckType={changeDeckType} />
-        </div>
-      </section>
-    </div>
+        </section>
+        {isConnected && (
+          <div className='container'>
+            <MemberTypeToggle changeMemberType={changeMemberType} />
+            <Tefuda putDownCard={putDownCard} changeDeckType={changeDeckType} />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

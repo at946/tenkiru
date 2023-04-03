@@ -1,18 +1,11 @@
 import { test, expect } from '@playwright/test';
 import urls from '../../helpers/urls';
-import userJoinRoom from '../../helpers/userJoinRoom';
+import usersJoinRoom from '../../helpers/usersJoinRoom';
 
-const getRoomId = (roomURL: string): string => {
-  return roomURL.replace(`${urls.top}rooms/`, '');
-};
+test('ルームページで、ルームIDを知れること', async ({ context }) => {
+  const [page] = await usersJoinRoom(context, 'rooms/sampleroom', 1);
 
-test('ルームページで、ルームIDを知れること', async ({ page }) => {
-  const roomURL = urls.room();
-  const roomID = getRoomId(roomURL);
-
-  await userJoinRoom(page, roomURL);
-
-  await expect(page.locator('data-testid=roomId')).toHaveText(roomID);
+  await expect(page.locator('data-testid=roomId')).toHaveText('sampleroom');
 });
 
 // test('ルームページで、ルームIDを選択したとき、URLをクリップボードにコピーできること', async ({ page }) => {
@@ -38,13 +31,13 @@ test('シェアされたルームページのURLに直接アクセスしたと�
   const tableCards = page.locator('data-testid=tableCard');
   const roomId = page.locator('data-testid=roomId');
 
-  await page.goto(roomURL1);
+  await page.goto('/rooms/room1');
   await expect(tableCards).toHaveCount(1);
-  await expect(page).toHaveURL(roomURL1);
-  await expect(roomId).toHaveText(getRoomId(roomURL1));
+  await expect(page).toHaveURL('/rooms/room1');
+  await expect(roomId).toHaveText('room1');
 
-  await page.goto(roomURL2);
+  await page.goto('/rooms/room2');
   await expect(tableCards).toHaveCount(1);
-  await expect(page).toHaveURL(roomURL2);
-  await expect(roomId).toHaveText(getRoomId(roomURL2));
+  await expect(page).toHaveURL('/rooms/room2');
+  await expect(roomId).toHaveText('room2');
 });

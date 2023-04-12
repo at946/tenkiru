@@ -16,7 +16,7 @@ const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
   };
 
   return (
-    <div className='tabs is-toggle is-centered'>
+    <div className='tabs is-centered is-boxed'>
       <ul>
         <li
           className={type === 'player' ? 'is-active' : ''}

@@ -6,23 +6,25 @@ import { useAppSelector } from '../../../../../store/hooks';
 
 interface Props {
   card: IFCard;
+  cardStatus: string;
 }
 
-const TableCard: NextPage<Props> = ({ card }) => {
+const TableCard: NextPage<Props> = ({ card, cardStatus }) => {
   let displayCard: IFCard = '';
   let additionalClassName: string = '';
   const isBlank = card === null;
   const isOpen = useAppSelector((state) => state.room.cardsAreOpen);
 
-  if (isBlank) {
-    additionalClassName = styles.blank;
-  } else {
-    if (isOpen) {
+  switch (cardStatus) {
+    case 'blank':
+      additionalClassName = styles.blank;
+      break;
+    case 'open':
       displayCard = card;
       additionalClassName = 'tableCard_open';
-    } else {
+      break;
+    default: // close
       additionalClassName = styles.close;
-    }
   }
 
   return <Card value={displayCard} additionalClassName={additionalClassName} testId='tableCard' />;

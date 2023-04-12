@@ -11,7 +11,7 @@ interface Props {
 const Table: NextPage<Props> = ({ openCards, replay }) => {
   return (
     <div className='box has-background-success is-shadowless'>
-      <div className='mb-4'>
+      <div className='mb-5'>
         <TableCards />
       </div>
       <div className='mb-4'>

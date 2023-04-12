@@ -17,7 +17,7 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
     <div>
       {cardsAreOpen ? (
         <button
-          className='button is-rounded is-light is-primary'
+          className='button is-rounded is-primary'
           onClick={clickReplayButton}
           data-testid='replayButton'
         >
@@ -25,7 +25,7 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
         </button>
       ) : (
         <button
-          className='button is-rounded is-light is-primary'
+          className='button is-rounded is-primary'
           onClick={clickOpenButton}
           disabled={noCardPutOnTable}
           data-testid='openButton'

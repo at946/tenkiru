@@ -6,7 +6,7 @@ import TableCards from './tableCards';
 interface Props {
   openCards: () => void;
   replay: () => void;
-  nominate: () => void;
+  nominate: (memberId: string) => void;
 }
 
 const Table: NextPage<Props> = ({ openCards, replay, nominate }) => {

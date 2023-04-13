@@ -4,7 +4,7 @@ import { Member } from '@/interfaces/member';
 import TableCardGroup from './tableCardGroup';
 
 interface Props {
-  nominate: () => void;
+  nominate: (memberId: string) => void;
 }
 
 const TableCards: NextPage<Props> = ({ nominate }) => {

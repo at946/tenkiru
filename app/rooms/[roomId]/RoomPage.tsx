@@ -46,6 +46,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       socket.on('update-members', onUpdateMembers);
       socket.on('update-deck-type', onUpdateDeckType);
       socket.on('update-cards-are-open', onUpdateCardsAreOpen);
+      socket.on('nominate', onNominate);
       socket.on('disconnect', () => setIsConnected(false));
 
       socket.emit('join-room', roomId);
@@ -76,6 +77,10 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     dispatch(setCardsAreOpen(cardsAreOpen));
   };
 
+  const onNominate = () => {
+    alert('You have been nominated!!🎉');
+  };
+
   const changeDeckType = (newDeckType: DeckType): void => {
     socket.emit('change-deck-type', roomId, newDeckType);
   };
@@ -97,6 +102,10 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('put-down-a-card', roomId, card);
   };
 
+  const nominate = (memberId: string): void => {
+    socket.emit('nominate', memberId);
+  };
+
   return (
     <>
       <div className='has-text-centered'>
@@ -105,7 +114,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
             <RoomInfo roomId={roomId} />
             {isConnected && (
               <div className='mt-4'>
-                <Table openCards={openCards} replay={replay} />
+                <Table openCards={openCards} replay={replay} nominate={nominate} />
               </div>
             )}
           </div>

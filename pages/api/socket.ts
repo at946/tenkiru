@@ -123,6 +123,10 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-members', room.members);
       });
 
+      socket.on('nominate', (memberId) => {
+        io.to(memberId).emit('nominate');
+      });
+
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
           const room: Room | undefined = rooms.find((v) => v.id === roomId);

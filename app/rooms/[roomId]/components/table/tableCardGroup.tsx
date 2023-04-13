@@ -6,7 +6,7 @@ import NominateButton from './nominateButton';
 
 interface Props {
   player: Member;
-  nominate: () => void;
+  nominate: (memberId: string) => void;
 }
 
 const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {

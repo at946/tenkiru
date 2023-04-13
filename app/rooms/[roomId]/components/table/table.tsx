@@ -6,13 +6,14 @@ import TableCards from './tableCards';
 interface Props {
   openCards: () => void;
   replay: () => void;
+  nominate: () => void;
 }
 
-const Table: NextPage<Props> = ({ openCards, replay }) => {
+const Table: NextPage<Props> = ({ openCards, replay, nominate }) => {
   return (
     <div className='box has-background-success is-shadowless'>
       <div className='mb-5'>
-        <TableCards />
+        <TableCards nominate={nominate} />
       </div>
       <div className='mb-4'>
         <SummaryTags />

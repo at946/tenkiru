@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
-import Decks from '../../../../../data/deck';
-import { Deck } from '../../../../../interfaces/deck';
-import { DeckType } from '../../../../../interfaces/deckType';
-import { useAppSelector } from '../../../../../store/hooks';
+import Decks from '@/data/deck';
+import { Deck } from '@/interfaces/deck';
+import { DeckType } from '@/interfaces/deckType';
+import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   select: (deckType: DeckType) => void;

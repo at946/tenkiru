@@ -1,7 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
-import CreateRoomButton from '../components/top/createRoomButton';
+import CreateRoomButton from './components/createRoomButton';
 
 interface Props {
   roomId: string;

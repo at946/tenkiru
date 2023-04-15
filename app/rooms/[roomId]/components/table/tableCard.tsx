@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
 import Card from '../card';
 import styles from './tableCard.module.scss';
-import { Card as IFCard } from '../../../../../interfaces/card';
-import { useAppSelector } from '../../../../../store/hooks';
+import { Card as IFCard } from '@/interfaces/card';
+import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   card: IFCard;

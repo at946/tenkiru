@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import { MemberType } from '../../../../interfaces/memberType';
-import { event } from '../../../../lib/gtag';
-import { useAppSelector } from '../../../../store/hooks';
+import { MemberType } from '@/interfaces/memberType';
+import { event } from '@/lib/gtag';
+import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   changeMemberType: (memberType: MemberType) => void;

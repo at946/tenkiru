@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'bulma-toast';
-import { event } from '../../../../lib/gtag';
+import { event } from '@/lib/gtag';
 
 interface Props {
   roomId: string;

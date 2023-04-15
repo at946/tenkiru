@@ -1,6 +1,6 @@
 import '../styles/globals.scss';
-import Footer from '../components/common/footer';
-import Header from '../components/common/header';
+import Footer from './components/common/footer';
+import Header from './components/common/header';
 
 // fontawesome
 import { config } from '@fortawesome/fontawesome-svg-core';

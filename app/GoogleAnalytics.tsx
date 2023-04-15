@@ -3,7 +3,7 @@
 import { ReadonlyURLSearchParams, usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect } from 'react';
-import { GA_TRACKING_ID, pageview } from '../lib/gtag';
+import { GA_TRACKING_ID, pageview } from '@/lib/gtag';
 
 const usePageView = () => {
   const pathname: string | null = usePathname();

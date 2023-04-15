@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import { Member } from '../../../../../interfaces/member';
-import { useAppSelector } from '../../../../../store/hooks';
+import { Member } from '@/interfaces/member';
+import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   clickOpenButton: () => void;

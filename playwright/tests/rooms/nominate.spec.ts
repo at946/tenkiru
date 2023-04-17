@@ -96,7 +96,7 @@ test('ルームページで、「指名」ボタンを選択したとき、そ�
   // Then - page1にだけ指名アラートが表示される
   // page1でdialogが出たらacceptする
   page1.on('dialog', async (dialog) => {
-    await expect(dialog.message()).toBe('You have been nominated!!🎉');
+    await expect(dialog.message()).toBe('指名されました！🎉');
     dialog.accept();
   });
   // page2や3でdialogが出たらテスト失敗

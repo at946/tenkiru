@@ -14,7 +14,7 @@ const NominateButton: NextPage<Props> = ({ nominate }) => {
       data-testid='nominateButton'
     >
       <FontAwesomeIcon icon={faComment} className='mr-1' />
-      <span>nominate</span>
+      <span>指名</span>
     </button>
   );
 };

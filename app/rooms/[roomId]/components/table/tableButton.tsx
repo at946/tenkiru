@@ -21,7 +21,7 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
           onClick={clickReplayButton}
           data-testid='replayButton'
         >
-          Replay
+          もう一度
         </button>
       ) : (
         <button
@@ -30,7 +30,7 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
           disabled={noCardPutOnTable}
           data-testid='openButton'
         >
-          Open
+          開く
         </button>
       )}
     </div>

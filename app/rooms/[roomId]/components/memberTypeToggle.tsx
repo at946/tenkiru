@@ -23,14 +23,14 @@ const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
           onClick={() => clickMemberType('player')}
           data-testid='memberTypePlayer'
         >
-          <a>Player</a>
+          <a>プレイヤー</a>
         </li>
         <li
           className={type === 'audience' ? 'is-active' : ''}
           onClick={() => clickMemberType('audience')}
           data-testid='memberTypeAudience'
         >
-          <a>Audience</a>
+          <a>観客</a>
         </li>
       </ul>
     </div>

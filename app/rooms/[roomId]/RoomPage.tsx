@@ -78,7 +78,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const onNominate = () => {
-    alert('You have been nominated!!🎉');
+    alert('指名されました！🎉');
   };
 
   const changeDeckType = (newDeckType: DeckType): void => {

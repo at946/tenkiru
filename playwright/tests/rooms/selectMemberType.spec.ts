@@ -6,11 +6,11 @@ test('ルームページで、デフォルトで「Player」が選択されて�
   const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
 
   const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  await expect(memberTypePlayer).toHaveText('Player');
+  await expect(memberTypePlayer).toHaveText('プレイヤー');
   await expect(memberTypePlayer).toHaveClass('is-active');
 
   const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
-  await expect(memberTypeAudience).toHaveText('Audience');
+  await expect(memberTypeAudience).toHaveText('観客');
   await expect(memberTypeAudience).not.toHaveClass('is-active');
 });
 

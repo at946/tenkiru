@@ -3,16 +3,12 @@
 import { NextPage } from 'next';
 import CreateRoomButton from './components/createRoomButton';
 
-interface Props {
-  roomId: string;
-}
-
-const HomePage: NextPage<Props> = ({ roomId }) => {
+const HomePage: NextPage = () => {
   return (
     <div className='has-text-centered'>
       <section className='section'>
         <h1 className='title has-text-primary'>Tenkir</h1>
-        <CreateRoomButton roomId={roomId} />
+        <CreateRoomButton />
       </section>
       <section className='section'>
         <div className='card has-text-left mx-auto mb-6' style={{ maxWidth: '600px' }}>

@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@playwright/test@^1.32.0":
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.32.0.tgz#0cc4c179e62995cc123adb12fdfaa093fed282c4"
-  integrity sha512-zOdGloaF0jeec7hqoLqM5S3L2rR4WxMJs6lgiAeR70JlH7Ml54ZPoIIf3X7cvnKde3Q9jJ/gaxkFh8fYI9s1rg==
+"@playwright/test@^1.29.2":
+  version "1.32.3"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.32.3.tgz#75be8346d4ef289896835e1d2a86fdbe3d9be92a"
+  integrity sha512-BvWNvK0RfBriindxhLVabi8BRe3X0J9EVjKlcmhxjg4giWBD/xleLcg2dz7Tx0agu28rczjNIPQWznwzDwVsZQ==
   dependencies:
     "@types/node" "*"
-    playwright-core "1.32.0"
+    playwright-core "1.32.3"
   optionalDependencies:
     fsevents "2.3.2"
 
@@ -22,7 +22,14 @@ fsevents@2.3.2:
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
-playwright-core@1.32.0:
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.32.0.tgz#730c2d1988d30377480b925aaa6c1b1e2442d67e"
-  integrity sha512-Z9Ij17X5Z3bjpp6XKujGBp9Gv4eViESac9aDmwgQFUEJBW0K80T21m/Z+XJQlu4cNsvPygw33b6V1Va6Bda5zQ==
+playwright-core@1.32.3:
+  version "1.32.3"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.32.3.tgz#e6dc7db0b49e9b6c0b8073c4a2d789a96f519c48"
+  integrity sha512-SB+cdrnu74ZIn5Ogh/8278ngEh9NEEV0vR4sJFmK04h2iZpybfbqBY0bX6+BLYWVdV12JLLI+JEFtSnYgR+mWg==
+
+playwright@^1.29.2:
+  version "1.32.3"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.32.3.tgz#88583167880e42ca04fa8c4cc303680f4ff457d0"
+  integrity sha512-h/ylpgoj6l/EjkfUDyx8cdOlfzC96itPpPe8BXacFkqpw/YsuxkpPyVbzEq4jw+bAJh5FLgh31Ljg2cR6HV3uw==
+  dependencies:
+    playwright-core "1.32.3"

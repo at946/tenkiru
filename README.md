@@ -20,6 +20,8 @@ docker compose up
 ## test
 
 ```bash
+docker compose run playwright yarn
+docker compose build playwright
 docker compose run playwright yarn test
 ```
 

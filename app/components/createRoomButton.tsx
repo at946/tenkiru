@@ -22,7 +22,7 @@ const CreateRoomButton: NextPage = () => {
       data-testid='createRoomButton'
     >
       <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
-      <span>Create a room</span>
+      <span>部屋をつくる</span>
     </Link>
   );
 };

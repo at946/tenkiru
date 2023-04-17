@@ -26,7 +26,7 @@ const Header: NextPage = () => {
               data-testid='support'
             >
               <FontAwesomeIcon icon={faMugHot} className='mr-1' />
-              <span>support</span>
+              <span>開発者を支援</span>
             </a>
           </div>
         </div>

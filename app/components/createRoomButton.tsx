@@ -6,13 +6,11 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
 import { event } from '@/lib/gtag';
+import { v4 } from 'uuid';
 
-interface Props {
-  roomId: string;
-}
-
-const CreateRoomButton: NextPage<Props> = ({ roomId }) => {
+const CreateRoomButton: NextPage = () => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
+  const roomId: string = v4();
 
   return (
     <Link

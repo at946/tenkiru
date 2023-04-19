@@ -24,6 +24,7 @@ import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 
 import { event } from '@/lib/gtag';
 import { NextPage } from 'next';
+import { toast } from 'bulma-toast';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -78,7 +79,11 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const onNominate = () => {
-    alert('指名されました！🎉');
+    toast({
+      message: '指名されました！🎉',
+      type: 'is-danger',
+      position: 'top-center',
+    });
   };
 
   const changeDeckType = (newDeckType: DeckType): void => {

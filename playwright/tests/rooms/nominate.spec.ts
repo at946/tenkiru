@@ -93,16 +93,6 @@ test('ルームページで、自分以外の出したカードの「指名」�
   await page3.getByTestId('tefudaCard').nth(2).click();
   await page1.getByTestId('openButton').click();
 
-  // Then - page1にだけ指名アラートが表示される
-  // page1でdialogが出たらacceptする
-  page1.on('dialog', async (dialog) => {
-    await expect(dialog.message()).toBe('指名されました！🎉');
-    dialog.accept();
-  });
-  // page2や3でdialogが出たらテスト失敗
-  page2.on('dialog', async (dialog) => await expect(true).toBeFalsy());
-  page3.on('dialog', async (dialog) => await expect(true).toBeFalsy());
-
   // When - page1の出したカードの指名ボタンを選択
   await page2
     .getByTestId('tableCardGroup')
@@ -110,12 +100,19 @@ test('ルームページで、自分以外の出したカードの「指名」�
     .getByTestId('nominateButton')
     .click();
 
-  // Then - page2にだけ指名完了メッセージが表示される
+  // Then - page2に指名完了メッセージが表示される
   await expect(page1.getByText('指名しました！')).not.toBeVisible();
   await expect(page2.getByText('指名しました！')).toBeVisible();
   await expect(page3.getByText('指名しました！')).not.toBeVisible();
-  // 一定時間後、メッセージは消える
+
+  // Then - page1に指名メッセージが表示される
+  await expect(page1.getByText('指名されました！🎉')).toBeVisible();
+  await expect(page2.getByText('指名されました！🎉')).not.toBeVisible();
+  await expect(page3.getByText('指名されました！🎉')).not.toBeVisible();
+
+  // Then - 一定時間後、メッセージは消える
   await expect(page2.getByText('指名しました！')).not.toBeVisible();
+  await expect(page1.getByText('指名されました！🎉')).not.toBeVisible();
 });
 
 test('ルームページで、自分の出したカードの「指名」ボタンを選択したとき、自分に「指名アラート」が表示されること', async ({
@@ -128,15 +125,6 @@ test('ルームページで、自分の出したカードの「指名」ボタ�
   await page3.getByTestId('tefudaCard').nth(0).click();
   await page1.getByTestId('openButton').click();
 
-  // Then - page1に指名アラートが表示される
-  page1.on('dialog', async (dialog) => {
-    await expect(dialog.message()).toBe('指名されました！🎉');
-    dialog.accept();
-  });
-  // page2や3でdialogが出たらテスト失敗
-  page2.on('dialog', async (dialog) => await expect(true).toBeFalsy());
-  page3.on('dialog', async (dialog) => await expect(true).toBeFalsy());
-
   // When - page1でpage1のカードを指名する
   await page1
     .getByTestId('tableCardGroup')
@@ -148,6 +136,13 @@ test('ルームページで、自分の出したカードの「指名」ボタ�
   await expect(page1.getByText('指名しました！')).toBeVisible();
   await expect(page2.getByText('指名しました！')).not.toBeVisible();
   await expect(page3.getByText('指名しました！')).not.toBeVisible();
+
+  // Then - page1に指名モーダルが表示される
+  await expect(page1.getByText('指名されました！🎉')).toBeVisible();
+  await expect(page2.getByText('指名されました！🎉')).not.toBeVisible();
+  await expect(page3.getByText('指名されました！🎉')).not.toBeVisible();
+
   // 一定時間後、メッセージは消える
   await expect(page1.getByText('指名しました！')).not.toBeVisible();
+  await expect(page1.getByText('指名されました！🎉')).not.toBeVisible();
 });

@@ -40,7 +40,6 @@ jobs:
         working-directory: ./playwright
         env:
           TARGET_URL: http://localhost:3000
-      - run: ls -R
       - uses: actions/upload-artifact@v3
         if: always()
         with:

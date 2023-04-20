@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: 16
       - uses: actions/cache@v2
         id: cache_node_modules
         with:
@@ -27,7 +27,7 @@ jobs:
       - name: prepare for playwright
         run: |
           yarn install
-          npx playwright install
+          npx playwright install --with-deps
         working-directory: ./playwright
       - name: start next app
         run: |
@@ -40,6 +40,12 @@ jobs:
         working-directory: ./playwright
         env:
           TARGET_URL: http://localhost:3000
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright/playwright-report/
+          retention-days: 1
       - name: notify success to slack
         uses: rtCamp/action-slack-notify@v2
         env:

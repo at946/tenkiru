@@ -19,7 +19,6 @@ const CreateRoomButton: NextPage = () => {
       onClick={() => event({ action: 'create_room', category: 'engagement', label: '' })}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      data-testid='createRoomButton'
     >
       <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
       <span>部屋をつくる</span>

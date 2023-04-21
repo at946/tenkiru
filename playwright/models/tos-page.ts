@@ -1,15 +1,18 @@
 import { expect, Locator, Page } from '@playwright/test';
 import Footer from './footer';
 import urls from '../helpers/urls';
+import Header from './header';
 
 export default class TOSPage {
   readonly page: Page;
 
-  readonly footer: Locator;
+  readonly header: Header;
+  readonly footer: Footer;
 
   constructor(page: Page) {
     this.page = page;
 
+    this.header = new Header(page);
     this.footer = new Footer(page);
   }
 
@@ -17,7 +20,15 @@ export default class TOSPage {
     await this.page.goto(urls.tos);
   }
 
-  async gotoPP() {
-    await this.footer.gotoPP();
+  async clickHeaderLogo() {
+    await this.header.clickLogo();
+  }
+
+  async clickFooterTOSLink() {
+    await this.footer.clickTOSLink();
+  }
+
+  async clickFooterPPLink() {
+    await this.footer.clickPPLink();
   }
 }

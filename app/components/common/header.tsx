@@ -11,7 +11,7 @@ const Header: NextPage = () => {
           <Link
             href='/'
             className='navbar-item has-text-primary has-text-weight-bold'
-            data-testid='logo'
+            aria-label='logo'
           >
             Tenkir
           </Link>
@@ -23,7 +23,6 @@ const Header: NextPage = () => {
               className='navbar-item'
               target='_blank'
               rel='noreferrer'
-              data-testid='support'
             >
               <FontAwesomeIcon icon={faMugHot} className='mr-1' />
               <span>開発者を支援</span>

@@ -15,11 +15,11 @@ export default class Footer {
     this.copyright = this.footer.getByRole('link', { name: '@asato' });
   }
 
-  async gotoTOS() {
+  async clickTOSLink() {
     await this.tosLink.click();
   }
 
-  async gotoPP() {
+  async clickPPLink() {
     await this.ppLink.click();
   }
 }

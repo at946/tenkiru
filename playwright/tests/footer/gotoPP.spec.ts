@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import TopPage from '../../models/top-page';
 import RoomPage from '../../models/room-page';
 import TOSPage from '../../models/tos-page';
+import PPPage from '../../models/pp-page';
 import urls from '../../helpers/urls';
 import createRoomId from '../../helpers/createRoomId';
 
@@ -13,7 +14,7 @@ test('トップページで、フッターのプライバシーポリシーリ�
   await topPage.goto();
 
   // When
-  await topPage.gotoPP();
+  await topPage.clickFooterPPLink();
 
   // Then
   await expect(page).toHaveURL(urls.pp);
@@ -28,7 +29,7 @@ test('ルームページで、フッターのプライバシーポリシーリ�
   await roomPage.goto(roomId);
 
   // When
-  await roomPage.gotoPP();
+  await roomPage.clickFooterPPLink();
 
   // Then
   await expect(page).toHaveURL(urls.pp);
@@ -42,7 +43,21 @@ test('利用規約ページで、フッターのプライバシーポリシー�
   await tosPage.goto();
 
   // When
-  await tosPage.gotoPP();
+  await tosPage.clickFooterPPLink();
+
+  // Then
+  await expect(page).toHaveURL(urls.pp);
+});
+
+test('プライバシーポリシーページで、フッターのプライバシーポリシーリンクを選択したとき、どこにも遷移しないこと', async ({
+  page,
+}) => {
+  // Given
+  const ppPage = new PPPage(page);
+  await ppPage.goto();
+
+  // When
+  await ppPage.clickFooterPPLink();
 
   // Then
   await expect(page).toHaveURL(urls.pp);

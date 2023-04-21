@@ -1,15 +1,18 @@
 import { Locator, Page } from '@playwright/test';
 import Footer from './footer';
 import urls from '../helpers/urls';
+import Header from './header';
 
 export default class RoomPage {
   readonly page: Page;
 
-  readonly footer: Locator;
+  readonly header: Header;
+  readonly footer: Footer;
 
   constructor(page: Page) {
     this.page = page;
 
+    this.header = new Header(page);
     this.footer = new Footer(page);
   }
 
@@ -17,11 +20,15 @@ export default class RoomPage {
     await this.page.goto(urls.room(roomId));
   }
 
-  async gotoTOS() {
-    await this.footer.gotoTOS();
+  async clickHeaderLogo() {
+    await this.header.clickLogo();
   }
 
-  async gotoPP() {
-    await this.footer.gotoPP();
+  async clickFooterTOSLink() {
+    await this.footer.clickTOSLink();
+  }
+
+  async clickFooterPPLink() {
+    await this.footer.clickPPLink();
   }
 }

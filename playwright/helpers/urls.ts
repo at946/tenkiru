@@ -7,7 +7,7 @@ interface URLs {
 
 const urls: URLs = {
   top: '/',
-  room: (): string => `/rooms/${Math.random().toString(32).substring(2)}`,
+  room: (roomId: string): string => `/rooms/${roomId}`,
   tos: '/tos',
   pp: '/pp',
 };

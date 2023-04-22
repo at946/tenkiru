@@ -1,17 +1,20 @@
 import { Locator, Page } from '@playwright/test';
-import Footer from './footer';
+import Head from './common/head';
+import Header from './common/header';
+import Footer from './common/footer';
 import urls from '../helpers/urls';
-import Header from './header';
 
 export default class RoomPage {
   readonly page: Page;
 
+  readonly head: Head;
   readonly header: Header;
   readonly footer: Footer;
 
   constructor(page: Page) {
     this.page = page;
 
+    this.head = new Head(page);
     this.header = new Header(page);
     this.footer = new Footer(page);
   }

@@ -1,12 +1,14 @@
 import { Locator, Page } from '@playwright/test';
-import Footer from './footer';
+import Head from './common/head';
+import Header from './common/header';
+import Footer from './common/footer';
 import urls from '../helpers/urls';
-import Header from './header';
 
 export default class TopPage {
   readonly page: Page;
   readonly createRoomButton: Locator;
 
+  readonly head: Head;
   readonly header: Header;
   readonly footer: Footer;
 
@@ -14,6 +16,7 @@ export default class TopPage {
     this.page = page;
     this.createRoomButton = page.getByRole('link', { name: '部屋をつくる' });
 
+    this.head = new Head(page);
     this.header = new Header(page);
     this.footer = new Footer(page);
   }

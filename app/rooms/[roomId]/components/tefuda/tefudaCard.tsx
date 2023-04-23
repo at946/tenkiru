@@ -32,7 +32,7 @@ const TefudaCard: NextPage<Props> = ({ card, putDownCard }) => {
 
   return (
     <a onClick={select}>
-      <Card value={card} additionalClassName={className} testId='tefudaCard' />
+      <Card value={card} additionalClassName={className} ariaLabel='handsCard' />
     </a>
   );
 };

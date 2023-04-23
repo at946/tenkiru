@@ -18,7 +18,7 @@ const ogImageUrl: string = 'http://localhost:3000/ogp.jpg';
 
 test('トップページで、OGが正しいこと', async ({ page }) => {
   // Given
-  const topPage = new TopPage(page);
+  const topPage: TopPage = new TopPage(page);
   await topPage.goto();
 
   // When
@@ -38,7 +38,7 @@ test('トップページで、OGが正しいこと', async ({ page }) => {
 test('ルームページで、OGが正しいこと', async ({ page }) => {
   // Given
   const roomId: string = createRoomId();
-  const roomPage = new RoomPage(page);
+  const roomPage: RoomPage = new RoomPage(page);
   await roomPage.goto(roomId);
 
   // When
@@ -57,7 +57,7 @@ test('ルームページで、OGが正しいこと', async ({ page }) => {
 
 test('利用規約ページで、OGが正しいこと', async ({ page }) => {
   // Given
-  const tosPage = new TOSPage(page);
+  const tosPage: TOSPage = new TOSPage(page);
   await tosPage.goto();
 
   // When
@@ -76,7 +76,7 @@ test('利用規約ページで、OGが正しいこと', async ({ page }) => {
 
 test('プライバシーポリシーページで、OGが正しいこと', async ({ page }) => {
   // Given
-  const ppPage = new PPPage(page);
+  const ppPage: PPPage = new PPPage(page);
   await ppPage.goto();
 
   // When

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { Locator, expect, test } from '@playwright/test';
 import TopPage from '../../models/top-page';
 import RoomPage from '../../models/room-page';
 import TOSPage from '../../models/tos-page';
@@ -10,8 +10,8 @@ test('トップページで、フッターのコピーライトを選択した�
   page,
 }) => {
   // Given
-  const topPage = new TopPage(page);
-  const copyright = await topPage.footer.copyright;
+  const topPage: TopPage = new TopPage(page);
+  const copyright: Locator = await topPage.footer.copyright;
   await topPage.goto();
 
   // When
@@ -26,8 +26,8 @@ test('ルームページで、フッターのコピーライトを選択した�
 }) => {
   // Given
   const roomId: string = createRoomId();
-  const roomPage = new RoomPage(page);
-  const copyright = await roomPage.footer.copyright;
+  const roomPage: RoomPage = new RoomPage(page);
+  const copyright: Locator = await roomPage.footer.copyright;
   await roomPage.goto(roomId);
 
   // When
@@ -41,8 +41,8 @@ test('利用規約ページで、フッターのコピーライトを選択し�
   page,
 }) => {
   // Given
-  const tosPage = new TOSPage(page);
-  const copyright = await tosPage.footer.copyright;
+  const tosPage: TopPage = new TOSPage(page);
+  const copyright: Locator = await tosPage.footer.copyright;
   await tosPage.goto();
 
   // When
@@ -56,8 +56,8 @@ test('プライバシーポリシーページで、フッターのコピーラ�
   page,
 }) => {
   // Given
-  const ppPage = new PPPage(page);
-  const copyright = await ppPage.footer.copyright;
+  const ppPage: PPPage = new PPPage(page);
+  const copyright: Locator = await ppPage.footer.copyright;
   await ppPage.goto();
 
   // When

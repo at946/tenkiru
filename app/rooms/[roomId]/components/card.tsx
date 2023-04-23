@@ -6,9 +6,10 @@ interface Props {
   value: Card;
   additionalClassName?: string;
   testId?: string;
+  ariaLabel?: string;
 }
 
-const Card: NextPage<Props> = ({ value, additionalClassName, testId }) => {
+const Card: NextPage<Props> = ({ value, additionalClassName, testId, ariaLabel }) => {
   const className: string = `
     is-flex
     is-justify-content-center
@@ -20,7 +21,11 @@ const Card: NextPage<Props> = ({ value, additionalClassName, testId }) => {
   `;
 
   return (
-    <div className={`${className} ${additionalClassName || ''}`} data-testid={testId}>
+    <div
+      className={`${className} ${additionalClassName || ''}`}
+      data-testid={testId}
+      aria-label={ariaLabel}
+    >
       {value}
     </div>
   );

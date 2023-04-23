@@ -1,6 +1,5 @@
 import { test, expect, Page, Locator } from '@playwright/test';
 import RoomPage from '../../models/room-page';
-import urls from '../../helpers/urls';
 import createRoomId from '../../helpers/createRoomId';
 
 test('ルームページで、同じ部屋に他のメンバーが入ってきたとき、カード置き場が増えること', async ({

@@ -5,29 +5,35 @@ import { Card as IFCard } from '@/interfaces/card';
 import { useAppSelector } from '@/store/hooks';
 
 interface Props {
-  card: IFCard;
-  cardStatus: string;
+  value: IFCard;
+  status: string;
 }
 
-const TableCard: NextPage<Props> = ({ card, cardStatus }) => {
+const TableCard: NextPage<Props> = ({ value, status }) => {
   let displayCard: IFCard = '';
   let additionalClassName: string = '';
-  const isBlank = card === null;
-  const isOpen = useAppSelector((state) => state.room.cardsAreOpen);
 
-  switch (cardStatus) {
+  switch (status) {
     case 'blank':
       additionalClassName = styles.blank;
       break;
-    case 'open':
-      displayCard = card;
-      additionalClassName = 'tableCard_open';
+    case 'faceUp':
+      displayCard = value;
       break;
-    default: // close
-      additionalClassName = styles.close;
+    case 'faceDown':
+      additionalClassName = styles['face-down'];
+      break;
+    default:
+      additionalClassName = styles.blank;
   }
 
-  return <Card value={displayCard} additionalClassName={additionalClassName} testId='tableCard' />;
+  return (
+    <Card
+      value={displayCard}
+      additionalClassName={additionalClassName}
+      ariaLabel={`${status}TableCard`}
+    />
+  );
 };
 
 export default TableCard;

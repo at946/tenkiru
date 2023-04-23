@@ -10,7 +10,7 @@ test('トップページで、フッターのプライバシーポリシーリ�
   page,
 }) => {
   // Given
-  const topPage = new TopPage(page);
+  const topPage: TopPage = new TopPage(page);
   await topPage.goto();
 
   // When
@@ -25,7 +25,7 @@ test('ルームページで、フッターのプライバシーポリシーリ�
 }) => {
   // Given
   const roomId: string = createRoomId();
-  const roomPage = new RoomPage(page);
+  const roomPage: RoomPage = new RoomPage(page);
   await roomPage.goto(roomId);
 
   // When
@@ -39,7 +39,7 @@ test('利用規約ページで、フッターのプライバシーポリシー�
   page,
 }) => {
   // Given
-  const tosPage = new TOSPage(page);
+  const tosPage: TOSPage = new TOSPage(page);
   await tosPage.goto();
 
   // When
@@ -53,7 +53,7 @@ test('プライバシーポリシーページで、フッターのプライバ�
   page,
 }) => {
   // Given
-  const ppPage = new PPPage(page);
+  const ppPage: PPPage = new PPPage(page);
   await ppPage.goto();
 
   // When

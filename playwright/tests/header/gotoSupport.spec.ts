@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Locator } from '@playwright/test';
 import TopPage from '../../models/top-page';
 import RoomPage from '../../models/room-page';
 import TOSPage from '../../models/tos-page';
@@ -11,8 +11,8 @@ test('トップページで、ヘッダーのサポートメニューを選択�
   page,
 }) => {
   // Given
-  const topPage = new TopPage(page);
-  const supportLink = topPage.header.supportLink;
+  const topPage: TopPage = new TopPage(page);
+  const supportLink: Locator = topPage.header.supportLink;
   await topPage.goto();
 
   // When
@@ -27,8 +27,8 @@ test('ルームページで、ヘッダーのサポートメニューを選択�
 }) => {
   // Given
   const roomId: string = createRoomId();
-  const roomPage = new RoomPage(page);
-  const supportLink = roomPage.header.supportLink;
+  const roomPage: RoomPage = new RoomPage(page);
+  const supportLink: Locator = roomPage.header.supportLink;
   await roomPage.goto(roomId);
 
   // When
@@ -42,8 +42,8 @@ test('利用規約ページで、ヘッダーのサポートメニューを選�
   page,
 }) => {
   // Given
-  const tosPage = new TOSPage(page);
-  const supportLink = tosPage.header.supportLink;
+  const tosPage: TOSPage = new TOSPage(page);
+  const supportLink: Locator = tosPage.header.supportLink;
   await tosPage.goto();
 
   // When
@@ -57,8 +57,8 @@ test('プライバシーポリシーページで、ヘッダーのサポート�
   page,
 }) => {
   // Given
-  const ppPage = new PPPage(page);
-  const supportLink = ppPage.header.supportLink;
+  const ppPage: PPPage = new PPPage(page);
+  const supportLink: Locator = ppPage.header.supportLink;
   await ppPage.goto();
 
   // When

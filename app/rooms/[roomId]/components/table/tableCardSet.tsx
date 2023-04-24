@@ -9,16 +9,16 @@ interface Props {
   nominate: (memberId: string) => void;
 }
 
-const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
+const TableCardSet: NextPage<Props> = ({ player, nominate }) => {
   const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
   const cardStatus = player.selectedCard === null ? 'blank' : cardsAreOpen ? 'faceUp' : 'faceDown';
 
   return (
-    <div data-testid='tableCardGroup'>
+    <div aria-label={`tableCardSet-${player.selectedCard}`}>
       <TableCard value={player.selectedCard} status={cardStatus} />
       {cardStatus === 'faceUp' && <NominateButton nominate={() => nominate(player.id)} />}
     </div>
   );
 };
 
-export default TableCardGroup;
+export default TableCardSet;

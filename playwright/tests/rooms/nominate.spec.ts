@@ -1,116 +1,84 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
+import RoomPage from '../../models/room-page';
 import urls from '../../helpers/urls';
 import usersJoinRoom from '../../helpers/usersJoinRoom';
-
-test('ルームページで、カードをオープンしていないとき、「指名」ボタンが表示されないこと', async ({
-  context,
-}) => {
-  // Given - ルームページでカードを選んでいる
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  await page1.getByTestId('tefudaCard').nth(0).click();
-  await page2.getByTestId('tefudaCard').nth(2).click();
-
-  // When - カードをオープンしない
-
-  // Then - 「指名」ボタンがTableCardsに表示されていない
-  await expect(
-    page1.getByTestId('tableCardGroup').nth(0).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page1.getByTestId('tableCardGroup').nth(1).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page1.getByTestId('tableCardGroup').nth(2).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page2.getByTestId('tableCardGroup').nth(0).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page2.getByTestId('tableCardGroup').nth(1).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page2.getByTestId('tableCardGroup').nth(2).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page3.getByTestId('tableCardGroup').nth(0).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page3.getByTestId('tableCardGroup').nth(1).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page3.getByTestId('tableCardGroup').nth(2).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-});
+import createRoomId from '../../helpers/createRoomId';
 
 test('ルームページで、カードをオープンしているとき、「指名」ボタンがカードの下に表示されること', async ({
   context,
 }) => {
-  // Given - ルームページでカードを選んでいる
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  await page1.getByTestId('tefudaCard').nth(0).click();
-  await page2.getByTestId('tefudaCard').nth(2).click();
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('2');
+
+  await expect(roomPage1.tableCardSetByNth(0).nominateButton).not.toBeVisible();
+  await expect(roomPage1.tableCardSetByNth(1).nominateButton).not.toBeVisible();
+  await expect(roomPage1.tableCardSetByNth(2).nominateButton).not.toBeVisible();
+
+  await expect(roomPage2.tableCardSetByNth(0).nominateButton).not.toBeVisible();
+  await expect(roomPage2.tableCardSetByNth(1).nominateButton).not.toBeVisible();
+  await expect(roomPage2.tableCardSetByNth(2).nominateButton).not.toBeVisible();
+
+  await expect(roomPage3.tableCardSetByNth(0).nominateButton).not.toBeVisible();
+  await expect(roomPage3.tableCardSetByNth(1).nominateButton).not.toBeVisible();
+  await expect(roomPage3.tableCardSetByNth(2).nominateButton).not.toBeVisible();
 
   // When - カードをオープンする
-  await page1.getByTestId('openButton').click();
+  await roomPage1.openCards();
 
   // Then - オープンしたカードには「指名」ボタンが表示される
-  await expect(
-    page1.getByTestId('tableCardGroup').nth(0).getByTestId('nominateButton'),
-  ).toBeVisible();
-  await expect(
-    page1.getByTestId('tableCardGroup').nth(1).getByTestId('nominateButton'),
-  ).toBeVisible();
-  await expect(
-    page1.getByTestId('tableCardGroup').nth(2).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page2.getByTestId('tableCardGroup').nth(0).getByTestId('nominateButton'),
-  ).toBeVisible();
-  await expect(
-    page2.getByTestId('tableCardGroup').nth(1).getByTestId('nominateButton'),
-  ).toBeVisible();
-  await expect(
-    page2.getByTestId('tableCardGroup').nth(2).getByTestId('nominateButton'),
-  ).not.toBeVisible();
-  await expect(
-    page3.getByTestId('tableCardGroup').nth(0).getByTestId('nominateButton'),
-  ).toBeVisible();
-  await expect(
-    page3.getByTestId('tableCardGroup').nth(1).getByTestId('nominateButton'),
-  ).toBeVisible();
-  await expect(
-    page3.getByTestId('tableCardGroup').nth(2).getByTestId('nominateButton'),
-  ).not.toBeVisible();
+  await expect(roomPage1.tableCardSetByNth(0).nominateButton).toBeVisible();
+  await expect(roomPage1.tableCardSetByNth(1).nominateButton).toBeVisible();
+  await expect(roomPage1.tableCardSetByNth(2).nominateButton).not.toBeVisible();
+
+  await expect(roomPage2.tableCardSetByNth(0).nominateButton).toBeVisible();
+  await expect(roomPage2.tableCardSetByNth(1).nominateButton).toBeVisible();
+  await expect(roomPage2.tableCardSetByNth(2).nominateButton).not.toBeVisible();
+
+  await expect(roomPage3.tableCardSetByNth(0).nominateButton).toBeVisible();
+  await expect(roomPage3.tableCardSetByNth(1).nominateButton).toBeVisible();
+  await expect(roomPage3.tableCardSetByNth(2).nominateButton).not.toBeVisible();
 });
 
 test('ルームページで、自分以外の出したカードの「指名」ボタンを選択したとき、そのカードを場に出したメンバーに「指名アラート」が表示されること', async ({
   context,
 }) => {
-  // Given - ルームページで、カードをオープンする
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  await page1.getByTestId('tefudaCard').nth(0).click();
-  await page2.getByTestId('tefudaCard').nth(1).click();
-  await page3.getByTestId('tefudaCard').nth(2).click();
-  await page1.getByTestId('openButton').click();
+  // Given
+  const roomId: string = createRoomId();
+  const page1: Page = await context.newPage();
+  const page2: Page = await context.newPage();
+  const page3: Page = await context.newPage();
+  const roomPage1: RoomPage = new RoomPage(page1);
+  const roomPage2: RoomPage = new RoomPage(page2);
+  const roomPage3: RoomPage = new RoomPage(page3);
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('1');
+  await roomPage3.selectCard('2');
+  await roomPage1.openCards();
 
-  // When - page1の出したカードの指名ボタンを選択
-  await page2
-    .getByTestId('tableCardGroup')
-    .filter({ hasText: '0' })
-    .getByTestId('nominateButton')
-    .click();
+  // When
+  await roomPage2.nominateByCard('0');
 
-  // Then - page2に指名完了メッセージが表示される
+  // Then
+  // 指名ボタンを押したユーザーのみ、「指名しました」トーストが表示される
   await expect(page1.getByText('指名しました！')).not.toBeVisible();
   await expect(page2.getByText('指名しました！')).toBeVisible();
   await expect(page3.getByText('指名しました！')).not.toBeVisible();
-
-  // Then - page1に指名メッセージが表示される
+  // 指名されたユーザーのみ、「指名されました」トーストが表示される
   await expect(page1.getByText('指名されました！🎉')).toBeVisible();
   await expect(page2.getByText('指名されました！🎉')).not.toBeVisible();
   await expect(page3.getByText('指名されました！🎉')).not.toBeVisible();
-
-  // Then - 一定時間後、メッセージは消える
+  // トーストは時間が経つと消える
   await expect(page2.getByText('指名しました！')).not.toBeVisible();
   await expect(page1.getByText('指名されました！🎉')).not.toBeVisible();
 });
@@ -118,31 +86,35 @@ test('ルームページで、自分以外の出したカードの「指名」�
 test('ルームページで、自分の出したカードの「指名」ボタンを選択したとき、自分に「指名アラート」が表示されること', async ({
   context,
 }) => {
-  // Given - ルームページで、カードをオープンにする
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  await page1.getByTestId('tefudaCard').nth(1).click();
-  await page2.getByTestId('tefudaCard').nth(2).click();
-  await page3.getByTestId('tefudaCard').nth(0).click();
-  await page1.getByTestId('openButton').click();
+  // Given
+  const roomId: string = createRoomId();
+  const page1: Page = await context.newPage();
+  const page2: Page = await context.newPage();
+  const page3: Page = await context.newPage();
+  const roomPage1: RoomPage = new RoomPage(page1);
+  const roomPage2: RoomPage = new RoomPage(page2);
+  const roomPage3: RoomPage = new RoomPage(page3);
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('1');
+  await roomPage3.selectCard('2');
+  await roomPage1.openCards();
 
-  // When - page1でpage1のカードを指名する
-  await page1
-    .getByTestId('tableCardGroup')
-    .filter({ hasText: '1' })
-    .getByTestId('nominateButton')
-    .click();
+  // When
+  await roomPage1.nominateByCard('0');
 
-  // Then - page1で指名完了メッセージが表示される
+  // Then
+  // 指名ボタンを押したユーザーのみ、「指名しました」トーストが表示される
   await expect(page1.getByText('指名しました！')).toBeVisible();
   await expect(page2.getByText('指名しました！')).not.toBeVisible();
   await expect(page3.getByText('指名しました！')).not.toBeVisible();
-
-  // Then - page1に指名モーダルが表示される
+  // 指名されたユーザーのみ、「指名されました」トーストが表示される
   await expect(page1.getByText('指名されました！🎉')).toBeVisible();
   await expect(page2.getByText('指名されました！🎉')).not.toBeVisible();
   await expect(page3.getByText('指名されました！🎉')).not.toBeVisible();
-
-  // 一定時間後、メッセージは消える
+  // トーストは時間が経つと消える
   await expect(page1.getByText('指名しました！')).not.toBeVisible();
   await expect(page1.getByText('指名されました！🎉')).not.toBeVisible();
 });

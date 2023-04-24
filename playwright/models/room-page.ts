@@ -6,6 +6,10 @@ import urls from '../helpers/urls';
 
 export default class RoomPage {
   readonly page: Page;
+  readonly tableCardSets: Locator;
+  readonly tableCardSetByNth: Locator;
+  readonly tableCardSetByCard: Locator;
+  readonly nominateButton: Locator;
   readonly tableCards: Locator;
   readonly blankTableCards: Locator;
   readonly faceDownTableCards: Locator;
@@ -21,6 +25,19 @@ export default class RoomPage {
 
   constructor(page: Page) {
     this.page = page;
+    this.tableCardSets = page.getByLabel(/tableCardSet/);
+    this.tableCardSetByNth = (nth: number) => {
+      return {
+        nominateButton: this.tableCardSets.nth(nth).getByRole('button', { name: '指名' }),
+      };
+    };
+    this.tableCardSetByCard = (value: string) => {
+      return {
+        nominateButton: page
+          .getByLabel(`tableCardSet-${value}`)
+          .getByRole('button', { name: '指名' }),
+      };
+    };
     this.tableCards = page.getByLabel(/TableCard/);
     this.blankTableCards = page.getByLabel('blankTableCard');
     this.faceDownTableCards = page.getByLabel('faceDownTableCard');
@@ -39,12 +56,17 @@ export default class RoomPage {
     await this.page.goto(urls.room(roomId));
   }
 
-  async selectCard(cardValue: string) {
-    await this.handsCards.filter({ hasText: cardValue }).click();
+  async selectCard(value: string) {
+    const reg: RegExp = new RegExp(`^${value}$`);
+    await this.handsCards.filter({ hasText: reg }).click();
   }
 
   async openCards() {
     await this.openButton.click();
+  }
+
+  async nominateByCard(value: string) {
+    await this.tableCardSetByCard(value).nominateButton.click();
   }
 
   async selectDeck(deck: string) {

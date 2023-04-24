@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useAppSelector } from '@/store/hooks';
 import { Member } from '@/interfaces/member';
-import TableCardGroup from './tableCardGroup';
+import TableCardSet from './tableCardSet';
 
 interface Props {
   nominate: (memberId: string) => void;
@@ -14,7 +14,7 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
   return (
     <div className='is-flex is-flex-wrap-wrap is-justify-content-center'>
       {players.map((player) => (
-        <TableCardGroup player={player} nominate={nominate} key={player.id} />
+        <TableCardSet player={player} nominate={nominate} key={player.id} />
       ))}
     </div>
   );

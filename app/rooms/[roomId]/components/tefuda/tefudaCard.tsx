@@ -23,16 +23,13 @@ const TefudaCard: NextPage<Props> = ({ card, putDownCard }) => {
     putDownCard(card);
   };
 
-  let className = '';
-  if (isSelected) {
-    className = styles.selected;
-  } else if (isDisabled) {
-    className = styles.disabled;
-  }
-
   return (
     <a onClick={select}>
-      <Card value={card} additionalClassName={className} ariaLabel='handsCard' />
+      <Card
+        value={card}
+        additionalClassName={isSelected ? styles.selected : styles.disabled}
+        ariaLabel={isSelected ? 'selectedHandsCard' : 'handsCard'}
+      />
     </a>
   );
 };

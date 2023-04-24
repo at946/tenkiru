@@ -1,48 +1,52 @@
 import { test, expect } from '@playwright/test';
-import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
+import RoomPage from '../../models/room-page';
+import createRoomId from '../../helpers/createRoomId';
 
 test('ルームページで、カードを選択したとき、カードが場に伏せて置かれること', async ({
   context,
 }) => {
-  const roomURL = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomURL, 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
 
-  await expect(page1.locator('data-testid=tableCard')).toHaveCount(2);
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveClass(/tableCard_blank/);
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(2);
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(2);
 
-  await page1.locator('data-testid=tefudaCard').nth(0).click();
+  // When
+  await roomPage1.selectCard('0');
 
-  await expect(page1.locator('data-testid=tableCard')).toHaveCount(2);
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveClass(/tableCard_close/);
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveClass(/tableCard_blank/);
+  // Then
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(1);
 });
 
 test('ルームページで、カードを選択したとき、選択したカードが選択状態だとわかること', async ({
   context,
 }) => {
-  const roomURL = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomURL, 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
 
-  await expect(page1.locator('data-testid=tefudaCard').nth(0)).not.toHaveClass(
-    /tefudaCard_selected/,
-  );
-  await expect(page1.locator('data-testid=tefudaCard').nth(1)).not.toHaveClass(
-    /tefudaCard_selected/,
-  );
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
+  await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 
-  await page1.locator('data-testid=tefudaCard').nth(0).click();
+  // When
+  await roomPage1.selectCard('0');
 
-  await expect(page1.locator('data-testid=tefudaCard').nth(0)).toHaveClass(/tefudaCard_selected/);
-  await expect(page1.locator('data-testid=tefudaCard').nth(1)).not.toHaveClass(
-    /tefudaCard_selected/,
-  );
-
-  await page1.locator('data-testid=tefudaCard').nth(1).click();
-
-  await expect(page1.locator('data-testid=tefudaCard').nth(0)).not.toHaveClass(
-    /tefudaCard_selected/,
-  );
-  await expect(page1.locator('data-testid=tefudaCard').nth(1)).toHaveClass(/tefudaCard_selected/);
+  // Then
+  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
+  await expect(roomPage1.selectedHandsCard).toHaveText(/^0$/);
+  await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 });

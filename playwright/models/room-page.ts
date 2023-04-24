@@ -65,6 +65,10 @@ export default class RoomPage {
     await this.openButton.click();
   }
 
+  async replay() {
+    await this.replayButton.click();
+  }
+
   async nominateByCard(value: string) {
     await this.tableCardSetByCard(value).nominateButton.click();
   }

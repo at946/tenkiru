@@ -1,75 +1,50 @@
 import { test, expect } from '@playwright/test';
-import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
+import createRoomId from '../../helpers/createRoomId';
+import RoomPage from '../../models/room-page';
 
-test('ルームページで、カードをオープンしたあと、リプレイできること', async ({ context }) => {
-  const roomURL = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomURL, 2);
-
-  await page1.locator('data-testid=tefudaCard').nth(0).click();
-
-  // カードオープン前はリプレイボタンは非表示
-  await expect(page1.locator('data-testid=replayButton')).toHaveCount(0);
-
-  await page1.click('data-testid=openButton');
-
-  // カードオープン後はリプレイボタンは表示
-  await expect(page1.locator('data-testid=replayButton')).toHaveCount(1);
-
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveClass(/tableCard_open/);
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveText('0');
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveText('');
-  await expect(page1.locator('data-testid=tefudaCard').nth(0)).toHaveClass(/tefudaCard_selected/);
-  await expect(page1.locator('data-testid=tefudaCard').nth(1)).toHaveClass(/tefudaCard_disabled/);
-
-  await page1.click('data-testid=replayButton');
-
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveText('');
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveText('');
-  await expect(page1.locator('data-testid=tefudaCard').nth(0)).not.toHaveClass(
-    /tefudaCard_[selected|disabled]/,
-  );
-  await expect(page1.locator('data-testid=tefudaCard').nth(1)).not.toHaveClass(
-    /tefudaCard_[selected|disabled]/,
-  );
-});
-
-test('ルームページで、カードをオープンしたあと、他のメンバーがリプレイできること', async ({
+test('ルームページで、カードをオープン後リプレイボタンを選択したとき、ゲームをリプレイできること', async ({
   context,
 }) => {
-  const roomURL = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomURL, 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('1');
+  await roomPage1.openCards();
 
-  await page1.locator('data-testid=tefudaCard').nth(1).click();
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(2);
+  await expect(roomPage1.openButton).not.toBeVisible();
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(2);
+  await expect(roomPage2.openButton).not.toBeVisible();
 
-  // カードオープン前はリプレイボタンは非表示
-  await expect(page1.locator('data-testid=replayButton')).toHaveCount(0);
+  // When
+  await roomPage1.replay();
 
-  await page1.click('data-testid=openButton');
+  // Then
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(2);
+  await expect(roomPage1.openButton).toBeVisible();
+  await expect(roomPage1.openButton).toBeDisabled();
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(2);
+  await expect(roomPage2.openButton).toBeVisible();
+  await expect(roomPage2.openButton).toBeDisabled();
 
-  // カードオープン後はリプレイボタンは表示
-  await expect(page1.locator('data-testid=replayButton')).toHaveCount(1);
+  await roomPage1.selectCard('3');
 
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveClass(/tableCard_open/);
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveText('1');
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveText('');
-  await expect(page1.locator('data-testid=tefudaCard').nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(page1.locator('data-testid=tefudaCard').nth(1)).toHaveClass(/tefudaCard_selected/);
-
-  await page2.click('data-testid=replayButton');
-
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(page1.locator('data-testid=tableCard').nth(0)).toHaveText('');
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(page1.locator('data-testid=tableCard').nth(1)).toHaveText('');
-  await expect(page1.locator('data-testid=tefudaCard').nth(0)).not.toHaveClass(
-    /tefudaCard_[selected|disabled]/,
-  );
-  await expect(page1.locator('data-testid=tefudaCard').nth(1)).not.toHaveClass(
-    /tefudaCard_[selected|disabled]/,
-  );
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.openButton).toBeVisible();
+  await expect(roomPage1.openButton).not.toBeDisabled();
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.openButton).toBeVisible();
+  await expect(roomPage2.openButton).not.toBeDisabled();
 });

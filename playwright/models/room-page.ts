@@ -18,6 +18,7 @@ export default class RoomPage {
   readonly replayButton: Locator;
   readonly deckSelect: Locator;
   readonly handsCards: Locator;
+  readonly selectedHandsCard: Locator;
 
   readonly head: Head;
   readonly header: Header;
@@ -46,6 +47,7 @@ export default class RoomPage {
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
     this.deckSelect = page.getByRole('combobox', { name: 'deckSelect' });
     this.handsCards = page.getByLabel('handsCard');
+    this.selectedHandsCard = page.getByLabel('selectedHandsCard');
 
     this.head = new Head(page);
     this.header = new Header(page);

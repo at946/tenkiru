@@ -1,86 +1,111 @@
 import { test, expect } from '@playwright/test';
-import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
+import RoomPage from '../../models/room-page';
+import createRoomId from '../../helpers/createRoomId';
 
 test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async ({
   context,
 }) => {
-  const roomUrl = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(2);
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(2);
 
-  const tableCards = page1.locator('data-testid=tableCard');
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tableCards.nth(0)).toHaveText('');
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tableCards.nth(1)).toHaveText('');
+  // When
+
+  // Then
+  await expect(roomPage1.openButton).toBeDisabled();
+  await expect(roomPage2.openButton).toBeDisabled();
 });
 
 test('ルームページで、誰かがカードを場に出している状態で、オープンボタンを選択したとき、場に出たカードがオープンすること', async ({
   context,
 }) => {
-  const roomUrl = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(1);
 
-  // 片方が手札から0のカードを選択
-  const tefudaCards = page2.locator('data-testid=tefudaCard');
-  await tefudaCards.nth(0).click();
+  // When
+  await roomPage1.openCards();
 
-  // この段階ではテーブルカードは1枚選択済み、1枚未選択
-  const tableCards = page1.locator('data-testid=tableCard');
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_close/);
-  await expect(tableCards.nth(0)).toHaveText('');
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tableCards.nth(1)).toHaveText('');
-
-  // カードをオープン
-  await page1.click('data-testid=openButton');
-
-  // 0と未選択のカード
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
-  await expect(tableCards.nth(0)).toHaveText('0');
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tableCards.nth(1)).toHaveText('');
+  // Then
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
 });
 
 test('ルームページで、カードをオープンした後、カードの選択を変更できないこと', async ({
   context,
 }) => {
-  const roomUrl = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage1.openCards();
 
-  // 片方が手札から1のカードを選択
-  const tefudaCards = page2.locator('data-testid=tefudaCard');
-  await tefudaCards.nth(1).click();
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveText('0');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveText('0');
 
-  // カードをオープン
-  await expect(page1.locator('data-testid=tableCard')).toHaveCount(2);
-  await page1.locator('data-testid=openButton').click();
+  // When
+  await roomPage1.selectCard('1');
+  await roomPage2.selectCard('2');
 
-  // 手札カードを選択できないこと
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_selected/);
-  await tefudaCards.nth(0).click();
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_selected/);
+  // Then
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveText('0');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveText('0');
 });
 
 test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async ({
   context,
 }) => {
-  const roomUrl = urls.room();
-  const [page1, page2] = await usersJoinRoom(context, roomUrl, 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
 
-  // 片方が手札から1のカードを選択
-  const tefudaCards = page2.locator('data-testid=tefudaCard');
-  await tefudaCards.nth(2).click();
+  await expect(roomPage1.openButton).toBeVisible();
+  await expect(roomPage2.openButton).toBeVisible();
 
-  // カードをオープン
-  await expect(page1.locator('data-testid=tableCard')).toHaveCount(2);
-  await page1.locator('data-testid=openButton').click();
+  // When
+  await roomPage1.openCards();
 
-  // オープンボタンが非表示になること
-  await expect(page1.locator('data-testid=openButton')).toHaveCount(0);
+  // Then
+  await expect(roomPage1.openButton).not.toBeVisible();
+  await expect(roomPage2.openButton).not.toBeVisible();
 });

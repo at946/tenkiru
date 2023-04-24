@@ -1,7 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
 import RoomPage from '../../models/room-page';
-import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
 import createRoomId from '../../helpers/createRoomId';
 
 test('ルームページで、カードをオープンしているとき、「指名」ボタンがカードの下に表示されること', async ({

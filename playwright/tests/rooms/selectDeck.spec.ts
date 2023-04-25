@@ -1,126 +1,173 @@
 import { test, expect } from '@playwright/test';
-import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
+import RoomPage from '../../models/room-page';
+import createRoomId from '../../helpers/createRoomId';
 
-test('ルームページで、デッキはデフォルトで「Fibonacci」が選択されていること', async ({
-  context,
-}) => {
-  const [page] = await usersJoinRoom(context, urls.room(), 1);
+test('ルームページで、デッキはデフォルトで「Fibonacci」が選択されていること', async ({ page }) => {
+  // Given
+  const fibonacciDeck: string[] = ['0', '1', '2', '3', '5', '8', '13', '21', '?'];
+  const roomPage: RoomPage = new RoomPage(page);
 
-  await expect(page.locator('data-testid=deckSelect')).toHaveValue('fibonacci');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  await expect(tefudaCards).toHaveCount(9);
-  await expect(tefudaCards.nth(0)).toHaveText('0');
-  await expect(tefudaCards.nth(1)).toHaveText('1');
-  await expect(tefudaCards.nth(2)).toHaveText('2');
-  await expect(tefudaCards.nth(3)).toHaveText('3');
-  await expect(tefudaCards.nth(4)).toHaveText('5');
-  await expect(tefudaCards.nth(5)).toHaveText('8');
-  await expect(tefudaCards.nth(6)).toHaveText('13');
-  await expect(tefudaCards.nth(7)).toHaveText('21');
-  await expect(tefudaCards.nth(8)).toHaveText('?');
+  // When
+  await roomPage.goto(createRoomId());
+
+  // Then
+  await expect(roomPage.deckSelect).toHaveValue('fibonacci');
+  await expect(roomPage.handsCards).toHaveCount(fibonacciDeck.length);
+  (await roomPage.handsCards.all()).forEach(async (handsCard, index) => {
+    await expect(handsCard).toHaveText(fibonacciDeck[index]);
+  });
 });
 
 test('ルームページで、デッキを変更するとき、カードの選択が解除されること', async ({ context }) => {
-  const [page] = await usersJoinRoom(context, urls.room(), 1);
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  await tefudaCards.nth(0).click();
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('1');
 
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
+  await expect(roomPage1.selectedHandsCard).toHaveText('0');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(2);
 
-  await page.selectOption('data-testid=deckSelect', 'sequential');
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
+  await expect(roomPage2.selectedHandsCard).toHaveText('1');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(2);
 
-  await expect(tefudaCards.nth(0)).not.toHaveClass(/tefudaCard_selected/);
+  // When
+  await roomPage1.selectDeck('sequential');
+
+  // Then
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(2);
+
+  await expect(roomPage2.selectedHandsCard).toHaveCount(0);
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(2);
 });
 
 test('ルームページで、デッキを変更するとき、カードがオープン状態でも場がリセットされること', async ({
   context,
 }) => {
-  const [page] = await usersJoinRoom(context, urls.room(), 1);
-  await page.locator('data-testid=tefudaCard').nth(0).click();
-  await page.click('data-testid=openButton');
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('1');
+  await roomPage1.openCards();
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
+  await expect(roomPage1.selectedHandsCard).toHaveText('0');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(2);
 
-  await page.selectOption('data-testid=deckSelect', 'sequential');
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
+  await expect(roomPage2.selectedHandsCard).toHaveText('1');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(2);
 
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).not.toHaveClass(/tefudaCard_selected/);
+  // When
+  await roomPage1.selectDeck('sequential');
+
+  // Then
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(2);
+
+  await expect(roomPage2.selectedHandsCard).toHaveCount(0);
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(2);
 });
 
-test('ルームページで、「Fibonacci」を選択したとき、フィボナッチ数列のカードが並ぶこと', async ({
+test('ルームページで、「フィボナッチ数列」を選択したとき、フィボナッチ数列のカードが並ぶこと', async ({
   context,
 }) => {
-  const [page] = await usersJoinRoom(context, urls.room(), 1);
-  await page.selectOption('data-testid=deckSelect', 'sequential');
-  await page.selectOption('data-testid=deckSelect', 'fibonacci');
+  // Given
+  const fibonacciDeck: string[] = ['0', '1', '2', '3', '5', '8', '13', '21', '?'];
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectDeck('sequential');
 
-  await expect(page.locator('data-testid=deckSelect')).toHaveValue('fibonacci');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  await expect(tefudaCards).toHaveCount(9);
-  await expect(tefudaCards.nth(0)).toHaveText('0');
-  await expect(tefudaCards.nth(1)).toHaveText('1');
-  await expect(tefudaCards.nth(2)).toHaveText('2');
-  await expect(tefudaCards.nth(3)).toHaveText('3');
-  await expect(tefudaCards.nth(4)).toHaveText('5');
-  await expect(tefudaCards.nth(5)).toHaveText('8');
-  await expect(tefudaCards.nth(6)).toHaveText('13');
-  await expect(tefudaCards.nth(7)).toHaveText('21');
-  await expect(tefudaCards.nth(8)).toHaveText('?');
+  // When
+  await roomPage1.selectDeck('fibonacci');
+
+  // Then
+  await expect(roomPage1.deckSelect).toHaveValue('fibonacci');
+  await expect(roomPage1.handsCards).toHaveCount(fibonacciDeck.length);
+  (await roomPage1.handsCards.all()).forEach(async (handsCard, index) => {
+    await expect(handsCard).toHaveText(fibonacciDeck[index]);
+  });
+
+  await expect(roomPage2.deckSelect).toHaveValue('fibonacci');
+  await expect(roomPage2.handsCards).toHaveCount(fibonacciDeck.length);
+  (await roomPage2.handsCards.all()).forEach(async (handsCard, index) => {
+    await expect(handsCard).toHaveText(fibonacciDeck[index]);
+  });
 });
 
-test('ルームページで、「Sequential」を選択したとき、1-10の数列のカードが並ぶこと', async ({
+test('ルームページで、「1-10」を選択したとき、1-10の数列のカードが並ぶこと', async ({
   context,
 }) => {
-  const [page] = await usersJoinRoom(context, urls.room(), 1);
-  await page.selectOption('data-testid=deckSelect', 'sequential');
+  // Given
+  const sequentialDeck: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '?'];
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
 
-  await expect(page.locator('data-testid=deckSelect')).toHaveValue('sequential');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  await expect(tefudaCards).toHaveCount(12);
-  await expect(tefudaCards.nth(0)).toHaveText('0');
-  await expect(tefudaCards.nth(1)).toHaveText('1');
-  await expect(tefudaCards.nth(2)).toHaveText('2');
-  await expect(tefudaCards.nth(3)).toHaveText('3');
-  await expect(tefudaCards.nth(4)).toHaveText('4');
-  await expect(tefudaCards.nth(5)).toHaveText('5');
-  await expect(tefudaCards.nth(6)).toHaveText('6');
-  await expect(tefudaCards.nth(7)).toHaveText('7');
-  await expect(tefudaCards.nth(8)).toHaveText('8');
-  await expect(tefudaCards.nth(9)).toHaveText('9');
-  await expect(tefudaCards.nth(10)).toHaveText('10');
-  await expect(tefudaCards.nth(11)).toHaveText('?');
+  // When
+  await roomPage1.selectDeck('sequential');
+
+  // Then
+  await expect(roomPage1.deckSelect).toHaveValue('sequential');
+  await expect(roomPage1.handsCards).toHaveCount(sequentialDeck.length);
+  (await roomPage1.handsCards.all()).forEach(async (handsCard, index) => {
+    await expect(handsCard).toHaveText(sequentialDeck[index]);
+  });
+
+  await expect(roomPage2.deckSelect).toHaveValue('sequential');
+  await expect(roomPage2.handsCards).toHaveCount(sequentialDeck.length);
+  (await roomPage2.handsCards.all()).forEach(async (handsCard, index) => {
+    await expect(handsCard).toHaveText(sequentialDeck[index]);
+  });
 });
 
-test('ルームページで、「T-shirt size」を選択したとき、1-10の数列のカードが並ぶこと', async ({
+test('ルームページで、「Tシャツサイズ」を選択したとき、1-10の数列のカードが並ぶこと', async ({
   context,
 }) => {
-  const [page] = await usersJoinRoom(context, urls.room(), 1);
-  await page.selectOption('data-testid=deckSelect', 'tShirtSize');
+  // Given
+  const tShirtSizeDeck: string[] = ['XS', 'S', 'M', 'L', 'XL', '?'];
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
 
-  await expect(page.locator('data-testid=deckSelect')).toHaveValue('tShirtSize');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  await expect(tefudaCards).toHaveCount(6);
-  await expect(tefudaCards.nth(0)).toHaveText('XS');
-  await expect(tefudaCards.nth(1)).toHaveText('S');
-  await expect(tefudaCards.nth(2)).toHaveText('M');
-  await expect(tefudaCards.nth(3)).toHaveText('L');
-  await expect(tefudaCards.nth(4)).toHaveText('XL');
-  await expect(tefudaCards.nth(5)).toHaveText('?');
-});
+  // When
+  await roomPage1.selectDeck('tShirtSize');
 
-test('ルームページで、別のメンバーがデッキを選択したとき、自分の手札に反映されること', async ({
-  context,
-}) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+  // Then
+  await expect(roomPage1.deckSelect).toHaveValue('tShirtSize');
+  await expect(roomPage1.handsCards).toHaveCount(tShirtSizeDeck.length);
+  (await roomPage1.handsCards.all()).forEach(async (handsCard, index) => {
+    await expect(handsCard).toHaveText(tShirtSizeDeck[index]);
+  });
 
-  const deckSelect = page1.locator('data-testid=deckSelect');
-  await expect(deckSelect).toHaveValue('fibonacci');
-
-  await page2.selectOption('data-testid=deckSelect', 'sequential');
-
-  await expect(deckSelect).toHaveValue('sequential');
+  await expect(roomPage2.deckSelect).toHaveValue('tShirtSize');
+  await expect(roomPage2.handsCards).toHaveCount(tShirtSizeDeck.length);
+  (await roomPage2.handsCards.all()).forEach(async (handsCard, index) => {
+    await expect(handsCard).toHaveText(tShirtSizeDeck[index]);
+  });
 });

@@ -27,7 +27,7 @@ const TefudaCard: NextPage<Props> = ({ card, putDownCard }) => {
     <a onClick={select}>
       <Card
         value={card}
-        additionalClassName={isSelected ? styles.selected : styles.disabled}
+        additionalClassName={isSelected ? styles.selected : isDisabled ? styles.disabled : ''}
         ariaLabel={isSelected ? 'selectedHandsCard' : 'handsCard'}
       />
     </a>

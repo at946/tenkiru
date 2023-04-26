@@ -6,6 +6,7 @@ import urls from '../helpers/urls';
 
 export default class RoomPage {
   readonly page: Page;
+  readonly roomIdLink: Locator;
   readonly tableCardSets: Locator;
   readonly tableCardSetByNth: Locator;
   readonly tableCardSetByCard: Locator;
@@ -29,6 +30,7 @@ export default class RoomPage {
 
   constructor(page: Page) {
     this.page = page;
+    this.roomIdLink = page.getByRole('link', { name: '部屋番号' });
     this.tableCardSets = page.getByLabel(/tableCardSet/);
     this.tableCardSetByNth = (nth: number) => {
       return {
@@ -62,6 +64,10 @@ export default class RoomPage {
 
   async goto(roomId: string) {
     await this.page.goto(urls.room(roomId));
+  }
+
+  async copyRoomUrl() {
+    await this.roomIdLink.click();
   }
 
   async selectCard(value: string) {

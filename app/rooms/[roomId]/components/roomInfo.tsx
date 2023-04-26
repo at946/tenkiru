@@ -13,20 +13,17 @@ const RoomInfo: NextPage<Props> = ({ roomId }) => {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`);
     event({ action: 'copy_room_url', category: 'engagement', label: '' });
     toast({
-      message: 'クリップボードにコピーしました！',
+      message: 'クリップボードにこの部屋のURLをコピーしました。',
       type: 'is-success',
       position: 'top-center',
     });
   };
 
   return (
-    <p>
-      <span>部屋番号：</span>
-      <a onClick={copyUrl}>
-        <span data-testid='roomId'>{roomId}</span>
-        <FontAwesomeIcon icon={faArrowUpFromBracket} className='ml-2' />
-      </a>
-    </p>
+    <a onClick={copyUrl} role="link" aria-label='部屋番号'>
+      <span>部屋番号：{roomId}</span>
+      <FontAwesomeIcon icon={faArrowUpFromBracket} className='ml-2' />
+    </a>
   );
 };
 

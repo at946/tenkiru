@@ -16,9 +16,12 @@ export default class RoomPage {
   readonly faceUpTableCards: Locator;
   readonly openButton: Locator;
   readonly replayButton: Locator;
+  readonly memberTypeToggle: Locator;
+  readonly selectedMemberType: Locator;
   readonly deckSelect: Locator;
   readonly handsCards: Locator;
   readonly selectedHandsCard: Locator;
+  readonly disabledHandsCard: Locator;
 
   readonly head: Head;
   readonly header: Header;
@@ -45,9 +48,12 @@ export default class RoomPage {
     this.faceUpTableCards = page.getByLabel('faceUpTableCard');
     this.openButton = page.getByRole('button', { name: '開く' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
+    this.memberTypeToggle = page.getByRole('list', { name: 'memberTypeToggle' });
+    this.selectedMemberType = this.memberTypeToggle.locator('li.is-active');
     this.deckSelect = page.getByRole('combobox', { name: 'deckSelect' });
     this.handsCards = page.getByLabel('handsCard');
-    this.selectedHandsCard = page.getByLabel('selectedHandsCard');
+    this.selectedHandsCard = page.getByLabel(/selected .*handsCard/);
+    this.disabledHandsCard = page.getByLabel(/disabled .*handsCard/);
 
     this.head = new Head(page);
     this.header = new Header(page);
@@ -73,6 +79,10 @@ export default class RoomPage {
 
   async nominateByCard(value: string) {
     await this.tableCardSetByCard(value).nominateButton.click();
+  }
+
+  async selectMemberType(memberType: string) {
+    await this.memberTypeToggle.getByRole('listitem', { name: memberType }).click();
   }
 
   async selectDeck(deck: string) {

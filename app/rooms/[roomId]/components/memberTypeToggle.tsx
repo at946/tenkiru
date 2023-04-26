@@ -17,18 +17,18 @@ const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
 
   return (
     <div className='tabs is-centered is-boxed'>
-      <ul>
+      <ul aria-label='memberTypeToggle'>
         <li
           className={type === 'player' ? 'is-active' : ''}
           onClick={() => clickMemberType('player')}
-          data-testid='memberTypePlayer'
+          aria-label='プレイヤー'
         >
           <a>プレイヤー</a>
         </li>
         <li
           className={type === 'audience' ? 'is-active' : ''}
           onClick={() => clickMemberType('audience')}
-          data-testid='memberTypeAudience'
+          aria-label='観客'
         >
           <a>観客</a>
         </li>

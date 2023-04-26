@@ -1,256 +1,296 @@
 import { test, expect } from '@playwright/test';
-import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
+import RoomPage from '../../models/room-page';
+import createRoomId from '../../helpers/createRoomId';
 
-test('ルームページで、デフォルトで「Player」が選択されていること', async ({ context }) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+test('ルームページで、デフォルトで「プレイヤー」が選択されていること', async ({ page }) => {
+  // Given
+  const roomPage: RoomPage = new RoomPage(page);
 
-  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  await expect(memberTypePlayer).toHaveText('プレイヤー');
-  await expect(memberTypePlayer).toHaveClass('is-active');
+  // When
+  await roomPage.goto(createRoomId());
 
-  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
-  await expect(memberTypeAudience).toHaveText('観客');
-  await expect(memberTypeAudience).not.toHaveClass('is-active');
+  // Then
+  await expect(roomPage.selectedMemberType).toHaveText('プレイヤー');
 });
 
-test('ルームページで、「Player」選択中かつカード未選択かつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
+test('ルームページで、「プレイヤー」選択中かつカード未選択かつカード未オープンの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
   context,
 }) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
 
-  const tableCards = page1.locator('data-testid=tableCard');
-  const tefudaCards = page1.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
+  await expect(roomPage1.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(2);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(0);
 
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).not.toHaveClass(/tefudaCard_[selected|disabled]/);
-  await expect(tefudaCards.nth(1)).not.toHaveClass(/tefudaCard_[selected|disabled]/);
-  await expect(memberTypePlayer).toHaveClass('is-active');
-  await expect(memberTypeAudience).not.toHaveClass('is-active');
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(2);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(0);
 
-  await memberTypeAudience.click();
+  // When
+  await roomPage1.selectMemberType('観客');
 
-  await expect(tableCards).toHaveCount(1);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
+  // Then
+  await expect(roomPage1.selectedMemberType).toHaveText('観客');
+  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
 
-  await tefudaCards.nth(2).click();
-  await expect(tefudaCards.nth(2)).not.toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(1);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(0);
 });
 
-test('ルームページで、「Player」選択中かつカード選択済みかつカード未オープンの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
+test('ルームページで、「プレイヤー」選択中かつカード選択済みかつカード未オープンの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
   context,
 }) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('13');
 
-  const tableCards = page1.locator('data-testid=tableCard');
-  const tefudaCards = page1.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
+  await expect(roomPage1.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(2);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
 
-  await tefudaCards.nth(0).click();
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(2);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_close/);
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_selected/);
-  await expect(tefudaCards.nth(1)).not.toHaveClass(/tefudaCard_[selected|disabled]/);
-  await expect(memberTypePlayer).toHaveClass('is-active');
-  await expect(memberTypeAudience).not.toHaveClass('is-active');
+  // When
+  await roomPage1.selectMemberType('観客');
 
-  await memberTypeAudience.click();
+  // Then
+  await expect(roomPage1.selectedMemberType).toHaveText('観客');
+  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(tableCards).toHaveCount(1);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
-
-  await tefudaCards.nth(2).click();
-  await expect(tefudaCards.nth(2)).not.toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(1);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「Player」選択中かつカード未選択かつカードオープン済みの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
+test('ルームページで、「プレイヤー」選択中かつカード未選択かつカードオープン済みの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
   context,
 }) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage2.selectCard('13');
+  await roomPage1.openCards();
 
-  const tableCards = page1.locator('data-testid=tableCard');
-  const tefudaCards = page1.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
+  await expect(roomPage1.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await page2.locator('data-testid=tefudaCard').nth(1).click();
-  await page1.locator('data-testid=openButton').click();
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(await roomPage2.handsCards.count());
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).toHaveClass('is-active');
-  await expect(memberTypeAudience).not.toHaveClass('is-active');
+  // When
+  await roomPage1.selectMemberType('観客');
 
-  await memberTypeAudience.click();
+  // Then
+  await expect(roomPage1.selectedMemberType).toHaveText('観客');
+  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(tableCards).toHaveCount(1);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
-
-  await tefudaCards.nth(2).click();
-  await expect(tefudaCards.nth(2)).not.toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(await roomPage2.handsCards.count());
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「Player」選択中かつカード選択済みかつカードオープン済みの状態で、「Audience」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
+test('ルームページで、「プレイヤー」選択中かつカード選択済みかつカードオープン済みの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
   context,
 }) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('13');
+  await roomPage1.openCards();
 
-  const tableCards = page1.locator('data-testid=tableCard');
-  const tefudaCards = page1.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
+  await expect(roomPage1.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(2);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
 
-  await tefudaCards.nth(1).click();
-  await page1.locator('data-testid=openButton').click();
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(2);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(await roomPage2.handsCards.count());
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_selected/);
-  await expect(memberTypePlayer).toHaveClass('is-active');
-  await expect(memberTypeAudience).not.toHaveClass('is-active');
+  // When
+  await roomPage1.selectMemberType('観客');
 
-  await memberTypeAudience.click();
+  // Then
+  await expect(roomPage1.selectedMemberType).toHaveText('観客');
+  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(tableCards).toHaveCount(1);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
-
-  await tefudaCards.nth(2).click();
-  await expect(tefudaCards.nth(2)).not.toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(await roomPage2.handsCards.count());
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「Audience」選択中かつカード未オープンの状態で、「Player」を選択したとき、自分のテーブルカードが現れ、手札カードを選べるようになること', async ({
+test('ルームページで、「観客」選択中かつカード未オープンの状態で、「プレイヤー」を選択したとき、自分のテーブルカードが現れ、手札カードを選べるようになること', async ({
   context,
 }) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectMemberType('観客');
+  await roomPage2.selectCard('5');
 
-  const tableCards = page1.locator('data-testid=tableCard');
-  const tefudaCards = page1.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
+  await expect(roomPage1.selectedMemberType).toHaveText('観客');
+  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await memberTypeAudience.click();
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(1);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 
-  await expect(tableCards).toHaveCount(1);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
+  // When
+  await roomPage1.selectMemberType('プレイヤー');
 
-  await memberTypePlayer.click();
+  // Then
+  await expect(roomPage1.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_blank/);
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).not.toHaveClass(/tefudaCard_[selected|disabled]/);
-  await expect(tefudaCards.nth(1)).not.toHaveClass(/tefudaCard_[selected|disabled]/);
-  await expect(memberTypePlayer).toHaveClass('is-active');
-  await expect(memberTypeAudience).not.toHaveClass('is-active');
-
-  await tefudaCards.nth(2).click();
-  await expect(tefudaCards.nth(2)).toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「Audience」選択中かつカードオープン済みの状態で、「Player」を選択したとき、自分のテーブルカードが現れること', async ({
+test('ルームページで、「観客」選択中かつカードオープン済みの状態で、「プレイヤー」を選択したとき、自分のテーブルカードが現れること', async ({
   context,
 }) => {
-  const [page1, page2] = await usersJoinRoom(context, urls.room(), 2);
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectMemberType('観客');
+  await roomPage2.selectCard('5');
+  await roomPage1.openCards();
 
-  const tableCards = page1.locator('data-testid=tableCard');
-  const tefudaCards = page1.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page1.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page1.locator('data-testid=memberTypeAudience');
+  await expect(roomPage1.selectedMemberType).toHaveText('観客');
+  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await memberTypeAudience.click();
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(await roomPage2.handsCards.count());
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 
-  await page2.locator('data-testid=tefudaCard').nth(0).click();
-  await page1.locator('data-testid=openButton').click();
+  // When
+  await roomPage1.selectMemberType('プレイヤー');
 
-  await expect(tableCards).toHaveCount(1);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
+  // Then
+  await expect(roomPage1.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.blankTableCards).toHaveCount(1);
+  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await memberTypePlayer.click();
-
-  await expect(tableCards).toHaveCount(2);
-  await expect(tableCards.nth(0)).toHaveClass(/tableCard_open/);
-  await expect(tableCards.nth(1)).toHaveClass(/tableCard_blank/);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).toHaveClass('is-active');
-  await expect(memberTypeAudience).not.toHaveClass('is-active');
-
-  await tefudaCards.nth(2).click();
-  await expect(tefudaCards.nth(2)).not.toHaveClass(/tefudaCard_selected/);
+  await expect(roomPage2.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.blankTableCards).toHaveCount(1);
+  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
+  await expect(roomPage2.disabledHandsCard).toHaveCount(await roomPage2.handsCards.count());
+  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、メンバーが自分ひとりのときに「Audience」を選択しても問題ないこと', async ({
-  context,
+test('ルームページで、メンバーが自分ひとりのときに「観客」を選択しても問題ないこと', async ({
+  page,
 }) => {
-  const [page] = await usersJoinRoom(context, urls.room(), 1);
+  // Given
+  const roomPage: RoomPage = new RoomPage(page);
+  await roomPage.goto(createRoomId());
+  await roomPage.selectCard('1');
 
-  const tableCards = page.locator('data-testid=tableCard');
-  const tefudaCards = page.locator('data-testid=tefudaCard');
-  const memberTypePlayer = page.locator('data-testid=memberTypePlayer');
-  const memberTypeAudience = page.locator('data-testid=memberTypeAudience');
-  const openButton = page.locator('data-testid=openButton');
-  const replayButton = page.locator('data-testid=replayButton');
+  await expect(roomPage.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage.tableCards).toHaveCount(1);
+  await expect(roomPage.faceDownTableCards).toHaveCount(1);
+  await expect(roomPage.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage.selectedHandsCard).toHaveCount(1);
 
-  await memberTypeAudience.click();
+  // When
+  await roomPage.selectMemberType('観客');
 
-  await expect(tableCards).toHaveCount(0);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
-  await expect(openButton).toBeDisabled();
-  await expect(replayButton).toHaveCount(0);
+  // Then
+  await expect(roomPage.selectedMemberType).toHaveText('観客');
+  await expect(roomPage.tableCards).toHaveCount(0);
+  await expect(roomPage.disabledHandsCard).toHaveCount(await roomPage.handsCards.count());
+  await expect(roomPage.selectedHandsCard).toHaveCount(0);
 
-  await memberTypePlayer.click();
-  await tefudaCards.nth(2).click();
-  await openButton.click();
-  await memberTypeAudience.click();
+  // When
+  await roomPage.selectMemberType('プレイヤー');
 
-  await expect(tableCards).toHaveCount(0);
-  await expect(tefudaCards.nth(0)).toHaveClass(/tefudaCard_disabled/);
-  await expect(tefudaCards.nth(1)).toHaveClass(/tefudaCard_disabled/);
-  await expect(memberTypePlayer).not.toHaveClass('is-active');
-  await expect(memberTypeAudience).toHaveClass('is-active');
-  await expect(openButton).toHaveCount(0);
-  await expect(replayButton).toBeEnabled();
-
-  await replayButton.click();
-  await expect(openButton).toBeDisabled();
-  await expect(replayButton).toHaveCount(0);
+  // Then
+  await expect(roomPage.selectedMemberType).toHaveText('プレイヤー');
+  await expect(roomPage.tableCards).toHaveCount(1);
+  await expect(roomPage.blankTableCards).toHaveCount(1);
+  await expect(roomPage.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage.selectedHandsCard).toHaveCount(0);
 });

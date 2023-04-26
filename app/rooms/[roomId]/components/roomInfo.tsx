@@ -20,7 +20,7 @@ const RoomInfo: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <a onClick={copyUrl} role="link" aria-label='部屋番号'>
+    <a onClick={copyUrl} role='link' aria-label='部屋番号'>
       <span>部屋番号：{roomId}</span>
       <FontAwesomeIcon icon={faArrowUpFromBracket} className='ml-2' />
     </a>

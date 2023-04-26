@@ -21,9 +21,9 @@ const SummaryTags: NextPage = () => {
     <div>
       {isVisible && (
         <div className='field is-grouped is-grouped-multiline is-grouped-centered'>
-          <SummaryTag name='Min' value={minCard} testid='min' />
-          <SummaryTag name='Avg' value={avgValue} testid='avg' />
-          <SummaryTag name='Max' value={maxCard} testid='max' />
+          <SummaryTag name='Min' value={minCard} ariaLabel='最小値' />
+          <SummaryTag name='Avg' value={avgValue} ariaLabel='平均値' />
+          <SummaryTag name='Max' value={maxCard} ariaLabel='最大値' />
         </div>
       )}
     </div>

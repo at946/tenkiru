@@ -1,128 +1,204 @@
 import { test, expect } from '@playwright/test';
-import urls from '../../helpers/urls';
-import usersJoinRoom from '../../helpers/usersJoinRoom';
+import RoomPage from '../../models/room-page';
+import createRoomId from '../../helpers/createRoomId';
 
 test('ルームページで、カードをオープンしたとき、場に出されたカードの最大値、最小値、平均値が表示されること', async ({
   context,
 }) => {
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  const tefudaCards1 = page1.locator('data-testid=tefudaCard');
-  const tefudaCards2 = page2.locator('data-testid=tefudaCard');
-  const tefudaCards3 = page3.locator('data-testid=tefudaCard');
-  const max = page1.locator('data-testid=max');
-  const min = page1.locator('data-testid=min');
-  const avg = page1.locator('data-testid=avg');
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectCard('3');
+  await roomPage2.selectCard('5');
+  await roomPage3.selectCard('13');
 
-  await tefudaCards1.nth(3).click(); // 3を選択
-  await tefudaCards2.nth(4).click(); // 5を選択
-  await tefudaCards3.nth(6).click(); // 13を選択
+  await expect(roomPage1.minTag).not.toBeVisible();
+  await expect(roomPage1.avgTag).not.toBeVisible();
+  await expect(roomPage1.maxTag).not.toBeVisible();
+  await expect(roomPage2.minTag).not.toBeVisible();
+  await expect(roomPage2.avgTag).not.toBeVisible();
+  await expect(roomPage2.maxTag).not.toBeVisible();
+  await expect(roomPage3.minTag).not.toBeVisible();
+  await expect(roomPage3.avgTag).not.toBeVisible();
+  await expect(roomPage3.maxTag).not.toBeVisible();
 
-  await expect(max).toHaveCount(0);
-  await expect(min).toHaveCount(0);
-  await expect(avg).toHaveCount(0);
+  // When
+  await roomPage1.openCards();
 
-  await page1.locator('data-testid=openButton').click();
-
-  await expect(max).toHaveText('Max13');
-  await expect(min).toHaveText('Min3');
-  await expect(avg).toHaveText('Avg7');
+  // Then
+  await expect(roomPage1.minTag).toHaveText('Min3');
+  await expect(roomPage1.avgTag).toHaveText('Avg7');
+  await expect(roomPage1.maxTag).toHaveText('Max13');
+  await expect(roomPage2.minTag).toHaveText('Min3');
+  await expect(roomPage2.avgTag).toHaveText('Avg7');
+  await expect(roomPage2.maxTag).toHaveText('Max13');
+  await expect(roomPage3.minTag).toHaveText('Min3');
+  await expect(roomPage3.avgTag).toHaveText('Avg7');
+  await expect(roomPage3.maxTag).toHaveText('Max13');
 });
 
 test('ルームページで、カードを出していないプレイヤーがいる状態で、カードをオープンにしたとき、場に出されたカードの最大値、最小値、平均値が正しく表示されること', async ({
   context,
 }) => {
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  const tefudaCards1 = page1.locator('data-testid=tefudaCard');
-  const tefudaCards2 = page2.locator('data-testid=tefudaCard');
-  const max = page1.locator('data-testid=max');
-  const min = page1.locator('data-testid=min');
-  const avg = page1.locator('data-testid=avg');
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectCard('2');
+  await roomPage2.selectCard('3');
 
-  await tefudaCards1.nth(2).click(); // 2を選択
-  await tefudaCards2.nth(3).click(); // 3を選択
+  await expect(roomPage1.minTag).not.toBeVisible();
+  await expect(roomPage1.avgTag).not.toBeVisible();
+  await expect(roomPage1.maxTag).not.toBeVisible();
+  await expect(roomPage2.minTag).not.toBeVisible();
+  await expect(roomPage2.avgTag).not.toBeVisible();
+  await expect(roomPage2.maxTag).not.toBeVisible();
+  await expect(roomPage3.minTag).not.toBeVisible();
+  await expect(roomPage3.avgTag).not.toBeVisible();
+  await expect(roomPage3.maxTag).not.toBeVisible();
 
-  await expect(max).toHaveCount(0);
-  await expect(min).toHaveCount(0);
-  await expect(avg).toHaveCount(0);
+  // When
+  await roomPage1.openCards();
 
-  await page1.locator('data-testid=openButton').click();
-
-  await expect(max).toHaveText('Max3');
-  await expect(min).toHaveText('Min2');
-  await expect(avg).toHaveText('Avg2.5');
+  // Then
+  await expect(roomPage1.minTag).toHaveText('Min2');
+  await expect(roomPage1.avgTag).toHaveText('Avg2.5');
+  await expect(roomPage1.maxTag).toHaveText('Max3');
+  await expect(roomPage2.minTag).toHaveText('Min2');
+  await expect(roomPage2.avgTag).toHaveText('Avg2.5');
+  await expect(roomPage2.maxTag).toHaveText('Max3');
+  await expect(roomPage3.minTag).toHaveText('Min2');
+  await expect(roomPage3.avgTag).toHaveText('Avg2.5');
+  await expect(roomPage3.maxTag).toHaveText('Max3');
 });
 
 test('ルームページで、「？」のカードがある状態で、カードをオープンしたとき、場に出されたカードの最大値、最小値、平均値が正しく表示されること', async ({
   context,
 }) => {
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  const tefudaCards1 = page1.locator('data-testid=tefudaCard');
-  const tefudaCards2 = page2.locator('data-testid=tefudaCard');
-  const tefudaCards3 = page3.locator('data-testid=tefudaCard');
-  const max = page1.locator('data-testid=max');
-  const min = page1.locator('data-testid=min');
-  const avg = page1.locator('data-testid=avg');
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectCard('1');
+  await roomPage2.selectCard('?');
+  await roomPage3.selectCard('2');
 
-  await tefudaCards1.nth(1).click(); // 1を選択
-  await tefudaCards2.nth((await tefudaCards2.count()) - 1).click(); // ?を選択
-  await tefudaCards3.nth(2).click(); // 2を選択
+  await expect(roomPage1.minTag).not.toBeVisible();
+  await expect(roomPage1.avgTag).not.toBeVisible();
+  await expect(roomPage1.maxTag).not.toBeVisible();
+  await expect(roomPage2.minTag).not.toBeVisible();
+  await expect(roomPage2.avgTag).not.toBeVisible();
+  await expect(roomPage2.maxTag).not.toBeVisible();
+  await expect(roomPage3.minTag).not.toBeVisible();
+  await expect(roomPage3.avgTag).not.toBeVisible();
+  await expect(roomPage3.maxTag).not.toBeVisible();
 
-  await expect(max).toHaveCount(0);
-  await expect(min).toHaveCount(0);
-  await expect(avg).toHaveCount(0);
+  // When
+  await roomPage1.openCards();
 
-  await page1.locator('data-testid=openButton').click();
-
-  await expect(max).toHaveText('Max2');
-  await expect(min).toHaveText('Min1');
-  await expect(avg).toHaveText('Avg1.5');
+  // Then
+  await expect(roomPage1.minTag).toHaveText('Min1');
+  await expect(roomPage1.avgTag).toHaveText('Avg1.5');
+  await expect(roomPage1.maxTag).toHaveText('Max2');
+  await expect(roomPage2.minTag).toHaveText('Min1');
+  await expect(roomPage2.avgTag).toHaveText('Avg1.5');
+  await expect(roomPage2.maxTag).toHaveText('Max2');
+  await expect(roomPage3.minTag).toHaveText('Min1');
+  await expect(roomPage3.avgTag).toHaveText('Avg1.5');
+  await expect(roomPage3.maxTag).toHaveText('Max2');
 });
 
 test('ルームページで、カードをオープンにしたあとで、プレイヤーがオーディエンスに変わっても、場に出されたカードの最大値、最小値、平均値が再計算され正しく表示されること', async ({
   context,
 }) => {
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  const tefudaCards1 = page1.locator('data-testid=tefudaCard');
-  const tefudaCards2 = page2.locator('data-testid=tefudaCard');
-  const tefudaCards3 = page3.locator('data-testid=tefudaCard');
-  const max = page1.locator('data-testid=max');
-  const min = page1.locator('data-testid=min');
-  const avg = page1.locator('data-testid=avg');
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectCard('3');
+  await roomPage2.selectCard('5');
+  await roomPage3.selectCard('13');
+  await roomPage1.openCards();
 
-  await tefudaCards1.nth(3).click(); // 3を選択
-  await tefudaCards2.nth(4).click(); // 5を選択
-  await tefudaCards3.nth(6).click(); // 13を選択
+  await expect(roomPage1.minTag).toHaveText('Min3');
+  await expect(roomPage1.avgTag).toHaveText('Avg7');
+  await expect(roomPage1.maxTag).toHaveText('Max13');
+  await expect(roomPage2.minTag).toHaveText('Min3');
+  await expect(roomPage2.avgTag).toHaveText('Avg7');
+  await expect(roomPage2.maxTag).toHaveText('Max13');
+  await expect(roomPage3.minTag).toHaveText('Min3');
+  await expect(roomPage3.avgTag).toHaveText('Avg7');
+  await expect(roomPage3.maxTag).toHaveText('Max13');
 
-  await page1.locator('data-testid=openButton').click();
+  // When
+  await roomPage3.selectMemberType('観客');
 
-  await expect(max).toHaveText('Max13');
-  await expect(min).toHaveText('Min3');
-  await expect(avg).toHaveText('Avg7');
-
-  await page3.locator('data-testid=memberTypeAudience').click();
-
-  await expect(max).toHaveText('Max5');
-  await expect(min).toHaveText('Min3');
-  await expect(avg).toHaveText('Avg4');
+  // Then
+  await expect(roomPage1.minTag).toHaveText('Min3');
+  await expect(roomPage1.avgTag).toHaveText('Avg4');
+  await expect(roomPage1.maxTag).toHaveText('Max5');
+  await expect(roomPage2.minTag).toHaveText('Min3');
+  await expect(roomPage2.avgTag).toHaveText('Avg4');
+  await expect(roomPage2.maxTag).toHaveText('Max5');
+  await expect(roomPage3.minTag).toHaveText('Min3');
+  await expect(roomPage3.avgTag).toHaveText('Avg4');
+  await expect(roomPage3.maxTag).toHaveText('Max5');
 });
 
 test('ルームページで、場に数字のカードが出ていないとき、サマリーが表示されないこと', async ({
   context,
 }) => {
-  const [page1, page2, page3] = await usersJoinRoom(context, urls.room(), 3);
-  const tefudaCards1 = page1.locator('data-testid=tefudaCard');
-  const tefudaCards2 = page2.locator('data-testid=tefudaCard');
-  const tefudaCards3 = page3.locator('data-testid=tefudaCard');
-  const max = page1.locator('data-testid=max');
-  const min = page1.locator('data-testid=min');
-  const avg = page1.locator('data-testid=avg');
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+  await roomPage1.selectDeck('Tシャツサイズ');
+  await roomPage1.selectCard('S');
+  await roomPage2.selectCard('M');
+  await roomPage3.selectCard('L');
 
-  await tefudaCards1.nth((await tefudaCards1.count()) - 1).click(); // ?を選択
-  await tefudaCards2.nth((await tefudaCards1.count()) - 1).click(); // ?を選択
-  await tefudaCards3.nth((await tefudaCards1.count()) - 1).click(); // ?を選択
-  await page1.locator('data-testid=openButton').click();
+  await expect(roomPage1.minTag).not.toBeVisible();
+  await expect(roomPage1.avgTag).not.toBeVisible();
+  await expect(roomPage1.maxTag).not.toBeVisible();
+  await expect(roomPage2.minTag).not.toBeVisible();
+  await expect(roomPage2.avgTag).not.toBeVisible();
+  await expect(roomPage2.maxTag).not.toBeVisible();
+  await expect(roomPage3.minTag).not.toBeVisible();
+  await expect(roomPage3.avgTag).not.toBeVisible();
+  await expect(roomPage3.maxTag).not.toBeVisible();
 
-  await expect(max).toHaveCount(0);
-  await expect(min).toHaveCount(0);
-  await expect(avg).toHaveCount(0);
+  // When
+  await roomPage1.openCards();
+
+  // Then
+  await expect(roomPage1.minTag).not.toBeVisible();
+  await expect(roomPage1.avgTag).not.toBeVisible();
+  await expect(roomPage1.maxTag).not.toBeVisible();
+  await expect(roomPage2.minTag).not.toBeVisible();
+  await expect(roomPage2.avgTag).not.toBeVisible();
+  await expect(roomPage2.maxTag).not.toBeVisible();
+  await expect(roomPage3.minTag).not.toBeVisible();
+  await expect(roomPage3.avgTag).not.toBeVisible();
+  await expect(roomPage3.maxTag).not.toBeVisible();
 });

@@ -15,6 +15,9 @@ export default class RoomPage {
   readonly blankTableCards: Locator;
   readonly faceDownTableCards: Locator;
   readonly faceUpTableCards: Locator;
+  readonly minTag: Locator;
+  readonly avgTag: Locator;
+  readonly maxTag: Locator;
   readonly openButton: Locator;
   readonly replayButton: Locator;
   readonly memberTypeToggle: Locator;
@@ -48,6 +51,9 @@ export default class RoomPage {
     this.blankTableCards = page.getByLabel('blankTableCard');
     this.faceDownTableCards = page.getByLabel('faceDownTableCard');
     this.faceUpTableCards = page.getByLabel('faceUpTableCard');
+    this.minTag = page.getByLabel('最小値');
+    this.avgTag = page.getByLabel('平均値');
+    this.maxTag = page.getByLabel('最大値');
     this.openButton = page.getByRole('button', { name: '開く' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
     this.memberTypeToggle = page.getByRole('list', { name: 'memberTypeToggle' });
@@ -71,7 +77,7 @@ export default class RoomPage {
   }
 
   async selectCard(value: string) {
-    const reg: RegExp = new RegExp(`^${value}$`);
+    const reg: RegExp = new RegExp(`^${value.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')}$`);
     await this.handsCards.filter({ hasText: reg }).click();
   }
 

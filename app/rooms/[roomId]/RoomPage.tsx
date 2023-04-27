@@ -14,7 +14,7 @@ import { DeckType } from '@/interfaces/deckType';
 import RoomInfo from './components/roomInfo';
 import Table from './components/table/table';
 import MemberTypeToggle from './components/memberTypeToggle';
-import Tefuda from './components/tefuda/tefuda';
+import Hands from './components/hands/hands';
 
 // stores
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -127,7 +127,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         {isConnected && (
           <div className='container'>
             <MemberTypeToggle changeMemberType={changeMemberType} />
-            <Tefuda putDownCard={putDownCard} changeDeckType={changeDeckType} />
+            <Hands putDownCard={putDownCard} changeDeckType={changeDeckType} />
           </div>
         )}
       </div>

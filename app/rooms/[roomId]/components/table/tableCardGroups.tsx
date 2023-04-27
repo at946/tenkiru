@@ -1,23 +1,23 @@
 import { NextPage } from 'next';
 import { useAppSelector } from '@/store/hooks';
 import { Member } from '@/interfaces/member';
-import TableCardSet from './tableCardSet';
+import TableCardGroup from './tableCardGroup';
 
 interface Props {
   nominate: (memberId: string) => void;
 }
 
-const TableCards: NextPage<Props> = ({ nominate }) => {
+const TableCardGroups: NextPage<Props> = ({ nominate }) => {
   const members: Member[] = useAppSelector((state) => state.members.members);
   const players: Member[] = members.filter((v) => v.type === 'player');
 
   return (
     <div className='is-flex is-flex-wrap-wrap is-justify-content-center'>
       {players.map((player) => (
-        <TableCardSet player={player} nominate={nominate} key={player.id} />
+        <TableCardGroup player={player} nominate={nominate} key={player.id} />
       ))}
     </div>
   );
 };
 
-export default TableCards;
+export default TableCardGroups;

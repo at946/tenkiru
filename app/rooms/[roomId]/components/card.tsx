@@ -5,11 +5,20 @@ import styles from './card.module.scss';
 interface Props {
   value: Card;
   additionalClassName?: string;
-  testId?: string;
+  role?: string;
   ariaLabel?: string;
+  ariaDisabled?: boolean;
+  ariaSelected?: boolean;
 }
 
-const Card: NextPage<Props> = ({ value, additionalClassName, testId, ariaLabel }) => {
+const Card: NextPage<Props> = ({
+  value,
+  additionalClassName,
+  role,
+  ariaLabel,
+  ariaDisabled,
+  ariaSelected,
+}) => {
   const className: string = `
     is-flex
     is-justify-content-center
@@ -22,9 +31,11 @@ const Card: NextPage<Props> = ({ value, additionalClassName, testId, ariaLabel }
 
   return (
     <div
-      className={`${className} ${additionalClassName || ''}`}
-      data-testid={testId}
+      className={`${className} ${additionalClassName}`}
+      role={role}
       aria-label={ariaLabel}
+      aria-disabled={ariaDisabled}
+      aria-selected={ariaSelected}
     >
       {value}
     </div>

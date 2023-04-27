@@ -8,11 +8,7 @@ const Header: NextPage = () => {
     <nav className='navbar px-5' role='navigation' aria-label='main navigation'>
       <div className='container'>
         <div className='navbar-brand'>
-          <Link
-            href='/'
-            className='navbar-item has-text-primary has-text-weight-bold'
-            aria-label='logo'
-          >
+          <Link href='/' className='navbar-item has-text-primary has-text-weight-bold'>
             Tenkir
           </Link>
         </div>

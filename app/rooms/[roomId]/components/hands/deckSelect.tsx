@@ -18,7 +18,7 @@ const DeckSelect: NextPage<Props> = ({ select }) => {
   return (
     <div className='is-flex is-justify-content-center is-align-items-center mb-2'>
       <div className='select is-primary is-rounded'>
-        <select value={deckType} onChange={change} aria-label='deckSelect'>
+        <select value={deckType} onChange={change} aria-label='デッキ選択'>
           {Decks.map((deck: Deck) => (
             <option key={deck.key} value={deck.key}>
               {deck.displayName}

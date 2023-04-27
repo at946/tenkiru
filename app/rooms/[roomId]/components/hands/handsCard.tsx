@@ -3,14 +3,14 @@ import { Card as IFCard } from '@/interfaces/card';
 import { MemberType } from '@/interfaces/memberType';
 import { useAppSelector } from '@/store/hooks';
 import Card from '../card';
-import styles from './tefudaCard.module.scss';
+import styles from './handsCard.module.scss';
 
 interface Props {
   card: IFCard;
   putDownCard: (card: IFCard) => void;
 }
 
-const TefudaCard: NextPage<Props> = ({ card, putDownCard }) => {
+const HandsCard: NextPage<Props> = ({ card, putDownCard }) => {
   const selectedCard: IFCard = useAppSelector((state) => state.user.selectedCard);
   const isSelected: boolean = card === selectedCard;
 
@@ -28,10 +28,13 @@ const TefudaCard: NextPage<Props> = ({ card, putDownCard }) => {
       <Card
         value={card}
         additionalClassName={isSelected ? styles.selected : isDisabled ? styles.disabled : ''}
-        ariaLabel={`${isSelected ? 'selected ' : ''}${isDisabled ? 'disabled ' : ''}handsCard`}
+        role='option'
+        ariaLabel='手札カード'
+        ariaSelected={isSelected}
+        ariaDisabled={isDisabled}
       />
     </a>
   );
 };
 
-export default TefudaCard;
+export default HandsCard;

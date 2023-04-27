@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import TableButton from './tableButton';
 import SummaryTags from './summaryTags';
-import TableCardSets from './tableCardSets';
+import TableCardGroups from './tableCardGroups';
 
 interface Props {
   openCards: () => void;
@@ -13,7 +13,7 @@ const Table: NextPage<Props> = ({ openCards, replay, nominate }) => {
   return (
     <div className='box has-background-success is-shadowless'>
       <div className='mb-5'>
-        <TableCardSets nominate={nominate} />
+        <TableCardGroups nominate={nominate} />
       </div>
       <div className='mb-4'>
         <SummaryTags />

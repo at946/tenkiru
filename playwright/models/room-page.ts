@@ -7,14 +7,13 @@ import urls from '../helpers/urls';
 export default class RoomPage {
   readonly page: Page;
   readonly roomIdLink: Locator;
-  readonly tableCardSets: Locator;
-  readonly tableCardSetByNth: Locator;
-  readonly tableCardSetByCard: Locator;
-  readonly nominateButton: Locator;
+  readonly tableCardGroups: Locator;
   readonly tableCards: Locator;
   readonly blankTableCards: Locator;
   readonly faceDownTableCards: Locator;
   readonly faceUpTableCards: Locator;
+  readonly nominateButtons: Locator;
+  readonly nominateButtonByCard: Locator;
   readonly minTag: Locator;
   readonly avgTag: Locator;
   readonly maxTag: Locator;
@@ -23,6 +22,7 @@ export default class RoomPage {
   readonly memberTypeToggle: Locator;
   readonly selectedMemberType: Locator;
   readonly deckSelect: Locator;
+  readonly hands: Locator;
   readonly handsCards: Locator;
   readonly selectedHandsCard: Locator;
   readonly disabledHandsCard: Locator;
@@ -33,35 +33,28 @@ export default class RoomPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.roomIdLink = page.getByRole('link', { name: '部屋番号' });
-    this.tableCardSets = page.getByLabel(/tableCardSet/);
-    this.tableCardSetByNth = (nth: number) => {
-      return {
-        nominateButton: this.tableCardSets.nth(nth).getByRole('button', { name: '指名' }),
-      };
+    this.roomIdLink = page.getByRole('button', { name: '部屋番号' });
+    this.tableCardGroups = page.getByRole('group', { name: 'テーブルカードグループ' });
+    this.tableCards = this.tableCardGroups.getByLabel('テーブルカード');
+    this.blankTableCards = this.tableCardGroups.getByLabel('未選択のテーブルカード');
+    this.faceDownTableCards = this.tableCardGroups.getByLabel('伏せられたテーブルカード');
+    this.faceUpTableCards = this.tableCardGroups.getByLabel('オープンされたテーブルカード');
+    this.nominateButtons = page.getByRole('button', { name: '指名' });
+    this.nominateButtonByCard = (value: string) => {
+      return this.tableCardGroups.filter({ hasText: value }).getByRole('button', { name: '指名' });
     };
-    this.tableCardSetByCard = (value: string) => {
-      return {
-        nominateButton: page
-          .getByLabel(`tableCardSet-${value}`)
-          .getByRole('button', { name: '指名' }),
-      };
-    };
-    this.tableCards = page.getByLabel(/TableCard/);
-    this.blankTableCards = page.getByLabel('blankTableCard');
-    this.faceDownTableCards = page.getByLabel('faceDownTableCard');
-    this.faceUpTableCards = page.getByLabel('faceUpTableCard');
     this.minTag = page.getByLabel('最小値');
     this.avgTag = page.getByLabel('平均値');
     this.maxTag = page.getByLabel('最大値');
     this.openButton = page.getByRole('button', { name: '開く' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
-    this.memberTypeToggle = page.getByRole('list', { name: 'memberTypeToggle' });
-    this.selectedMemberType = this.memberTypeToggle.locator('li.is-active');
-    this.deckSelect = page.getByRole('combobox', { name: 'deckSelect' });
-    this.handsCards = page.getByLabel('handsCard');
-    this.selectedHandsCard = page.getByLabel(/selected .*handsCard/);
-    this.disabledHandsCard = page.getByLabel(/disabled .*handsCard/);
+    this.memberTypeToggle = page.getByRole('list', { name: 'メンバータイプの選択' });
+    this.selectedMemberType = this.memberTypeToggle.getByRole('listitem', { name: '選択中' });
+    this.deckSelect = page.getByRole('combobox', { name: 'デッキ選択' });
+    this.hands = page.getByRole('group', { name: '手札' });
+    this.handsCards = this.hands.getByRole('option', { name: '手札カード' });
+    this.selectedHandsCard = this.hands.getByRole('option', { name: '手札カード', selected: true });
+    this.disabledHandsCard = this.hands.getByRole('option', { name: '手札カード', disabled: true });
 
     this.head = new Head(page);
     this.header = new Header(page);
@@ -90,11 +83,11 @@ export default class RoomPage {
   }
 
   async nominateByCard(value: string) {
-    await this.tableCardSetByCard(value).nominateButton.click();
+    await this.nominateButtonByCard(value).click();
   }
 
   async selectMemberType(memberType: string) {
-    await this.memberTypeToggle.getByRole('listitem', { name: memberType }).click();
+    await this.memberTypeToggle.getByText(memberType).click();
   }
 
   async selectDeck(deck: string) {

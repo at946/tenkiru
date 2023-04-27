@@ -16,33 +16,17 @@ test('ルームページで、カードをオープンしているとき、「�
   await roomPage1.selectCard('0');
   await roomPage2.selectCard('2');
 
-  await expect(roomPage1.tableCardSetByNth(0).nominateButton).not.toBeVisible();
-  await expect(roomPage1.tableCardSetByNth(1).nominateButton).not.toBeVisible();
-  await expect(roomPage1.tableCardSetByNth(2).nominateButton).not.toBeVisible();
-
-  await expect(roomPage2.tableCardSetByNth(0).nominateButton).not.toBeVisible();
-  await expect(roomPage2.tableCardSetByNth(1).nominateButton).not.toBeVisible();
-  await expect(roomPage2.tableCardSetByNth(2).nominateButton).not.toBeVisible();
-
-  await expect(roomPage3.tableCardSetByNth(0).nominateButton).not.toBeVisible();
-  await expect(roomPage3.tableCardSetByNth(1).nominateButton).not.toBeVisible();
-  await expect(roomPage3.tableCardSetByNth(2).nominateButton).not.toBeVisible();
+  await expect(roomPage1.nominateButtons).toHaveCount(0);
+  await expect(roomPage2.nominateButtons).toHaveCount(0);
+  await expect(roomPage3.nominateButtons).toHaveCount(0);
 
   // When - カードをオープンする
   await roomPage1.openCards();
 
   // Then - オープンしたカードには「指名」ボタンが表示される
-  await expect(roomPage1.tableCardSetByNth(0).nominateButton).toBeVisible();
-  await expect(roomPage1.tableCardSetByNth(1).nominateButton).toBeVisible();
-  await expect(roomPage1.tableCardSetByNth(2).nominateButton).not.toBeVisible();
-
-  await expect(roomPage2.tableCardSetByNth(0).nominateButton).toBeVisible();
-  await expect(roomPage2.tableCardSetByNth(1).nominateButton).toBeVisible();
-  await expect(roomPage2.tableCardSetByNth(2).nominateButton).not.toBeVisible();
-
-  await expect(roomPage3.tableCardSetByNth(0).nominateButton).toBeVisible();
-  await expect(roomPage3.tableCardSetByNth(1).nominateButton).toBeVisible();
-  await expect(roomPage3.tableCardSetByNth(2).nominateButton).not.toBeVisible();
+  await expect(roomPage1.nominateButtons).toHaveCount(2);
+  await expect(roomPage2.nominateButtons).toHaveCount(2);
+  await expect(roomPage3.nominateButtons).toHaveCount(2);
 });
 
 test('ルームページで、自分以外の出したカードの「指名」ボタンを選択したとき、そのカードを場に出したメンバーに「指名アラート」が表示されること', async ({

@@ -11,7 +11,7 @@ test('ルームページで、デッキはデフォルトで「Fibonacci」が�
   await roomPage.goto(createRoomId());
 
   // Then
-  await expect(roomPage.deckSelect).toHaveValue('フィボナッチ数列');
+  await expect(roomPage.deckSelect).toHaveValue('fibonacci');
   await expect(roomPage.handsCards).toHaveCount(fibonacciDeck.length);
   (await roomPage.handsCards.all()).forEach(async (handsCard, index) => {
     await expect(handsCard).toHaveText(fibonacciDeck[index]);

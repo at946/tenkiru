@@ -5,6 +5,8 @@
     "playwright": "^1.29.2"
   },
   "scripts": {
-    "test": "yarn playwright test"
+    "test": "yarn playwright test",
+    "test-retry": "yarn playwright test --retries 1",
+    "report": "yarn playwright show-report"
   }
 }

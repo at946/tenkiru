@@ -16,12 +16,10 @@ jobs:
         with:
           node-version: 16
 
-      - name: install dependencies
-        run: yarn --frozen-lockfile
-
       - name: check for outdated packages
         id: outdated
-        run: yarn outdated --json --verbose
+        run: yarn outdated --json
+        continue-on-error: true
 
       - name: create a branch for pull request
         if: steps.outdated.outputs.outdated != '[]'
@@ -29,6 +27,9 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git switch -c weekly-packages-upgrade
+
+      - name: install dependencies
+        run: yarn --frozen-lockfile
 
       - name: upgrade dependencies
         if: steps.outdated.outputs.outdated != '[]'

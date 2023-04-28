@@ -14,8 +14,6 @@ services:
     build: playwright
     volumes:
       - ./playwright:/playwright
-    environment:
-      - TARGET_URL=http://gateway.docker.internal:3000
     depends_on:
       - app
     profiles:

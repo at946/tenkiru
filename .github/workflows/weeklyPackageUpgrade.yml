@@ -1,0 +1,80 @@
+name: Weekly packages upgrade
+
+on:
+  pull_request:
+  schedule:
+    - cron: '0 21 * * FRI' # UTC時間で金曜日の21時、日本時間で土曜日の6時に実行
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: install dependencies
+        if: steps.outdated.outputs.outdated != '[]'
+        run: yarn --frozen-lockfile
+
+      - name: check for outdated packages
+        id: outdated
+        run: yarn outdated --json
+
+      - name: create a branch for pull request
+        if: steps.outdated.outputs.outdated != '[]'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git switch -c weekly-packages-upgrade
+
+      - name: upgrade dependencies
+        if: steps.outdated.outputs.outdated != '[]'
+        run: yarn upgrade
+
+      - name: commit and push changes
+        if: steps.outdated.outputs.outdated != '[]'
+        run: |
+          git commit -a -m "Auto-upgrade packages"
+          git push -u origin weekly-packages-upgrade
+
+      - name: create pull request
+        if: steps.outdated.outputs.outdated != '[]'
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Weekly packages upgrade"
+          commit-message: "Auto-upgrade packages"
+          branch: weekly-packages-upgrade
+          labels: auto
+
+      - name: notify no upgrade to slack
+        if: steps.outdated.outputs.outdated == '[]'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: |
+            Weekly packages upgrade はありませんでした。          
+
+      - name: notify success to slack
+        if: steps.outdated.outputs.outdated != '[]'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: |
+            Weekly packages upgrade が成功しました!!🎉
+            ${{ steps.cpr.outputs.pull-request-url }}
+
+      - name: notify failure to slack
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: |
+            Weekly packages upgrade が失敗しました...(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)

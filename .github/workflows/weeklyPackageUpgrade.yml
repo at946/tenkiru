@@ -1,7 +1,6 @@
 name: Weekly packages upgrade
 
 on:
-  pull_request:
   schedule:
     - cron: '0 21 * * FRI' # UTC時間で金曜日の21時、日本時間で土曜日の6時に実行
 

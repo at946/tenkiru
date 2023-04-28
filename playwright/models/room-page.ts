@@ -38,7 +38,7 @@ export default class RoomPage {
     this.tableCards = this.tableCardGroups.getByLabel('テーブルカード');
     this.blankTableCards = this.tableCardGroups.getByLabel('未選択のテーブルカード');
     this.faceDownTableCards = this.tableCardGroups.getByLabel('伏せられたテーブルカード');
-    this.faceUpTableCards = this.tableCardGroups.getByLabel('オープンされたテーブルカード');
+    this.faceUpTableCards = this.tableCardGroups.getByLabel('めくられたテーブルカード');
     this.nominateButtons = page.getByRole('button', { name: '指名' });
     this.nominateButtonByCard = (value: string) => {
       return this.tableCardGroups.filter({ hasText: value }).getByRole('button', { name: '指名' });

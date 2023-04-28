@@ -62,30 +62,22 @@ test('ルームページで、カードをオープンした後、カードの�
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
   await roomPage1.selectCard('0');
-  await roomPage1.openCards();
 
-  await expect(roomPage1.tableCards).toHaveCount(2);
-  await expect(roomPage1.blankTableCards).toHaveCount(1);
-  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
-  await expect(roomPage1.faceUpTableCards).toHaveText('0');
-  await expect(roomPage2.tableCards).toHaveCount(2);
-  await expect(roomPage2.blankTableCards).toHaveCount(1);
-  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
-  await expect(roomPage2.faceUpTableCards).toHaveText('0');
+  await expect(roomPage1.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
+
+  await expect(roomPage2.disabledHandsCard).toHaveCount(0);
+  await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 
   // When
-  await roomPage1.selectCard('1');
-  await roomPage2.selectCard('2');
+  await roomPage1.openCards();
 
   // Then
-  await expect(roomPage1.tableCards).toHaveCount(2);
-  await expect(roomPage1.blankTableCards).toHaveCount(1);
-  await expect(roomPage1.faceUpTableCards).toHaveCount(1);
-  await expect(roomPage1.faceUpTableCards).toHaveText('0');
-  await expect(roomPage2.tableCards).toHaveCount(2);
-  await expect(roomPage2.blankTableCards).toHaveCount(1);
-  await expect(roomPage2.faceUpTableCards).toHaveCount(1);
-  await expect(roomPage2.faceUpTableCards).toHaveText('0');
+  await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
+  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
+
+  await expect(roomPage2.disabledHandsCard).toHaveCount(await roomPage2.handsCards.count());
+  await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 });
 
 test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async ({

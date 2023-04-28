@@ -2,7 +2,7 @@ name: Weekly packages upgrade
 
 on:
   schedule:
-    - cron: '0 21 * * FRI' # UTC時間で金曜日の21時、日本時間で土曜日の6時に実行
+    - cron: '0 22 * * FRI' # UTC時間で金曜日の21時、日本時間で土曜日の6時に実行
 
 jobs:
   upgrade:
@@ -20,25 +20,12 @@ jobs:
         run: yarn outdated --json
         continue-on-error: true
 
-      - name: create a branch for pull request
-        if: steps.outdated.outputs.outdated != '[]'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git switch -c weekly-packages-upgrade
-
       - name: install dependencies
         run: yarn --frozen-lockfile
 
       - name: upgrade dependencies
         if: steps.outdated.outputs.outdated != '[]'
         run: yarn upgrade
-
-      - name: commit and push changes
-        if: steps.outdated.outputs.outdated != '[]'
-        run: |
-          git commit -a -m "Auto-upgrade packages"
-          git push -u origin weekly-packages-upgrade
 
       - name: create pull request
         if: steps.outdated.outputs.outdated != '[]'

@@ -17,12 +17,11 @@ jobs:
           node-version: 16
 
       - name: install dependencies
-        if: steps.outdated.outputs.outdated != '[]'
         run: yarn --frozen-lockfile
 
       - name: check for outdated packages
         id: outdated
-        run: yarn outdated --json
+        run: yarn outdated --json --verbose
 
       - name: create a branch for pull request
         if: steps.outdated.outputs.outdated != '[]'

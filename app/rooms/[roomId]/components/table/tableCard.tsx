@@ -15,7 +15,8 @@ const TableCard: NextPage<Props> = ({ value, status }) => {
     return <Card value={value} ariaLabel={`めくられたテーブルカード ${value}`} />;
   } else if (status === 'faceDown') {
     return <Card additionalClassName={styles['face-down']} ariaLabel='伏せられたテーブルカード' />;
-  } else { // blank
+  } else {
+    // blank
     return <Card additionalClassName={styles.blank} ariaLabel='未選択のテーブルカード' />;
   }
 };

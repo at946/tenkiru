@@ -1,6 +1,6 @@
 interface URLs {
   top: string;
-  room: () => string;
+  room: (roomId: string) => string;
   tos: string;
   pp: string;
 }

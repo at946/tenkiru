@@ -13,7 +13,7 @@ export default class RoomPage {
   readonly faceDownTableCards: Locator;
   readonly faceUpTableCards: Locator;
   readonly nominateButtons: Locator;
-  readonly nominateButtonByCard: Locator;
+  readonly nominateButtonByCard: (card: string) => Locator;
   readonly minTag: Locator;
   readonly avgTag: Locator;
   readonly maxTag: Locator;
@@ -40,8 +40,8 @@ export default class RoomPage {
     this.faceDownTableCards = this.tableCardGroups.getByLabel('伏せられたテーブルカード');
     this.faceUpTableCards = this.tableCardGroups.getByLabel('めくられたテーブルカード');
     this.nominateButtons = page.getByRole('button', { name: '指名' });
-    this.nominateButtonByCard = (value: string) => {
-      return this.tableCardGroups.filter({ hasText: value }).getByRole('button', { name: '指名' });
+    this.nominateButtonByCard = (card: string) => {
+      return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: '指名' });
     };
     this.minTag = page.getByLabel('最小値');
     this.avgTag = page.getByLabel('平均値');

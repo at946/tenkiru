@@ -3,7 +3,7 @@ import { Card } from '@/interfaces/card';
 import styles from './card.module.scss';
 
 interface Props {
-  value: Card;
+  value?: Card;
   additionalClassName?: string;
   role?: string;
   ariaLabel?: string;

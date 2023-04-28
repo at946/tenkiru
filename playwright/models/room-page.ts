@@ -33,7 +33,7 @@ export default class RoomPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.roomIdLink = page.getByRole('button', { name: '部屋番号' });
+    this.roomIdLink = page.getByRole('link', { name: '部屋番号' });
     this.tableCardGroups = page.getByRole('group', { name: 'テーブルカードグループ' });
     this.tableCards = this.tableCardGroups.getByLabel('テーブルカード');
     this.blankTableCards = this.tableCardGroups.getByLabel('未選択のテーブルカード');

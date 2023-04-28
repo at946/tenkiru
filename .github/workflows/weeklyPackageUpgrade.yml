@@ -45,8 +45,8 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
-          title: "Weekly packages upgrade"
-          commit-message: "Auto-upgrade packages"
+          title: 'Weekly packages upgrade'
+          commit-message: 'Auto-upgrade packages'
           branch: weekly-packages-upgrade
           labels: auto
 
@@ -57,7 +57,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_MESSAGE: |
-            Weekly packages upgrade はありませんでした。          
+            Weekly packages upgrade はありませんでした。
 
       - name: notify success to slack
         if: steps.outdated.outputs.outdated != '[]'

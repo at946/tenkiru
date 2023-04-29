@@ -2,7 +2,7 @@ name: Weekly packages upgrade
 
 on:
   schedule:
-    - cron: '10 13 * * SAT' # UTC
+    - cron: '35 13 * * SAT' # UTC
 
 jobs:
   upgrade:
@@ -21,11 +21,37 @@ jobs:
         continue-on-error: true
 
       - name: install dependencies
+        if: steps.outdated.outputs.outdated != '[]'
         run: yarn --frozen-lockfile
 
       - name: upgrade dependencies
         if: steps.outdated.outputs.outdated != '[]'
         run: yarn upgrade
+
+      - name: prepare for playwright
+        run: |
+          yarn --frozen-lockfile
+          yarn playwright install --with-deps
+        working-directory: ./playwright
+
+      - name: start next app
+        run: |
+          yarn build
+          yarn start &
+        env:
+          NEXT_PUBLIC_BASE_URL: http://localhost:3000
+
+      - name: start e2e tests
+        run: yarn test
+        working-directory: ./playwright
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright/playwright-report/
+          retention-days: 1
+
 
       - name: create pull request
         if: steps.outdated.outputs.outdated != '[]'

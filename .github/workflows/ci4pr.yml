@@ -1,8 +1,6 @@
 name: 'プルリクエストでLintとE2E'
 on:
   pull_request:
-  pull_request_target:
-    types: [opened, synchronize]
 
 jobs:
   job:
@@ -33,8 +31,8 @@ jobs:
 
       - name: prepare for playwright
         run: |
-          yarn install
-          npx playwright install --with-deps
+          yarn --frozen-lockfile
+          yarn playwright install --with-deps
         working-directory: ./playwright
 
       - name: start next app

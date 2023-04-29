@@ -35,7 +35,7 @@ jobs:
           title: 'Weekly packages upgrade'
           commit-message: 'Auto-upgrade packages'
           branch: weekly-packages-upgrade
-          labels: auto
+          labels: upgrade packages
 
       - name: notify no upgrade to slack
         if: steps.outdated.outputs.outdated == '[]'

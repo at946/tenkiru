@@ -2,7 +2,7 @@ name: Weekly packages upgrade
 
 on:
   schedule:
-    - cron: '30 12 * * SAT' # UTC
+    - cron: '40 12 * * SAT' # UTC
 
 jobs:
   upgrade:

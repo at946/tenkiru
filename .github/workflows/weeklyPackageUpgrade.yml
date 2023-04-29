@@ -2,7 +2,7 @@ name: Weekly packages upgrade
 
 on:
   schedule:
-    - cron: '0 22 * * FRI' # UTC時間で金曜日の21時、日本時間で土曜日の6時に実行
+    - cron: '30 12 * * SAT' # UTC
 
 jobs:
   upgrade:
@@ -44,7 +44,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_MESSAGE: |
-            Weekly packages upgrade はありませんでした。
+            Weekly packages upgrade の対象はありませんでした。👍
 
       - name: notify success to slack
         if: steps.outdated.outputs.outdated != '[]'
@@ -54,6 +54,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACK_MESSAGE: |
             Weekly packages upgrade が成功しました!!🎉
+            Pull Requestが作成されています!!🎊
             ${{ steps.cpr.outputs.pull-request-url }}
 
       - name: notify failure to slack

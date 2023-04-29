@@ -21,7 +21,7 @@ jobs:
         continue-on-error: true
 
       - name: install dependencies
-        if: steps.outdated.outputs.outdated != '[]'
+        if: steps.outdated in.outputs.outdated != '[]'
         run: yarn --frozen-lockfile
 
       - name: upgrade dependencies
@@ -29,12 +29,14 @@ jobs:
         run: yarn upgrade
 
       - name: prepare for playwright
+        if: steps.outdated in.outputs.outdated != '[]'
         run: |
           yarn --frozen-lockfile
           yarn playwright install --with-deps
         working-directory: ./playwright
 
       - name: start next app
+        if: steps.outdated in.outputs.outdated != '[]'
         run: |
           yarn build
           yarn start &
@@ -42,6 +44,7 @@ jobs:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
 
       - name: start e2e tests
+        if: steps.outdated in.outputs.outdated != '[]'
         run: yarn test
         working-directory: ./playwright
 

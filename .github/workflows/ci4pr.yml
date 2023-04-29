@@ -8,42 +8,51 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+
       - uses: actions/cache@v2
         id: cache_node_modules
         with:
           path: node_modules
           key: ${{ hashFiles('yarn.lock') }}
+
       - run: yarn --frozen-lockfile
         if: steps.cache_node_modules.outputs.cache-hit != true
+
       - name: lint
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
           prettier: true
           auto_fix: true
+
       - name: prepare for playwright
         run: |
           yarn install
           npx playwright install --with-deps
         working-directory: ./playwright
+
       - name: start next app
         run: |
           yarn build
           yarn start &
         env:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
+
       - name: start e2e tests
         run: yarn test
         working-directory: ./playwright
+
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: playwright-report
           path: playwright/playwright-report/
           retention-days: 1
+
       - name: notify success to slack
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -52,6 +61,7 @@ jobs:
           SLACK_MESSAGE: |
             Success
             https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+            
       - name: notify failure to slack
         if: failure()
         uses: rtCamp/action-slack-notify@v2

@@ -55,7 +55,6 @@ jobs:
           path: playwright/playwright-report/
           retention-days: 1
 
-
       - name: create pull request
         if: steps.outdated.outputs.outdated != '[]'
         id: cpr

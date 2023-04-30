@@ -61,7 +61,7 @@ const PPPage: NextPage = () => {
               rel='noreferrer'
               className='is-underlined'
             >
-              Googleアナリティクスサービス利用規約ページ
+              Googleアナリティクス利用規約
             </a>
             や
             <a
@@ -70,12 +70,36 @@ const PPPage: NextPage = () => {
               rel='noreferrer'
               className='is-underlined'
             >
-              Googleポリシーと規約ページ
+              プライバシーポリシー – ポリシーと規約 – Google
             </a>
             をご覧ください。
           </p>
           <p>
-            お客様のブラウザでCookieを無効にすることで、このサイトへの再訪問時にGoogleアナリティクスがお客様を認識することを防ぐことができます。
+            ブラウザでCookieを無効にすることで、Googleアナリティクスがデータを収集することを防ぐことができます。
+          </p>
+        </div>
+
+        <div className='content'>
+          <p>
+            <strong>広告について</strong>
+          </p>
+          <p>
+            本サービスは、第三者配信の広告サービス「Googleアドセンス」を利用しています。このGoogleアナリティクスは、ユーザーの興味に応じた商品やサービスの広告を表示するためにCookieを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。
+          </p>
+          <p>
+            この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。この規約に関しての詳細は
+            <a
+              href='https://policies.google.com/technologies/ads?gl=jp'
+              target='_blank'
+              rel='noreferrer'
+              className='is-underlined'
+            >
+              広告 - ポリシーと規約 - Google
+            </a>
+            をご覧ください。
+          </p>
+          <p>
+            ブラウザでCookieを無効にすることで、Googleアドセンスがデータを収集することを防ぐことができます。
           </p>
         </div>
 
@@ -95,7 +119,7 @@ const PPPage: NextPage = () => {
         </div>
       </ol>
 
-      <div className='content'>最終更新日： 2023年1月20日</div>
+      <div className='content'>最終更新日： 2023年4月30日</div>
     </section>
   );
 };

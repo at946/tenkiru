@@ -30,7 +30,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
-    "sass": "^1.55.0",
+    "sass": "^1.62.1",
     "socket.io": "^4.5.2",
     "socket.io-client": "^4.5.4",
     "utf-8-validate": "^6.0.2",

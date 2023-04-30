@@ -61,7 +61,7 @@ jobs:
           SLACK_MESSAGE: |
             Success
             https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
-            
+
       - name: notify failure to slack
         if: failure()
         uses: rtCamp/action-slack-notify@v2

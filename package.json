@@ -47,6 +47,6 @@
     "eslint-config-prettier": "^8.5.0",
     "next-sitemap": "^4.0.7",
     "prettier": "^2.7.1",
-    "typescript": "5.0.2"
+    "typescript": "5.0.4"
   }
 }

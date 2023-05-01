@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import { Metadata } from 'next';
 import Footer from './components/common/footer';
 import Header from './components/common/header';
 
@@ -13,7 +14,7 @@ import GoogleAdsense from './GoogleAdsense';
 import ReduxProvider from './ReduxProvider';
 
 // metatags
-const title = 'Tenkir';
+const siteName = 'Tenkir';
 const description =
   'Tenkirは無料のオンラインプランニングポーカーアプリです。' +
   'XPやスクラムなどのアジャイルなプロジェクト管理に最適です。' +
@@ -21,23 +22,15 @@ const description =
   '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
   '直感的なUIと使いやすさが魅力です。';
 
-export const metadata = {
-  title: title,
+export const metadata: Metadata = {
+  title: siteName,
   description: description,
   openGraph: {
-    title: title,
+    title: siteName,
     description: description,
     url: process.env.NEXT_PUBLIC_BASE_URL,
-    siteName: title,
+    siteName: siteName,
     type: 'website',
-    images: [
-      {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/ogp.jpg`,
-      },
-    ],
-  },
-  icons: {
-    icon: '/favicon.ico',
   },
   themeColor: '#812990',
   twitter: {

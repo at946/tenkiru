@@ -14,13 +14,13 @@ const SummaryTags: NextPage = ({ className }) => {
   const cards: Card[] = players.map((v) => v.selectedCard);
   const numberCards: number[] = cards.filter<number>((v): v is number => typeof v === 'number');
   const cardsAreOpen = useAppSelector((state) => state.room.cardsAreOpen);
-  const isAvailable = cardsAreOpen && numberCards.length > 0;
+  const useCalculatedResult = cardsAreOpen && numberCards.length > 0;
 
-  const minValue: number | string = isAvailable ? Math.min(...numberCards) : '?';
-  const maxValue: number | string = isAvailable ? Math.max(...numberCards) : '?';
-  const avgValue: number | string = isAvailable ?
-    Math.round((numberCards.reduce((a, b) => a + b, 0) / numberCards.length) * 10) / 10 : '?';
-
+  const minValue: number | string = useCalculatedResult ? Math.min(...numberCards) : '?';
+  const maxValue: number | string = useCalculatedResult ? Math.max(...numberCards) : '?';
+  const avgValue: number | string = useCalculatedResult
+    ? Math.round((numberCards.reduce((a, b) => a + b, 0) / numberCards.length) * 10) / 10
+    : '?';
 
   return (
     <div className={className}>

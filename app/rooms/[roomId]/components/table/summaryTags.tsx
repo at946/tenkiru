@@ -8,7 +8,7 @@ interface Props {
   extraClass?: string;
 }
 
-const SummaryTags: NextPage = ({ extraClass }) => {
+const SummaryTags: NextPage<Props> = ({ extraClass }) => {
   const members: Member[] = useAppSelector((state) => state.members.members);
   const players: Member[] = members.filter((v) => v.type === 'player');
   const cards: Card[] = players.map((v) => v.selectedCard);

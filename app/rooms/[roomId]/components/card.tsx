@@ -4,7 +4,7 @@ import styles from './card.module.scss';
 
 interface Props {
   value?: Card;
-  additionalClassName?: string;
+  extraClass?: string;
   role?: string;
   ariaLabel?: string;
   ariaDisabled?: boolean;
@@ -13,7 +13,7 @@ interface Props {
 
 const Card: NextPage<Props> = ({
   value,
-  additionalClassName,
+  extraClass,
   role,
   ariaLabel,
   ariaDisabled,
@@ -31,7 +31,7 @@ const Card: NextPage<Props> = ({
 
   return (
     <div
-      className={`${className} ${additionalClassName}`}
+      className={`${className} ${extraClass}`}
       role={role}
       aria-label={ariaLabel}
       aria-disabled={ariaDisabled}

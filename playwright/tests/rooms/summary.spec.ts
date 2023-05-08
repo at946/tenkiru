@@ -2,7 +2,9 @@ import { test, expect } from '@playwright/test';
 import RoomPage from '../../models/room-page';
 import createRoomId from '../../helpers/createRoomId';
 
-test('ルームページで、フィボナッチ数列デッキを選択しており、カードがオープンされてないとき、サマリーはすべて「？」であること', async ({ context }) => {
+test('ルームページで、フィボナッチ数列デッキを選択しており、カードがオープンされてないとき、サマリーはすべて「？」であること', async ({
+  context,
+}) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -42,7 +44,7 @@ test('ルームページで、フィボナッチ数列デッキを選択して�
   await expect(roomPage3.minTag).toHaveText('最小?');
   await expect(roomPage3.avgTag).toHaveText('平均?');
   await expect(roomPage3.maxTag).toHaveText('最大?');
-})
+});
 
 test('ルームページで、フィボナッチ数列デッキを選択しており、カードをオープンしたとき、場に出されたカードの最大値、最小値、平均値が表示されること', async ({
   context,
@@ -84,7 +86,9 @@ test('ルームページで、フィボナッチ数列デッキを選択して�
   await expect(roomPage3.maxTag).toHaveText('最大13');
 });
 
-test('ルームページで、0-10デッキを選択しており、カードがオープンされてないとき、サマリーはすべて「？」であること', async ({ context }) => {
+test('ルームページで、0-10デッキを選択しており、カードがオープンされてないとき、サマリーはすべて「？」であること', async ({
+  context,
+}) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -125,7 +129,7 @@ test('ルームページで、0-10デッキを選択しており、カードが�
   await expect(roomPage3.minTag).toHaveText('最小?');
   await expect(roomPage3.avgTag).toHaveText('平均?');
   await expect(roomPage3.maxTag).toHaveText('最大?');
-})
+});
 
 test('ルームページで、0-10デッキを選択しており、カードをオープンしたとき、場に出されたカードの最大値、最小値、平均値が表示されること', async ({
   context,
@@ -168,7 +172,9 @@ test('ルームページで、0-10デッキを選択しており、カードを�
   await expect(roomPage3.maxTag).toHaveText('最大9');
 });
 
-test('ルームページで、Tシャツサイズデッキを選択しているとき、サマリーは表示されないこと', async ({ context }) => {
+test('ルームページで、Tシャツサイズデッキを選択しているとき、サマリーは表示されないこと', async ({
+  context,
+}) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -223,7 +229,7 @@ test('ルームページで、Tシャツサイズデッキを選択している�
   await expect(roomPage3.minTag).not.toBeVisible();
   await expect(roomPage3.avgTag).not.toBeVisible();
   await expect(roomPage3.maxTag).not.toBeVisible();
-})
+});
 
 test('ルームページで、カードを出していないプレイヤーがいる状態で、カードをオープンにしたとき、場に出されたカードの最大値、最小値、平均値が正しく表示されること', async ({
   context,

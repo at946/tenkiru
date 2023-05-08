@@ -15,8 +15,8 @@ const Table: NextPage<Props> = ({ openCards, replay, nominate }) => {
 
   return (
     <div className='box has-background-success is-shadowless'>
-      <TableCardGroups className='mb-5' nominate={nominate} />
-      {deckType !== 'tShirtSize' && <SummaryTags className='mb-4' />}
+      <TableCardGroups extraClass='mb-4' nominate={nominate} />
+      {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
       <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
     </div>
   );

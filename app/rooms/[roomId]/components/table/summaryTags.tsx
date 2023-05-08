@@ -5,10 +5,10 @@ import { useAppSelector } from '@/store/hooks';
 import SummaryTag from './summaryTag';
 
 interface Props {
-  className?: string;
+  extraClass?: string;
 }
 
-const SummaryTags: NextPage = ({ className }) => {
+const SummaryTags: NextPage = ({ extraClass }) => {
   const members: Member[] = useAppSelector((state) => state.members.members);
   const players: Member[] = members.filter((v) => v.type === 'player');
   const cards: Card[] = players.map((v) => v.selectedCard);
@@ -23,7 +23,7 @@ const SummaryTags: NextPage = ({ className }) => {
     : '?';
 
   return (
-    <div className={className}>
+    <div className={extraClass}>
       <div className='field is-grouped is-grouped-multiline is-grouped-centered'>
         <SummaryTag name='最小' value={minValue} ariaLabel='最小値' />
         <SummaryTag name='平均' value={avgValue} ariaLabel='平均値' />

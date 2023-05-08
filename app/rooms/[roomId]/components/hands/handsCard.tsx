@@ -27,7 +27,7 @@ const HandsCard: NextPage<Props> = ({ card, putDownCard }) => {
     <a onClick={select}>
       <Card
         value={card}
-        additionalClassName={isSelected ? styles.selected : isDisabled ? styles.disabled : ''}
+        extraClass={isSelected ? styles.selected : isDisabled ? styles.disabled : ''}
         role='option'
         ariaLabel='手札カード'
         ariaSelected={isSelected}

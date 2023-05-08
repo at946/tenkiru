@@ -25,7 +25,7 @@ RUN yarn build && yarn postBuild
 # RUN npm run build
 
 # Production image, copy all the files and run next
-FROM node:16-alpine AS runner
+FROM node:20.1.0-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production

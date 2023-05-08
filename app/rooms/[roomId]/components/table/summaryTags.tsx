@@ -4,28 +4,31 @@ import { Member } from '@/interfaces/member';
 import { useAppSelector } from '@/store/hooks';
 import SummaryTag from './summaryTag';
 
-const SummaryTags: NextPage = () => {
+interface Props {
+  className?: string;
+}
+
+const SummaryTags: NextPage = ({ className }) => {
   const members: Member[] = useAppSelector((state) => state.members.members);
   const players: Member[] = members.filter((v) => v.type === 'player');
   const cards: Card[] = players.map((v) => v.selectedCard);
   const numberCards: number[] = cards.filter<number>((v): v is number => typeof v === 'number');
-  const minCard: number = Math.min(...numberCards);
-  const maxCard: number = Math.max(...numberCards);
-  const avgValue: number =
-    Math.round((numberCards.reduce((a, b) => a + b, 0) / numberCards.length) * 10) / 10;
-
   const cardsAreOpen = useAppSelector((state) => state.room.cardsAreOpen);
-  const isVisible = cardsAreOpen && numberCards.length > 0;
+  const isAvailable = cardsAreOpen && numberCards.length > 0;
+
+  const minValue: number | string = isAvailable ? Math.min(...numberCards) : '?';
+  const maxValue: number | string = isAvailable ? Math.max(...numberCards) : '?';
+  const avgValue: number | string = isAvailable ?
+    Math.round((numberCards.reduce((a, b) => a + b, 0) / numberCards.length) * 10) / 10 : '?';
+
 
   return (
-    <div>
-      {isVisible && (
-        <div className='field is-grouped is-grouped-multiline is-grouped-centered'>
-          <SummaryTag name='Min' value={minCard} ariaLabel='最小値' />
-          <SummaryTag name='Avg' value={avgValue} ariaLabel='平均値' />
-          <SummaryTag name='Max' value={maxCard} ariaLabel='最大値' />
-        </div>
-      )}
+    <div className={className}>
+      <div className='field is-grouped is-grouped-multiline is-grouped-centered'>
+        <SummaryTag name='最小' value={minValue} ariaLabel='最小値' />
+        <SummaryTag name='平均' value={avgValue} ariaLabel='平均値' />
+        <SummaryTag name='最大' value={maxValue} ariaLabel='最大値' />
+      </div>
     </div>
   );
 };

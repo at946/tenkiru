@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 
 interface Props {
   name: string;
-  value: number;
+  value: number | string;
   ariaLabel?: string;
 }
 

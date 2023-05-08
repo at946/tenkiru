@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import TableButton from './tableButton';
 import SummaryTags from './summaryTags';
 import TableCardGroups from './tableCardGroups';
+import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   openCards: () => void;
@@ -10,14 +11,14 @@ interface Props {
 }
 
 const Table: NextPage<Props> = ({ openCards, replay, nominate }) => {
+  const deckType: string = useAppSelector((state) => state.room.deckType);
+
   return (
     <div className='box has-background-success is-shadowless'>
-      <div className='mb-5'>
-        <TableCardGroups nominate={nominate} />
-      </div>
-      <div className='mb-4'>
-        <SummaryTags />
-      </div>
+      <TableCardGroups className='mb-5' nominate={nominate} />
+      { deckType !== 'tShirtSize' &&
+        <SummaryTags className="mb-4" />
+      }
       <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
     </div>
   );

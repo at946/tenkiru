@@ -1,4 +1,4 @@
-FROM node:19.4
+FROM node:20.1.0
 ENV WORKDIR=/playwright/
 
 WORKDIR $WORKDIR

@@ -16,7 +16,7 @@ const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
   return (
     <div role='group' aria-label='テーブルカードグループ'>
       <TableCard value={player.selectedCard} status={cardStatus} />
-      {cardStatus === 'faceUp' && <NominateButton nominate={() => nominate(player.id)} />}
+      <NominateButton isDisabled={cardStatus !== 'faceUp'} nominate={() => nominate(player.id)} />
     </div>
   );
 };

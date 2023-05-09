@@ -5,10 +5,11 @@ import { event } from '@/lib/gtag';
 import { toast } from 'bulma-toast';
 
 interface Props {
+  isDisabled: boolean;
   nominate: () => void;
 }
 
-const NominateButton: NextPage<Props> = ({ nominate }) => {
+const NominateButton: NextPage<Props> = ({ isDisabled, nominate }) => {
   const onClick = (): void => {
     nominate();
     toast({
@@ -22,8 +23,8 @@ const NominateButton: NextPage<Props> = ({ nominate }) => {
   return (
     <button
       className='button is-small is-primary is-inverted'
+      disabled={isDisabled}
       onClick={onClick}
-      data-testid='nominateButton'
     >
       <FontAwesomeIcon icon={faComment} className='mr-1' />
       <span>指名</span>

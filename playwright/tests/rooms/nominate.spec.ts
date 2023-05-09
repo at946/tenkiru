@@ -2,7 +2,28 @@ import { test, expect, Page } from '@playwright/test';
 import RoomPage from '../../models/room-page';
 import createRoomId from '../../helpers/createRoomId';
 
-test('ルームページで、カードをオープンしているとき、「指名」ボタンがカードの下に表示されること', async ({
+test('ルームページで、カードをオープンしていないとき、「指名」ボタンは選択できないこと', async ({
+  context,
+}) => {
+  // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage1.selectCard('0');
+
+  // Then
+  await expect(roomPage1.nominateButtons).toHaveCount(2);
+  await expect(roomPage1.nominateButtons.nth(0)).toBeDisabled();
+  await expect(roomPage1.nominateButtons.nth(1)).toBeDisabled();
+
+  await expect(roomPage2.nominateButtons).toHaveCount(2);
+  await expect(roomPage2.nominateButtons.nth(0)).toBeDisabled();
+  await expect(roomPage2.nominateButtons.nth(1)).toBeDisabled();
+});
+
+test('ルームページで、カードをオープンしているとき、オープンしたカードの「指名」ボタンは選択可能になること', async ({
   context,
 }) => {
   // Given
@@ -16,17 +37,39 @@ test('ルームページで、カードをオープンしているとき、「�
   await roomPage1.selectCard('0');
   await roomPage2.selectCard('2');
 
-  await expect(roomPage1.nominateButtons).toHaveCount(0);
-  await expect(roomPage2.nominateButtons).toHaveCount(0);
-  await expect(roomPage3.nominateButtons).toHaveCount(0);
+  await expect(roomPage1.nominateButtons).toHaveCount(3);
+  await expect(roomPage1.nominateButtons.nth(0)).toBeDisabled();
+  await expect(roomPage1.nominateButtons.nth(1)).toBeDisabled();
+  await expect(roomPage1.nominateButtons.nth(2)).toBeDisabled();
+
+  await expect(roomPage2.nominateButtons).toHaveCount(3);
+  await expect(roomPage2.nominateButtons.nth(0)).toBeDisabled();
+  await expect(roomPage2.nominateButtons.nth(1)).toBeDisabled();
+  await expect(roomPage2.nominateButtons.nth(2)).toBeDisabled();
+
+  await expect(roomPage3.nominateButtons).toHaveCount(3);
+  await expect(roomPage3.nominateButtons.nth(0)).toBeDisabled();
+  await expect(roomPage3.nominateButtons.nth(1)).toBeDisabled();
+  await expect(roomPage3.nominateButtons.nth(2)).toBeDisabled();
 
   // When - カードをオープンする
   await roomPage1.openCards();
 
   // Then - オープンしたカードには「指名」ボタンが表示される
-  await expect(roomPage1.nominateButtons).toHaveCount(2);
-  await expect(roomPage2.nominateButtons).toHaveCount(2);
-  await expect(roomPage3.nominateButtons).toHaveCount(2);
+  await expect(roomPage1.nominateButtons).toHaveCount(3);
+  await expect(roomPage1.nominateButtons.nth(0)).not.toBeDisabled();
+  await expect(roomPage1.nominateButtons.nth(1)).not.toBeDisabled();
+  await expect(roomPage1.nominateButtons.nth(2)).toBeDisabled();
+
+  await expect(roomPage2.nominateButtons).toHaveCount(3);
+  await expect(roomPage2.nominateButtons.nth(0)).not.toBeDisabled();
+  await expect(roomPage2.nominateButtons.nth(1)).not.toBeDisabled();
+  await expect(roomPage2.nominateButtons.nth(2)).toBeDisabled();
+
+  await expect(roomPage3.nominateButtons).toHaveCount(3);
+  await expect(roomPage3.nominateButtons.nth(0)).not.toBeDisabled();
+  await expect(roomPage3.nominateButtons.nth(1)).not.toBeDisabled();
+  await expect(roomPage3.nominateButtons.nth(2)).toBeDisabled();
 });
 
 test('ルームページで、自分以外の出したカードの「指名」ボタンを選択したとき、そのカードを場に出したメンバーに「指名アラート」が表示されること', async ({

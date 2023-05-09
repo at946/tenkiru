@@ -19,8 +19,8 @@ const HandsCard: NextPage<Props> = ({ card, putDownCard }) => {
   const isDisabled: boolean = cardsAreOpen || userType !== 'player';
 
   const select = () => {
-    if (isDisabled || isSelected) return;
-    putDownCard(card);
+    if (isDisabled) return;
+    putDownCard(isSelected ? null : card);
   };
 
   return (

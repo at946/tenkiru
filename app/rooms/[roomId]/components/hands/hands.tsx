@@ -11,7 +11,7 @@ interface Props {
 
 const Hands: NextPage<Props> = ({ putDownCard, changeDeckType }) => {
   return (
-    <div className='box has-background-warning is-shadowless'>
+    <div className='box has-background-light is-shadowless'>
       <DeckSelect select={changeDeckType} />
       <HandsCards putDownCard={putDownCard} />
     </div>

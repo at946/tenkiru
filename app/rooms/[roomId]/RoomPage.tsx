@@ -114,7 +114,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   return (
     <>
       <div className='has-text-centered'>
-        <section className='my-6'>
+        <section className='my-5'>
           <div className='container'>
             <RoomInfo roomId={roomId} />
             {isConnected && (

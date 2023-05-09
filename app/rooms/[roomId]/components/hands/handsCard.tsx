@@ -24,10 +24,12 @@ const HandsCard: NextPage<Props> = ({ card, putDownCard }) => {
   };
 
   return (
-    <a onClick={select}>
+    <a onClick={select} className={isDisabled ? styles['is-unselectable'] : ''}>
       <Card
         value={card}
-        extraClass={isSelected ? styles.selected : isDisabled ? styles.disabled : ''}
+        extraClass={`${isSelected ? styles.selected : ''} ${
+          !isSelected && isDisabled ? styles.disabled : ''
+        } ${isDisabled ? '' : styles['is-hoverable']}`}
         role='option'
         ariaLabel='手札カード'
         ariaSelected={isSelected}

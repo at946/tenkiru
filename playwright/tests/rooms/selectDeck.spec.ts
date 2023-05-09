@@ -51,40 +51,40 @@ test('ルームページで、デッキを変更するとき、カードの選�
   await expect(roomPage2.blankTableCards).toHaveCount(2);
 });
 
-test('ルームページで、デッキを変更するとき、カードがオープン状態でも場がリセットされること', async ({
+test('ルームページで、カードがオープンされているとき、デッキを変更できないこと', async ({
   context,
 }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
   const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
   await roomPage1.selectCard('0');
   await roomPage2.selectCard('1');
-  await roomPage1.openCards();
+  await roomPage3.selectMemberType('観客');
 
-  await expect(roomPage1.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage1.selectedHandsCard).toHaveText('0');
-  await expect(roomPage1.tableCards).toHaveCount(2);
-  await expect(roomPage1.faceUpTableCards).toHaveCount(2);
-
-  await expect(roomPage2.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage2.selectedHandsCard).toHaveText('1');
-  await expect(roomPage2.tableCards).toHaveCount(2);
-  await expect(roomPage2.faceUpTableCards).toHaveCount(2);
+  await expect(roomPage1.deckSelect).not.toBeDisabled();
+  await expect(roomPage2.deckSelect).not.toBeDisabled();
+  await expect(roomPage3.deckSelect).not.toBeDisabled();
 
   // When
-  await roomPage1.selectDeck('0 - 10');
+  await roomPage1.openCards();
 
   // Then
-  await expect(roomPage1.selectedHandsCard).toHaveCount(0);
-  await expect(roomPage1.tableCards).toHaveCount(2);
-  await expect(roomPage1.blankTableCards).toHaveCount(2);
+  await expect(roomPage1.deckSelect).toBeDisabled();
+  await expect(roomPage2.deckSelect).toBeDisabled();
+  await expect(roomPage3.deckSelect).toBeDisabled();
 
-  await expect(roomPage2.selectedHandsCard).toHaveCount(0);
-  await expect(roomPage2.tableCards).toHaveCount(2);
-  await expect(roomPage2.blankTableCards).toHaveCount(2);
+  // When - replay
+  await roomPage1.replay();
+
+  // Then - replayしたらまたデッキ選択できるようになる
+  await expect(roomPage1.deckSelect).not.toBeDisabled();
+  await expect(roomPage2.deckSelect).not.toBeDisabled();
+  await expect(roomPage3.deckSelect).not.toBeDisabled();
 });
 
 test('ルームページで、「フィボナッチ数列」を選択したとき、フィボナッチ数列のカードが並ぶこと', async ({

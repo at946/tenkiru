@@ -17,6 +17,7 @@ RUN yarn build && yarn postBuild
 
 # Production image, copy all the files and run next
 FROM node:20.1.0 AS runner
+
 WORKDIR /app
 
 ENV NODE_ENV production

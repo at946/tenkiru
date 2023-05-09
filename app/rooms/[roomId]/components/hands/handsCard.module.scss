@@ -8,3 +8,12 @@
 .disabled {
   opacity: 0.5;
 }
+
+.is-hoverable:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 16px rgba(22, 22, 22, 0.5);
+}
+
+.is-unselectable {
+  cursor: default;
+}

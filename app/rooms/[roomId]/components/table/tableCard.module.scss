@@ -1,10 +1,16 @@
 @import 'styles/color.scss';
 
 .blank {
-  border: dashed 2px black;
+  border-style: dashed;
   background: rgba(0, 0, 0, 0);
 }
 
 .face-down {
   background: $primary;
+  transform: rotateY(-180deg);
+}
+
+.face-up {
+  transform: rotateY(0);
+  transition: 1s;
 }

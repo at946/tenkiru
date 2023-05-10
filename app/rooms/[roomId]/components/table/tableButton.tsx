@@ -1,6 +1,8 @@
 import { NextPage } from 'next';
 import { Member } from '@/interfaces/member';
 import { useAppSelector } from '@/store/hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHand, faPlay, faReply } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   clickOpenButton: () => void;
@@ -17,11 +19,12 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
     <div>
       {cardsAreOpen ? (
         <button
-          className='button is-rounded is-primary'
+          className='button is-rounded is-primary is-inverted'
           onClick={clickReplayButton}
           data-testid='replayButton'
         >
-          もう一度
+          <FontAwesomeIcon icon={faReply} className='mr-2' />
+          <span>もう一度</span>
         </button>
       ) : (
         <button
@@ -30,7 +33,8 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
           disabled={noCardPutOnTable}
           data-testid='openButton'
         >
-          開く
+          <FontAwesomeIcon icon={faHand} className='mr-2' />
+          <span>開く</span>
         </button>
       )}
     </div>

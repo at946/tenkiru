@@ -20,7 +20,7 @@ const Header: NextPage = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <FontAwesomeIcon icon={faMugHot} className='mr-1' />
+              <FontAwesomeIcon icon={faMugHot} className='mr-2' />
               <span>開発者を支援</span>
             </a>
           </div>

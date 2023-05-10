@@ -12,7 +12,13 @@ interface Props {
 
 const TableCard: NextPage<Props> = ({ value, status }) => {
   if (status === 'faceUp') {
-    return <Card value={value} ariaLabel={`めくられたテーブルカード ${value}`} />;
+    return (
+      <Card
+        extraClass={styles['face-up']}
+        value={value}
+        ariaLabel={`めくられたテーブルカード ${value}`}
+      />
+    );
   } else if (status === 'faceDown') {
     return <Card extraClass={styles['face-down']} ariaLabel='伏せられたテーブルカード' />;
   } else {

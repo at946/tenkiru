@@ -6,9 +6,10 @@ import { event } from '@/lib/gtag';
 
 interface Props {
   roomId: string;
+  extraClass: string;
 }
 
-const RoomInfo: NextPage<Props> = ({ roomId }) => {
+const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
   const copyUrl = async () => {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`);
     event({ action: 'copy_room_url', category: 'engagement', label: '' });
@@ -20,10 +21,12 @@ const RoomInfo: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <a onClick={copyUrl} role='link'>
-      <span>部屋番号：{roomId}</span>
-      <FontAwesomeIcon icon={faArrowUpFromBracket} className='ml-2' />
-    </a>
+    <div className={extraClass}>
+      <a onClick={copyUrl} role='link'>
+        <span>部屋番号：{roomId}</span>
+        <FontAwesomeIcon icon={faArrowUpFromBracket} className='ml-2' />
+      </a>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { NextPage } from 'next';
 
 // interfaces
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
@@ -13,8 +14,10 @@ import { DeckType } from '@/interfaces/deckType';
 // components
 import RoomInfo from './components/roomInfo';
 import Table from './components/table/table';
+import DeckSelect from './components/deckSelect';
 import MemberTypeToggle from './components/memberTypeToggle';
-import Hands from './components/hands/hands';
+import HandsCards from './components/hands/handsCards';
+import { toast } from 'bulma-toast';
 
 // stores
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -22,11 +25,8 @@ import { updateMembers } from '@/store/membersSlice';
 import { selectCard, updateType } from '@/store/userSlice';
 import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 
+// GA
 import { event } from '@/lib/gtag';
-import { NextPage } from 'next';
-import { toast } from 'bulma-toast';
-import DeckSelect from './components/deckSelect';
-import HandsCards from './components/hands/handsCards';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 

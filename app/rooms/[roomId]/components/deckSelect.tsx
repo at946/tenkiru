@@ -6,9 +6,10 @@ import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   select: (deckType: DeckType) => void;
+  extraClass: string;
 }
 
-const DeckSelect: NextPage<Props> = ({ select }) => {
+const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
   const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
 
@@ -17,7 +18,7 @@ const DeckSelect: NextPage<Props> = ({ select }) => {
   };
 
   return (
-    <div className='is-flex is-justify-content-center is-align-items-center mb-2'>
+    <div className={`is-flex is-justify-content-center is-align-items-center mb-2 ${extraClass}`}>
       <div className='select is-primary is-rounded'>
         <select value={deckType} disabled={cardsAreOpen} onChange={change} aria-label='デッキ選択'>
           {Decks.map((deck: Deck) => (

@@ -25,6 +25,8 @@ import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 import { event } from '@/lib/gtag';
 import { NextPage } from 'next';
 import { toast } from 'bulma-toast';
+import DeckSelect from './components/deckSelect';
+import HandsCards from './components/hands/handsCards';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -112,26 +114,17 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <>
-      <div className='has-text-centered'>
-        <section className='my-5'>
-          <div className='container'>
-            <RoomInfo roomId={roomId} />
-            {isConnected && (
-              <div className='mt-4'>
-                <Table openCards={openCards} replay={replay} nominate={nominate} />
-              </div>
-            )}
-          </div>
-        </section>
-        {isConnected && (
-          <div className='container'>
-            <MemberTypeToggle changeMemberType={changeMemberType} />
-            <Hands putDownCard={putDownCard} changeDeckType={changeDeckType} />
-          </div>
-        )}
-      </div>
-    </>
+    <div className='has-text-centered container'>
+      <RoomInfo roomId={roomId} extraClass='my-5' />
+      {isConnected && (
+        <>
+          <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
+          <DeckSelect select={changeDeckType} extraClass='mb-4' />
+          <MemberTypeToggle changeMemberType={changeMemberType} extraClass='mb-2' />
+          <HandsCards putDownCard={putDownCard} />
+        </>
+      )}
+    </div>
   );
 };
 

@@ -6,10 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
+  extraClass: string;
   changeMemberType: (memberType: MemberType) => void;
 }
 
-const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
+const MemberTypeToggle: NextPage<Props> = ({ extraClass, changeMemberType }) => {
   const type = useAppSelector((state) => state.user.type);
 
   const clickMemberType = (memberType: MemberType): void => {
@@ -18,7 +19,7 @@ const MemberTypeToggle: NextPage<Props> = ({ changeMemberType }) => {
   };
 
   return (
-    <div className='tabs is-centered is-boxed'>
+    <div className={`tabs is-centered is-boxed ${extraClass}`}>
       <ul aria-label='メンバータイプの選択'>
         <li
           className={type === 'player' ? 'is-active' : ''}

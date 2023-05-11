@@ -1,5 +1,5 @@
 import ToSPage from './ToSPage';
 
-export default function Page() {
+export default async function Page() {
   return <ToSPage />;
 }

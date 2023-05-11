@@ -1,8 +1,8 @@
 {
   "license": "UNLICENCED",
   "devDependencies": {
-    "@playwright/test": "^1.29.2",
-    "playwright": "^1.29.2"
+    "@playwright/test": "^1.33.0",
+    "playwright": "^1.33.0"
   },
   "scripts": {
     "test": "yarn playwright test",

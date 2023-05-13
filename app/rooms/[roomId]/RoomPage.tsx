@@ -84,7 +84,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     toast({
       message: '指名されました！🎉',
       type: 'is-danger',
-      position: 'top-center',
+      position: 'bottom-right',
     });
   };
 

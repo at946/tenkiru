@@ -14,8 +14,8 @@ const NominateButton: NextPage<Props> = ({ isDisabled, nominate }) => {
     nominate();
     toast({
       message: '指名しました！',
-      type: 'is-success',
-      position: 'top-center',
+      type: 'is-info',
+      position: 'bottom-right',
     });
     event({ action: 'nominate', category: 'engagement', label: '' });
   };

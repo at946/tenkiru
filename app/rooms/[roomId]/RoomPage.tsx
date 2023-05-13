@@ -27,6 +27,7 @@ import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
+import Loading from './components/loading';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -116,13 +117,15 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   return (
     <div className='has-text-centered container'>
       <RoomInfo roomId={roomId} extraClass='my-5' />
-      {isConnected && (
+      {isConnected ? (
         <>
           <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
           <MemberTypeToggle changeMemberType={changeMemberType} extraClass='mb-2' />
           <HandsCards putDownCard={putDownCard} />
         </>
+      ) : (
+        <Loading />
       )}
     </div>
   );

@@ -6,6 +6,7 @@ import urls from '../helpers/urls';
 
 export default class RoomPage {
   readonly page: Page;
+  readonly enteringRoomAnimation: Locator;
   readonly roomIdLink: Locator;
   readonly tableCardGroups: Locator;
   readonly tableCards: Locator;
@@ -33,6 +34,7 @@ export default class RoomPage {
 
   constructor(page: Page) {
     this.page = page;
+    this.enteringRoomAnimation = page.getByRole('alert', { name: '入室中...' });
     this.roomIdLink = page.getByRole('link', { name: '部屋番号' });
     this.tableCardGroups = page.getByRole('group', { name: 'テーブルカードグループ' });
     this.tableCards = this.tableCardGroups.getByLabel('テーブルカード');

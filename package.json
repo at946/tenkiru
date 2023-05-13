@@ -32,7 +32,7 @@
     "sass": "^1.62.1",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
-    "utf-8-validate": "^6.0.2",
+    "utf-8-validate": "^6.0.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

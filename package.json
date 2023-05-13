@@ -24,7 +24,7 @@
     "bulma-toast": "^2.4.1",
     "express": "^4.18.2",
     "next": "^13.2.4",
-    "next-redux-wrapper": "^8.0.0",
+    "next-redux-wrapper": "^8.1.0",
     "node-sass": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

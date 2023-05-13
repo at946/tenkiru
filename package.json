@@ -43,9 +43,9 @@
     "@types/uuid": "^9.0.1",
     "eslint": "^8.40.0",
     "eslint-config-next": "^13.4.2",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^8.8.0",
     "next-sitemap": "^4.0.9",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.8",
     "typescript": "5.0.4"
   }
 }

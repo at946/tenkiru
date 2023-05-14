@@ -2,6 +2,8 @@ import '../styles/globals.scss';
 import { Metadata } from 'next';
 import Footer from './components/common/footer';
 import Header from './components/common/header';
+import GoogleAdsense from './GoogleAdsense';
+import ReduxProvider from './ReduxProvider';
 
 // fontawesome
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -10,8 +12,6 @@ config.autoAddCss = false;
 
 // redux
 import GoogleAnalytics from './GoogleAnalytics';
-import GoogleAdsense from './GoogleAdsense';
-import ReduxProvider from './ReduxProvider';
 
 // metatags
 const siteName = 'Tenkir';
@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     google: 'Ah3duN64SajYBZS8Bc46SiFiEddyFhimdaawZmc20Z4',
   },
 };
+
+// OGPが表示されない応急処置
+export const dynamic = 'force-dynamic';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

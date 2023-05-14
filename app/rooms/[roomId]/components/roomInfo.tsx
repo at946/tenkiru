@@ -15,8 +15,8 @@ const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
     event({ action: 'copy_room_url', category: 'engagement', label: '' });
     toast({
       message: 'クリップボードにこの部屋のURLをコピーしました。',
-      type: 'is-success',
-      position: 'top-center',
+      type: 'is-info',
+      position: 'bottom-right',
     });
   };
 

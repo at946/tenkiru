@@ -16,8 +16,8 @@ const PPPage: NextPage = () => {
           <p className='mb-2'>
             本サービスは、以下の利用目的のためにユーザーの個人情報を利用・収集します。
           </p>
-          <ul className='list-inside list-disc'>
-            <li>本サービスを提供するため</li>
+          <ul className='ml-4 list-disc'>
+            <li className='mb-1'>本サービスを提供するため</li>
             <li>ユーザーからのお問い合わせ等への対応のため</li>
           </ul>
         </div>

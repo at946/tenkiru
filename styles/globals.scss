@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import './color.scss';
 $navbar-breakpoint: 0px;
 @import 'bulma/bulma';

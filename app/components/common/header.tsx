@@ -5,21 +5,19 @@ import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 
 const Header: NextPage = () => {
   return (
-    <nav className='navbar px-5' role='navigation' aria-label='main navigation'>
-      <div className='container'>
-        <div className='navbar-brand'>
-          <Link href='/' className='navbar-item has-text-primary has-text-weight-bold'>
-            Tenkir
-          </Link>
-        </div>
-        <div className='navbar-menu'>
-          <div className='navbar-end'>
-            <a
-              href='https://note.com/_at_946/n/nb84babf02d87'
-              className='navbar-item'
-              target='_blank'
-              rel='noreferrer'
+    <nav role='navigation' aria-label='main navigation'>
+      <div className='container p-5'>
+        <div className='flex items-center justify-between'>
+          <div>
+            <Link
+              href='/'
+              className='font-bold text-purple-600 hover:text-purple-500 focus:text-purple-500'
             >
+              Tenkir
+            </Link>
+          </div>
+          <div>
+            <a href='https://note.com/_at_946/n/nb84babf02d87' target='_blank' rel='noreferrer'>
               <FontAwesomeIcon icon={faMugHot} className='mr-2' />
               <span>開発者を支援</span>
             </a>

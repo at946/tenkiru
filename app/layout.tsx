@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='ja'>
       <body>
-        <div className='is-flex is-flex-direction-column' style={{ minHeight: '100vh' }}>
+        <div className='flex max-h-screen flex-col'>
           <Header />
           <ReduxProvider>
             <main>{children}</main>

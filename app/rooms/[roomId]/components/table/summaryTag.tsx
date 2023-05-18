@@ -8,11 +8,9 @@ interface Props {
 
 const SummaryTag: NextPage<Props> = ({ name, value, ariaLabel }) => {
   return (
-    <div className='control'>
-      <div className='tags has-addons' aria-label={ariaLabel}>
-        <span className='tag is-dark'>{name}</span>
-        <span className='tag is-white'>{value}</span>
-      </div>
+    <div className='text-sm' aria-label={ariaLabel}>
+      <span className='rounded-l-sm bg-slate-900 px-2 py-1 text-white'>{name}</span>
+      <span className='rounded-r-sm bg-white px-2 py-1'>{value}</span>
     </div>
   );
 };

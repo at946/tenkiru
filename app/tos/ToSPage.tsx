@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 
 const ToS: NextPage = () => {
   return (
-    <div className='container px-5 text-sm'>
+    <div className='container mx-auto px-5 text-sm'>
       <h1 className='mb-5 text-2xl font-bold'>利用規約</h1>
       <p className='mb-5'>
         この利用規約は（以下、「本規約」といいます。）は、Tenkir（以下、「本サービス」といいます。）の利用条件を定めるものです。

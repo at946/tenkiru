@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 
 const PPPage: NextPage = () => {
   return (
-    <div className='container px-5 text-sm'>
+    <div className='container mx-auto px-5 text-sm'>
       <h1 className='mb-5 text-2xl font-bold'>プライバシーポリシー</h1>
       <p className='mb-5'>
         Tenkir（以下、「本サービス」）では、本サービスをご利用されるユーザーの個人情報の取扱について以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。

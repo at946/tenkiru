@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'bulma-toast';
 import { event } from '@/lib/gtag';
 
@@ -22,9 +22,9 @@ const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
 
   return (
     <div className={extraClass}>
-      <a onClick={copyUrl} role='link'>
+      <a onClick={copyUrl} role='link' className='hover:text-purple-600 focus:text-purple-600'>
         <span>部屋番号：{roomId}</span>
-        <FontAwesomeIcon icon={faArrowUpFromBracket} className='ml-2' />
+        <FontAwesomeIcon icon={faLink} className='ml-2' />
       </a>
     </div>
   );

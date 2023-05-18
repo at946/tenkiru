@@ -6,7 +6,7 @@ import IntroductionBox from './components/introductionBox';
 
 const HomePage: NextPage = () => {
   return (
-    <div className='container px-5 text-center'>
+    <div className='container mx-auto px-5 text-center'>
       <div className='my-16'>
         <h1 className='mb-4 text-3xl font-bold text-purple-600'>Tenkir</h1>
         <CreateRoomButton />

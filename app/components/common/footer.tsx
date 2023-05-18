@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer: NextPage = () => {
   return (
-    <footer className='py-5' role='contentinfo'>
+    <footer className='mt-auto py-5' role='contentinfo'>
       <div className='mb-2 text-center'>
         <Link href='/tos' className='mx-2 text-xs'>
           利用規約

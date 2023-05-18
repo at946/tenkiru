@@ -6,7 +6,7 @@ import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 const Header: NextPage = () => {
   return (
     <nav role='navigation' aria-label='main navigation'>
-      <div className='container p-5'>
+      <div className='container mx-auto p-5'>
         <div className='flex items-center justify-between'>
           <div>
             <Link

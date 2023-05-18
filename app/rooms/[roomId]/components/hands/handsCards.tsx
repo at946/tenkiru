@@ -15,11 +15,7 @@ const HandsCards: NextPage<Props> = ({ putDownCard }) => {
   const cards: Card[] | undefined = deckCards;
 
   return (
-    <div
-      className='is-flex is-flex-wrap-wrap is-justify-content-center'
-      role='group'
-      aria-label='手札'
-    >
+    <div className='flex flex-wrap justify-center' role='group' aria-label='手札'>
       {!!cards &&
         cards.map((card, index) => <HandsCard key={index} card={card} putDownCard={putDownCard} />)}
     </div>

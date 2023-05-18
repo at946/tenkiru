@@ -13,7 +13,7 @@ const TableCardGroups: NextPage<Props> = ({ extraClass, nominate }) => {
   const players: Member[] = members.filter((v) => v.type === 'player');
 
   return (
-    <div className={`is-flex is-flex-wrap-wrap is-justify-content-center ${extraClass || ''}`}>
+    <div className={`flex flex-wrap justify-center ${extraClass || ''}`}>
       {players.map((player) => (
         <TableCardGroup player={player} nominate={nominate} key={player.id} />
       ))}

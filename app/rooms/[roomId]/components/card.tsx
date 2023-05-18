@@ -19,19 +19,9 @@ const Card: NextPage<Props> = ({
   ariaDisabled,
   ariaSelected,
 }) => {
-  const className: string = `
-    is-flex
-    is-justify-content-center
-    is-align-items-center
-    is-size-3
-    has-text-weight-bold
-    m-2
-    ${styles.card}
-  `;
-
   return (
     <div
-      className={`${className} ${extraClass}`}
+      className={`m-2 flex items-center justify-center text-2xl font-bold ${styles.card} ${extraClass}`}
       role={role}
       aria-label={ariaLabel}
       aria-disabled={ariaDisabled}

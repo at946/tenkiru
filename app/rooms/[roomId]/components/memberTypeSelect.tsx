@@ -21,11 +21,11 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
 
   return (
     <div className={extraClass || ''}>
-      <span>ユーザータイプ：</span>
+      <span>メンバータイプ：</span>
       <select
         value={type}
         onChange={change}
-        aria-label='ユーザータイプ選択'
+        aria-label='メンバータイプの選択'
         className='border-b-2 text-center outline-none hover:border-purple-600 focus:border-purple-600'
       >
         <option value='player'>プレイヤー</option>

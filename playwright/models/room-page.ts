@@ -20,13 +20,15 @@ export default class RoomPage {
   readonly maxTag: Locator;
   readonly openButton: Locator;
   readonly replayButton: Locator;
-  readonly memberTypeToggle: Locator;
-  readonly selectedMemberType: Locator;
+  readonly memberTypeSelect: Locator;
   readonly deckSelect: Locator;
   readonly hands: Locator;
   readonly handsCards: Locator;
   readonly selectedHandsCard: Locator;
   readonly disabledHandsCard: Locator;
+  readonly copyUrlToast: Locator;
+  readonly haveNominatedToast: Locator;
+  readonly haveBeenNominatedToast: Locator;
 
   readonly head: Head;
   readonly header: Header;
@@ -50,13 +52,15 @@ export default class RoomPage {
     this.maxTag = page.getByLabel('最大値');
     this.openButton = page.getByRole('button', { name: '開く' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
-    this.memberTypeToggle = page.getByRole('list', { name: 'メンバータイプの選択' });
-    this.selectedMemberType = this.memberTypeToggle.getByRole('listitem', { name: '選択中' });
-    this.deckSelect = page.getByRole('combobox', { name: 'デッキ選択' });
+    this.memberTypeSelect = page.getByRole('combobox', { name: 'メンバータイプの選択' });
+    this.deckSelect = page.getByRole('combobox', { name: 'デッキタイプ選択' });
     this.hands = page.getByRole('group', { name: '手札' });
     this.handsCards = this.hands.getByRole('option', { name: '手札カード' });
     this.selectedHandsCard = this.hands.getByRole('option', { name: '手札カード', selected: true });
     this.disabledHandsCard = this.hands.getByRole('option', { name: '手札カード', disabled: true });
+    this.copyUrlToast = page.getByRole('status', { name: 'この部屋のURLをコピーしました' });
+    this.haveNominatedToast = page.getByRole('status', { name: '指名しました！' });
+    this.haveBeenNominatedToast = page.getByRole('status', { name: '指名されました！' });
 
     this.head = new Head(page);
     this.header = new Header(page);
@@ -89,7 +93,7 @@ export default class RoomPage {
   }
 
   async selectMemberType(memberType: string) {
-    await this.memberTypeToggle.getByText(memberType).click();
+    await this.memberTypeSelect.selectOption(memberType);
   }
 
   async selectDeck(deck: string) {

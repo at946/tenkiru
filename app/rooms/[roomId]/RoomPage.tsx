@@ -88,6 +88,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       ariaProps: {
         role: 'status',
         'aria-live': 'polite',
+        'aria-label': '指名されました！',
       },
     });
   };

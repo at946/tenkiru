@@ -17,6 +17,7 @@ const NominateButton: NextPage<Props> = ({ isDisabled, nominate }) => {
       ariaProps: {
         role: 'status',
         'aria-live': 'polite',
+        'aria-label': '指名しました！',
       },
     });
     event({ action: 'nominate', category: 'engagement', label: '' });

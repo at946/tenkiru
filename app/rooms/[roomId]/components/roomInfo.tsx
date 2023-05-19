@@ -17,6 +17,7 @@ const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
       ariaProps: {
         role: 'status',
         'aria-live': 'polite',
+        'aria-label': 'この部屋のURLをコピーしました',
       },
     });
     event({ action: 'copy_room_url', category: 'engagement', label: '' });

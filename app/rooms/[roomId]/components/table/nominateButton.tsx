@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { event } from '@/lib/gtag';
-import { toast } from 'bulma-toast';
+import toast from 'react-hot-toast';
 
 interface Props {
   isDisabled: boolean;
@@ -12,10 +12,12 @@ interface Props {
 const NominateButton: NextPage<Props> = ({ isDisabled, nominate }) => {
   const onClick = (): void => {
     nominate();
-    toast({
-      message: '指名しました！',
-      type: 'is-info',
-      position: 'bottom-right',
+    toast.success('指名しました！', {
+      className: 'border-2 border-lime-500',
+      ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+      },
     });
     event({ action: 'nominate', category: 'engagement', label: '' });
   };

@@ -17,7 +17,7 @@ import Table from './components/table/table';
 import DeckSelect from './components/deckSelect';
 import MemberTypeSelect from './components/memberTypeSelect';
 import HandsCards from './components/hands/handsCards';
-import { toast } from 'bulma-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 // stores
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -82,10 +82,13 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const onNominate = () => {
-    toast({
-      message: '指名されました！🎉',
-      type: 'is-danger',
-      position: 'bottom-right',
+    toast('指名されました！', {
+      className: 'border-2 border-purple-600',
+      icon: '🎉',
+      ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+      },
     });
   };
 
@@ -127,6 +130,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       ) : (
         <Loading />
       )}
+      <Toaster />
     </div>
   );
 };

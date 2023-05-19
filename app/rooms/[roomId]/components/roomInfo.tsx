@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
-import { toast } from 'bulma-toast';
 import { event } from '@/lib/gtag';
+import toast from 'react-hot-toast';
 
 interface Props {
   roomId: string;
@@ -12,12 +12,14 @@ interface Props {
 const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
   const copyUrl = async () => {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`);
-    event({ action: 'copy_room_url', category: 'engagement', label: '' });
-    toast({
-      message: 'クリップボードにこの部屋のURLをコピーしました。',
-      type: 'is-info',
-      position: 'bottom-right',
+    toast.success('この部屋のURLをコピーしました', {
+      className: 'border-2 border-lime-500',
+      ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+      },
     });
+    event({ action: 'copy_room_url', category: 'engagement', label: '' });
   };
 
   return (

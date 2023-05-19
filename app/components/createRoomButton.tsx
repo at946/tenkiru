@@ -20,7 +20,7 @@ const CreateRoomButton: NextPage = () => {
 
   return (
     <button
-      className='button is-rounded is-outlined is-primary mt-5'
+      className='rounded-full border-2 border-purple-600 px-4 py-2 text-purple-600 hover:bg-purple-600 hover:text-white focus:bg-purple-600 focus:text-white'
       onClick={click}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}

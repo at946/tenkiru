@@ -24,7 +24,7 @@ const SummaryTags: NextPage<Props> = ({ extraClass }) => {
 
   return (
     <div className={extraClass}>
-      <div className='field is-grouped is-grouped-multiline is-grouped-centered'>
+      <div className='flex justify-center gap-2'>
         <SummaryTag name='最小' value={minValue} ariaLabel='最小値' />
         <SummaryTag name='平均' value={avgValue} ariaLabel='平均値' />
         <SummaryTag name='最大' value={maxValue} ariaLabel='最大値' />

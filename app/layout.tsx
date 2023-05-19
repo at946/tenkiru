@@ -1,4 +1,4 @@
-import '../styles/globals.scss';
+import '../styles/globals.css';
 import { Metadata } from 'next';
 import Footer from './components/common/footer';
 import Header from './components/common/header';
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='ja'>
       <body>
-        <div className='is-flex is-flex-direction-column' style={{ minHeight: '100vh' }}>
+        <div className='flex min-h-screen flex-col'>
           <Header />
           <ReduxProvider>
             <main>{children}</main>

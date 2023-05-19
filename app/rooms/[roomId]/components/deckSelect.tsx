@@ -18,16 +18,21 @@ const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
   };
 
   return (
-    <div className={`is-flex is-justify-content-center is-align-items-center mb-2 ${extraClass}`}>
-      <div className='select is-primary is-rounded'>
-        <select value={deckType} disabled={cardsAreOpen} onChange={change} aria-label='デッキ選択'>
-          {Decks.map((deck: Deck) => (
-            <option key={deck.key} value={deck.key}>
-              {deck.displayName}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className={extraClass || ''}>
+      <span>デッキタイプ：</span>
+      <select
+        value={deckType}
+        disabled={cardsAreOpen}
+        onChange={change}
+        aria-label='デッキタイプ選択'
+        className='border-b-2 text-center outline-none hover:border-purple-600 focus:border-purple-600'
+      >
+        {Decks.map((deck: Deck) => (
+          <option key={deck.key} value={deck.key}>
+            {deck.displayName}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

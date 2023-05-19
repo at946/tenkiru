@@ -72,17 +72,14 @@ test('ルームページで、カードをオープンしているとき、オ�
   await expect(roomPage3.nominateButtons.nth(2)).toBeDisabled();
 });
 
-test('ルームページで、自分以外の出したカードの「指名」ボタンを選択したとき、そのカードを場に出したメンバーに「指名アラート」が表示されること', async ({
+test('ルームページで、自分以外の出したカードの「指名」ボタンを選択したとき、そのカードを場に出したメンバーに「指名トースト」が表示されること', async ({
   context,
 }) => {
   // Given
   const roomId: string = createRoomId();
-  const page1: Page = await context.newPage();
-  const page2: Page = await context.newPage();
-  const page3: Page = await context.newPage();
-  const roomPage1: RoomPage = new RoomPage(page1);
-  const roomPage2: RoomPage = new RoomPage(page2);
-  const roomPage3: RoomPage = new RoomPage(page3);
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
   await roomPage3.goto(roomId);
@@ -96,29 +93,26 @@ test('ルームページで、自分以外の出したカードの「指名」�
 
   // Then
   // 指名ボタンを押したユーザーのみ、「指名しました」トーストが表示される
-  await expect(page1.getByText('指名しました！')).not.toBeVisible();
-  await expect(page2.getByText('指名しました！')).toBeVisible();
-  await expect(page3.getByText('指名しました！')).not.toBeVisible();
+  await expect(roomPage1.haveNominatedToast).not.toBeVisible();
+  await expect(roomPage2.haveNominatedToast).toBeVisible();
+  await expect(roomPage3.haveNominatedToast).not.toBeVisible();
   // 指名されたユーザーのみ、「指名されました」トーストが表示される
-  await expect(page1.getByText('指名されました！🎉')).toBeVisible();
-  await expect(page2.getByText('指名されました！🎉')).not.toBeVisible();
-  await expect(page3.getByText('指名されました！🎉')).not.toBeVisible();
+  await expect(roomPage1.haveBeenNominatedToast).toBeVisible();
+  await expect(roomPage2.haveBeenNominatedToast).not.toBeVisible();
+  await expect(roomPage3.haveBeenNominatedToast).not.toBeVisible();
   // トーストは時間が経つと消える
-  await expect(page2.getByText('指名しました！')).not.toBeVisible();
-  await expect(page1.getByText('指名されました！🎉')).not.toBeVisible();
+  await expect(roomPage2.haveNominatedToast).not.toBeVisible();
+  await expect(roomPage1.haveBeenNominatedToast).not.toBeVisible();
 });
 
-test('ルームページで、自分の出したカードの「指名」ボタンを選択したとき、自分に「指名アラート」が表示されること', async ({
+test('ルームページで、自分の出したカードの「指名」ボタンを選択したとき、自分に「指名トースト」が表示されること', async ({
   context,
 }) => {
   // Given
   const roomId: string = createRoomId();
-  const page1: Page = await context.newPage();
-  const page2: Page = await context.newPage();
-  const page3: Page = await context.newPage();
-  const roomPage1: RoomPage = new RoomPage(page1);
-  const roomPage2: RoomPage = new RoomPage(page2);
-  const roomPage3: RoomPage = new RoomPage(page3);
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
   await roomPage3.goto(roomId);
@@ -132,14 +126,14 @@ test('ルームページで、自分の出したカードの「指名」ボタ�
 
   // Then
   // 指名ボタンを押したユーザーのみ、「指名しました」トーストが表示される
-  await expect(page1.getByText('指名しました！')).toBeVisible();
-  await expect(page2.getByText('指名しました！')).not.toBeVisible();
-  await expect(page3.getByText('指名しました！')).not.toBeVisible();
+  await expect(roomPage1.haveNominatedToast).toBeVisible();
+  await expect(roomPage2.haveNominatedToast).not.toBeVisible();
+  await expect(roomPage3.haveNominatedToast).not.toBeVisible();
   // 指名されたユーザーのみ、「指名されました」トーストが表示される
-  await expect(page1.getByText('指名されました！🎉')).toBeVisible();
-  await expect(page2.getByText('指名されました！🎉')).not.toBeVisible();
-  await expect(page3.getByText('指名されました！🎉')).not.toBeVisible();
+  await expect(roomPage1.haveBeenNominatedToast).toBeVisible();
+  await expect(roomPage2.haveBeenNominatedToast).not.toBeVisible();
+  await expect(roomPage3.haveBeenNominatedToast).not.toBeVisible();
   // トーストは時間が経つと消える
-  await expect(page1.getByText('指名しました！')).not.toBeVisible();
-  await expect(page1.getByText('指名されました！🎉')).not.toBeVisible();
+  await expect(roomPage1.haveNominatedToast).not.toBeVisible();
+  await expect(roomPage1.haveBeenNominatedToast).not.toBeVisible();
 });

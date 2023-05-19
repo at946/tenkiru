@@ -15,7 +15,7 @@ const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => 
   const deckType: string = useAppSelector((state) => state.room.deckType);
 
   return (
-    <div className={`box has-background-success ${extraClass}`}>
+    <div className={`rounded bg-green-400 py-5 shadow-md ${extraClass}`}>
       {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
       <TableCardGroups extraClass='mb-5' nominate={nominate} />
       <TableButton clickOpenButton={openCards} clickReplayButton={replay} />

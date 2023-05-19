@@ -15,9 +15,9 @@ import { DeckType } from '@/interfaces/deckType';
 import RoomInfo from './components/roomInfo';
 import Table from './components/table/table';
 import DeckSelect from './components/deckSelect';
-import MemberTypeToggle from './components/memberTypeToggle';
+import MemberTypeSelect from './components/memberTypeSelect';
 import HandsCards from './components/hands/handsCards';
-import { toast } from 'bulma-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 // stores
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -82,10 +82,13 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const onNominate = () => {
-    toast({
-      message: '指名されました！🎉',
-      type: 'is-danger',
-      position: 'bottom-right',
+    toast('指名されました！', {
+      className: 'border-2 border-purple-600',
+      icon: '🎉',
+      ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+      },
     });
   };
 
@@ -115,18 +118,19 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <div className='has-text-centered container'>
+    <div className='container mx-auto px-5 text-center'>
       <RoomInfo roomId={roomId} extraClass='my-5' />
       {isConnected ? (
         <>
           <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
-          <MemberTypeToggle changeMemberType={changeMemberType} extraClass='mb-2' />
+          <MemberTypeSelect select={changeMemberType} extraClass='mb-4' />
           <HandsCards putDownCard={putDownCard} />
         </>
       ) : (
         <Loading />
       )}
+      <Toaster />
     </div>
   );
 };

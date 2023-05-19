@@ -12,12 +12,11 @@ interface Props {
 const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
   const copyUrl = async () => {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`);
-    toast.success('この部屋のURLをコピーしました', {
+    toast.custom('この部屋のURLをコピーしました', {
       className: 'border-2 border-lime-500',
       ariaProps: {
         role: 'status',
         'aria-live': 'polite',
-        'aria-label': 'この部屋のURLをコピーしました',
       },
     });
     event({ action: 'copy_room_url', category: 'engagement', label: '' });

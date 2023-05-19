@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 interface Props {
   children: ReactNode;
   title: string;
-  extraClass: string;
+  extraClass?: string;
 }
 
 const IntroductionBox: NextPage<Props> = ({ children, title, extraClass }) => {

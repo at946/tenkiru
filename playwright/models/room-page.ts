@@ -58,9 +58,9 @@ export default class RoomPage {
     this.handsCards = this.hands.getByRole('option', { name: '手札カード' });
     this.selectedHandsCard = this.hands.getByRole('option', { name: '手札カード', selected: true });
     this.disabledHandsCard = this.hands.getByRole('option', { name: '手札カード', disabled: true });
-    this.copyUrlToast = page.getByRole('status', { name: 'この部屋のURLをコピーしました' });
-    this.haveNominatedToast = page.getByRole('status', { name: '指名しました！' });
-    this.haveBeenNominatedToast = page.getByRole('status', { name: '指名されました！' });
+    this.copyUrlToast = page.getByRole('status').getByText('この部屋のURLをコピーしました');
+    this.haveNominatedToast = page.getByRole('status').getByText('指名しました！');
+    this.haveBeenNominatedToast = page.getByRole('status').getByText('指名されました！');
 
     this.head = new Head(page);
     this.header = new Header(page);

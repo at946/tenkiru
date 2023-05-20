@@ -17,7 +17,7 @@ import Table from './components/table/table';
 import DeckSelect from './components/deckSelect';
 import MemberTypeSelect from './components/memberTypeSelect';
 import HandsCards from './components/hands/handsCards';
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toast, Toaster } from 'react-hot-toast';
 
 // stores
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -43,7 +43,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const socketInitializerCallback = useCallback(() => {
     if (!roomId) return;
 
-    fetch('/api/socket').then(() => {
+    const socketPromise = fetch('/api/socket').then(() => {
       socket = io();
 
       socket.on('connect', () => setIsConnected(true));
@@ -55,6 +55,30 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
       socket.emit('join-room', roomId);
     });
+
+    toast.promise(
+      socketPromise,
+      {
+        loading: '入室中...',
+        success: '入室完了！👍',
+        error: '入室できませんでした...😢',
+      },
+      {
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+        loading: {
+          className: 'border-2 border-purple-600',
+        },
+        success: {
+          className: 'border-2 border-lime-500',
+        },
+        error: {
+          className: 'border-2 border-red-600',
+        },
+      },
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId]);
 
@@ -120,15 +144,13 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   return (
     <div className='container mx-auto px-5 text-center'>
       <RoomInfo roomId={roomId} extraClass='my-5' />
-      {isConnected ? (
+      <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
+      {isConnected && (
         <>
-          <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
           <MemberTypeSelect select={changeMemberType} extraClass='mb-4' />
           <HandsCards putDownCard={putDownCard} />
         </>
-      ) : (
-        <Loading />
       )}
       <Toaster />
     </div>

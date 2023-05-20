@@ -6,7 +6,6 @@ import urls from '../helpers/urls';
 
 export default class RoomPage {
   readonly page: Page;
-  readonly enteringRoomAnimation: Locator;
   readonly roomIdLink: Locator;
   readonly tableCardGroups: Locator;
   readonly tableCards: Locator;
@@ -26,6 +25,8 @@ export default class RoomPage {
   readonly handsCards: Locator;
   readonly selectedHandsCard: Locator;
   readonly disabledHandsCard: Locator;
+  readonly enteringRoomToast: Locator;
+  readonly haveEnteredRoomToast: Locator;
   readonly copyUrlToast: Locator;
   readonly haveNominatedToast: Locator;
   readonly haveBeenNominatedToast: Locator;
@@ -36,7 +37,6 @@ export default class RoomPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.enteringRoomAnimation = page.getByRole('status', { name: '入室中' });
     this.roomIdLink = page.getByRole('link', { name: '部屋番号' });
     this.tableCardGroups = page.getByRole('group', { name: 'テーブルカードグループ' });
     this.tableCards = this.tableCardGroups.getByLabel('テーブルカード');
@@ -58,6 +58,8 @@ export default class RoomPage {
     this.handsCards = this.hands.getByRole('option', { name: '手札カード' });
     this.selectedHandsCard = this.hands.getByRole('option', { name: '手札カード', selected: true });
     this.disabledHandsCard = this.hands.getByRole('option', { name: '手札カード', disabled: true });
+    this.enteringRoomToast = page.getByRole('status').getByText('入室中...');
+    this.haveEnteredRoomToast = page.getByRole('status').getByText('入室完了！');
     this.copyUrlToast = page.getByRole('status').getByText('この部屋のURLをコピーしました');
     this.haveNominatedToast = page.getByRole('status').getByText('指名しました！');
     this.haveBeenNominatedToast = page.getByRole('status').getByText('指名されました！');

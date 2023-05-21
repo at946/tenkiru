@@ -24,7 +24,7 @@ const NominateButton: NextPage<Props> = ({ isDisabled, nominate }) => {
 
   return (
     <button
-      className='rounded border-2 border-white bg-white px-2 py-1 text-sm shadow outline-none hover:border-purple-600 hover:text-purple-600 hover:shadow-md focus:border-purple-600 focus:text-purple-600 focus:shadow-md disabled:opacity-50'
+      className='enabaled:focus:text-purple-600 rounded border-2 border-white bg-white px-2 py-1 text-sm shadow outline-none focus:shadow-md enabled:hover:border-purple-600 enabled:hover:text-purple-600 enabled:hover:shadow-md enabled:focus:border-purple-600 disabled:opacity-50'
       disabled={isDisabled}
       onClick={onClick}
     >

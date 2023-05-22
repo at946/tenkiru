@@ -36,7 +36,6 @@ interface Props {
 }
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
-
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
   const [isConnected, setIsConnected] = useState(false);

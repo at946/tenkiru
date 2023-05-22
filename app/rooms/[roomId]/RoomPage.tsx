@@ -36,9 +36,13 @@ interface Props {
 }
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
+
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
   const [isConnected, setIsConnected] = useState(false);
+
+  // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
+  const audio = typeof window !== 'undefined' ? new Audio('/notify.mp3') : undefined;
 
   const socketInitializerCallback = useCallback(() => {
     if (!roomId) return;
@@ -114,6 +118,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         'aria-live': 'polite',
       },
     });
+    audio?.play();
   };
 
   const changeDeckType = (newDeckType: DeckType): void => {

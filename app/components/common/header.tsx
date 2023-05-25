@@ -11,7 +11,7 @@ const Header: NextPage = () => {
           <div>
             <Link
               href='/'
-              className='font-bold text-purple-600 hover:text-purple-300 focus:text-purple-300'
+              className='font-bold text-purple-600 hover:underline focus:underline'
             >
               Tenkir
             </Link>

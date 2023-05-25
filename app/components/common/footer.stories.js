@@ -1,11 +1,11 @@
 import React from 'react';
 import '@/styles/globals.css';
 
-import Header from './header';
+import Footer from './footer';
 
 export default {
-  component: Header,
-  title: 'common/Header',
+  component: Footer,
+  title: 'common/Footer',
   tags: ['autodocs'],
 };
 

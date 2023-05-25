@@ -11,13 +11,18 @@ const Header: NextPage = () => {
           <div>
             <Link
               href='/'
-              className='font-bold text-purple-600 hover:text-purple-500 focus:text-purple-500'
+              className='font-bold text-purple-600 hover:text-purple-300 focus:text-purple-300'
             >
               Tenkir
             </Link>
           </div>
           <div>
-            <a href='https://note.com/_at_946/n/nb84babf02d87' target='_blank' rel='noreferrer'>
+            <a
+              href='https://note.com/_at_946/n/nb84babf02d87'
+              className='hover:text-purple-600 focus:text-purple-600'
+              target='_blank'
+              rel='noreferrer'
+            >
               <FontAwesomeIcon icon={faMugHot} className='mr-2' />
               <span>開発者を支援</span>
             </a>

@@ -13,5 +13,5 @@ export const Default: StoryObj<typeof RoomInfo> = {
   args: {
     roomId: 'xxxxx-xxxxx-xxxxx',
     extraClass: '',
-  }
+  },
 };

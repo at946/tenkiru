@@ -24,7 +24,7 @@ const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
 
   return (
     <div className={extraClass}>
-      <a onClick={copyUrl} role='link' className='hover:text-purple-600 focus:text-purple-600'>
+      <a onClick={copyUrl} role='link' className='hover:text-purple-600 focus:text-purple-600 cursor-pointer'>
         <span>部屋番号：{roomId}</span>
         <FontAwesomeIcon icon={faLink} className='ml-2' />
       </a>

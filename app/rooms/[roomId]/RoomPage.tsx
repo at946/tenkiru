@@ -12,7 +12,7 @@ import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
 
 // components
-import RoomInfo from './components/roomInfo';
+import RoomInfo from './components/RoomInfo';
 import Table from './components/table/table';
 import DeckSelect from './components/deckSelect';
 import MemberTypeSelect from './components/memberTypeSelect';

@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import { Metadata } from 'next';
-import Footer from './components/common/footer';
-import Header from './components/common/header';
+import Footer from './components/common/Footer';
+import Header from './components/common/Header';
 import GoogleAdsense from './GoogleAdsense';
 import ReduxProvider from './ReduxProvider';
 

@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import FooterItem from './footer-item';
+import FooterItem from './FooterItem';
 
 const Footer: NextPage = () => {
   return (

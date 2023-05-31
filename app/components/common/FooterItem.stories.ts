@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import FooterItem from './FooterItem';
-import '@/styles/globals.css';
 
 export default {
   component: FooterItem,

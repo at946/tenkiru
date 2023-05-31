@@ -3,7 +3,7 @@ import { MemberType } from '@/interfaces/memberType';
 import { event } from '@/lib/gtag';
 import { useAppSelector } from '@/store/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons';
+import Select from '@/app/components/common/Select';
 
 interface Props {
   extraClass: string;
@@ -22,15 +22,15 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
   return (
     <div className={extraClass || ''}>
       <span>メンバータイプ：</span>
-      <select
+      <Select
+        options={[
+          { value: 'player', label: 'プレイヤー' },
+          { value: 'audience', label: '観客' },
+        ]}
         value={type}
-        onChange={change}
-        aria-label='メンバータイプの選択'
-        className='border-b-2 text-center outline-none hover:border-purple-600 focus:border-purple-600'
-      >
-        <option value='player'>プレイヤー</option>
-        <option value='audience'>観客</option>
-      </select>
+        ariaLabel='メンバータイプの選択'
+        onChange={select}
+      />
     </div>
   );
 };

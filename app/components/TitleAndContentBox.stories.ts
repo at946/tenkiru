@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import TitleAndContentBox from './TitleAndContentBox';
-import '@/styles/globals.css';
 
 export default {
   component: TitleAndContentBox,

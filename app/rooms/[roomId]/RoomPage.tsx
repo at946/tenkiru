@@ -15,7 +15,7 @@ import { DeckType } from '@/interfaces/deckType';
 import RoomInfo from './components/RoomInfo';
 import Table from './components/table/table';
 import DeckSelect from './components/deckSelect';
-import MemberTypeSelect from './components/memberTypeSelect';
+import MemberTypeSelect from './components/MemberTypeSelect';
 import HandsCards from './components/hands/handsCards';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 

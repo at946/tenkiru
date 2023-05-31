@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CreateRoomButton from './CreateRoomButton';
-import '@/styles/globals.css';
 
 export default {
   component: CreateRoomButton,

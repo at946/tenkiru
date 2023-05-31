@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import RoomInfo from './RoomInfo';
-import '@/styles/globals.css';
 
 export default {
   component: RoomInfo,

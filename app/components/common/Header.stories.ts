@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Header from './Header';
-import '@/styles/globals.css';
 
 export default {
   component: Header,

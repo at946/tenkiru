@@ -3,36 +3,31 @@ import Decks from '@/data/deck';
 import { Deck } from '@/interfaces/deck';
 import { DeckType } from '@/interfaces/deckType';
 import { useAppSelector } from '@/store/hooks';
+import Select from '@/app/components/common/Select';
 
 interface Props {
-  select: (deckType: DeckType) => void;
   extraClass: string;
+  select: (deckType: DeckType) => void;
 }
 
 const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
   const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
 
-  const change: React.ChangeEventHandler<HTMLSelectElement> = (e): void => {
-    select(e.target.value as DeckType);
-  };
+  const options = Decks.map((deck: Deck) => {
+    return { value: deck.key, label: deck.displayName };
+  });
 
   return (
     <div className={extraClass || ''}>
       <span>デッキタイプ：</span>
-      <select
+      <Select
+        options={options}
         value={deckType}
         disabled={cardsAreOpen}
-        onChange={change}
-        aria-label='デッキタイプ選択'
-        className='border-b-2 text-center outline-none hover:border-purple-600 focus:border-purple-600'
-      >
-        {Decks.map((deck: Deck) => (
-          <option key={deck.key} value={deck.key}>
-            {deck.displayName}
-          </option>
-        ))}
-      </select>
+        ariaLabel='デッキタイプ選択'
+        onChange={select}
+      />
     </div>
   );
 };

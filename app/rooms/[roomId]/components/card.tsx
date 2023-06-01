@@ -1,9 +1,8 @@
 import { NextPage } from 'next';
-import { Card } from '@/interfaces/card';
-import styles from './card.module.scss';
+import { Card as IFCard } from '@/interfaces/card';
 
 interface Props {
-  value?: Card;
+  value?: IFCard;
   extraClass?: string;
   role?: string;
   ariaLabel?: string;
@@ -21,7 +20,7 @@ const Card: NextPage<Props> = ({
 }) => {
   return (
     <div
-      className={`m-2 flex items-center justify-center text-2xl font-bold ${styles.card} ${extraClass}`}
+      className={`m-2 flex aspect-card w-24 items-center justify-center rounded-md border border-slate-900 text-2xl font-bold shadow-md ${extraClass}`}
       role={role}
       aria-label={ariaLabel}
       aria-disabled={ariaDisabled}

@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-    extend: {},
+    extend: {
+      aspectRatio: {
+        card: '1 / 1.4',
+      },
+    },
   },
   plugins: [],
 };

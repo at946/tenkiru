@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Card from '../card';
+import Card from '../Card';
 import styles from './tableCard.module.scss';
 import { Card as IFCard } from '@/interfaces/card';
 import { TableCardStatus } from '@/interfaces/tableCardStatus';

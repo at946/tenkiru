@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { Card as IFCard } from '@/interfaces/card';
 import { MemberType } from '@/interfaces/memberType';
 import { useAppSelector } from '@/store/hooks';
-import Card from '../card';
+import Card from '../Card';
 import styles from './handsCard.module.scss';
 
 interface Props {

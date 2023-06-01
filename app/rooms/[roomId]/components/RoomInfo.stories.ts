@@ -2,13 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import RoomInfo from './RoomInfo';
 
-export default {
+const meta: Meta<typeof RoomInfo> = {
   component: RoomInfo,
   title: 'Room/RoomInfo',
   tags: ['autodocs'],
-} as Meta<typeof RoomInfo>;
+};
 
-export const Default: StoryObj<typeof RoomInfo> = {
+export default meta;
+type Story = StoryObj<typeof RoomInfo>;
+
+export const Default: Story = {
   args: {
     roomId: 'xxxxx-xxxxx-xxxxx',
     extraClass: '',

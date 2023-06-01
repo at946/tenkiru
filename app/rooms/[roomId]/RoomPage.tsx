@@ -27,7 +27,6 @@ import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
-import Loading from './components/loading';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 

@@ -4,7 +4,7 @@ import FaceDownCard from './FaceDownCard';
 
 const meta: Meta<typeof FaceDownCard> = {
   component: FaceDownCard,
-  title: 'Room/Table/FaceDownCard',
+  title: 'Room/Table/Card/FaceDownCard',
   tags: ['autodocs'],
 };
 

@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { useAppSelector } from '@/store/hooks';
 import { Member } from '@/interfaces/member';
 import TableCard from './TableCard';
-import NominateButton from './nominateButton';
+import NominateButton from './NominateButton';
 import BlankCard from './BlankCard';
 import FaceUpCard from './FaceUpCard';
 import FaceDownCard from './FaceDownCard';

@@ -4,7 +4,7 @@ import BlankCard from './BlankCard';
 
 const meta: Meta<typeof BlankCard> = {
   component: BlankCard,
-  title: 'Room/Table/BlankCard',
+  title: 'Room/Table/Card/BlankCard',
   tags: ['autodocs'],
 };
 

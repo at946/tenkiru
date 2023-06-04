@@ -4,16 +4,22 @@ import FaceUpCard from './FaceUpCard';
 
 const meta: Meta<typeof FaceUpCard> = {
   component: FaceUpCard,
-  title: 'Room/Table/FaceUpCard',
+  title: 'Room/Table/Card/FaceUpCard',
   tags: ['autodocs'],
+  decorators: [(story) => <div className='bg-green-400 p-5'>{story()}</div>],
 };
 
 export default meta;
 type Story = StoryObj<typeof FaceUpCard>;
 
-export const Default: Story = {
+export const NumberValue: Story = {
   args: {
     value: 1,
   },
-  decorators: [(story) => <div className='bg-green-400 p-5'>{story()}</div>],
+};
+
+export const StringValue: Story = {
+  args: {
+    value: 'XS',
+  },
 };

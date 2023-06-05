@@ -19,7 +19,7 @@ const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
 
   return (
     <div role='group' aria-label='テーブルカードグループ'>
-      <div className='mb-2'>
+      <div className='mb-2 flex justify-center'>
         {isCardBlank ? (
           <BlankCard />
         ) : isCardOpen ? (
@@ -28,7 +28,9 @@ const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
           <FaceDownCard />
         )}
       </div>
-      <NominateButton isDisabled={cardStatus !== 'faceUp'} nominate={() => nominate(player.id)} />
+      <div className='text-center'>
+        <NominateButton isDisabled={cardStatus !== 'faceUp'} nominate={() => nominate(player.id)} />
+      </div>
     </div>
   );
 };

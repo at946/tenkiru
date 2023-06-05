@@ -3,9 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DeckSelect from './DeckSelect';
 import { DeckType } from '@/interfaces/deckType';
 
-import { configureStore } from '@reduxjs/toolkit';
+import { Store, configureStore } from '@reduxjs/toolkit';
 import { roomSlice, setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 import { Provider } from 'react-redux';
+import { MockState, mockState, mockStore } from '@/store/mocks/store';
 
 const meta: Meta<typeof DeckSelect> = {
   component: DeckSelect,
@@ -16,22 +17,8 @@ const meta: Meta<typeof DeckSelect> = {
 export default meta;
 type Story = StoryObj<typeof DeckSelect>;
 
-const mockState = {
-  cardsAreOpen: false,
-  deckType: 'fibonacci',
-};
-
-const mockStore = (state) =>
-  configureStore({
-    reducer: {
-      room: roomSlice.reducer,
-    },
-    preloadedState: {
-      room: state,
-    },
-  });
-
-const defaultMockStore = mockStore(mockState);
+const defaultMockState: MockState = { ...mockState, room: { cardsAreOpen: false } };
+const defaultMockStore: Store = mockStore(defaultMockState);
 export const Default: Story = {
   args: {
     extraClass: '',
@@ -46,7 +33,8 @@ export const Default: Story = {
   ],
 };
 
-const cardsAreOpenMockStore = mockStore({ ...mockState, cardsAreOpen: true });
+const cardsAreOpenMockState: MockState = mockState;
+const cardsAreOpenMockStore: Store = mockStore(cardsAreOpenMockState);
 export const CardsAreOpen: Story = {
   args: {},
   decorators: [

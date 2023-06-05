@@ -21,7 +21,6 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
         <button
           className='rounded-full bg-purple-600 px-4 py-2 text-white outline-none drop-shadow-md hover:bg-purple-700 focus:bg-purple-700'
           onClick={clickReplayButton}
-          data-testid='replayButton'
         >
           <FontAwesomeIcon icon={faReply} className='mr-2' />
           <span>もう一度</span>
@@ -31,7 +30,6 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
           className='rounded-full bg-purple-600 px-4 py-2 text-white outline-none drop-shadow-md enabled:hover:bg-purple-700 enabled:focus:bg-purple-700 disabled:opacity-50'
           onClick={clickOpenButton}
           disabled={noCardPutOnTable}
-          data-testid='openButton'
         >
           <FontAwesomeIcon icon={faHand} className='mr-2' />
           <span>開く</span>

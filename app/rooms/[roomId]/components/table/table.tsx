@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import TableButton from './tableButton';
+import TableButton from './TableButton';
 import SummaryTags from './summaryTags';
 import TableCardGroups from './TableCardGroups';
 import { useAppSelector } from '@/store/hooks';

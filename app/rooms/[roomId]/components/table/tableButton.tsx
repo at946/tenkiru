@@ -3,6 +3,7 @@ import { Member } from '@/interfaces/member';
 import { useAppSelector } from '@/store/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHand, faPlay, faReply } from '@fortawesome/free-solid-svg-icons';
+import Button from '@/app/components/common/Button';
 
 interface Props {
   clickOpenButton: () => void;
@@ -18,22 +19,18 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
   return (
     <div>
       {cardsAreOpen ? (
-        <button
-          className='rounded-full bg-purple-600 px-4 py-2 text-white outline-none drop-shadow-md hover:bg-purple-700 focus:bg-purple-700'
+        <Button
+          label='もう一度'
+          icon={faReply}
           onClick={clickReplayButton}
-        >
-          <FontAwesomeIcon icon={faReply} className='mr-2' />
-          <span>もう一度</span>
-        </button>
+        />
       ) : (
-        <button
-          className='rounded-full bg-purple-600 px-4 py-2 text-white outline-none drop-shadow-md enabled:hover:bg-purple-700 enabled:focus:bg-purple-700 disabled:opacity-50'
+        <Button
+          label='開く'
+          icon={faHand}
+          isDisabled={noCardPutOnTable}
           onClick={clickOpenButton}
-          disabled={noCardPutOnTable}
-        >
-          <FontAwesomeIcon icon={faHand} className='mr-2' />
-          <span>開く</span>
-        </button>
+        />
       )}
     </div>
   );

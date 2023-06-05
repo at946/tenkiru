@@ -28,7 +28,6 @@ export const Default: Story = {
 };
 
 const cardsAreCloseMockState: MockState = { ...defaultMockState, room: { cardsAreOpen: false } };
-console.log(cardsAreCloseMockState);
 export const CardsAreClose: Story = {
   args: {
     player: cardsAreCloseMockState.user,

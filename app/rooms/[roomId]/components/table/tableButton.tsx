@@ -19,11 +19,7 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
   return (
     <div>
       {cardsAreOpen ? (
-        <Button
-          label='もう一度'
-          icon={faReply}
-          onClick={clickReplayButton}
-        />
+        <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
       ) : (
         <Button
           label='開く'

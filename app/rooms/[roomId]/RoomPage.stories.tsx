@@ -17,7 +17,5 @@ export const Default: Story = {
   args: {
     roomId: 'xxxxx-xxxxx-xxxxx',
   },
-  decorators: [
-    (story) => <Provider store={mockStore(mockState)}>{story()}</Provider>
-  ]
+  decorators: [(story) => <Provider store={mockStore(mockState)}>{story()}</Provider>],
 };

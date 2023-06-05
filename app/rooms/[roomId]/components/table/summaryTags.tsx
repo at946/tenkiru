@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { Card } from '@/interfaces/card';
 import { Member } from '@/interfaces/member';
 import { useAppSelector } from '@/store/hooks';
-import SummaryTag from './summaryTag';
+import SummaryTag from './SummaryTag';
 
 interface Props {
   extraClass?: string;

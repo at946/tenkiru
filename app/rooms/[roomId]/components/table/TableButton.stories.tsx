@@ -16,35 +16,23 @@ type Story = StoryObj<typeof TableButton>;
 const cardsAreOpenMockState: MockState = { ...mockState, room: { cardsAreOpen: false } };
 export const AreCardsOpen: Story = {
   args: {},
-  decorators: [
-    (story) => (
-      <Provider store={mockStore(cardsAreOpenMockState)}>
-        {story()}
-      </Provider>
-    ),
-  ],
+  decorators: [(story) => <Provider store={mockStore(cardsAreOpenMockState)}>{story()}</Provider>],
 };
 
 const cardsAreCloseMockState: MockState = mockState;
 export const CardsAreClose: Story = {
   args: {},
-  decorators: [
-    (story) => (
-      <Provider store={mockStore(cardsAreCloseMockState)}>
-        {story()}
-      </Provider>
-    ),
-  ],
+  decorators: [(story) => <Provider store={mockStore(cardsAreCloseMockState)}>{story()}</Provider>],
 };
 
-const noCardPutOnTableMockState: MockState = { ...mockState, room: { cardsAreOpen: false }, members: { members: [] } };
+const noCardPutOnTableMockState: MockState = {
+  ...mockState,
+  room: { cardsAreOpen: false },
+  members: { members: [] },
+};
 export const NoCardPutOnTable: Story = {
   args: {},
   decorators: [
-    (story) => (
-      <Provider store={mockStore(noCardPutOnTableMockState)}>
-        {story()}
-      </Provider>
-    ),
+    (story) => <Provider store={mockStore(noCardPutOnTableMockState)}>{story()}</Provider>,
   ],
 };

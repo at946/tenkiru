@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import TableButton from './TableButton';
-import SummaryTags from './summaryTags';
+import SummaryTags from './SummaryTags';
 import TableCardGroups from './TableCardGroups';
 import { useAppSelector } from '@/store/hooks';
 

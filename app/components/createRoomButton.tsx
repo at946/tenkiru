@@ -20,10 +20,7 @@ const CreateRoomButton: NextPage = () => {
   };
 
   return (
-    <span
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
+    <span onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       <Button
         label='部屋をつくる'
         icon={isHovering ? faDoorOpen : faDoorClosed}

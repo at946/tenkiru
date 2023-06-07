@@ -1,10 +1,10 @@
-import { Icon } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
 
 interface Props {
   label: string;
-  icon?: Icon;
+  icon?: IconDefinition;
   isOutlined?: boolean;
   isDisabled?: boolean;
   onClick: () => void;

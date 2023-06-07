@@ -26,7 +26,7 @@ const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
         value={deckType}
         disabled={cardsAreOpen}
         ariaLabel='デッキタイプ選択'
-        onChange={select}
+        onChange={(value: string) => { select(value as DeckType)}}
       />
     </div>
   );

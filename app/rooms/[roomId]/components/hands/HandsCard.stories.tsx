@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import HandsCard from './HandsCard';
 import { Provider } from 'react-redux';
 import { MockState, mockState, mockStore } from '@/store/mocks/store';
+import { MemberType } from '@/interfaces/memberType';
 
 const meta: Meta<typeof HandsCard> = {
   component: HandsCard,
@@ -30,7 +31,7 @@ export const Text: Story = {
 
 const mockStateOfSelected = {
   ...mockState,
-  user: { selectedCard: 1, type: 'player' },
+  user: { selectedCard: 1, type: 'player' as MemberType },
   room: { cardsAreOpen: false },
 };
 export const Selected: Story = {
@@ -48,7 +49,7 @@ export const Disabled: Story = {
   decorators: [(story) => <Provider store={mockStore(mockStateOfDisabled)}>{story()}</Provider>],
 };
 
-const mockStateOfSelectedAndDisabled = { ...mockState, user: { selectedCard: 1, type: 'player' } };
+const mockStateOfSelectedAndDisabled = { ...mockState, user: { selectedCard: 1, type: 'player' as MemberType } };
 export const SelectedAndDisabled: Story = {
   args: {
     card: 1,

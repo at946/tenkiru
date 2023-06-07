@@ -3,8 +3,6 @@ import { useAppSelector } from '@/store/hooks';
 import { Member } from '@/interfaces/member';
 import NominateButton from './NominateButton';
 import BlankCard from './BlankCard';
-import FaceUpCard from './FaceUpCard';
-import FaceDownCard from './FaceDownCard';
 import TableCard from './TableCard';
 
 interface Props {
@@ -24,10 +22,6 @@ const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
           <BlankCard />
         ) : (
           <TableCard value={player.selectedCard} isOpen={isCardOpen} />
-          // isCardOpen ? (
-          //   <FaceUpCard value={player.selectedCard} />
-          // ) : (
-          //   <FaceDownCard />
         )}
       </div>
       <div className='text-center'>

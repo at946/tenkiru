@@ -4,23 +4,52 @@ https://tenkier.fly.dev/
 
 Tenkir は無料のオンラインプランニングポーカーアプリです。XP やスクラムなどのアジャイルなプロジェクト管理に最適です。チームでの見積もりをリアルタイムで共有できます。参加者はスマートフォンやパソコンのブラウザだけで参加できます。直感的な UI と使いやすさが魅力です。
 
-## Getting Started
+## Start app
 
 ```bash
-docker compose run app yarn install
-docker compose up
+$ yarn
+$ yarn dev
 ```
+or
+```bash
+$ docker compose run app yarn
+$ docker compose up app
+```
+`http://localhost:3000`でアプリが利用できます。
 
-## test
+## E2E test
 
 ```bash
-docker compose run playwright yarn
-docker compose build playwright
-docker compose run playwright yarn test
+$ cd playwright
+$ yarn
+$ yarn test
 ```
+or
+```bash
+$ docker compose build playwright
+$ docker compose up yarn test
+```
+\* テスト実施時はTenkirアプリを立ち上げた状態で行います。
 
-## code formatter
+## Lint and formatter
 
+```bash
+$ yarn format:fix
+```
+or
 ```bash
 docker compose run app yarn format:fix
 ```
+
+## Storybook
+
+```bash
+$ yarn
+$ yarn storybook
+```
+or
+```bash
+$ docker compose run storybook yarn
+$ docker compose up storybook
+```
+`http://localhost:6006`でStorybookが利用できます。

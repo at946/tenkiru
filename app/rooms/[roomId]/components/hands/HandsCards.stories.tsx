@@ -14,7 +14,10 @@ const meta: Meta<typeof HandsCards> = {
 export default meta;
 type Story = StoryObj<typeof HandsCards>;
 
-const mockStateOfFibonacci = { ...mockState, room: { cardsAreOpen: false, deckType: 'fibonacci' as DeckType } };
+const mockStateOfFibonacci = {
+  ...mockState,
+  room: { cardsAreOpen: false, deckType: 'fibonacci' as DeckType },
+};
 export const Fibonacci: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(mockStateOfFibonacci)}>{story()}</Provider>],

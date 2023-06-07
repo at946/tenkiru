@@ -14,7 +14,10 @@ const meta: Meta<typeof HandsCard> = {
 export default meta;
 type Story = StoryObj<typeof HandsCard>;
 
-const mockStateOfDefault: MockState = { ...mockState, room: { ...mockState.room, cardsAreOpen: false } };
+const mockStateOfDefault: MockState = {
+  ...mockState,
+  room: { ...mockState.room, cardsAreOpen: false },
+};
 export const Default: Story = {
   args: {
     card: 1,
@@ -49,7 +52,10 @@ export const Disabled: Story = {
   decorators: [(story) => <Provider store={mockStore(mockStateOfDisabled)}>{story()}</Provider>],
 };
 
-const mockStateOfSelectedAndDisabled = { ...mockState, user: { selectedCard: 1, type: 'player' as MemberType } };
+const mockStateOfSelectedAndDisabled = {
+  ...mockState,
+  user: { selectedCard: 1, type: 'player' as MemberType },
+};
 export const SelectedAndDisabled: Story = {
   args: {
     card: 1,

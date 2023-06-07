@@ -27,7 +27,10 @@ export const Default: Story = {
   ],
 };
 
-const cardsAreCloseMockState: MockState = { ...defaultMockState, room: { ...defaultMockState.room, cardsAreOpen: false } };
+const cardsAreCloseMockState: MockState = {
+  ...defaultMockState,
+  room: { ...defaultMockState.room, cardsAreOpen: false },
+};
 export const CardsAreClose: Story = {
   args: {
     player: { ...cardsAreCloseMockState.user, id: '1' },

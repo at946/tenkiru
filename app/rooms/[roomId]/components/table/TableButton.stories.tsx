@@ -13,7 +13,10 @@ const meta: Meta<typeof TableButton> = {
 export default meta;
 type Story = StoryObj<typeof TableButton>;
 
-const cardsAreOpenMockState: MockState = { ...mockState, room: { ...mockState.room, cardsAreOpen: false } };
+const cardsAreOpenMockState: MockState = {
+  ...mockState,
+  room: { ...mockState.room, cardsAreOpen: false },
+};
 export const AreCardsOpen: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(cardsAreOpenMockState)}>{story()}</Provider>],

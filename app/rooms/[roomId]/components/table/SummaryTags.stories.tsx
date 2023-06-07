@@ -19,7 +19,10 @@ export const CardsAreOpen: Story = {
   decorators: [(story) => <Provider store={mockStore(CardsAreOpenMockState)}>{story()}</Provider>],
 };
 
-const cardsAreCloseMockState: MockState = { ...mockState, room: { ...mockState.room, cardsAreOpen: false } };
+const cardsAreCloseMockState: MockState = {
+  ...mockState,
+  room: { ...mockState.room, cardsAreOpen: false },
+};
 export const CardsAreClose: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(cardsAreCloseMockState)}>{story()}</Provider>],

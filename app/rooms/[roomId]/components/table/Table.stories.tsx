@@ -19,7 +19,10 @@ export const Default: Story = {
   decorators: [(story) => <Provider store={mockStore(defaultMockState)}>{story()}</Provider>],
 };
 
-const cardsAreCloseMockState: MockState = { ...defaultMockState, room: { ...defaultMockState.room, cardsAreOpen: false } };
+const cardsAreCloseMockState: MockState = {
+  ...defaultMockState,
+  room: { ...defaultMockState.room, cardsAreOpen: false },
+};
 export const CardsAreClose: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(cardsAreCloseMockState)}>{story()}</Provider>],

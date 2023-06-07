@@ -8,16 +8,16 @@ import { MemberType } from '@/interfaces/memberType';
 import { Card } from '@/interfaces/card';
 
 export interface MockState {
-  room?: {
-    cardsAreOpen?: boolean;
-    deckType?: DeckType;
+  room: {
+    cardsAreOpen: boolean;
+    deckType: DeckType;
   };
-  members?: {
-    members?: Member[];
+  members: {
+    members: Member[];
   };
-  user?: {
-    type?: MemberType;
-    selectedCard?: Card;
+  user: {
+    type: MemberType;
+    selectedCard: Card;
   };
 }
 
@@ -52,7 +52,7 @@ export const mockState: MockState = {
   },
   user: {
     type: 'player',
-    selectedCard: '1',
+    selectedCard: 1,
   },
 };
 

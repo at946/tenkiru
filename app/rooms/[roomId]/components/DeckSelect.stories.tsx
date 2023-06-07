@@ -17,7 +17,7 @@ const meta: Meta<typeof DeckSelect> = {
 export default meta;
 type Story = StoryObj<typeof DeckSelect>;
 
-const defaultMockState: MockState = { ...mockState, room: { cardsAreOpen: false } };
+const defaultMockState: MockState = { ...mockState, room: { ...mockState.room, cardsAreOpen: false } };
 const defaultMockStore: Store = mockStore(defaultMockState);
 export const Default: Story = {
   args: {

@@ -16,7 +16,7 @@ type Story = StoryObj<typeof TableCardGroup>;
 const defaultMockState: MockState = mockState;
 export const Default: Story = {
   args: {
-    player: defaultMockState.user,
+    player: { ...defaultMockState.user, id: '1' },
   },
   decorators: [
     (story) => (
@@ -27,10 +27,10 @@ export const Default: Story = {
   ],
 };
 
-const cardsAreCloseMockState: MockState = { ...defaultMockState, room: { cardsAreOpen: false } };
+const cardsAreCloseMockState: MockState = { ...defaultMockState, room: { ...defaultMockState.room, cardsAreOpen: false } };
 export const CardsAreClose: Story = {
   args: {
-    player: cardsAreCloseMockState.user,
+    player: { ...cardsAreCloseMockState.user, id: '1' },
   },
   decorators: [
     (story) => (

@@ -24,7 +24,7 @@ const Button: NextPage<Props> = ({ label, icon, hoverIcon, isOutlined, isDisable
       onClick={onClick}
       disabled={isDisabled}
     >
-      <FontAwesomeIcon icon={icon} className='mr-2' />
+      {icon && <FontAwesomeIcon icon={icon} className='mr-2' />}
       {label}
     </button>
   );

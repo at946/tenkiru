@@ -16,7 +16,7 @@ import RoomInfo from './components/RoomInfo';
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
 import MemberTypeSelect from './components/MemberTypeSelect';
-import HandsCards from './components/hands/handsCards';
+import HandsCards from './components/hands/HandsCards';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 
 // stores

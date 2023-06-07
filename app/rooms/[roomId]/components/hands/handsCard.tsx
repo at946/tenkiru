@@ -24,18 +24,20 @@ const HandsCard: NextPage<Props> = ({ card, putDownCard }) => {
   };
 
   return (
-    <a onClick={select} className={isDisabled ? styles['is-unselectable'] : ''}>
-      <Card
-        value={card}
-        extraClass={`${isSelected ? styles.selected : ''} ${
-          !isSelected && isDisabled ? styles.disabled : ''
-        } ${isDisabled ? '' : styles['is-hoverable']}`}
-        role='option'
-        ariaLabel='手札カード'
-        ariaSelected={isSelected}
-        ariaDisabled={isDisabled}
-      />
-    </a>
+    <button
+      onClick={select}
+      className={`
+        flex aspect-card w-24 items-center justify-center rounded-md border border-slate-900 text-2xl font-bold shadow enabled:hover:-translate-y-2 enabled:hover:shadow-2xl enabled:focus:-translate-y-2 enabled:focus:shadow-2xl disabled:cursor-not-allowed
+        ${isSelected ? 'bg-rose-500 text-white' : 'bg-white text-slate-900 disabled:opacity-50'}
+      `}
+      role='option'
+      aria-label='手札カード'
+      aria-disabled={isDisabled}
+      aria-selected={isSelected}
+      disabled={isDisabled}
+    >
+      {card}
+    </button>
   );
 };
 

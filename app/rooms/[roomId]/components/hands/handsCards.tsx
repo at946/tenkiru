@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import HandsCard from './handsCard';
+import HandsCard from './HandsCard';
 import Decks from '@/data/deck';
 import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
@@ -15,7 +15,7 @@ const HandsCards: NextPage<Props> = ({ putDownCard }) => {
   const cards: Card[] | undefined = deckCards;
 
   return (
-    <div className='flex flex-wrap justify-center' role='group' aria-label='手札'>
+    <div className='flex flex-wrap justify-center gap-2' role='group' aria-label='手札'>
       {!!cards &&
         cards.map((card, index) => <HandsCard key={index} card={card} putDownCard={putDownCard} />)}
     </div>

@@ -12,11 +12,11 @@ import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
 
 // components
-import RoomInfo from './components/roomInfo';
-import Table from './components/table/table';
-import DeckSelect from './components/deckSelect';
-import MemberTypeSelect from './components/memberTypeSelect';
-import HandsCards from './components/hands/handsCards';
+import RoomInfo from './components/RoomInfo';
+import Table from './components/table/Table';
+import DeckSelect from './components/DeckSelect';
+import MemberTypeSelect from './components/MemberTypeSelect';
+import HandsCards from './components/hands/HandsCards';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 
 // stores
@@ -27,7 +27,6 @@ import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
-import Loading from './components/loading';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 

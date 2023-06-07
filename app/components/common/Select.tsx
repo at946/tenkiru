@@ -10,7 +10,7 @@ interface Props {
   value: string;
   disabled: boolean;
   ariaLabel: string;
-  extraClass: string;
+  extraClass?: string;
   onChange: (value: string) => void;
 }
 

@@ -10,7 +10,7 @@ interface Props {
   onClick: () => void;
 }
 
-const Button: NextPage<Props> = ({ label, icon, hoverIcon, isOutlined, isDisabled, onClick }) => {
+const Button: NextPage<Props> = ({ label, icon, isOutlined, isDisabled, onClick }) => {
   return (
     <button
       className={`

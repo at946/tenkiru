@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import HandsCards from './HandsCards';
 import { Provider } from 'react-redux';
 import { mockState, mockStore } from '@/store/mocks/store';
+import { DeckType } from '@/interfaces/deckType';
 
 const meta: Meta<typeof HandsCards> = {
   component: HandsCards,
@@ -13,7 +14,7 @@ const meta: Meta<typeof HandsCards> = {
 export default meta;
 type Story = StoryObj<typeof HandsCards>;
 
-const mockStateOfFibonacci = { ...mockState, room: { cardsAreOpen: false, deckType: 'fibonacci' } };
+const mockStateOfFibonacci = { ...mockState, room: { cardsAreOpen: false, deckType: 'fibonacci' as DeckType } };
 export const Fibonacci: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(mockStateOfFibonacci)}>{story()}</Provider>],
@@ -21,7 +22,7 @@ export const Fibonacci: Story = {
 
 const mockStateOfSequential = {
   ...mockState,
-  room: { cardsAreOpen: false, deckType: 'sequential' },
+  room: { cardsAreOpen: false, deckType: 'sequential' as DeckType },
 };
 export const Sequential: Story = {
   args: {},
@@ -30,7 +31,7 @@ export const Sequential: Story = {
 
 const mockStateOfTShirtSize = {
   ...mockState,
-  room: { cardsAreOpen: false, deckType: 'tShirtSize' },
+  room: { cardsAreOpen: false, deckType: 'tShirtSize' as DeckType },
 };
 export const TShirtSize: Story = {
   args: {},

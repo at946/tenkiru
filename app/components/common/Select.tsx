@@ -8,7 +8,7 @@ interface Option {
 interface Props {
   options: Option[];
   value: string;
-  disabled: boolean;
+  disabled?: boolean;
   ariaLabel: string;
   extraClass?: string;
   onChange: (value: string) => void;

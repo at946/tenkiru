@@ -13,10 +13,9 @@ interface Props {
 const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
   const type = useAppSelector((state) => state.user.type);
 
-  const change: React.ChangeEventHandler<HTMLSelectElement> = (e): void => {
-    const memberType: MemberType = e.target.value as MemberType;
-    event({ action: `change_member_type_${memberType}`, category: 'engagement', label: '' });
-    select(memberType);
+  const change = (value: string): void => {
+    event({ action: `change_member_type_${value}`, category: 'engagement', label: '' });
+    select(value as MemberType);
   };
 
   return (
@@ -29,7 +28,7 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
         ]}
         value={type}
         ariaLabel='メンバータイプの選択'
-        onChange={select}
+        onChange={change}
       />
     </div>
   );

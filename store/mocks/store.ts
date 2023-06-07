@@ -52,7 +52,7 @@ export const mockState: MockState = {
   },
   user: {
     type: 'player',
-    selectedCard: 1,
+    selectedCard: 0,
   },
 };
 

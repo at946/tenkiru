@@ -21,12 +21,7 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
       {cardsAreOpen ? (
         <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
       ) : (
-        <Button
-          label='開く'
-          icon={faHand}
-          isDisabled={noCardPutOnTable}
-          onClick={clickOpenButton}
-        />
+        <Button label='開く' icon={faHand} disabled={noCardPutOnTable} onClick={clickOpenButton} />
       )}
     </div>
   );

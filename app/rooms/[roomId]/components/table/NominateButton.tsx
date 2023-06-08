@@ -28,7 +28,7 @@ const NominateButton: NextPage<Props> = ({ isDisabled, nominate }) => {
       label='指名'
       icon={faComment}
       isOutlined={true}
-      isDisabled={isDisabled}
+      disabled={isDisabled}
       onClick={onClick}
     />
   );

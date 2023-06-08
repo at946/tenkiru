@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Button from './Button';
-import { faCircleDot, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleDot } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -15,7 +15,6 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     label: 'Button',
-    icon: faCircleDot,
     isOutlined: false,
     isDisabled: false,
     onClick: () => {
@@ -24,16 +23,18 @@ export const Default: Story = {
   },
 };
 
-export const ButtonWithoutIcon: Story = {
+export const ButtonWithIcon: Story = {
   args: {
-    label: 'Button without icon',
+    label: 'Button with icon',
+    icon: faCircleDot,
+    isOutlined: false,
+    isDisabled: false,
   },
 };
 
 export const Disabled: Story = {
   args: {
     label: 'Disabled',
-    icon: faXmark,
     isDisabled: true,
   },
 };

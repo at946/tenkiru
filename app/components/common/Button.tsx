@@ -14,7 +14,7 @@ const Button: NextPage<Props> = ({ label, icon, isOutlined, isDisabled, onClick 
   return (
     <button
       className={`
-      rounded-full border border-purple-600 px-4 py-2 outline-none drop-shadow-md enabled:hover:drop-shadow-lg enabled:focus:drop-shadow-lg disabled:opacity-50
+      rounded-full border border-purple-600 px-4 py-2 outline-none drop-shadow-md enabled:hover:drop-shadow-lg enabled:focus:drop-shadow-lg disabled:opacity-50 disabled:cursor-not-allowed
       ${
         isOutlined
           ? 'bg-white text-purple-600 enabled:hover:bg-purple-600 enabled:hover:text-white enabled:focus:bg-purple-600 enabled:focus:text-white'

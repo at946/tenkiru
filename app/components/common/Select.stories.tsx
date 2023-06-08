@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 
 import Select from './Select';
 
@@ -6,19 +7,41 @@ const meta: Meta<typeof Select> = {
   component: Select,
   title: 'Common/Select',
   tags: ['autodocs'],
-  args: {
-    options: [
-      { value: 'option1', label: 'オプション1' },
-      { value: 'option2', label: 'オプション2' },
-      { value: 'option3', label: 'オプション3' },
-    ],
-  },
   argTypes: {
+    options: {
+      name: 'options',
+      type: { name: 'array', required: true },
+      description: '選択肢（`value`, `label`の配列）',
+    },
     value: {
-      control: {
-        type: 'select',
-      },
+      name: 'value',
+      type: { name: 'string', required: false },
+      description: '親コンポーネントから`value`を指定する場合に使用',
+      control: 'select',
       options: ['option1', 'option2', 'option3'],
+    },
+    disabled: {
+      name: 'disabled',
+      type: { name: 'boolean', required: false },
+      description: '利用不可かどうか',
+      control: 'boolean',
+    },
+    ariaLabel: {
+      name: 'ariaLabel',
+      type: { name: 'text', required: false },
+      description: 'aria-label属性',
+      control: 'text',
+      table: {
+        category: 'a11y',
+      },
+    },
+    onChange: {
+      name: 'onChange',
+      type: { name: 'function', required: false },
+      description: '選択時の動作',
+      table: {
+        category: 'Events',
+      },
     },
   },
 };
@@ -28,14 +51,24 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   args: {
+    options: [
+      { value: 'option1', label: 'オプション1' },
+      { value: 'option2', label: 'オプション2' },
+      { value: 'option3', label: 'オプション3' },
+    ],
     value: 'option1',
-    ariaLabel: 'Select',
     disabled: false,
-    extraClass: '',
-    onChange: (value: string) => {
-      console.log('selectedValue:', value);
-    },
+    ariaLabel: 'Select box',
   },
+  decorators: [
+    (story) => {
+      const [args, setArgs] = useArgs();
+      const onChange = (value: string): void => {
+        setArgs({ value: value });
+      };
+      return <Select {...args} onChange={onChange} />;
+    },
+  ],
 };
 
 export const Disabled: Story = {

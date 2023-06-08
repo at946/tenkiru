@@ -10,7 +10,6 @@ interface Props {
   value: string;
   disabled?: boolean;
   ariaLabel: string;
-  extraClass?: string;
   onChange: (value: string) => void;
 }
 
@@ -21,10 +20,7 @@ const Select: NextPage<Props> = ({ options, value, disabled, ariaLabel, extraCla
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
       aria-label={ariaLabel}
-      aria-disabled={disabled}
-      className={`rounded-lg border-2 px-2 py-1 outline-none enabled:hover:border-purple-600 enabled:focus:border-purple-600 disabled:opacity-50 ${
-        extraClass || ''
-      }`}
+      className='rounded-lg border px-2 py-1 outline-none enabled:hover:border-purple-600 enabled:hover:text-purple-600 enabled:focus:border-purple-600 enabled:focus:text-purple-600 disabled:opacity-50'
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>

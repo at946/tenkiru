@@ -20,16 +20,17 @@ const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
 
   return (
     <div className={extraClass || ''}>
-      <span>デッキタイプ：</span>
-      <Select
-        options={options}
-        value={deckType}
-        disabled={cardsAreOpen}
-        ariaLabel='デッキタイプ選択'
-        onChange={(value: string) => {
-          select(value as DeckType);
-        }}
-      />
+      <label>
+        デッキタイプ：
+        <Select
+          options={options}
+          value={deckType}
+          disabled={cardsAreOpen}
+          onChange={(value: string) => {
+            select(value as DeckType);
+          }}
+        />
+      </label>
     </div>
   );
 };

@@ -52,8 +52,8 @@ export default class RoomPage {
     this.maxTag = page.getByLabel('最大値');
     this.openButton = page.getByRole('button', { name: '開く' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
-    this.memberTypeSelect = page.getByRole('combobox', { name: 'メンバータイプの選択' });
-    this.deckSelect = page.getByRole('combobox', { name: 'デッキタイプ選択' });
+    this.memberTypeSelect = page.getByRole('combobox', { name: 'メンバータイプ：' });
+    this.deckSelect = page.getByRole('combobox', { name: 'デッキタイプ：' });
     this.hands = page.getByRole('group', { name: '手札' });
     this.handsCards = this.hands.getByRole('option', { name: '手札カード' });
     this.selectedHandsCard = this.hands.getByRole('option', { name: '手札カード', selected: true });

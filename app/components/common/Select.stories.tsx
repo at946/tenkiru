@@ -10,7 +10,7 @@ const meta: Meta<typeof Select> = {
   argTypes: {
     options: {
       name: 'options',
-      type: { name: 'array', required: true },
+      type: { name: 'other', value: 'array object', required: true },
       description: '選択肢（`value`, `label`の配列）',
     },
     value: {
@@ -28,7 +28,7 @@ const meta: Meta<typeof Select> = {
     },
     ariaLabel: {
       name: 'ariaLabel',
-      type: { name: 'text', required: false },
+      type: { name: 'string', required: false },
       description: 'aria-label属性',
       control: 'text',
       table: {
@@ -66,7 +66,7 @@ export const Default: Story = {
       const onChange = (value: string): void => {
         setArgs({ value: value });
       };
-      return <Select {...args} onChange={onChange} />;
+      return <Select {...args} options={args.options} onChange={onChange} />;
     },
   ],
 };

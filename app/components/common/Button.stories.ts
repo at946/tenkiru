@@ -1,12 +1,50 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Button from './Button';
-import { faCircleDot } from '@fortawesome/free-solid-svg-icons';
+import { faA, faB, faC } from '@fortawesome/free-solid-svg-icons';
+
+const icons = { faA, faB, faC };
 
 const meta: Meta<typeof Button> = {
   component: Button,
   title: 'Common/Button',
   tags: ['autodocs'],
+  argTypes: {
+    label: {
+      type: { name: 'string', required: true },
+      description: '表示文字列',
+      control: 'text',
+    },
+    icon: {
+      type: { name: 'other', value: 'fontawesome icon', required: false },
+      description: 'ボタン右に表示するFontawesome Icon',
+      options: Object.keys(icons),
+      mapping: icons,
+      control: {
+        type: 'select',
+        labels: {
+          faA: 'A',
+          faB: 'B',
+          faC: 'C',
+        },
+      },
+    },
+    isOutlined: {
+      type: { name: 'boolean', required: false },
+      description: 'Outlined styleを適用するかどうか',
+    },
+    disabled: {
+      type: { name: 'boolean', required: false },
+      description: '操作可能かどうか',
+    },
+    onClick: {
+      type: { name: 'function', required: false },
+      description: 'クリック時の動作',
+      table: {
+        category: 'Events',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -15,27 +53,22 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     label: 'Button',
-    isOutlined: false,
-    isDisabled: false,
-    onClick: () => {
-      alert('Clicked');
-    },
   },
 };
 
 export const ButtonWithIcon: Story = {
   args: {
     label: 'Button with icon',
-    icon: faCircleDot,
+    icon: faA,
     isOutlined: false,
-    isDisabled: false,
+    disabled: false,
   },
 };
 
 export const Disabled: Story = {
   args: {
     label: 'Disabled',
-    isDisabled: true,
+    disabled: true,
   },
 };
 
@@ -50,6 +83,6 @@ export const DisabledOutlined: Story = {
   args: {
     label: 'Disabled Outlined',
     isOutlined: true,
-    isDisabled: true,
+    disabled: true,
   },
 };

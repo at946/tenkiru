@@ -6,11 +6,11 @@ interface Props {
   label: string;
   icon?: IconDefinition;
   isOutlined?: boolean;
-  isDisabled?: boolean;
-  onClick: () => void;
+  disabled?: boolean;
+  onClick?: () => void;
 }
 
-const Button: NextPage<Props> = ({ label, icon, isOutlined, isDisabled, onClick }) => {
+const Button: NextPage<Props> = ({ label, icon, isOutlined, disabled, onClick }) => {
   return (
     <button
       className={`
@@ -21,8 +21,8 @@ const Button: NextPage<Props> = ({ label, icon, isOutlined, isDisabled, onClick 
           : 'bg-purple-600 text-white enabled:hover:bg-purple-700 enabled:focus:bg-purple-700'
       }
       `}
+      disabled={disabled}
       onClick={onClick}
-      disabled={isDisabled}
     >
       {icon && <FontAwesomeIcon icon={icon} className='mr-2' />}
       {label}

@@ -20,16 +20,17 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
 
   return (
     <div className={extraClass || ''}>
-      <span>メンバータイプ：</span>
-      <Select
-        options={[
-          { value: 'player', label: 'プレイヤー' },
-          { value: 'audience', label: '観客' },
-        ]}
-        value={type}
-        ariaLabel='メンバータイプの選択'
-        onChange={change}
-      />
+      <label>
+        メンバータイプ：
+        <Select
+          options={[
+            { value: 'player', label: 'プレイヤー' },
+            { value: 'audience', label: '観客' },
+          ]}
+          value={type}
+          onChange={change}
+        />
+      </label>
     </div>
   );
 };

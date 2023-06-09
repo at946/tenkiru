@@ -1,6 +1,6 @@
 {
-  "name": "tenkiru",
-  "version": "0.1.0",
+  "name": "tenkir",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,7 +14,11 @@
     "format": "yarn lint && yarn prettier",
     "format:fix": "yarn lint:fix && yarn prettier:fix",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:storybook": "test-storybook",
+    "test:playwright": "yarn playwright test",
+    "test:playwright:report": "yarn playwright show-report",
+    "test": "yarn test:storybook && yarn test:playwright"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -37,6 +41,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.35.0",
     "@storybook/addon-a11y": "^7.0.20",
     "@storybook/addon-console": "^2.0.0",
     "@storybook/addon-essentials": "^7.0.20",
@@ -46,6 +51,7 @@
     "@storybook/jest": "^0.1.0",
     "@storybook/nextjs": "^7.0.20",
     "@storybook/react": "^7.0.20",
+    "@storybook/test-runner": "^0.10.0",
     "@storybook/testing-library": "^0.1.0",
     "@types/gtag.js": "^0.0.12",
     "@types/node": "20.2.5",

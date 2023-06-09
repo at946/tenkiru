@@ -1,8 +1,31 @@
+# Docker
 Dockerfile
+Dockerfile.dev
+docker-compose.yml
 .dockerignore
+
+# fly.io
+fly.toml
+
+# Linter & Formatter
+.eslintrc.json
+.prettierignore
+.prettierrc.json
+
+# Storybook
+.storybook
+*/*.stories.*
+
+# playwright
+playwright
+playwright.config.ts
+
+# Git & GitHub
+.git
+.github
+
+# Other
 node_modules
 npm-debug.log
 README.md
 .next
-.git
-playwright

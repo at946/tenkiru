@@ -23,16 +23,13 @@ $ docker compose up app
 ## E2E test
 
 ```bash
-$ cd playwright
-$ yarn
 $ yarn test
 ```
 
 or
 
 ```bash
-$ docker compose build playwright
-$ docker compose up yarn test
+$ docker compose exec app yarn test:playwright
 ```
 
 \* テスト実施時は Tenkir アプリを立ち上げた状態で行います。
@@ -46,21 +43,33 @@ $ yarn format:fix
 or
 
 ```bash
-docker compose run app yarn format:fix
+$ docker compose run app yarn format:fix
 ```
 
 ## Storybook
 
 ```bash
-$ yarn
 $ yarn storybook
 ```
 
 or
 
 ```bash
-$ docker compose run storybook yarn
-$ docker compose up storybook
+$ docker compose exec app yarn storybook
 ```
 
 `http://localhost:6006`で Storybook が利用できます。
+
+## Storybook test
+
+```bash
+$ yarn test:storybook
+```
+
+or
+
+```bash
+$ docker compose exec app yarn test:storybook
+```
+
+\* Storybook を立ち上げている状態で行います。

@@ -29,11 +29,11 @@ jobs:
           prettier: true
           auto_fix: true
 
-      - name: prepare for playwright
-        run: |
-          yarn --frozen-lockfile
-          yarn playwright install --with-deps
-        working-directory: ./playwright
+      - name: start storybook
+        run: yarn storybook &
+
+      - name: component test
+        run: yarn test:storybook --url http://localhost:6006
 
       - name: start next app
         run: |
@@ -42,9 +42,8 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
 
-      - name: start e2e tests
-        run: yarn test
-        working-directory: ./playwright
+      - name: E2E test
+        run: yarn test:playwright
 
       - uses: actions/upload-artifact@v3
         if: failure()

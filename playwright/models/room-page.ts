@@ -1,11 +1,11 @@
 import { Locator, Page } from '@playwright/test';
 import Head from './common/head';
-import Header from './common/header';
 
 import urls from '../helpers/urls';
 
 export default class RoomPage {
   readonly page: Page;
+  readonly logo: Locator;
   readonly roomIdLink: Locator;
   readonly tableCardGroups: Locator;
   readonly tableCards: Locator;
@@ -32,10 +32,10 @@ export default class RoomPage {
   readonly haveBeenNominatedToast: Locator;
 
   readonly head: Head;
-  readonly header: Header;
 
   constructor(page: Page) {
     this.page = page;
+    this.logo = page.getByRole('link', { name: 'Tenkir' });
     this.roomIdLink = page.getByRole('link', { name: '部屋番号' });
     this.tableCardGroups = page.getByRole('group', { name: 'テーブルカードグループ' });
     this.tableCards = this.tableCardGroups.getByLabel('テーブルカード');
@@ -64,7 +64,6 @@ export default class RoomPage {
     this.haveBeenNominatedToast = page.getByRole('status').getByText('指名されました！');
 
     this.head = new Head(page);
-    this.header = new Header(page);
   }
 
   async goto(roomId: string) {
@@ -101,6 +100,6 @@ export default class RoomPage {
   }
 
   async clickHeaderLogo() {
-    await this.header.clickLogo();
+    await this.logo.click();
   }
 }

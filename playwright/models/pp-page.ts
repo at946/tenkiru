@@ -1,6 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test';
 import Head from './common/head';
-import Header from './common/header';
 import urls from '../helpers/urls';
 
 export default class PPPage {
@@ -18,9 +17,5 @@ export default class PPPage {
 
   async goto() {
     await this.page.goto(urls.pp);
-  }
-
-  async clickHeaderLogo() {
-    await this.header.clickLogo();
   }
 }

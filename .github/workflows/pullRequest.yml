@@ -33,7 +33,7 @@ jobs:
         run: yarn storybook &
 
       - name: component test
-        run: yarn test:storybook
+        run: yarn test:storybook --url http://localhost:6006
 
       - name: start next app
         run: |

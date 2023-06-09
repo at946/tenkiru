@@ -6,13 +6,11 @@ export default class PPPage {
   readonly page: Page;
 
   readonly head: Head;
-  readonly header: Header;
 
   constructor(page: Page) {
     this.page = page;
 
     this.head = new Head(page);
-    this.header = new Header(page);
   }
 
   async goto() {

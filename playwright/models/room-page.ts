@@ -1,6 +1,5 @@
 import { Locator, Page } from '@playwright/test';
 import Head from './common/head';
-import Header from './common/header';
 
 import urls from '../helpers/urls';
 
@@ -33,7 +32,6 @@ export default class RoomPage {
   readonly haveBeenNominatedToast: Locator;
 
   readonly head: Head;
-  readonly header: Header;
 
   constructor(page: Page) {
     this.page = page;
@@ -66,7 +64,6 @@ export default class RoomPage {
     this.haveBeenNominatedToast = page.getByRole('status').getByText('指名されました！');
 
     this.head = new Head(page);
-    this.header = new Header(page);
   }
 
   async goto(roomId: string) {

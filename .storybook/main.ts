@@ -15,5 +15,8 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  features: {
+    interactionsDebugger: true,
+  },
 };
 export default config;

@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 
 import Select from './Select';
+import { userEvent, waitFor, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof Select> = {
   component: Select,
@@ -44,6 +46,15 @@ const meta: Meta<typeof Select> = {
       },
     },
   },
+  decorators: [
+    (story) => {
+      const [args, setArgs] = useArgs();
+      const onChange = (value: string): void => {
+        setArgs({ value: value });
+      };
+      return <Select {...args} options={args.options} onChange={onChange} />;
+    },
+  ],
 };
 
 export default meta;
@@ -60,20 +71,50 @@ export const Default: Story = {
     disabled: false,
     ariaLabel: 'Select box',
   },
-  decorators: [
-    (story) => {
-      const [args, setArgs] = useArgs();
-      const onChange = (value: string): void => {
-        setArgs({ value: value });
-      };
-      return <Select {...args} options={args.options} onChange={onChange} />;
-    },
-  ],
+  play: async ({ canvasElement }) => {
+    // Arrange
+    const canvas = within(canvasElement);
+    await userEvent.selectOptions(canvas.getByRole('combobox'), 'オプション1');
+    await waitFor(() => {
+      expect(canvas.getByRole('option', { name: 'オプション1' }).selected).toBe(true);
+      expect(canvas.getByRole('option', { name: 'オプション2' }).selected).toBe(false);
+      expect(canvas.getByRole('option', { name: 'オプション3' }).selected).toBe(false);
+    });
+
+    // Action
+    await userEvent.selectOptions(canvas.getByRole('combobox'), 'オプション2');
+
+    // Assert
+    await waitFor(() => {
+      expect(canvas.getByRole('option', { name: 'オプション1' }).selected).toBe(false);
+      expect(canvas.getByRole('option', { name: 'オプション2' }).selected).toBe(true);
+      expect(canvas.getByRole('option', { name: 'オプション3' }).selected).toBe(false);
+    });
+  },
 };
 
 export const Disabled: Story = {
   args: {
     ...Default.args,
     disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    // Arrange
+    const canvas = within(canvasElement);
+    await waitFor(() => {
+      expect(canvas.getByRole('option', { name: 'オプション1' }).selected).toBe(true);
+      expect(canvas.getByRole('option', { name: 'オプション2' }).selected).toBe(false);
+      expect(canvas.getByRole('option', { name: 'オプション3' }).selected).toBe(false);
+    });
+
+    // Action
+    await userEvent.selectOptions(canvas.getByRole('combobox'), 'オプション2');
+
+    // Assert
+    await waitFor(() => {
+      expect(canvas.getByRole('option', { name: 'オプション1' }).selected).toBe(true);
+      expect(canvas.getByRole('option', { name: 'オプション2' }).selected).toBe(false);
+      expect(canvas.getByRole('option', { name: 'オプション3' }).selected).toBe(false);
+    });
   },
 };

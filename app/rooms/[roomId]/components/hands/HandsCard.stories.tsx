@@ -16,7 +16,7 @@ type Story = StoryObj<typeof HandsCard>;
 
 const mockStateOfDefault: MockState = {
   ...mockState,
-  room: { ...mockState.room, cardsAreOpen: false },
+  room: { ...mockState.room, areCardsOpen: false },
 };
 export const Default: Story = {
   args: {
@@ -35,7 +35,7 @@ export const Text: Story = {
 const mockStateOfSelected = {
   ...mockState,
   user: { selectedCard: 1, type: 'player' as MemberType },
-  room: { ...mockState.room, cardsAreOpen: false },
+  room: { ...mockState.room, areCardsOpen: false },
 };
 export const Selected: Story = {
   args: {

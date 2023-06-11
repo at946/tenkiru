@@ -13,13 +13,13 @@ const meta: Meta<typeof TableButton> = {
 export default meta;
 type Story = StoryObj<typeof TableButton>;
 
-const cardsAreOpenMockState: MockState = {
+const areCardsOpenMockState: MockState = {
   ...mockState,
-  room: { ...mockState.room, cardsAreOpen: false },
+  room: { ...mockState.room, areCardsOpen: false },
 };
 export const AreCardsOpen: Story = {
   args: {},
-  decorators: [(story) => <Provider store={mockStore(cardsAreOpenMockState)}>{story()}</Provider>],
+  decorators: [(story) => <Provider store={mockStore(areCardsOpenMockState)}>{story()}</Provider>],
 };
 
 const cardsAreCloseMockState: MockState = mockState;
@@ -30,7 +30,7 @@ export const CardsAreClose: Story = {
 
 const noCardPutOnTableMockState: MockState = {
   ...mockState,
-  room: { ...mockState.room, cardsAreOpen: false },
+  room: { ...mockState.room, areCardsOpen: false },
   members: { members: [] },
 };
 export const NoCardPutOnTable: Story = {

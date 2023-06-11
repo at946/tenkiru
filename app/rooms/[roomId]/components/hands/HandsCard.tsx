@@ -13,8 +13,8 @@ const HandsCard: NextPage<Props> = ({ card, putDownCard }) => {
   const isSelected: boolean = card === selectedCard;
 
   const userType: MemberType = useAppSelector((state) => state.user.type);
-  const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
-  const isDisabled: boolean = cardsAreOpen || userType !== 'player';
+  const areCardsOpen: boolean = useAppSelector((state) => state.room.areCardsOpen);
+  const isDisabled: boolean = areCardsOpen || userType !== 'player';
 
   const select = () => {
     if (isDisabled) return;

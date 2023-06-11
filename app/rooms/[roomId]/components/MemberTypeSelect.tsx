@@ -7,11 +7,11 @@ import { MemberType } from '@/interfaces/memberType';
 import Select, { Option } from '@/app/components/common/Select';
 
 interface Props {
-  extraClass: string;
-  select: (memberType: MemberType) => void;
+  extraClass?: string;
+  onChange: (memberType: MemberType) => void;
 }
 
-const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
+const MemberTypeSelect: NextPage<Props> = ({ extraClass, onChange }) => {
   const type: MemberType = useAppSelector((state) => state.user.type);
 
   const options: Option[] = [
@@ -19,8 +19,8 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
     { value: 'audience', label: '観客' },
   ];
 
-  const change = (value: string): void => {
-    select(value as MemberType);
+  const handleOnChange = (value: string): void => {
+    onChange(value as MemberType);
     event({ action: `change_member_type_${value}`, category: 'engagement', label: '' });
   };
 
@@ -28,7 +28,7 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
     <div className={extraClass || ''}>
       <label>
         メンバータイプ：
-        <Select options={options} value={type} onChange={change} />
+        <Select options={options} value={type} onChange={handleOnChange} />
       </label>
     </div>
   );

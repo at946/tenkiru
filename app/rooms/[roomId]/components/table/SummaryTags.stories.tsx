@@ -13,15 +13,15 @@ const meta: Meta<typeof SummaryTags> = {
 export default meta;
 type Story = StoryObj<typeof SummaryTags>;
 
-const CardsAreOpenMockState: MockState = mockState;
-export const CardsAreOpen: Story = {
+const AreCardsOpenMockState: MockState = mockState;
+export const AreCardsOpen: Story = {
   args: {},
-  decorators: [(story) => <Provider store={mockStore(CardsAreOpenMockState)}>{story()}</Provider>],
+  decorators: [(story) => <Provider store={mockStore(AreCardsOpenMockState)}>{story()}</Provider>],
 };
 
 const cardsAreCloseMockState: MockState = {
   ...mockState,
-  room: { ...mockState.room, cardsAreOpen: false },
+  room: { ...mockState.room, areCardsOpen: false },
 };
 export const CardsAreClose: Story = {
   args: {},

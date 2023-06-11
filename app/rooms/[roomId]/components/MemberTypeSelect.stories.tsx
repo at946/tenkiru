@@ -14,6 +14,19 @@ const meta: Meta<typeof MemberTypeSelect> = {
   component: MemberTypeSelect,
   title: 'Room/MemberTypeSelect',
   tags: ['autodocs'],
+  argTypes: {
+    extraClass: {
+      type: { name: 'string', required: false },
+      description: '追加で適用するクラス名',
+    },
+    onChange: {
+      type: { name: 'function', required: true },
+      description: '選択肢の変更時に呼び出される関数',
+      table: {
+        category: 'Events',
+      },
+    },
+  }
 };
 
 export default meta;
@@ -24,7 +37,7 @@ const defaultMockStore = mockStore(defaultMockState);
 export const Default: Story = {
   args: {
     extraClass: '',
-    select: (memberType: MemberType) => {
+    onChange: (memberType: MemberType) => {
       defaultMockStore.dispatch(updateType(memberType));
     },
   },

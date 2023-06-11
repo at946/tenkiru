@@ -23,7 +23,7 @@ import toast, { Toast, Toaster } from 'react-hot-toast';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { updateMembers } from '@/store/membersSlice';
 import { selectCard, updateType } from '@/store/userSlice';
-import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
+import { setAreCardsOpen, setDeckType } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
@@ -37,6 +37,7 @@ interface Props {
 const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
+  const areCardsOpen: boolean = useAppSelector((state) => state.room.areCardsOpen);
   const [isConnected, setIsConnected] = useState(false);
 
   // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
@@ -51,7 +52,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       socket.on('connect', () => setIsConnected(true));
       socket.on('update-members', onUpdateMembers);
       socket.on('update-deck-type', onUpdateDeckType);
-      socket.on('update-cards-are-open', onUpdateCardsAreOpen);
+      socket.on('update-cards-are-open', onUpdateAreCardsOpen);
       socket.on('nominate', onNominate);
       socket.on('disconnect', () => setIsConnected(false));
 
@@ -103,8 +104,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     dispatch(setDeckType(newDeckType));
   };
 
-  const onUpdateCardsAreOpen = (cardsAreOpen: boolean) => {
-    dispatch(setCardsAreOpen(cardsAreOpen));
+  const onUpdateAreCardsOpen = (areCardsOpen: boolean) => {
+    dispatch(setAreCardsOpen(areCardsOpen));
   };
 
   const onNominate = () => {
@@ -150,12 +151,18 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
       {isConnected && (
         <>
-          <DeckSelect select={changeDeckType} extraClass='mb-4' />
-          <MemberTypeSelect select={changeMemberType} extraClass='mb-4' />
+          <DeckSelect disabled={areCardsOpen} extraClass='mb-4' onChange={changeDeckType} />
+          <MemberTypeSelect extraClass='mb-4' onChange={changeMemberType} />
           <HandsCards putDownCard={putDownCard} />
         </>
       )}
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          success: {
+            className: 'border border-lime-500'
+          }
+        }}
+      />
     </div>
   );
 };

@@ -11,14 +11,14 @@ interface Props {
 }
 
 const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
-  const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
+  const areCardsOpen: boolean = useAppSelector((state) => state.room.areCardsOpen);
   const members: Member[] = useAppSelector((state) => state.members.members);
   const players: Member[] = members.filter((v) => v.type === 'player');
   const noCardPutOnTable: boolean = !players.find((v) => v.selectedCard !== null);
 
   return (
     <div>
-      {cardsAreOpen ? (
+      {areCardsOpen ? (
         <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
       ) : (
         <Button label='開く' icon={faHand} disabled={noCardPutOnTable} onClick={clickOpenButton} />

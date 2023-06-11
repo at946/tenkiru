@@ -4,6 +4,6 @@ import { Member } from './member';
 export interface Room {
   id: string;
   members: Member[];
-  cardsAreOpen: boolean;
+  areCardsOpen: boolean;
   deckType: DeckType;
 }

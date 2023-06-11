@@ -6,7 +6,7 @@ import { Card } from './card';
 export interface ServerToClientEvents {
   'update-members': (members: Member[]) => void;
   'update-deck-type': (deckType: DeckType) => void;
-  'update-cards-are-open': (cardsAreOpen: boolean) => void;
+  'update-are-cards-open': (areCardsOpen: boolean) => void;
   nominate: () => void;
 }
 

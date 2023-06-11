@@ -9,7 +9,7 @@ import { Card } from '@/interfaces/card';
 
 export interface MockState {
   room: {
-    cardsAreOpen: boolean;
+    areCardsOpen: boolean;
     deckType: DeckType;
   };
   members: {
@@ -23,7 +23,7 @@ export interface MockState {
 
 export const mockState: MockState = {
   room: {
-    cardsAreOpen: true,
+    areCardsOpen: true,
     deckType: 'fibonacci',
   },
   members: {

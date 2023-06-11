@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DeckType } from '../interfaces/deckType';
 
 export interface RoomState {
-  cardsAreOpen: boolean;
+  areCardsOpen: boolean;
   deckType: DeckType;
 }
 
 const initialState: RoomState = {
-  cardsAreOpen: false,
+  areCardsOpen: false,
   deckType: 'fibonacci',
 };
 
@@ -15,8 +15,8 @@ export const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
-    setCardsAreOpen: (state, action: PayloadAction<boolean>) => {
-      state.cardsAreOpen = action.payload;
+    setAreCardsOpen: (state, action: PayloadAction<boolean>) => {
+      state.areCardsOpen = action.payload;
     },
     setDeckType: (state, action: PayloadAction<DeckType>) => {
       state.deckType = action.payload;
@@ -24,4 +24,4 @@ export const roomSlice = createSlice({
   },
 });
 
-export const { setCardsAreOpen, setDeckType } = roomSlice.actions;
+export const { setAreCardsOpen, setDeckType } = roomSlice.actions;

@@ -21,7 +21,7 @@ export const Default: Story = {
 
 const cardsAreCloseMockState: MockState = {
   ...defaultMockState,
-  room: { ...defaultMockState.room, cardsAreOpen: false },
+  room: { ...defaultMockState.room, areCardsOpen: false },
 };
 export const CardsAreClose: Story = {
   args: {},
@@ -30,7 +30,7 @@ export const CardsAreClose: Story = {
 
 const deckIsTShirtSizeMockState: MockState = {
   ...defaultMockState,
-  room: { cardsAreOpen: true, deckType: 'tShirtSize' },
+  room: { areCardsOpen: true, deckType: 'tShirtSize' },
 };
 export const DeckIsTShirtSize: Story = {
   args: {},

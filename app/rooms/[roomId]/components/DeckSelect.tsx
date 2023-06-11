@@ -3,18 +3,18 @@ import Decks from '@/data/deck';
 import { Deck } from '@/interfaces/deck';
 import { DeckType } from '@/interfaces/deckType';
 import { useAppSelector } from '@/store/hooks';
-import Select from '@/app/components/common/Select';
+import Select, { Option } from '@/app/components/common/Select';
 
 interface Props {
+  disabled?: boolean;
   extraClass: string;
-  select: (deckType: DeckType) => void;
+  onChange: (deckType: DeckType) => void;
 }
 
-const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
+const DeckSelect: NextPage<Props> = ({ disabled, extraClass, onChange }) => {
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
-  const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
 
-  const options = Decks.map((deck: Deck) => {
+  const options: Option[] = Decks.map((deck: Deck) => {
     return { value: deck.key, label: deck.displayName };
   });
 
@@ -25,9 +25,9 @@ const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
         <Select
           options={options}
           value={deckType}
-          disabled={cardsAreOpen}
+          disabled={disabled}
           onChange={(value: string) => {
-            select(value as DeckType);
+            onChange(value as DeckType);
           }}
         />
       </label>

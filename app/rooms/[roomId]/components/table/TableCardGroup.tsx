@@ -12,7 +12,7 @@ interface Props {
 
 const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
   const isCardBlank: boolean = player.selectedCard === null;
-  const isCardOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
+  const isCardOpen: boolean = useAppSelector((state) => state.room.areCardsOpen);
   const cardStatus = player.selectedCard === null ? 'blank' : isCardOpen ? 'faceUp' : 'faceDown';
 
   return (

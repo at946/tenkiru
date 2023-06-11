@@ -13,8 +13,8 @@ const SummaryTags: NextPage<Props> = ({ extraClass }) => {
   const players: Member[] = members.filter((v) => v.type === 'player');
   const cards: Card[] = players.map((v) => v.selectedCard);
   const numberCards: number[] = cards.filter<number>((v): v is number => typeof v === 'number');
-  const cardsAreOpen = useAppSelector((state) => state.room.cardsAreOpen);
-  const useCalculatedResult = cardsAreOpen && numberCards.length > 0;
+  const areCardsOpen = useAppSelector((state) => state.room.areCardsOpen);
+  const useCalculatedResult = areCardsOpen && numberCards.length > 0;
 
   const minValue: number | string = useCalculatedResult ? Math.min(...numberCards) : '?';
   const maxValue: number | string = useCalculatedResult ? Math.max(...numberCards) : '?';

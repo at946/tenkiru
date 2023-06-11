@@ -16,7 +16,7 @@ type Story = StoryObj<typeof HandsCards>;
 
 const mockStateOfFibonacci = {
   ...mockState,
-  room: { cardsAreOpen: false, deckType: 'fibonacci' as DeckType },
+  room: { areCardsOpen: false, deckType: 'fibonacci' as DeckType },
 };
 export const Fibonacci: Story = {
   args: {},
@@ -25,7 +25,7 @@ export const Fibonacci: Story = {
 
 const mockStateOfSequential = {
   ...mockState,
-  room: { cardsAreOpen: false, deckType: 'sequential' as DeckType },
+  room: { areCardsOpen: false, deckType: 'sequential' as DeckType },
 };
 export const Sequential: Story = {
   args: {},
@@ -34,7 +34,7 @@ export const Sequential: Story = {
 
 const mockStateOfTShirtSize = {
   ...mockState,
-  room: { cardsAreOpen: false, deckType: 'tShirtSize' as DeckType },
+  room: { areCardsOpen: false, deckType: 'tShirtSize' as DeckType },
 };
 export const TShirtSize: Story = {
   args: {},

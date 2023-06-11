@@ -30,6 +30,7 @@ const HandsCard: NextPage<Props> = ({ value, isSelected, isDisabled, onClick }) 
       aria-selected={selected}
     >
       {value}
+      {value}
     </button>
   );
 };

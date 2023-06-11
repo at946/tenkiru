@@ -17,7 +17,7 @@ type Story = StoryObj<typeof SummaryTags>;
 const CardsAreOpenMockState: IFRoomState = mockState;
 export const CardsAreOpen: Story = {
   args: {},
-  decorators: [(story) => <Provider store={mockStore(CardsAreOpenMockState)}>{story()}</Provider>],
+  decorators: [(story) => <Provider store={mockStore(AreCardsOpenMockState)}>{story()}</Provider>],
 };
 
 const cardsAreCloseMockState: IFRoomState = {

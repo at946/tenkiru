@@ -59,7 +59,7 @@ export const CardsAreOpen: Story = {
   args: {},
   decorators: [
     (story) => {
-      return <Provider store={cardsAreOpenMockStore}>{story()}</Provider>;
+      return <Provider store={disabledMockStore}>{story()}</Provider>;
     },
   ],
 };

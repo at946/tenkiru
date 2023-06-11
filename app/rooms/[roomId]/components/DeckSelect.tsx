@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Select from '@/app/components/common/Select';
+import Select, { Option } from '@/app/components/common/Select';
 import { Room } from '@/class/room';
 import Decks from '@/data/deck';
 import useRoom from '@/hooks/useRoom';
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const DeckSelect: NextPage<Props> = ({ disabled, extraClass, onChange }) => {
-  const room: Room = useRoom();
+  const room: Room = useRoom() || new Room();
   const deckType: IFDeckType = room.getDeckType();
 
   const options: Option[] = Decks.map((deck: IFDeck) => {

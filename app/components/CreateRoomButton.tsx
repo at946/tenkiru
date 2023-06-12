@@ -8,6 +8,7 @@ import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { event } from '@/lib/gtag';
 
 import Button from './common/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CreateRoomButton: NextPage = () => {
   const router = useRouter();
@@ -21,12 +22,10 @@ const CreateRoomButton: NextPage = () => {
 
   return (
     <span onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      <Button
-        label='部屋をつくる'
-        icon={isHovering ? faDoorOpen : faDoorClosed}
-        isOutlined={true}
-        onClick={click}
-      />
+      <Button isOutlined={true} onClick={click}>
+        <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
+        <span>部屋をつくる</span>
+      </Button>
     </span>
   );
 };

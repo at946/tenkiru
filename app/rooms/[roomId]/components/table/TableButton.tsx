@@ -19,9 +19,15 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
   return (
     <div>
       {areCardsOpen ? (
-        <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
+        <Button onClick={clickReplayButton}>
+          <FontAwesomeIcon icon={faReply} className='mr-2' />
+          <span>もう一度</span>
+        </Button>
       ) : (
-        <Button label='開く' icon={faHand} disabled={noCardPutOnTable} onClick={clickOpenButton} />
+        <Button disabled={noCardPutOnTable} onClick={clickOpenButton}>
+          <FontAwesomeIcon icon={faHand} className='mr-2' />
+          <span>開く</span>
+        </Button>
       )}
     </div>
   );

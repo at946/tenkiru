@@ -24,13 +24,10 @@ const NominateButton: NextPage<Props> = ({ isDisabled, nominate }) => {
   };
 
   return (
-    <Button
-      label='指名'
-      icon={faComment}
-      isOutlined={true}
-      disabled={isDisabled}
-      onClick={onClick}
-    />
+    <Button isOutlined={true} disabled={isDisabled} onClick={onClick}>
+      <FontAwesomeIcon icon={faComment} className='mr-2' />
+      <span>指名</span>
+    </Button>
   );
 };
 

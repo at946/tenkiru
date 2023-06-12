@@ -6,6 +6,7 @@ import Button from '@/app/components/common/Button';
 
 interface Props {
   isDisabled: boolean;
+  onClick: () => void;
   nominate: () => void;
 }
 

@@ -23,6 +23,8 @@ type NextApiResponseSocketIO = NextApiResponse & {
   };
 };
 
+const rooms: IFRoom[] = [];
+
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
   if (!res.socket.server.io) {
     const io = new SocketIOServer<IFClientToServerEvents, IFServerToClientEvents>(

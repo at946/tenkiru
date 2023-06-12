@@ -13,7 +13,7 @@ interface Props {
 }
 
 const HandsCards: NextPage<Props> = ({ deckType, selectedCard, disabled, updateSelectedCard }) => {
-  const deckCards: Card[] = Decks.find((deck) => deck.key === deckType)?.cards;
+  const deckCards: Card[] | undefined = Decks.find((deck) => deck.key === deckType)?.cards;
 
   const handleOnSelect = (newSelectedCard: Card) => {
     updateSelectedCard(newSelectedCard !== selectedCard ? newSelectedCard : null);
@@ -21,15 +21,16 @@ const HandsCards: NextPage<Props> = ({ deckType, selectedCard, disabled, updateS
 
   return (
     <div className='flex flex-wrap justify-center gap-4' role='group' aria-label='手札'>
-      {deckCards.map((value) => (
-        <HandsCard
-          key={value}
-          value={value}
-          disabled={disabled}
-          selected={value === selectedCard}
-          onSelect={handleOnSelect}
-        />
-      ))}
+      {!!deckCards &&
+        deckCards.map((value) => (
+          <HandsCard
+            key={value}
+            value={value}
+            disabled={disabled}
+            selected={value === selectedCard}
+            onSelect={handleOnSelect}
+          />
+        ))}
     </div>
   );
 };

@@ -3,7 +3,9 @@ import { Meta, StoryObj } from '@storybook/react';
 import HandsCard from './HandsCard';
 import { Provider } from 'react-redux';
 import { MockState, mockState, mockStore } from '@/store/mocks/store';
+
 import { MemberType } from '@/interfaces/memberType';
+import { Card } from '@/interfaces/card';
 
 const meta: Meta<typeof HandsCard> = {
   component: HandsCard,
@@ -37,7 +39,7 @@ export const Default: Story = {
     value: 1,
     selected: false,
     disabled: false,
-    onSelect: (value: card) => {
+    onSelect: (value: Card) => {
       console.log(value);
     },
   },

@@ -8,33 +8,19 @@ const meta: Meta<typeof Table> = {
   component: Table,
   title: 'Room/Table/Table',
   tags: ['autodocs'],
+  argTypes: {
+    children: {
+      type: { name: 'other', value: 'ReactNode', required: false },
+      description: 'children',
+    },
+    extraClass: {
+      type: { name: 'string', required: false },
+      description: '追加のクラス',
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-const defaultMockState: MockState = mockState;
-export const Default: Story = {
-  args: {},
-  decorators: [(story) => <Provider store={mockStore(defaultMockState)}>{story()}</Provider>],
-};
-
-const cardsAreCloseMockState: MockState = {
-  ...defaultMockState,
-  room: { ...defaultMockState.room, areCardsOpen: false },
-};
-export const CardsAreClose: Story = {
-  args: {},
-  decorators: [(story) => <Provider store={mockStore(cardsAreCloseMockState)}>{story()}</Provider>],
-};
-
-const deckIsTShirtSizeMockState: MockState = {
-  ...defaultMockState,
-  room: { areCardsOpen: true, deckType: 'tShirtSize' },
-};
-export const DeckIsTShirtSize: Story = {
-  args: {},
-  decorators: [
-    (story) => <Provider store={mockStore(deckIsTShirtSizeMockState)}>{story()}</Provider>,
-  ],
-};
+export const Default: Story = {};

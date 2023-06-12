@@ -39,7 +39,9 @@ const meta: Meta<typeof HandsCards> = {
       const updateSelectedCard = (card: Card) => {
         setArgs({ selectedCard: card });
       };
-      return <HandsCards {...args} updateSelectedCard={updateSelectedCard} />;
+      return (
+        <HandsCards {...args} deckType={args.deckType} updateSelectedCard={updateSelectedCard} />
+      );
     },
   ],
 };

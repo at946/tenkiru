@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
 import GoogleAdsense from './GoogleAdsense';
-import ReduxProvider from './ReduxProvider';
+import GoogleAnalytics from './GoogleAnalytics';
 
 // fontawesome
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -11,7 +11,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 // redux
-import GoogleAnalytics from './GoogleAnalytics';
+import ReduxProvider from './ReduxProvider';
 
 // metatags
 const siteName = 'Tenkir';

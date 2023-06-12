@@ -12,7 +12,7 @@ import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
 
 // components
-import RoomUrlCopyLink from './components/RoomUrlCopyLink';
+import ClipboardCopyLink from './components/ClipboardCopyLink';
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
 import MemberTypeSelect from './components/MemberTypeSelect';
@@ -27,9 +27,11 @@ import { setAreCardsOpen, setDeckType } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
-import useUpdateMembers from './socketFunctions/useUpdateMembers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
+import SummaryTags from './components/table/SummaryTags';
+import TableCardGroups from './components/table/TableCardGroups';
+import TableButton from './components/table/TableButton';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -54,7 +56,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       socket.on('connect', () => setIsConnected(true));
       socket.on('update-members', onUpdateMembers);
       socket.on('update-deck-type', onUpdateDeckType);
-      socket.on('update-cards-are-open', onUpdateAreCardsOpen);
+      socket.on('update-are-cards-open', onUpdateAreCardsOpen);
       socket.on('nominate', onNominate);
       socket.on('disconnect', () => setIsConnected(false));
 
@@ -135,14 +137,30 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('nominate', memberId);
   };
 
+  const onCopiedRoomUrl = (): void => {
+    toast.success('この部屋のURLをコピーしました', {
+      ariaProps: { role: 'status', 'aria-live': 'polite' },
+    });
+    event({ action: 'copy_room_url', category: 'engagement', label: '' });
+  };
+
   return (
     <div className='container mx-auto px-5 text-center'>
-      <RoomUrlCopyLink extraClass='my-5'>
+      <ClipboardCopyLink
+        copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`}
+        extraClass='my-5'
+        onCopied={onCopiedRoomUrl}
+      >
         <span>部屋番号：{roomId}</span>
         <FontAwesomeIcon icon={faLink} className='ml-2' />
-      </RoomUrlCopyLink>
+      </ClipboardCopyLink>
 
-      <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
+      <Table extraClass='mb-5'>
+        {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
+        <TableCardGroups extraClass='mb-5' nominate={nominate} />
+        <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
+      </Table>
+
       {isConnected && (
         <>
           <DeckSelect disabled={areCardsOpen} extraClass='mb-4' onChange={changeDeckType} />
@@ -156,6 +174,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
           {!selectedCard ? 'false' : selectedCard}
         </>
       )}
+
       <Toaster
         toastOptions={{
           loading: { className: 'border border-purple-600' },

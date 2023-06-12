@@ -18,6 +18,11 @@ export const Default: Story = {
     extraClass: '',
   },
   decorators: [
-    (story) => <div>{story()}<Toaster toastOptions={{ success: { className: 'border border-lime-500' }}} /></div>
-  ]
+    (story) => (
+      <div>
+        {story()}
+        <Toaster toastOptions={{ success: { className: 'border border-lime-500' } }} />
+      </div>
+    ),
+  ],
 };

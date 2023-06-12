@@ -26,7 +26,7 @@ const meta: Meta<typeof MemberTypeSelect> = {
         category: 'Events',
       },
     },
-  }
+  },
 };
 
 export default meta;

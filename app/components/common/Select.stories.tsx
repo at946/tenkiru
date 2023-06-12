@@ -61,7 +61,7 @@ export const Default: Story = {
     ariaLabel: 'Select box',
   },
   decorators: [
-    (story) => {
+    () => {
       const [args, setArgs] = useArgs();
       const onChange = (value: string): void => {
         setArgs({ value: value });

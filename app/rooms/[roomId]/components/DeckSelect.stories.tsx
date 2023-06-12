@@ -27,8 +27,8 @@ const meta: Meta<typeof DeckSelect> = {
       table: {
         category: 'Events',
       },
-    }
-  }
+    },
+  },
 };
 
 export default meta;

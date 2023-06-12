@@ -6,18 +6,30 @@ import { DeckType } from '@/interfaces/deckType';
 import { useAppSelector } from '@/store/hooks';
 
 interface Props {
-  putDownCard: (card: Card) => void;
+  deckType: DeckType;
+  selectedCard?: Card;
+  disabled?: boolean;
+  updateSelectedCard: (card: Card) => void;
 }
 
-const HandsCards: NextPage<Props> = ({ putDownCard }) => {
-  const deckType: DeckType = useAppSelector((state) => state.room.deckType);
-  const deckCards: Card[] | undefined = Decks.find((deck) => deck.key === deckType)?.cards;
-  const cards: Card[] | undefined = deckCards;
+const HandsCards: NextPage<Props> = ({ deckType, selectedCard, disabled, updateSelectedCard }) => {
+  const deckCards: Card[] = Decks.find((deck) => deck.key === deckType)?.cards;
+
+  const handleOnSelect = (newSelectedCard: Card) => {
+    updateSelectedCard(newSelectedCard !== selectedCard ? newSelectedCard : null);
+  };
 
   return (
-    <div className='flex flex-wrap justify-center gap-2' role='group' aria-label='手札'>
-      {!!cards &&
-        cards.map((card, index) => <HandsCard key={index} card={card} putDownCard={putDownCard} />)}
+    <div className='flex flex-wrap justify-center gap-4' role='group' aria-label='手札'>
+      {deckCards.map((value) => (
+        <HandsCard
+          key={value}
+          value={value}
+          disabled={disabled}
+          selected={value === selectedCard}
+          onSelect={handleOnSelect}
+        />
+      ))}
     </div>
   );
 };

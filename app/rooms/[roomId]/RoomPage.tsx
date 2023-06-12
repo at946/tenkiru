@@ -38,6 +38,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
   const deckType: DeckType = useAppSelector((state) => state.room.deckType);
   const areCardsOpen: boolean = useAppSelector((state) => state.room.areCardsOpen);
+  const selectedCard: Card = useAppSelector((state) => state.user.selectedCard);
   const [isConnected, setIsConnected] = useState(false);
 
   // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
@@ -137,8 +138,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('change-member-type', roomId, memberType);
   };
 
-  const putDownCard = (card: Card): void => {
-    socket.emit('put-down-a-card', roomId, card);
+  const updateSelectedCard = (card: Card): void => {
+    socket.emit('update-selected-card', roomId, card);
   };
 
   const nominate = (memberId: string): void => {
@@ -153,14 +154,19 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         <>
           <DeckSelect disabled={areCardsOpen} extraClass='mb-4' onChange={changeDeckType} />
           <MemberTypeSelect extraClass='mb-4' onChange={changeMemberType} />
-          <HandsCards putDownCard={putDownCard} />
+          <HandsCards
+            deckType={deckType}
+            selectedCard={selectedCard}
+            updateSelectedCard={updateSelectedCard}
+          />
+          {!selectedCard ? 'false' : selectedCard}
         </>
       )}
       <Toaster
         toastOptions={{
           success: {
-            className: 'border border-lime-500'
-          }
+            className: 'border border-lime-500',
+          },
         }}
       />
     </div>

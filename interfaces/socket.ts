@@ -13,7 +13,7 @@ export interface ServerToClientEvents {
 export interface ClientToServerEvents {
   'join-room': (roomId: string) => void;
   'change-deck-type': (roomId: string, newDeckType: DeckType) => void;
-  'put-down-a-card': (roomId: string, card: Card) => void;
+  'update-selected-card': (roomId: string, card: Card) => void;
   'open-cards': (roomId: string) => void;
   replay: (roomId: string) => void;
   'change-member-type': (roomId: string, memberType: MemberType) => void;

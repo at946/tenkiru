@@ -34,6 +34,11 @@ import { updateRoom } from '@/store/roomSlice';
 // GA
 import { event } from '@/lib/gtag';
 import { IFRoom } from '@/interfaces/room';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+import SummaryTags from './components/table/SummaryTags';
+import TableCardGroups from './components/table/TableCardGroups';
+import TableButton from './components/table/TableButton';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 

@@ -34,7 +34,7 @@ export const Default: Story = {
     value: 1,
     selected: false,
     disabled: false,
-    onSelect: (value: card) => {
+    onSelect: (value: Card) => {
       console.log(value);
     },
   },

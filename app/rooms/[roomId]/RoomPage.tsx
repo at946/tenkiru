@@ -27,6 +27,7 @@ import { setAreCardsOpen, setDeckType } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
+import useUpdateMembers from './socketFunctions/useUpdateMembers';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -45,8 +46,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const audio = typeof window !== 'undefined' ? new Audio('/notify.mp3') : undefined;
 
   const socketInitializerCallback = useCallback(() => {
-    if (!roomId) return;
-
     const socketPromise = fetch('/api/socket').then(() => {
       socket = io();
 
@@ -68,19 +67,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         error: '入室できませんでした...😢',
       },
       {
-        ariaProps: {
-          role: 'status',
-          'aria-live': 'polite',
-        },
-        loading: {
-          className: 'border-2 border-purple-600',
-        },
-        success: {
-          className: 'border-2 border-lime-500',
-        },
-        error: {
-          className: 'border-2 border-red-600',
-        },
+        ariaProps: { role: 'status', 'aria-live': 'polite' },
       },
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -157,6 +144,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
           <HandsCards
             deckType={deckType}
             selectedCard={selectedCard}
+            disabled={areCardsOpen}
             updateSelectedCard={updateSelectedCard}
           />
           {!selectedCard ? 'false' : selectedCard}
@@ -164,9 +152,9 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       )}
       <Toaster
         toastOptions={{
-          success: {
-            className: 'border border-lime-500',
-          },
+          loading: { className: 'border border-purple-600' },
+          success: { className: 'border border-lime-500' },
+          error: { className: 'border border-red-600' },
         }}
       />
     </div>

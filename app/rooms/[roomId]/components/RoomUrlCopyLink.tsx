@@ -1,15 +1,14 @@
 import { NextPage } from 'next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { ReactNode } from 'react';
 import { event } from '@/lib/gtag';
 import toast from 'react-hot-toast';
 
 interface Props {
-  roomId: string;
+  children: ReactNode;
   extraClass: string;
 }
 
-const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
+const RoomUrlCopyLink: NextPage<Props> = ({ children, extraClass }) => {
   const copyUrl = async () => {
     await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`);
     toast.success('この部屋のURLをコピーしました', {
@@ -24,11 +23,10 @@ const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
         onClick={copyUrl}
         className='cursor-pointer px-2 hover:text-purple-600 focus:text-purple-600'
       >
-        <span>部屋番号：{roomId}</span>
-        <FontAwesomeIcon icon={faLink} className='ml-2' />
+        {children}
       </button>
     </div>
   );
 };
 
-export default RoomInfo;
+export default RoomUrlCopyLink;

@@ -12,7 +12,7 @@ import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
 
 // components
-import RoomInfo from './components/RoomInfo';
+import RoomUrlCopyLink from './components/RoomUrlCopyLink';
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
 import MemberTypeSelect from './components/MemberTypeSelect';
@@ -28,6 +28,8 @@ import { setAreCardsOpen, setDeckType } from '@/store/roomSlice';
 // GA
 import { event } from '@/lib/gtag';
 import useUpdateMembers from './socketFunctions/useUpdateMembers';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -135,7 +137,11 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   return (
     <div className='container mx-auto px-5 text-center'>
-      <RoomInfo roomId={roomId} extraClass='my-5' />
+      <RoomUrlCopyLink extraClass='my-5'>
+        <span>部屋番号：{roomId}</span>
+        <FontAwesomeIcon icon={faLink} className='ml-2' />
+      </RoomUrlCopyLink>
+
       <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
       {isConnected && (
         <>

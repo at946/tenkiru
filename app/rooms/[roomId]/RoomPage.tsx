@@ -22,11 +22,14 @@ import toast, { Toast, Toaster } from 'react-hot-toast';
 // stores
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { updateMembers } from '@/store/membersSlice';
-import { selectCard, updateType } from '@/store/userSlice';
-import { setCardsAreOpen, setDeckType } from '@/store/roomSlice';
+import { selectCard, updateType, updateUser } from '@/store/userSlice';
+import { setCardsAreOpen, setDeckType, updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
+import { Room } from '@/class/room';
+import { User } from '@/class/user';
+import useRoom from '@/hooks/useRoom';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -36,7 +39,8 @@ interface Props {
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
-  const deckType: DeckType = useAppSelector((state) => state.room.deckType);
+  const room: Room = useRoom();
+  const deckType: DeckType = room.getDeckType();
   const [isConnected, setIsConnected] = useState(false);
 
   // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
@@ -49,6 +53,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       socket = io();
 
       socket.on('connect', () => setIsConnected(true));
+      socket.on('update-room', onUpdateRoom);
+      socket.on('update-user', onUpdateUser);
       socket.on('update-members', onUpdateMembers);
       socket.on('update-deck-type', onUpdateDeckType);
       socket.on('update-cards-are-open', onUpdateCardsAreOpen);
@@ -90,6 +96,14 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       socket.close();
     };
   }, [socketInitializerCallback]);
+
+  const onUpdateRoom = (room: Room) => {
+    dispatch(updateRoom(room));
+  };
+
+  const onUpdateUser = (user: User) => {
+    dispatch(updateUser(user));
+  };
 
   const onUpdateMembers = (members: Member[]) => {
     dispatch(updateMembers(members));

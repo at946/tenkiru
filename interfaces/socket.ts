@@ -2,8 +2,12 @@ import { Member } from './member';
 import { MemberType } from './memberType';
 import { DeckType } from './deckType';
 import { Card } from './card';
+import { Room } from '@/class/room';
+import { User } from '@/class/user';
 
 export interface ServerToClientEvents {
+  'update-room': (room: Room) => void;
+  'update-user': (user: User) => void;
   'update-members': (members: Member[]) => void;
   'update-deck-type': (deckType: DeckType) => void;
   'update-cards-are-open': (cardsAreOpen: boolean) => void;

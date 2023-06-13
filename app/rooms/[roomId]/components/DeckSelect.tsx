@@ -4,6 +4,8 @@ import { Deck } from '@/interfaces/deck';
 import { DeckType } from '@/interfaces/deckType';
 import { useAppSelector } from '@/store/hooks';
 import Select from '@/app/components/common/Select';
+import { Room } from '@/class/room';
+import useRoom from '@/hooks/useRoom';
 
 interface Props {
   extraClass: string;
@@ -11,7 +13,8 @@ interface Props {
 }
 
 const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
-  const deckType: DeckType = useAppSelector((state) => state.room.deckType);
+  const room: Room = useRoom();
+  const deckType: DeckType = room.getDeckType();
   const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
 
   const options = Decks.map((deck: Deck) => {

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Cards } from '@/class/cards';
+import { Card } from '@/class/card';
 
 // store
 import { useAppSelector } from '@/store/hooks';

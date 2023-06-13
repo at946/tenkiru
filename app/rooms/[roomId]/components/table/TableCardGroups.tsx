@@ -2,6 +2,10 @@ import { NextPage } from 'next';
 import { useAppSelector } from '@/store/hooks';
 import { Member } from '@/interfaces/member';
 import TableCardGroup from './TableCardGroup';
+import { Room } from '@/class/room';
+import { Table } from '@/class/table';
+import useRoom from '@/hooks/useRoom';
+import { Card } from '@/class/card';
 
 interface Props {
   extraClass?: string;
@@ -9,13 +13,14 @@ interface Props {
 }
 
 const TableCardGroups: NextPage<Props> = ({ extraClass, nominate }) => {
-  const members: Member[] = useAppSelector((state) => state.members.members);
-  const players: Member[] = members.filter((v) => v.type === 'player');
+  const room: Room = useRoom();
+  const table: Table = room.getTable();
+  const cards: Card[] = table.getCards();
 
   return (
     <div className={`flex flex-wrap justify-center gap-4 ${extraClass || ''}`}>
-      {players.map((player) => (
-        <TableCardGroup player={player} nominate={nominate} key={player.id} />
+      {cards.map((card, index) => (
+        <TableCardGroup card={card} nominate={nominate} key={index} />
       ))}
     </div>
   );

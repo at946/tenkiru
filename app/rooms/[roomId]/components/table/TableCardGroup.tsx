@@ -4,8 +4,13 @@ import { Member } from '@/interfaces/member';
 import NominateButton from './NominateButton';
 import BlankCard from './BlankCard';
 import TableCard from './TableCard';
+import { Card } from '@/class/card';
+import { Room } from '@/class/room';
+import useRoom from '@/hooks/useRoom';
+import { Table } from '@/class/table';
 
 interface Props {
+  card: Card;
   player: Member;
   nominate: (memberId: string) => void;
 }
@@ -25,7 +30,10 @@ const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
         )}
       </div>
       <div className='text-center'>
-        <NominateButton isDisabled={cardStatus !== 'faceUp'} nominate={() => nominate(player.id)} />
+        <NominateButton
+          isDisabled={isCardOpen && !isCardBlank}
+          nominate={() => nominate(player.id)}
+        />
       </div>
     </div>
   );

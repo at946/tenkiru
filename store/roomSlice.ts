@@ -1,27 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DeckType } from '../interfaces/deckType';
+import { Room } from '@/class/room';
 
 export interface RoomState {
-  areCardsOpen: boolean;
-  deckType: DeckType;
+  room: Room;
 }
 
 const initialState: RoomState = {
-  areCardsOpen: false,
-  deckType: 'fibonacci',
+  room: new Room(),
 };
 
 export const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
-    setAreCardsOpen: (state, action: PayloadAction<boolean>) => {
-      state.areCardsOpen = action.payload;
-    },
-    setDeckType: (state, action: PayloadAction<DeckType>) => {
-      state.deckType = action.payload;
+    updateRoom: (state, action: PayloadAction<Room>) => {
+      state.room = action.payload;
     },
   },
 });
 
-export const { setAreCardsOpen, setDeckType } = roomSlice.actions;
+export const { updateRoom } = roomSlice.actions;

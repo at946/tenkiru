@@ -2,8 +2,12 @@ import { Server as NetServer, Socket } from 'net';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Server as SocketIOServer } from 'socket.io';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
-import { Room } from '../../interfaces/room';
 import { Member } from '../../interfaces/member';
+import { Room } from '@/class/room';
+import { Rooms } from '@/class/rooms';
+import { Table } from '@/class/table';
+import { Card } from '@/class/card';
+import { User } from '@/class/user';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
@@ -18,7 +22,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     const io = new SocketIOServer<ClientToServerEvents, ServerToClientEvents>(
       res.socket.server as any,
     );
-    const rooms: Room[] = [];
+    const rooms: Rooms = new Rooms();
 
     const cleanRoom = (roomId: string): void => {
       // roomsと接続中のソケット情報を使って、現在のルームの状況を整理する
@@ -54,26 +58,17 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     io.on('connection', (socket) => {
       socket.on('join-room', (roomId) => {
         socket.join(roomId);
-        const newMember: Member = { id: socket.id, type: 'player', selectedCard: null };
-        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+
+        let room: Room | undefined = rooms.findRoom(roomId);
         if (!room) {
-          const newRoom: Room = {
-            id: roomId,
-            members: [newMember],
-            areCardsOpen: false,
-            deckType: 'fibonacci',
-          };
-          rooms.push(newRoom);
-          io.to(roomId).emit('update-members', newRoom.members);
-          io.to(roomId).emit('update-are-cards-open', newRoom.areCardsOpen);
-          io.to(roomId).emit('update-deck-type', newRoom.deckType);
-        } else {
-          room.members.push(newMember);
-          cleanRoom(roomId);
-          io.to(roomId).emit('update-members', room.members);
-          io.to(roomId).emit('update-are-cards-open', room.areCardsOpen);
-          io.to(roomId).emit('update-deck-type', room.deckType);
+          room = new Room(roomId);
+          rooms.addRoom(room);
         }
+
+        room.getTable().addCard(new Card(socket.id, null));
+
+        io.to(roomId).emit('update-room', room);
+        io.to(socket.id).emit('update-user', new User(socket.id));
       });
 
       socket.on('change-deck-type', (roomId, newDeckType) => {

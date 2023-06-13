@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Cards } from '@/class/cards';
 
 // store
 import { useAppSelector } from '@/store/hooks';

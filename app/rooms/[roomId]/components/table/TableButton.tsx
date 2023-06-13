@@ -6,6 +6,9 @@ import { IFUser } from '@/interfaces/user';
 
 // components
 import Button from '@/app/components/common/Button';
+import { Table } from '@/class/table';
+import { Room } from '@/class/room';
+import useRoom from '@/hooks/useRoom';
 
 // fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

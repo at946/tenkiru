@@ -3,6 +3,8 @@ import TableButton from './TableButton';
 import SummaryTags from './SummaryTags';
 import TableCardGroups from './TableCardGroups';
 import { useAppSelector } from '@/store/hooks';
+import useRoom from '@/hooks/useRoom';
+import { Room } from '@/class/room';
 
 interface Props {
   extraClass: string;
@@ -12,7 +14,8 @@ interface Props {
 }
 
 const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => {
-  const deckType: string = useAppSelector((state) => state.room.deckType);
+  const room: Room = useRoom();
+  const deckType: string = room.getDeckType();
 
   return (
     <div className={`rounded bg-green-400 py-5 shadow-md ${extraClass}`}>

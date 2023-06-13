@@ -4,16 +4,22 @@ import { Member } from '@/interfaces/member';
 import NominateButton from './NominateButton';
 import BlankCard from './BlankCard';
 import TableCard from './TableCard';
+import { Card } from '@/class/card';
+import { Room } from '@/class/room';
+import useRoom from '@/hooks/useRoom';
+import { Table } from '@/class/table';
 
 interface Props {
+  card: Card;
   player: Member;
   nominate: (memberId: string) => void;
 }
 
-const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
-  const isCardBlank: boolean = player.selectedCard === null;
-  const isCardOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
-  const cardStatus = player.selectedCard === null ? 'blank' : isCardOpen ? 'faceUp' : 'faceDown';
+const TableCardGroup: NextPage<Props> = ({ card, player, nominate }) => {
+  const room: Room = useRoom();
+  const table: Table = room.getTable();
+  const isCardBlank: boolean = card.isBlank();
+  const isCardOpen: boolean = table.areCardsOpen();
 
   return (
     <div role='group' aria-label='テーブルカードグループ'>
@@ -25,7 +31,10 @@ const TableCardGroup: NextPage<Props> = ({ player, nominate }) => {
         )}
       </div>
       <div className='text-center'>
-        <NominateButton isDisabled={cardStatus !== 'faceUp'} nominate={() => nominate(player.id)} />
+        <NominateButton
+          isDisabled={isCardOpen && !isCardBlank}
+          nominate={() => nominate(player.id)}
+        />
       </div>
     </div>
   );

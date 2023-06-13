@@ -19,6 +19,4 @@ export class Table {
   areCardsOpen(): boolean {
     return this.isOpenCards;
   }
-
-
 }

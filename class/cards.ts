@@ -1,9 +1,7 @@
-import { Card } from "./card";
+import { Card } from './card';
 
 export class Cards {
-  constructor(
-    private cards: Card[] = [],
-  ) {}
+  constructor(private cards: Card[] = []) {}
 
   toArray(): Card[] {
     return this.cards;
@@ -13,14 +11,22 @@ export class Cards {
     this.cards.push(card);
   }
 
+  removeCardByPlayerId(playerId): void {
+    this.cards = this.cards.filter((card: Card) => card.getPlayerId() !== playerId);
+  }
+
   clearCards(): void {
-    this.cards.forEach((card) => card.setValue(null))
+    this.cards.forEach((card) => card.setValue(null));
+  }
+
+  areCardsExist(): boolean {
+    return this.cards.length > 0;
   }
 
   private getNumberCards(): Card[] | undefined {
     return this.cards.filter((card: Card) => card.isNumberCard());
   }
-  
+
   private getNumberCardsValues(): number[] {
     return this.getNumberCards()?.map((card: Card) => card.getValue());
   }
@@ -31,10 +37,10 @@ export class Cards {
 
   areNumberCardsExist(): boolean {
     return this.getNumberCards() !== undefined;
-  };
+  }
 
   areNonBlankCardsExist(): boolean {
-    return !!this.cards.filter((card: Card) => !card.isBlank())
+    return !!this.cards.filter((card: Card) => !card.isBlank());
   }
 
   getMax(): number {

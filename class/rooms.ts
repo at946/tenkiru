@@ -10,4 +10,8 @@ export class Rooms {
   findRoom(roomId: string): Room | undefined {
     return this.rooms.find((room) => room.getId() === roomId);
   }
+
+  removeRoom(roomId: string): void {
+    this.rooms = this.rooms.filter((room) => room.getId() !== roomId);
+  }
 }

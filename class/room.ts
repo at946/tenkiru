@@ -6,8 +6,8 @@ export class Room {
     private deckType: DeckType = 'fibonacci',
   ) {}
 
-  isById(id: string): boolean {
-    return this.id === id;
+  getId(): string {
+    return this.id;
   }
 
   getTable(): Table {
@@ -16,5 +16,9 @@ export class Room {
 
   getDeckType(): DeckType {
     return this.deckType;
+  }
+
+  setDeckType(newDeckType: DeckType): void {
+    this.deckType = newDeckType;
   }
 }

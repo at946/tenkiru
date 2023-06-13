@@ -8,6 +8,6 @@ export class Rooms {
   }
 
   findRoom(roomId: string): Room | undefined {
-    this.rooms.find((room) => room.isById(roomId));
+    return this.rooms.find((room) => room.getId() === roomId);
   }
 }

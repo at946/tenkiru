@@ -13,6 +13,10 @@ export class Cards {
     this.cards.push(card);
   }
 
+  clearCards(): void {
+    this.cards.forEach((card) => card.setValue(null))
+  }
+
   private getNumberCards(): Card[] | undefined {
     return this.cards.filter((card: Card) => card.isNumberCard());
   }

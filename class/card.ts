@@ -5,6 +5,10 @@ export class Card {
     return this.value;
   }
 
+  getPlayerId(): string {
+    return this.playerId;
+  }
+
   isBlank(): boolean {
     return this.value === null;
   }

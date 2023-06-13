@@ -32,7 +32,7 @@ const TableCardGroup: NextPage<Props> = ({ card, player, nominate }) => {
       </div>
       <div className='text-center'>
         <NominateButton
-          isDisabled={isCardOpen && !isCardBlank}
+          isDisabled={!isCardOpen && isCardBlank}
           nominate={() => nominate(player.id)}
         />
       </div>

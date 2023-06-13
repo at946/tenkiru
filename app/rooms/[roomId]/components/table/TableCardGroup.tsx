@@ -24,11 +24,7 @@ const TableCardGroup: NextPage<Props> = ({ card, player, nominate }) => {
   return (
     <div role='group' aria-label='テーブルカードグループ'>
       <div className='mb-2 flex justify-center'>
-        {isCardBlank ? (
-          <BlankCard />
-        ) : (
-          <TableCard value={player.selectedCard} isOpen={isCardOpen} />
-        )}
+        {isCardBlank ? <BlankCard /> : <TableCard value={card.getValue()} isOpen={isCardOpen} />}
       </div>
       <div className='text-center'>
         <NominateButton

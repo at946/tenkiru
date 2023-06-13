@@ -26,10 +26,6 @@ export class User {
     return this.type === 'player';
   }
 
-  getType(): IFUserType {
-    return this.type;
-  }
-
   setType(newType: IFUserType): void {
     this.type = newType;
   }

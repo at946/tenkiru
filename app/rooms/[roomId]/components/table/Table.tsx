@@ -10,6 +10,8 @@ import { IFDeckType } from '@/interfaces/deckType';
 
 // redux
 import { useAppSelector } from '@/store/hooks';
+import useRoom from '@/hooks/useRoom';
+import { Room } from '@/class/room';
 
 interface Props {
   extraClass?: string;

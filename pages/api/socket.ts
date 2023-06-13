@@ -8,6 +8,7 @@ import { Rooms } from '@/class/rooms';
 import { Table } from '@/class/table';
 import { Card } from '@/class/card';
 import { User } from '@/class/user';
+import { Cards } from '@/class/cards';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
@@ -81,14 +82,14 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room);
       });
 
-      socket.on('put-down-a-card', (roomId, card) => {
-        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+      socket.on('put-down-a-card', (roomId, newValue: string | number | null) => {
+        const room: Room | undefined = rooms.findRoom(roomId);
         if (!room) return;
-        const member: Member | undefined = room.members.find((v) => v.id === socket.id);
-        if (!member || member.type === 'audience') return;
-        member.selectedCard = card;
-        cleanRoom(roomId);
-        io.to(roomId).emit('update-members', room.members);
+
+        const playersCard: Card = room.getTable().getCards().findCardByPlayerId(socket.id);
+        playersCard.setValue(newValue);
+
+        io.to(roomId).emit('update-room', room);
       });
 
       socket.on('open-cards', (roomId) => {
@@ -125,16 +126,14 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
-          const room: Room | undefined = rooms.find((v) => v.id === roomId);
+          const room: Room | undefined = rooms.findRoom(roomId);
           if (!room) return;
-          const memberIndex = room.members.findIndex((v) => v.id === socket.id);
-          if (memberIndex < 0) return;
-          room.members.splice(memberIndex, 1);
-          if (room.members.length === 0) {
-            const roomIndex = rooms.findIndex((v) => v.id === room.id);
-            rooms.splice(roomIndex, 1);
+          const cards: Cards = room.getTable().getCards();
+          cards.removeCardByPlayerId(socket.id);
+          if (!cards.areCardsExist) {
+            rooms.removeRoom(roomId);
           } else {
-            io.to(roomId).emit('update-members', room.members);
+            io.to(roomId).emit('update-room', room);
           }
         });
       });

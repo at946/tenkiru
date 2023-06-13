@@ -8,6 +8,7 @@ import { Card } from '@/class/card';
 const useRoom = (): Room => {
   const room = useAppSelector((state) => state.room.room);
   const instantiatedRoom = useMemo(() => {
+    if (!room) return null;
     const cards: Cards = new Cards();
     room.table.cards.cards.forEach((card) => cards.addCard(new Card(card.playerId, card.value)));
     const table: Table = new Table(cards, room.table.isOpenCards);

@@ -21,6 +21,10 @@ export class Cards {
     return this.getNumberCards()?.map((card: Card) => card.getValue());
   }
 
+  findCardByPlayerId(playerId: string): Card {
+    return this.cards.find((card) => card.getPlayerId() === playerId);
+  }
+
   areNumberCardsExist(): boolean {
     return this.getNumberCards() !== undefined;
   };

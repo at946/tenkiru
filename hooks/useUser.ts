@@ -4,10 +4,11 @@ import { User } from '@/class/user';
 
 const useUser = (): User => {
   const user = useAppSelector((state) => state.user.user);
-  const instantiatedRoom = useMemo(() => {
+  const instantiatedUser = useMemo(() => {
+    if (!user) return null;
     return new User(user.id, user.type);
   }, [user]);
-  return instantiatedRoom;
+  return instantiatedUser;
 };
 
-export default useRoom;
+export default useUser;

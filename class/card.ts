@@ -5,6 +5,10 @@ export class Card {
     return this.value;
   }
 
+  setValue(newValue: number | string | null): void {
+    this.value = newValue;
+  }
+
   getPlayerId(): string {
     return this.playerId;
   }

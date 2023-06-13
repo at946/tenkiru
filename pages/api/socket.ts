@@ -72,12 +72,13 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
 
       socket.on('change-deck-type', (roomId, newDeckType) => {
-        const room = rooms.find((v) => v.id === roomId);
+        const room: Room | undefined = rooms.findRoom(roomId);
         if (!room) return;
-        room.deckType = newDeckType;
-        clearCards(roomId);
-        io.to(roomId).emit('update-members', room.members);
-        io.to(roomId).emit('update-deck-type', room.deckType);
+
+        room.setDeckType(newDeckType);
+        room.getTable().getCards().clearCards();
+
+        io.to(roomId).emit('update-room', room);
       });
 
       socket.on('update-selected-card', (roomId, card) => {

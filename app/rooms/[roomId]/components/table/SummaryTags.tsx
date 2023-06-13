@@ -1,26 +1,27 @@
 import { NextPage } from 'next';
-import { Card } from '@/interfaces/card';
 import { Member } from '@/interfaces/member';
 import { useAppSelector } from '@/store/hooks';
 import SummaryTag from './SummaryTag';
+import { Card } from '@/class/card';
+import { Room } from '@/class/room';
+import useRoom from '@/hooks/useRoom';
+import { Table } from '@/class/table';
+import { Cards } from '@/class/cards';
 
 interface Props {
   extraClass?: string;
 }
 
 const SummaryTags: NextPage<Props> = ({ extraClass }) => {
-  const members: Member[] = useAppSelector((state) => state.members.members);
-  const players: Member[] = members.filter((v) => v.type === 'player');
-  const cards: Card[] = players.map((v) => v.selectedCard);
-  const numberCards: number[] = cards.filter<number>((v): v is number => typeof v === 'number');
-  const cardsAreOpen = useAppSelector((state) => state.room.cardsAreOpen);
-  const useCalculatedResult = cardsAreOpen && numberCards.length > 0;
+  const room: Room = useRoom();
+  const table: Table = room.getTable();
+  const cards: Cards = table.getCards();
+  const cardsAreOpen = table.areCardsOpen();
+  const useCalculatedResult = cardsAreOpen && cards.areNumberCardsExist();
 
-  const minValue: number | string = useCalculatedResult ? Math.min(...numberCards) : '?';
-  const maxValue: number | string = useCalculatedResult ? Math.max(...numberCards) : '?';
-  const avgValue: number | string = useCalculatedResult
-    ? Math.round((numberCards.reduce((a, b) => a + b, 0) / numberCards.length) * 10) / 10
-    : '?';
+  const minValue: number | string = useCalculatedResult ? cards.getMin() : '?';
+  const maxValue: number | string = useCalculatedResult ? cards.getMax() : '?';
+  const avgValue: number | string = useCalculatedResult ? cards.getAverage() : '?';
 
   return (
     <div className={extraClass}>

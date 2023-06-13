@@ -6,6 +6,7 @@ import { Room } from '@/class/room';
 import { Table } from '@/class/table';
 import useRoom from '@/hooks/useRoom';
 import { Card } from '@/class/card';
+import { Cards } from '@/class/cards';
 
 interface Props {
   extraClass?: string;
@@ -15,11 +16,11 @@ interface Props {
 const TableCardGroups: NextPage<Props> = ({ extraClass, nominate }) => {
   const room: Room = useRoom();
   const table: Table = room.getTable();
-  const cards: Card[] = table.getCards();
+  const cards: Cards = table.getCards();
 
   return (
     <div className={`flex flex-wrap justify-center gap-4 ${extraClass || ''}`}>
-      {cards.map((card, index) => (
+      {cards.toArray().map((card, index) => (
         <TableCardGroup card={card} nominate={nominate} key={index} />
       ))}
     </div>

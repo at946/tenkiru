@@ -86,8 +86,10 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         const room: Room | undefined = rooms.find((v) => v.id === roomId);
         if (!room) return;
 
-        const playersCard: Card = room.getTable().getCards().findCardByPlayerId(socket.id);
+        const cards: Cards = room.getTable().getCards();
+        const playersCard: Card = cards.findCardByPlayerId(socket.id);
         playersCard.setValue(newValue);
+        cards.reorder();
 
         io.to(roomId).emit('update-room', room);
       });

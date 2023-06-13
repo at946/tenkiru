@@ -1,9 +1,4 @@
 import { useMemo } from 'react';
-import { Cards } from '@/class/cards';
-import { Card } from '@/class/card';
-
-// store
-import { useAppSelector } from '@/store/hooks';
 
 // class
 import { Room } from '@/class/room';
@@ -12,6 +7,9 @@ import { User } from '@/class/user';
 // interfaces
 import { IFRoom } from '@/interfaces/room';
 import { IFUser } from '@/interfaces/user';
+
+// store
+import { useAppSelector } from '@/store/hooks';
 
 const useRoom = (): Room => {
   const roomState: IFRoom = useAppSelector((state) => state.room.room);

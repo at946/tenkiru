@@ -1,17 +1,24 @@
 import { Card } from './card';
+import { Cards } from './cards';
 
 export class Table {
-  constructor(private cards: Card[] = [], private isOpenCards: boolean = false) {}
+  constructor(private cards: Cards = new Cards(), private isOpenCards: boolean = false) {}
 
   addCard(card: Card): void {
-    this.cards.push(card);
+    this.cards.addCard(card);
   }
 
-  getCards(): Card[] {
+  getCards(): Cards {
     return this.cards;
+  }
+
+  areNonBlankCardsExist(): boolean {
+    this.cards.areNonBlankCardsExist();
   }
 
   areCardsOpen(): boolean {
     return this.isOpenCards;
   }
+
+
 }

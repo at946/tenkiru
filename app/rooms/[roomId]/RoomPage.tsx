@@ -21,7 +21,8 @@ import toast, { Toast, Toaster } from 'react-hot-toast';
 
 // stores
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { updateMembers } from '@/store/membersSlice';
+import { updateUser } from '@/store/userSlice';
+import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';

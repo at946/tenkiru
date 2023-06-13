@@ -4,6 +4,9 @@ import { useAppSelector } from '@/store/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHand, faPlay, faReply } from '@fortawesome/free-solid-svg-icons';
 import Button from '@/app/components/common/Button';
+import { Table } from '@/class/table';
+import { Room } from '@/class/room';
+import useRoom from '@/hooks/useRoom';
 
 interface Props {
   clickOpenButton: () => void;
@@ -11,23 +14,15 @@ interface Props {
 }
 
 const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
-  const areCardsOpen: boolean = useAppSelector((state) => state.room.areCardsOpen);
-  const members: Member[] = useAppSelector((state) => state.members.members);
-  const players: Member[] = members.filter((v) => v.type === 'player');
-  const noCardPutOnTable: boolean = !players.find((v) => v.selectedCard !== null);
+  const room: Room = useRoom();
+  const table: Table = room.getTable();
 
   return (
     <div>
-      {areCardsOpen ? (
-        <Button onClick={clickReplayButton}>
-          <FontAwesomeIcon icon={faReply} className='mr-2' />
-          <span>もう一度</span>
-        </Button>
+      {table.areCardsOpen() ? (
+        <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
       ) : (
-        <Button disabled={noCardPutOnTable} onClick={clickOpenButton}>
-          <FontAwesomeIcon icon={faHand} className='mr-2' />
-          <span>開く</span>
-        </Button>
+        <Button label='開く' icon={faHand} disabled={table.areNonBlankCardsExist()} onClick={clickOpenButton} />
       )}
     </div>
   );

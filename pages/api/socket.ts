@@ -28,7 +28,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     const io = new SocketIOServer<IFClientToServerEvents, IFServerToClientEvents>(
       res.socket.server as any,
     );
-    const rooms: Room[] = [];
+    const rooms: Rooms = new Rooms();
 
     const removeRoomById = (roomId: string): void => {
       const removeRoomIndex: number = rooms.findIndex((room: Room) => room.getId() === roomId);

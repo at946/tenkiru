@@ -29,6 +29,9 @@ import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
+import { Room } from '@/class/room';
+import { User } from '@/class/user';
+import useRoom from '@/hooks/useRoom';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 

@@ -11,8 +11,23 @@ export class Cards {
     this.cards.push(card);
   }
 
-  removeCardByPlayerId(playerId): void {
+  removeCardByPlayerId(playerId: string): void {
     this.cards = this.cards.filter((card: Card) => card.getPlayerId() !== playerId);
+  }
+
+  reorder(): void {
+    const blankCards: Card[] = [];
+    const nonBlankCards: Card[] = [];
+
+    this.cards.forEach((card: Card) => {
+      if (card.isBlank()) {
+        blankCards.push(card);
+      } else {
+        nonBlankCards.push(card);
+      }
+    });
+
+    this.cards = [...nonBlankCards, ...blankCards];
   }
 
   clearCards(): void {

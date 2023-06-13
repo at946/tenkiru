@@ -19,4 +19,8 @@ export class Table {
   areCardsOpen(): boolean {
     return this.isOpenCards;
   }
+
+  openCard(): void {
+    this.isOpenCards = true;
+  }
 }

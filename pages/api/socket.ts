@@ -95,11 +95,14 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
 
       socket.on('open-cards', (roomId) => {
-        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        const room: Room | undefined = rooms.findRoom(roomId);
         if (!room) return;
-        if (!room.members.find((v) => v.selectedCard !== null)) return;
-        room.areCardsOpen = true;
-        io.to(roomId).emit('update-are-cards-open', true);
+        const table: Table = room.getTable();
+        if (!table.getCards().areNonBlankCardsExist()) return;
+
+        table.openCard();
+
+        io.to(roomId).emit('update-room', room);
       });
 
       socket.on('replay', (roomId) => {

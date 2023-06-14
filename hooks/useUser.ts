@@ -7,7 +7,7 @@ const useUser = (): User => {
   const user: IFUser = useAppSelector((state) => state.user.user);
   const instantiatedUser = useMemo(() => {
     if (!user) return null;
-    return new User(user.id, user.type, user.selectedCardValue);
+    return new User(user.id, user.type);
   }, [user]);
   return instantiatedUser;
 };

@@ -42,6 +42,10 @@ export class Table {
     this.cardsAreOpen = true;
   }
 
+  closeCards(): void {
+    this.cardsAreOpen = false;
+  }
+
   clearCards(): void {
     this.cards.forEach((card) => card.setValue(null));
   }

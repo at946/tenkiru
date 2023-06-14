@@ -6,7 +6,6 @@ import { IFTableCardValue } from '@/interfaces/tableCardValue';
 export interface IFUser {
   id: string;
   type: IFMemberType;
-  selectedCardValue: IFTableCardValue;
 }
 
 export interface IFUserState {
@@ -17,7 +16,6 @@ const initialState: IFUserState = {
   user: {
     id: '',
     type: 'player',
-    selectedCardValue: null,
   },
 };
 

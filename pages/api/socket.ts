@@ -12,6 +12,8 @@ import { User } from '@/class/user';
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
 import { Member } from '../../interfaces/member';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { DeckType, IFDeckType } from '@/interfaces/deckType';
+import { IFMemberType } from '@/interfaces/memberType';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
@@ -65,7 +67,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     };
 
     io.on('connection', (socket) => {
-      socket.on('join-room', (roomId) => {
+      socket.on('join-room', (roomId: string) => {
         socket.join(roomId);
 
         let room: Room | undefined = findRoomById(roomId);
@@ -83,7 +85,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(socket.id).emit('update-user', user);
       });
 
-      socket.on('change-deck-type', (roomId, newDeckType) => {
+      socket.on('change-deck-type', (roomId: string, newDeckType: IFDeckType) => {
         const room: Room | undefined = findRoomById(roomId);
         if (!room) return;
 
@@ -93,15 +95,26 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room);
       });
 
-      socket.on('change-member-type', (roomId, memberType) => {
-        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+      socket.on('change-member-type', (roomId: string, newMemberType: IFMemberType) => {
+        const room: Room | undefined = findRoomById(roomId);
         if (!room) return;
-        const member: Member | undefined = room.members.find((v) => v.id === socket.id);
-        if (!member) return;
-        member.type = memberType;
-        member.selectedCard = null;
-        cleanRoom(roomId);
-        io.to(roomId).emit('update-members', room.members);
+
+        const table: Table = room.getTable();
+        const user: User | undefined = users.find((user: User) => user.getId() === socket.id);
+        if (!user) return;
+
+        user.setMemberType(newMemberType);
+
+        if (newMemberType === 'player') {
+          table.addCard(new TableCard(socket.id, null))
+        } else {
+          table.removeCardByPlayerId(socket.id);
+        }
+
+        table.rearrangeCards();
+
+        io.to(roomId).emit('update-room', room);
+        io.to(socket.id).emit('update-user', user);
       });
 
       socket.on('put-down-a-card', (roomId, newValue: IFTableCardValue) => {
@@ -119,12 +132,6 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         table.rearrangeCards();
 
         io.to(roomId).emit('update-room', room);
-
-        const user: User | undefined = users.find((user: User) => user.getId() === socket.id);
-        if (!user) return;
-        user.setSelectedCardValue(newValue);
-
-        io.to(socket.id).emit('update-user', user);
       });
 
       socket.on('open-cards', (roomId) => {

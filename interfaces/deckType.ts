@@ -1,1 +1,1 @@
-export type DeckType = 'fibonacci' | 'sequential' | 'tShirtSize';
+export type IFDeckType = 'fibonacci' | 'sequential' | 'tShirtSize';

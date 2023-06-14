@@ -29,6 +29,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       res.socket.server as any,
     );
     const rooms: Room[] = [];
+    const users: User[] = [];
 
     const removeRoomById = (roomId: string): void => {
       const removeRoomIndex: number = rooms.findIndex((room: Room) => room.getId() === roomId);

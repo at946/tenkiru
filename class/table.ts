@@ -38,7 +38,7 @@ export class Table {
     this.cards = [...nonBlankCards, ...blankCards];
   }
 
-  openCard(): void {
+  openCards(): void {
     this.cardsAreOpen = true;
   }
 
@@ -50,8 +50,8 @@ export class Table {
     return this.cards.length > 0;
   }
 
-  areNonBlankCardsExist(): boolean {
-    return this.cards.filter((card: TableCard) => !card.isBlank()).length > 0;
+  areOnlyBlankCardsExist(): boolean {
+    return this.cards.filter((card: TableCard) => !card.isBlank()).length === 0;
   }
 
   private getNumberCards(): TableCard[] {

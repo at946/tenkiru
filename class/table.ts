@@ -23,7 +23,7 @@ export class Table {
     this.cards = this.cards.filter((card: TableCard) => card.getPlayerId() !== playerId);
   }
 
-  reorderCards(): void {
+  rearrangeCards(): void {
     const blankCards: TableCard[] = [];
     const nonBlankCards: TableCard[] = [];
 
@@ -51,7 +51,7 @@ export class Table {
   }
 
   areNonBlankCardsExist(): boolean {
-    return !!this.cards.filter((card: TableCard) => !card.isBlank());
+    return this.cards.filter((card: TableCard) => !card.isBlank()).length > 0;
   }
 
   private getNumberCards(): TableCard[] {
@@ -59,7 +59,7 @@ export class Table {
   }
 
   areNumberCardsExist(): boolean {
-    return !!this.getNumberCards();
+    return this.getNumberCards().length > 0;
   }
 
   areCardsOpen(): boolean {

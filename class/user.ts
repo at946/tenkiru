@@ -1,13 +1,17 @@
-import { MemberType } from '@/interfaces/memberType';
+import { IFMemberType, MemberType } from '@/interfaces/memberType';
 
 export class User {
-  constructor(private id: string, private type: MemberType = 'player') {}
+  constructor(private id: string, private memberType: MemberType = 'player') {}
 
   getId(): string {
     return this.id;
   }
 
   getMemberType(): MemberType {
-    return this.type;
+    return this.memberType;
+  }
+
+  setMemberType(newMemberType: IFMemberType): void {
+    this.memberType = newMemberType;
   }
 }

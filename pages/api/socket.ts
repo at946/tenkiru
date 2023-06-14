@@ -93,6 +93,17 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room);
       });
 
+      socket.on('change-member-type', (roomId, memberType) => {
+        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        if (!room) return;
+        const member: Member | undefined = room.members.find((v) => v.id === socket.id);
+        if (!member) return;
+        member.type = memberType;
+        member.selectedCard = null;
+        cleanRoom(roomId);
+        io.to(roomId).emit('update-members', room.members);
+      });
+
       socket.on('put-down-a-card', (roomId, newValue: IFTableCardValue) => {
         const room: Room | undefined = findRoomById(roomId);
         if (!room) return;
@@ -129,23 +140,14 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
 
       socket.on('replay', (roomId) => {
-        const room: Room | undefined = rooms.find((v) => v.id === roomId);
+        const room: Room | undefined = findRoomById(roomId);
         if (!room) return;
-        clearCards(roomId);
-        room.cardsAreOpen = false;
-        io.to(roomId).emit('update-cards-are-open', room.cardsAreOpen);
-        io.to(roomId).emit('update-members', room.members);
-      });
 
-      socket.on('change-member-type', (roomId, memberType) => {
-        const room: Room | undefined = rooms.find((v) => v.id === roomId);
-        if (!room) return;
-        const member: Member | undefined = room.members.find((v) => v.id === socket.id);
-        if (!member) return;
-        member.type = memberType;
-        member.selectedCard = null;
-        cleanRoom(roomId);
-        io.to(roomId).emit('update-members', room.members);
+        const table: Table = room.getTable();
+        table.closeCards();
+        table.clearCards();
+
+        io.to(roomId).emit('update-room', room);
       });
 
       socket.on('nominate', (memberId) => {

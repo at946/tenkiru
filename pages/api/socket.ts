@@ -36,6 +36,10 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       rooms.splice(removeRoomIndex, 1);
     };
 
+    const findRoomById = (roomId: string): Room | undefined => {
+      return rooms.find((room: Room) => room.getId() === roomId);
+    };
+
     io.on('connection', (socket) => {
       socket.on('join-room', (roomId: string) => {
         let room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });

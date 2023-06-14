@@ -26,7 +26,7 @@ const HandsCards: NextPage<Props> = ({ select }) => {
             key={value}
             value={value}
             isSelected={value === user.getSelectedCardValue()}
-            putDownCard={select}
+            onClick={select}
           />
         ))}
     </div>

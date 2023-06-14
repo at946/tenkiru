@@ -1,13 +1,17 @@
-import { Server as NetServer, Socket } from 'net';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { Server as NetServer, Socket } from 'net';
 import { Server as SocketIOServer } from 'socket.io';
-import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
-import { Member } from '../../interfaces/member';
+
+// class
 import { Room } from '@/class/room';
 import { Table } from '@/class/table';
-import { Card, TableCard } from '@/class/tableCard';
+import { TableCard } from '@/class/tableCard';
 import { User } from '@/class/user';
-import { Cards } from '@/class/tableCards';
+
+// interface
+import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
+import { Member } from '../../interfaces/member';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
@@ -85,14 +89,19 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room);
       });
 
-      socket.on('put-down-a-card', (roomId, newValue: string | number | null) => {
-        const room: Room | undefined = rooms.findRoom(roomId);
+      socket.on('put-down-a-card', (roomId, newValue: IFTableCardValue) => {
+        const room: Room | undefined = findRoomById(roomId);
         if (!room) return;
 
-        const cards: Cards = room.getTable().getCards();
-        const playersCard: Card = cards.findCardByPlayerId(socket.id);
-        playersCard.setValue(newValue);
-        cards.reorder();
+        const table: Table = room.getTable();
+        const tableCards: TableCard[] = table.getCards();
+        const playerCard: TableCard | undefined = tableCards.find(
+          (tableCard: TableCard) => tableCard.getPlayerId() === socket.id,
+        );
+        if (!playerCard) return;
+
+        playerCard.setValue(newValue);
+        table.rearrangeCards();
 
         io.to(roomId).emit('update-room', room);
       });

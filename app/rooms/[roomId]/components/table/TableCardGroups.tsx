@@ -1,27 +1,29 @@
 import { NextPage } from 'next';
-import { useAppSelector } from '@/store/hooks';
-import { Member } from '@/interfaces/member';
-import TableCardGroup from './TableCardGroup';
+
+// hooks
+import useRoom from '@/hooks/useRoom';
+
+// class
 import { Room } from '@/class/room';
 import { Table } from '@/class/table';
-import useRoom from '@/hooks/useRoom';
-import { Card } from '@/class/card';
-import { Cards } from '@/class/cards';
+import { TableCard } from '@/class/tableCard';
+
+// components
+import TableCardGroup from './TableCardGroup';
 
 interface Props {
   extraClass?: string;
-  nominate: (memberId: string) => void;
+  nominate: (playerId: string) => void;
 }
 
 const TableCardGroups: NextPage<Props> = ({ extraClass, nominate }) => {
   const room: Room = useRoom();
-  const table: Table = room.getTable();
-  const cards: Cards = table.getCards();
+  const tableCards: TableCard[] = room.getTable().getCards();
 
   return (
     <div className={`flex flex-wrap justify-center gap-4 ${extraClass || ''}`}>
-      {cards.toArray().map((card, index) => (
-        <TableCardGroup card={card} nominate={nominate} key={index} />
+      {tableCards.map((tableCard: TableCard) => (
+        <TableCardGroup card={tableCard} nominate={nominate} key={tableCard.getPlayerId()} />
       ))}
     </div>
   );

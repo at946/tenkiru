@@ -4,11 +4,10 @@ import { Server as SocketIOServer } from 'socket.io';
 import { ClientToServerEvents, ServerToClientEvents } from '../../interfaces/socket';
 import { Member } from '../../interfaces/member';
 import { Room } from '@/class/room';
-import { Rooms } from '@/class/rooms';
 import { Table } from '@/class/table';
-import { Card } from '@/class/card';
+import { Card, TableCard } from '@/class/tableCard';
 import { User } from '@/class/user';
-import { Cards } from '@/class/cards';
+import { Cards } from '@/class/tableCards';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
@@ -23,7 +22,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     const io = new SocketIOServer<ClientToServerEvents, ServerToClientEvents>(
       res.socket.server as any,
     );
-    const rooms: Rooms = new Rooms();
+    const rooms: Room[] = [];
 
     const cleanRoom = (roomId: string): void => {
       // roomsと接続中のソケット情報を使って、現在のルームの状況を整理する
@@ -60,16 +59,16 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       socket.on('join-room', (roomId) => {
         socket.join(roomId);
 
-        let room: Room | undefined = rooms.findRoom(roomId);
+        let room: Room | undefined = rooms.find((room: Room) => room.getId() === roomId);
         if (!room) {
           room = new Room(roomId);
-          rooms.addRoom(room);
+          rooms.push(room);
         }
 
-        room.getTable().addCard(new Card(socket.id, null));
+        room.getTable().addCard(new TableCard(socket.id, null));
 
         io.to(roomId).emit('update-room', room);
-        io.to(socket.id).emit('update-user', new User(socket.id));
+        io.to(socket.id).emit('update-user', new User(socket.id, 'player', null));
       });
 
       socket.on('change-deck-type', (roomId, newDeckType) => {
@@ -131,12 +130,17 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
       socket.on('disconnecting', () => {
         socket.rooms.forEach((roomId) => {
-          const room: Room | undefined = rooms.findRoom(roomId);
+          const room: Room | undefined = rooms.find((room: Room) => room.getId() === roomId);
           if (!room) return;
-          const cards: Cards = room.getTable().getCards();
-          cards.removeCardByPlayerId(socket.id);
-          if (!cards.areCardsExist) {
-            rooms.removeRoom(roomId);
+
+          const table: Table = room.getTable();
+          table.removeCardByPlayerId(socket.id);
+
+          if (!table.areCardsExist()) {
+            const removeRoomIndex: number = rooms.findIndex(
+              (room: Room) => room.getId() === roomId,
+            );
+            rooms.splice(removeRoomIndex, 1);
           } else {
             io.to(roomId).emit('update-room', room);
           }

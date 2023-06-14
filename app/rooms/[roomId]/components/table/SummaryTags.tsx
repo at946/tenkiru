@@ -1,12 +1,15 @@
 import { NextPage } from 'next';
-import { Member } from '@/interfaces/member';
-import { useAppSelector } from '@/store/hooks';
-import SummaryTag from './SummaryTag';
-import { Card } from '@/class/card';
-import { Room } from '@/class/room';
+
+// hooks
 import useRoom from '@/hooks/useRoom';
+
+// class
+import { Room } from '@/class/room';
 import { Table } from '@/class/table';
-import { Cards } from '@/class/cards';
+import { TableCard } from '@/class/tableCard';
+
+// components
+import SummaryTag from './SummaryTag';
 
 interface Props {
   extraClass?: string;
@@ -15,9 +18,8 @@ interface Props {
 const SummaryTags: NextPage<Props> = ({ extraClass }) => {
   const room: Room = useRoom();
   const table: Table = room.getTable();
-  const cards: Cards = table.getCards();
-  const cardsAreOpen = table.areCardsOpen();
-  const useCalculatedResult = cardsAreOpen && cards.areNumberCardsExist();
+  const tableCards: TableCard[] = table.getCards();
+  const useCalculatedResult = table.areCardsOpen() && table.areNumberCardsExist();
 
   const minValue: number | string = useCalculatedResult ? cards.getMin() : '?';
   const maxValue: number | string = useCalculatedResult ? cards.getMax() : '?';

@@ -1,11 +1,17 @@
 import { NextPage } from 'next';
-import { Card as IFCard } from '@/interfaces/card';
-import { MemberType } from '@/interfaces/memberType';
-import { useAppSelector } from '@/store/hooks';
-import { Room } from '@/class/room';
+
+// hook
 import useRoom from '@/hooks/useRoom';
-import { User } from '@/class/user';
 import useUser from '@/hooks/useUser';
+
+// class
+import { Room } from '@/class/room';
+import { User } from '@/class/user';
+import { Table } from '@/class/table';
+
+// interface
+import { MemberType } from '@/interfaces/memberType';
+import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 
 interface Props {
   value: IFCard;
@@ -14,23 +20,21 @@ interface Props {
   onSelect: (value: IFCard) => void;
 }
 
-const HandsCard: NextPage<Props> = ({ card, putDownCard }) => {
+const HandsCard: NextPage<Props> = ({ value, isSelected, onClick }) => {
   const room: Room = useRoom();
+  const table: Table = room.getTable();
   const user: User = useUser();
-  const selectedCard: IFCard = room.getTable().getCards().findCardByPlayerId(user.getId());
-  const isSelected: boolean = card === selectedCard;
 
   const userType: MemberType = user.getMemberType();
-  const cardsAreOpen: boolean = useAppSelector((state) => state.room.cardsAreOpen);
-  const isDisabled: boolean = cardsAreOpen || userType !== 'player';
+  const isDisabled: boolean = table.areCardsOpen() || userType !== 'player';
 
-  const select = () => {
+  const onClickHandler = () => {
     if (isDisabled) return;
-    putDownCard(isSelected ? null : card);
+    onClick(isSelected ? null : value);
   };
   return (
     <button
-      onClick={handleOnSelect}
+      onClick={onClickHandler}
       className={`
         flex aspect-card w-24 items-center justify-center rounded-md border border-slate-900 text-2xl font-bold shadow enabled:hover:-translate-y-2 enabled:hover:shadow-2xl enabled:focus:-translate-y-2 enabled:focus:shadow-2xl disabled:cursor-not-allowed
         ${selected ? 'bg-rose-500 text-white' : 'bg-white text-slate-900 disabled:opacity-50'}

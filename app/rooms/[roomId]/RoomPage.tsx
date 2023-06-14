@@ -4,12 +4,20 @@ import { useEffect, useCallback, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { NextPage } from 'next';
 
+// hooks
+import useRoom from '@/hooks/useRoom';
+
+// class
+import { Room } from '@/class/room';
+import { User } from '@/class/user';
+
 // interfaces
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
 import { Member } from '@/interfaces/member';
 import { MemberType } from '@/interfaces/memberType';
 import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
+import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 
 // components
 import ClipboardCopyLink from './components/ClipboardCopyLink';

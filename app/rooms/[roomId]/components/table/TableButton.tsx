@@ -32,7 +32,7 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
         <Button
           label='開く'
           icon={faHand}
-          disabled={!table.areNonBlankCardsExist()}
+          disabled={table.areOnlyBlankCardsExist()}
           onClick={clickOpenButton}
         />
       )}

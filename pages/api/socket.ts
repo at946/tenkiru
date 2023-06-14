@@ -10,6 +10,8 @@ import { User } from '@/class/user';
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
 import { Member } from '../../interfaces/member';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { DeckType, IFDeckType } from '@/interfaces/deckType';
+import { IFMemberType } from '@/interfaces/memberType';
 
 // interface
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';

@@ -23,6 +23,7 @@ const TableCardGroup: NextPage<Props> = ({ card, nominate }) => {
   const table: Table = room.getTable();
   const isCardBlank: boolean = card.isBlank();
   const isCardOpen: boolean = table.areCardsOpen();
+  console.log(isCardOpen);
 
   return (
     <div role='group' aria-label='テーブルカードグループ'>

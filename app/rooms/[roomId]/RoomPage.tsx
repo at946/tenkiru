@@ -102,10 +102,12 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [socketInitializerCallback]);
 
   const onUpdateRoom = (room: Room) => {
+    console.log(room);
     dispatch(updateRoom(room));
   };
 
   const onUpdateUser = (user: User) => {
+    console.log(user);
     dispatch(updateUser(user));
   };
 

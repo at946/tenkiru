@@ -27,6 +27,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       res.socket.server as any,
     );
     const rooms: Room[] = [];
+    const users: User[] = [];
 
     const cleanRoom = (roomId: string): void => {
       // roomsと接続中のソケット情報を使って、現在のルームの状況を整理する
@@ -75,8 +76,11 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
         room.getTable().addCard(new TableCard(socket.id, null));
 
+        const user: User = new User(socket.id, 'player', null);
+        users.push(user);
+
         io.to(roomId).emit('update-room', room);
-        io.to(socket.id).emit('update-user', new User(socket.id, 'player', null));
+        io.to(socket.id).emit('update-user', user);
       });
 
       socket.on('change-deck-type', (roomId, newDeckType) => {
@@ -104,15 +108,22 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         table.rearrangeCards();
 
         io.to(roomId).emit('update-room', room);
+
+        const user: User | undefined = users.find((user: User) => user.getId() === socket.id);
+        if (!user) return;
+        user.setSelectedCardValue(newValue);
+
+        io.to(socket.id).emit('update-user', user);
       });
 
       socket.on('open-cards', (roomId) => {
-        const room: Room | undefined = rooms.findRoom(roomId);
+        const room: Room | undefined = findRoomById(roomId);
         if (!room) return;
-        const table: Table = room.getTable();
-        if (!table.getCards().areNonBlankCardsExist()) return;
 
-        table.openCard();
+        const table: Table = room.getTable();
+        if (table.areOnlyBlankCardsExist()) return;
+
+        table.openCards();
 
         io.to(roomId).emit('update-room', room);
       });

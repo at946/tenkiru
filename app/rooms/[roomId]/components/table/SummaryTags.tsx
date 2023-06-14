@@ -21,9 +21,9 @@ const SummaryTags: NextPage<Props> = ({ extraClass }) => {
   const tableCards: TableCard[] = table.getCards();
   const useCalculatedResult = table.areCardsOpen() && table.areNumberCardsExist();
 
-  const minValue: number | string = useCalculatedResult ? cards.getMin() : '?';
-  const maxValue: number | string = useCalculatedResult ? cards.getMax() : '?';
-  const avgValue: number | string = useCalculatedResult ? cards.getAverage() : '?';
+  const minValue: number | '?' = useCalculatedResult ? table.getMinInTableCards() : '?';
+  const maxValue: number | '?' = useCalculatedResult ? table.getMaxInTableCards() : '?';
+  const avgValue: number | '?' = useCalculatedResult ? table.getAverageOfTableCards() : '?';
 
   return (
     <div className={extraClass}>

@@ -5,7 +5,7 @@ import { Server as SocketIOServer } from 'socket.io';
 // class
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
-import { Cards } from '@/class/cards';
+import { Cards } from '@/class/tableCards';
 
 // interface
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
@@ -29,7 +29,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     const io = new SocketIOServer<IFClientToServerEvents, IFServerToClientEvents>(
       res.socket.server as any,
     );
-    const rooms: Rooms = new Rooms();
+    const rooms: Room[] = [];
 
     const removeRoomById = (roomId: string): void => {
       const removeRoomIndex: number = rooms.findIndex((room: Room) => room.getId() === roomId);

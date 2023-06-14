@@ -4,6 +4,15 @@ import { NextPage } from 'next';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
+// class
+import { Room } from '@/class/room';
+import { User } from '@/class/user';
+import { Table } from '@/class/table';
+
+// interface
+import { MemberType } from '@/interfaces/memberType';
+import { IFHandsCardValue } from '@/interfaces/handsCardValue';
+
 interface Props {
   value: IFHandsCardValue;
   isSelected: boolean;

@@ -56,12 +56,4 @@ export class User {
   resetCard(): void {
     this.selectedCardValue = null;
   }
-
-  getSelectedCardValue(): IFTableCardValue {
-    return this.selectedCardValue;
-  }
-
-  setSelectedCardValue(newValue: IFTableCardValue): void {
-    this.selectedCardValue = newValue;
-  }
 }

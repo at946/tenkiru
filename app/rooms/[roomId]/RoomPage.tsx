@@ -6,13 +6,6 @@ import { useEffect, useCallback, useState } from 'react';
 // socket.io
 import { io, Socket } from 'socket.io-client';
 
-// hooks
-import useRoom from '@/hooks/useRoom';
-
-// class
-import { Room } from '@/class/room';
-import { User } from '@/class/user';
-
 // interfaces
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFUserType } from '@/interfaces/userType';

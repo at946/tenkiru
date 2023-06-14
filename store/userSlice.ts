@@ -1,14 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Card } from '../interfaces/card';
-import { MemberType } from '../interfaces/memberType';
 import { User } from '@/class/user';
+import { IFMemberType } from '../interfaces/memberType';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
-export interface userState {
-  user: User;
+export interface IFUser {
+  id: string;
+  type: IFMemberType;
+  selectedCardValue: IFTableCardValue;
 }
 
-const initialState: userState = {
-  user: new User(),
+export interface IFUserState {
+  user: IFUser;
+}
+
+const initialState: IFUserState = {
+  user: {
+    id: '',
+    type: 'player',
+    selectedCardValue: null,
+  },
 };
 
 export const userSlice = createSlice({

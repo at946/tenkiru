@@ -1,1 +1,1 @@
-export type MemberType = 'player' | 'audience';
+export type IFMemberType = 'player' | 'audience';

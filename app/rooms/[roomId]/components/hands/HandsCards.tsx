@@ -7,6 +7,7 @@ import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 import useRoom from '@/hooks/useRoom';
 import useUser from '@/hooks/useUser';
 import HandsCard from './HandsCard';
+import { TableCard } from '@/class/tableCard';
 
 interface Props {
   deckType: DeckType;
@@ -19,7 +20,9 @@ const HandsCards: NextPage<Props> = ({ select }) => {
   const room: Room = useRoom();
   const deckType: DeckType = room.getDeckType();
   const deckCards: IFHandsCardValue = Decks.find((deck) => deck.key === deckType)?.cards;
+
   const user: User = useUser();
+  const usersCard: TableCard | undefined = room.getTable().findCardByPlayerId(user.getId());
 
   return (
     <div className='flex flex-wrap justify-center gap-2' role='group' aria-label='手札'>
@@ -28,7 +31,7 @@ const HandsCards: NextPage<Props> = ({ select }) => {
           <HandsCard
             key={value}
             value={value}
-            isSelected={value === user.getSelectedCardValue()}
+            isSelected={value === usersCard?.getValue()}
             onClick={select}
           />
         ))}

@@ -5,7 +5,11 @@ import { Server as SocketIOServer } from 'socket.io';
 // class
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
-import { Cards } from '@/class/tableCards';
+
+// interface
+import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
+import { Member } from '../../interfaces/member';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 // interface
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';

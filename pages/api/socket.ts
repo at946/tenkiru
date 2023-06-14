@@ -55,11 +55,15 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
     };
 
+    const findRoomById = (roomId: string): Room | undefined => {
+      return rooms.find((room: Room) => room.getId() === roomId);
+    };
+
     io.on('connection', (socket) => {
       socket.on('join-room', (roomId) => {
         socket.join(roomId);
 
-        let room: Room | undefined = rooms.find((room: Room) => room.getId() === roomId);
+        let room: Room | undefined = findRoomById(roomId);
         if (!room) {
           room = new Room(roomId);
           rooms.push(room);
@@ -72,11 +76,11 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
 
       socket.on('change-deck-type', (roomId, newDeckType) => {
-        const room: Room | undefined = rooms.findRoom(roomId);
+        const room: Room | undefined = findRoomById(roomId);
         if (!room) return;
 
         room.setDeckType(newDeckType);
-        room.getTable().getCards().clearCards();
+        room.getTable().clearCards();
 
         io.to(roomId).emit('update-room', room);
       });

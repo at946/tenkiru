@@ -1,10 +1,15 @@
 import { NextPage } from 'next';
+
+// hooks
+import useRoom from '@/hooks/useRoom';
+
+// class
+import { Room } from '@/class/room';
+
+// components
 import TableButton from './TableButton';
 import SummaryTags from './SummaryTags';
 import TableCardGroups from './TableCardGroups';
-import { useAppSelector } from '@/store/hooks';
-import useRoom from '@/hooks/useRoom';
-import { Room } from '@/class/room';
 
 interface Props {
   extraClass: string;

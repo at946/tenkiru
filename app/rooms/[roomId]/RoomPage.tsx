@@ -4,12 +4,20 @@ import { useEffect, useCallback, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { NextPage } from 'next';
 
+// hooks
+import useRoom from '@/hooks/useRoom';
+
+// class
+import { Room } from '@/class/room';
+import { User } from '@/class/user';
+
 // interfaces
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
 import { Member } from '@/interfaces/member';
 import { MemberType } from '@/interfaces/memberType';
 import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
+import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 
 // components
 import RoomInfo from './components/RoomInfo';
@@ -26,9 +34,6 @@ import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
-import { Room } from '@/class/room';
-import { User } from '@/class/user';
-import useRoom from '@/hooks/useRoom';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -150,8 +155,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('change-member-type', roomId, memberType);
   };
 
-  const putDownCard = (card: Card): void => {
-    socket.emit('put-down-a-card', roomId, card);
+  const putDownCard = (value: IFHandsCardValue): void => {
+    socket.emit('put-down-a-card', roomId, value);
   };
 
   const nominate = (memberId: string): void => {
@@ -166,7 +171,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         <>
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
           <MemberTypeSelect select={changeMemberType} extraClass='mb-4' />
-          <HandsCards putDownCard={putDownCard} />
+          <HandsCards select={putDownCard} />
         </>
       )}
       <Toaster />

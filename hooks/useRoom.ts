@@ -1,19 +1,29 @@
 import { useMemo } from 'react';
+
+// store
 import { useAppSelector } from '@/store/hooks';
+
+// class
 import { Room } from '@/class/room';
 import { Table } from '@/class/table';
-import { Cards } from '@/class/cards';
-import { Card } from '@/class/card';
+import { TableCard } from '@/class/tableCard';
+
+// interfaces
+import { IFRoom, IFTableCard } from '@/store/roomSlice';
 
 const useRoom = (): Room => {
-  const room = useAppSelector((state) => state.room.room);
+  const roomState: IFRoom = useAppSelector((state) => state.room.room);
+
   const instantiatedRoom = useMemo(() => {
-    if (!room) return null;
-    const cards: Cards = new Cards();
-    room.table.cards.cards.forEach((card) => cards.addCard(new Card(card.playerId, card.value)));
-    const table: Table = new Table(cards, room.table.isOpenCards);
-    return new Room(room.id, table, room.deckType);
-  }, [room]);
+    if (!roomState) return null;
+
+    const table: Table = new Table();
+    roomState.table.cards.forEach((tableCard: IFTableCard) => {
+      table.addCard(new TableCard(tableCard.playerId, tableCard.value));
+    });
+    const room: Room = new Room(roomState.id, table, roomState.deckType);
+    return room;
+  }, [roomState]);
   return instantiatedRoom;
 };
 

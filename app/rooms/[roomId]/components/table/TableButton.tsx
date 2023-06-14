@@ -1,12 +1,18 @@
 import { NextPage } from 'next';
-import { Member } from '@/interfaces/member';
-import { useAppSelector } from '@/store/hooks';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHand, faPlay, faReply } from '@fortawesome/free-solid-svg-icons';
-import Button from '@/app/components/common/Button';
-import { Table } from '@/class/table';
-import { Room } from '@/class/room';
+
+// hooks
 import useRoom from '@/hooks/useRoom';
+
+// class
+import { Room } from '@/class/room';
+import { Table } from '@/class/table';
+import { TableCard } from '@/class/tableCard';
+
+// components
+import Button from '@/app/components/common/Button';
+
+// fontawesome
+import { faHand, faReply } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   clickOpenButton: () => void;
@@ -16,6 +22,7 @@ interface Props {
 const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
   const room: Room = useRoom();
   const table: Table = room.getTable();
+  const tableCards: TableCard[] = table.getCards();
 
   return (
     <div>

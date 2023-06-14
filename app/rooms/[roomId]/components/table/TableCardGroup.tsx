@@ -1,21 +1,24 @@
 import { NextPage } from 'next';
-import { useAppSelector } from '@/store/hooks';
-import { Member } from '@/interfaces/member';
-import NominateButton from './NominateButton';
+
+// hooks
+import useRoom from '@/hooks/useRoom';
+
+// class
+import { Room } from '@/class/room';
+import { Table } from '@/class/table';
+import { TableCard as CTableCard } from '@/class/tableCard';
+
+// components
 import BlankCard from './BlankCard';
 import TableCard from './TableCard';
-import { Card } from '@/class/card';
-import { Room } from '@/class/room';
-import useRoom from '@/hooks/useRoom';
-import { Table } from '@/class/table';
+import NominateButton from './NominateButton';
 
 interface Props {
-  card: Card;
-  player: Member;
+  card: CTableCard;
   nominate: (memberId: string) => void;
 }
 
-const TableCardGroup: NextPage<Props> = ({ card, player, nominate }) => {
+const TableCardGroup: NextPage<Props> = ({ card, nominate }) => {
   const room: Room = useRoom();
   const table: Table = room.getTable();
   const isCardBlank: boolean = card.isBlank();
@@ -29,7 +32,7 @@ const TableCardGroup: NextPage<Props> = ({ card, player, nominate }) => {
       <div className='text-center'>
         <NominateButton
           isDisabled={!isCardOpen || isCardBlank}
-          nominate={() => nominate(player.id)}
+          nominate={() => nominate(card.getPlayerId())}
         />
       </div>
     </div>

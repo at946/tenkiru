@@ -1,23 +1,23 @@
-import { Deck } from '../interfaces/deck';
+import { IFDeck } from '../interfaces/deck';
 
-const fibonacci: Deck = {
+const fibonacci: IFDeck = {
   key: 'fibonacci',
   displayName: 'フィボナッチ数列',
-  cards: [0, 1, 2, 3, 5, 8, 13, 21, '?'],
+  cardValues: [0, 1, 2, 3, 5, 8, 13, 21, '?'],
 };
 
-const sequential: Deck = {
+const sequential: IFDeck = {
   key: 'sequential',
   displayName: '0 - 10',
-  cards: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '?'],
+  cardValues: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '?'],
 };
 
-const tShirtSize: Deck = {
+const tShirtSize: IFDeck = {
   key: 'tShirtSize',
   displayName: 'Tシャツサイズ',
-  cards: ['XS', 'S', 'M', 'L', 'XL', '?'],
+  cardValues: ['XS', 'S', 'M', 'L', 'XL', '?'],
 };
 
-const Decks: Deck[] = [fibonacci, sequential, tShirtSize];
+const Decks: IFDeck[] = [fibonacci, sequential, tShirtSize];
 
 export default Decks;

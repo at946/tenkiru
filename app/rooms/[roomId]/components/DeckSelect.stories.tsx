@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DeckSelect from './DeckSelect';
 import { DeckType } from '@/interfaces/deckType';
 
-import { Store, configureStore } from '@reduxjs/toolkit';
-import { roomSlice, setCardsAreOpen, setDeckType } from '@/store/roomSlice';
+import { Store } from '@reduxjs/toolkit';
+import { setDeckType } from '@/store/roomSlice';
 import { Provider } from 'react-redux';
 import { MockState, mockState, mockStore } from '@/store/mocks/store';
 

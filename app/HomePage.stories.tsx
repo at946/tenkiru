@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import HomePage from './HomePage';
-import { MockState, mockState, mockStore } from '@/store/mocks/store';
-import { Provider } from 'react-redux';
 
 const meta: Meta<typeof HomePage> = {
   component: HomePage,

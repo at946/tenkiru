@@ -5,8 +5,6 @@ import useRoom from '@/hooks/useRoom';
 
 // class
 import { Room } from '@/class/room';
-import { Table } from '@/class/table';
-import { TableCard } from '@/class/tableCard';
 
 // interface
 import { IFTableCard } from '@/interfaces/tableCard';
@@ -25,7 +23,9 @@ interface Props {
 const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
   const room: Room = useRoom();
   const tableCards: IFTableCard[] = room.getTableCards();
-  const notBlankTableCards: IFTableCard[] = tableCards.filter((tableCard: IFTableCard) => tableCard.value !== null);
+  const notBlankTableCards: IFTableCard[] = tableCards.filter(
+    (tableCard: IFTableCard) => tableCard.value !== null,
+  );
 
   return (
     <div>

@@ -1,7 +1,7 @@
-import { Card } from './card';
+import { IFHandsCardValue } from './handsCardValue';
 
-export interface Deck {
+export interface IFDeck {
   key: string;
   displayName: string;
-  cards: Card[];
+  cardValues: IFHandsCardValue[];
 }

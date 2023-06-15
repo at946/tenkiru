@@ -12,6 +12,7 @@ config.autoAddCss = false;
 
 // redux
 import GoogleAnalytics from './GoogleAnalytics';
+import React from 'react';
 
 // metatags
 const siteName = 'Tenkir';

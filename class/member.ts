@@ -1,5 +1,5 @@
-import { IFMemberType } from "@/interfaces/userType";
-import { IFTableCardValue } from "@/interfaces/tableCardValue";
+import { IFMemberType } from '@/interfaces/userType';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 export class Member {
   constructor(

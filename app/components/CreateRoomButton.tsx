@@ -1,9 +1,7 @@
 'use client';
 
 import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
-import Link from 'next/link';
 import { useState } from 'react';
 import { event } from '@/lib/gtag';
 import { v4 } from 'uuid';
@@ -12,7 +10,6 @@ import Button from './common/Button';
 
 const CreateRoomButton: NextPage = () => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  const roomId: string = v4();
   const router = useRouter();
   const click = (): void => {
     event({ action: 'create_room', category: 'engagement', label: '' });

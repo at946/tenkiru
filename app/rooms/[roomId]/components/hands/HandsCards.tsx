@@ -1,33 +1,29 @@
 import { NextPage } from 'next';
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
-import Decks from '@/data/deck';
-import { DeckType } from '@/interfaces/deckType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 import useRoom from '@/hooks/useRoom';
-import useUser from '@/hooks/useUser';
 import HandsCard from './HandsCard';
-import { TableCard } from '@/class/tableCard';
-import { IFTableCard } from '@/interfaces/tableCard';
+import { IFDeck } from '@/interfaces/deck';
 
 interface Props {
-  usersSelectedCardValue: IFTableCard;
-  select: (value: IFHandsCardValue) => void;
+  user: User;
+  select: () => void;
 }
 
-const HandsCards: NextPage<Props> = ({ usersSelectedCardValue, select }) => {
+const HandsCards: NextPage<Props> = ({ user, select }) => {
   const room: Room = useRoom();
-  const deckType: DeckType = room.getDeckType();
-  const deckCards: IFHandsCardValue = Decks.find((deck) => deck.key === deckType)?.cards;
+  const deck: IFDeck | undefined = room.getDeck();
 
   return (
     <div className='flex flex-wrap justify-center gap-2' role='group' aria-label='手札'>
-      {!!deckCards &&
-        deckCards.map((value: IFHandsCardValue) => (
+      {!!deck &&
+        deck.cardValues.map((value: IFHandsCardValue) => (
           <HandsCard
             key={value}
             value={value}
-            isSelected={value === usersSelectedCardValue}
+            isSelected={value === user?.getSelectedCardValue()}
+            isDisabled={room.areCardsOpen() || !user?.isPlayer()}
             onClick={select}
           />
         ))}

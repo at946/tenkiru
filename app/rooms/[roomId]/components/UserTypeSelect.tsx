@@ -1,21 +1,18 @@
 import { NextPage } from 'next';
-import { MemberType } from '@/interfaces/userType';
+import { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
-import { useAppSelector } from '@/store/hooks';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from '@/app/components/common/Select';
 
 interface Props {
+  type: IFUserType;
   extraClass: string;
-  select: (memberType: MemberType) => void;
+  select: (userType: IFUserType) => void;
 }
 
-const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
-  const type = useAppSelector((state) => state.user.type);
-
+const UserTypeSelect: NextPage<Props> = ({ type, extraClass, select }) => {
   const change = (value: string): void => {
     event({ action: `change_member_type_${value}`, category: 'engagement', label: '' });
-    select(value as MemberType);
+    select(value as IFUserType);
   };
 
   return (
@@ -35,4 +32,4 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, select }) => {
   );
 };
 
-export default MemberTypeSelect;
+export default UserTypeSelect;

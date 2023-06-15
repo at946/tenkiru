@@ -4,7 +4,7 @@ import { roomSlice } from '../roomSlice';
 import { userSlice } from '../userSlice';
 import { DeckType } from '@/interfaces/deckType';
 import { Member } from '@/interfaces/member';
-import { MemberType } from '@/interfaces/memberType';
+import { MemberType } from '@/interfaces/userType';
 import { Card } from '@/interfaces/card';
 
 export interface MockState {

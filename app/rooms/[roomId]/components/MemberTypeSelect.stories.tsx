@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import MemberTypeSelect from './MemberTypeSelect';
-import { MemberType } from '@/interfaces/memberType';
+import { MemberType } from '@/interfaces/userType';
 
 import ReduxProvider from '@/app/ReduxProvider';
 import { updateType, userSlice } from '@/store/userSlice';

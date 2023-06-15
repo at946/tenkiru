@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '@/class/user';
-import { IFMemberType } from '../interfaces/memberType';
+import { IFMemberType } from '../interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 export interface IFUser {

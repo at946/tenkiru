@@ -1,9 +1,9 @@
 import { DeckType } from './deckType';
-import { Member } from './member';
+import { IFUser } from './user';
 
-export interface Room {
+export interface IFRoom {
   id: string;
-  members: Member[];
-  areCardsOpen: boolean;
   deckType: DeckType;
+  isOpenPhase: boolean;
+  users: IFUser[];
 }

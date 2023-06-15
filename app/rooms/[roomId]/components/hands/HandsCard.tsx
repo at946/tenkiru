@@ -10,7 +10,6 @@ import { User } from '@/class/user';
 import { Table } from '@/class/table';
 
 // interface
-import { MemberType } from '@/interfaces/userType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 
 interface Props {

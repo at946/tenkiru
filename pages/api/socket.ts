@@ -8,12 +8,9 @@ import { User } from '@/class/user';
 
 // interface
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
-import { Member } from '../../interfaces/member';
+import { IFDeckType } from '@/interfaces/deckType';
+import { IFUserType } from '@/interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { DeckType, IFDeckType } from '@/interfaces/deckType';
-import { IFMemberType } from '@/interfaces/userType';
-import { Member } from '@/class/member';
-import { Game } from '@/class/game';
 
 // interface
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';

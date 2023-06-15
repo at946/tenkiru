@@ -1,31 +1,16 @@
 import { NextPage } from 'next';
 
-// hook
-import useRoom from '@/hooks/useRoom';
-import useUser from '@/hooks/useUser';
-
-// class
-import { Room } from '@/class/room';
-import { User } from '@/class/user';
-import { Table } from '@/class/table';
-
 // interface
-import { MemberType } from '@/interfaces/userType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 
 interface Props {
-  value: IFCard;
-  disabled?: boolean;
-  selected?: boolean;
-  onSelect: (value: IFCard) => void;
+  value: IFHandsCardValue;
+  isSelected: boolean;
+  isDisabled: boolean;
+  onClick: () => void;
 }
 
-const HandsCard: NextPage<Props> = ({ value, isSelected, onClick }) => {
-  const room: Room = useRoom();
-  const user: User = useUser();
-
-  const isDisabled: boolean = room.areCardsOpen() || !user?.isPlayer();
-
+const HandsCard: NextPage<Props> = ({ value, isSelected, isDisabled, onClick }) => {
   const onClickHandler = () => {
     if (isDisabled) return;
     onClick(isSelected ? null : value);

@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import SummaryTag from './SummaryTag';
-import { MockState, mockState, mockStore } from '@/store/mocks/store';
-import { Provider } from 'react-redux';
 
 const meta: Meta<typeof SummaryTag> = {
   component: SummaryTag,

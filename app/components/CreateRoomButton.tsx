@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const CreateRoomButton: NextPage = () => {
   const router = useRouter();
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  const roomId: string = v4();
 
   const click = (): void => {
     event({ action: 'create_room', category: 'engagement', label: '' });

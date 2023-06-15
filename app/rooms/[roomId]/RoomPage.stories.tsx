@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import RoomPage from './RoomPage';
-import { MockState, mockState, mockStore } from '@/store/mocks/store';
+import { mockState, mockStore } from '@/store/mocks/store';
 import { Provider } from 'react-redux';
 
 const meta: Meta<typeof RoomPage> = {

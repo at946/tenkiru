@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { MemberType } from '@/interfaces/userType';
+import { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
 import { useAppSelector } from '@/store/hooks';
 import { event } from '@/lib/gtag';
@@ -9,12 +9,12 @@ import { MemberType } from '@/interfaces/memberType';
 import Select, { Option } from '@/app/components/common/Select';
 
 interface Props {
+  type: IFUserType;
   extraClass?: string;
   onChange: (memberType: MemberType) => void;
 }
 
-const MemberTypeSelect: NextPage<Props> = ({ extraClass, onChange }) => {
-  const type: MemberType = useAppSelector((state) => state.user.type);
+const MemberTypeSelect: NextPage<Props> = ({ type, extraClass, onChange }) => {
 
   const options: Option[] = [
     { value: 'player', label: 'プレイヤー' },
@@ -24,7 +24,6 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, onChange }) => {
   const handleOnChange = (value: string): void => {
     onChange(value as MemberType);
     event({ action: `change_member_type_${value}`, category: 'engagement', label: '' });
-  };
 
   return (
     <div className={extraClass || ''}>
@@ -36,4 +35,4 @@ const MemberTypeSelect: NextPage<Props> = ({ extraClass, onChange }) => {
   );
 };
 
-export default MemberTypeSelect;
+export default UserTypeSelect;

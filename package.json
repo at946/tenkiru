@@ -41,7 +41,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.35.0",
+    "@playwright/test": "^1.35.1",
     "@storybook/addon-a11y": "^7.0.20",
     "@storybook/addon-console": "^2.0.0",
     "@storybook/addon-essentials": "^7.0.20",

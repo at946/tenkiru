@@ -11,10 +11,6 @@ import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/soc
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFUserType } from '@/interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { DeckType, IFDeckType } from '@/interfaces/deckType';
-import { IFMemberType } from '@/interfaces/userType';
-import { Member } from '@/class/member';
-import { Game } from '@/class/game';
 
 // utils
 import { findRoomById } from './utils/findRoomById';

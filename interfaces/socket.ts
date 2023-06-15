@@ -1,5 +1,5 @@
 import { Member } from './member';
-import { MemberType } from './userType';
+import { IFUserType } from './userType';
 import { DeckType } from './deckType';
 import { Card } from './card';
 import { User } from '@/class/user';
@@ -20,6 +20,6 @@ export interface ClientToServerEvents {
   'put-down-a-card': (roomId: string, card: Card) => void;
   'open-cards': (roomId: string) => void;
   replay: (roomId: string) => void;
-  'change-member-type': (roomId: string, memberType: MemberType) => void;
+  'change-user-type': (roomId: string, userType: IFUserType) => void;
   nominate: (memberId: string) => void;
 }

@@ -1,23 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MemberTypeSelect from './MemberTypeSelect';
+import UserTypeSelect from './UserTypeSelect';
 import { MemberType } from '@/interfaces/userType';
 
-import ReduxProvider from '@/app/ReduxProvider';
-import { updateType, userSlice } from '@/store/userSlice';
-import { store } from '@/store/store';
+import { updateType } from '@/store/userSlice';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
 import { mockState, mockStore } from '@/store/mocks/store';
 
-const meta: Meta<typeof MemberTypeSelect> = {
-  component: MemberTypeSelect,
-  title: 'Room/MemberTypeSelect',
+const meta: Meta<typeof UserTypeSelect> = {
+  component: UserTypeSelect,
+  title: 'Room/UserTypeSelect',
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof MemberTypeSelect>;
+type Story = StoryObj<typeof UserTypeSelect>;
 
 const defaultMockState = mockState;
 const defaultMockStore = mockStore(defaultMockState);

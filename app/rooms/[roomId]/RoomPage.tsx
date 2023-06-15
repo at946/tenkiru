@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useCallback, useState } from 'react';
-import { io, Socket } from 'socket.io-client';
 import { NextPage } from 'next';
+import { useEffect, useCallback, useState } from 'react';
+
+// socket.io
+import { io, Socket } from 'socket.io-client';
 
 // hooks
 import useRoom from '@/hooks/useRoom';
@@ -13,9 +15,7 @@ import { User } from '@/class/user';
 
 // interfaces
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
-import { Member } from '@/interfaces/member';
-import { MemberType } from '@/interfaces/userType';
-import { Card } from '@/interfaces/card';
+import { IFUserType } from '@/interfaces/userType';
 import { DeckType } from '@/interfaces/deckType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 
@@ -23,18 +23,16 @@ import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 import RoomInfo from './components/RoomInfo';
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
-import MemberTypeSelect from './components/MemberTypeSelect';
+import MemberTypeSelect from './components/UserTypeSelect';
 import HandsCards from './components/hands/HandsCards';
-import toast, { Toast, Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 // stores
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { updateUser } from '@/store/userSlice';
+import { useAppDispatch } from '@/store/hooks';
 import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
-import { updateSocketId } from '@/store/socketSlice';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -60,10 +58,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
       socket.on('connect', () => setIsConnected(true));
       socket.on('update-room', onUpdateRoom);
-      socket.on('update-user', onUpdateUser);
-      socket.on('update-members', onUpdateMembers);
-      socket.on('update-deck-type', onUpdateDeckType);
-      socket.on('update-cards-are-open', onUpdateCardsAreOpen);
       socket.on('nominate', onNominate);
       socket.on('disconnect', () => setIsConnected(false));
 
@@ -104,29 +98,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [socketInitializerCallback]);
 
   const onUpdateRoom = (room: Room) => {
-    console.log(room);
     dispatch(updateRoom(room));
-  };
-
-  const onUpdateUser = (user: User) => {
-    console.log(user);
-    dispatch(updateUser(user));
-  };
-
-  const onUpdateMembers = (members: Member[]) => {
-    dispatch(updateMembers(members));
-    const me: Member | undefined = members.find((v) => v.id === socket.id);
-    if (!me) return;
-    dispatch(updateType(me.type));
-    dispatch(selectCard(me.selectedCard));
-  };
-
-  const onUpdateDeckType = (newDeckType: DeckType) => {
-    dispatch(setDeckType(newDeckType));
-  };
-
-  const onUpdateCardsAreOpen = (cardsAreOpen: boolean) => {
-    dispatch(setCardsAreOpen(cardsAreOpen));
   };
 
   const onNominate = () => {
@@ -154,8 +126,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('replay', roomId);
   };
 
-  const changeMemberType = (memberType: MemberType): void => {
-    socket.emit('change-member-type', roomId, memberType);
+  const changeUserType = (userType: IFUserType): void => {
+    socket.emit('change-user-type', roomId, userType);
   };
 
   const putDownCard = (value: IFHandsCardValue): void => {
@@ -173,8 +145,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       {isConnected && (
         <>
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
-          <MemberTypeSelect select={changeMemberType} extraClass='mb-4' />
-          <HandsCards usersSelectedCardValue={user?.getSelectedCardValue()} select={putDownCard} />
+          <MemberTypeSelect type={user?.getType()} select={changeUserType} extraClass='mb-4' />
+          <HandsCards user={user} select={putDownCard} />
         </>
       )}
       <Toaster />

@@ -8,9 +8,10 @@ import useRoom from './useRoom';
 
 const useUser = (id: string): User => {
   const room: Room = useRoom();
-  
+
   const instantiatedUser = useMemo(() => {
-    const user: User = room.findUserById(id);
+    const user: User | undefined = room.findUserById(id);
+    if (!user) return new User();
     return user;
   }, [id, room]);
   return instantiatedUser;

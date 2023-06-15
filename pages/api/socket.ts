@@ -12,7 +12,9 @@ import { IFDeckType } from '@/interfaces/deckType';
 import { IFUserType } from '@/interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 import { DeckType, IFDeckType } from '@/interfaces/deckType';
-import { IFMemberType } from '@/interfaces/memberType';
+import { IFMemberType } from '@/interfaces/userType';
+import { Member } from '@/class/member';
+import { Game } from '@/class/game';
 
 // utils
 import { findRoomById } from './utils/findRoomById';
@@ -31,7 +33,6 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       res.socket.server as any,
     );
     const rooms: Room[] = [];
-    const users: User[] = [];
 
     const removeRoomById = (roomId: string): void => {
       const removeRoomIndex: number = rooms.findIndex((room: Room) => room.getId() === roomId);

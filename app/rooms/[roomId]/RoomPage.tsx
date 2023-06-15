@@ -14,7 +14,7 @@ import { User } from '@/class/user';
 // interfaces
 import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
 import { Member } from '@/interfaces/member';
-import { MemberType } from '@/interfaces/memberType';
+import { MemberType } from '@/interfaces/userType';
 import { Card } from '@/interfaces/card';
 import { DeckType } from '@/interfaces/deckType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
@@ -34,6 +34,7 @@ import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
+import { updateSocketId } from '@/store/socketSlice';
 
 let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
 
@@ -44,6 +45,7 @@ interface Props {
 const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
   const room: Room = useRoom();
+  const user: User | undefined = room.findUserById(socket?.id);
   const deckType: DeckType = room.getDeckType();
   const [isConnected, setIsConnected] = useState(false);
 
@@ -172,7 +174,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         <>
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
           <MemberTypeSelect select={changeMemberType} extraClass='mb-4' />
-          <HandsCards select={putDownCard} />
+          <HandsCards usersSelectedCardValue={user?.getSelectedCardValue()} select={putDownCard} />
         </>
       )}
       <Toaster />

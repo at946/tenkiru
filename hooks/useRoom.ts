@@ -7,9 +7,11 @@ import { useAppSelector } from '@/store/hooks';
 import { Room } from '@/class/room';
 import { Table } from '@/class/table';
 import { TableCard } from '@/class/tableCard';
+import { IFRoom } from '@/interfaces/room';
+import { IFUser } from '@/interfaces/user';
+import { User } from '@/class/user';
 
 // interfaces
-import { IFRoom, IFTable, IFTableCard } from '@/store/roomSlice';
 
 const useRoom = (): Room => {
   const roomState: IFRoom = useAppSelector((state) => state.room.room);
@@ -17,18 +19,14 @@ const useRoom = (): Room => {
   const instantiatedRoom = useMemo(() => {
     if (!roomState) return null;
 
-    const tableState: IFTable = roomState.table;
-    const table: Table = new Table([], tableState.cardsAreOpen);
+    const users: IFUser[] = [];
+    roomState.users.forEach((user: IFUser) => {
+      users.push(new User(user.id, user.isPlayer, user.hasSelectedCard, user.selectedCardValue))
+    })
 
-    const tableCardsState: IFTableCard[] = tableState.cards;
-    tableCardsState.forEach((tableCard: IFTableCard) => {
-      table.addCard(new TableCard(tableCard.playerId, tableCard.value));
-    });
-
-    const room: Room = new Room(roomState.id, table, roomState.deckType);
-
-    return room;
+    return new Room(roomState.id, roomState.deckType, roomState.isOpenPhase, users);
   }, [roomState]);
+
   return instantiatedRoom;
 };
 

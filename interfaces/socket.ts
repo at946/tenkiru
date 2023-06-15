@@ -1,12 +1,12 @@
 import { Member } from './member';
-import { MemberType } from './memberType';
+import { MemberType } from './userType';
 import { DeckType } from './deckType';
 import { Card } from './card';
-import { Room } from '@/class/room';
 import { User } from '@/class/user';
+import { IFRoom } from './room';
 
 export interface ServerToClientEvents {
-  'update-room': (room: Room) => void;
+  'update-room': (room: IFRoom) => void;
   'update-user': (user: User) => void;
   'update-members': (members: Member[]) => void;
   'update-deck-type': (deckType: DeckType) => void;

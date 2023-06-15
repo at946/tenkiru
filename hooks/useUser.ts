@@ -2,13 +2,17 @@ import { useMemo } from 'react';
 import { useAppSelector } from '@/store/hooks';
 import { User } from '@/class/user';
 import { IFUser } from '@/store/userSlice';
+import { IFRoom } from '@/interfaces/room';
+import { Room } from '@/class/room';
+import useRoom from './useRoom';
 
-const useUser = (): User => {
-  const user: IFUser = useAppSelector((state) => state.user.user);
+const useUser = (id: string): User => {
+  const room: Room = useRoom();
+  
   const instantiatedUser = useMemo(() => {
-    if (!user) return null;
-    return new User(user.id, user.type);
-  }, [user]);
+    const user: User = room.findUserById(id);
+    return user;
+  }, [id, room]);
   return instantiatedUser;
 };
 

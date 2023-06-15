@@ -17,9 +17,7 @@ interface Props {
 
 const SummaryTags: NextPage<Props> = ({ extraClass }) => {
   const room: Room = useRoom();
-  const table: Table = room.getTable();
-  const tableCards: TableCard[] = table.getCards();
-  const useCalculatedResult = table.areCardsOpen() && table.areNumberCardsExist();
+  const useCalculatedResult = room.areCardsOpen() && room.areNumberCardsExist();
 
   const minValue: number | '?' = useCalculatedResult ? table.getMinInTableCards() : '?';
   const maxValue: number | '?' = useCalculatedResult ? table.getMaxInTableCards() : '?';

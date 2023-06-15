@@ -13,7 +13,9 @@ import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket'
 import { Member } from '../../interfaces/member';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 import { DeckType, IFDeckType } from '@/interfaces/deckType';
-import { IFMemberType } from '@/interfaces/memberType';
+import { IFMemberType } from '@/interfaces/userType';
+import { Member } from '@/class/member';
+import { Game } from '@/class/game';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
@@ -29,7 +31,6 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       res.socket.server as any,
     );
     const rooms: Room[] = [];
-    const users: User[] = [];
 
     const cleanRoom = (roomId: string): void => {
       // roomsと接続中のソケット情報を使って、現在のルームの状況を整理する
@@ -76,13 +77,9 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           rooms.push(room);
         }
 
-        room.getTable().addCard(new TableCard(socket.id, null));
-
-        const user: User = new User(socket.id, 'player', null);
-        users.push(user);
+        room.addUser(new User(socket.id));
 
         io.to(roomId).emit('update-room', room);
-        io.to(socket.id).emit('update-user', user);
       });
 
       socket.on('change-deck-type', (roomId: string, newDeckType: IFDeckType) => {
@@ -166,10 +163,9 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           const room: Room | undefined = rooms.find((room: Room) => room.getId() === roomId);
           if (!room) return;
 
-          const table: Table = room.getTable();
-          table.removeCardByPlayerId(socket.id);
+          room.removeUser(socket.id);
 
-          if (!table.areCardsExist()) {
+          if (!room.hasUsers()) {
             const removeRoomIndex: number = rooms.findIndex(
               (room: Room) => room.getId() === roomId,
             );

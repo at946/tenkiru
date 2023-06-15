@@ -4,6 +4,9 @@ import { NextPage } from 'next';
 import { IFTableCard } from '@/interfaces/tableCard';
 import { IFUser } from '@/interfaces/user';
 
+// interface
+import { IFTableCard } from '@/interfaces/tableCard';
+
 // components
 import Button from '@/app/components/common/Button';
 import { Table } from '@/class/table';

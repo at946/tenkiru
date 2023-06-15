@@ -12,23 +12,22 @@ import { TableCard as CTableCard } from '@/class/tableCard';
 import BlankCard from './BlankCard';
 import TableCard from './TableCard';
 import NominateButton from './NominateButton';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 interface Props {
-  card: CTableCard;
+  cardValue: IFTableCardValue;
   nominate: (memberId: string) => void;
 }
 
-const TableCardGroup: NextPage<Props> = ({ card, nominate }) => {
+const TableCardGroup: NextPage<Props> = ({ cardValue, nominate }) => {
   const room: Room = useRoom();
-  const table: Table = room.getTable();
-  const isCardBlank: boolean = card.isBlank();
-  const isCardOpen: boolean = table.areCardsOpen();
-  console.log(isCardOpen);
+  const isCardBlank: boolean = cardValue === null;
+  const isCardOpen: boolean = room.areCardsOpen();
 
   return (
     <div role='group' aria-label='テーブルカードグループ'>
       <div className='mb-2 flex justify-center'>
-        {isCardBlank ? <BlankCard /> : <TableCard value={card.getValue()} isOpen={isCardOpen} />}
+        {isCardBlank ? <BlankCard /> : <TableCard value={cardValue} isOpen={isCardOpen} />}
       </div>
       <div className='text-center'>
         <NominateButton

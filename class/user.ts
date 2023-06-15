@@ -1,17 +1,26 @@
-import { IFMemberType, MemberType } from '@/interfaces/memberType';
+import { IFUserType } from '@/interfaces/userType';
 
 export class User {
-  constructor(private id: string, private memberType: MemberType = 'player') {}
+  constructor(
+    private id: string,
+    private type: IFUserType = 'player',
+    private hasSelectedCard: boolean = false,
+    private selectedCardValue?: number | string,
+  ) {}
 
   getId(): string {
     return this.id;
   }
 
-  getMemberType(): MemberType {
-    return this.memberType;
+  isPlayer(): boolean {
+    return this.type === 'player';
   }
 
-  setMemberType(newMemberType: IFMemberType): void {
-    this.memberType = newMemberType;
+  hasSelectedNumberCard(): boolean {
+    return this.hasSelectedCard && typeof this.selectedCardValue === 'number';
+  }
+
+  getSelectedCardValue(): number | string {
+    return this.selectedCardValue;
   }
 }

@@ -8,6 +8,9 @@ import { Room } from '@/class/room';
 import { Table } from '@/class/table';
 import { TableCard } from '@/class/tableCard';
 
+// interface
+import { IFTableCard } from '@/interfaces/tableCard';
+
 // components
 import Button from '@/app/components/common/Button';
 
@@ -21,18 +24,18 @@ interface Props {
 
 const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
   const room: Room = useRoom();
-  const table: Table = room.getTable();
-  const tableCards: TableCard[] = table.getCards();
+  const tableCards: IFTableCard[] = room.getTableCards();
+  const notBlankTableCards: IFTableCard[] = tableCards.filter((tableCard: IFTableCard) => tableCard.value !== null);
 
   return (
     <div>
-      {table.areCardsOpen() ? (
+      {room.areCardsOpen() ? (
         <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
       ) : (
         <Button
           label='開く'
           icon={faHand}
-          disabled={table.areOnlyBlankCardsExist()}
+          disabled={notBlankTableCards.length === 0}
           onClick={clickOpenButton}
         />
       )}

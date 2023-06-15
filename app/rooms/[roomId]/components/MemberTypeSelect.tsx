@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { MemberType } from '@/interfaces/memberType';
+import { MemberType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
 import { useAppSelector } from '@/store/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

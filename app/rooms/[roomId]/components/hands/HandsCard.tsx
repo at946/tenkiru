@@ -10,7 +10,7 @@ import { User } from '@/class/user';
 import { Table } from '@/class/table';
 
 // interface
-import { MemberType } from '@/interfaces/memberType';
+import { MemberType } from '@/interfaces/userType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 
 interface Props {
@@ -21,11 +21,9 @@ interface Props {
 
 const HandsCard: NextPage<Props> = ({ value, isSelected, onClick }) => {
   const room: Room = useRoom();
-  const table: Table = room.getTable();
   const user: User = useUser();
 
-  const userType: MemberType = user.getMemberType();
-  const isDisabled: boolean = table.areCardsOpen() || userType !== 'player';
+  const isDisabled: boolean = room.areCardsOpen() || !user?.isPlayer();
 
   const onClickHandler = () => {
     if (isDisabled) return;

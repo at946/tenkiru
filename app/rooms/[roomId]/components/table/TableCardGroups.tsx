@@ -10,6 +10,7 @@ import { TableCard } from '@/class/tableCard';
 
 // components
 import TableCardGroup from './TableCardGroup';
+import { IFTableCard } from '@/interfaces/tableCard';
 
 interface Props {
   extraClass?: string;
@@ -18,12 +19,12 @@ interface Props {
 
 const TableCardGroups: NextPage<Props> = ({ extraClass, nominate }) => {
   const room: Room = useRoom();
-  const tableCards: TableCard[] = room.getTable().getCards();
+  const tableCards: IFTableCard[] = room.getTableCards();
 
   return (
     <div className={`flex flex-wrap justify-center gap-4 ${extraClass || ''}`}>
-      {tableCards.map((tableCard: TableCard) => (
-        <TableCardGroup card={tableCard} nominate={nominate} key={tableCard.getPlayerId()} />
+      {tableCards.map((tableCard: IFTableCard) => (
+        <TableCardGroup card={tableCard.value} nominate={nominate} key={tableCard.userId} />
       ))}
     </div>
   );

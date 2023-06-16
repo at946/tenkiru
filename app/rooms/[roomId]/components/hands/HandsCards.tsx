@@ -13,7 +13,7 @@ interface Props {
 
 const HandsCards: NextPage<Props> = ({ user, select }) => {
   const room: Room = useRoom();
-  const deck: IFDeck | undefined = room.getDeck();
+  const deck: IFDeck | undefined = room?.getDeck();
 
   return (
     <div className='flex flex-wrap justify-center gap-2' role='group' aria-label='手札'>

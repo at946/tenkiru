@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
+import Select from '@/app/components/common/Select';
+import { Room } from '@/class/room';
 import Decks from '@/data/deck';
+import useRoom from '@/hooks/useRoom';
 import { Deck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';
-import Select, { Option } from '@/app/components/common/Select';
-import { Room } from '@/class/room';
-import useRoom from '@/hooks/useRoom';
 
 interface Props {
   disabled?: boolean;

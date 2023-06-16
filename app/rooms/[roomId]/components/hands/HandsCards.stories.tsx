@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 
 import HandsCards from './HandsCards';
-import { Card } from '@/interfaces/card';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 const meta: Meta<typeof HandsCards> = {
   component: HandsCards,
@@ -36,7 +36,7 @@ const meta: Meta<typeof HandsCards> = {
   decorators: [
     () => {
       const [args, setArgs] = useArgs();
-      const updateSelectedCard = (card: Card) => {
+      const updateSelectedCard = (card: IFTableCardValue) => {
         setArgs({ selectedCard: card });
       };
       return (

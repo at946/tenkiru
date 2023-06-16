@@ -1,5 +1,8 @@
+import { IFTableCardValue } from './tableCardValue';
+import { IFUserType } from './userType';
+
 export interface IFUser {
   id: string;
-  isPlayer: boolean;
-  selectedCardValue: number | string | null;
+  type: IFUserType;
+  selectedCardValue: IFTableCardValue;
 }

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import TableButton from './TableButton';
-import { MockState, mockState, mockStore } from '@/store/mocks/store';
+import { MockState, mockState, mockStore } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
 
 const meta: Meta<typeof TableButton> = {

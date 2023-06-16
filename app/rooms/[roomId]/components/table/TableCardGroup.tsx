@@ -19,13 +19,13 @@ interface Props {
 
 const TableCardGroup: NextPage<Props> = ({ card, nominate }) => {
   const room: Room = useRoom();
-  const isCardBlank: boolean = card.value === null;
-  const isCardOpen: boolean = room.areCardsOpen();
+  const isCardBlank: boolean = card?.value === null;
+  const isCardOpen: boolean = room?.areCardsOpen();
 
   return (
     <div role='group' aria-label='テーブルカードグループ'>
       <div className='mb-2 flex justify-center'>
-        {isCardBlank ? <BlankCard /> : <TableCard value={card.value} isOpen={isCardOpen} />}
+        {isCardBlank ? <BlankCard /> : <TableCard value={card?.value} isOpen={isCardOpen} />}
       </div>
       <div className='text-center'>
         <NominateButton

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import HandsCard from './HandsCard';
 import { Provider } from 'react-redux';
-import { MockState, mockState, mockStore } from '@/store/mocks/store';
+import { MockState, mockState, mockStore } from '@/mocks/store/store';
 import { MemberType } from '@/interfaces/userType';
 
 const meta: Meta<typeof HandsCard> = {

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import DeckSelect from './DeckSelect';
-import { DeckType } from '@/interfaces/deckType';
+
+import { IFDeckType } from '@/interfaces/deckType';
 
 import { Store } from '@reduxjs/toolkit';
-import { setDeckType } from '@/store/roomSlice';
 import { Provider } from 'react-redux';
-import { MockState, mockState, mockStore } from '@/store/mocks/store';
+import { MockState, mockState, mockStateWithUsers, mockStore } from '@/mocks/store/store';
 
 const meta: Meta<typeof DeckSelect> = {
   component: DeckSelect,
@@ -19,15 +19,13 @@ type Story = StoryObj<typeof DeckSelect>;
 
 const defaultMockState: MockState = {
   ...mockState,
-  room: { ...mockState.room, cardsAreOpen: false },
+  room: { ...mockState.room, isOpenPhase: false },
 };
 const defaultMockStore: Store = mockStore(defaultMockState);
 export const Default: Story = {
   args: {
     extraClass: '',
-    select: (deckType: DeckType) => {
-      defaultMockStore.dispatch(setDeckType(deckType));
-    },
+    select: (newDeckType: IFDeckType) => {},
   },
   decorators: [
     (story) => {
@@ -36,7 +34,7 @@ export const Default: Story = {
   ],
 };
 
-const cardsAreOpenMockState: MockState = mockState;
+const cardsAreOpenMockState: MockState = mockStateWithUsers;
 const cardsAreOpenMockStore: Store = mockStore(cardsAreOpenMockState);
 export const CardsAreOpen: Story = {
   args: {},

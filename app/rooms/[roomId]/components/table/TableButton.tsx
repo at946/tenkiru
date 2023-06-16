@@ -22,20 +22,20 @@ interface Props {
 
 const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
   const room: Room = useRoom();
-  const tableCards: IFTableCard[] = room.getTableCards();
-  const notBlankTableCards: IFTableCard[] = tableCards.filter(
+  const tableCards: IFTableCard[] = room?.getTableCards();
+  const notBlankTableCards: IFTableCard[] = tableCards?.filter(
     (tableCard: IFTableCard) => tableCard.value !== null,
   );
 
   return (
     <div>
-      {room.areCardsOpen() ? (
+      {room?.areCardsOpen() ? (
         <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
       ) : (
         <Button
           label='開く'
           icon={faHand}
-          disabled={notBlankTableCards.length === 0}
+          disabled={notBlankTableCards?.length === 0}
           onClick={clickOpenButton}
         />
       )}

@@ -36,6 +36,7 @@ import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
+import { IFRoom } from '@/interfaces/room';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 

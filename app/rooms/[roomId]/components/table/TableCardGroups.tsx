@@ -17,11 +17,11 @@ interface Props {
 
 const TableCardGroups: NextPage<Props> = ({ extraClass, nominate }) => {
   const room: Room = useRoom();
-  const tableCards: IFTableCard[] = room.getTableCards();
+  const tableCards: IFTableCard[] = room?.getTableCards();
 
   return (
     <div className={`flex flex-wrap justify-center gap-4 ${extraClass || ''}`}>
-      {tableCards.map((tableCard: IFTableCard) => (
+      {tableCards?.map((tableCard: IFTableCard) => (
         <TableCardGroup card={tableCard} nominate={nominate} key={tableCard.userId} />
       ))}
     </div>

@@ -13,7 +13,7 @@ import { User } from '@/class/user';
 import { IFRoom } from '@/interfaces/room';
 import { IFUser } from '@/interfaces/user';
 
-const useRoom = (): Room => {
+const useRoom = (): Room | undefined => {
   const roomState: IFRoom = useAppSelector((state) => state.room.room);
 
   const instantiatedRoom = useMemo(() => {

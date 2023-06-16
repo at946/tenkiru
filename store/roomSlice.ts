@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IFRoom } from '@/interfaces/room';
 
-export interface RoomState {
+export interface IFRoomState {
   room: IFRoom;
 }
 
-const initialState: RoomState = {
+const initialState: IFRoomState = {
   room: {
     id: null,
     deckType: 'fibonacci',
@@ -18,7 +18,7 @@ export const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
-    updateRoom: (state, action: PayloadAction<Room>) => {
+    updateRoom: (state, action: PayloadAction<IFRoom>) => {
       state.room = action.payload;
     },
   },

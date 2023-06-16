@@ -1,33 +1,14 @@
 import { Store, configureStore } from '@reduxjs/toolkit';
 import { membersSlice } from '../membersSlice';
-import { roomSlice } from '../roomSlice';
+import { IFRoomState, roomSlice } from '../roomSlice';
 import { userSlice } from '../userSlice';
-import { DeckType } from '@/interfaces/deckType';
-import { Member } from '@/interfaces/member';
-import { MemberType } from '@/interfaces/userType';
-import { Card } from '@/interfaces/card';
 
-export interface MockState {
+export const mockState: IFRoomState = {
   room: {
-    areCardsOpen: boolean;
-    deckType: DeckType;
-  };
-  members: {
-    members: Member[];
-  };
-  user: {
-    type: MemberType;
-    selectedCard: Card;
-  };
-}
-
-export const mockState: MockState = {
-  room: {
-    areCardsOpen: true,
+    id: '11111',
     deckType: 'fibonacci',
-  },
-  members: {
-    members: [
+    isOpenPhase: false,
+    users: [
       {
         id: '1',
         type: 'player',
@@ -50,13 +31,9 @@ export const mockState: MockState = {
       },
     ],
   },
-  user: {
-    type: 'player',
-    selectedCard: 0,
-  },
 };
 
-export const mockStore = (preloadedState?: MockState): Store =>
+export const mockStore = (preloadedState?: IFRoomState): Store =>
   configureStore({
     reducer: {
       [roomSlice.name]: roomSlice.reducer,

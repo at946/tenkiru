@@ -14,7 +14,7 @@ import { Room } from '@/class/room';
 import { User } from '@/class/user';
 
 // interfaces
-import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
+import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFUserType } from '@/interfaces/userType';
 import { DeckType } from '@/interfaces/deckType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
@@ -33,8 +33,9 @@ import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
+import { IFRoom } from '@/interfaces/room';
 
-let socket: Socket<ServerToClientEvents, ClientToServerEvents>;
+let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 
 interface Props {
   roomId: string;
@@ -83,7 +84,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     };
   }, [socketInitializerCallback]);
 
-  const onUpdateRoom = (room: Room) => {
+  const onUpdateRoom = (room: IFRoom) => {
     dispatch(updateRoom(room));
   };
 
@@ -116,8 +117,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('change-user-type', roomId, userType);
   };
 
-  const updateSelectedCard = (card: Card): void => {
-    socket.emit('update-selected-card', roomId, card);
+  const putDownCard = (value: IFHandsCardValue): void => {
+    socket.emit('select-card', roomId, value);
   };
 
   const nominate = (memberId: string): void => {

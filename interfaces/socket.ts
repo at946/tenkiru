@@ -1,23 +1,17 @@
-import { Member } from './member';
 import { IFUserType } from './userType';
 import { DeckType } from './deckType';
-import { Card } from './card';
-import { User } from '@/class/user';
 import { IFRoom } from './room';
+import { IFHandsCardValue } from './handsCardValue';
 
-export interface ServerToClientEvents {
+export interface IFServerToClientEvents {
   'update-room': (room: IFRoom) => void;
-  'update-user': (user: User) => void;
-  'update-members': (members: Member[]) => void;
-  'update-deck-type': (deckType: DeckType) => void;
-  'update-are-cards-open': (areCardsOpen: boolean) => void;
   nominate: () => void;
 }
 
-export interface ClientToServerEvents {
+export interface IFClientToServerEvents {
   'join-room': (roomId: string) => void;
   'change-deck-type': (roomId: string, newDeckType: DeckType) => void;
-  'update-selected-card': (roomId: string, card: Card) => void;
+  'select-card': (roomId: string, cardValue: IFHandsCardValue) => void;
   'open-cards': (roomId: string) => void;
   replay: (roomId: string) => void;
   'change-user-type': (roomId: string, userType: IFUserType) => void;

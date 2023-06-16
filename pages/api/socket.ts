@@ -12,6 +12,9 @@ import { IFDeckType } from '@/interfaces/deckType';
 import { IFUserType } from '@/interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
+// utils
+import { findRoomById } from './utils/findRoomById';
+
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
     server: NetServer & {
@@ -27,26 +30,26 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     );
     const rooms: Room[] = [];
 
-    const findRoomById = (roomId: string): Room | undefined => {
-      return rooms.find((room: Room) => room.getId() === roomId);
+    const removeRoomById = (roomId: string): void => {
+      const removeRoomIndex: number = rooms.findIndex((room: Room) => room.getId() === roomId);
+      rooms.splice(removeRoomIndex, 1);
     };
 
     io.on('connection', (socket) => {
       socket.on('join-room', (roomId: string) => {
-        socket.join(roomId);
-
-        let room: Room | undefined = findRoomById(roomId);
+        let room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) {
           room = new Room(roomId);
           rooms.push(room);
         }
+        socket.join(roomId);
         room.addUser(new User(socket.id));
 
         io.to(roomId).emit('update-room', room);
       });
 
       socket.on('change-deck-type', (roomId: string, newDeckType: IFDeckType) => {
-        const room: Room | undefined = findRoomById(roomId);
+        const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
         room.setDeckType(newDeckType);
@@ -56,7 +59,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
 
       socket.on('change-user-type', (roomId: string, newUserType: IFUserType) => {
-        const room: Room | undefined = findRoomById(roomId);
+        const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
         const user: User | undefined = room.findUserById(socket.id);
@@ -73,8 +76,8 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room);
       });
 
-      socket.on('put-down-a-card', (roomId: string, selectedCardValue: IFTableCardValue) => {
-        const room: Room | undefined = findRoomById(roomId);
+      socket.on('select-card', (roomId: string, selectedCardValue: IFTableCardValue) => {
+        const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
         const user: User = room.findUserById(socket.id);
@@ -89,7 +92,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
 
       socket.on('open-cards', (roomId) => {
-        const room: Room | undefined = findRoomById(roomId);
+        const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
         room.openCards();
@@ -98,7 +101,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
       });
 
       socket.on('replay', (roomId) => {
-        const room: Room | undefined = findRoomById(roomId);
+        const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
         room.replay();
@@ -118,10 +121,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           room.removeUser(socket.id);
 
           if (!room.hasUsers()) {
-            const removeRoomIndex: number = rooms.findIndex(
-              (room: Room) => room.getId() === roomId,
-            );
-            rooms.splice(removeRoomIndex, 1);
+            removeRoomById(roomId);
           } else {
             io.to(roomId).emit('update-room', room);
           }

@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
-import { Card } from '@/interfaces/card';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 interface Props {
-  value: Card;
+  value: IFTableCardValue;
   isOpen: boolean;
 }
 

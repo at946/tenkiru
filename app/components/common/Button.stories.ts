@@ -1,33 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Button from './Button';
-import { faA, faB, faC } from '@fortawesome/free-solid-svg-icons';
-
-const icons = { faA, faB, faC };
 
 const meta: Meta<typeof Button> = {
   component: Button,
   title: 'Common/Button',
   tags: ['autodocs'],
   argTypes: {
-    label: {
-      type: { name: 'string', required: true },
-      description: '表示文字列',
-      control: 'text',
-    },
-    icon: {
-      type: { name: 'other', value: 'fontawesome icon', required: false },
-      description: 'ボタン右に表示するFontawesome Icon',
-      options: Object.keys(icons),
-      mapping: icons,
-      control: {
-        type: 'select',
-        labels: {
-          faA: 'A',
-          faB: 'B',
-          faC: 'C',
-        },
-      },
+    children: {
+      type: { name: 'other', value: 'ReactNode', required: true },
+      description: 'children',
     },
     isOutlined: {
       type: { name: 'boolean', required: false },
@@ -52,14 +34,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    label: 'Button',
-  },
-};
-
-export const ButtonWithIcon: Story = {
-  args: {
-    label: 'Button with icon',
-    icon: faA,
+    children: 'Button',
     isOutlined: false,
     disabled: false,
   },
@@ -67,21 +42,23 @@ export const ButtonWithIcon: Story = {
 
 export const Disabled: Story = {
   args: {
-    label: 'Disabled',
+    children: 'Button',
+    isOutlined: false,
     disabled: true,
   },
 };
 
 export const Outlined: Story = {
   args: {
-    label: 'Outlined',
+    children: 'Button',
     isOutlined: true,
+    disabled: false,
   },
 };
 
 export const DisabledOutlined: Story = {
   args: {
-    label: 'Disabled Outlined',
+    children: 'Button',
     isOutlined: true,
     disabled: true,
   },

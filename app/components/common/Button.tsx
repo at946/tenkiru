@@ -1,16 +1,14 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
+import { ReactNode } from 'react';
 
 interface Props {
-  label: string;
-  icon?: IconDefinition;
+  children: ReactNode; 
   isOutlined?: boolean;
   disabled?: boolean;
   onClick?: () => void;
 }
 
-const Button: NextPage<Props> = ({ label, icon, isOutlined, disabled, onClick }) => {
+const Button: NextPage<Props> = ({ children, isOutlined, disabled, onClick }) => {
   return (
     <button
       className={`
@@ -24,8 +22,7 @@ const Button: NextPage<Props> = ({ label, icon, isOutlined, disabled, onClick })
       disabled={disabled}
       onClick={onClick}
     >
-      {icon && <FontAwesomeIcon icon={icon} className='mr-2' />}
-      {label}
+      { children }
     </button>
   );
 };

@@ -1,46 +1,36 @@
 import { NextPage } from 'next';
 
-// hooks
-import useRoom from '@/hooks/useRoom';
-
-// class
-import { Room } from '@/class/room';
-
 // components
 import SummaryTag from './SummaryTag';
+import { useAppSelector } from '@/store/hooks';
+
+// interfaces
+import { IFTableCard } from '@/interfaces/tableCard';
+import { IFUser } from '@/interfaces/user';
+
+// utils
+import {
+  getAvgValueAmongTableCards,
+  getMaxValueAmongTableCards,
+  getMinValueAmongTableCards,
+} from '../../utils/getSummaryAmongTableCards';
+import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 
 interface Props {
   extraClass?: string;
 }
 
 const SummaryTags: NextPage<Props> = ({ extraClass }) => {
-  const room: Room | undefined = useRoom();
-
-  const minValue: number | '?' = room?.getMinInTableCards() || '?';
-  const maxValue: number | '?' = room?.getMaxInTableCards() || '?';
-  const avgValue: number | '?' = room?.getAverageOfTableCards() || '?';
+  const areOpen: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
+  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
+  const tableCards: IFTableCard[] = getTableCardsFromUsers(users);
 
   return (
     <div className={extraClass}>
       <div className='flex justify-center gap-2'>
-        <SummaryTag
-          name='最小'
-          value={minValue}
-          isOpen={!!room?.areCardsOpen()}
-          ariaLabel='最小値'
-        />
-        <SummaryTag
-          name='平均'
-          value={avgValue}
-          isOpen={!!room?.areCardsOpen()}
-          ariaLabel='平均値'
-        />
-        <SummaryTag
-          name='最大'
-          value={maxValue}
-          isOpen={!!room?.areCardsOpen()}
-          ariaLabel='最大値'
-        />
+        <SummaryTag name='最小' value={areOpen ? getMinValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag name='平均' value={areOpen ? getAvgValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag name='最大' value={areOpen ? getMaxValueAmongTableCards(tableCards) : '?'} />
       </div>
     </div>
   );

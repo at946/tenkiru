@@ -39,7 +39,7 @@ export const mockState: IFRoomState = {
     deckType: 'fibonacci',
     isOpenPhase: false,
     users: [],
-  }
+  },
 };
 
 export const mockStateWithUsers: IFRoomState = {

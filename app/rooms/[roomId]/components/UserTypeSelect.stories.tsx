@@ -20,8 +20,7 @@ const defaultMockStore = mockStore(defaultMockState);
 export const Default: Story = {
   args: {
     extraClass: '',
-    select: (userType: IFUserType) => {
-    },
+    select: (userType: IFUserType) => {},
   },
   decorators: [(story) => <Provider store={defaultMockStore}>{story()}</Provider>],
 };

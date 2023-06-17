@@ -146,7 +146,11 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       {isConnected && (
         <>
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
-          <MemberTypeSelect type={user?.getType() || 'player'} select={changeUserType} extraClass='mb-4' />
+          <MemberTypeSelect
+            type={user?.getType() || 'player'}
+            select={changeUserType}
+            extraClass='mb-4'
+          />
           <HandsCards user={user || new User()} select={putDownCard} />
         </>
       )}

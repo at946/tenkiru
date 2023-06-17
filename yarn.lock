@@ -2285,21 +2285,21 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
-"@storybook/addon-a11y@^7.0.20":
-  version "7.0.20"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.0.20.tgz#d4d9dc21bd0b791b2caace2d7bd94f3cf8e9d224"
-  integrity sha512-RO8jAdxVNOEKLPMqq4Jp2s8KxfywmDjgK9VPy4VjSHJu2B6nv523tZLZPkdleekEUPt6gB2wsjOVaTt8qarnQA==
+"@storybook/addon-a11y@^7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.0.21.tgz#5f4015df5e8c3b61a0c6179484a3afee6495e8fb"
+  integrity sha512-bUpJXzXm6cVcHdyIzN004m/mC/yU314dBRrmXmnuZQV5FYuaykrJ7BxmjlsZovl/UZ5fcPm3TdstqqQ1UJMsrQ==
   dependencies:
-    "@storybook/addon-highlight" "7.0.20"
-    "@storybook/channels" "7.0.20"
-    "@storybook/client-logger" "7.0.20"
-    "@storybook/components" "7.0.20"
-    "@storybook/core-events" "7.0.20"
+    "@storybook/addon-highlight" "7.0.21"
+    "@storybook/channels" "7.0.21"
+    "@storybook/client-logger" "7.0.21"
+    "@storybook/components" "7.0.21"
+    "@storybook/core-events" "7.0.21"
     "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.0.20"
-    "@storybook/preview-api" "7.0.20"
-    "@storybook/theming" "7.0.20"
-    "@storybook/types" "7.0.20"
+    "@storybook/manager-api" "7.0.21"
+    "@storybook/preview-api" "7.0.21"
+    "@storybook/theming" "7.0.21"
+    "@storybook/types" "7.0.21"
     axe-core "^4.2.0"
     lodash "^4.17.21"
     react-resize-detector "^7.1.2"
@@ -2421,6 +2421,15 @@
     "@storybook/core-events" "7.0.20"
     "@storybook/global" "^5.0.0"
     "@storybook/preview-api" "7.0.20"
+
+"@storybook/addon-highlight@7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-highlight/-/addon-highlight-7.0.21.tgz#0c28980482d53d1857df2f4c6e0f8eb6e2979531"
+  integrity sha512-BMMkqLza05VeQl4+U7Gb9GrYm0BnLCU0WzcpPXlqbAZhRw1KliXyofH8buVzXoJ1Ozr9+sOHgc3ujThOrG3KAQ==
+  dependencies:
+    "@storybook/core-events" "7.0.21"
+    "@storybook/global" "^5.0.0"
+    "@storybook/preview-api" "7.0.21"
 
 "@storybook/addon-interactions@^7.0.20":
   version "7.0.20"
@@ -2794,6 +2803,20 @@
     use-resize-observer "^9.1.0"
     util-deprecate "^1.0.2"
 
+"@storybook/components@7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.0.21.tgz#4eccb4a308c79da701d072d2d5944fab888ca96f"
+  integrity sha512-5h3ptaQxSwFetd0dhlNTZeaLfDYY7Mj9n/N6pTs71piW5gaM+o/Na7EMhuDDWa001zBXYdJYdcKU/a7FDQDuGQ==
+  dependencies:
+    "@storybook/client-logger" "7.0.21"
+    "@storybook/csf" "^0.1.0"
+    "@storybook/global" "^5.0.0"
+    "@storybook/theming" "7.0.21"
+    "@storybook/types" "7.0.21"
+    memoizerific "^1.11.3"
+    use-resize-observer "^9.1.0"
+    util-deprecate "^1.0.2"
+
 "@storybook/core-client@7.0.20":
   version "7.0.20"
   resolved "https://registry.yarnpkg.com/@storybook/core-client/-/core-client-7.0.20.tgz#53d5d7ee4c84282a4e0d84ed0c389c6e997c99f2"
@@ -3067,6 +3090,27 @@
     telejson "^7.0.3"
     ts-dedent "^2.0.0"
 
+"@storybook/manager-api@7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/manager-api/-/manager-api-7.0.21.tgz#ff0bf21a3d185ece3baad66a9179f1f50a97dc88"
+  integrity sha512-YgS676/OMq2KmvYomcNzjwsVUtMYUylIt/0z5Fmg7exPXubEGpRd4OZIrQGHgcLKQRKZMK9GcsSkxebHO+qrsg==
+  dependencies:
+    "@storybook/channels" "7.0.21"
+    "@storybook/client-logger" "7.0.21"
+    "@storybook/core-events" "7.0.21"
+    "@storybook/csf" "^0.1.0"
+    "@storybook/global" "^5.0.0"
+    "@storybook/router" "7.0.21"
+    "@storybook/theming" "7.0.21"
+    "@storybook/types" "7.0.21"
+    dequal "^2.0.2"
+    lodash "^4.17.21"
+    memoizerific "^1.11.3"
+    semver "^7.3.7"
+    store2 "^2.14.2"
+    telejson "^7.0.3"
+    ts-dedent "^2.0.0"
+
 "@storybook/manager@7.0.20":
   version "7.0.20"
   resolved "https://registry.yarnpkg.com/@storybook/manager/-/manager-7.0.20.tgz#b3193da0254500db3cccce7a0d97f31831ef7b70"
@@ -3321,6 +3365,15 @@
     memoizerific "^1.11.3"
     qs "^6.10.0"
 
+"@storybook/router@7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-7.0.21.tgz#0155feb0b8119199126c19cbb2e253ce2a6ab847"
+  integrity sha512-zVEwW8PPrg3UXaBlVw9s5wXlJhm9AwG0Lta9Oc0limg1JeXtE1alV+VH8b/O5ECjp34mTXHIAyNU1EF0bozgVw==
+  dependencies:
+    "@storybook/client-logger" "7.0.21"
+    memoizerific "^1.11.3"
+    qs "^6.10.0"
+
 "@storybook/store@7.0.20":
   version "7.0.20"
   resolved "https://registry.yarnpkg.com/@storybook/store/-/store-7.0.20.tgz#1a2192d696560cbe89bb5330f183fcd4ab26d5d7"
@@ -3398,6 +3451,16 @@
   dependencies:
     "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
     "@storybook/client-logger" "7.0.20"
+    "@storybook/global" "^5.0.0"
+    memoizerific "^1.11.3"
+
+"@storybook/theming@7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.0.21.tgz#81c5cfd32e1cf2be5894eed87dbf434afc55de96"
+  integrity sha512-tgWoT0IdyPQIg+s/JMnP+MGTsAvNm6FJuiuKPebngids6rdYQ3EA5uQjBVV7De650JLhBFTFocS2Puj4Lti2bw==
+  dependencies:
+    "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
+    "@storybook/client-logger" "7.0.21"
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
 
@@ -4512,15 +4575,10 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-axe-core@^4.2.0:
+axe-core@^4.2.0, axe-core@^4.6.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.7.2.tgz#040a7342b20765cb18bb50b628394c21bccc17a0"
   integrity sha512-zIURGIS1E1Q4pcrMjp+nnEh+16G56eG/MUllJH8yEvw7asDo7Ac9uhC9KIH5jzpITueEZolfYglnCGIuSBz39g==
-
-axe-core@^4.6.2:
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.7.1.tgz#04392c9ccb3d7d7c5d2f8684f148d56d3442f33d"
-  integrity sha512-sCXXUhA+cljomZ3ZAwb8i1p3oOlkABzPy08ZDAoGcYuvtBPlQ1Ytde129ArXyHWDhfeewq7rlx9F+cUx2SSlkg==
 
 axios@^0.21.1:
   version "0.21.4"

@@ -30,6 +30,6 @@ const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => 
       <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
     </div>
   );
-}
+};
 
 export default Table;

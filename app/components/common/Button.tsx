@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { ReactNode } from 'react';
 
 interface Props {
-  children: ReactNode; 
+  children: ReactNode;
   isOutlined?: boolean;
   disabled?: boolean;
   onClick?: () => void;
@@ -22,7 +22,7 @@ const Button: NextPage<Props> = ({ children, isOutlined, disabled, onClick }) =>
       disabled={disabled}
       onClick={onClick}
     >
-      { children }
+      {children}
     </button>
   );
 };

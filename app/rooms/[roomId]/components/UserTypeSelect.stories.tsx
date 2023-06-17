@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 
 import UserTypeSelect from './UserTypeSelect';
 import { IFUserType } from '@/interfaces/userType';
-
-import { Provider } from 'react-redux';
-import { mockState, mockStore } from '@/mocks/store/store';
 
 const meta: Meta<typeof UserTypeSelect> = {
   component: UserTypeSelect,
@@ -28,12 +26,19 @@ const meta: Meta<typeof UserTypeSelect> = {
 export default meta;
 type Story = StoryObj<typeof UserTypeSelect>;
 
-const defaultMockState = mockState;
-const defaultMockStore = mockStore(defaultMockState);
 export const Default: Story = {
   args: {
+    type: 'player',
     extraClass: '',
     onChange: (userType: IFUserType) => {},
   },
-  decorators: [(story) => <Provider store={defaultMockStore}>{story()}</Provider>],
+  decorators: [
+    () => {
+      const [args, setArgs] = useArgs();
+      const onChange = (userType: IFUserType) => {
+        setArgs({ type: userType });
+      };
+      return <UserTypeSelect {...args} onChange={onChange} />;
+    },
+  ],
 };

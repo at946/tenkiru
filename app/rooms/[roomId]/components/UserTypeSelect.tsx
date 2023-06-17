@@ -24,7 +24,7 @@ const UserTypeSelect: NextPage<Props> = ({ type, extraClass, onChange }) => {
   return (
     <div className={extraClass || ''}>
       <label>
-        メンバータイプ：
+        ユーザータイプ：
         <Select options={options} value={type} onChange={handleOnChange} />
       </label>
     </div>

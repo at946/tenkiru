@@ -27,11 +27,7 @@ const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => 
 
       <TableCards nominate={nominate} />
 
-      <TableButton
-        extraClass='text-center'
-        clickOpenButton={openCards}
-        clickReplayButton={replay}
-      />
+      <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
     </div>
   );
 };

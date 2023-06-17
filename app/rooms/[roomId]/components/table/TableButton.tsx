@@ -14,7 +14,6 @@ import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
-  extraClass: string;
   clickOpenButton: () => void;
   clickReplayButton: () => void;
 }
@@ -27,7 +26,7 @@ const TableButton: NextPage<Props> = ({ extraClass, clickOpenButton, clickReplay
     tableCards.filter((tableCard: IFTableCard) => tableCard.value !== null).length === 0;
 
   return (
-    <div className={extraClass || ''}>
+    <div>
       {isOpenPhase ? (
         <Button onClick={clickReplayButton}>
           <FontAwesomeIcon icon={faReply} className='mr-2' />

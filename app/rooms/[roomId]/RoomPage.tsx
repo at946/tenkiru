@@ -6,13 +6,6 @@ import { useEffect, useCallback, useState } from 'react';
 // socket.io
 import { io, Socket } from 'socket.io-client';
 
-// hooks
-import useRoom from '@/hooks/useRoom';
-
-// class
-import { Room } from '@/class/room';
-import { User } from '@/class/user';
-
 // interfaces
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFUserType } from '@/interfaces/userType';
@@ -22,19 +15,20 @@ import { IFTableCardValue } from '@/interfaces/tableCardValue';
 // components
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
-import MemberTypeSelect from './components/UserTypeSelect';
 import HandsCards from './components/hands/HandsCards';
 import toast from 'react-hot-toast';
 import MyToaster from '@/app/components/common/MyToaster';
 import RoomInfo from './components/RoomInfo';
+import UserTypeSelect from './components/UserTypeSelect';
 
 // stores
-import { useAppDispatch } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
 import { IFRoom } from '@/interfaces/room';
+import { IFUser } from '@/interfaces/user';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 
@@ -44,9 +38,9 @@ interface Props {
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
-  const room: Room = useRoom() || new Room();
-  const user: User | undefined = room.findUserById(socket?.id);
-  const deckType: IFDeckType = room.getDeckType();
+  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
+  const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
+  const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
   const [isConnected, setIsConnected] = useState(false);
 
   // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
@@ -86,6 +80,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [socketInitializerCallback]);
 
   const onUpdateRoom = (room: IFRoom) => {
+    console.log('room: ', room);
     dispatch(updateRoom(room));
   };
 
@@ -115,6 +110,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const changeUserType = (userType: IFUserType): void => {
+    console.log(userType);
     socket.emit('change-user-type', roomId, userType);
   };
 
@@ -129,19 +125,19 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <div className='container mx-auto px-5'>
+    <div className='container mx-auto px-5 text-center'>
       <RoomInfo roomId={roomId} extraClass='text-center my-5' />
       <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
 
       {isConnected && (
         <>
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
-          <MemberTypeSelect
-            type={user?.getType() || 'player'}
-            select={changeUserType}
+          <UserTypeSelect
+            type={user?.type || 'player'}
             extraClass='mb-4'
+            onChange={changeUserType}
           />
-          <HandsCards user={user || new User()} select={putDownCard} />
+          <HandsCards user={user} select={putDownCard} />
         </>
       )}
 

@@ -16,8 +16,7 @@ type Story = StoryObj<typeof TableCardGroup>;
 
 const defaultMockState: IFRoomState = mockState;
 export const Default: Story = {
-  args: {
-  },
+  args: {},
   decorators: [
     (story) => (
       <Provider store={mockStore(defaultMockState)}>
@@ -31,8 +30,7 @@ const cardsAreCloseMockState: IFRoomState = {
   room: { ...defaultMockState.room, isOpenPhase: false },
 };
 export const CardsAreClose: Story = {
-  args: {
-  },
+  args: {},
   decorators: [
     (story) => (
       <Provider store={mockStore(cardsAreCloseMockState)}>

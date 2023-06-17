@@ -23,9 +23,8 @@ interface Props {
 const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
   const room: Room | undefined = useRoom();
   const tableCards: IFTableCard[] | undefined = room?.getTableCards();
-  const notBlankTableCards: IFTableCard[] = tableCards?.filter(
-    (tableCard: IFTableCard) => tableCard.value !== null,
-  ) || [];
+  const notBlankTableCards: IFTableCard[] =
+    tableCards?.filter((tableCard: IFTableCard) => tableCard.value !== null) || [];
 
   return (
     <div>

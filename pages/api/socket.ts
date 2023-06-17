@@ -82,7 +82,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
         const user: User | undefined = room.findUserById(socket.id);
         if (!user) return;
-        
+
         user.selectCard(selectedCardValue);
         if (user.hasSelectedCard()) {
           room.reUnshiftUser(user.getId());

@@ -15,7 +15,7 @@ export class User {
       id: this.id,
       type: this.type,
       selectedCardValue: this.selectedCardValue,
-    }
+    };
   }
 
   getId(): string {

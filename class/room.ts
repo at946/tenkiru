@@ -20,7 +20,7 @@ export class Room {
       deckType: this.deckType,
       isOpenPhase: this.isOpenPhase,
       users: this.users.map((user: User) => user.toObject()),
-    }
+    };
   }
 
   getId(): string {

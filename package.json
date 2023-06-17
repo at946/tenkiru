@@ -17,7 +17,7 @@
     "build-storybook": "storybook build",
     "test:storybook": "test-storybook",
     "test:playwright": "yarn playwright test",
-    "test:playwright:report": "yarn playwright show-report",
+    "test:playwright:report": "yarn playwright show-report playwright/playwright-report",
     "test": "yarn test:storybook && yarn test:playwright"
   },
   "dependencies": {

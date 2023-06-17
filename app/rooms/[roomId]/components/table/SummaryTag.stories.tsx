@@ -6,6 +6,16 @@ const meta: Meta<typeof SummaryTag> = {
   component: SummaryTag,
   title: 'Room/Table/SummaryTag',
   tags: ['autodocs'],
+  argTypes: {
+    name: {
+      type: { name: 'string', required: true },
+      description: 'labelエリアに表示されるテキスト',
+    },
+    value: {
+      type: { name: 'string', required: true },
+      description: 'valueエリアに表示されるテキスト',
+    },
+  },
 };
 
 export default meta;

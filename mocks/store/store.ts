@@ -44,14 +44,14 @@ export const defaultMockState: IFRoomState = {
 
 export const closePhaseMockState: IFRoomState = {
   room: {
-    ...defaultMockState,
+    ...defaultMockState.room,
     users: mockUsers,
   },
 };
 
 export const openPhaseMockState: IFRoomState = {
   room: {
-    ...closePhaseMockState,
+    ...closePhaseMockState.room,
     isOpenPhase: true,
   },
 };

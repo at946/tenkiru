@@ -39,9 +39,7 @@ const meta: Meta<typeof HandsCards> = {
       const updateSelectedCard = (card: IFTableCardValue) => {
         setArgs({ selectedCard: card });
       };
-      return (
-        <HandsCards {...args} updateSelectedCard={updateSelectedCard} />
-      );
+      return <HandsCards {...args} updateSelectedCard={updateSelectedCard} />;
     },
   ],
 };

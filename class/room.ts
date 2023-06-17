@@ -89,24 +89,6 @@ export class Room {
     return numberCardsValues as number[];
   }
 
-  getMaxInTableCards(): number | undefined {
-    if (!this.areNumberCardsExist()) return;
-    return Math.max(...this.getNumberCardsValues());
-  }
-
-  getMinInTableCards(): number | undefined {
-    if (!this.areNumberCardsExist()) return;
-    return Math.min(...this.getNumberCardsValues());
-  }
-
-  getAverageOfTableCards(): number | undefined {
-    if (!this.areNumberCardsExist()) return;
-    const numberCardsValues: number[] = this.getNumberCardsValues();
-    return (
-      Math.round((numberCardsValues.reduce((a, b) => a + b) / numberCardsValues.length) * 10) / 10
-    );
-  }
-
   getTableCards(): IFTableCard[] {
     const players: User[] = this.users.filter((user: User) => user.isPlayer());
     return players.map((player: User) => player.getCard());

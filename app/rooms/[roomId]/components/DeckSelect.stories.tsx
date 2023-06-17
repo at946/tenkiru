@@ -6,11 +6,7 @@ import { IFDeckType } from '@/interfaces/deckType';
 
 import { Store } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import {
-  closePhaseMockState,
-  mockStore,
-  openPhaseMockState,
-} from '@/mocks/store/store';
+import { closePhaseMockState, mockStore, openPhaseMockState } from '@/mocks/store/store';
 import { updateRoom } from '@/store/roomSlice';
 import { IFRoom } from '@/interfaces/room';
 
@@ -40,10 +36,8 @@ const closePhaseMockStore: Store = mockStore(closePhaseMockState);
 export const ClosePhase: Story = {
   args: {
     onChange: (newDeckType: IFDeckType) => {
-      const newState: IFRoom = { ...closePhaseMockState.room, deckType: newDeckType};
-      closePhaseMockStore.dispatch(
-        updateRoom(newState),
-      );
+      const newState: IFRoom = { ...closePhaseMockState.room, deckType: newDeckType };
+      closePhaseMockStore.dispatch(updateRoom(newState));
     },
   },
   decorators: [

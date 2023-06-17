@@ -1,22 +1,20 @@
 import { NextPage } from 'next';
-import Select from '@/app/components/common/Select';
-import { Room } from '@/class/room';
+import Select, { IFOption } from '@/app/components/common/Select';
 import Decks from '@/data/deck';
-import useRoom from '@/hooks/useRoom';
 import { IFDeck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';
+import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   extraClass: string;
-  select: (deckType: IFDeckType) => void;
+  onChange: (deckType: IFDeckType) => void;
 }
 
-const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
-  const room: Room = useRoom() || new Room();
-  const deckType: IFDeckType = room.getDeckType();
-  const cardsAreOpen: boolean = room.areCardsOpen();
+const DeckSelect: NextPage<Props> = ({ extraClass, onChange }) => {
+  const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
+  const isDisabled: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
 
-  const options = Decks.map((deck: IFDeck) => {
+  const options: IFOption = Decks.map((deck: IFDeck) => {
     return { value: deck.key, label: deck.displayName };
   });
 
@@ -27,9 +25,9 @@ const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
         <Select
           options={options}
           value={deckType}
-          disabled={cardsAreOpen}
+          disabled={isDisabled}
           onChange={(value: string) => {
-            select(value as IFDeckType);
+            onChange(value as IFDeckType);
           }}
         />
       </label>

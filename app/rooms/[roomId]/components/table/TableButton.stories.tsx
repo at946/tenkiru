@@ -1,39 +1,58 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import TableButton from './TableButton';
-import { mockState, mockStore } from '@/mocks/store/store';
+import {
+  closePhaseMockState,
+  defaultMockState,
+  mockStore,
+  openPhaseMockState,
+} from '@/mocks/store/store';
 import { Provider } from 'react-redux';
-import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof TableButton> = {
   component: TableButton,
   title: 'Room/Table/TableButton',
   tags: ['autodocs'],
+  argTypes: {
+    clickOpenButton: {
+      type: { name: 'function', required: true },
+      description: '開くボタンをクリックしたときに呼び出される関数',
+      table: {
+        category: 'Events',
+      },
+    },
+    clickReplayButton: {
+      type: { name: 'function', required: true },
+      description: 'もう一度ボタンをクリックしたときに呼び出される関数',
+      table: {
+        category: 'Events',
+      },
+    },
+  },
+  args: {
+    clickOpenButton: () => {
+      console.log('Click the open button!!');
+    },
+    clickReplayButton: () => {
+      console.log('Click the replay button!!');
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof TableButton>;
 
-const cardsAreOpenMockState: IFRoomState = {
-  room: { ...mockState.room, isOpenPhase: false },
-};
-export const AreCardsOpen: Story = {
+export const ClosePhase: Story = {
   args: {},
-  decorators: [(story) => <Provider store={mockStore(cardsAreOpenMockState)}>{story()}</Provider>],
+  decorators: [(story) => <Provider store={mockStore(openPhaseMockState)}>{story()}</Provider>],
 };
 
-const cardsAreCloseMockState: IFRoomState = mockState;
-export const CardsAreClose: Story = {
+export const OpenPhase: Story = {
   args: {},
-  decorators: [(story) => <Provider store={mockStore(cardsAreCloseMockState)}>{story()}</Provider>],
+  decorators: [(story) => <Provider store={mockStore(closePhaseMockState)}>{story()}</Provider>],
 };
 
-const noCardPutOnTableMockState: IFRoomState = {
-  room: { ...mockState.room, isOpenPhase: false },
-};
-export const NoCardPutOnTable: Story = {
+export const ClosePhaseWithBlankCards: Story = {
   args: {},
-  decorators: [
-    (story) => <Provider store={mockStore(noCardPutOnTableMockState)}>{story()}</Provider>,
-  ],
+  decorators: [(story) => <Provider store={mockStore(defaultMockState)}>{story()}</Provider>],
 };

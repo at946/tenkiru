@@ -9,7 +9,7 @@ interface Props {
 const FooterItem: NextPage<Props> = ({ href, text }) => {
   if (href.indexOf('/') === 0) {
     return (
-      <Link href={href} className='mx-2 text-xs hover:underline focus:underline'>
+      <Link href={href} className='px-2 text-xs hover:underline focus:underline'>
         {text}
       </Link>
     );
@@ -19,7 +19,7 @@ const FooterItem: NextPage<Props> = ({ href, text }) => {
         href={href}
         target='_blank'
         rel='noreferrer noopener'
-        className='mx-2 text-xs hover:underline focus:underline'
+        className='px-2 text-xs hover:underline focus:underline'
       >
         {text}
       </a>

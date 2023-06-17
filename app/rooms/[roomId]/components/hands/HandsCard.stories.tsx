@@ -1,60 +1,74 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import HandsCard from './HandsCard';
-import { Provider } from 'react-redux';
-import { mockState, mockStore } from '@/mocks/store/store';
-import { IFRoomState } from '@/store/roomSlice';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 const meta: Meta<typeof HandsCard> = {
   component: HandsCard,
   title: 'Room/Hands/HandsCard',
   tags: ['autodocs'],
+  argTypes: {
+    value: {
+      type: { name: 'other', value: 'card', required: true },
+      description: 'カードの値',
+    },
+    isDisabled: {
+      type: { name: 'boolean', required: false },
+      description: '選択可能かどうか',
+    },
+    isSelected: {
+      type: { name: 'boolean', required: false },
+      description: '選択中のカードかどうか',
+    },
+    onClick: {
+      type: { name: 'function', required: true },
+      description: 'カードを選択したときに呼び出される親コンポーネントの関数',
+      table: {
+        category: 'Events',
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof HandsCard>;
 
-const mockStateOfDefault: IFRoomState = {
-  room: { ...mockState.room, isOpenPhase: false },
-};
 export const Default: Story = {
   args: {
     value: 1,
+    isSelected: false,
+    isDisabled: false,
+    onClick: (value: IFTableCardValue) => {
+      console.log(value);
+    },
   },
-  decorators: [(story) => <Provider store={mockStore(mockStateOfDefault)}>{story()}</Provider>],
 };
 
 export const Text: Story = {
   args: {
+    ...Default.args,
     value: 'XS',
   },
-  decorators: [(story) => <Provider store={mockStore(mockStateOfDefault)}>{story()}</Provider>],
 };
 
-const mockStateOfSelected: IFRoomState = {
-  room: { ...mockState.room, isOpenPhase: false },
-};
 export const Selected: Story = {
   args: {
-    value: 1,
+    ...Default.args,
+    isSelected: true,
   },
-  decorators: [(story) => <Provider store={mockStore(mockStateOfSelected)}>{story()}</Provider>],
 };
 
-const mockStateOfDisabled = mockState;
 export const Disabled: Story = {
   args: {
-    value: 1,
+    ...Default.args,
+    isDisabled: true,
   },
-  decorators: [(story) => <Provider store={mockStore(mockStateOfDisabled)}>{story()}</Provider>],
 };
 
-const mockStateOfSelectedAndDisabled: IFRoomState = mockStateOfDefault;
 export const SelectedAndDisabled: Story = {
   args: {
-    value: 1,
+    ...Default.args,
+    isSelected: true,
+    isDisabled: true,
   },
-  decorators: [
-    (story) => <Provider store={mockStore(mockStateOfSelectedAndDisabled)}>{story()}</Provider>,
-  ],
 };

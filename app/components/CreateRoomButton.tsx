@@ -1,16 +1,19 @@
 'use client';
 
-import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { NextPage } from 'next';
-import { useState } from 'react';
-import { event } from '@/lib/gtag';
-import { v4 } from 'uuid';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { v4 } from 'uuid';
+import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { event } from '@/lib/gtag';
+
 import Button from './common/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CreateRoomButton: NextPage = () => {
-  const [isHovering, setIsHovering] = useState<boolean>(false);
   const router = useRouter();
+  const [isHovering, setIsHovering] = useState<boolean>(false);
+
   const click = (): void => {
     event({ action: 'create_room', category: 'engagement', label: '' });
     router.push(`/rooms/${encodeURIComponent(v4())}`);
@@ -18,12 +21,10 @@ const CreateRoomButton: NextPage = () => {
 
   return (
     <span onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      <Button
-        label='部屋をつくる'
-        icon={isHovering ? faDoorOpen : faDoorClosed}
-        isOutlined={true}
-        onClick={click}
-      />
+      <Button isOutlined={true} onClick={click}>
+        <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
+        <span>部屋をつくる</span>
+      </Button>
     </span>
   );
 };

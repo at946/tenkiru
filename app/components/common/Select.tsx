@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-interface Option {
+export interface IFOption {
   value: string;
   label: string;
 }

@@ -33,7 +33,7 @@ const mockUsers: IFUser[] = [
   },
 ];
 
-export const mockState: IFRoomState = {
+export const defaultMockState: IFRoomState = {
   room: {
     id: '11111',
     deckType: 'fibonacci',
@@ -42,10 +42,16 @@ export const mockState: IFRoomState = {
   },
 };
 
-export const mockStateWithUsers: IFRoomState = {
+export const closePhaseMockState: IFRoomState = {
   room: {
-    ...mockState.room,
-    isOpenPhase: true,
+    ...defaultMockState.room,
     users: mockUsers,
+  },
+};
+
+export const openPhaseMockState: IFRoomState = {
+  room: {
+    ...closePhaseMockState.room,
+    isOpenPhase: true,
   },
 };

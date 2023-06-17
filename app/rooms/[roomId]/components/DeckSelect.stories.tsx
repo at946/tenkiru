@@ -36,7 +36,7 @@ export default meta;
 type Story = StoryObj<typeof DeckSelect>;
 
 const defaultMockState: IFRoomState = {
-  room: { ...mockState.room, isOpenPhase: false }
+  room: { ...mockState.room, isOpenPhase: false },
 };
 const defaultMockStore: Store = mockStore(defaultMockState);
 export const Default: Story = {

@@ -26,9 +26,6 @@ import MemberTypeSelect from './components/UserTypeSelect';
 import HandsCards from './components/hands/HandsCards';
 import toast from 'react-hot-toast';
 import MyToaster from '@/app/components/common/MyToaster';
-import SummaryTags from './components/table/SummaryTags';
-import TableCardGroups from './components/table/TableCardGroups';
-import TableButton from './components/table/TableButton';
 import RoomInfo from './components/RoomInfo';
 
 // stores
@@ -127,16 +124,14 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   const nominate = (memberId: string): void => {
     socket.emit('nominate', memberId);
+    toast.success('指名しました！', { ariaProps: { role: 'status', 'aria-live': 'polite' } });
+    event({ action: 'nominate', category: 'engagement', label: '' });
   };
 
   return (
     <div className='container mx-auto px-5'>
       <RoomInfo roomId={roomId} extraClass='text-center my-5' />
-      <Table extraClass='mb-5'>
-        {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
-        <TableCardGroups extraClass='mb-5' nominate={nominate} />
-        <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
-      </Table>
+      <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
 
       {isConnected && (
         <>

@@ -1,20 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import SummaryTags from './SummaryTags';
-import {
-  closePhaseMockState,
-  defaultMockState,
-  mockStore,
-  openPhaseMockState,
-} from '@/mocks/store/store';
+import { closePhaseMockState, mockStore, openPhaseMockState } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
-import { IFRoomState } from '@/store/roomSlice';
+import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 
 const meta: Meta<typeof SummaryTags> = {
   component: SummaryTags,
   title: 'Room/Table/SummaryTags',
   tags: ['autodocs'],
   argTypes: {
+    tableCards: {
+      type: { name: 'other', value: 'IFTableCard', required: true },
+      description: 'サマライズしたいテーブルカードの配列',
+    },
     extraClass: {
       type: { name: 'string', required: false },
       description: '追加で適用するクラス名',
@@ -26,33 +25,27 @@ export default meta;
 type Story = StoryObj<typeof SummaryTags>;
 
 export const OpenPhase: Story = {
-  args: {},
+  args: {
+    tableCards: getTableCardsFromUsers(openPhaseMockState.room.users),
+  },
   decorators: [(story) => <Provider store={mockStore(openPhaseMockState)}>{story()}</Provider>],
 };
 
 export const ClosePhase: Story = {
-  args: {},
+  args: {
+    tableCards: getTableCardsFromUsers(closePhaseMockState.room.users),
+  },
   decorators: [(story) => <Provider store={mockStore(closePhaseMockState)}>{story()}</Provider>],
 };
 
-const NoNumberValueExistsOnOpenPhaseMockState: IFRoomState = {
-  room: {
-    ...defaultMockState,
-    isOpenPhase: true,
-    users: [
+export const NoNumberValueExistsOnOpenPhase: Story = {
+  args: {
+    tableCards: [
       {
-        id: 'aaaaa',
-        type: 'player',
-        selectedCardValue: 'XS',
+        playerId: 'aaaaa',
+        value: 'XS',
       },
     ],
   },
-};
-export const NoNumberValueExistsOnOpenPhase: Story = {
-  args: {},
-  decorators: [
-    (story) => (
-      <Provider store={mockStore(NoNumberValueExistsOnOpenPhaseMockState)}>{story()}</Provider>
-    ),
-  ],
+  decorators: [(story) => <Provider store={mockStore(openPhaseMockState)}>{story()}</Provider>],
 };

@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 // components
 import SummaryTags from './SummaryTags';
 import TableButton from './TableButton';
-import TableCardGroups from './TableCardGroups';
+import TableCards from './TableCards';
 
 // interface
 import { IFDeckType } from '@/interfaces/deckType';
@@ -24,7 +24,9 @@ const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => 
   return (
     <div className={`rounded bg-green-400 py-5 shadow-md ${extraClass || ''}`}>
       {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
-      <TableCardGroups extraClass='mb-5' nominate={nominate} />
+
+      <TableCards nominate={nominate} />
+
       <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
     </div>
   );

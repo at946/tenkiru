@@ -2,25 +2,27 @@ import { NextPage } from 'next';
 
 // components
 import SummaryTag from './SummaryTag';
-import { IFUser } from '@/interfaces/user';
 import { useAppSelector } from '@/store/hooks';
+
+// interfaces
 import { IFTableCard } from '@/interfaces/tableCard';
+import { IFUser } from '@/interfaces/user';
 
 // utils
-import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import {
   getAvgValueAmongTableCards,
   getMaxValueAmongTableCards,
   getMinValueAmongTableCards,
 } from '../../utils/getSummaryAmongTableCards';
+import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 
 interface Props {
   extraClass?: string;
 }
 
 const SummaryTags: NextPage<Props> = ({ extraClass }) => {
-  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
   const areOpen: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
+  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(users);
 
   return (

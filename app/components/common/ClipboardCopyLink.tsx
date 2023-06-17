@@ -1,7 +1,5 @@
 import { NextPage } from 'next';
 import { ReactNode } from 'react';
-import { event } from '@/lib/gtag';
-import toast from 'react-hot-toast';
 
 interface Props {
   children?: ReactNode;

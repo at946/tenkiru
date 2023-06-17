@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import TableButton from './TableButton';
-import { mockState, mockStore } from '@/mocks/store/store';
+import { closePhaseMockState, mockState, mockStore, openPhaseMockState } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
 import { IFRoomState } from '@/store/roomSlice';
 
@@ -14,18 +14,14 @@ const meta: Meta<typeof TableButton> = {
 export default meta;
 type Story = StoryObj<typeof TableButton>;
 
-const cardsAreOpenMockState: IFRoomState = {
-  room: { ...mockState.room, isOpenPhase: false },
-};
 export const AreCardsOpen: Story = {
   args: {},
-  decorators: [(story) => <Provider store={mockStore(areCardsOpenMockState)}>{story()}</Provider>],
+  decorators: [(story) => <Provider store={mockStore(openPhaseMockState)}>{story()}</Provider>],
 };
 
-const cardsAreCloseMockState: IFRoomState = mockState;
 export const CardsAreClose: Story = {
   args: {},
-  decorators: [(story) => <Provider store={mockStore(cardsAreCloseMockState)}>{story()}</Provider>],
+  decorators: [(story) => <Provider store={mockStore(closePhaseMockState)}>{story()}</Provider>],
 };
 
 const noCardPutOnTableMockState: IFRoomState = {

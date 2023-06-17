@@ -1,9 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Table from './Table';
-import { mockState, mockStore } from '@/mocks/store/store';
-import { Provider } from 'react-redux';
-import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof Table> = {
   component: Table,

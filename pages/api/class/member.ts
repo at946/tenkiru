@@ -1,5 +1,5 @@
-import { Card } from "@/interfaces/card";
-import { MemberType } from "@/interfaces/memberType";
+import { Card } from '@/interfaces/card';
+import { MemberType } from '@/interfaces/memberType';
 
 export default class Member {
   id: string;

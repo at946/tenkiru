@@ -1,5 +1,5 @@
-import { DeckType } from "@/interfaces/deckType";
-import { Member } from "@/interfaces/member";
+import { DeckType } from '@/interfaces/deckType';
+import { Member } from '@/interfaces/member';
 
 export default class Room {
   id: string;

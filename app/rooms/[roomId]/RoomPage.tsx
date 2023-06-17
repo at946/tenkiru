@@ -20,12 +20,16 @@ import { IFDeckType } from '@/interfaces/deckType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 // components
-import ClipboardCopyLink from './components/ClipboardCopyLink';
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
 import MemberTypeSelect from './components/UserTypeSelect';
 import HandsCards from './components/hands/HandsCards';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
+import MyToaster from '@/app/components/common/MyToaster';
+import SummaryTags from './components/table/SummaryTags';
+import TableCardGroups from './components/table/TableCardGroups';
+import TableButton from './components/table/TableButton';
+import RoomInfo from './components/RoomInfo';
 
 // stores
 import { useAppDispatch } from '@/store/hooks';
@@ -34,11 +38,6 @@ import { updateRoom } from '@/store/roomSlice';
 // GA
 import { event } from '@/lib/gtag';
 import { IFRoom } from '@/interfaces/room';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
-import SummaryTags from './components/table/SummaryTags';
-import TableCardGroups from './components/table/TableCardGroups';
-import TableButton from './components/table/TableButton';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 
@@ -130,24 +129,9 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('nominate', memberId);
   };
 
-  const onCopiedRoomUrl = (): void => {
-    toast.success('この部屋のURLをコピーしました', {
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
-    event({ action: 'copy_room_url', category: 'engagement', label: '' });
-  };
-
   return (
-    <div className='container mx-auto px-5 text-center'>
-      <ClipboardCopyLink
-        copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`}
-        extraClass='my-5'
-        onCopied={onCopiedRoomUrl}
-      >
-        <span>部屋番号：{roomId}</span>
-        <FontAwesomeIcon icon={faLink} className='ml-2' />
-      </ClipboardCopyLink>
-
+    <div className='container mx-auto px-5'>
+      <RoomInfo roomId={roomId} extraClass='text-center my-5' />
       <Table extraClass='mb-5'>
         {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
         <TableCardGroups extraClass='mb-5' nominate={nominate} />
@@ -166,13 +150,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         </>
       )}
 
-      <Toaster
-        toastOptions={{
-          loading: { className: 'border border-purple-600' },
-          success: { className: 'border border-lime-500' },
-          error: { className: 'border border-red-600' },
-        }}
-      />
+      <MyToaster />
     </div>
   );
 };

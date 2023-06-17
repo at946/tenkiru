@@ -1,13 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import ClipboardCopyLink from './ClipboardCopyLink';
-import { Toaster } from 'react-hot-toast';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 const meta: Meta<typeof ClipboardCopyLink> = {
   component: ClipboardCopyLink,
-  title: 'Room/ClipboardCopyLink',
+  title: 'Common/ClipboardCopyLink',
   tags: ['autodocs'],
   argTypes: {
     children: {
@@ -42,10 +39,7 @@ export const Default: Story = {
   decorators: [
     () => (
       <div>
-        <ClipboardCopyLink copiedText='http://localhost:3000/rooms/xxxxx-xxxxx-xxxxx-xxxxx'>
-          <span>部屋番号：xxxxx-xxxxx-xxxxx-xxxxx</span>
-          <FontAwesomeIcon icon={faLink} className='ml-2' />
-        </ClipboardCopyLink>
+        <ClipboardCopyLink copiedText='Thank you!!'>Click me</ClipboardCopyLink>
       </div>
     ),
   ],

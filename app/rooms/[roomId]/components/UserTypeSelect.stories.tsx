@@ -33,8 +33,7 @@ const defaultMockStore = mockStore(defaultMockState);
 export const Default: Story = {
   args: {
     extraClass: '',
-    onChange: (userType: IFUserType) => {
-    },
+    onChange: (userType: IFUserType) => {},
   },
   decorators: [(story) => <Provider store={defaultMockStore}>{story()}</Provider>],
 };

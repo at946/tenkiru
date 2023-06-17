@@ -11,7 +11,6 @@ interface Props {
 }
 
 const UserTypeSelect: NextPage<Props> = ({ type, extraClass, onChange }) => {
-
   const options: Option[] = [
     { value: 'player', label: 'プレイヤー' },
     { value: 'audience', label: '観客' },
@@ -20,7 +19,7 @@ const UserTypeSelect: NextPage<Props> = ({ type, extraClass, onChange }) => {
   const handleOnChange = (value: string): void => {
     onChange(value as IFUserType);
     event({ action: `change_member_type_${value}`, category: 'engagement', label: '' });
-  }
+  };
 
   return (
     <div className={extraClass || ''}>

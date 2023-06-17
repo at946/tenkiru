@@ -8,31 +8,31 @@ const meta: Meta<typeof HandsCards> = {
   component: HandsCards,
   title: 'Room/Hands/HandsCards',
   tags: ['autodocs'],
-  argTypes: {
-    deckType: {
-      type: { name: 'other', value: 'deckType', required: true },
-      description: 'デッキタイプ',
-      control: {
-        control: 'select',
-        options: ['option1', 'option2', 'option3'],
-      },
-    },
-    selectedCard: {
-      type: { name: 'other', value: 'card', required: false },
-      description: '選択中のカード。プレイヤーの場合に設定',
-    },
-    disabled: {
-      type: { name: 'boolean', required: false },
-      description: '手札カードの選択可否',
-    },
-    updateSelectedCard: {
-      type: { name: 'function', required: true },
-      description: '選択中のカードを更新するときに呼び出す親コンポーネントの関数',
-      table: {
-        category: 'Events',
-      },
-    },
-  },
+  // argTypes: {
+  //   deckType: {
+  //     type: { name: 'other', value: 'deckType', required: true },
+  //     description: 'デッキタイプ',
+  //     control: {
+  //       control: 'select',
+  //       options: ['option1', 'option2', 'option3'],
+  //     },
+  //   },
+  //   selectedCard: {
+  //     type: { name: 'other', value: 'card', required: false },
+  //     description: '選択中のカード。プレイヤーの場合に設定',
+  //   },
+  //   disabled: {
+  //     type: { name: 'boolean', required: false },
+  //     description: '手札カードの選択可否',
+  //   },
+  //   updateSelectedCard: {
+  //     type: { name: 'function', required: true },
+  //     description: '選択中のカードを更新するときに呼び出す親コンポーネントの関数',
+  //     table: {
+  //       category: 'Events',
+  //     },
+  //   },
+  // },
   decorators: [
     () => {
       const [args, setArgs] = useArgs();
@@ -40,7 +40,7 @@ const meta: Meta<typeof HandsCards> = {
         setArgs({ selectedCard: card });
       };
       return (
-        <HandsCards {...args} deckType={args.deckType} updateSelectedCard={updateSelectedCard} />
+        <HandsCards {...args} updateSelectedCard={updateSelectedCard} />
       );
     },
   ],

@@ -46,8 +46,8 @@ export const closePhaseMockState: IFRoomState = {
   room: {
     ...defaultMockState,
     users: mockUsers,
-  }
-}
+  },
+};
 
 export const openPhaseMockState: IFRoomState = {
   room: {

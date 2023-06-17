@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import React from 'react';
 import { Metadata } from 'next';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';

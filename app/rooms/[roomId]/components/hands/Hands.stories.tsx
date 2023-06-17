@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 
 import Hands from './Hands';
 import { Provider } from 'react-redux';
 import { closePhaseMockState, mockStore, openPhaseMockState } from '@/mocks/store/store';
 import { IFRoomState } from '@/store/roomSlice';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 const meta: Meta<typeof Hands> = {
   component: Hands,
@@ -36,8 +38,14 @@ export const Fibonacci: Story = {
     selectedValue: 1,
   },
   decorators: [
-    (story) => {
-      return <Provider store={mockStore(closePhaseMockState)}>{story()}</Provider>;
+    () => {
+      const [args, setArgs] = useArgs();
+      const onSelect = (value: IFTableCardValue) => {
+        setArgs({ selectedValue: args.selectedValue === value ? null : value });
+      };  
+      return <Provider store={mockStore(closePhaseMockState)}>
+        <Hands {...args} selectedValue={args.selectedValue} onSelect={onSelect} />
+      </Provider>;
     },
   ],
 };

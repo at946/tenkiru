@@ -11,11 +11,13 @@ import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/soc
 import { IFUserType } from '@/interfaces/userType';
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { IFRoom } from '@/interfaces/room';
+import { IFUser } from '@/interfaces/user';
 
 // components
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
-import HandsCards from './components/hands/Hands';
+import Hands from './components/hands/Hands';
 import toast from 'react-hot-toast';
 import MyToaster from '@/app/components/common/MyToaster';
 import RoomInfo from './components/RoomInfo';
@@ -27,8 +29,6 @@ import { updateRoom } from '@/store/roomSlice';
 
 // GA
 import { event } from '@/lib/gtag';
-import { IFRoom } from '@/interfaces/room';
-import { IFUser } from '@/interfaces/user';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 
@@ -135,9 +135,9 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
             extraClass='mb-4'
             onChange={changeUserType}
           />
-          <HandsCards
-            selectedValue={user?.selectedCardValue || null}
-            isDisabled={room.isOpenPhase || user?.type !== 'player'}
+          <Hands
+            selectedValue={user === undefined ? null : user.selectedCardValue }
+            isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}
             onSelect={selectCard}
           />
         </>

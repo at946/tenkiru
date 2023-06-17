@@ -7,7 +7,7 @@ interface Props {
 
 const SummaryTag: NextPage<Props> = ({ name, value }) => {
   return (
-    <div className='text-sm' aria-label={name}>
+    <div className='text-sm' aria-label={`${name} ${value}`}>
       <span className='rounded-l border border-slate-900 bg-slate-900 px-2 py-1 text-white'>
         {name}
       </span>

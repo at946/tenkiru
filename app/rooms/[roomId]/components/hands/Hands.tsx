@@ -13,7 +13,8 @@ interface Props {
   onSelect: (value: IFTableCardValue) => void;
 }
 
-const HandsCards: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
+const Hands: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
+  console.log(selectedValue)
   const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
   const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === deckType);
 
@@ -32,4 +33,4 @@ const HandsCards: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) =>
   );
 };
 
-export default HandsCards;
+export default Hands;

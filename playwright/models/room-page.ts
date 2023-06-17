@@ -46,12 +46,12 @@ export default class RoomPage {
     this.nominateButtonByCard = (card: string) => {
       return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: '指名' });
     };
-    this.minTag = page.getByLabel('最小値');
-    this.avgTag = page.getByLabel('平均値');
-    this.maxTag = page.getByLabel('最大値');
+    this.minTag = page.getByLabel('最小');
+    this.avgTag = page.getByLabel('平均');
+    this.maxTag = page.getByLabel('最大');
     this.openButton = page.getByRole('button', { name: '開く' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
-    this.memberTypeSelect = page.getByRole('combobox', { name: 'メンバータイプ：' });
+    this.memberTypeSelect = page.getByRole('combobox', { name: 'ユーザータイプ：' });
     this.deckSelect = page.getByRole('combobox', { name: 'デッキタイプ：' });
     this.hands = page.getByRole('group', { name: '手札' });
     this.handsCards = this.hands.getByRole('option', { name: '手札カード' });

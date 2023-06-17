@@ -33,7 +33,7 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
         const isTableCardBlank: boolean = tableCard.value === null;
 
         return (
-          <div key={tableCard.userId}>
+          <div key={tableCard.userId} role='group' aria-label='テーブルカードグループ'>
             <div className='mb-2 flex justify-center'>
               <TableCard value={tableCard.value} isOpen={isOpenPhase} />
             </div>

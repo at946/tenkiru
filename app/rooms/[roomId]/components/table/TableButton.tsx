@@ -1,11 +1,5 @@
 import { NextPage } from 'next';
 
-// hooks
-import useRoom from '@/hooks/useRoom';
-
-// class
-import { Room } from '@/class/room';
-
 // interface
 import { IFTableCard } from '@/interfaces/tableCard';
 
@@ -14,29 +8,36 @@ import Button from '@/app/components/common/Button';
 
 // fontawesome
 import { faHand, faReply } from '@fortawesome/free-solid-svg-icons';
+import { IFUser } from '@/interfaces/user';
+import { useAppSelector } from '@/store/hooks';
+import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
+  extraClass: string;
   clickOpenButton: () => void;
   clickReplayButton: () => void;
 }
 
-const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
-  const room: Room | undefined = useRoom();
-  const tableCards: IFTableCard[] | undefined = room?.getTableCards();
-  const notBlankTableCards: IFTableCard[] =
-    tableCards?.filter((tableCard: IFTableCard) => tableCard.value !== null) || [];
+const TableButton: NextPage<Props> = ({ extraClass, clickOpenButton, clickReplayButton }) => {
+  const isOpenPhase: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
+  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
+  const tableCards: IFTableCard[] = getTableCardsFromUsers(users);
+  const isOpenButtonDisabled: boolean =
+    tableCards.filter((tableCard: IFTableCard) => tableCard.value !== null).length === 0;
 
   return (
-    <div>
-      {room?.areCardsOpen() ? (
-        <Button label='もう一度' icon={faReply} onClick={clickReplayButton} />
+    <div className={extraClass || ''}>
+      {isOpenPhase ? (
+        <Button onClick={clickReplayButton}>
+          <FontAwesomeIcon icon={faReply} className='mr-2' />
+          <span>もう一度</span>
+        </Button>
       ) : (
-        <Button
-          label='開く'
-          icon={faHand}
-          disabled={notBlankTableCards?.length === 0}
-          onClick={clickOpenButton}
-        />
+        <Button disabled={isOpenButtonDisabled} onClick={clickOpenButton}>
+          <FontAwesomeIcon icon={faHand} className='mr-2' />
+          <span>開く</span>
+        </Button>
       )}
     </div>
   );

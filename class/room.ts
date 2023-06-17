@@ -1,9 +1,5 @@
 import { User } from './user';
-import Decks from '@/data/deck';
-import { IFTableCard } from '@/interfaces/tableCard';
 import { IFDeckType } from '@/interfaces/deckType';
-import { IFDeck } from '@/interfaces/deck';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
 import { IFRoom } from '@/interfaces/room';
 
 export class Room {
@@ -27,20 +23,8 @@ export class Room {
     return this.id;
   }
 
-  getDeckType(): IFDeckType {
-    return this.deckType;
-  }
-
-  getDeck(): IFDeck | undefined {
-    return Decks.find((deck: IFDeck) => deck.key === this.deckType);
-  }
-
   setDeckType(newDeckType: IFDeckType): void {
     this.deckType = newDeckType;
-  }
-
-  areCardsOpen(): boolean {
-    return this.isOpenPhase;
   }
 
   addUser(newUser: User): void {
@@ -71,27 +55,6 @@ export class Room {
     if (!targetUser) return;
     this.removeUser(userId);
     this.users.unshift(targetUser);
-  }
-
-  private getUsersHaveSelectedNumberCard(): User[] {
-    return this.users.filter((user: User) => user.hasSelectedNumberCard());
-  }
-
-  areNumberCardsExist(): boolean {
-    return this.getUsersHaveSelectedNumberCard().length > 0;
-  }
-
-  private getNumberCardsValues(): number[] {
-    const usersHaveSelectedNumberCard: User[] = this.getUsersHaveSelectedNumberCard();
-    const numberCardsValues: IFTableCardValue[] = usersHaveSelectedNumberCard.map((user: User) =>
-      user.getSelectedCardValue(),
-    );
-    return numberCardsValues as number[];
-  }
-
-  getTableCards(): IFTableCard[] {
-    const players: User[] = this.users.filter((user: User) => user.isPlayer());
-    return players.map((player: User) => player.getCard());
   }
 
   openCards(): void {

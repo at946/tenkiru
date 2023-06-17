@@ -42,10 +42,12 @@ export const Fibonacci: Story = {
       const [args, setArgs] = useArgs();
       const onSelect = (value: IFTableCardValue) => {
         setArgs({ selectedValue: args.selectedValue === value ? null : value });
-      };  
-      return <Provider store={mockStore(closePhaseMockState)}>
-        <Hands {...args} selectedValue={args.selectedValue} onSelect={onSelect} />
-      </Provider>;
+      };
+      return (
+        <Provider store={mockStore(closePhaseMockState)}>
+          <Hands {...args} selectedValue={args.selectedValue} onSelect={onSelect} />
+        </Provider>
+      );
     },
   ],
 };

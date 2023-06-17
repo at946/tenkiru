@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Hands: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
-  console.log(selectedValue)
+  console.log(selectedValue);
   const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
   const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === deckType);
 

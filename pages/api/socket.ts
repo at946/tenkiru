@@ -12,12 +12,6 @@ import { IFDeckType } from '@/interfaces/deckType';
 import { IFUserType } from '@/interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
-// interface
-import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
-import { IFDeckType } from '@/interfaces/deckType';
-import { IFUserType } from '@/interfaces/userType';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-
 // utils
 import { findRoomById } from './utils/findRoomById';
 
@@ -39,10 +33,6 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     const removeRoomById = (roomId: string): void => {
       const removeRoomIndex: number = rooms.findIndex((room: Room) => room.getId() === roomId);
       rooms.splice(removeRoomIndex, 1);
-    };
-
-    const findRoomById = (roomId: string): Room | undefined => {
-      return rooms.find((room: Room) => room.getId() === roomId);
     };
 
     io.on('connection', (socket) => {

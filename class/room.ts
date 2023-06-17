@@ -1,23 +1,33 @@
-import { IFTableCard } from '@/interfaces/tableCard';
 import { User } from './user';
-import { DeckType } from '@/interfaces/deckType';
 import Decks from '@/data/deck';
+import { IFTableCard } from '@/interfaces/tableCard';
+import { IFDeckType } from '@/interfaces/deckType';
 import { IFDeck } from '@/interfaces/deck';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { IFRoom } from '@/interfaces/room';
 
 export class Room {
   constructor(
-    private id: string,
-    private deckType: DeckType = 'fibonacci',
+    private id: string = '',
+    private deckType: IFDeckType = 'fibonacci',
     private isOpenPhase: boolean = false,
     private users: User[] = [],
   ) {}
+
+  toObject(): IFRoom {
+    return {
+      id: this.id,
+      deckType: this.deckType,
+      isOpenPhase: this.isOpenPhase,
+      users: this.users.map((user: User) => user.toObject()),
+    }
+  }
 
   getId(): string {
     return this.id;
   }
 
-  getDeckType(): DeckType {
+  getDeckType(): IFDeckType {
     return this.deckType;
   }
 
@@ -25,7 +35,7 @@ export class Room {
     return Decks.find((deck: IFDeck) => deck.key === this.deckType);
   }
 
-  setDeckType(newDeckType: DeckType): void {
+  setDeckType(newDeckType: IFDeckType): void {
     this.deckType = newDeckType;
   }
 
@@ -50,13 +60,15 @@ export class Room {
   }
 
   rePushUser(userId: string): void {
-    const targetUser: User = this.findUserById(userId);
+    const targetUser: User | undefined = this.findUserById(userId);
+    if (!targetUser) return;
     this.removeUser(userId);
     this.users.push(targetUser);
   }
 
   reUnshiftUser(userId: string): void {
-    const targetUser: User = this.findUserById(userId);
+    const targetUser: User | undefined = this.findUserById(userId);
+    if (!targetUser) return;
     this.removeUser(userId);
     this.users.unshift(targetUser);
   }
@@ -69,25 +81,25 @@ export class Room {
     return this.getUsersHaveSelectedNumberCard().length > 0;
   }
 
-  private getNumberCardsValues(): IFTableCardValue[] {
+  private getNumberCardsValues(): number[] {
     const usersHaveSelectedNumberCard: User[] = this.getUsersHaveSelectedNumberCard();
     const numberCardsValues: IFTableCardValue[] = usersHaveSelectedNumberCard.map((user: User) =>
       user.getSelectedCardValue(),
     );
-    return numberCardsValues;
+    return numberCardsValues as number[];
   }
 
-  getMaxInTableCards(): number | null {
+  getMaxInTableCards(): number | undefined {
     if (!this.areNumberCardsExist()) return;
     return Math.max(...this.getNumberCardsValues());
   }
 
-  getMinInTableCards(): number | null {
+  getMinInTableCards(): number | undefined {
     if (!this.areNumberCardsExist()) return;
     return Math.min(...this.getNumberCardsValues());
   }
 
-  getAverageOfTableCards(): number | null {
+  getAverageOfTableCards(): number | undefined {
     if (!this.areNumberCardsExist()) return;
     const numberCardsValues: number[] = this.getNumberCardsValues();
     return (

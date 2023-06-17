@@ -1,13 +1,22 @@
 import { IFTableCard } from '@/interfaces/tableCard';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { IFUser } from '@/interfaces/user';
 import { IFUserType } from '@/interfaces/userType';
 
 export class User {
   constructor(
-    private id: string,
+    private id: string = '',
     private type: IFUserType = 'player',
     private selectedCardValue: IFTableCardValue = null,
   ) {}
+
+  toObject(): IFUser {
+    return {
+      id: this.id,
+      type: this.type,
+      selectedCardValue: this.selectedCardValue,
+    }
+  }
 
   getId(): string {
     return this.id;
@@ -33,7 +42,7 @@ export class User {
     return this.isPlayer() && typeof this.selectedCardValue === 'number';
   }
 
-  getSelectedCardValue(): number | string {
+  getSelectedCardValue(): IFTableCardValue {
     return this.selectedCardValue;
   }
 

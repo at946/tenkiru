@@ -7,7 +7,7 @@ export interface IFRoomState {
 
 const initialState: IFRoomState = {
   room: {
-    id: null,
+    id: '',
     deckType: 'fibonacci',
     isOpenPhase: false,
     users: [],

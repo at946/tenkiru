@@ -1,8 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import Table from './Table';
-import { MockState, mockState, mockStore } from '@/mocks/store/store';
+import { mockState, mockStore } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
+import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof Table> = {
   component: Table,
@@ -13,24 +14,22 @@ const meta: Meta<typeof Table> = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-const defaultMockState: MockState = mockState;
+const defaultMockState: IFRoomState = mockState;
 export const Default: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(defaultMockState)}>{story()}</Provider>],
 };
 
-const cardsAreCloseMockState: MockState = {
-  ...defaultMockState,
-  room: { ...defaultMockState.room, cardsAreOpen: false },
+const cardsAreCloseMockState: IFRoomState = {
+  room: { ...defaultMockState.room, isOpenPhase: false },
 };
 export const CardsAreClose: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(cardsAreCloseMockState)}>{story()}</Provider>],
 };
 
-const deckIsTShirtSizeMockState: MockState = {
-  ...defaultMockState,
-  room: { cardsAreOpen: true, deckType: 'tShirtSize' },
+const deckIsTShirtSizeMockState: IFRoomState = {
+  room: { ...defaultMockState.room, isOpenPhase: true, deckType: 'tShirtSize' },
 };
 export const DeckIsTShirtSize: Story = {
   args: {},

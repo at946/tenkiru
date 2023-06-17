@@ -1,8 +1,5 @@
 import { useMemo } from 'react';
-import { useAppSelector } from '@/store/hooks';
 import { User } from '@/class/user';
-import { IFUser } from '@/store/userSlice';
-import { IFRoom } from '@/interfaces/room';
 import { Room } from '@/class/room';
 import useRoom from './useRoom';
 

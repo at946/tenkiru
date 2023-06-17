@@ -5,7 +5,6 @@ import { IFUserType } from '@/interfaces/userType';
 
 import { Provider } from 'react-redux';
 import { mockState, mockStore } from '@/mocks/store/store';
-import { updateRoom } from '@/store/roomSlice';
 
 const meta: Meta<typeof UserTypeSelect> = {
   component: UserTypeSelect,
@@ -22,8 +21,6 @@ export const Default: Story = {
   args: {
     extraClass: '',
     select: (userType: IFUserType) => {
-      defaultMockState.room.users = userType;
-      defaultMockStore.dispatch(updateRoom(defaultMockState));
     },
   },
   decorators: [(story) => <Provider store={defaultMockStore}>{story()}</Provider>],

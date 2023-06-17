@@ -3,7 +3,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import HandsCards from './HandsCards';
 import { Provider } from 'react-redux';
 import { mockState, mockStore } from '@/mocks/store/store';
-import { DeckType } from '@/interfaces/deckType';
+import { IFDeckType } from '@/interfaces/deckType';
+import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof HandsCards> = {
   component: HandsCards,
@@ -14,10 +15,10 @@ const meta: Meta<typeof HandsCards> = {
 export default meta;
 type Story = StoryObj<typeof HandsCards>;
 
-const mockStateOfFibonacci = {
+const mockStateOfFibonacci: IFRoomState = {
   room: {
     ...mockState.room,
-    DeckType: 'fibonacci',
+    deckType: 'fibonacci',
   },
 };
 export const Fibonacci: Story = {
@@ -25,18 +26,16 @@ export const Fibonacci: Story = {
   decorators: [(story) => <Provider store={mockStore(mockStateOfFibonacci)}>{story()}</Provider>],
 };
 
-const mockStateOfSequential = {
-  ...mockState,
-  room: { cardsAreOpen: false, deckType: 'sequential' as DeckType },
+const mockStateOfSequential: IFRoomState = {
+  room: { ...mockState.room, isOpenPhase: false, deckType: 'sequential' },
 };
 export const Sequential: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(mockStateOfSequential)}>{story()}</Provider>],
 };
 
-const mockStateOfTShirtSize = {
-  ...mockState,
-  room: { cardsAreOpen: false, deckType: 'tShirtSize' as DeckType },
+const mockStateOfTShirtSize: IFRoomState = {
+  room: { ...mockState.room, isOpenPhase: false, deckType: 'tShirtSize' as IFDeckType },
 };
 export const TShirtSize: Story = {
   args: {},

@@ -14,13 +14,13 @@ import { IFTableCard } from '@/interfaces/tableCard';
 
 interface Props {
   card: IFTableCard;
-  nominate: () => void;
+  nominate: (userId: string) => void;
 }
 
 const TableCardGroup: NextPage<Props> = ({ card, nominate }) => {
-  const room: Room = useRoom();
+  const room: Room = useRoom() || new Room('');
   const isCardBlank: boolean = card?.value === null;
-  const isCardOpen: boolean = room?.areCardsOpen();
+  const isCardOpen: boolean = room.areCardsOpen();
 
   return (
     <div role='group' aria-label='テーブルカードグループ'>
@@ -30,7 +30,7 @@ const TableCardGroup: NextPage<Props> = ({ card, nominate }) => {
       <div className='text-center'>
         <NominateButton
           isDisabled={!isCardOpen || isCardBlank}
-          nominate={() => nominate(card.userId)}
+          nominate={() => nominate(card?.userId)}
         />
       </div>
     </div>

@@ -12,12 +12,12 @@ import { IFTableCard } from '@/interfaces/tableCard';
 
 interface Props {
   extraClass?: string;
-  nominate: () => void;
+  nominate: (memberId: string) => void;
 }
 
 const TableCardGroups: NextPage<Props> = ({ extraClass, nominate }) => {
-  const room: Room = useRoom();
-  const tableCards: IFTableCard[] = room?.getTableCards();
+  const room: Room = useRoom() || new Room();
+  const tableCards: IFTableCard[] = room.getTableCards();
 
   return (
     <div className={`flex flex-wrap justify-center gap-4 ${extraClass || ''}`}>

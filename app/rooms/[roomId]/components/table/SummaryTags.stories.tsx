@@ -1,8 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import SummaryTags from './SummaryTags';
-import { MockState, mockState, mockStore } from '@/mocks/store/store';
+import { mockState, mockStore } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
+import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof SummaryTags> = {
   component: SummaryTags,
@@ -13,15 +14,14 @@ const meta: Meta<typeof SummaryTags> = {
 export default meta;
 type Story = StoryObj<typeof SummaryTags>;
 
-const CardsAreOpenMockState: MockState = mockState;
+const CardsAreOpenMockState: IFRoomState = mockState;
 export const CardsAreOpen: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(CardsAreOpenMockState)}>{story()}</Provider>],
 };
 
-const cardsAreCloseMockState: MockState = {
-  ...mockState,
-  room: { ...mockState.room, cardsAreOpen: false },
+const cardsAreCloseMockState: IFRoomState = {
+  room: { ...mockState.room, isOpenPhase: false },
 };
 export const CardsAreClose: Story = {
   args: {},

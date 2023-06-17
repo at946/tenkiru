@@ -8,6 +8,7 @@ import {
   openPhaseMockState,
 } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
+import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof TableButton> = {
   component: TableButton,

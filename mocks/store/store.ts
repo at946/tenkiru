@@ -39,7 +39,7 @@ export const defaultMockState: IFRoomState = {
     deckType: 'fibonacci',
     isOpenPhase: false,
     users: [],
-  },
+  }
 };
 
 export const closePhaseMockState: IFRoomState = {

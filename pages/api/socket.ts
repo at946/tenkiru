@@ -7,7 +7,7 @@ import { Room } from '@/class/room';
 import { User } from '@/class/user';
 
 // interface
-import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
+import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFUserType } from '@/interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
@@ -92,7 +92,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
         const user: User | undefined = room.findUserById(socket.id);
         if (!user) return;
-
+        
         user.selectCard(selectedCardValue);
         if (user.hasSelectedCard()) {
           room.reUnshiftUser(user.getId());

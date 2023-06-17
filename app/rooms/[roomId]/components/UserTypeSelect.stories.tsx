@@ -38,7 +38,7 @@ export const Default: Story = {
       const onChange = (userType: IFUserType) => {
         setArgs({ type: userType });
       };
-      return <UserTypeSelect {...args} onChange={onChange} />;
+      return <UserTypeSelect {...args} type={args.type} onChange={onChange} />;
     },
   ],
 };

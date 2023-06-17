@@ -15,7 +15,7 @@ import { IFTableCardValue } from '@/interfaces/tableCardValue';
 // components
 import Table from './components/table/Table';
 import DeckSelect from './components/DeckSelect';
-import HandsCards from './components/hands/HandsCards';
+import HandsCards from './components/hands/Hands';
 import toast from 'react-hot-toast';
 import MyToaster from '@/app/components/common/MyToaster';
 import RoomInfo from './components/RoomInfo';
@@ -38,9 +38,9 @@ interface Props {
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
-  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
+  const room: IFRoom = useAppSelector((state) => state.room.room);
+  const users: IFUser[] = room.users;
   const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
-  const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
   const [isConnected, setIsConnected] = useState(false);
 
   // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
@@ -80,7 +80,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [socketInitializerCallback]);
 
   const onUpdateRoom = (room: IFRoom) => {
-    console.log('room: ', room);
     dispatch(updateRoom(room));
   };
 
@@ -101,7 +100,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const openCards = (): void => {
-    event({ action: `open_with_${deckType}_deck`, category: 'engagement', label: '' });
+    event({ action: `open_with_${room.deckType}_deck`, category: 'engagement', label: '' });
     socket.emit('open-cards', roomId);
   };
 
@@ -110,11 +109,10 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const changeUserType = (userType: IFUserType): void => {
-    console.log(userType);
     socket.emit('change-user-type', roomId, userType);
   };
 
-  const putDownCard = (value: IFTableCardValue): void => {
+  const selectCard = (value: IFTableCardValue): void => {
     socket.emit('select-card', roomId, value);
   };
 
@@ -131,13 +129,17 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
       {isConnected && (
         <>
-          <DeckSelect select={changeDeckType} extraClass='mb-4' />
+          <DeckSelect extraClass='mb-4' onChange={changeDeckType} />
           <UserTypeSelect
             type={user?.type || 'player'}
             extraClass='mb-4'
             onChange={changeUserType}
           />
-          <HandsCards user={user} select={putDownCard} />
+          <HandsCards
+            selectedValue={user?.selectedCardValue || null}
+            isDisabled={room.isOpenPhase || user?.type !== 'player'}
+            onSelect={selectCard}
+          />
         </>
       )}
 

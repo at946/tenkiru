@@ -2,23 +2,27 @@ import { NextPage } from 'next';
 
 // interface
 import { IFTableCard } from '@/interfaces/tableCard';
+import { IFUser } from '@/interfaces/user';
 
 // components
 import Button from '@/app/components/common/Button';
 
 // fontawesome
-import { faHand, faReply } from '@fortawesome/free-solid-svg-icons';
-import { IFUser } from '@/interfaces/user';
-import { useAppSelector } from '@/store/hooks';
-import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHand, faReply } from '@fortawesome/free-solid-svg-icons';
+
+// redux
+import { useAppSelector } from '@/store/hooks';
+
+// utils
+import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 
 interface Props {
   clickOpenButton: () => void;
   clickReplayButton: () => void;
 }
 
-const TableButton: NextPage<Props> = ({ extraClass, clickOpenButton, clickReplayButton }) => {
+const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
   const isOpenPhase: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
   const users: IFUser[] = useAppSelector((state) => state.room.room.users);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(users);

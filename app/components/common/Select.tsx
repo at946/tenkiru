@@ -6,7 +6,7 @@ export interface IFOption {
 }
 
 interface Props {
-  options: Option[];
+  options: IFOption[];
   value?: string;
   disabled?: boolean;
   ariaLabel?: string;

@@ -14,7 +14,7 @@ const DeckSelect: NextPage<Props> = ({ extraClass, onChange }) => {
   const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
   const isDisabled: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
 
-  const options: IFOption = Decks.map((deck: IFDeck) => {
+  const options: IFOption[] = Decks.map((deck: IFDeck) => {
     return { value: deck.key, label: deck.displayName };
   });
 

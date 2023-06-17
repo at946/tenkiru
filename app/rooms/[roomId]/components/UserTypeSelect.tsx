@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
 
-import Select, { Option } from '@/app/components/common/Select';
+import Select, { IFOption } from '@/app/components/common/Select';
 
 interface Props {
   type: IFUserType;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const UserTypeSelect: NextPage<Props> = ({ type, extraClass, onChange }) => {
-  const options: Option[] = [
+  const options: IFOption[] = [
     { value: 'player', label: 'プレイヤー' },
     { value: 'audience', label: '観客' },
   ];

@@ -112,7 +112,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('change-user-type', roomId, userType);
   };
 
-  const putDownCard = (value: IFTableCardValue): void => {
+  const selectCard = (value: IFTableCardValue): void => {
     socket.emit('select-card', roomId, value);
   };
 
@@ -128,12 +128,12 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
       {isConnected && (
         <>
-          <DeckSelect extraClass='mb-4' select={changeDeckType} />
-          <UserTypeSelect type={user?.type || 'player'} extraClass='mb-4' select={changeUserType} />
+          <DeckSelect extraClass='mb-4' onChange={changeDeckType} />
+          <UserTypeSelect type={user?.type || 'player'} extraClass='mb-4' onChange={changeUserType} />
           <Hands
             selectedValue={user === undefined ? null : user.selectedCardValue}
             isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}
-            select={putDownCard}
+            onSelect={selectCard}
           />
         </>
       )}

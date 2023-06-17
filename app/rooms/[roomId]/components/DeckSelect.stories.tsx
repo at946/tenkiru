@@ -6,7 +6,8 @@ import { IFDeckType } from '@/interfaces/deckType';
 
 import { Store } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { MockState, mockState, mockStateWithUsers, mockStore } from '@/mocks/store/store';
+import { mockState, mockStateWithUsers, mockStore } from '@/mocks/store/store';
+import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof DeckSelect> = {
   component: DeckSelect,
@@ -17,9 +18,8 @@ const meta: Meta<typeof DeckSelect> = {
 export default meta;
 type Story = StoryObj<typeof DeckSelect>;
 
-const defaultMockState: MockState = {
-  ...mockState,
-  room: { ...mockState.room, isOpenPhase: false },
+const defaultMockState: IFRoomState = {
+  room: { ...mockState.room, isOpenPhase: false }
 };
 const defaultMockStore: Store = mockStore(defaultMockState);
 export const Default: Story = {
@@ -34,7 +34,7 @@ export const Default: Story = {
   ],
 };
 
-const cardsAreOpenMockState: MockState = mockStateWithUsers;
+const cardsAreOpenMockState: IFRoomState = mockStateWithUsers;
 const cardsAreOpenMockStore: Store = mockStore(cardsAreOpenMockState);
 export const CardsAreOpen: Story = {
   args: {},

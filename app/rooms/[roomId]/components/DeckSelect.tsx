@@ -3,7 +3,7 @@ import Select from '@/app/components/common/Select';
 import { Room } from '@/class/room';
 import Decks from '@/data/deck';
 import useRoom from '@/hooks/useRoom';
-import { Deck } from '@/interfaces/deck';
+import { IFDeck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';
 
 interface Props {
@@ -12,11 +12,11 @@ interface Props {
 }
 
 const DeckSelect: NextPage<Props> = ({ select, extraClass }) => {
-  const room: Room | undefined = useRoom();
-  const deckType: IFDeckType = room?.getDeckType();
-  const cardsAreOpen: boolean = room?.areCardsOpen();
+  const room: Room = useRoom() || new Room();
+  const deckType: IFDeckType = room.getDeckType();
+  const cardsAreOpen: boolean = room.areCardsOpen();
 
-  const options = Decks.map((deck: Deck) => {
+  const options = Decks.map((deck: IFDeck) => {
     return { value: deck.key, label: deck.displayName };
   });
 

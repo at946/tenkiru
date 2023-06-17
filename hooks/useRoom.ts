@@ -11,13 +11,13 @@ import { User } from '@/class/user';
 import { IFRoom } from '@/interfaces/room';
 import { IFUser } from '@/interfaces/user';
 
-const useRoom = (): Room | undefined => {
+const useRoom = (): Room => {
   const roomState: IFRoom = useAppSelector((state) => state.room.room);
 
   const instantiatedRoom = useMemo(() => {
-    if (!roomState) return;
-    const users: IFUser[] = [];
-    roomState.users?.forEach((user: IFUser) => {
+    if (!roomState) return new Room();
+    const users: User[] = [];
+    roomState.users.forEach((user: IFUser) => {
       users.push(new User(user.id, user.type, user.selectedCardValue));
     });
 

@@ -7,7 +7,7 @@ import { Room } from '@/class/room';
 import { User } from '@/class/user';
 
 // interface
-import { ClientToServerEvents, ServerToClientEvents } from '@/interfaces/socket';
+import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFUserType } from '@/interfaces/userType';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
@@ -25,7 +25,7 @@ type NextApiResponseSocketIO = NextApiResponse & {
 
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
   if (!res.socket.server.io) {
-    const io = new SocketIOServer<ClientToServerEvents, ServerToClientEvents>(
+    const io = new SocketIOServer<IFClientToServerEvents, IFServerToClientEvents>(
       res.socket.server as any,
     );
     const rooms: Room[] = [];
@@ -45,7 +45,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         socket.join(roomId);
         room.addUser(new User(socket.id));
 
-        io.to(roomId).emit('update-room', room);
+        io.to(roomId).emit('update-room', room.toObject());
       });
 
       socket.on('change-deck-type', (roomId: string, newDeckType: IFDeckType) => {
@@ -55,7 +55,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         room.setDeckType(newDeckType);
         room.resetCards();
 
-        io.to(roomId).emit('update-room', room);
+        io.to(roomId).emit('update-room', room.toObject());
       });
 
       socket.on('change-user-type', (roomId: string, newUserType: IFUserType) => {
@@ -73,14 +73,16 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           room.rePushUser(user.getId());
         }
 
-        io.to(roomId).emit('update-room', room);
+        io.to(roomId).emit('update-room', room.toObject());
       });
 
       socket.on('select-card', (roomId: string, selectedCardValue: IFTableCardValue) => {
         const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
-        const user: User = room.findUserById(socket.id);
+        const user: User | undefined = room.findUserById(socket.id);
+        if (!user) return;
+        
         user.selectCard(selectedCardValue);
         if (user.hasSelectedCard()) {
           room.reUnshiftUser(user.getId());
@@ -88,7 +90,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           room.rePushUser(user.getId());
         }
 
-        io.to(roomId).emit('update-room', room);
+        io.to(roomId).emit('update-room', room.toObject());
       });
 
       socket.on('open-cards', (roomId) => {
@@ -97,7 +99,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
         room.openCards();
 
-        io.to(roomId).emit('update-room', room);
+        io.to(roomId).emit('update-room', room.toObject());
       });
 
       socket.on('replay', (roomId) => {
@@ -106,7 +108,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
         room.replay();
 
-        io.to(roomId).emit('update-room', room);
+        io.to(roomId).emit('update-room', room.toObject());
       });
 
       socket.on('nominate', (memberId) => {
@@ -123,7 +125,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
           if (!room.hasUsers()) {
             removeRoomById(roomId);
           } else {
-            io.to(roomId).emit('update-room', room);
+            io.to(roomId).emit('update-room', room.toObject());
           }
         });
       });

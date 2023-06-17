@@ -20,7 +20,7 @@ interface Props {
 
 const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => {
   const room: Room = useRoom();
-  const deckType: string = room?.getDeckType();
+  const deckType: string = room.getDeckType();
 
   return (
     <div className={`rounded bg-green-400 py-5 shadow-md ${extraClass}`}>

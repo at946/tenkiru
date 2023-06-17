@@ -9,12 +9,11 @@ import Decks from '@/data/deck';
 
 interface Props {
   selectedValue: IFTableCardValue;
-  isDisabled: boolean;
+  isDisabled?: boolean;
   onSelect: (value: IFTableCardValue) => void;
 }
 
 const Hands: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
-  console.log(selectedValue);
   const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
   const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === deckType);
 
@@ -25,7 +24,7 @@ const Hands: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
           key={value}
           value={value}
           isSelected={value === selectedValue}
-          isDisabled={isDisabled}
+          isDisabled={!!isDisabled}
           onClick={onSelect}
         />
       ))}

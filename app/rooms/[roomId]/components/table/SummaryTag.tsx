@@ -12,7 +12,7 @@ const SummaryTag: NextPage<Props> = ({ name, value }) => {
         {name}
       </span>
       <span className='rounded-r border border-slate-900 bg-white px-2 py-1'>
-        {isOpen ? value : '?'}
+        { value }
       </span>
     </div>
   );

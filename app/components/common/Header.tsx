@@ -9,7 +9,10 @@ const Header: NextPage = () => {
       <div className='container mx-auto p-5'>
         <div className='flex items-center justify-between'>
           <div>
-            <Link href='/' className='px-2 font-bold text-purple-600 hover:underline focus:underline'>
+            <Link
+              href='/'
+              className='px-2 font-bold text-purple-600 hover:underline focus:underline'
+            >
               Tenkir
             </Link>
           </div>

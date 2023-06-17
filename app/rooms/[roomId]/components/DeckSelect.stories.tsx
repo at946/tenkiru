@@ -6,18 +6,14 @@ import { IFDeckType } from '@/interfaces/deckType';
 
 import { Store } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { mockState, mockStateWithUsers, mockStore } from '@/mocks/store/store';
-import { IFRoomState } from '@/store/roomSlice';
+import { closePhaseMockState, defaultMockState, mockStore, openPhaseMockState } from '@/mocks/store/store';
+import { updateRoom } from '@/store/roomSlice';
 
 const meta: Meta<typeof DeckSelect> = {
   component: DeckSelect,
   title: 'Room/DeckSelect',
   tags: ['autodocs'],
   argTypes: {
-    disabled: {
-      type: { name: 'boolean', required: false },
-      description: 'このコンポーネントの利用可否',
-    },
     extraClass: {
       type: { name: 'string', required: false },
       description: '追加で適用するクラス名',
@@ -35,31 +31,31 @@ const meta: Meta<typeof DeckSelect> = {
 export default meta;
 type Story = StoryObj<typeof DeckSelect>;
 
-const defaultMockState: IFRoomState = {
-  room: { ...mockState.room, isOpenPhase: false },
-};
-const defaultMockStore: Store = mockStore(defaultMockState);
-export const Default: Story = {
+const closePhaseMockStore: Store = mockStore(closePhaseMockState);
+export const ClosePhase: Story = {
   args: {
-    disabled: false,
-    extraClass: '',
-    onChange: (deckType: IFDeckType) => {
+    onChange: (newDeckType: IFDeckType) => {
+      closePhaseMockState.dispatch(updateRoom({
+        room: {
+          ...defaultMockState,
+          deckType: newDeckType,
+        }
+      }))
     },
   },
   decorators: [
     (story) => {
-      return <Provider store={defaultMockStore}>{story()}</Provider>;
+      return <Provider store={closePhaseMockStore}>{story()}</Provider>;
     },
   ],
 };
 
-const cardsAreOpenMockState: IFRoomState = mockStateWithUsers;
-const cardsAreOpenMockStore: Store = mockStore(cardsAreOpenMockState);
-export const CardsAreOpen: Story = {
+const openPhaseMockStore: Store = mockStore(openPhaseMockState);
+export const OpenPhase: Story = {
   args: {},
   decorators: [
     (story) => {
-      return <Provider store={disabledMockStore}>{story()}</Provider>;
+      return <Provider store={openPhaseMockStore}>{story()}</Provider>;
     },
   ],
 };

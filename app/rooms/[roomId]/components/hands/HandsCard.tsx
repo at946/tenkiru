@@ -21,13 +21,13 @@ const HandsCard: NextPage<Props> = ({ value, isSelected, isDisabled, onClick }) 
       onClick={onClickHandler}
       className={`
         flex aspect-card w-24 items-center justify-center rounded-md border border-slate-900 text-2xl font-bold shadow enabled:hover:-translate-y-2 enabled:hover:shadow-2xl enabled:focus:-translate-y-2 enabled:focus:shadow-2xl disabled:cursor-not-allowed
-        ${selected ? 'bg-rose-500 text-white' : 'bg-white text-slate-900 disabled:opacity-50'}
+        ${isSelected ? 'bg-rose-500 text-white' : 'bg-white text-slate-900 disabled:opacity-50'}
       `}
-      disabled={disabled}
+      disabled={isDisabled}
       role='option'
       aria-label='手札カード'
-      aria-disabled={disabled}
-      aria-selected={selected}
+      aria-disabled={isDisabled}
+      aria-selected={isSelected}
     >
       {value}
       {value}

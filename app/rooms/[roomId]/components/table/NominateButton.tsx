@@ -3,6 +3,7 @@ import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { event } from '@/lib/gtag';
 import toast from 'react-hot-toast';
 import Button from '@/app/components/common/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
   isDisabled: boolean;

@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import HandsCard from './HandsCard';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 const meta: Meta<typeof HandsCard> = {
   component: HandsCard,
@@ -11,17 +12,20 @@ const meta: Meta<typeof HandsCard> = {
       type: { name: 'other', value: 'card', required: true },
       description: 'カードの値',
     },
-    disabled: {
+    isDisabled: {
       type: { name: 'boolean', required: false },
       description: '選択可能かどうか',
     },
-    selected: {
+    isSelected: {
       type: { name: 'boolean', required: false },
       description: '選択中のカードかどうか',
     },
-    onSelect: {
+    onClick: {
       type: { name: 'function', required: true },
       description: 'カードを選択したときに呼び出される親コンポーネントの関数',
+      table: {
+        category: 'Events',
+      },
     },
   },
 };
@@ -32,9 +36,9 @@ type Story = StoryObj<typeof HandsCard>;
 export const Default: Story = {
   args: {
     value: 1,
-    selected: false,
-    disabled: false,
-    onSelect: (value: Card) => {
+    isSelected: false,
+    isDisabled: false,
+    onClick: (value: IFTableCardValue) => {
       console.log(value);
     },
   },
@@ -50,21 +54,21 @@ export const Text: Story = {
 export const Selected: Story = {
   args: {
     ...Default.args,
-    selected: true,
+    isSelected: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
     ...Default.args,
-    disabled: true,
+    isDisabled: true,
   },
 };
 
 export const SelectedAndDisabled: Story = {
   args: {
     ...Default.args,
-    selected: true,
-    disabled: true,
+    isSelected: true,
+    isDisabled: true,
   },
 };

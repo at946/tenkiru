@@ -16,8 +16,8 @@ import { User } from '@/class/user';
 // interfaces
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFUserType } from '@/interfaces/userType';
-import { DeckType } from '@/interfaces/deckType';
-import { IFHandsCardValue } from '@/interfaces/handsCardValue';
+import { IFDeckType } from '@/interfaces/deckType';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 // components
 import ClipboardCopyLink from './components/ClipboardCopyLink';
@@ -43,9 +43,9 @@ interface Props {
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
   const dispatch = useAppDispatch();
-  const room: Room = useRoom();
+  const room: Room = useRoom() || new Room();
   const user: User | undefined = room.findUserById(socket?.id);
-  const deckType: DeckType = room.getDeckType();
+  const deckType: IFDeckType = room.getDeckType();
   const [isConnected, setIsConnected] = useState(false);
 
   // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
@@ -100,7 +100,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     audio?.play();
   };
 
-  const changeDeckType = (newDeckType: DeckType): void => {
+  const changeDeckType = (newDeckType: IFDeckType): void => {
     socket.emit('change-deck-type', roomId, newDeckType);
   };
 
@@ -117,7 +117,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('change-user-type', roomId, userType);
   };
 
-  const putDownCard = (value: IFHandsCardValue): void => {
+  const putDownCard = (value: IFTableCardValue): void => {
     socket.emit('select-card', roomId, value);
   };
 
@@ -152,8 +152,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       {isConnected && (
         <>
           <DeckSelect select={changeDeckType} extraClass='mb-4' />
-          <MemberTypeSelect type={user?.getType()} select={changeUserType} extraClass='mb-4' />
-          <HandsCards user={user} select={putDownCard} />
+          <MemberTypeSelect type={user?.getType() || 'player'} select={changeUserType} extraClass='mb-4' />
+          <HandsCards user={user || new User()} select={putDownCard} />
         </>
       )}
 

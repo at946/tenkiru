@@ -2,12 +2,13 @@ import { NextPage } from 'next';
 
 // interface
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 interface Props {
   value: IFHandsCardValue;
   isSelected: boolean;
   isDisabled: boolean;
-  onClick: () => void;
+  onClick: (value: IFTableCardValue) => void;
 }
 
 const HandsCard: NextPage<Props> = ({ value, isSelected, isDisabled, onClick }) => {

@@ -2,34 +2,34 @@ import { Store, configureStore } from '@reduxjs/toolkit';
 import { IFRoomState, roomSlice } from '@/store/roomSlice';
 import { IFUser } from '@/interfaces/user';
 
-export const mockStore = (preloadedState?: IFRoomState): Store =>
+export const mockStore = (preloadedState: IFRoomState): Store =>
   configureStore({
     reducer: {
       [roomSlice.name]: roomSlice.reducer,
     },
-    preloadedState: preloadedState,
+    preloadedState: { room: preloadedState },
   });
 
 const mockUsers: IFUser[] = [
   {
     id: '1',
     type: 'player',
-    selectedCard: 1,
+    selectedCardValue: 1,
   },
   {
     id: '2',
     type: 'player',
-    selectedCard: 2,
+    selectedCardValue: 2,
   },
   {
     id: '3',
     type: 'player',
-    selectedCard: null,
+    selectedCardValue: null,
   },
   {
     id: '4',
     type: 'audience',
-    selectedCard: null,
+    selectedCardValue: null,
   },
 ];
 
@@ -39,7 +39,7 @@ export const mockState: IFRoomState = {
     deckType: 'fibonacci',
     isOpenPhase: false,
     users: [],
-  },
+  }
 };
 
 export const mockStateWithUsers: IFRoomState = {

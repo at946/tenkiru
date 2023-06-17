@@ -1,8 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import TableCardGroups from './TableCardGroups';
-import { MockState, mockState, mockStore } from '@/mocks/store/store';
+import { mockState, mockStore } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
+import { IFRoomState } from '@/store/roomSlice';
 
 const meta: Meta<typeof TableCardGroups> = {
   component: TableCardGroups,
@@ -13,15 +14,14 @@ const meta: Meta<typeof TableCardGroups> = {
 export default meta;
 type Story = StoryObj<typeof TableCardGroups>;
 
-const defaultMockState: MockState = mockState;
+const defaultMockState: IFRoomState = mockState;
 export const Default: Story = {
   args: {},
   decorators: [(story) => <Provider store={mockStore(defaultMockState)}>{story()}</Provider>],
 };
 
-const cardsAreCloseMockState: MockState = {
-  ...defaultMockState,
-  room: { ...defaultMockState.room, areCardsOpen: false },
+const cardsAreCloseMockState: IFRoomState = {
+  room: { ...defaultMockState.room, isOpenPhase: false },
 };
 export const CardsAreClose: Story = {
   args: {},

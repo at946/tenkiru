@@ -58,8 +58,16 @@ test('ルームページで、カードをオープンにしたとき、「早�
   context,
 }) => {
   // Given
+  const roomId: string = createRoomId();
+  const roomPage: RoomPage = new RoomPage(await context.newPage());
+  await roomPage.goto(roomId);
+  await roomPage.selectCard('0');
+
   // When
+  await roomPage.openCards();
+
   // Then
+  await expect(roomPage.requestToSelectButton).not.toBeVisible();
 });
 
 test('ルームページで、全プレイヤーがカードを出しているとき、「早く選んで」ボタンは選択できないこと', async ({

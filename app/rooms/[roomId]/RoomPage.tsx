@@ -97,6 +97,11 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('open-cards', roomId);
   };
 
+  const requestToSelect = (): void => {
+    toast.success('まだカードを選んでないプレイヤーに\n呼びかけました 📣');
+    playAudio('/alert.mp3');
+  };
+
   const replay = (): void => {
     socket.emit('replay', roomId);
   };
@@ -118,7 +123,13 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   return (
     <div className='container mx-auto px-5 text-center'>
       <RoomInfo roomId={roomId} extraClass='my-5' />
-      <Table extraClass='mb-5' openCards={openCards} replay={replay} nominate={nominate} />
+      <Table
+        extraClass='mb-5'
+        openCards={openCards}
+        requestToSelect={requestToSelect}
+        replay={replay}
+        nominate={nominate}
+      />
       {isConnected && (
         <>
           <DeckSelect extraClass='mb-4' onChange={changeDeckType} />

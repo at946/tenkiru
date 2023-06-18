@@ -14,11 +14,12 @@ import { useAppSelector } from '@/store/hooks';
 interface Props {
   extraClass?: string;
   openCards: () => void;
+  requestToSelect: () => void;
   replay: () => void;
   nominate: (userId: string) => void;
 }
 
-const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => {
+const Table: NextPage<Props> = ({ extraClass, openCards, requestToSelect, replay, nominate }) => {
   const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
 
   return (
@@ -27,7 +28,11 @@ const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => 
 
       <TableCards nominate={nominate} />
 
-      <TableButtons clickOpenButton={openCards} clickReplayButton={replay} />
+      <TableButtons
+        clickOpenButton={openCards}
+        clickRequestToSelectButton={requestToSelect}
+        clickReplayButton={replay}
+      />
     </div>
   );
 };

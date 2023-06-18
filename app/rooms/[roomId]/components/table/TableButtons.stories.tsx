@@ -22,6 +22,13 @@ const meta: Meta<typeof TableButtons> = {
         category: 'Events',
       },
     },
+    clickRequestToSelectButton: {
+      type: { name: 'function', required: true },
+      description: '早く選んでボタンをクリックしたときに呼び出される関数',
+      table: {
+        category: 'Events',
+      },
+    },
     clickReplayButton: {
       type: { name: 'function', required: true },
       description: 'もう一度ボタンをクリックしたときに呼び出される関数',
@@ -33,6 +40,9 @@ const meta: Meta<typeof TableButtons> = {
   args: {
     clickOpenButton: () => {
       console.log('Click the open button!!');
+    },
+    clickRequestToSelectButton: () => {
+      console.log('Click the request to select button!!');
     },
     clickReplayButton: () => {
       console.log('Click the replay button!!');

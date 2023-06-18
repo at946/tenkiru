@@ -2,6 +2,8 @@ import { Locator, Page } from '@playwright/test';
 import Head from './common/head';
 
 import urls from '../helpers/urls';
+import { IFUserType } from '@/interfaces/userType';
+import { IFDeckType } from '@/interfaces/deckType';
 
 export default class RoomPage {
   readonly page: Page;
@@ -20,7 +22,7 @@ export default class RoomPage {
   readonly openButton: Locator;
   readonly requestToSelectButton: Locator;
   readonly replayButton: Locator;
-  readonly memberTypeSelect: Locator;
+  readonly userTypeSelect: Locator;
   readonly deckSelect: Locator;
   readonly hands: Locator;
   readonly handsCards: Locator;
@@ -30,6 +32,7 @@ export default class RoomPage {
   readonly haveEnteredRoomToast: Locator;
   readonly copyUrlToast: Locator;
   readonly haveRequestedToSelectToast: Locator;
+  readonly hadBeenRequestedToSelectToast: Locator;
   readonly haveNominatedToast: Locator;
   readonly haveBeenNominatedToast: Locator;
 
@@ -54,7 +57,7 @@ export default class RoomPage {
     this.openButton = page.getByRole('button', { name: '開く' });
     this.requestToSelectButton = page.getByRole('button', { name: '早く選んで' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
-    this.memberTypeSelect = page.getByRole('combobox', { name: 'ユーザータイプ：' });
+    this.userTypeSelect = page.getByRole('combobox', { name: 'ユーザータイプ：' });
     this.deckSelect = page.getByRole('combobox', { name: 'デッキタイプ：' });
     this.hands = page.getByRole('group', { name: '手札' });
     this.handsCards = this.hands.getByRole('option', { name: '手札カード' });
@@ -65,7 +68,10 @@ export default class RoomPage {
     this.copyUrlToast = page.getByRole('status').getByText('この部屋のURLをコピーしました');
     this.haveRequestedToSelectToast = page
       .getByRole('status')
-      .getByText('まだカードを選んでないプレイヤーに\n呼びかけました');
+      .getByText('カード未選択のプレイヤーに\n呼びかけました');
+    this.hadBeenRequestedToSelectToast = page
+      .getByRole('status')
+      .getByText('そろそろカードを選んでください');
     this.haveNominatedToast = page.getByRole('status').getByText('指名しました！');
     this.haveBeenNominatedToast = page.getByRole('status').getByText('指名されました！');
 
@@ -101,11 +107,11 @@ export default class RoomPage {
     await this.nominateButtonByCard(value).click();
   }
 
-  async selectMemberType(memberType: string) {
-    await this.memberTypeSelect.selectOption(memberType);
+  async selectUserType(userType: IFUserType) {
+    await this.userTypeSelect.selectOption(userType);
   }
 
-  async selectDeck(deck: string) {
+  async selectDeck(deck: IFDeckType) {
     await this.deckSelect.selectOption(deck);
   }
 

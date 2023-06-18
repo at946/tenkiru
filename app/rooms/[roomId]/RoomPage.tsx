@@ -52,6 +52,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
       socket.on('connect', () => setIsConnected(true));
       socket.on('update-room', onUpdateRoom);
+      socket.on('receive-request-to-select', onRecieveRequestToSelect);
       socket.on('nominate', onNominate);
       socket.on('disconnect', () => setIsConnected(false));
 
@@ -70,18 +71,22 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId]);
 
-  const onUpdateRoom = (room: IFRoom) => {
+  const onUpdateRoom = (room: IFRoom): void => {
     dispatch(updateRoom(room));
   };
 
-  const onNominate = () => {
+  const onRecieveRequestToSelect = (): void => {
+    toast('そろそろカードを選んでください', {
+      icon: '🙏',
+      ariaProps: { role: 'status', 'aria-live': 'polite' },
+    });
+    playAudio('/audio/alert.mp3');
+  };
+
+  const onNominate = (): void => {
     toast('指名されました！', {
-      className: 'border-2 border-purple-600',
       icon: '🎉',
-      ariaProps: {
-        role: 'status',
-        'aria-live': 'polite',
-      },
+      ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
     playAudio('/audio/notify.mp3');
   };
@@ -96,8 +101,11 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const requestToSelect = (): void => {
-    toast.success('まだカードを選んでないプレイヤーに\n呼びかけました 📣');
-    playAudio('/audio/alert.mp3');
+    socket.emit('request-to-select', roomId);
+    toast.success('カード未選択のプレイヤーに\n呼びかけました', {
+      icon: '📣',
+      ariaProps: { role: 'status', 'aria-live': 'polite' },
+    });
   };
 
   const replay = (): void => {
@@ -114,7 +122,10 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   const nominate = (memberId: string): void => {
     socket.emit('nominate', memberId);
-    toast.success('指名しました！', { ariaProps: { role: 'status', 'aria-live': 'polite' } });
+    toast.success('指名しました！', {
+      icon: '👍',
+      ariaProps: { role: 'status', 'aria-live': 'polite' },
+    });
     event({ action: 'nominate', category: 'engagement', label: '' });
   };
 

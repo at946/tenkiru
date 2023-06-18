@@ -337,7 +337,7 @@ test('ルームページで、カードをオープンにしたあとで、プ�
   await expect(roomPage3.maxTag).toHaveText('最大13');
 
   // When
-  await roomPage3.selectMemberType('観客');
+  await roomPage3.selectUserType('観客');
 
   // Then
   await expect(roomPage1.minTag).toHaveText('最小3');

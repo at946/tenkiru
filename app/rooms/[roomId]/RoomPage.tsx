@@ -96,8 +96,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   const openCards = (): void => {
-    event({ action: `open_with_${room.deckType}_deck`, category: 'engagement', label: '' });
     socket.emit('open-cards', roomId);
+    event({ action: `open_with_${room.deckType}_deck`, category: 'engagement', label: '' });
   };
 
   const requestToSelect = (): void => {
@@ -106,6 +106,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       icon: '📣',
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
+    event({ action: `request-to-select`, category: 'engagement', label: '' });
   };
 
   const replay = (): void => {

@@ -64,7 +64,7 @@ test('ルームページで、カードがオープンされているとき、�
   await roomPage3.goto(roomId);
   await roomPage1.selectCard('0');
   await roomPage2.selectCard('1');
-  await roomPage3.selectMemberType('audience');
+  await roomPage3.selectUserType('audience');
 
   await expect(roomPage1.deckSelect).not.toBeDisabled();
   await expect(roomPage2.deckSelect).not.toBeDisabled();

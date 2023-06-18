@@ -51,6 +51,15 @@ export class Room {
     return this.users.find((user: User) => user.getId() === userId);
   }
 
+  getPlayers(): User[] {
+    return this.users.filter((user: User) => user.isPlayer());
+  }
+
+  getPlayersNotSelectCard(): User[] {
+    const players: User[] = this.getPlayers();
+    return players.filter((player: User) => !player.hasSelectedCard());
+  }
+
   hasUsers(): boolean {
     return this.users.length > 0;
   }

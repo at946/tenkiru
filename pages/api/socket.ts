@@ -36,7 +36,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
     };
 
     io.on('connection', (socket) => {
-      socket.on('join-room', (roomId: string) => {
+      socket.on('join-room', (roomId: string): void => {
         let room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) {
           room = new Room(roomId);
@@ -48,7 +48,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room.toObject());
       });
 
-      socket.on('change-deck-type', (roomId: string, newDeckType: IFDeckType) => {
+      socket.on('change-deck-type', (roomId: string, newDeckType: IFDeckType): void => {
         const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
@@ -58,7 +58,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room.toObject());
       });
 
-      socket.on('change-user-type', (roomId: string, newUserType: IFUserType) => {
+      socket.on('change-user-type', (roomId: string, newUserType: IFUserType): void => {
         const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
@@ -76,7 +76,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room.toObject());
       });
 
-      socket.on('select-card', (roomId: string, selectedCardValue: IFTableCardValue) => {
+      socket.on('select-card', (roomId: string, selectedCardValue: IFTableCardValue): void => {
         const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
@@ -93,7 +93,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room.toObject());
       });
 
-      socket.on('open-cards', (roomId) => {
+      socket.on('open-cards', (roomId: string): void => {
         const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
@@ -102,7 +102,18 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room.toObject());
       });
 
-      socket.on('replay', (roomId) => {
+      socket.on('request-to-select', (roomId: string) => {
+        const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
+        if (!room) return;
+
+        const players: User[] = room.getPlayersNotSelectCard();
+
+        players.forEach((player: User) => {
+          io.to(player.getId()).emit('receive-request-to-select');
+        });
+      });
+
+      socket.on('replay', (roomId: string): void => {
         const room: Room | undefined = findRoomById({ rooms: rooms, roomId: roomId });
         if (!room) return;
 
@@ -111,11 +122,11 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room.toObject());
       });
 
-      socket.on('nominate', (memberId) => {
+      socket.on('nominate', (memberId: string): void => {
         io.to(memberId).emit('nominate');
       });
 
-      socket.on('disconnecting', () => {
+      socket.on('disconnecting', (): void => {
         socket.rooms.forEach((roomId) => {
           const room: Room | undefined = rooms.find((room: Room) => room.getId() === roomId);
           if (!room) return;

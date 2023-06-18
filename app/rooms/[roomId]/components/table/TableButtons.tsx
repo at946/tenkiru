@@ -19,10 +19,15 @@ import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 
 interface Props {
   clickOpenButton: () => void;
+  clickRequestToSelectButton: () => void;
   clickReplayButton: () => void;
 }
 
-const TableButtons: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
+const TableButtons: NextPage<Props> = ({
+  clickOpenButton,
+  clickRequestToSelectButton,
+  clickReplayButton,
+}) => {
   const isOpenPhase: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
   const users: IFUser[] = useAppSelector((state) => state.room.room.users);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(users);
@@ -45,7 +50,11 @@ const TableButtons: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =
             <FontAwesomeIcon icon={faHand} className='mr-2' />
             <span>開く</span>
           </Button>
-          <Button isOutlined={true} disabled={isEveryoneSelectedCard}>
+          <Button
+            isOutlined={true}
+            disabled={isEveryoneSelectedCard}
+            onClick={clickRequestToSelectButton}
+          >
             <FontAwesomeIcon icon={faHandsPraying} className='mr-2' />
             <span>早く選んで</span>
           </Button>

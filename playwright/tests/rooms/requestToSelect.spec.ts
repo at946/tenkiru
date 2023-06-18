@@ -11,9 +11,9 @@ test('ルームページで、「早く選んで」ボタンを選択したと�
   const roomPage2: RoomPage = new RoomPage(await context.newPage());
   const roomPage3: RoomPage = new RoomPage(await context.newPage());
   await roomPage1.goto(roomId);
-  await roomPage1.selectCard('0');
   await roomPage2.goto(roomId);
   await roomPage3.goto(roomId);
+  await roomPage1.selectCard('0');
   await roomPage3.selectUserType('audience');
 
   // When
@@ -37,9 +37,9 @@ test('ルームページで、「早く選んで」ボタンを選択したと�
   const roomPage2: RoomPage = new RoomPage(await context.newPage());
   const roomPage3: RoomPage = new RoomPage(await context.newPage());
   await roomPage1.goto(roomId);
-  await roomPage1.selectCard('0');
   await roomPage2.goto(roomId);
   await roomPage3.goto(roomId);
+  await roomPage1.selectCard('0');
   await roomPage3.selectUserType('audience');
 
   // When
@@ -74,6 +74,21 @@ test('ルームページで、全プレイヤーがカードを出している�
   context,
 }) => {
   // Given
+  const roomId: string = createRoomId();
+  const roomPage1: RoomPage = new RoomPage(await context.newPage());
+  const roomPage2: RoomPage = new RoomPage(await context.newPage());
+  const roomPage3: RoomPage = new RoomPage(await context.newPage());
+  await roomPage1.goto(roomId);
+  await roomPage2.goto(roomId);
+  await roomPage3.goto(roomId);
+
   // When
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('1');
+  await roomPage3.selectUserType('audience');
+
   // Then
+  await expect(roomPage1.requestToSelectButton).toBeDisabled()
+  await expect(roomPage2.requestToSelectButton).toBeDisabled()
+  await expect(roomPage3.requestToSelectButton).toBeDisabled()
 });

@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 
 // components
 import SummaryTags from './SummaryTags';
-import TableButton from './TableButton';
+import TableButtons from './TableButtons';
 import TableCards from './TableCards';
 
 // interface
@@ -27,7 +27,7 @@ const Table: NextPage<Props> = ({ extraClass, openCards, replay, nominate }) => 
 
       <TableCards nominate={nominate} />
 
-      <TableButton clickOpenButton={openCards} clickReplayButton={replay} />
+      <TableButtons clickOpenButton={openCards} clickReplayButton={replay} />
     </div>
   );
 };

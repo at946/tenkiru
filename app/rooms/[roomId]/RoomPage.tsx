@@ -85,7 +85,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         'aria-live': 'polite',
       },
     });
-    playAudio('/notify.mp3');
+    playAudio('/audio/notify.mp3');
   };
 
   const changeDeckType = (newDeckType: IFDeckType): void => {
@@ -99,7 +99,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   const requestToSelect = (): void => {
     toast.success('まだカードを選んでないプレイヤーに\n呼びかけました 📣');
-    playAudio('/alert.mp3');
+    playAudio('/audio/alert.mp3');
   };
 
   const replay = (): void => {

@@ -88,7 +88,7 @@ test('ルームページで、全プレイヤーがカードを出している�
   await roomPage3.selectUserType('audience');
 
   // Then
-  await expect(roomPage1.requestToSelectButton).toBeDisabled()
-  await expect(roomPage2.requestToSelectButton).toBeDisabled()
-  await expect(roomPage3.requestToSelectButton).toBeDisabled()
+  await expect(roomPage1.requestToSelectButton).toBeDisabled();
+  await expect(roomPage2.requestToSelectButton).toBeDisabled();
+  await expect(roomPage3.requestToSelectButton).toBeDisabled();
 });

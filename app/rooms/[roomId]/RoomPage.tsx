@@ -1,7 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // socket.io
 import { io, Socket } from 'socket.io-client';
@@ -43,10 +43,12 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
   const [isConnected, setIsConnected] = useState(false);
 
-  // TODO: サーバーサイドでは動かしたくない。useEffect でもう少しいい感じにかけるはず。
-  const audio = typeof window !== 'undefined' ? new Audio('/notify.mp3') : undefined;
+  const playAudio = (src: string): void => {
+    const audio: HTMLAudioElement = new Audio(src);
+    audio.play();
+  };
 
-  const socketInitializerCallback = useCallback(() => {
+  useEffect(() => {
     const socketPromise = fetch('/api/socket').then(() => {
       socket = io();
 
@@ -60,24 +62,15 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
     toast.promise(
       socketPromise,
-      {
-        loading: '入室中...',
-        success: '入室完了！👍',
-        error: '入室できませんでした...😢',
-      },
-      {
-        ariaProps: { role: 'status', 'aria-live': 'polite' },
-      },
+      { loading: '入室中...', success: '入室完了！👍', error: '入室できませんでした...😢' },
+      { ariaProps: { role: 'status', 'aria-live': 'polite' } },
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [roomId]);
 
-  useEffect(() => {
-    socketInitializerCallback();
     return () => {
       socket.close();
     };
-  }, [socketInitializerCallback]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roomId]);
 
   const onUpdateRoom = (room: IFRoom) => {
     dispatch(updateRoom(room));
@@ -92,7 +85,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         'aria-live': 'polite',
       },
     });
-    audio?.play();
+    playAudio('/notify.mp3');
   };
 
   const changeDeckType = (newDeckType: IFDeckType): void => {

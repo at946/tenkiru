@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode;
   isOutlined?: boolean;
   disabled?: boolean;
-  extraClass: string;
+  extraClass?: string;
   onClick?: () => void;
 }
 

@@ -57,7 +57,7 @@ export const ClosePhaseWithOnlyBlankCards: Story = {
 
 const closePhaseWithNoBlankCard: IFRoomState = {
   room: {
-    ...defaultMockState,
+    ...defaultMockState.room,
     users: [
       {
         id: '11111',

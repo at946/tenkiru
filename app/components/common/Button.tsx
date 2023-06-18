@@ -5,10 +5,11 @@ interface Props {
   children: ReactNode;
   isOutlined?: boolean;
   disabled?: boolean;
+  extraClass: string;
   onClick?: () => void;
 }
 
-const Button: NextPage<Props> = ({ children, isOutlined, disabled, onClick }) => {
+const Button: NextPage<Props> = ({ children, isOutlined, disabled, extraClass, onClick }) => {
   return (
     <button
       className={`
@@ -18,6 +19,7 @@ const Button: NextPage<Props> = ({ children, isOutlined, disabled, onClick }) =>
           ? 'bg-white text-purple-600 enabled:hover:bg-purple-600 enabled:hover:text-white enabled:focus:bg-purple-600 enabled:focus:text-white'
           : 'bg-purple-600 text-white enabled:hover:bg-purple-700 enabled:focus:bg-purple-700'
       }
+      ${extraClass || ''}
       `}
       disabled={disabled}
       onClick={onClick}

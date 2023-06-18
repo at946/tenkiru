@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import TableButton from './TableButton';
+import TableButtons from './TableButtons';
 import {
   closePhaseMockState,
   defaultMockState,
@@ -9,9 +9,9 @@ import {
 } from '@/mocks/store/store';
 import { Provider } from 'react-redux';
 
-const meta: Meta<typeof TableButton> = {
-  component: TableButton,
-  title: 'Room/Table/TableButton',
+const meta: Meta<typeof TableButtons> = {
+  component: TableButtons,
+  title: 'Room/Table/TableButtons',
   tags: ['autodocs'],
   argTypes: {
     clickOpenButton: {
@@ -40,7 +40,7 @@ const meta: Meta<typeof TableButton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof TableButton>;
+type Story = StoryObj<typeof TableButtons>;
 
 export const ClosePhase: Story = {
   args: {},

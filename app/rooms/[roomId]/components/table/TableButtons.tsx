@@ -22,7 +22,7 @@ interface Props {
   clickReplayButton: () => void;
 }
 
-const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
+const TableButtons: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) => {
   const isOpenPhase: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
   const users: IFUser[] = useAppSelector((state) => state.room.room.users);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(users);
@@ -45,4 +45,4 @@ const TableButton: NextPage<Props> = ({ clickOpenButton, clickReplayButton }) =>
     </div>
   );
 };
-export default TableButton;
+export default TableButtons;

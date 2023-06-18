@@ -30,6 +30,9 @@ import { updateRoom } from '@/store/roomSlice';
 // GA
 import { event } from '@/lib/gtag';
 
+// utils
+import { playAudio } from './utils/playAudio';
+
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;
 
 interface Props {
@@ -42,11 +45,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const users: IFUser[] = room.users;
   const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
   const [isConnected, setIsConnected] = useState(false);
-
-  const playAudio = (src: string): void => {
-    const audio: HTMLAudioElement = new Audio(src);
-    audio.play();
-  };
 
   useEffect(() => {
     const socketPromise = fetch('/api/socket').then(() => {

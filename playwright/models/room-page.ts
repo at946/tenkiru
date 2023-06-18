@@ -18,6 +18,7 @@ export default class RoomPage {
   readonly avgTag: Locator;
   readonly maxTag: Locator;
   readonly openButton: Locator;
+  readonly requestToSelectButton: Locator;
   readonly replayButton: Locator;
   readonly memberTypeSelect: Locator;
   readonly deckSelect: Locator;
@@ -28,6 +29,7 @@ export default class RoomPage {
   readonly enteringRoomToast: Locator;
   readonly haveEnteredRoomToast: Locator;
   readonly copyUrlToast: Locator;
+  readonly haveRequestedToSelectToast: Locator;
   readonly haveNominatedToast: Locator;
   readonly haveBeenNominatedToast: Locator;
 
@@ -50,6 +52,7 @@ export default class RoomPage {
     this.avgTag = page.getByLabel('平均');
     this.maxTag = page.getByLabel('最大');
     this.openButton = page.getByRole('button', { name: '開く' });
+    this.requestToSelectButton = page.getByRole('button', { name: '早く選んで' });
     this.replayButton = page.getByRole('button', { name: 'もう一度' });
     this.memberTypeSelect = page.getByRole('combobox', { name: 'ユーザータイプ：' });
     this.deckSelect = page.getByRole('combobox', { name: 'デッキタイプ：' });
@@ -60,6 +63,9 @@ export default class RoomPage {
     this.enteringRoomToast = page.getByRole('status').getByText('入室中...');
     this.haveEnteredRoomToast = page.getByRole('status').getByText('入室完了！');
     this.copyUrlToast = page.getByRole('status').getByText('この部屋のURLをコピーしました');
+    this.haveRequestedToSelectToast = page
+      .getByRole('status')
+      .getByText('まだカードを選んでないプレイヤーに\n呼びかけました');
     this.haveNominatedToast = page.getByRole('status').getByText('指名しました！');
     this.haveBeenNominatedToast = page.getByRole('status').getByText('指名されました！');
 
@@ -81,6 +87,10 @@ export default class RoomPage {
 
   async openCards() {
     await this.openButton.click();
+  }
+
+  async requestToSelect() {
+    await this.requestToSelectButton.click();
   }
 
   async replay() {

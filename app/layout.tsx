@@ -15,7 +15,7 @@ config.autoAddCss = false;
 import ReduxProvider from './ReduxProvider';
 
 // metatags
-const siteName = 'Tenkir';
+const siteName = 'Tenkir | チームでわいわいプランニングポーカーアプリ';
 const description =
   'Tenkirは無料のオンラインプランニングポーカーアプリです。' +
   'XPやスクラムなどのアジャイルなプロジェクト管理に最適です。' +

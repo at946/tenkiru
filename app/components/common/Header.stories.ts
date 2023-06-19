@@ -17,12 +17,15 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);
-    const logo = canvas.getByRole('link', { name: 'Tenkir' });
-    const supportLink = canvas.getByRole('link', { name: '開発者を支援' });
+    const logo: HTMLElement = canvas.getByRole('link', { name: 'Tenkir' });
+    const noteLink: HTMLElement = canvas.getByRole('link', { name: 'コーヒーで支援' });
+    const twitterLink: HTMLElement = canvas.getByRole('link', { name: 'シェアで支援' });
     // Action
     // Assert
     expect(logo.getAttribute('href')).toBe('/');
-    expect(supportLink.getAttribute('href')).toBe('https://note.com/_at_946/n/nb84babf02d87');
-    expect(supportLink.getAttribute('target')).toBe('_blank');
+    expect(noteLink.getAttribute('href')).toBe('https://note.com/_at_946/n/nb84babf02d87');
+    expect(noteLink.getAttribute('target')).toBe('_blank');
+    expect(twitterLink.getAttribute('href')).toContain('https://twitter.com/intent/tweet');
+    expect(twitterLink.getAttribute('target')).toBe('_blank');
   },
 };

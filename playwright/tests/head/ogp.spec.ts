@@ -3,17 +3,15 @@ import TopPage from '../../models/top-page';
 import RoomPage from '../../models/room-page';
 import TOSPage from '../../models/tos-page';
 import PPPage from '../../models/pp-page';
-import urls from '../../helpers/urls';
 import createRoomId from '../../helpers/createRoomId';
 
-const title: string = 'Tenkir';
+const title: string = 'Tenkir | チームでわいわいプランニングポーカーアプリ';
 const description: string =
   'Tenkirは無料のオンラインプランニングポーカーアプリです。' +
   'XPやスクラムなどのアジャイルなプロジェクト管理に最適です。' +
   'チームでの見積もりをリアルタイムで共有できます。' +
   '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
   '直感的なUIと使いやすさが魅力です。';
-const url: string = 'http://localhost:3000/';
 const ogImageUrl: RegExp = /opengraph-image\..*\.jpg/;
 
 test('トップページで、OGが正しいこと', async ({ page }) => {
@@ -28,7 +26,6 @@ test('トップページで、OGが正しいこと', async ({ page }) => {
   await expect(topPage.head.description).toHaveAttribute('content', description);
   await expect(topPage.head.ogSiteName).toHaveAttribute('content', title);
   await expect(topPage.head.ogType).toHaveAttribute('content', 'website');
-  // await expect(topPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(topPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(topPage.head.ogDescription).toHaveAttribute('content', description);
   await expect(topPage.head.ogImage).toHaveAttribute('content', ogImageUrl);
@@ -48,7 +45,6 @@ test('ルームページで、OGが正しいこと', async ({ page }) => {
   await expect(roomPage.head.description).toHaveAttribute('content', description);
   await expect(roomPage.head.ogSiteName).toHaveAttribute('content', title);
   await expect(roomPage.head.ogType).toHaveAttribute('content', 'website');
-  // await expect(roomPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(roomPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(roomPage.head.ogDescription).toHaveAttribute('content', description);
   await expect(roomPage.head.ogImage).toHaveAttribute('content', ogImageUrl);
@@ -67,7 +63,6 @@ test('利用規約ページで、OGが正しいこと', async ({ page }) => {
   await expect(tosPage.head.description).toHaveAttribute('content', description);
   await expect(tosPage.head.ogSiteName).toHaveAttribute('content', title);
   await expect(tosPage.head.ogType).toHaveAttribute('content', 'website');
-  // await expect(tosPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(tosPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(tosPage.head.ogDescription).toHaveAttribute('content', description);
   await expect(tosPage.head.ogImage).toHaveAttribute('content', ogImageUrl);
@@ -86,7 +81,6 @@ test('プライバシーポリシーページで、OGが正しいこと', async 
   await expect(ppPage.head.description).toHaveAttribute('content', description);
   await expect(ppPage.head.ogSiteName).toHaveAttribute('content', title);
   await expect(ppPage.head.ogType).toHaveAttribute('content', 'website');
-  // await expect(ppPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(ppPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(ppPage.head.ogDescription).toHaveAttribute('content', description);
   await expect(ppPage.head.ogImage).toHaveAttribute('content', ogImageUrl);

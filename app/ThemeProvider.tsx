@@ -11,7 +11,6 @@ const ThemeProvider: NextPage<Props> = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(window.matchMedia('(prefers-color-scheme: dark)').matches);
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setIsDarkMode(true);
     } else {
@@ -19,7 +18,11 @@ const ThemeProvider: NextPage<Props> = ({ children }) => {
     }
   }, [setIsDarkMode]);
 
-  return <div className={isDarkMode ? 'dark' : ''}>{children}</div>;
+  return (
+    <div className={isDarkMode ? 'dark' : ''}>
+      <div className='bg-white dark:bg-zinc-900'>{children}</div>
+    </div>
+  );
 };
 
 export default ThemeProvider;

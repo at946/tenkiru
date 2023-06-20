@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='ja'>
       <body>
         <ThemeProvider>
-          <div className='flex min-h-screen flex-col bg-white dark:bg-zinc-800'>
+          <div className='flex min-h-screen flex-col'>
             <Header />
             <ReduxProvider>
               <main>{children}</main>

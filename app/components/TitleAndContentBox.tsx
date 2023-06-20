@@ -9,7 +9,11 @@ interface Props {
 
 const TitleAndContentBox: NextPage<Props> = ({ children, title, extraClass }) => {
   return (
-    <div className={`mx-auto max-w-3xl border p-3 text-left shadow-sm ${extraClass || ''}`}>
+    <div
+      className={`mx-auto max-w-3xl border p-3 text-left shadow-sm dark:bg-zinc-800 dark:text-white ${
+        extraClass || ''
+      }`}
+    >
       <h2 className='text-lg font-bold'>{title}</h2>
       <hr className='mb-4 mt-2' />
       <p>{children}</p>

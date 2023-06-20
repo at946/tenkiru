@@ -18,7 +18,7 @@ const ClipboardCopyLink: NextPage<Props> = ({ children, copiedText, extraClass, 
     <div className={extraClass}>
       <button
         onClick={copyText}
-        className='cursor-pointer px-2 hover:text-purple-600 focus:text-purple-600'
+        className='cursor-pointer px-2 hover:text-purple-500 focus:text-purple-500 dark:text-white dark:hover:text-purple-500 dark:focus:text-purple-500'
       >
         {children}
       </button>

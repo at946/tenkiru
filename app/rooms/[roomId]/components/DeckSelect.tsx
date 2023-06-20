@@ -21,7 +21,7 @@ const DeckSelect: NextPage<Props> = ({ extraClass, onChange }) => {
   return (
     <div className={extraClass || ''}>
       <label>
-        デッキタイプ：
+        <span className='dark:text-white'>デッキタイプ：</span>
         <Select
           options={options}
           value={deckType}

@@ -131,8 +131,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <div className='container mx-auto px-5 text-center'>
-      <RoomInfo roomId={roomId} extraClass='my-5' />
+    <div className='container mx-auto my-5 mb-10 px-5 text-center'>
+      <RoomInfo roomId={roomId} extraClass='mb-5' />
       <Table
         extraClass='mb-5'
         openCards={openCards}

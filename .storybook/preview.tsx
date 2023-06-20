@@ -25,7 +25,7 @@ export default preview;
 
 export const decorators = [
   (renderStory) => (
-    <div className='dark:bg-zinc-900'>
+    <div className='dark:bg-neutral-900'>
       <div className='p-5'>{renderStory()}</div>
     </div>
   ),

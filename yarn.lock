@@ -2557,14 +2557,6 @@
     "@storybook/preview-api" "7.0.22"
     "@storybook/types" "7.0.22"
 
-"@storybook/api@7.0.20":
-  version "7.0.20"
-  resolved "https://registry.yarnpkg.com/@storybook/api/-/api-7.0.20.tgz#6af46925d108298fd812dd966f362d31ed760c60"
-  integrity sha512-yHX3WcWdWqrJBuN85bvSijh/kYGuKXYWNDLmW++XPs0WGWBk/1UfMFEJShfccnSKSlbaTIU8e4dNH8x9Nk190w==
-  dependencies:
-    "@storybook/client-logger" "7.0.20"
-    "@storybook/manager-api" "7.0.20"
-
 "@storybook/api@^7.0.0":
   version "7.0.22"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-7.0.22.tgz#29428655a52efda71e875b6ba09b671e1f3f354a"

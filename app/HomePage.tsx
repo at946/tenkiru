@@ -6,15 +6,15 @@ import TitleAndContentBox from './components/TitleAndContentBox';
 
 const HomePage: NextPage = () => {
   return (
-    <div className='container mx-auto px-5 text-center'>
-      <div className='my-16'>
-        <h1 className='mb-4 text-3xl font-bold text-purple-600'>Tenkir</h1>
+    <div className='container mx-auto my-10 px-5 text-center'>
+      <div className='mb-16'>
+        <h1 className='mb-4 text-3xl font-bold text-purple-500'>Tenkir</h1>
         <CreateRoomButton />
       </div>
 
       <div className='my-5'>
         <TitleAndContentBox title='Tenkirとは' extraClass='mb-5'>
-          <span className='text-purple-600'>
+          <span className='text-purple-500'>
             Tenkir（テンキル）は、オンラインでプランニングポーカーを楽しめるプロダクトです。
           </span>
           <br />
@@ -22,7 +22,7 @@ const HomePage: NextPage = () => {
         </TitleAndContentBox>
 
         <TitleAndContentBox title='プランニングポーカーとは'>
-          <span className='text-purple-600'>
+          <span className='text-purple-500'>
             プランニングポーカーは、チームでタスクやストーリーの見積もりを行う手法で、ゲーム感覚で楽しみながらより正確な見積もりを実現できます。
           </span>
           <br />

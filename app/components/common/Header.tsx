@@ -17,16 +17,16 @@ const Header: NextPage = () => {
           <div>
             <Link
               href='/'
-              className='px-2 font-bold text-purple-600 hover:underline focus:underline'
+              className='px-2 font-bold hover:text-purple-500 focus:text-purple-500 dark:text-white dark:hover:text-purple-500 dark:focus:text-purple-500'
             >
               <FontAwesomeIcon icon={faShuffle} className='mr-2' />
-              Tenkir
+              <span>Tenkir</span>
             </Link>
           </div>
           <div>
             <a
               href='https://note.com/_at_946/n/nb84babf02d87'
-              className='px-2 hover:text-purple-600 focus:text-purple-600'
+              className='px-2 hover:text-purple-500 focus:text-purple-500 dark:text-white dark:hover:text-purple-500 dark:focus:text-purple-500'
               target='_blank'
               rel='noreferrer nofollow noopener'
             >
@@ -35,7 +35,7 @@ const Header: NextPage = () => {
             </a>
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterShareText)}`}
-              className='px-2 hover:text-purple-600 focus:text-purple-600'
+              className='px-2 hover:text-purple-500 focus:text-purple-500 dark:text-white dark:hover:text-purple-500 dark:focus:text-purple-500'
               target='_blank'
               rel='noreferrer nofollow noopener'
             >

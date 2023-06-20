@@ -2557,6 +2557,15 @@
     "@storybook/preview-api" "7.0.22"
     "@storybook/types" "7.0.22"
 
+"@storybook/addons@^7.0.0":
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-7.0.22.tgz#855df10ab9fa25c3243ebfa765c55713a5d0193f"
+  integrity sha512-ZSHyysGC1pohtickJtkWht/KCF5zTR0nTdcQtQu5MlPsNHmueq0QvXUsk2H2ePxVEaSG2uXxUnX7mfRCTvo02w==
+  dependencies:
+    "@storybook/manager-api" "7.0.22"
+    "@storybook/preview-api" "7.0.22"
+    "@storybook/types" "7.0.22"
+
 "@storybook/api@7.0.20":
   version "7.0.20"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-7.0.20.tgz#6af46925d108298fd812dd966f362d31ed760c60"
@@ -2573,7 +2582,7 @@
     "@storybook/client-logger" "7.0.22"
     "@storybook/manager-api" "7.0.22"
 
-"@storybook/blocks@7.0.22", "@storybook/blocks@^7.0.20":
+"@storybook/blocks@7.0.22":
   version "7.0.22"
   resolved "https://registry.yarnpkg.com/@storybook/blocks/-/blocks-7.0.22.tgz#b4cf7a3d99013bbf50814f93e11cf8b0fd04ee8d"
   integrity sha512-bVOouc2LCkfaQpymPX+PzVSGwlu7Nj52jnqZFBK84aRcX8JDhJdnZ4KCxyEfraBQRuywH36GIMrlhnZCf0w54A==
@@ -3545,6 +3554,16 @@
   dependencies:
     "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
     "@storybook/client-logger" "7.0.20"
+    "@storybook/global" "^5.0.0"
+    memoizerific "^1.11.3"
+
+"@storybook/theming@7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.0.21.tgz#81c5cfd32e1cf2be5894eed87dbf434afc55de96"
+  integrity sha512-tgWoT0IdyPQIg+s/JMnP+MGTsAvNm6FJuiuKPebngids6rdYQ3EA5uQjBVV7De650JLhBFTFocS2Puj4Lti2bw==
+  dependencies:
+    "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
+    "@storybook/client-logger" "7.0.21"
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
 
@@ -11464,12 +11483,12 @@ storybook-dark-mode@^3.0.0:
     fast-deep-equal "^3.1.3"
     memoizerific "^1.11.3"
 
-storybook@^7.0.22:
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/storybook/-/storybook-7.0.22.tgz#84edede1eb22f146488b0b18778538e9aacabb75"
-  integrity sha512-d/pMpaVjTB1tSOpWYRpdCamfzg4zcVeOgz8O0k5OblJO8UOdq7numlynntaw4v+p6lusWXX8CSfE/MUUOgzQKw==
+storybook@^7.0.20:
+  version "7.0.20"
+  resolved "https://registry.yarnpkg.com/storybook/-/storybook-7.0.20.tgz#3ee3d36bebdab774f1d6d53eca6bf77415a54ba1"
+  integrity sha512-QxMdqeY7oigiwnVqVPp8550CUtfWW5fujkVXUhgyI1u4i9dpmJxkxWRvfSvhGKAvHf0n2BZ550SevZRPrCr+Tg==
   dependencies:
-    "@storybook/cli" "7.0.22"
+    "@storybook/cli" "7.0.20"
 
 stream-browserify@^3.0.0:
   version "3.0.0"

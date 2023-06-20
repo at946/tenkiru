@@ -15,7 +15,7 @@ const preview: Preview = {
     darkMode: {
       light: { ...themes.dark },
       dark: { ...themes.dark },
-      darkClass: ['dark'],
+      darkClass: ['dark', 'bg-black'],
       stylePreview: true,
     },
   },
@@ -24,9 +24,5 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  (renderStory) => (
-    <div className='dark:bg-neutral-900'>
-      <div className='p-5'>{renderStory()}</div>
-    </div>
-  ),
+  (renderStory) => <div className='dark:bg-zinc-800'>{renderStory()}</div>,
 ];

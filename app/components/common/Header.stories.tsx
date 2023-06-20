@@ -14,7 +14,6 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
-  decorators: [(story) => <div className='dark:bg-slate-800'>{story()}</div>],
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);

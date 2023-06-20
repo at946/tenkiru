@@ -14,6 +14,9 @@ config.autoAddCss = false;
 // redux
 import ReduxProvider from './ReduxProvider';
 
+// dark mode
+import ThemeProvider from './ThemeProvider';
+
 // metatags
 const siteName = 'Tenkir | チームでわいわいプランニングポーカーアプリ';
 const description =
@@ -49,13 +52,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='ja'>
       <body>
-        <div className='flex min-h-screen flex-col bg-white dark:bg-zinc-800'>
-          <Header />
-          <ReduxProvider>
-            <main>{children}</main>
-          </ReduxProvider>
-          <Footer />
-        </div>
+        <ThemeProvider>
+          <div className='flex min-h-screen flex-col bg-white dark:bg-zinc-800'>
+            <Header />
+            <ReduxProvider>
+              <main>{children}</main>
+            </ReduxProvider>
+            <Footer />
+          </div>
+        </ThemeProvider>
         <GoogleAnalytics />
         <GoogleAdsense />
       </body>

@@ -53,7 +53,7 @@
     "@storybook/nextjs": "^7.0.20",
     "@storybook/react": "^7.0.22",
     "@storybook/test-runner": "^0.10.0",
-    "@storybook/testing-library": "^0.1.0",
+    "@storybook/testing-library": "^0.2.0",
     "@types/gtag.js": "^0.0.12",
     "@types/node": "20.3.1",
     "@types/react": "^18.2.12",

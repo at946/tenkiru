@@ -23,7 +23,7 @@ const Table: NextPage<Props> = ({ extraClass, openCards, requestToSelect, replay
   const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
 
   return (
-    <div className={`rounded bg-green-500 py-5 text-center shadow-md ${extraClass || ''}`}>
+    <div className={`rounded-xl bg-green-500 py-5 text-center shadow-md ${extraClass || ''}`}>
       {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
 
       <TableCards nominate={nominate} />

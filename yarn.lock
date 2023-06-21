@@ -2557,15 +2557,6 @@
     "@storybook/preview-api" "7.0.22"
     "@storybook/types" "7.0.22"
 
-"@storybook/addons@^7.0.0":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-7.0.22.tgz#855df10ab9fa25c3243ebfa765c55713a5d0193f"
-  integrity sha512-ZSHyysGC1pohtickJtkWht/KCF5zTR0nTdcQtQu5MlPsNHmueq0QvXUsk2H2ePxVEaSG2uXxUnX7mfRCTvo02w==
-  dependencies:
-    "@storybook/manager-api" "7.0.22"
-    "@storybook/preview-api" "7.0.22"
-    "@storybook/types" "7.0.22"
-
 "@storybook/api@7.0.20":
   version "7.0.20"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-7.0.20.tgz#6af46925d108298fd812dd966f362d31ed760c60"
@@ -2610,10 +2601,10 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/builder-manager@7.0.22":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/builder-manager/-/builder-manager-7.0.22.tgz#d58a042ef2b5d54ac4e41380939f35f459390f89"
-  integrity sha512-90u1TP8Z53lbwMUm/JblPMmK8RJxRAWnJnAcVNuMmIxJjbW2EvQMGkNMhetk47kfiDyUJV0n90+wiMc+/DkxKQ==
+"@storybook/builder-manager@7.0.20":
+  version "7.0.20"
+  resolved "https://registry.yarnpkg.com/@storybook/builder-manager/-/builder-manager-7.0.20.tgz#6261c1caaa0694ef145f5803688cb525c5e21693"
+  integrity sha512-D1k7fZnEn/G4a6Ob7JWR3IsDsI2IiI42DEoi1h3Rmx9vBwBJatRatvIJz2qUxbQ00l+F5rnnmp8uIHG3FOFf1A==
   dependencies:
     "@fal-works/esbuild-plugin-global-externals" "^2.1.2"
     "@storybook/core-common" "7.0.20"

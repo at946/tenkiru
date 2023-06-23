@@ -37,7 +37,7 @@
     "react-redux": "^8.1.0",
     "sass": "^1.63.6",
     "socket.io": "^4.6.2",
-    "socket.io-client": "^4.6.2",
+    "socket.io-client": "^4.7.0",
     "utf-8-validate": "^6.0.3",
     "uuid": "^9.0.0"
   },

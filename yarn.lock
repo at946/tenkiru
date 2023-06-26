@@ -2443,7 +2443,7 @@
     "@storybook/client-logger" "7.0.22"
     "@storybook/manager-api" "7.0.22"
 
-"@storybook/blocks@7.0.23":
+"@storybook/blocks@7.0.23", "@storybook/blocks@^7.0.23":
   version "7.0.23"
   resolved "https://registry.yarnpkg.com/@storybook/blocks/-/blocks-7.0.23.tgz#8030506fd2f7c84d997e0d547d75c33d646d93d8"
   integrity sha512-yhdff1m+SY90g+52745h/x6r0uDwKHoMffhjttKTSSKhsHOnvHCaslpPBHsxDxsPNGLrjUT+ueK/GSwKJUJmLA==
@@ -2459,34 +2459,6 @@
     "@storybook/preview-api" "7.0.23"
     "@storybook/theming" "7.0.23"
     "@storybook/types" "7.0.23"
-    "@types/lodash" "^4.14.167"
-    color-convert "^2.0.1"
-    dequal "^2.0.2"
-    lodash "^4.17.21"
-    markdown-to-jsx "^7.1.8"
-    memoizerific "^1.11.3"
-    polished "^4.2.2"
-    react-colorful "^5.1.2"
-    telejson "^7.0.3"
-    ts-dedent "^2.0.0"
-    util-deprecate "^1.0.2"
-
-"@storybook/blocks@^7.0.20":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/blocks/-/blocks-7.0.22.tgz#b4cf7a3d99013bbf50814f93e11cf8b0fd04ee8d"
-  integrity sha512-bVOouc2LCkfaQpymPX+PzVSGwlu7Nj52jnqZFBK84aRcX8JDhJdnZ4KCxyEfraBQRuywH36GIMrlhnZCf0w54A==
-  dependencies:
-    "@storybook/channels" "7.0.22"
-    "@storybook/client-logger" "7.0.22"
-    "@storybook/components" "7.0.22"
-    "@storybook/core-events" "7.0.22"
-    "@storybook/csf" "^0.1.0"
-    "@storybook/docs-tools" "7.0.22"
-    "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.0.22"
-    "@storybook/preview-api" "7.0.22"
-    "@storybook/theming" "7.0.22"
-    "@storybook/types" "7.0.22"
     "@types/lodash" "^4.14.167"
     color-convert "^2.0.1"
     dequal "^2.0.2"
@@ -2785,33 +2757,6 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/core-common@7.0.22":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/core-common/-/core-common-7.0.22.tgz#4151650f5d0ab0f0c917b9a7c517a5b331c04dc1"
-  integrity sha512-Dq1Uv0erIt87GcJZR67ugvbpVHIarcfkcyWYJe6zjNqzCdmg9zPA80ZDZqLHveB7WGXlJuOItZcthxJq08xt9Q==
-  dependencies:
-    "@storybook/node-logger" "7.0.22"
-    "@storybook/types" "7.0.22"
-    "@types/node" "^16.0.0"
-    "@types/node-fetch" "^2.6.4"
-    "@types/pretty-hrtime" "^1.0.0"
-    chalk "^4.1.0"
-    esbuild "^0.17.0"
-    esbuild-register "^3.4.0"
-    file-system-cache "^2.0.0"
-    find-up "^5.0.0"
-    fs-extra "^11.1.0"
-    glob "^8.1.0"
-    glob-promise "^6.0.2"
-    handlebars "^4.7.7"
-    lazy-universal-dotenv "^4.0.0"
-    node-fetch "^2.0.0"
-    picomatch "^2.3.0"
-    pkg-dir "^5.0.0"
-    pretty-hrtime "^1.0.3"
-    resolve-from "^5.0.0"
-    ts-dedent "^2.0.0"
-
 "@storybook/core-common@7.0.23", "@storybook/core-common@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
   version "7.0.23"
   resolved "https://registry.yarnpkg.com/@storybook/core-common/-/core-common-7.0.23.tgz#dc82800a888111d65bdc4e1eff2ff1ec4896acb7"
@@ -2985,19 +2930,6 @@
   resolved "https://registry.yarnpkg.com/@storybook/docs-mdx/-/docs-mdx-0.1.0.tgz#33ba0e39d1461caf048b57db354b2cc410705316"
   integrity sha512-JDaBR9lwVY4eSH5W8EGHrhODjygPd6QImRbwjAuJNEnY0Vw4ie3bPkeGfnacB3OBW6u/agqPv2aRlR46JcAQLg==
 
-"@storybook/docs-tools@7.0.22":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/docs-tools/-/docs-tools-7.0.22.tgz#8d887acf1fb665eea3009ba5ab646dee227fcbe4"
-  integrity sha512-1t+mi7vz5Yd9DN9Pmp0LdkfChNQefRXN4l5cyqzZ+62K4UPoe2ZYsfWC8zotStC+FnaDZ+QXqgWNIBkeVKTjwQ==
-  dependencies:
-    "@babel/core" "^7.12.10"
-    "@storybook/core-common" "7.0.22"
-    "@storybook/preview-api" "7.0.22"
-    "@storybook/types" "7.0.22"
-    "@types/doctrine" "^0.0.3"
-    doctrine "^3.0.0"
-    lodash "^4.17.21"
-
 "@storybook/docs-tools@7.0.23":
   version "7.0.23"
   resolved "https://registry.yarnpkg.com/@storybook/docs-tools/-/docs-tools-7.0.23.tgz#7c1d4c518c5ab0b702350719fa7e157033a8122e"
@@ -3164,16 +3096,6 @@
   version "7.0.20"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-7.0.20.tgz#f801f609435eecffd31601e41ddcfeeec3b46768"
   integrity sha512-CibPbHs7ELVtx7++5OGHL13lMG0vKEBGBBcb3FJFgf5fLYOor3jJ/xbiUZpfdg34mwzXHTVUi7o4MMMd4nVe+g==
-  dependencies:
-    "@types/npmlog" "^4.1.2"
-    chalk "^4.1.0"
-    npmlog "^5.0.1"
-    pretty-hrtime "^1.0.3"
-
-"@storybook/node-logger@7.0.22":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-7.0.22.tgz#cee51f1036df05486c1635774bb933d9625c6463"
-  integrity sha512-k+RtRhxGxssIByTQ8maiXPc8WaXQcq1zAoSskNOIfi2f47JsZ7v81HJw8JaQ+cxNmafGBcKYW3Lla49wz1t8JQ==
   dependencies:
     "@types/npmlog" "^4.1.2"
     chalk "^4.1.0"

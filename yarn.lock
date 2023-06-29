@@ -2175,21 +2175,21 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
-"@storybook/addon-a11y@^7.0.22":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.0.22.tgz#278513a0dc8b570ae94f5e78b2f5213370907546"
-  integrity sha512-J+K8UWZMR4YxWX2tKocFVW5qBYeRgOAMLK8g+AOfTLJhqoMrSWJqPxlGos+sTqgJO0xtQdTMc5cEcPT3WX317Q==
+"@storybook/addon-a11y@^7.0.24":
+  version "7.0.24"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.0.24.tgz#18a5312655c4e4f1c1e25471d96b51a018ef7c6e"
+  integrity sha512-5HkQhen9lyp5equRKfr4ap3+wUSWby8NMEnWedCSeghsjrwUq3tuXxYLMrCx00WlJmJTduEyJEM+tQeoPSGAzA==
   dependencies:
-    "@storybook/addon-highlight" "7.0.22"
-    "@storybook/channels" "7.0.22"
-    "@storybook/client-logger" "7.0.22"
-    "@storybook/components" "7.0.22"
-    "@storybook/core-events" "7.0.22"
+    "@storybook/addon-highlight" "7.0.24"
+    "@storybook/channels" "7.0.24"
+    "@storybook/client-logger" "7.0.24"
+    "@storybook/components" "7.0.24"
+    "@storybook/core-events" "7.0.24"
     "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.0.22"
-    "@storybook/preview-api" "7.0.22"
-    "@storybook/theming" "7.0.22"
-    "@storybook/types" "7.0.22"
+    "@storybook/manager-api" "7.0.24"
+    "@storybook/preview-api" "7.0.24"
+    "@storybook/theming" "7.0.24"
+    "@storybook/types" "7.0.24"
     axe-core "^4.2.0"
     lodash "^4.17.21"
     react-resize-detector "^7.1.2"
@@ -2302,15 +2302,6 @@
     "@storybook/node-logger" "7.0.24"
     "@storybook/preview-api" "7.0.24"
     ts-dedent "^2.0.0"
-
-"@storybook/addon-highlight@7.0.22":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-highlight/-/addon-highlight-7.0.22.tgz#1a02d91db0644eb2e7ed8ae98660e53d990acfe0"
-  integrity sha512-Bwxu86rg5AN+mgPyJ2NaTswx7D0L8BROW3eLvjTDI6B0qqDgkCU5KQ/N5POiYCYIMLlSO88cX/3SEpRendl6Mg==
-  dependencies:
-    "@storybook/core-events" "7.0.22"
-    "@storybook/global" "^5.0.0"
-    "@storybook/preview-api" "7.0.22"
 
 "@storybook/addon-highlight@7.0.24":
   version "7.0.24"
@@ -2747,20 +2738,6 @@
     lodash "^4.17.21"
     prettier "^2.8.0"
     recast "^0.23.1"
-
-"@storybook/components@7.0.22":
-  version "7.0.22"
-  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.0.22.tgz#2d30070220116438227d0e467108b4eb043a927e"
-  integrity sha512-4cPepDONPY5b7A52atQs2JD3gZ+DYCABWKL9VmNEJtKDVoMs/IKKstnnUQ5QbOGsEIttdheawmyZoa6IWUsoQg==
-  dependencies:
-    "@storybook/client-logger" "7.0.22"
-    "@storybook/csf" "^0.1.0"
-    "@storybook/global" "^5.0.0"
-    "@storybook/theming" "7.0.22"
-    "@storybook/types" "7.0.22"
-    memoizerific "^1.11.3"
-    use-resize-observer "^9.1.0"
-    util-deprecate "^1.0.2"
 
 "@storybook/components@7.0.23":
   version "7.0.23"

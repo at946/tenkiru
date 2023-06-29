@@ -47,7 +47,11 @@ const Header: NextPage = () => {
               <span className='hidden md:inline'>シェアで支援</span>
             </HeaderItem>
 
-            <HeaderItem isLink={false} onClick={() => dispatch(setIsDark(!isDark))}>
+            <HeaderItem
+              isLink={false}
+              ariaLabel={isDark ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
+              onClick={() => dispatch(setIsDark(!isDark))}
+            >
               {isDark ? <Sun /> : <Moon />}
             </HeaderItem>
           </div>

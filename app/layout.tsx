@@ -50,15 +50,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='ja'>
       <body>
-        <ThemeProvider>
-          <div className='flex min-h-screen flex-col'>
-            <Header />
-            <ReduxProvider>
+        <ReduxProvider>
+          <ThemeProvider>
+            <div className='flex min-h-screen flex-col'>
+              <Header />
               <main>{children}</main>
-            </ReduxProvider>
-            <Footer />
-          </div>
-        </ThemeProvider>
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </ReduxProvider>
         <GoogleAnalytics />
         <GoogleAdsense />
       </body>

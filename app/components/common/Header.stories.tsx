@@ -3,6 +3,7 @@ import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 import Header from './Header';
+import ReduxProvider from '@/app/ReduxProvider';
 
 const meta: Meta<typeof Header> = {
   component: Header,
@@ -14,7 +15,13 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
-  decorators: [(story) => <div className='dark:bg-slate-800'>{story()}</div>],
+  decorators: [
+    (story) => (
+      <ReduxProvider>
+        <div className='dark:bg-slate-800'>{story()}</div>
+      </ReduxProvider>
+    ),
+  ],
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);

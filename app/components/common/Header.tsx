@@ -1,10 +1,19 @@
+'use client';
+
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMugSaucer, faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setIsDark } from '@/store/darkModeSlice';
+import HeaderItem from './HeaderItem';
+import Sun from './icons/Sun';
+import Moon from './icons/Moon';
 
 const Header: NextPage = () => {
+  const dispatch = useAppDispatch();
+  const isDark: boolean = useAppSelector((state) => state.theme.isDark);
   const twitterShareText: string =
     '#テンキル\n' +
     'チームでわいわいプランニングポーカーアプリ\n' +
@@ -23,25 +32,24 @@ const Header: NextPage = () => {
               <span>Tenkir</span>
             </Link>
           </div>
-          <div>
-            <a
-              href='https://note.com/_at_946/n/nb84babf02d87'
-              className='px-2 hover:text-purple-500 focus:text-purple-500 dark:text-white dark:hover:text-purple-500 dark:focus:text-purple-500'
-              target='_blank'
-              rel='noreferrer nofollow noopener'
-            >
+
+          <div className='flex gap-4'>
+            <HeaderItem isLink={true} href='https://note.com/_at_946/n/nb84babf02d87'>
               <FontAwesomeIcon icon={faMugSaucer} className='mr-1' />
               <span className='hidden md:inline'>コーヒーで支援</span>
-            </a>
-            <a
+            </HeaderItem>
+
+            <HeaderItem
+              isLink={true}
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterShareText)}`}
-              className='px-2 hover:text-purple-500 focus:text-purple-500 dark:text-white dark:hover:text-purple-500 dark:focus:text-purple-500'
-              target='_blank'
-              rel='noreferrer nofollow noopener'
             >
               <FontAwesomeIcon icon={faTwitter} className='mr-1' />
               <span className='hidden md:inline'>シェアで支援</span>
-            </a>
+            </HeaderItem>
+
+            <HeaderItem isLink={false} onClick={() => dispatch(setIsDark(!isDark))}>
+              {isDark ? <Sun /> : <Moon />}
+            </HeaderItem>
           </div>
         </div>
       </div>

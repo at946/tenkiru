@@ -1,25 +1,29 @@
 'use client';
 
+import { setIsDark } from '@/store/darkModeSlice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { NextPage } from 'next';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 interface Props {
   children: ReactNode;
 }
 
 const ThemeProvider: NextPage<Props> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const isDark: boolean = useAppSelector((state) => state.theme.isDark);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDarkMode(true);
+    if (localStorage.theme !== undefined) {
+      dispatch(setIsDark(localStorage.theme === 'dark'));
     } else {
-      setIsDarkMode(false);
+      const isSystemDarkMode: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      dispatch(setIsDark(isSystemDarkMode));
     }
-  }, [setIsDarkMode]);
+  }, [dispatch]);
 
   return (
-    <div className={isDarkMode ? 'dark' : ''}>
+    <div className={isDark ? 'dark' : ''}>
       <div className='bg-white dark:bg-neutral-900'>{children}</div>
     </div>
   );

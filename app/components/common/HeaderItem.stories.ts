@@ -15,6 +15,10 @@ const meta: Meta<typeof HeaderItem> = {
       type: { name: 'string', required: false },
       description: 'リンク先。`isLink`が`true`のときは必須。',
     },
+    ariaLabel: {
+      type: { name: 'string', required: false },
+      description: 'aria-label',
+    },
     onClick: {
       type: { name: 'function', required: false },
       description: 'クリックしたときに呼び出される関数',

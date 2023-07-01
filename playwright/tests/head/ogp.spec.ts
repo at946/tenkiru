@@ -12,7 +12,8 @@ const description: string =
   'チームでの見積もりをリアルタイムで共有できます。' +
   '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
   '直感的なUIと使いやすさが魅力です。';
-const ogImageUrl: RegExp = /opengraph-image\..*\.jpg/;
+const ogImageUrl: RegExp = /opengraph-image.jpg/;
+const url: string = 'http://localhost:3000/';
 
 test('トップページで、OGが正しいこと', async ({ page }) => {
   // Given
@@ -28,6 +29,7 @@ test('トップページで、OGが正しいこと', async ({ page }) => {
   await expect(topPage.head.ogType).toHaveAttribute('content', 'website');
   await expect(topPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(topPage.head.ogDescription).toHaveAttribute('content', description);
+  await expect(topPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(topPage.head.ogImage).toHaveAttribute('content', ogImageUrl);
   await expect(topPage.head.twitterCard).toHaveAttribute('content', 'summary');
 });
@@ -47,6 +49,7 @@ test('ルームページで、OGが正しいこと', async ({ page }) => {
   await expect(roomPage.head.ogType).toHaveAttribute('content', 'website');
   await expect(roomPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(roomPage.head.ogDescription).toHaveAttribute('content', description);
+  await expect(roomPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(roomPage.head.ogImage).toHaveAttribute('content', ogImageUrl);
   await expect(roomPage.head.twitterCard).toHaveAttribute('content', 'summary');
 });
@@ -65,6 +68,7 @@ test('利用規約ページで、OGが正しいこと', async ({ page }) => {
   await expect(tosPage.head.ogType).toHaveAttribute('content', 'website');
   await expect(tosPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(tosPage.head.ogDescription).toHaveAttribute('content', description);
+  await expect(tosPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(tosPage.head.ogImage).toHaveAttribute('content', ogImageUrl);
   await expect(tosPage.head.twitterCard).toHaveAttribute('content', 'summary');
 });
@@ -83,6 +87,7 @@ test('プライバシーポリシーページで、OGが正しいこと', async 
   await expect(ppPage.head.ogType).toHaveAttribute('content', 'website');
   await expect(ppPage.head.ogTitle).toHaveAttribute('content', title);
   await expect(ppPage.head.ogDescription).toHaveAttribute('content', description);
+  await expect(ppPage.head.ogUrl).toHaveAttribute('content', url);
   await expect(ppPage.head.ogImage).toHaveAttribute('content', ogImageUrl);
   await expect(ppPage.head.twitterCard).toHaveAttribute('content', 'summary');
 });

@@ -26,7 +26,10 @@ type NextApiResponseSocketIO = NextApiResponse & {
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
   if (!res.socket.server.io) {
     const io = new SocketIOServer<IFClientToServerEvents, IFServerToClientEvents>(
-      res.socket.server as any,
+      res.socket.server,
+      {
+        addTrailingSlash: false,
+      },
     );
     const rooms: Room[] = [];
 

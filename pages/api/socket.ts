@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Server as NetServer, Socket } from 'net';
+import { Socket } from 'net';
 import { Server as SocketIOServer } from 'socket.io';
 
 // class
@@ -14,10 +14,11 @@ import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 // utils
 import { findRoomById } from './utils/findRoomById';
+import { Http2SecureServer } from 'http2';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
-    server: NetServer & {
+    server: Http2SecureServer & {
       io: SocketIOServer;
     };
   };

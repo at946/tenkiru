@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-const isDarkModeState = atom<boolean>({
+const isDarkModeState = atom({
   key: 'isDarkModeState',
   default: false,
 });

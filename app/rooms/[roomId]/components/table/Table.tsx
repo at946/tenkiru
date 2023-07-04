@@ -6,10 +6,11 @@ import TableButtons from './TableButtons';
 import TableCards from './TableCards';
 
 // interface
-import { IFDeckType } from '@/interfaces/deckType';
+import { IFRoom } from '@/interfaces/room';
 
-// redux
-import { useAppSelector } from '@/store/hooks';
+// recoil
+import { useRecoilValue } from 'recoil';
+import roomState from '@/recoil/atoms/roomAtom';
 
 interface Props {
   extraClass?: string;
@@ -20,11 +21,12 @@ interface Props {
 }
 
 const Table: NextPage<Props> = ({ extraClass, openCards, requestToSelect, replay, nominate }) => {
-  const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
+  const room: IFRoom = useRecoilValue(roomState);
+
 
   return (
     <div className={`rounded-xl bg-green-500 py-5 text-center shadow-md ${extraClass || ''}`}>
-      {deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
+      {room.deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}
 
       <TableCards nominate={nominate} />
 

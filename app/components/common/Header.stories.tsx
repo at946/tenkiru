@@ -3,7 +3,6 @@ import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 import Header from './Header';
-import RecoilProvider from '@/app/RecoilProvider';
 
 const meta: Meta<typeof Header> = {
   component: Header,
@@ -15,13 +14,6 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
-  decorators: [
-    (story) => (
-      <RecoilProvider>
-        <div className='dark:bg-slate-800'>{story()}</div>
-      </RecoilProvider>
-    ),
-  ],
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);

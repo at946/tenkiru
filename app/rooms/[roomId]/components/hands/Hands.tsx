@@ -1,11 +1,20 @@
 import { NextPage } from 'next';
-import { IFHandsCardValue } from '@/interfaces/handsCardValue';
+
+// components
 import HandsCard from './HandsCard';
-import { IFDeck } from '@/interfaces/deck';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { IFDeckType } from '@/interfaces/deckType';
-import { useAppSelector } from '@/store/hooks';
+
+// data
 import Decks from '@/data/deck';
+
+// interfaces
+import { IFDeck } from '@/interfaces/deck';
+import { IFHandsCardValue } from '@/interfaces/handsCardValue';
+import { IFRoom } from '@/interfaces/room';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
+
+// recoil
+import { useRecoilValue } from 'recoil';
+import roomState from '@/recoil/atoms/roomAtom';
 
 interface Props {
   selectedValue: IFTableCardValue;
@@ -14,8 +23,8 @@ interface Props {
 }
 
 const Hands: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
-  const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
-  const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === deckType);
+  const room: IFRoom = useRecoilValue(roomState);
+  const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === room.deckType);
 
   return (
     <div className='flex flex-wrap justify-center gap-2' role='group' aria-label='手札'>

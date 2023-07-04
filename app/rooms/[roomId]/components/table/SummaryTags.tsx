@@ -2,11 +2,14 @@ import { NextPage } from 'next';
 
 // components
 import SummaryTag from './SummaryTag';
-import { useAppSelector } from '@/store/hooks';
 
 // interfaces
+import { IFRoom } from '@/interfaces/room';
 import { IFTableCard } from '@/interfaces/tableCard';
-import { IFUser } from '@/interfaces/user';
+
+// recoil
+import { useRecoilValue } from 'recoil';
+import roomState from '@/recoil/atoms/roomAtom';
 
 // utils
 import {
@@ -21,16 +24,15 @@ interface Props {
 }
 
 const SummaryTags: NextPage<Props> = ({ extraClass }) => {
-  const areOpen: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
-  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
-  const tableCards: IFTableCard[] = getTableCardsFromUsers(users);
+  const room: IFRoom = useRecoilValue(roomState);
+  const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (
     <div className={extraClass}>
       <div className='flex justify-center gap-2'>
-        <SummaryTag name='最小' value={areOpen ? getMinValueAmongTableCards(tableCards) : '?'} />
-        <SummaryTag name='平均' value={areOpen ? getAvgValueAmongTableCards(tableCards) : '?'} />
-        <SummaryTag name='最大' value={areOpen ? getMaxValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag name='最小' value={room.isOpenPhase ? getMinValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag name='平均' value={room.isOpenPhase ? getAvgValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag name='最大' value={room.isOpenPhase ? getMaxValueAmongTableCards(tableCards) : '?'} />
       </div>
     </div>
   );

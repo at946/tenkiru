@@ -1,9 +1,19 @@
 import { NextPage } from 'next';
+
+// components
 import Select, { IFOption } from '@/app/components/common/Select';
+
+// data
 import Decks from '@/data/deck';
+
+// interfaces
+import { IFRoom } from '@/interfaces/room';
 import { IFDeck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';
-import { useAppSelector } from '@/store/hooks';
+
+// recoil
+import { useRecoilValue } from 'recoil';
+import roomState from '@/recoil/atoms/roomAtom';
 
 interface Props {
   extraClass: string;
@@ -11,8 +21,7 @@ interface Props {
 }
 
 const DeckSelect: NextPage<Props> = ({ extraClass, onChange }) => {
-  const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
-  const isDisabled: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
+  const room: IFRoom = useRecoilValue(roomState)
 
   const options: IFOption[] = Decks.map((deck: IFDeck) => {
     return { value: deck.key, label: deck.displayName };
@@ -24,8 +33,8 @@ const DeckSelect: NextPage<Props> = ({ extraClass, onChange }) => {
         <span className='dark:text-white'>デッキタイプ：</span>
         <Select
           options={options}
-          value={deckType}
-          disabled={isDisabled}
+          value={room.deckType}
+          disabled={room.isOpenPhase}
           onChange={(value: string) => {
             onChange(value as IFDeckType);
           }}

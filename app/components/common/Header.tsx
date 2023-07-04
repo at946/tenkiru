@@ -2,18 +2,23 @@
 
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMugSaucer, faShuffle } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setIsDark } from '@/store/darkModeSlice';
+
+// components
 import HeaderItem from './HeaderItem';
 import Sun from './icons/Sun';
 import Moon from './icons/Moon';
 
+// fontawesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMugSaucer, faShuffle } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+// recoil
+import { useRecoilState } from 'recoil';
+import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
+
 const Header: NextPage = () => {
-  const dispatch = useAppDispatch();
-  const isDark: boolean = useAppSelector((state) => state.theme.isDark);
+  const [isDarkMode, setIsDarkMode] = useRecoilState<boolean>(isDarkModeState);
   const twitterShareText: string =
     '#テンキル\n' +
     'チームでわいわいプランニングポーカーアプリ\n' +
@@ -49,10 +54,10 @@ const Header: NextPage = () => {
 
             <HeaderItem
               isLink={false}
-              ariaLabel={isDark ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
-              onClick={() => dispatch(setIsDark(!isDark))}
+              ariaLabel={isDarkMode ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
+              onClick={() => setIsDarkMode(!isDarkMode)}
             >
-              {isDark ? <Sun /> : <Moon />}
+              {isDarkMode ? <Sun /> : <Moon />}
             </HeaderItem>
           </div>
         </div>

@@ -13,7 +13,12 @@ config.autoAddCss = false;
 
 // redux
 import ReduxProvider from './ReduxProvider';
+
+// dark mode
 import ThemeProvider from './ThemeProvider';
+
+// recoil
+import RecoilProvider from './RecoilProvider';
 
 // metatags
 const siteName = 'Tenkir | チームでわいわいプランニングポーカーアプリ';
@@ -50,15 +55,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='ja'>
       <body>
-        <ReduxProvider>
-          <ThemeProvider>
-            <div className='flex min-h-screen flex-col'>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </div>
-          </ThemeProvider>
-        </ReduxProvider>
+        <RecoilProvider>
+          <ReduxProvider>
+            <ThemeProvider>
+              <div className='flex min-h-screen flex-col'>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+              </div>
+            </ThemeProvider>
+          </ReduxProvider>
+        </RecoilProvider>
         <GoogleAnalytics />
         <GoogleAdsense />
       </body>

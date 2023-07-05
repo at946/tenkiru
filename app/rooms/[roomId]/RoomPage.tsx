@@ -146,7 +146,12 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
             extraClass='mb-4'
             onChange={changeUserType}
           />
-          <DeckSelect extraClass='mb-4' onChange={changeDeckType} />
+          <DeckSelect
+            deckType={room.deckType}
+            disabled={room.isOpenPhase}
+            extraClass='mb-4'
+            onChange={changeDeckType}
+          />
           <Hands
             selectedValue={user === undefined ? null : user.selectedCardValue}
             isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}

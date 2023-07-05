@@ -30,9 +30,18 @@ const SummaryTags: NextPage<Props> = ({ extraClass }) => {
   return (
     <div className={extraClass}>
       <div className='flex justify-center gap-2'>
-        <SummaryTag name='最小' value={room.isOpenPhase ? getMinValueAmongTableCards(tableCards) : '?'} />
-        <SummaryTag name='平均' value={room.isOpenPhase ? getAvgValueAmongTableCards(tableCards) : '?'} />
-        <SummaryTag name='最大' value={room.isOpenPhase ? getMaxValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag
+          name='最小'
+          value={room.isOpenPhase ? getMinValueAmongTableCards(tableCards) : '?'}
+        />
+        <SummaryTag
+          name='平均'
+          value={room.isOpenPhase ? getAvgValueAmongTableCards(tableCards) : '?'}
+        />
+        <SummaryTag
+          name='最大'
+          value={room.isOpenPhase ? getMaxValueAmongTableCards(tableCards) : '?'}
+        />
       </div>
     </div>
   );

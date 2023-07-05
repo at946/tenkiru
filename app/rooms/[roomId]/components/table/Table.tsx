@@ -23,7 +23,6 @@ interface Props {
 const Table: NextPage<Props> = ({ extraClass, openCards, requestToSelect, replay, nominate }) => {
   const room: IFRoom = useRecoilValue(roomState);
 
-
   return (
     <div className={`rounded-xl bg-green-500 py-5 text-center shadow-md ${extraClass || ''}`}>
       {room.deckType !== 'tShirtSize' && <SummaryTags extraClass='mb-4' />}

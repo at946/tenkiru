@@ -2367,19 +2367,19 @@
     polished "^4.2.2"
     ts-dedent "^2.2.0"
 
-"@storybook/addon-links@^7.0.25":
-  version "7.0.25"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-7.0.25.tgz#6daa0a2b10d5ec268b558a7b7777f9612af29e2e"
-  integrity sha512-r+cxfFboYyJujlfG3QA1Obrm/hLqCbMLCDjNWajeBXRnKqbl/C1CcQ+jDPgXSBxfCxjs+jUzLWSJDX9BDTcFOg==
+"@storybook/addon-links@^7.0.26":
+  version "7.0.26"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-7.0.26.tgz#ae04e6afce9e9618d46a44862a0030a9c412d907"
+  integrity sha512-og+8AUAUpHsT+MVjhdQmRNJw9RUkHn5FFoou003b9V4UlPPNDYTo/tNEqOhUXn2l/ESAROJlR/q/8Qjdes24pA==
   dependencies:
-    "@storybook/client-logger" "7.0.25"
-    "@storybook/core-events" "7.0.25"
+    "@storybook/client-logger" "7.0.26"
+    "@storybook/core-events" "7.0.26"
     "@storybook/csf" "^0.1.0"
     "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.0.25"
-    "@storybook/preview-api" "7.0.25"
-    "@storybook/router" "7.0.25"
-    "@storybook/types" "7.0.25"
+    "@storybook/manager-api" "7.0.26"
+    "@storybook/preview-api" "7.0.26"
+    "@storybook/router" "7.0.26"
+    "@storybook/types" "7.0.26"
     prop-types "^15.7.2"
     ts-dedent "^2.0.0"
 
@@ -2860,12 +2860,12 @@
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-7.0.24.tgz#3fa4b2b3af64a86525b4cf07f49a7410125ef810"
   integrity sha512-xkf/rihCkhqMeh5EA8lVp90/mzbb2gcg6I3oeFWw2hognVcTnPXg6llhWdU4Spqd0cals7GEFmQugIILCmH8GA==
 
-"@storybook/core-events@7.0.25", "@storybook/core-events@^7.0.0":
+"@storybook/core-events@7.0.25":
   version "7.0.25"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-7.0.25.tgz#a2754a8af5de78a47a0bc2193f3baf80e302ad7b"
   integrity sha512-abM0M+H19eZu0dRK+/2PB0W9b7xXFhiPddXpFCjIfJQFGPIwGBWVAFot1bKR5Mu4IB9OftkJYMRtYEEBrNep3A==
 
-"@storybook/core-events@7.0.26":
+"@storybook/core-events@7.0.26", "@storybook/core-events@^7.0.0":
   version "7.0.26"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-7.0.26.tgz#830c2fbc17e8c358252301e5a6efe10119aa3ef5"
   integrity sha512-ckZszphEAYs9wp8tPVhayEMzk8JxCiQfzbq0S45sbdqdTrl40PmsOjv5iPNaUYElI/Stfz+v4gDCEUfOsxyC+w==

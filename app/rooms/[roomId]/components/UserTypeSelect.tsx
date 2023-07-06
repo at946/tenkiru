@@ -2,7 +2,8 @@ import { NextPage } from 'next';
 import { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
 
-import Select, { IFOption } from '@/app/components/common/Select';
+import { IFOption } from '@/app/components/common/Select';
+import SelectWithLabel from '@/app/components/common/SelectWithLabel';
 
 interface Props {
   type: IFUserType;
@@ -23,10 +24,12 @@ const UserTypeSelect: NextPage<Props> = ({ type, extraClass, onChange }) => {
 
   return (
     <div className={extraClass || ''}>
-      <label>
-        <span className='dark:text-white'>ユーザータイプ：</span>
-        <Select options={options} value={type} onChange={handleOnChange} />
-      </label>
+      <SelectWithLabel
+        label='ユーザータイプ'
+        options={options}
+        value={type}
+        onChange={handleOnChange}
+      />
     </div>
   );
 };

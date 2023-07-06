@@ -23,9 +23,9 @@ import MyToaster from '@/app/components/common/MyToaster';
 import RoomInfo from './components/RoomInfo';
 import UserTypeSelect from './components/UserTypeSelect';
 
-// stores
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { updateRoom } from '@/store/roomSlice';
+// recoil
+import { useRecoilState } from 'recoil';
+import isRoomState from '@/recoil/atoms/roomAtom';
 
 // GA
 import { event } from '@/lib/gtag';
@@ -40,8 +40,7 @@ interface Props {
 }
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
-  const dispatch = useAppDispatch();
-  const room: IFRoom = useAppSelector((state) => state.room.room);
+  const [room, setRoom] = useRecoilState<IFRoom>(isRoomState);
   const users: IFUser[] = room.users;
   const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
   const [isConnected, setIsConnected] = useState(false);
@@ -72,7 +71,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [roomId]);
 
   const onUpdateRoom = (room: IFRoom): void => {
-    dispatch(updateRoom(room));
+    setRoom(room);
   };
 
   const onRecieveRequestToSelect = (): void => {
@@ -147,8 +146,14 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
             extraClass='mb-4'
             onChange={changeUserType}
           />
-          <DeckSelect extraClass='mb-4' onChange={changeDeckType} />
+          <DeckSelect
+            deckType={room.deckType}
+            disabled={room.isOpenPhase}
+            extraClass='mb-4'
+            onChange={changeDeckType}
+          />
           <Hands
+            deckType={room.deckType}
             selectedValue={user === undefined ? null : user.selectedCardValue}
             isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}
             onSelect={selectCard}

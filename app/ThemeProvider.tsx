@@ -1,29 +1,29 @@
 'use client';
 
-import { setIsDark } from '@/store/darkModeSlice';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { NextPage } from 'next';
 import { ReactNode, useEffect } from 'react';
+
+// recoil
+import { useRecoilState } from 'recoil';
+import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
 
 interface Props {
   children: ReactNode;
 }
 
 const ThemeProvider: NextPage<Props> = ({ children }) => {
-  const dispatch = useAppDispatch();
-  const isDark: boolean = useAppSelector((state) => state.theme.isDark);
+  const [isDarkMode, setIsDarkMode] = useRecoilState<boolean>(isDarkModeState);
 
   useEffect(() => {
     if (localStorage.theme !== undefined) {
-      dispatch(setIsDark(localStorage.theme === 'dark'));
+      setIsDarkMode(localStorage.theme === 'dark');
     } else {
-      const isSystemDarkMode: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      dispatch(setIsDark(isSystemDarkMode));
+      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }
-  }, [dispatch]);
+  }, [setIsDarkMode]);
 
   return (
-    <div className={isDark ? 'dark' : ''}>
+    <div className={isDarkMode ? 'dark' : ''}>
       <div className='bg-white dark:bg-neutral-900'>{children}</div>
     </div>
   );

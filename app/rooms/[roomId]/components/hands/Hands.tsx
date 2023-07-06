@@ -1,20 +1,25 @@
 import { NextPage } from 'next';
-import { IFHandsCardValue } from '@/interfaces/handsCardValue';
+
+// components
 import HandsCard from './HandsCard';
-import { IFDeck } from '@/interfaces/deck';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { IFDeckType } from '@/interfaces/deckType';
-import { useAppSelector } from '@/store/hooks';
+
+// data
 import Decks from '@/data/deck';
 
+// interfaces
+import { IFDeck } from '@/interfaces/deck';
+import { IFDeckType } from '@/interfaces/deckType';
+import { IFHandsCardValue } from '@/interfaces/handsCardValue';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
+
 interface Props {
+  deckType: IFDeckType;
   selectedValue: IFTableCardValue;
   isDisabled?: boolean;
   onSelect: (value: IFTableCardValue) => void;
 }
 
-const Hands: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
-  const deckType: IFDeckType = useAppSelector((state) => state.room.room.deckType);
+const Hands: NextPage<Props> = ({ deckType, selectedValue, isDisabled, onSelect }) => {
   const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === deckType);
 
   return (

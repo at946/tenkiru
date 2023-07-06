@@ -1,8 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import TableCards from './TableCards';
-import { Provider } from 'react-redux';
-import { closePhaseMockState, mockStore, openPhaseMockState } from '@/mocks/store/store';
+import { IFRoom } from '@/interfaces/room';
+
+// recoil
+import { RecoilRoot } from 'recoil';
+import roomState from '@/recoil/atoms/roomAtom';
 
 const meta: Meta<typeof TableCards> = {
   component: TableCards,
@@ -28,17 +31,39 @@ export default meta;
 type Story = StoryObj<typeof TableCards>;
 
 export const OpenPhase: Story = {
-  decorators: [(story) => <Provider store={mockStore(openPhaseMockState)}>{story()}</Provider>],
+  decorators: [
+    (story) => {
+      const room: IFRoom = {
+        id: '1',
+        deckType: 'fibonacci',
+        isOpenPhase: true,
+        users: [
+          { id: '11', type: 'player', selectedCardValue: 2 },
+          { id: '12', type: 'player', selectedCardValue: 5 },
+          { id: '13', type: 'player', selectedCardValue: null },
+          { id: '14', type: 'audience', selectedCardValue: null },
+        ],
+      };
+      return <RecoilRoot initializeState={({ set }) => set(roomState, room)}>{story()}</RecoilRoot>;
+    },
+  ],
 };
 
 export const ClosePhase: Story = {
-  decorators: [(story) => <Provider store={mockStore(closePhaseMockState)}>{story()}</Provider>],
-};
-
-export const BlankOpenPhase: Story = {
-  decorators: [(story) => <Provider store={mockStore(openPhaseMockState)}>{story()}</Provider>],
-};
-
-export const BlankClosePhase: Story = {
-  decorators: [(story) => <Provider store={mockStore(closePhaseMockState)}>{story()}</Provider>],
+  decorators: [
+    (story) => {
+      const room: IFRoom = {
+        id: '1',
+        deckType: 'fibonacci',
+        isOpenPhase: false,
+        users: [
+          { id: '11', type: 'player', selectedCardValue: 2 },
+          { id: '12', type: 'player', selectedCardValue: 5 },
+          { id: '13', type: 'player', selectedCardValue: null },
+          { id: '14', type: 'audience', selectedCardValue: null },
+        ],
+      };
+      return <RecoilRoot initializeState={({ set }) => set(roomState, room)}>{story()}</RecoilRoot>;
+    },
+  ],
 };

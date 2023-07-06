@@ -1,9 +1,5 @@
 import { NextPage } from 'next';
 
-// interface
-import { IFTableCard } from '@/interfaces/tableCard';
-import { IFUser } from '@/interfaces/user';
-
 // components
 import Button from '@/app/components/common/Button';
 
@@ -11,11 +7,16 @@ import Button from '@/app/components/common/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHand, faHandsPraying, faReply } from '@fortawesome/free-solid-svg-icons';
 
-// redux
-import { useAppSelector } from '@/store/hooks';
+// interface
+import { IFRoom } from '@/interfaces/room';
+import { IFTableCard } from '@/interfaces/tableCard';
+
+// recoil
+import { useRecoilValue } from 'recoil';
 
 // utils
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
+import roomState from '@/recoil/atoms/roomAtom';
 
 interface Props {
   clickOpenButton: () => void;
@@ -28,9 +29,8 @@ const TableButtons: NextPage<Props> = ({
   clickRequestToSelectButton,
   clickReplayButton,
 }) => {
-  const isOpenPhase: boolean = useAppSelector((state) => state.room.room.isOpenPhase);
-  const users: IFUser[] = useAppSelector((state) => state.room.room.users);
-  const tableCards: IFTableCard[] = getTableCardsFromUsers(users);
+  const room: IFRoom = useRecoilValue(roomState);
+  const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
   const isEveryoneSelectedCard: boolean = !tableCards.find(
     (tableCard: IFTableCard) => tableCard.value === null,
   );
@@ -39,7 +39,7 @@ const TableButtons: NextPage<Props> = ({
 
   return (
     <div>
-      {isOpenPhase ? (
+      {room.isOpenPhase ? (
         <Button onClick={clickReplayButton}>
           <FontAwesomeIcon icon={faReply} className='mr-2' />
           <span>もう一度</span>

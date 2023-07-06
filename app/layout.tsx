@@ -11,9 +11,6 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
-// redux
-import ReduxProvider from './ReduxProvider';
-
 // dark mode
 import ThemeProvider from './ThemeProvider';
 
@@ -56,15 +53,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='ja'>
       <body>
         <RecoilProvider>
-          <ReduxProvider>
-            <ThemeProvider>
-              <div className='flex min-h-screen flex-col'>
-                <Header />
-                <main>{children}</main>
-                <Footer />
-              </div>
-            </ThemeProvider>
-          </ReduxProvider>
+          <ThemeProvider>
+            <div className='flex min-h-screen flex-col'>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </ThemeProvider>
         </RecoilProvider>
         <GoogleAnalytics />
         <GoogleAdsense />

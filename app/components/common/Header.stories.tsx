@@ -4,6 +4,8 @@ import { expect } from '@storybook/jest';
 
 import Header from './Header';
 
+import { RecoilRoot } from 'recoil';
+
 const meta: Meta<typeof Header> = {
   component: Header,
   title: 'common/Header',
@@ -14,6 +16,9 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
+  decorators: [
+    (story) => <RecoilRoot>{story()}</RecoilRoot>
+  ],
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);

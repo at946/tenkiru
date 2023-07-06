@@ -61,7 +61,9 @@ export const Default: Story = {
       const onChange = (value: string): void => {
         setArgs({ value: value });
       };
-      return <SelectWithLabel {...args} label={args.label} options={args.options} onChange={onChange} />;
+      return (
+        <SelectWithLabel {...args} label={args.label} options={args.options} onChange={onChange} />
+      );
     },
   ],
 };

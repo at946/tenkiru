@@ -8,23 +8,19 @@ import Decks from '@/data/deck';
 
 // interfaces
 import { IFDeck } from '@/interfaces/deck';
+import { IFDeckType } from '@/interfaces/deckType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
-import { IFRoom } from '@/interfaces/room';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
-// recoil
-import { useRecoilValue } from 'recoil';
-import roomState from '@/recoil/atoms/roomAtom';
-
 interface Props {
+  deckType: IFDeckType;
   selectedValue: IFTableCardValue;
   isDisabled?: boolean;
   onSelect: (value: IFTableCardValue) => void;
 }
 
-const Hands: NextPage<Props> = ({ selectedValue, isDisabled, onSelect }) => {
-  const room: IFRoom = useRecoilValue(roomState);
-  const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === room.deckType);
+const Hands: NextPage<Props> = ({ deckType, selectedValue, isDisabled, onSelect }) => {
+  const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === deckType);
 
   return (
     <div className='flex flex-wrap justify-center gap-2' role='group' aria-label='手札'>

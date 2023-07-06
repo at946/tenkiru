@@ -2,7 +2,6 @@ import type { Preview } from '@storybook/react';
 import '@storybook/addon-console';
 import '@/styles/globals.css';
 import { themes } from '@storybook/theming';
-import { RecoilRoot } from 'recoil';
 
 const preview: Preview = {
   parameters: {
@@ -26,10 +25,8 @@ export default preview;
 
 export const decorators = [
   (renderStory) => (
-    <RecoilRoot>
-      <div className='dark:bg-neutral-900'>
-        <div className='p-5'>{renderStory()}</div>
-      </div>
-    </RecoilRoot>
+    <div className='dark:bg-neutral-900'>
+      <div className='p-5'>{renderStory()}</div>
+    </div>
   ),
 ];

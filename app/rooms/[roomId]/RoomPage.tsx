@@ -153,6 +153,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
             onChange={changeDeckType}
           />
           <Hands
+            deckType={room.deckType}
             selectedValue={user === undefined ? null : user.selectedCardValue}
             isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}
             onSelect={selectCard}

@@ -2,9 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 
 import Hands from './Hands';
-import { Provider } from 'react-redux';
-import { closePhaseMockState, mockStore, openPhaseMockState } from '@/mocks/store/store';
-import { IFRoomState } from '@/store/roomSlice';
+
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 const meta: Meta<typeof Hands> = {
@@ -12,6 +10,10 @@ const meta: Meta<typeof Hands> = {
   title: 'Room/Hands/Hands',
   tags: ['autodocs'],
   argTypes: {
+    deckType: {
+      type: { name: 'string', required: true },
+      description: 'デッキの種類',
+    },
     selectedValue: {
       type: { name: 'other', value: 'IFTableCard', required: true },
       description: '選択中のカード',
@@ -35,6 +37,7 @@ type Story = StoryObj<typeof Hands>;
 
 export const Fibonacci: Story = {
   args: {
+    deckType: 'fibonacci',
     selectedValue: 1,
   },
   decorators: [
@@ -43,23 +46,14 @@ export const Fibonacci: Story = {
       const onSelect = (value: IFTableCardValue) => {
         setArgs({ selectedValue: args.selectedValue === value ? null : value });
       };
-      return (
-        <Provider store={mockStore(closePhaseMockState)}>
-          <Hands {...args} selectedValue={args.selectedValue} onSelect={onSelect} />
-        </Provider>
-      );
+      return <Hands {...args} deckType={args.deckType} selectedValue={args.selectedValue} onSelect={onSelect} />;
     },
   ],
 };
 
-const closePhaseSequentialMockState: IFRoomState = {
-  room: {
-    ...closePhaseMockState.room,
-    deckType: 'sequential',
-  },
-};
 export const Sequential: Story = {
   args: {
+    deckType: 'sequential',
     selectedValue: 1,
   },
   decorators: [
@@ -68,23 +62,14 @@ export const Sequential: Story = {
       const onSelect = (value: IFTableCardValue) => {
         setArgs({ selectedValue: value });
       };
-      return (
-        <Provider store={mockStore(closePhaseSequentialMockState)}>
-          <Hands {...args} selectedValue={args.selectedValue} onSelect={onSelect} />;
-        </Provider>
-      );
+      return <Hands {...args} deckType={args.deckType} selectedValue={args.selectedValue} onSelect={onSelect} />;
     },
   ],
 };
 
-const closePhaseTShrirtSizeMockState: IFRoomState = {
-  room: {
-    ...closePhaseMockState.room,
-    deckType: 'tShirtSize',
-  },
-};
 export const TShirtSize: Story = {
   args: {
+    deckType: 'tShirtSize',
     selectedValue: 'S',
   },
   decorators: [
@@ -93,23 +78,15 @@ export const TShirtSize: Story = {
       const onSelect = (value: IFTableCardValue) => {
         setArgs({ selectedValue: value });
       };
-      return (
-        <Provider store={mockStore(closePhaseTShrirtSizeMockState)}>
-          <Hands {...args} selectedValue={args.selectedValue} onSelect={onSelect} />;
-        </Provider>
-      );
+      return <Hands {...args} deckType={args.deckType} selectedValue={args.selectedValue} onSelect={onSelect} />;
     },
   ],
 };
 
 export const Disabled: Story = {
   args: {
+    deckType: 'fibonacci',
     selectedValue: null,
     isDisabled: true,
   },
-  decorators: [
-    (story) => {
-      return <Provider store={mockStore(openPhaseMockState)}>{story()}</Provider>;
-    },
-  ],
 };

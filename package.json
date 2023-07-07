@@ -49,7 +49,7 @@
     "@storybook/addon-essentials": "^7.0.25",
     "@storybook/addon-interactions": "^7.0.26",
     "@storybook/addon-links": "^7.0.26",
-    "@storybook/blocks": "^7.0.25",
+    "@storybook/blocks": "^7.0.26",
     "@storybook/jest": "^0.1.0",
     "@storybook/nextjs": "^7.0.26",
     "@storybook/react": "^7.0.22",

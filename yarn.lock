@@ -2353,21 +2353,21 @@
     "@storybook/global" "^5.0.0"
     "@storybook/preview-api" "7.0.25"
 
-"@storybook/addon-interactions@^7.0.25":
-  version "7.0.25"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-interactions/-/addon-interactions-7.0.25.tgz#75f10c1925caa0f25e8b2b0d6f7dabd93825d5ac"
-  integrity sha512-PETXdOPBjOEMY8pSuVFERuutT1tj5mWDVPE9//xv8khiDnBei1rbpHVQTVm+4gezQHTiDbwXaAldcJy2/W8q+g==
+"@storybook/addon-interactions@^7.0.26":
+  version "7.0.26"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-interactions/-/addon-interactions-7.0.26.tgz#02b431d7a78df48f16d42ecee9c30dab4aa9cadf"
+  integrity sha512-trIbPFLdxF6XgGORhx8eSGmGZ/4/AekJyFluf2lgutGi4TPL5Xzrx3o1kTFPVdLAPplBuDIlVI4HSGHHH2zeTw==
   dependencies:
-    "@storybook/client-logger" "7.0.25"
-    "@storybook/components" "7.0.25"
-    "@storybook/core-common" "7.0.25"
-    "@storybook/core-events" "7.0.25"
+    "@storybook/client-logger" "7.0.26"
+    "@storybook/components" "7.0.26"
+    "@storybook/core-common" "7.0.26"
+    "@storybook/core-events" "7.0.26"
     "@storybook/global" "^5.0.0"
-    "@storybook/instrumenter" "7.0.25"
-    "@storybook/manager-api" "7.0.25"
-    "@storybook/preview-api" "7.0.25"
-    "@storybook/theming" "7.0.25"
-    "@storybook/types" "7.0.25"
+    "@storybook/instrumenter" "7.0.26"
+    "@storybook/manager-api" "7.0.26"
+    "@storybook/preview-api" "7.0.26"
+    "@storybook/theming" "7.0.26"
+    "@storybook/types" "7.0.26"
     jest-mock "^27.0.6"
     polished "^4.2.2"
     ts-dedent "^2.2.0"
@@ -2765,7 +2765,7 @@
     use-resize-observer "^9.1.0"
     util-deprecate "^1.0.2"
 
-"@storybook/components@7.0.25", "@storybook/components@^7.0.0":
+"@storybook/components@7.0.25":
   version "7.0.25"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.0.25.tgz#636462d538b0bfa1eb902df2aafc55b29635addf"
   integrity sha512-eY6R8P7HRisamVed/HwsgLerhDvL3UKdg9KsgBMoGLc7//lC2Zf9qYnDSMWutCdXJh0Te+gJS/i4Jv63YP3mDQ==
@@ -2779,7 +2779,7 @@
     use-resize-observer "^9.1.0"
     util-deprecate "^1.0.2"
 
-"@storybook/components@7.0.26":
+"@storybook/components@7.0.26", "@storybook/components@^7.0.0":
   version "7.0.26"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.0.26.tgz#c0f6e3c7431018712485c68e560182cc06b343bd"
   integrity sha512-n0TVWEF4Bc9JAyEIaN0PqwglbaYYRcPVG7ka+5wgGmBiuDlWI1SXd4EXxv2u0mVibHvtkHvOn6/GaZ1vG45p6g==
@@ -3028,16 +3028,16 @@
   resolved "https://registry.yarnpkg.com/@storybook/global/-/global-5.0.0.tgz#b793d34b94f572c1d7d9e0f44fac4e0dbc9572ed"
   integrity sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==
 
-"@storybook/instrumenter@7.0.25", "@storybook/instrumenter@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
-  version "7.0.25"
-  resolved "https://registry.yarnpkg.com/@storybook/instrumenter/-/instrumenter-7.0.25.tgz#e64dc9e7594540bb8178507f8787dd072976e006"
-  integrity sha512-47O2P7pYT80HGkI+9/6QztFz+O5kCcbdR/v2l0nbWQIxDDX+4flPZXmcN0bw2Rrw0rYm7YB/0RIHy5Xy+c5YNg==
+"@storybook/instrumenter@7.0.26", "@storybook/instrumenter@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
+  version "7.0.26"
+  resolved "https://registry.yarnpkg.com/@storybook/instrumenter/-/instrumenter-7.0.26.tgz#9bc400cd6913d68b0df66d5249b0c4c30b900aff"
+  integrity sha512-7Ty0LTslgkm5RyH6CqTAKhWz/cF6wq/sNdMYKwvVZHWNZ2LKMtXD0RWM2caCPruAGOQ9+52H+3s4TZGKaPSSWQ==
   dependencies:
-    "@storybook/channels" "7.0.25"
-    "@storybook/client-logger" "7.0.25"
-    "@storybook/core-events" "7.0.25"
+    "@storybook/channels" "7.0.26"
+    "@storybook/client-logger" "7.0.26"
+    "@storybook/core-events" "7.0.26"
     "@storybook/global" "^5.0.0"
-    "@storybook/preview-api" "7.0.25"
+    "@storybook/preview-api" "7.0.26"
 
 "@storybook/jest@^0.1.0":
   version "0.1.0"
@@ -3493,7 +3493,7 @@
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
 
-"@storybook/theming@7.0.25", "@storybook/theming@^7.0.0":
+"@storybook/theming@7.0.25":
   version "7.0.25"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.0.25.tgz#44ff687601a2bdbd7aafb350b144405ea56d5280"
   integrity sha512-OaLtP4jjN6NGvdZpfQq3FO2IE/uZDxcXJdEXCf8azzAyhwvFU5kMA8huCE1KvOGJfAR5lPfDMQDKMXTlkV7frg==
@@ -3503,7 +3503,7 @@
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
 
-"@storybook/theming@7.0.26":
+"@storybook/theming@7.0.26", "@storybook/theming@^7.0.0":
   version "7.0.26"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.0.26.tgz#b537f92f6168d1228bd4ccc1c3c38dac1c6a02d3"
   integrity sha512-7hxpT2yq+xZonSsEZHOF+HDHx6GE0qlys3EQ63K9XCJ8VeBnq9M5zHvMK9iXl90093ufxpvWsfDWgtja2zvmTw==

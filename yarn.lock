@@ -2979,21 +2979,21 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
-"@storybook/addon-a11y@^7.0.27":
-  version "7.0.27"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.0.27.tgz#049827e594f183baabb1e1658d2b5fb9ba20d584"
-  integrity sha512-S26bgFMhKa6AxyPqVyO51SOfO5MStzInHebOcqUtHYs1Npz1MMM80A4YuF8KVvcu4WAFdvdIA4gI/47djrN+sA==
+"@storybook/addon-a11y@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.1.0.tgz#d76386d5bff92d1665017bb897eb4696d35d764c"
+  integrity sha512-omKNbkE5m2KglFD8HLBmmpLP7ZdiDDPwb29vkBBkNRAWw4xqwMN/TEAavTTdQdmGr3zvbANZc+LgIlnS5oiwLg==
   dependencies:
-    "@storybook/addon-highlight" "7.0.27"
-    "@storybook/channels" "7.0.27"
-    "@storybook/client-logger" "7.0.27"
-    "@storybook/components" "7.0.27"
-    "@storybook/core-events" "7.0.27"
+    "@storybook/addon-highlight" "7.1.0"
+    "@storybook/channels" "7.1.0"
+    "@storybook/client-logger" "7.1.0"
+    "@storybook/components" "7.1.0"
+    "@storybook/core-events" "7.1.0"
     "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.0.27"
-    "@storybook/preview-api" "7.0.27"
-    "@storybook/theming" "7.0.27"
-    "@storybook/types" "7.0.27"
+    "@storybook/manager-api" "7.1.0"
+    "@storybook/preview-api" "7.1.0"
+    "@storybook/theming" "7.1.0"
+    "@storybook/types" "7.1.0"
     axe-core "^4.2.0"
     lodash "^4.17.21"
     react-resize-detector "^7.1.2"
@@ -3137,6 +3137,15 @@
     "@storybook/core-events" "7.0.27"
     "@storybook/global" "^5.0.0"
     "@storybook/preview-api" "7.0.27"
+
+"@storybook/addon-highlight@7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-highlight/-/addon-highlight-7.1.0.tgz#e151b64fa13370c9fe02ffc724b0875cb37c546d"
+  integrity sha512-h7kSFq4AZt+Y8ULCi76En3B2T9LZTba1zq1Om7EhmUQMzhCOhwnWqd5syxAwbmfCv7brQRvFaC1RP4DY9YtRLA==
+  dependencies:
+    "@storybook/core-events" "7.1.0"
+    "@storybook/global" "^5.0.0"
+    "@storybook/preview-api" "7.1.0"
 
 "@storybook/addon-interactions@^7.0.27":
   version "7.0.27"

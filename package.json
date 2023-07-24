@@ -36,7 +36,7 @@
     "react-hot-toast": "^2.4.1",
     "react-redux": "^8.1.1",
     "recoil": "^0.7.7",
-    "sass": "^1.63.6",
+    "sass": "^1.64.1",
     "socket.io": "^4.7.1",
     "socket.io-client": "^4.7.1",
     "utf-8-validate": "^6.0.3",

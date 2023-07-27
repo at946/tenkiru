@@ -46,7 +46,14 @@ export const Fibonacci: Story = {
       const onSelect = (value: IFTableCardValue) => {
         setArgs({ selectedValue: args.selectedValue === value ? null : value });
       };
-      return <Hands {...args} deckType={args.deckType} selectedValue={args.selectedValue} onSelect={onSelect} />;
+      return (
+        <Hands
+          {...args}
+          deckType={args.deckType}
+          selectedValue={args.selectedValue}
+          onSelect={onSelect}
+        />
+      );
     },
   ],
 };
@@ -62,7 +69,14 @@ export const Sequential: Story = {
       const onSelect = (value: IFTableCardValue) => {
         setArgs({ selectedValue: value });
       };
-      return <Hands {...args} deckType={args.deckType} selectedValue={args.selectedValue} onSelect={onSelect} />;
+      return (
+        <Hands
+          {...args}
+          deckType={args.deckType}
+          selectedValue={args.selectedValue}
+          onSelect={onSelect}
+        />
+      );
     },
   ],
 };
@@ -78,7 +92,14 @@ export const TShirtSize: Story = {
       const onSelect = (value: IFTableCardValue) => {
         setArgs({ selectedValue: value });
       };
-      return <Hands {...args} deckType={args.deckType} selectedValue={args.selectedValue} onSelect={onSelect} />;
+      return (
+        <Hands
+          {...args}
+          deckType={args.deckType}
+          selectedValue={args.selectedValue}
+          onSelect={onSelect}
+        />
+      );
     },
   ],
 };

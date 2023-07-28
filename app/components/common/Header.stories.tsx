@@ -16,9 +16,7 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
-  decorators: [
-    (story) => <RecoilRoot>{story()}</RecoilRoot>
-  ],
+  decorators: [(story) => <RecoilRoot>{story()}</RecoilRoot>],
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);

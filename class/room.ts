@@ -68,18 +68,20 @@ export class Room {
     this.users = this.users.filter((user: User) => user.getId() !== userId);
   }
 
-  rePushUser(userId: string): void {
+  reorderUser(userId: string): void {
     const targetUser: User | undefined = this.findUserById(userId);
     if (!targetUser) return;
-    this.removeUser(userId);
-    this.users.push(targetUser);
-  }
 
-  reUnshiftUser(userId: string): void {
-    const targetUser: User | undefined = this.findUserById(userId);
-    if (!targetUser) return;
-    this.removeUser(userId);
-    this.users.unshift(targetUser);
+    this.removeUser(targetUser.getId());
+
+    console.log(targetUser);
+    console.log(targetUser.hasSelectedCard());
+
+    if (targetUser.hasSelectedCard()) {
+      this.users.unshift(targetUser);
+    } else {
+      this.users.push(targetUser);
+    }
   }
 
   private getUsersHaveSelectedNumberCard(): User[] {

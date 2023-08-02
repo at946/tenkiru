@@ -67,11 +67,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
         user.setType(newUserType);
         user.resetCard();
-        if (user.isPlayer()) {
-          room.reUnshiftUser(user.getId());
-        } else {
-          room.rePushUser(user.getId());
-        }
+        room.reorderUser(user.getId());
 
         io.to(roomId).emit('update-room', room.toObject());
       });
@@ -84,11 +80,7 @@ const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
         if (!user) return;
 
         user.selectCard(selectedCardValue);
-        if (user.hasSelectedCard()) {
-          room.reUnshiftUser(user.getId());
-        } else {
-          room.rePushUser(user.getId());
-        }
+        room.reorderUser(user.getId());
 
         io.to(roomId).emit('update-room', room.toObject());
       });

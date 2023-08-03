@@ -74,9 +74,6 @@ export class Room {
 
     this.removeUser(targetUser.getId());
 
-    console.log(targetUser);
-    console.log(targetUser.hasSelectedCard());
-
     if (targetUser.hasSelectedCard()) {
       this.users.unshift(targetUser);
     } else {

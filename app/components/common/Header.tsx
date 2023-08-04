@@ -11,7 +11,7 @@ import Moon from './icons/Moon';
 // fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMugSaucer, faShuffle } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
 
 // recoil
 import { useRecoilState } from 'recoil';
@@ -48,7 +48,7 @@ const Header: NextPage = () => {
               isLink={true}
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterShareText)}`}
             >
-              <FontAwesomeIcon icon={faTwitter} className='mr-1' />
+              <FontAwesomeIcon icon={faXTwitter} className='mr-1' />
               <span className='hidden md:inline'>シェアで支援</span>
             </HeaderItem>
 

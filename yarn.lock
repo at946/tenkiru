@@ -3000,7 +3000,7 @@
     recast "^0.23.1"
     ts-dedent "^2.0.0"
 
-"@storybook/csf-tools@7.2.1":
+"@storybook/csf-tools@7.2.1", "@storybook/csf-tools@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/@storybook/csf-tools/-/csf-tools-7.2.1.tgz#eb703996181f75353b88b409b6eb2211d427632e"
   integrity sha512-QqZOBd6lmhPoIBLutyYYJ3wBwEZF+fUjiL8vhw3lgq+Mrer14lmKrImKDSjd1PsqVbbGQEJZ4TAJHZc3vdQs0w==
@@ -3013,21 +3013,6 @@
     "@storybook/types" "7.2.1"
     fs-extra "^11.1.0"
     prettier "^2.8.0"
-    recast "^0.23.1"
-    ts-dedent "^2.0.0"
-
-"@storybook/csf-tools@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@storybook/csf-tools/-/csf-tools-7.1.1.tgz#63d03742d13e51bbece46e6af19da1313cfd2315"
-  integrity sha512-IdDW+NsTIxqv7BjeFaTonvX0Ac5HzzNiKvGkhydXrpaz7kJX4g0T96xpR+RhbEtPfQ0AcpiHnW0kMPx9YLJRew==
-  dependencies:
-    "@babel/generator" "^7.22.9"
-    "@babel/parser" "^7.22.7"
-    "@babel/traverse" "^7.22.8"
-    "@babel/types" "^7.22.5"
-    "@storybook/csf" "^0.1.0"
-    "@storybook/types" "7.1.1"
-    fs-extra "^11.1.0"
     recast "^0.23.1"
     ts-dedent "^2.0.0"
 
@@ -3440,10 +3425,10 @@
     fs-extra "^11.1.0"
     read-pkg-up "^7.0.1"
 
-"@storybook/test-runner@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@storybook/test-runner/-/test-runner-0.12.0.tgz#19562364ef04238735ab493e81c335003d67abd6"
-  integrity sha512-DEvJ/Xp1E26LrUhRGTOq/bXPKpA2MeilZWUt4qblKwn3u9is5rirXuB5RjGDwjO2c74+pD1kjEpXuu4jcX+C/w==
+"@storybook/test-runner@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@storybook/test-runner/-/test-runner-0.13.0.tgz#e22ecfa4842deb7c5248185d77ab7d78b77beab9"
+  integrity sha512-QIbfgia/iBy7PeUIwCYtPcyeZCHd21ebaPoMNIsRfwUW+VC12J4iG8cGDfOE7MGbMVz1Uu0elAEBB8NGP/YBtQ==
   dependencies:
     "@babel/core" "^7.22.5"
     "@babel/generator" "^7.22.5"

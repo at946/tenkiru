@@ -2865,6 +2865,14 @@
     "@storybook/client-logger" "7.2.1"
     "@storybook/preview-api" "7.2.1"
 
+"@storybook/core-client@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@storybook/core-client/-/core-client-7.2.2.tgz#42e3ea15c1df4aed754b712a9c7c10440e67b4c8"
+  integrity sha512-RbtXvSiT7kunM6oz5svbp/IeastWz+40qZpdidkRLZ9QUpttU5NSKNUu+MPlfaMHT3A38VfZakk5cRAEztbu2w==
+  dependencies:
+    "@storybook/client-logger" "7.2.2"
+    "@storybook/preview-api" "7.2.2"
+
 "@storybook/core-common@7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@storybook/core-common/-/core-common-7.2.0.tgz#dedaa3d98f9ba532fc2d25e590904bf72d508a55"
@@ -3126,6 +3134,18 @@
     doctrine "^3.0.0"
     lodash "^4.17.21"
 
+"@storybook/docs-tools@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@storybook/docs-tools/-/docs-tools-7.2.2.tgz#c5b391a4baabcb4aa3b68c0a94a9ffbabe26d142"
+  integrity sha512-57PiramTgJio0J8HyKQI8cjb/5pTFvKxWBji8UdM6WUe1EqLIwZbymUcOQZDQWr3H+6bdrm4pgYxj7XglcUa5A==
+  dependencies:
+    "@storybook/core-common" "7.2.2"
+    "@storybook/preview-api" "7.2.2"
+    "@storybook/types" "7.2.2"
+    "@types/doctrine" "^0.0.3"
+    doctrine "^3.0.0"
+    lodash "^4.17.21"
+
 "@storybook/expect@storybook-jest":
   version "27.5.2-0"
   resolved "https://registry.yarnpkg.com/@storybook/expect/-/expect-27.5.2-0.tgz#131fc4336106805ccd100809a3c2852d31f1da68"
@@ -3373,7 +3393,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/preview-api@7.2.1", "@storybook/preview-api@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
+"@storybook/preview-api@7.2.1":
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-7.2.1.tgz#0de54f11237d837db918d672e7f4c2bc34abf8f7"
   integrity sha512-WKecuOdeh9+og6bPR9KoQf/JCeSRPCcfZv9uNfJzAp3IiTnS3UpfCz+HBZzZJQrisgbd7OulNY400HQUmxY2Ag==
@@ -3393,7 +3413,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/preview-api@7.2.2":
+"@storybook/preview-api@7.2.2", "@storybook/preview-api@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-7.2.2.tgz#b23d1a9024041fea86265931a06ba5b42a395868"
   integrity sha512-II0EioQCGS2zTSoHbXNKyI1rwk2X7MBi2/tJerj4w4Qwi2fDQlwM0LKsIWlRjXTxBpOAsOoTelh24wSBoZu4bg==
@@ -3441,7 +3461,12 @@
   resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-7.2.1.tgz#79b955a91f64a59b92c01eb206b49a3b545364e5"
   integrity sha512-QzQQN2nZkG7c0Mg5HvhfQuH10HjAJEnA8vDlENIFMj3XqtUAq4HE2n73gEcvdFJMXL4G16N58+TgR1e2cFdRKw==
 
-"@storybook/react@7.2.1", "@storybook/react@^7.2.1":
+"@storybook/react-dom-shim@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-7.2.2.tgz#8fa704a6d8ba0daf116229b62ea05f9577064b5d"
+  integrity sha512-H/yHlWl94vbUv1NNolcB3vCy1S185XKicswljJRC9o/AFCJK+a7d9wDVGTPKF6oy7ujrgpANLQyq02d+OuoO7w==
+
+"@storybook/react@7.2.1":
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.2.1.tgz#2fea9f44c682c432b4ee882fea5376653f15446c"
   integrity sha512-WRAVrSQKAtCoypUrrIXWGOvyGRVkrh73hSkKVC0gEqxWDmjZIZJ1uc3VrUd/yHJdLsqNphcAyU8Ahu52yozubg==
@@ -3453,6 +3478,33 @@
     "@storybook/preview-api" "7.2.1"
     "@storybook/react-dom-shim" "7.2.1"
     "@storybook/types" "7.2.1"
+    "@types/escodegen" "^0.0.6"
+    "@types/estree" "^0.0.51"
+    "@types/node" "^16.0.0"
+    acorn "^7.4.1"
+    acorn-jsx "^5.3.1"
+    acorn-walk "^7.2.0"
+    escodegen "^2.0.0"
+    html-tags "^3.1.0"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
+    react-element-to-jsx-string "^15.0.0"
+    ts-dedent "^2.0.0"
+    type-fest "~2.19"
+    util-deprecate "^1.0.2"
+
+"@storybook/react@^7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.2.2.tgz#9486c701901d89f578cca6409509771f41d01efd"
+  integrity sha512-41vOR9mCPGeO4YBVfej+X+Fge+igelqSFCJF/koZDdYxOVehsz3bK++TNrKo2utF69evhwSmIU1iEMEjesmbNg==
+  dependencies:
+    "@storybook/client-logger" "7.2.2"
+    "@storybook/core-client" "7.2.2"
+    "@storybook/docs-tools" "7.2.2"
+    "@storybook/global" "^5.0.0"
+    "@storybook/preview-api" "7.2.2"
+    "@storybook/react-dom-shim" "7.2.2"
+    "@storybook/types" "7.2.2"
     "@types/escodegen" "^0.0.6"
     "@types/estree" "^0.0.51"
     "@types/node" "^16.0.0"

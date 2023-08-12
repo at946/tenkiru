@@ -12,7 +12,7 @@ const description: string =
   'チームでの見積もりをリアルタイムで共有できます。' +
   '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
   '直感的なUIと使いやすさが魅力です。';
-const ogImageUrl: RegExp = /opengraph-image\..*\.jpg/;
+const ogImageUrl: RegExp = /opengraph-image\.jpg/;
 
 test('トップページで、OGが正しいこと', async ({ page }) => {
   // Given

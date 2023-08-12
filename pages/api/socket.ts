@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Socket } from 'net';
-import { Http2SecureServer } from 'http2';
-import { Server } from 'socket.io';
+import { Server as NetServer, Socket } from 'net';
+import { Server as SocketIOServer } from 'socket.io';
 
 // class
 import { Room } from '@/class/room';
@@ -18,17 +17,17 @@ import { findRoomById } from './utils/findRoomById';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
-    server: Http2SecureServer & {
-      io: Server;
+    server: NetServer & {
+      io: SocketIOServer;
     };
   };
 };
 
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
   if (!res.socket.server.io) {
-    const io = new Server<IFClientToServerEvents, IFServerToClientEvents>(res.socket.server, {
-      addTrailingSlash: false,
-    });
+    const io = new SocketIOServer<IFClientToServerEvents, IFServerToClientEvents>(
+      res.socket.server as any,
+    );
     const rooms: Room[] = [];
 
     const removeRoomById = (roomId: string): void => {

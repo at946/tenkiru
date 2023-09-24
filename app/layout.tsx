@@ -29,10 +29,11 @@ const description =
 export const metadata: Metadata = {
   title: siteName,
   description: description,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
   openGraph: {
     title: siteName,
     description: description,
-    url: process.env.NEXT_PUBLIC_BASE_URL,
+    url: '/',
     siteName: siteName,
     type: 'website',
   },

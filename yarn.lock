@@ -2310,21 +2310,21 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
-"@storybook/addon-a11y@^7.4.5":
-  version "7.4.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.4.5.tgz#112fc0269bea3a12a84fbbde30e2d741ece37998"
-  integrity sha512-7W8fjCdmwX4zlDM4jpzVKNgelWSqbYr3cH834pqOFAkyiyNVIsNRPQBgSwkkljgz0uAsz8nFCRFK3Oo1btl6Yg==
+"@storybook/addon-a11y@^7.5.2":
+  version "7.5.2"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-7.5.2.tgz#88876b99d49adda60f9c547e03cdb7d1b2df0571"
+  integrity sha512-HTYESaRr208b/AVguudRIy7rwRMk2bOkBr2P46ozK+8Y9mWXnKxw5O8qYS2kLuEuHfu1S+ktWp7SWjRvz8vHXA==
   dependencies:
-    "@storybook/addon-highlight" "7.4.5"
-    "@storybook/channels" "7.4.5"
-    "@storybook/client-logger" "7.4.5"
-    "@storybook/components" "7.4.5"
-    "@storybook/core-events" "7.4.5"
+    "@storybook/addon-highlight" "7.5.2"
+    "@storybook/channels" "7.5.2"
+    "@storybook/client-logger" "7.5.2"
+    "@storybook/components" "7.5.2"
+    "@storybook/core-events" "7.5.2"
     "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.4.5"
-    "@storybook/preview-api" "7.4.5"
-    "@storybook/theming" "7.4.5"
-    "@storybook/types" "7.4.5"
+    "@storybook/manager-api" "7.5.2"
+    "@storybook/preview-api" "7.5.2"
+    "@storybook/theming" "7.5.2"
+    "@storybook/types" "7.5.2"
     axe-core "^4.2.0"
     lodash "^4.17.21"
     react-resize-detector "^7.1.2"
@@ -2458,15 +2458,6 @@
     "@storybook/node-logger" "7.5.2"
     "@storybook/preview-api" "7.5.2"
     ts-dedent "^2.0.0"
-
-"@storybook/addon-highlight@7.4.5":
-  version "7.4.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-highlight/-/addon-highlight-7.4.5.tgz#1fd45ff07da4c8a3d5c2595310cf67e49c2545cd"
-  integrity sha512-6Ru411+Iis4m2weKb8kB1eEssLvCHwFqAf4fjcOC//O5Vaf5+beHYZJUm/rzD0k/oUHfLCBwDBSBY5TLRegkdA==
-  dependencies:
-    "@storybook/core-events" "7.4.5"
-    "@storybook/global" "^5.0.0"
-    "@storybook/preview-api" "7.4.5"
 
 "@storybook/addon-highlight@7.5.2":
   version "7.5.2"
@@ -4855,15 +4846,10 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-axe-core@^4.2.0:
+axe-core@^4.2.0, axe-core@^4.6.2:
   version "4.8.2"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.8.2.tgz#2f6f3cde40935825cf4465e3c1c9e77b240ff6ae"
   integrity sha512-/dlp0fxyM3R8YW7MFzaHWXrf4zzbr0vaYb23VBFCl83R7nWNPg/yaQw2Dc8jzCMmDVLhSdzH8MjrsuIUuvX+6g==
-
-axe-core@^4.6.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.7.2.tgz#040a7342b20765cb18bb50b628394c21bccc17a0"
-  integrity sha512-zIURGIS1E1Q4pcrMjp+nnEh+16G56eG/MUllJH8yEvw7asDo7Ac9uhC9KIH5jzpITueEZolfYglnCGIuSBz39g==
 
 axios@^0.21.1:
   version "0.21.4"

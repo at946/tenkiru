@@ -52,7 +52,7 @@
     "@storybook/react": "^7.5.2",
     "@storybook/test-runner": "^0.13.0",
     "@storybook/testing-library": "^0.2.2",
-    "@types/gtag.js": "^0.0.14",
+    "@types/gtag.js": "^0.0.17",
     "@types/node": "20.8.10",
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.14",

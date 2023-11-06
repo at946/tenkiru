@@ -4115,10 +4115,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16", "@types/react@^18.2.24":
-  version "18.2.24"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.24.tgz#3c7d68c02e0205a472f04abe4a0c1df35d995c05"
-  integrity sha512-Ee0Jt4sbJxMu1iDcetZEIKQr99J1Zfb6D4F3qfUWoR1JpInkY1Wdg4WwCyBjL257D0+jGqSl1twBjV8iCaC0Aw==
+"@types/react@*", "@types/react@>=16", "@types/react@^18.2.36":
+  version "18.2.36"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.36.tgz#bc68ffb4408e5d0c419b0760b2eaeec70aeeedb3"
+  integrity sha512-o9XFsHYLLZ4+sb9CWUYwHqFVoG61SesydF353vFMMsQziiyRu8np4n2OYMUSDZ8XuImxDr9c5tR7gidlH29Vnw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"

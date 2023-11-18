@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from '@storybook/preview-api';
 
 import Hands from './Hands';
 

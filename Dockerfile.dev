@@ -1,4 +1,4 @@
-FROM node:20.1.0
+FROM node:21.2.0
 ENV WORKDIR=/app
 
 WORKDIR $WORKDIR

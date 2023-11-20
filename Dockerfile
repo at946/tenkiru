@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM node:20.1.0 AS builder
+FROM node:21.2.0 AS builder
 WORKDIR /app
 COPY . .
 RUN yarn install --frozen-lockfile

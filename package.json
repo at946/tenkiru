@@ -50,7 +50,7 @@
     "@storybook/jest": "^0.2.2",
     "@storybook/nextjs": "^7.5.3",
     "@storybook/react": "^7.5.2",
-    "@storybook/test-runner": "^0.13.0",
+    "@storybook/test-runner": "^0.15.2",
     "@storybook/testing-library": "^0.2.2",
     "@types/gtag.js": "^0.0.18",
     "@types/node": "20.9.2",

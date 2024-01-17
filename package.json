@@ -49,7 +49,7 @@
     "@storybook/blocks": "^7.6.3",
     "@storybook/jest": "^0.2.3",
     "@storybook/nextjs": "^7.5.3",
-    "@storybook/react": "^7.6.7",
+    "@storybook/react": "^7.6.9",
     "@storybook/test-runner": "^0.16.0",
     "@storybook/testing-library": "^0.2.2",
     "@types/gtag.js": "^0.0.18",

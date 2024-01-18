@@ -16,7 +16,7 @@ ARG NEXT_PUBLIC_GOOGLE_ADSENSE_ID
 RUN yarn build && yarn postBuild
 
 # Production image, copy all the files and run next
-FROM node:20.1.0 AS runner
+FROM node:20.2.0 AS runner
 
 WORKDIR /app
 

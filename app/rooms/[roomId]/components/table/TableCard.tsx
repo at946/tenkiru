@@ -17,8 +17,8 @@ const TableCard: NextPage<Props> = ({ value, isOpen }) => {
           isBlank
             ? 'bg-transparent'
             : isOpen
-            ? 'bg-white transition-all duration-1000 ease-out'
-            : 'bg-purple-600'
+              ? 'bg-white transition-all duration-1000 ease-out'
+              : 'bg-purple-600'
         }
         `}
       style={!isBlank && !isOpen ? { transform: 'rotateY(-180deg)' } : {}}
@@ -26,8 +26,8 @@ const TableCard: NextPage<Props> = ({ value, isOpen }) => {
         isBlank
           ? '未選択のテーブルカード'
           : isOpen
-          ? `めくられたテーブルカード ${value}`
-          : '伏せられたテーブルカード'
+            ? `めくられたテーブルカード ${value}`
+            : '伏せられたテーブルカード'
       }
     >
       {isOpen && value}

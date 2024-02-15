@@ -7,7 +7,7 @@ const Sun: NextPage = () => (
     viewBox='0 0 24 24'
     strokeWidth={1.5}
     stroke='currentColor'
-    className='h-6 w-6'
+    className='size-6'
   >
     <path
       strokeLinecap='round'

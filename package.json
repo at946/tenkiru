@@ -66,7 +66,7 @@
     "next-sitemap": "^4.2.3",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.11",
+    "prettier-plugin-tailwindcss": "^0.5.12",
     "storybook": "^7.6.17",
     "storybook-dark-mode": "^3.0.3",
     "tailwindcss": "^3.4.1",

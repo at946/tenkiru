@@ -70,6 +70,6 @@
     "storybook": "^7.6.17",
     "storybook-dark-mode": "^3.0.3",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }

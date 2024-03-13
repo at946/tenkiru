@@ -67,7 +67,7 @@
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
-    "storybook": "^7.6.17",
+    "storybook": "^8.0.0",
     "storybook-dark-mode": "^3.0.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.2"

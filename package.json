@@ -26,7 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "bufferutil": "^4.0.8",
-    "express": "^4.19.1",
+    "express": "^4.19.2",
     "next": "14.1.4",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",

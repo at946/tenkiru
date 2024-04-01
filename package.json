@@ -58,6 +58,7 @@
     "@types/react-dom": "^18.2.23",
     "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.4.19",
+    "clsx": "^2.1.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.4",
     "eslint-config-prettier": "^9.1.0",

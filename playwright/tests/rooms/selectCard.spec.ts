@@ -1,6 +1,6 @@
-import { test, expect } from '@playwright/test';
-import RoomPage from '../../models/room-page';
+import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
+import RoomPage from '../../models/room-page';
 
 test('ルームページで、カードを選択したとき、カードが選択中になり、場に伏せて置かれること', async ({
   context,

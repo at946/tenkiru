@@ -1,10 +1,10 @@
-import { User } from './user';
 import Decks from '@/data/deck';
-import { IFTableCard } from '@/interfaces/tableCard';
-import { IFDeckType } from '@/interfaces/deckType';
 import { IFDeck } from '@/interfaces/deck';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { IFDeckType } from '@/interfaces/deckType';
 import { IFRoom } from '@/interfaces/room';
+import { IFTableCard } from '@/interfaces/tableCard';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { User } from './user';
 
 export class Room {
   constructor(

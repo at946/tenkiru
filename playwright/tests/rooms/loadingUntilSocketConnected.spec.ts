@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import RoomPage from '../../models/room-page';
 import createRoomId from '../../helpers/createRoomId';
+import RoomPage from '../../models/room-page';
 
 test('ルームを参加するとき、WebSocketが確立すると入室完了トーストが表示されること', async ({
   page,

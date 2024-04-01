@@ -1,10 +1,8 @@
+import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
 import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
-
-import Header from './Header';
-
 import { RecoilRoot } from 'recoil';
+import Header from './Header';
 
 const meta: Meta<typeof Header> = {
   component: Header,

@@ -1,6 +1,6 @@
-import { expect, Locator, Page } from '@playwright/test';
-import Head from './common/head';
+import { Page } from '@playwright/test';
 import urls from '../helpers/urls';
+import Head from './common/head';
 
 export default class TOSPage {
   readonly page: Page;

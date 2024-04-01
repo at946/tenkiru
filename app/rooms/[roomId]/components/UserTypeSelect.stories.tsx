@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
-
-import UserTypeSelect from './UserTypeSelect';
 import { IFUserType } from '@/interfaces/userType';
+import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react';
+import UserTypeSelect from './UserTypeSelect';
 
 const meta: Meta<typeof UserTypeSelect> = {
   component: UserTypeSelect,

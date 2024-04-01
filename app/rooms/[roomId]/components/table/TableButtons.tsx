@@ -1,22 +1,12 @@
-import { NextPage } from 'next';
-
-// components
 import Button from '@/app/components/common/Button';
-
-// fontawesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHand, faHandsPraying, faReply } from '@fortawesome/free-solid-svg-icons';
-
-// interface
 import { IFRoom } from '@/interfaces/room';
 import { IFTableCard } from '@/interfaces/tableCard';
-
-// recoil
-import { useRecoilValue } from 'recoil';
-
-// utils
-import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import roomState from '@/recoil/atoms/roomAtom';
+import { faHand, faHandsPraying, faReply } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NextPage } from 'next';
+import { useRecoilValue } from 'recoil';
+import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 
 interface Props {
   clickOpenButton: () => void;

@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-
 import TableCard from './TableCard';
 
 const meta: Meta<typeof TableCard> = {

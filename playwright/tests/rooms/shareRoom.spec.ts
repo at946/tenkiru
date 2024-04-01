@@ -1,6 +1,6 @@
-import { test, expect, Page } from '@playwright/test';
-import RoomPage from '../../models/room-page';
+import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
+import RoomPage from '../../models/room-page';
 
 test('ルームページで、部屋番号を知れること', async ({ page }) => {
   // Given

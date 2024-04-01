@@ -1,9 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
-
-import Hands from './Hands';
-
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { useArgs } from '@storybook/preview-api';
+import { Meta, StoryObj } from '@storybook/react';
+import Hands from './Hands';
 
 const meta: Meta<typeof Hands> = {
   component: Hands,

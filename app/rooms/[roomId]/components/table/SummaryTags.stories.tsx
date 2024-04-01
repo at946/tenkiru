@@ -1,12 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react';
-
-import SummaryTags from './SummaryTags';
-
 import { IFRoom } from '@/interfaces/room';
-
-// recoil
-import { RecoilRoot } from 'recoil';
 import roomState from '@/recoil/atoms/roomAtom';
+import { Meta, StoryObj } from '@storybook/react';
+import { RecoilRoot } from 'recoil';
+import SummaryTags from './SummaryTags';
 
 const meta: Meta<typeof SummaryTags> = {
   component: SummaryTags,

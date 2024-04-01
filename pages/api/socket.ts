@@ -1,18 +1,12 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { Server as NetServer, Socket } from 'net';
-import { Server as SocketIOServer } from 'socket.io';
-
-// class
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
-
-// interface
-import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFDeckType } from '@/interfaces/deckType';
-import { IFUserType } from '@/interfaces/userType';
+import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
-
-// utils
+import { IFUserType } from '@/interfaces/userType';
+import { Server as NetServer, Socket } from 'net';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { Server as SocketIOServer } from 'socket.io';
 import { findRoomById } from './utils/findRoomById';
 
 type NextApiResponseSocketIO = NextApiResponse & {

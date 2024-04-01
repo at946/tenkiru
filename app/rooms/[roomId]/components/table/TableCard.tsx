@@ -1,5 +1,5 @@
-import { NextPage } from 'next';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { NextPage } from 'next';
 
 interface Props {
   value: IFTableCardValue;

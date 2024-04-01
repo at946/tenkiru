@@ -1,15 +1,9 @@
-import { NextPage } from 'next';
-
-// lib
 import { event } from '@/lib/gtag';
-
-// components
-import ClipboardCopyLink from '../../../components/common/ClipboardCopyLink';
-import toast from 'react-hot-toast';
-
-// fontawesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NextPage } from 'next';
+import toast from 'react-hot-toast';
+import ClipboardCopyLink from '../../../components/common/ClipboardCopyLink';
 
 interface Props {
   roomId: string;

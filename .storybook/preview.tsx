@@ -1,6 +1,6 @@
-import type { Preview } from '@storybook/react';
-import '@storybook/addon-console';
 import '@/styles/globals.css';
+import '@storybook/addon-console';
+import type { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
 
 const preview: Preview = {

@@ -1,11 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react';
-
-import TableCards from './TableCards';
 import { IFRoom } from '@/interfaces/room';
-
-// recoil
-import { RecoilRoot } from 'recoil';
 import roomState from '@/recoil/atoms/roomAtom';
+import { Meta, StoryObj } from '@storybook/react';
+import { RecoilRoot } from 'recoil';
+import TableCards from './TableCards';
 
 const meta: Meta<typeof TableCards> = {
   component: TableCards,

@@ -1,23 +1,15 @@
-import { NextPage } from 'next';
-
-// components
-import SummaryTag from './SummaryTag';
-
-// interfaces
 import { IFRoom } from '@/interfaces/room';
 import { IFTableCard } from '@/interfaces/tableCard';
-
-// recoil
-import { useRecoilValue } from 'recoil';
 import roomState from '@/recoil/atoms/roomAtom';
-
-// utils
+import { NextPage } from 'next';
+import { useRecoilValue } from 'recoil';
 import {
   getAvgValueAmongTableCards,
   getMaxValueAmongTableCards,
   getMinValueAmongTableCards,
 } from '../../utils/getSummaryAmongTableCards';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
+import SummaryTag from './SummaryTag';
 
 interface Props {
   extraClass?: string;

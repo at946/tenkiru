@@ -1,16 +1,10 @@
+import { IFRoom } from '@/interfaces/room';
+import roomState from '@/recoil/atoms/roomAtom';
 import { NextPage } from 'next';
-
-// components
+import { useRecoilValue } from 'recoil';
 import SummaryTags from './SummaryTags';
 import TableButtons from './TableButtons';
 import TableCards from './TableCards';
-
-// interface
-import { IFRoom } from '@/interfaces/room';
-
-// recoil
-import { useRecoilValue } from 'recoil';
-import roomState from '@/recoil/atoms/roomAtom';
 
 interface Props {
   extraClass?: string;

@@ -1,9 +1,9 @@
-import { test, expect } from '@playwright/test';
-import TopPage from '../../models/top-page';
-import RoomPage from '../../models/room-page';
-import TOSPage from '../../models/tos-page';
-import PPPage from '../../models/pp-page';
+import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
+import PPPage from '../../models/pp-page';
+import RoomPage from '../../models/room-page';
+import TopPage from '../../models/top-page';
+import TOSPage from '../../models/tos-page';
 
 const title: string = 'Tenkir | チームでわいわいプランニングポーカーアプリ';
 const description: string =

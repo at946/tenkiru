@@ -1,21 +1,17 @@
-import '../styles/globals.css';
-import React from 'react';
-import { Metadata } from 'next';
-import Footer from './components/common/Footer';
-import Header from './components/common/Header';
-import GoogleAdsense from './GoogleAdsense';
-import GoogleAnalytics from './GoogleAnalytics';
-
-// fontawesome
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
-
-// dark mode
-import ThemeProvider from './ThemeProvider';
-
-// recoil
+import { Metadata } from 'next';
+import React from 'react';
+import '../styles/globals.css';
+import GoogleAdsense from './GoogleAdsense';
+import GoogleAnalytics from './GoogleAnalytics';
 import RecoilProvider from './RecoilProvider';
+import ThemeProvider from './ThemeProvider';
+import Footer from './components/common/Footer';
+import Header from './components/common/Header';
+
+// fontawesome
+config.autoAddCss = false;
 
 // metatags
 const siteName = 'Tenkir | チームでわいわいプランニングポーカーアプリ';

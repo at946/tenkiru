@@ -1,16 +1,10 @@
-import { NextPage } from 'next';
-
-// components
-import HandsCard from './HandsCard';
-
-// data
 import Decks from '@/data/deck';
-
-// interfaces
 import { IFDeck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { NextPage } from 'next';
+import HandsCard from './HandsCard';
 
 interface Props {
   deckType: IFDeckType;

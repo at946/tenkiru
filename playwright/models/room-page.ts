@@ -1,9 +1,8 @@
-import { Locator, Page } from '@playwright/test';
-import Head from './common/head';
-
-import urls from '../helpers/urls';
-import { IFUserType } from '@/interfaces/userType';
 import { IFDeckType } from '@/interfaces/deckType';
+import { IFUserType } from '@/interfaces/userType';
+import { Locator, Page } from '@playwright/test';
+import urls from '../helpers/urls';
+import Head from './common/head';
 
 export default class RoomPage {
   readonly page: Page;

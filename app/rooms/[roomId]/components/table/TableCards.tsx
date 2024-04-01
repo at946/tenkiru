@@ -1,23 +1,13 @@
-import { NextPage } from 'next';
-
-// components
-import TableCard from './TableCard';
 import Button from '@/app/components/common/Button';
-
-// fontawesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-
-// interfaces
-import { IFTableCard } from '@/interfaces/tableCard';
 import { IFRoom } from '@/interfaces/room';
-
-// recoil
-import { useRecoilValue } from 'recoil';
+import { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';
-
-// utils
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NextPage } from 'next';
+import { useRecoilValue } from 'recoil';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
+import TableCard from './TableCard';
 
 interface Props {
   nominate: (userId: string) => void;

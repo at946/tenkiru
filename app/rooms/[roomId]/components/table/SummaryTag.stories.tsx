@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-
 import SummaryTag from './SummaryTag';
 
 const meta: Meta<typeof SummaryTag> = {

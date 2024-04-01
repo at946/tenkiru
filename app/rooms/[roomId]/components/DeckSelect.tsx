@@ -1,15 +1,9 @@
-import { NextPage } from 'next';
-
-// components
+import { IFOption } from '@/app/components/common/Select';
 import SelectWithLabel from '@/app/components/common/SelectWithLabel';
-
-// data
 import Decks from '@/data/deck';
-
-// interfaces
 import { IFDeck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';
-import { IFOption } from '@/app/components/common/Select';
+import { NextPage } from 'next';
 
 interface Props {
   deckType: IFDeckType;

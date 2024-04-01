@@ -1,21 +1,15 @@
 'use client';
 
+import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faMugSaucer, faShuffle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
 import Link from 'next/link';
-
-// components
-import HeaderItem from './HeaderItem';
-import Sun from './icons/Sun';
-import Moon from './icons/Moon';
-
-// fontawesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMugSaucer, faShuffle } from '@fortawesome/free-solid-svg-icons';
-import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
-
-// recoil
 import { useRecoilState } from 'recoil';
-import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
+import HeaderItem from './HeaderItem';
+import Moon from './icons/Moon';
+import Sun from './icons/Sun';
 
 const Header: NextPage = () => {
   const [isDarkMode, setIsDarkMode] = useRecoilState<boolean>(isDarkModeState);

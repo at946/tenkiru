@@ -1,9 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
-
-import DeckSelect from './DeckSelect';
-
 import { IFDeckType } from '@/interfaces/deckType';
+import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react';
+import DeckSelect from './DeckSelect';
 
 const meta: Meta<typeof DeckSelect> = {
   component: DeckSelect,

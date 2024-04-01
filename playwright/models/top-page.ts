@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
-import Head from './common/head';
 import urls from '../helpers/urls';
+import Head from './common/head';
 
 export default class TopPage {
   readonly page: Page;

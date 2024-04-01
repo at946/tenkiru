@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import SelectWithLabel from './SelectWithLabel';
 
 const meta: Meta<typeof SelectWithLabel> = {

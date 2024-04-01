@@ -1,14 +1,13 @@
 'use client';
 
+import { event } from '@/lib/gtag';
+import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { v4 } from 'uuid';
-import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
-import { event } from '@/lib/gtag';
-
 import Button from './common/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CreateRoomButton: NextPage = () => {
   const router = useRouter();

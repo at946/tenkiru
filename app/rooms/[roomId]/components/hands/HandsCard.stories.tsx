@@ -1,7 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
-
-import HandsCard from './HandsCard';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { Meta, StoryObj } from '@storybook/react';
+import HandsCard from './HandsCard';
 
 const meta: Meta<typeof HandsCard> = {
   component: HandsCard,

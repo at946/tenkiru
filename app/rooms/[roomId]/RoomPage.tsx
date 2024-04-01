@@ -1,36 +1,24 @@
 'use client';
 
+import MyToaster from '@/app/components/common/MyToaster';
+import { IFDeckType } from '@/interfaces/deckType';
+import { IFRoom } from '@/interfaces/room';
+import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
+import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { IFUser } from '@/interfaces/user';
+import { IFUserType } from '@/interfaces/userType';
+import { event } from '@/lib/gtag';
+import isRoomState from '@/recoil/atoms/roomAtom';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-
-// socket.io
-import { io, Socket } from 'socket.io-client';
-
-// interfaces
-import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
-import { IFUserType } from '@/interfaces/userType';
-import { IFDeckType } from '@/interfaces/deckType';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { IFRoom } from '@/interfaces/room';
-import { IFUser } from '@/interfaces/user';
-
-// components
-import Table from './components/table/Table';
-import DeckSelect from './components/DeckSelect';
-import Hands from './components/hands/Hands';
 import toast from 'react-hot-toast';
-import MyToaster from '@/app/components/common/MyToaster';
+import { useRecoilState } from 'recoil';
+import { Socket, io } from 'socket.io-client';
+import DeckSelect from './components/DeckSelect';
 import RoomInfo from './components/RoomInfo';
 import UserTypeSelect from './components/UserTypeSelect';
-
-// recoil
-import { useRecoilState } from 'recoil';
-import isRoomState from '@/recoil/atoms/roomAtom';
-
-// GA
-import { event } from '@/lib/gtag';
-
-// utils
+import Hands from './components/hands/Hands';
+import Table from './components/table/Table';
 import { playAudio } from './utils/playAudio';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;

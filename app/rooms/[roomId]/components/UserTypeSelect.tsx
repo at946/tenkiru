@@ -1,9 +1,8 @@
-import { NextPage } from 'next';
-import { IFUserType } from '@/interfaces/userType';
-import { event } from '@/lib/gtag';
-
 import { IFOption } from '@/app/components/common/Select';
 import SelectWithLabel from '@/app/components/common/SelectWithLabel';
+import { IFUserType } from '@/interfaces/userType';
+import { event } from '@/lib/gtag';
+import { NextPage } from 'next';
 
 interface Props {
   type: IFUserType;

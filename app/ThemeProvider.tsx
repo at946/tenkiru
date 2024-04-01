@@ -1,11 +1,9 @@
 'use client';
 
+import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
 import { NextPage } from 'next';
 import { ReactNode, useEffect } from 'react';
-
-// recoil
 import { useRecoilState } from 'recoil';
-import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
 
 interface Props {
   children: ReactNode;

@@ -1,8 +1,6 @@
-import { NextPage } from 'next';
-
-// interface
 import { IFHandsCardValue } from '@/interfaces/handsCardValue';
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import { NextPage } from 'next';
 
 interface Props {
   value: IFHandsCardValue;

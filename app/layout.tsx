@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     siteName: siteName,
     type: 'website',
   },
-  themeColor: '#812990',
   twitter: {
     card: 'summary',
   },

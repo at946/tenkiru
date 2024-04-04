@@ -1,5 +1,6 @@
 {
-  "Index": {
-    "title": "Hello world"
+  "Metadata": {
+    "title": "Tenkir",
+    "description": "Tenkir（テンキル）は、シンプルで楽しいプランニングポーカーアプリです。ルームを作成し、チームメンバーにルームのURLを共有するだけですぐに使い始められます。"
   }
 }

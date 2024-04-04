@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import GoogleAdsense from '../GoogleAdsense';
 import GoogleAnalytics from '../GoogleAnalytics';
@@ -13,33 +13,28 @@ import Header from '../components/common/Header';
 // fontawesome
 config.autoAddCss = false;
 
-// metatags
-const siteName = 'Tenkir | チームでわいわいプランニングポーカーアプリ';
-const description =
-  'Tenkirは無料のオンラインプランニングポーカーアプリです。' +
-  'XPやスクラムなどのアジャイルなプロジェクト管理に最適です。' +
-  'チームでの見積もりをリアルタイムで共有できます。' +
-  '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
-  '直感的なUIと使いやすさが魅力です。';
+export async function generateMetadata({ params: { locale } }) {
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
 
-export const metadata: Metadata = {
-  title: siteName,
-  description: description,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
-  openGraph: {
-    title: siteName,
-    description: description,
-    url: '/',
-    siteName: siteName,
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-  },
-  verification: {
-    google: 'Ah3duN64SajYBZS8Bc46SiFiEddyFhimdaawZmc20Z4',
-  },
-};
+  return {
+    title: t('title'),
+    description: t('description'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: '/',
+      siteName: t('title'),
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+    },
+    verification: {
+      google: 'Ah3duN64SajYBZS8Bc46SiFiEddyFhimdaawZmc20Z4',
+    },
+  };
+}
 
 // OGPが表示されない応急処置
 export const dynamic = 'force-dynamic';

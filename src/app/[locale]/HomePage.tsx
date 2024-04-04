@@ -1,8 +1,8 @@
 'use client';
 
 import { NextPage } from 'next';
-import CreateRoomButton from './components/CreateRoomButton';
-import TitleAndContentBox from './components/TitleAndContentBox';
+import CreateRoomButton from '../components/CreateRoomButton';
+import TitleAndContentBox from '../components/TitleAndContentBox';
 
 const HomePage: NextPage = () => {
   return (

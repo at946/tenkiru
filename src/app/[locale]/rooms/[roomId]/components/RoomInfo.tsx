@@ -1,9 +1,9 @@
+import ClipboardCopyLink from '@/app/components/common/ClipboardCopyLink';
 import { event } from '@/lib/gtag';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
 import toast from 'react-hot-toast';
-import ClipboardCopyLink from '../../../components/common/ClipboardCopyLink';
 
 interface Props {
   roomId: string;

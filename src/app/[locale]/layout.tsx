@@ -1,14 +1,14 @@
+import '@/styles/globals.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { Metadata } from 'next';
 import React from 'react';
-import '../styles/globals.css';
-import GoogleAdsense from './GoogleAdsense';
-import GoogleAnalytics from './GoogleAnalytics';
-import RecoilProvider from './RecoilProvider';
-import ThemeProvider from './ThemeProvider';
-import Footer from './components/common/Footer';
-import Header from './components/common/Header';
+import GoogleAdsense from '../GoogleAdsense';
+import GoogleAnalytics from '../GoogleAnalytics';
+import RecoilProvider from '../RecoilProvider';
+import ThemeProvider from '../ThemeProvider';
+import Footer from '../components/common/Footer';
+import Header from '../components/common/Header';
 
 // fontawesome
 config.autoAddCss = false;
@@ -44,9 +44,16 @@ export const metadata: Metadata = {
 // OGPが表示されない応急処置
 export const dynamic = 'force-dynamic';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+  params: {
+    locale: string;
+  };
+}
+
+export default function RootLayout({ children, params: { locale } }: Props) {
   return (
-    <html lang='ja'>
+    <html lang={locale}>
       <body>
         <RecoilProvider>
           <ThemeProvider>

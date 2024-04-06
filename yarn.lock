@@ -1647,6 +1647,34 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz#d9fae00a2d5cb40f92cfe64b47ad749fbc38f917"
   integrity sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==
 
+"@iconify-json/fa6-brands@^1.1.19":
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/@iconify-json/fa6-brands/-/fa6-brands-1.1.19.tgz#dfbc859e1e24cf357687623893bb71af8636110c"
+  integrity sha512-3Dl0D1gtFwIj7/GT2xJbkM9D/LjuozsgfLrqRWP6B5xuajtsyEvR1wD0Z06y3iaNtASpgWPWyYbml+AHQ3Hw0g==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/ic@^1.1.17":
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/@iconify-json/ic/-/ic-1.1.17.tgz#d1676582fccb45cfbc5e3dd0e100b2ec974c13c9"
+  integrity sha512-EvAjZzVESmN36zlyefylePUNaU2BQ3eRKVZ6KQSQ2bG01ppoZaiFZRri74VTyvp5Mlv2yn68ux1fgCoT+etGmA==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/mdi@^1.1.65":
+  version "1.1.65"
+  resolved "https://registry.yarnpkg.com/@iconify-json/mdi/-/mdi-1.1.65.tgz#d7c90b29ab48778f207e39e3808554eccf52ab30"
+  integrity sha512-P9ovos4pKjqwbcUaF5axnHKc1J4djfwLQ6vheJSzbTuZ7gLyonAI/mDDc+ekC4HFCnrYWPjdpkKT+mIujuqOaA==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/simple-icons@^1.1.98":
+  version "1.1.98"
+  resolved "https://registry.yarnpkg.com/@iconify-json/simple-icons/-/simple-icons-1.1.98.tgz#bce87ecff27f376de0924878981c63f252e0e9fe"
+  integrity sha512-oL1ucUCQE/aGVhb9Bvo556EcNjww9yzFITvwOKI0h3KYkF5iSAiwCqWkqxUJzrJHobQdd5R91jYfLG847G9uIA==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify/tailwind@^0.1.4":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@iconify/tailwind/-/tailwind-0.1.4.tgz#c5baee6e863d01d7b1d5ff3f0c5cd4fc49b2c0c7"
@@ -1654,7 +1682,7 @@
   dependencies:
     "@iconify/types" "^2.0.0"
 
-"@iconify/types@^2.0.0":
+"@iconify/types@*", "@iconify/types@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==

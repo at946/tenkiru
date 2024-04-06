@@ -1,4 +1,4 @@
-import ClipboardCopyLink from '@/app/components/common/ClipboardCopyLink';
+import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
 import { event } from '@/lib/gtag';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

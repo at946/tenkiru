@@ -1,5 +1,5 @@
-import { IFOption } from '@/app/components/common/Select';
-import SelectWithLabel from '@/app/components/common/SelectWithLabel';
+import { IFOption } from '@/app/[locale]/components/common/Select';
+import SelectWithLabel from '@/app/[locale]/components/common/SelectWithLabel';
 import { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
 import { NextPage } from 'next';

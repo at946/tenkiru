@@ -1,4 +1,4 @@
-import MyToaster from '@/app/components/common/MyToaster';
+import MyToaster from '@/app/[locale]/components/common/MyToaster';
 import { Meta, StoryObj } from '@storybook/react';
 import RoomInfo from './RoomInfo';
 

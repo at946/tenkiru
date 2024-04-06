@@ -7,8 +7,8 @@ import GoogleAdsense from '../GoogleAdsense';
 import GoogleAnalytics from '../GoogleAnalytics';
 import RecoilProvider from '../RecoilProvider';
 import ThemeProvider from '../ThemeProvider';
-import Footer from '../components/common/Footer';
-import Header from '../components/common/Header';
+import Footer from './components/common/Footer';
+import Header from './components/common/Header';
 
 // fontawesome
 config.autoAddCss = false;
@@ -26,6 +26,7 @@ export async function generateMetadata({ params: { locale } }) {
       url: '/',
       siteName: t('title'),
       type: 'website',
+      images: '/opengraph-image.jpg',
     },
     twitter: {
       card: 'summary',
@@ -53,7 +54,7 @@ export default function RootLayout({ children, params: { locale } }: Props) {
         <RecoilProvider>
           <ThemeProvider>
             <div className='flex min-h-screen flex-col'>
-              <Header />
+              <Header currentLocale={locale} />
               <main>{children}</main>
               <Footer />
             </div>

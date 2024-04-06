@@ -1,6 +1,6 @@
 'use client';
 
-import MyToaster from '@/app/components/common/MyToaster';
+import MyToaster from '@/app/[locale]/components/common/MyToaster';
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFRoom } from '@/interfaces/room';
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';

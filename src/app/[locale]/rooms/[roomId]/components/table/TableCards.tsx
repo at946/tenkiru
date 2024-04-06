@@ -1,4 +1,4 @@
-import Button from '@/app/components/common/Button';
+import Button from '@/app/[locale]/components/common/Button';
 import { IFRoom } from '@/interfaces/room';
 import { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';

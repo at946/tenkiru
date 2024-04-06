@@ -1,5 +1,5 @@
-import { IFOption } from '@/app/components/common/Select';
-import SelectWithLabel from '@/app/components/common/SelectWithLabel';
+import { IFOption } from '@/app/[locale]/components/common/Select';
+import SelectWithLabel from '@/app/[locale]/components/common/SelectWithLabel';
 import Decks from '@/data/deck';
 import { IFDeck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';

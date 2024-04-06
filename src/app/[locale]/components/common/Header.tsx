@@ -1,11 +1,9 @@
 import DarkModeToggle from '@/app/[locale]/components/common/DarkModeToggle';
 import ExternalLink from '@/app/[locale]/components/common/ExternalLink';
 import LocaleSwitcher from '@/app/[locale]/components/common/LocaleSwitcher';
-import HeaderItem from '@/app/components/common/HeaderItem';
-import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 interface Props {
@@ -13,6 +11,7 @@ interface Props {
 }
 
 const Header: NextPage = (props: Props) => {
+  const t = useTranslations('Header');
   const twitterShareText: string = `Tenkir\n${process.env.NEXT_PUBLIC_BASE_URL}`;
 
   return (
@@ -33,8 +32,8 @@ const Header: NextPage = (props: Props) => {
           <div className='flex gap-4'>
             <ExternalLink
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterShareText)}`}
-              title='Share to X'
-              ariaLabel='Share to X'
+              title={t('Share to X')}
+              ariaLabel={t('Share to X')}
               className='hover:text-primary focus:text-primary dark:hover:text-dark-primary dark:focus:text-dark-primary flex items-center'
             >
               <span className='icon-[fa6-brands--x-twitter] text-2xl' />
@@ -42,17 +41,17 @@ const Header: NextPage = (props: Props) => {
             <ExternalLink
               href='https://www.buymeacoffee.com/at946'
               title='Buy me a coffee'
-              ariaLabel='Go to Buy me a coffee'
+              ariaLabel='Buy me a coffee'
               className='hover:text-primary focus:text-primary dark:hover:text-dark-primary dark:focus:text-dark-primary flex items-center'
             >
               <span className='icon-[simple-icons--buymeacoffee] text-2xl' />
             </ExternalLink>
             <DarkModeToggle
-              lightModeTitle='ダークモードへ変更'
-              darkModeTitle='ライトモードへ変更'
+              lightModeTitle={t('Switch to dark mode')}
+              darkModeTitle={t('Switch to light mode')}
               className='flex items-center'
             />
-            <LocaleSwitcher currentLocale={props.currentLocale} />
+            <LocaleSwitcher currentLocale={props.currentLocale} ariaLabel={t('Switch language')} />
           </div>
         </div>
       </div>

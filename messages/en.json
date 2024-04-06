@@ -2,5 +2,11 @@
   "Metadata": {
     "title": "Tenkir",
     "description": "Tenkir is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately."
+  },
+  "Header": {
+    "Share to X": "Share to X",
+    "Switch to dark mode": "Switch to dark mode",
+    "Switch to light mode": "Switch to light mode",
+    "Switch language": "Switch language"
   }
 }

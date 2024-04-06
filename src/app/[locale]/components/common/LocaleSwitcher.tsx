@@ -5,6 +5,7 @@ import { NextPage } from 'next';
 
 interface Props {
   currentLocale: string;
+  ariaLabel: string;
 }
 
 const LocaleSwitcher: NextPage = (props: Props) => {
@@ -22,9 +23,12 @@ const LocaleSwitcher: NextPage = (props: Props) => {
         className='bg-transparent uppercase'
         value={props.currentLocale}
         onChange={(e) => switchLolale(e.target.value)}
+        aria-label={props.ariaLabel}
       >
         {locales.map((locale) => (
-          <option value={locale}>{locale}</option>
+          <option value={locale} key={locale}>
+            {locale}
+          </option>
         ))}
       </select>
     </div>

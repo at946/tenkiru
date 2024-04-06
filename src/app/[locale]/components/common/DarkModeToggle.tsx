@@ -24,7 +24,7 @@ const DarkModeToggle: NextPage = (props: Props) => {
     >
       <span
         className={clsx(
-          'text-2xl hover:text-primary focus:text-primary dark:hover:text-dark-primary dark:focus:text-dark-primary',
+          'text-2xl',
           isDarkMode ? 'icon-[mdi--white-balance-sunny]' : 'icon-[mdi--moon-and-stars]',
         )}
       />

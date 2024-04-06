@@ -8,5 +8,10 @@
     "Switch to dark mode": "ダークモードに切替",
     "Switch to light mode": "ライトモードに切替",
     "Switch language": "言語切替"
+  },
+  "Footer": {
+    "Terms of Service": "利用規約",
+    "Privacy Policy": "プライバシーポリシー",
+    "Contact Us": "お問い合わせ"
   }
 }

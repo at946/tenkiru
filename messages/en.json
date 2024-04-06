@@ -8,5 +8,10 @@
     "Switch to dark mode": "Switch to dark mode",
     "Switch to light mode": "Switch to light mode",
     "Switch language": "Switch language"
+  },
+  "Footer": {
+    "Terms of Service": "Terms of Service",
+    "Privacy Policy": "Privacy Policy",
+    "Contact Us": "Contact Us"
   }
 }

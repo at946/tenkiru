@@ -1,34 +1,32 @@
 import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
-import { event } from '@/lib/gtag';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
 import { NextPage } from 'next';
-import toast from 'react-hot-toast';
+import { useTranslations } from 'next-intl';
+import { ReactNode } from 'react';
 
 interface Props {
   roomId: string;
-  extraClass: string;
+  className?: string;
+  children: ReactNode;
 }
 
-const RoomInfo: NextPage<Props> = ({ roomId, extraClass }) => {
-  const onCopiedRoomUrl = (): void => {
-    toast.success('この部屋のURLをコピーしました', {
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
-    event({ action: 'copy_room_url', category: 'engagement', label: '' });
-  };
-
+const RoomInfo: NextPage = (props: Props) => {
+  const t = useTranslations('Room.RoomInfo');
   return (
-    <div className={`${extraClass || ''}`}>
-      <ClipboardCopyLink
-        copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`}
-        extraClass='my-5'
-        onCopied={onCopiedRoomUrl}
-      >
-        <span>部屋番号：{roomId}</span>
-        <FontAwesomeIcon icon={faLink} className='ml-2' />
-      </ClipboardCopyLink>
-    </div>
+    <ClipboardCopyLink
+      copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${props.roomId}`}
+      messageOnSuccess={t('Copied this Room URL')}
+      gaAction='copy_room_url'
+      className={clsx(
+        props.className,
+        'mx-auto flex flex-col items-center gap-1 md:flex-row md:gap-2',
+      )}
+    >
+      <span>Room ID</span>
+      <span className='hidden md:inline'>:</span>
+      <span>{props.roomId}</span>
+      <span className='icon-[fa6-solid--link]' />
+    </ClipboardCopyLink>
   );
 };
 

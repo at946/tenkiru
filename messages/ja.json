@@ -20,5 +20,10 @@
     "Create a room for planning poker": "部屋をつくります",
     "Share the room URL with your team": "部屋のURLをチームに共有します",
     "Enjoy planning poker together": "みんなでプランニングポーカーを楽しみます"
+  },
+  "Room": {
+    "RoomInfo": {
+      "Copied this Room URL": "この部屋のURLをコピーしました"
+    }
   }
 }

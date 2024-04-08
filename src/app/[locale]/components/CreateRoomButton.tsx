@@ -28,6 +28,7 @@ const CreateRoomButton: NextPage = (props: Props) => {
       onMouseLeave={() => setIsHovering(false)}
       onFocus={() => setIsHovering(true)}
       onBlur={() => setIsHovering(false)}
+      className='inline-flex items-center'
     >
       <span
         className={clsx(

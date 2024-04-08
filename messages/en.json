@@ -20,5 +20,10 @@
     "Create a room for planning poker": "Create a room for planning poker",
     "Share the room URL with your team": "Share the room URL with your team",
     "Enjoy planning poker together": "Enjoy planning poker together"
+  },
+  "Room": {
+    "RoomInfo": {
+      "Copied this Room URL": "Copied this Room URL"
+    }
   }
 }

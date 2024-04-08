@@ -1,6 +1,5 @@
 'use client';
 
-import MyToaster from '@/app/[locale]/components/common/MyToaster';
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFRoom } from '@/interfaces/room';
 import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
@@ -15,7 +14,6 @@ import toast from 'react-hot-toast';
 import { useRecoilState } from 'recoil';
 import { Socket, io } from 'socket.io-client';
 import DeckSelect from './components/DeckSelect';
-import RoomInfo from './components/RoomInfo';
 import UserTypeSelect from './components/UserTypeSelect';
 import Hands from './components/hands/Hands';
 import Table from './components/table/Table';
@@ -119,7 +117,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   return (
     <div className='container mx-auto mb-10 mt-5 px-5 text-center'>
-      <RoomInfo roomId={roomId} extraClass='mb-5' />
       <Table
         extraClass='mb-5'
         openCards={openCards}
@@ -148,7 +145,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
           />
         </>
       )}
-      <MyToaster />
     </div>
   );
 };

@@ -13,5 +13,12 @@
     "Terms of Service": "利用規約",
     "Privacy Policy": "プライバシーポリシー",
     "Contact Us": "お問い合わせ"
+  },
+  "Home": {
+    "Create a room": "部屋をつくる",
+    "Simple and fun planning poker app": "シンプルで楽しいプランニングポーカーアプリ",
+    "Create a room for planning poker": "部屋をつくります",
+    "Share the room URL with your team": "部屋のURLをチームに共有します",
+    "Enjoy planning poker together": "みんなでプランニングポーカーを楽しみます"
   }
 }

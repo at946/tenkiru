@@ -1,15 +1,18 @@
 'use client';
 
 import { event } from '@/lib/gtag';
-import { faDoorClosed, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
 import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { v4 } from 'uuid';
 import Button from './common/Button';
 
-const CreateRoomButton: NextPage = () => {
+interface Props {
+  name: string;
+}
+
+const CreateRoomButton: NextPage = (props: Props) => {
   const router = useRouter();
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -19,12 +22,21 @@ const CreateRoomButton: NextPage = () => {
   };
 
   return (
-    <span onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-      <Button onClick={click}>
-        <FontAwesomeIcon icon={isHovering ? faDoorOpen : faDoorClosed} className='mr-2' />
-        <span>部屋をつくる</span>
-      </Button>
-    </span>
+    <Button
+      onClick={click}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      onFocus={() => setIsHovering(true)}
+      onBlur={() => setIsHovering(false)}
+    >
+      <span
+        className={clsx(
+          'mr-2',
+          isHovering ? 'icon-[fa6-solid--door-open]' : 'icon-[fa6-solid--door-closed]',
+        )}
+      />
+      <span>{props.name}</span>
+    </Button>
   );
 };
 

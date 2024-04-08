@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { NextPage } from 'next';
 import { ReactNode } from 'react';
 
@@ -5,26 +6,32 @@ interface Props {
   children: ReactNode;
   isOutlined?: boolean;
   disabled?: boolean;
-  extraClass?: string;
+  className?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
-const Button: NextPage<Props> = ({ children, isOutlined, disabled, extraClass, onClick }) => {
+const Button: NextPage = (props: Props) => {
   return (
     <button
-      className={`
-      rounded-full border border-purple-600 px-4 py-2 outline-none drop-shadow-md enabled:hover:drop-shadow-lg enabled:focus:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50
-      ${
-        isOutlined
+      className={clsx(
+        'rounded-full border border-primary px-4 py-2 drop-shadow-md enabled:hover:drop-shadow-lg enabled:focus:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
+        props.isOutlined
           ? 'bg-white text-purple-600 enabled:hover:bg-purple-600 enabled:hover:text-white enabled:focus:bg-purple-600 enabled:focus:text-white'
-          : 'bg-purple-600 text-white enabled:hover:border-purple-700 enabled:hover:bg-purple-700 enabled:focus:bg-purple-700'
-      }
-      ${extraClass || ''}
-      `}
-      disabled={disabled}
-      onClick={onClick}
+          : 'bg-primary text-white enabled:hover:opacity-75 enabled:focus:opacity-75',
+        props.className,
+      )}
+      disabled={props.disabled}
+      onClick={props.onClick}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
+      onFocus={props.onFocus}
+      onBlur={props.onBlur}
     >
-      {children}
+      {props.children}
     </button>
   );
 };

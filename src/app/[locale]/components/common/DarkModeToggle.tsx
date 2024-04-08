@@ -4,7 +4,6 @@ import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
 import clsx from 'clsx';
 import { NextPage } from 'next';
 import { useRecoilState } from 'recoil';
-import HeaderItem from './HeaderItem';
 
 interface Props {
   lightModeTitle: string;

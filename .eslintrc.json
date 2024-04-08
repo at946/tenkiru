@@ -8,6 +8,6 @@
   ],
   "rules": {
     "no-unused-vars": ["error", { "args": "none" }],
-    "tailwindcss/no-custom-classname": false
+    "tailwindcss/no-custom-classname": 0
   }
 }

@@ -1654,6 +1654,13 @@
   dependencies:
     "@iconify/types" "*"
 
+"@iconify-json/fa6-solid@^1.1.21":
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/@iconify-json/fa6-solid/-/fa6-solid-1.1.21.tgz#5702864881a0aa1cbe8b628ab049a1a5e128cbb0"
+  integrity sha512-+C6F3dFjNdqj8S83ggIXZFsX2CwecFErJKk9dVEZNd0XpNx2iNCNS+K/fl1HLFhYRhS4lb2Rgfi8yVV4MQU7yA==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/ic@^1.1.17":
   version "1.1.17"
   resolved "https://registry.yarnpkg.com/@iconify-json/ic/-/ic-1.1.17.tgz#d1676582fccb45cfbc5e3dd0e100b2ec974c13c9"

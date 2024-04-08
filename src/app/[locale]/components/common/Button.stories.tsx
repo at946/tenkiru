@@ -18,7 +18,7 @@ const meta: Meta<typeof Button> = {
       type: { name: 'boolean', required: false },
       description: '操作可能かどうか',
     },
-    extraClass: {
+    className: {
       type: { name: 'string', required: false },
       description: '追加で適用するクラス名',
     },

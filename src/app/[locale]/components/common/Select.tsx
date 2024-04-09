@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 
 export interface IFOption {
   value: string;
-  label: string;
+  displayValue: string;
 }
 
 interface Props {
@@ -20,11 +20,11 @@ const Select: NextPage<Props> = ({ options, value, disabled, ariaLabel, onChange
       onChange={(e) => onChange?.(e.target.value)}
       disabled={disabled}
       aria-label={ariaLabel}
-      className='rounded-lg border border-slate-900 px-2 py-1 outline-none enabled:hover:border-purple-600 enabled:hover:text-purple-600 enabled:focus:border-purple-600 enabled:focus:text-purple-600 disabled:opacity-50'
+      className=' border-0 border-b-2 border-text bg-background py-0 pl-2 pr-10 text-text outline-none focus:ring-0 enabled:hover:border-primary enabled:hover:text-primary enabled:focus:border-primary enabled:focus:text-primary disabled:opacity-50 dark:border-dark-text'
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>
-          {option.label}
+          {option.displayValue}
         </option>
       ))}
     </select>

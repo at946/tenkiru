@@ -20,7 +20,7 @@ const LocaleSwitcher: NextPage = (props: Props) => {
     <div className='flex items-center'>
       <span className='icon-[ic--baseline-language] mr-1 text-2xl' />
       <select
-        className='cursor-pointer bg-transparent uppercase'
+        className='cursor-pointer border-0 bg-transparent uppercase'
         value={props.currentLocale}
         onChange={(e) => switchLolale(e.target.value)}
         aria-label={props.ariaLabel}

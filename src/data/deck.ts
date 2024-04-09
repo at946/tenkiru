@@ -2,7 +2,7 @@ import { IFDeck } from '../interfaces/deck';
 
 const fibonacci: IFDeck = {
   key: 'fibonacci',
-  displayName: 'フィボナッチ数列',
+  displayName: 'Fibonacci',
   cardValues: [0, 1, 2, 3, 5, 8, 13, 21, '?'],
 };
 
@@ -14,7 +14,7 @@ const sequential: IFDeck = {
 
 const tShirtSize: IFDeck = {
   key: 'tShirtSize',
-  displayName: 'Tシャツサイズ',
+  displayName: 'T-Shirt Size',
   cardValues: ['XS', 'S', 'M', 'L', 'XL', '?'],
 };
 

@@ -4,6 +4,7 @@ import Decks from '@/data/deck';
 import { IFDeck } from '@/interfaces/deck';
 import { IFDeckType } from '@/interfaces/deckType';
 import { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   deckType: IFDeckType;
@@ -13,14 +14,15 @@ interface Props {
 }
 
 const DeckSelect: NextPage<Props> = ({ deckType, disabled, extraClass, onChange }) => {
+  const t = useTranslations('Room.Settings');
   const options: IFOption[] = Decks.map((deck: IFDeck) => {
-    return { value: deck.key, label: deck.displayName };
+    return { value: deck.key, displayValue: t(deck.displayName) };
   });
 
   return (
     <div className={extraClass || ''}>
       <SelectWithLabel
-        label='デッキタイプ'
+        label={t('Deck')}
         options={options}
         value={deckType}
         disabled={disabled}

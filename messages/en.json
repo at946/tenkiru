@@ -40,7 +40,11 @@
     },
     "Settings": {
       "Player": "Player",
-      "Audience": "Audience"
+      "Audience": "Audience",
+      "Deck": "Deck",
+      "Fibonacci": "Fibonacci",
+      "0 - 10": "0 - 10",
+      "T-Shirt Size": "T-Shirt Size"
     },
     "Entering": "Entering...",
     "Entry completed": "Entery Completed 👍",

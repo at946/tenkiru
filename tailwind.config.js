@@ -23,6 +23,6 @@ module.exports = {
       },
     },
   },
-  plugins: [addDynamicIconSelectors()],
+  plugins: [addDynamicIconSelectors(), require('@tailwindcss/forms')],
   darkMode: 'class',
 };

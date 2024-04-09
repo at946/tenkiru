@@ -38,6 +38,10 @@
       "Ask to choose": "そろそろ選んで",
       "Again": "もう一度"
     },
+    "Settings": {
+      "Player": "プレイヤー",
+      "Audience": "観客"
+    },
     "Entering": "入室中...",
     "Entry completed": "入室完了 👍",
     "Could not enter": "入室できませんでした...😢",

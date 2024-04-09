@@ -12,7 +12,7 @@ interface Props {
 const SelectWithLabel: NextPage<Props> = ({ label, options, value, disabled, onChange }) => {
   return (
     <label>
-      <span className='dark:text-white'>{label}：</span>
+      <span>{label} : </span>
       <Select options={options} value={value} disabled={disabled} onChange={onChange} />
     </label>
   );

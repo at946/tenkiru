@@ -136,7 +136,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         <>
           <UserTypeSelect
             type={user?.type || 'player'}
-            extraClass='mb-4'
+            className='mb-4'
             onChange={changeUserType}
           />
           <DeckSelect

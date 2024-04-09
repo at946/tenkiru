@@ -38,6 +38,10 @@
       "Ask to choose": "Ask to choose",
       "Again": "Again"
     },
+    "Settings": {
+      "Player": "Player",
+      "Audience": "Audience"
+    },
     "Entering": "Entering...",
     "Entry completed": "Entery Completed 👍",
     "Could not enter": "Could not enter...😢",

@@ -8,8 +8,13 @@ module.exports = {
     colors: {
       ...colors,
       primary: colors.green['500'],
+      secondary: colors.purple['600'],
+      background: colors.gray['100'],
+      text: colors.gray['800'],
       dark: {
         primary: colors.green['400'],
+        background: colors.gray['900'],
+        text: colors.gray['100'],
       },
     },
     extend: {

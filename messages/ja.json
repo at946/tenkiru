@@ -24,6 +24,26 @@
   "Room": {
     "RoomInfo": {
       "Copied this Room URL": "この部屋のURLをコピーしました"
-    }
+    },
+    "Table": {
+      "Min": "最小",
+      "Avg": "平均",
+      "Max": "最大",
+      "Table cards group": "テーブルカードグループ",
+      "Unselected table card": "未選択のテーブルカード",
+      "Face-up table card": "めくられたテーブルカード",
+      "Face-down table card": "伏せられたテーブルカード",
+      "Get comments": "コメントをもらう",
+      "Open": "開く",
+      "Ask to choose": "そろそろ選んで",
+      "Again": "もう一度"
+    },
+    "Entering": "入室中...",
+    "Entry completed": "入室完了 👍",
+    "Could not enter": "入室できませんでした...😢",
+    "Please comment": "コメントお願いします",
+    "Asked players to choose a card": "カードの選択を依頼しました",
+    "It's time to choose a card": "そろそろカードを選んでください",
+    "Asked a player for comment": "コメントを求めました"
   }
 }

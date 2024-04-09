@@ -22,7 +22,7 @@ const ThemeProvider: NextPage<Props> = ({ children }) => {
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
-      <div className='bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100'>
+      <div className='bg-background text-text dark:bg-dark-background dark:text-dark-text'>
         {children}
       </div>
     </div>

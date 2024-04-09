@@ -28,11 +28,9 @@ const CreateRoomButton: NextPage = (props: Props) => {
       onMouseLeave={() => setIsHovering(false)}
       onFocus={() => setIsHovering(true)}
       onBlur={() => setIsHovering(false)}
-      className='inline-flex items-center'
     >
       <span
         className={clsx(
-          'mr-2',
           isHovering ? 'icon-[fa6-solid--door-open]' : 'icon-[fa6-solid--door-closed]',
         )}
       />

@@ -9,7 +9,8 @@ import { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
 import isRoomState from '@/recoil/atoms/roomAtom';
 import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRecoilState } from 'recoil';
 import { Socket, io } from 'socket.io-client';
@@ -30,6 +31,30 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const users: IFUser[] = room.users;
   const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
   const [isConnected, setIsConnected] = useState(false);
+  const t = useTranslations('Room');
+
+  const onUpdateRoom = useCallback(
+    (room: IFRoom): void => {
+      setRoom(room);
+    },
+    [setRoom],
+  );
+
+  const onRecieveRequestToSelect = useCallback((): void => {
+    toast(t("It's time to choose a card"), {
+      icon: '🙏',
+      ariaProps: { role: 'status', 'aria-live': 'polite' },
+    });
+    playAudio('/audio/alert.mp3');
+  }, [t]);
+
+  const onNominate = useCallback((): void => {
+    toast(t('Please comment'), {
+      icon: '💬',
+      ariaProps: { role: 'status', 'aria-live': 'polite' },
+    });
+    playAudio('/audio/notify.mp3');
+  }, [t]);
 
   useEffect(() => {
     const socketPromise = fetch('/api/socket').then(() => {
@@ -46,35 +71,18 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
     toast.promise(
       socketPromise,
-      { loading: '入室中...', success: '入室完了！👍', error: '入室できませんでした...😢' },
+      {
+        loading: t('Entering'),
+        success: t('Entry completed'),
+        error: t('Could not enter'),
+      },
       { ariaProps: { role: 'status', 'aria-live': 'polite' } },
     );
 
     return () => {
       socket.close();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [roomId]);
-
-  const onUpdateRoom = (room: IFRoom): void => {
-    setRoom(room);
-  };
-
-  const onRecieveRequestToSelect = (): void => {
-    toast('そろそろカードを選んでください', {
-      icon: '🙏',
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
-    playAudio('/audio/alert.mp3');
-  };
-
-  const onNominate = (): void => {
-    toast('指名されました！', {
-      icon: '🎉',
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
-    playAudio('/audio/notify.mp3');
-  };
+  }, [roomId, t, onUpdateRoom, onNominate, onRecieveRequestToSelect]);
 
   const changeDeckType = (newDeckType: IFDeckType): void => {
     socket.emit('change-deck-type', roomId, newDeckType);
@@ -87,8 +95,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   const requestToSelect = (): void => {
     socket.emit('request-to-select', roomId);
-    toast.success('カード未選択のプレイヤーに\n呼びかけました', {
-      icon: '📣',
+    toast.success(t('Asked players to choose a card'), {
+      icon: '👍',
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
     event({ action: `request-to-select`, category: 'engagement', label: '' });
@@ -108,7 +116,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   const nominate = (memberId: string): void => {
     socket.emit('nominate', memberId);
-    toast.success('指名しました！', {
+    toast.success(t('Asked a player for comment'), {
       icon: '👍',
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
@@ -116,9 +124,9 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   };
 
   return (
-    <div className='container mx-auto mb-10 mt-5 px-5 text-center'>
+    <div>
       <Table
-        extraClass='mb-5'
+        className='mb-5'
         openCards={openCards}
         requestToSelect={requestToSelect}
         replay={replay}

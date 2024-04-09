@@ -24,6 +24,26 @@
   "Room": {
     "RoomInfo": {
       "Copied this Room URL": "Copied this Room URL"
-    }
+    },
+    "Table": {
+      "Min": "Min",
+      "Avg": "Avg",
+      "Max": "Max",
+      "Table cards group": "Table cards group",
+      "Unselected table card": "Unselected table card",
+      "Face-up table card": "Face-up table card",
+      "Face-down table card": "Face-down table card",
+      "Get comments": "Get comments",
+      "Open": "Open",
+      "Ask to choose": "Ask to choose",
+      "Again": "Again"
+    },
+    "Entering": "Entering...",
+    "Entry completed": "Entery Completed 👍",
+    "Could not enter": "Could not enter...😢",
+    "Please comment": "Please comment",
+    "Asked players to choose a card": "Asked players to choose a card",
+    "It's time to choose a card": "It's time to choose a card",
+    "Asked a player for comment": "Asked a player for comment"
   }
 }

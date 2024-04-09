@@ -1,3 +1,3 @@
 .how-to-use-box {
-  @apply w-80 rounded border-2 p-4;
+  @apply border-text dark:border-dark-text w-80 rounded border-2 p-4;
 }

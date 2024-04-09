@@ -2,9 +2,8 @@ import Button from '@/app/[locale]/components/common/Button';
 import { IFRoom } from '@/interfaces/room';
 import { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import TableCard from './TableCard';
@@ -14,6 +13,7 @@ interface Props {
 }
 
 const TableCards: NextPage<Props> = ({ nominate }) => {
+  const t = useTranslations('Room.Table');
   const room: IFRoom = useRecoilValue(roomState);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
@@ -21,9 +21,10 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
     <div className='mb-5 flex flex-wrap justify-center gap-4'>
       {tableCards.map((tableCard: IFTableCard) => {
         const isTableCardBlank: boolean = tableCard.value === null;
+        const isAbleToGetComments: boolean = room.isOpenPhase && !isTableCardBlank;
 
         return (
-          <div key={tableCard.userId} role='group' aria-label='テーブルカードグループ'>
+          <div key={tableCard.userId} role='group' aria-label={t('Table cards group')}>
             <div className='mb-2 flex justify-center'>
               <TableCard value={tableCard.value} isOpen={room.isOpenPhase} />
             </div>
@@ -31,11 +32,14 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
             <div className='text-center'>
               <Button
                 isOutlined={true}
-                disabled={!room.isOpenPhase || isTableCardBlank}
+                color='secondary'
+                disabled={!isAbleToGetComments}
                 onClick={() => nominate(tableCard.userId)}
+                className='text-sm'
+                title={isAbleToGetComments && t('Get comments')}
+                ariaLabel={isAbleToGetComments && t('Get comments')}
               >
-                <FontAwesomeIcon icon={faComment} className='mr-2' />
-                <span>指名</span>
+                <span className='icon-[fa6-solid--comment]' />
               </Button>
             </div>
           </div>

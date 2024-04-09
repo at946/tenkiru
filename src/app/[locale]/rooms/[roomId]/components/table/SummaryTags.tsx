@@ -2,6 +2,7 @@ import { IFRoom } from '@/interfaces/room';
 import { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';
 import { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
 import {
   getAvgValueAmongTableCards,
@@ -12,26 +13,27 @@ import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import SummaryTag from './SummaryTag';
 
 interface Props {
-  extraClass?: string;
+  className?: string;
 }
 
-const SummaryTags: NextPage<Props> = ({ extraClass }) => {
+const SummaryTags: NextPage<Props> = (props: Props) => {
+  const t = useTranslations('Room.Table');
   const room: IFRoom = useRecoilValue(roomState);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (
-    <div className={extraClass}>
+    <div className={props.className}>
       <div className='flex justify-center gap-2'>
         <SummaryTag
-          name='最小'
+          name={t('Min')}
           value={room.isOpenPhase ? getMinValueAmongTableCards(tableCards) : '?'}
         />
         <SummaryTag
-          name='平均'
+          name={t('Avg')}
           value={room.isOpenPhase ? getAvgValueAmongTableCards(tableCards) : '?'}
         />
         <SummaryTag
-          name='最大'
+          name={t('Max')}
           value={room.isOpenPhase ? getMaxValueAmongTableCards(tableCards) : '?'}
         />
       </div>

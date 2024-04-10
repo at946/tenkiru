@@ -1,7 +1,5 @@
 import { TLocales } from '@/i18n';
 import '@/styles/globals.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import { getTranslations } from 'next-intl/server';
 import React from 'react';
 import GoogleAdsense from '../GoogleAdsense';
@@ -10,9 +8,6 @@ import RecoilProvider from '../RecoilProvider';
 import ThemeProvider from '../ThemeProvider';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
-
-// fontawesome
-config.autoAddCss = false;
 
 interface MetaProps {
   params: {

@@ -22,10 +22,6 @@
     "test": "yarn test:storybook && yarn test:playwright"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "bufferutil": "^4.0.8",
     "express": "^4.19.2",
     "next": "14.1.4",

@@ -8,7 +8,7 @@ const meta: Meta<typeof UserTypeSelect> = {
   title: 'Room/UserTypeSelect',
   tags: ['autodocs'],
   argTypes: {
-    extraClass: {
+    className: {
       type: { name: 'string', required: false },
       description: '追加で適用するクラス名',
     },
@@ -28,7 +28,6 @@ type Story = StoryObj<typeof UserTypeSelect>;
 export const Default: Story = {
   args: {
     type: 'player',
-    extraClass: '',
     onChange: (userType: IFUserType) => {},
   },
   decorators: [

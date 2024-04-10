@@ -14,13 +14,19 @@ interface Props {
   className?: string;
 }
 
-const ClipboardCopyLink: NextPage = (props: Props) => {
+const ClipboardCopyLink: NextPage<Props> = ({
+  children,
+  copiedText,
+  messageOnSuccess,
+  gaAction,
+  className,
+}) => {
   const copyText = async () => {
-    await navigator.clipboard.writeText(props.copiedText);
-    toast.success(props.messageOnSuccess, {
+    await navigator.clipboard.writeText(copiedText);
+    toast.success(messageOnSuccess, {
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
-    props.gaAction && event({ action: props.gaAction, category: 'engagement', label: '' });
+    gaAction && event({ action: gaAction, category: 'engagement', label: '' });
   };
 
   return (
@@ -28,10 +34,10 @@ const ClipboardCopyLink: NextPage = (props: Props) => {
       onClick={copyText}
       className={clsx(
         'px-2 hover:text-primary focus:text-primary dark:hover:text-dark-primary dark:focus:text-dark-primary',
-        props.className,
+        className,
       )}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

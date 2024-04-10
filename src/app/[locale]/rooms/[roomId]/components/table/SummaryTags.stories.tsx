@@ -9,7 +9,7 @@ const meta: Meta<typeof SummaryTags> = {
   title: 'Room/Table/SummaryTags',
   tags: ['autodocs'],
   argTypes: {
-    extraClass: {
+    className: {
       type: { name: 'string', required: false },
       description: '追加で適用するクラス名',
     },

@@ -1,4 +1,4 @@
-import ExternalLink from '@/app/[locale]/components/common/ExternalLink';
+import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import { Link } from '@/navigation';
 import { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
@@ -16,14 +16,14 @@ const Footer: NextPage = () => {
         <Link href='/pp' className='footer-item'>
           {t('Privacy Policy')}
         </Link>
-        <ExternalLink href='https://twitter.com/at_946' className='footer-item'>
+        <LinkInNewTab href='https://twitter.com/at_946' className='footer-item'>
           {t('Contact Us')}
-        </ExternalLink>
+        </LinkInNewTab>
       </div>
       <div>
-        <ExternalLink href='https://twitter.com/at_946' className='footer-item'>
+        <LinkInNewTab href='https://twitter.com/at_946' className='footer-item'>
           @asato
-        </ExternalLink>
+        </LinkInNewTab>
       </div>
     </footer>
   );

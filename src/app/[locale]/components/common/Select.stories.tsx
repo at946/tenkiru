@@ -51,9 +51,9 @@ type Story = StoryObj<typeof Select>;
 export const Default: Story = {
   args: {
     options: [
-      { value: 'option1', label: 'オプション1' },
-      { value: 'option2', label: 'オプション2' },
-      { value: 'option3', label: 'オプション3' },
+      { value: 'option1', displayValue: 'オプション1' },
+      { value: 'option2', displayValue: 'オプション2' },
+      { value: 'option3', displayValue: 'オプション3' },
     ],
     value: 'option1',
     disabled: false,

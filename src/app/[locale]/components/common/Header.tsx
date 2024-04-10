@@ -1,5 +1,5 @@
 import DarkModeToggle from '@/app/[locale]/components/common/DarkModeToggle';
-import ExternalLink from '@/app/[locale]/components/common/ExternalLink';
+import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import LocaleSwitcher from '@/app/[locale]/components/common/LocaleSwitcher';
 import { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
@@ -10,7 +10,7 @@ interface Props {
   currentLocale: string;
 }
 
-const Header: NextPage = (props: Props) => {
+const Header: NextPage<Props> = ({ currentLocale }) => {
   const t = useTranslations('Header');
   const twitterShareText: string = `Tenkir\n${process.env.NEXT_PUBLIC_BASE_URL}`;
 
@@ -24,28 +24,28 @@ const Header: NextPage = (props: Props) => {
           </Link>
 
           <div className='flex gap-4'>
-            <ExternalLink
+            <LinkInNewTab
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterShareText)}`}
               title={t('Share to X')}
               ariaLabel={t('Share to X')}
               className='header-item'
             >
               <span className='icon-[fa6-brands--x-twitter] text-2xl' />
-            </ExternalLink>
-            <ExternalLink
+            </LinkInNewTab>
+            <LinkInNewTab
               href='https://www.buymeacoffee.com/at946'
               title='Buy me a coffee'
               ariaLabel='Buy me a coffee'
               className='header-item'
             >
               <span className='icon-[simple-icons--buymeacoffee] text-2xl' />
-            </ExternalLink>
+            </LinkInNewTab>
             <DarkModeToggle
               lightModeTitle={t('Switch to dark mode')}
               darkModeTitle={t('Switch to light mode')}
               className='header-item'
             />
-            <LocaleSwitcher currentLocale={props.currentLocale} ariaLabel={t('Switch language')} />
+            <LocaleSwitcher currentLocale={currentLocale} ariaLabel={t('Switch language')} />
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 interface Props {
   children: ReactNode;
   title?: string;
-  color: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary';
   isOutlined?: boolean;
   disabled?: boolean;
   className?: string;

@@ -11,15 +11,15 @@ interface Props {
   className?: string;
 }
 
-const DarkModeToggle: NextPage = (props: Props) => {
+const DarkModeToggle: NextPage<Props> = ({ lightModeTitle, darkModeTitle, className }) => {
   const [isDarkMode, setIsDarkMode] = useRecoilState<boolean>(isDarkModeState);
 
   return (
     <button
       onClick={() => setIsDarkMode(!isDarkMode)}
-      title={isDarkMode ? props.darkModeTitle : props.lightModeTitle}
-      aria-label={isDarkMode ? props.darkModeTitle : props.lightModeTitle}
-      className={props.className}
+      title={isDarkMode ? darkModeTitle : lightModeTitle}
+      aria-label={isDarkMode ? darkModeTitle : lightModeTitle}
+      className={className}
     >
       <span
         className={clsx(

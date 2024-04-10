@@ -1,6 +1,7 @@
 'use client';
 
-import { locales, usePathname, useRouter } from '@/navigation';
+import { locales } from '@/i18n';
+import { usePathname, useRouter } from '@/navigation';
 import { NextPage } from 'next';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
   ariaLabel: string;
 }
 
-const LocaleSwitcher: NextPage = (props: Props) => {
+const LocaleSwitcher: NextPage<Props> = ({ currentLocale, ariaLabel }) => {
   const router = useRouter();
   const pathname: string = usePathname();
 
@@ -21,9 +22,9 @@ const LocaleSwitcher: NextPage = (props: Props) => {
       <span className='icon-[ic--baseline-language] mr-1 text-2xl' />
       <select
         className='cursor-pointer border-0 bg-transparent uppercase'
-        value={props.currentLocale}
+        value={currentLocale}
         onChange={(e) => switchLolale(e.target.value)}
-        aria-label={props.ariaLabel}
+        aria-label={ariaLabel}
       >
         {locales.map((locale) => (
           <option value={locale} key={locale}>

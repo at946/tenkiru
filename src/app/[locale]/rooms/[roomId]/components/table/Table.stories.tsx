@@ -9,7 +9,7 @@ const meta: Meta<typeof Table> = {
   title: 'Room/Table/Table',
   tags: ['autodocs'],
   argTypes: {
-    extraClass: {
+    className: {
       type: { name: 'string', required: false },
       description: '追加のクラス',
     },

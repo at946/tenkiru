@@ -1,3 +1,4 @@
+import { TLocales } from '@/i18n';
 import '@/styles/globals.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -13,7 +14,13 @@ import Header from './components/common/Header';
 // fontawesome
 config.autoAddCss = false;
 
-export async function generateMetadata({ params: { locale } }) {
+interface MetaProps {
+  params: {
+    locale: TLocales;
+  };
+}
+
+export async function generateMetadata({ params: { locale } }: MetaProps) {
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {

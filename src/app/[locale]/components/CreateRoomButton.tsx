@@ -12,7 +12,7 @@ interface Props {
   name: string;
 }
 
-const CreateRoomButton: NextPage = (props: Props) => {
+const CreateRoomButton: NextPage<Props> = ({ name }) => {
   const router = useRouter();
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -34,7 +34,7 @@ const CreateRoomButton: NextPage = (props: Props) => {
           isHovering ? 'icon-[fa6-solid--door-open]' : 'icon-[fa6-solid--door-closed]',
         )}
       />
-      <span>{props.name}</span>
+      <span>{name}</span>
     </Button>
   );
 };

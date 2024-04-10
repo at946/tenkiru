@@ -36,8 +36,8 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
                 disabled={!isAbleToGetComments}
                 onClick={() => nominate(tableCard.userId)}
                 className='text-sm'
-                title={isAbleToGetComments && t('Get comments')}
-                ariaLabel={isAbleToGetComments && t('Get comments')}
+                title={isAbleToGetComments ? t('Get comments') : ''}
+                ariaLabel={isAbleToGetComments ? t('Get comments') : ''}
               >
                 <span className='icon-[fa6-solid--comment]' />
               </Button>

@@ -18,7 +18,7 @@ interface Props {
   nominate: (userId: string) => void;
 }
 
-const Table: NextPage = (props: Props) => {
+const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay, nominate }) => {
   const room: IFRoom = useRecoilValue(roomState);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
   const allCardsAreNotSelected: boolean =
@@ -30,14 +30,14 @@ const Table: NextPage = (props: Props) => {
   const t = useTranslations('Room.Table');
 
   return (
-    <div className={clsx('rounded bg-primary py-5 text-center shadow-md', props.className)}>
+    <div className={clsx('rounded bg-green-400 py-5 text-center shadow-md', className)}>
       {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
 
-      <TableCards nominate={props.nominate} />
+      <TableCards nominate={nominate} />
 
       <div className='flex justify-center gap-2'>
         {!room.isOpenPhase && (
-          <Button disabled={allCardsAreNotSelected} color='secondary' onClick={props.openCards}>
+          <Button disabled={allCardsAreNotSelected} color='secondary' onClick={openCards}>
             <span className='icon-[fa6-solid--hand]' />
             <span>{t('Open')}</span>
           </Button>
@@ -47,14 +47,14 @@ const Table: NextPage = (props: Props) => {
             isOutlined={true}
             disabled={allCardsAreSelected}
             color='secondary'
-            onClick={props.requestToSelect}
+            onClick={requestToSelect}
           >
             <span className='icon-[fa6-solid--hands-praying]' />
             <span>{t('Ask to choose')}</span>
           </Button>
         )}
         {room.isOpenPhase && (
-          <Button color='secondary' onClick={props.replay}>
+          <Button color='secondary' onClick={replay}>
             <span className='icon-[fa6-solid--repeat]' />
             <span>{t('Again')}</span>
           </Button>

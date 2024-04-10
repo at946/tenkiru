@@ -14,11 +14,6 @@ export default meta;
 type Story = StoryObj<typeof Footer>;
 
 export const Default: Story = {
-  decorators: [
-    (story) => {
-      <NextIntlClientProvider>{story()}</NextIntlClientProvider>;
-    },
-  ],
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);

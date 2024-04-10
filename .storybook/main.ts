@@ -9,7 +9,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-console',
     'storybook-dark-mode',
-    'storybook-react-intl',
   ],
   framework: {
     name: '@storybook/nextjs',
@@ -17,6 +16,9 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag',
+  },
+  features: {
+    experimentalRSC: true,
   },
 };
 export default config;

@@ -11,7 +11,7 @@ test('ルームページで、部屋番号を知れること', async ({ page }) 
   await roomPage.goto(roomId);
 
   // Then
-  await expect(roomPage.roomIdLink).toHaveText(`部屋番号：${roomId}`);
+  await expect(roomPage.roomIdLink).toHaveText(`Room ID:${roomId}`);
 });
 
 // test('ルームページで、ルームIDを選択したとき、URLをクリップボードにコピーできること', async ({

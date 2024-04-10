@@ -1,3 +1,4 @@
+import RootLayout from '@/app/[locale]/layout';
 import '@/styles/globals.css';
 import '@storybook/addon-console';
 import type { Preview } from '@storybook/react';
@@ -24,9 +25,9 @@ const preview: Preview = {
 export default preview;
 
 export const decorators = [
-  (renderStory) => (
-    <div className='dark:bg-neutral-900'>
-      <div className='p-5'>{renderStory()}</div>
-    </div>
+  (Story) => (
+    <RootLayout>
+      <div className='p-5'>{Story()}</div>
+    </RootLayout>
   ),
 ];

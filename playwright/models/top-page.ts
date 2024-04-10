@@ -10,7 +10,7 @@ export default class TopPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.createRoomButton = page.getByRole('button', { name: '部屋をつくる' });
+    this.createRoomButton = page.getByRole('button', { name: 'Create a room' });
 
     this.head = new Head(page);
   }

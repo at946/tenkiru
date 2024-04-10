@@ -1,6 +1,7 @@
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
 import { within } from '@storybook/testing-library';
+import { NextIntlClientProvider } from 'next-intl';
 import Footer from './Footer';
 
 const meta: Meta<typeof Footer> = {
@@ -13,6 +14,11 @@ export default meta;
 type Story = StoryObj<typeof Footer>;
 
 export const Default: Story = {
+  decorators: [
+    (story) => {
+      <NextIntlClientProvider>{story()}</NextIntlClientProvider>;
+    },
+  ],
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);

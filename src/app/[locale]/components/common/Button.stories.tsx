@@ -37,7 +37,6 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    params: { locale: 'en' },
     children: 'Button',
     isOutlined: false,
     disabled: false,

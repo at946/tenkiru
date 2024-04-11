@@ -1,6 +1,6 @@
-import { test, expect, Page } from '@playwright/test';
-import RoomPage from '../../models/room-page';
+import { Page, expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
+import RoomPage from '../../models/room-page';
 
 test('ルームページで、別のページに遷移したとき、ルームから抜け出すこと', async ({ context }) => {
   // Given

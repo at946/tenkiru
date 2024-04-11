@@ -1,9 +1,8 @@
-import { Locator, Page } from '@playwright/test';
-import Head from './common/head';
-
-import urls from '../helpers/urls';
-import { IFUserType } from '@/interfaces/userType';
 import { IFDeckType } from '@/interfaces/deckType';
+import { IFUserType } from '@/interfaces/userType';
+import { Locator, Page } from '@playwright/test';
+import urls from '../helpers/urls';
+import Head from './common/head';
 
 export default class RoomPage {
   readonly page: Page;
@@ -41,39 +40,41 @@ export default class RoomPage {
   constructor(page: Page) {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkir' });
-    this.roomIdLink = page.getByRole('button', { name: '部屋番号' });
-    this.tableCardGroups = page.getByRole('group', { name: 'テーブルカードグループ' });
-    this.tableCards = this.tableCardGroups.getByLabel('テーブルカード');
-    this.blankTableCards = this.tableCardGroups.getByLabel('未選択のテーブルカード');
-    this.faceDownTableCards = this.tableCardGroups.getByLabel('伏せられたテーブルカード');
-    this.faceUpTableCards = this.tableCardGroups.getByLabel('めくられたテーブルカード');
-    this.nominateButtons = page.getByRole('button', { name: '指名' });
+    this.roomIdLink = page.getByRole('button', { name: 'Room ID' });
+    this.tableCardGroups = page.getByRole('group', { name: 'Table cards group' });
+    this.tableCards = this.tableCardGroups.getByLabel('Table card');
+    this.blankTableCards = this.tableCardGroups.getByLabel('Unselected table card');
+    this.faceDownTableCards = this.tableCardGroups.getByLabel('Face-down table card');
+    this.faceUpTableCards = this.tableCardGroups.getByLabel('Face-up table card');
+    this.nominateButtons = page.getByRole('button', { name: 'Get comments' });
     this.nominateButtonByCard = (card: string) => {
-      return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: '指名' });
+      return this.tableCardGroups
+        .filter({ hasText: card })
+        .getByRole('button', { name: 'Get comments' });
     };
-    this.minTag = page.getByLabel('最小');
-    this.avgTag = page.getByLabel('平均');
-    this.maxTag = page.getByLabel('最大');
-    this.openButton = page.getByRole('button', { name: '開く' });
-    this.requestToSelectButton = page.getByRole('button', { name: '早く選んで' });
-    this.replayButton = page.getByRole('button', { name: 'もう一度' });
-    this.userTypeSelect = page.getByRole('combobox', { name: 'ユーザータイプ：' });
-    this.deckSelect = page.getByRole('combobox', { name: 'デッキタイプ：' });
-    this.hands = page.getByRole('group', { name: '手札' });
-    this.handsCards = this.hands.getByRole('option', { name: '手札カード' });
-    this.selectedHandsCard = this.hands.getByRole('option', { name: '手札カード', selected: true });
-    this.disabledHandsCard = this.hands.getByRole('option', { name: '手札カード', disabled: true });
-    this.enteringRoomToast = page.getByRole('status').getByText('入室中...');
-    this.haveEnteredRoomToast = page.getByRole('status').getByText('入室完了！');
-    this.copyUrlToast = page.getByRole('status').getByText('この部屋のURLをコピーしました');
+    this.minTag = page.getByLabel('Min');
+    this.avgTag = page.getByLabel('Avg');
+    this.maxTag = page.getByLabel('Max');
+    this.openButton = page.getByRole('button', { name: 'Open' });
+    this.requestToSelectButton = page.getByRole('button', { name: 'Ask to choose' });
+    this.replayButton = page.getByRole('button', { name: 'Again' });
+    this.userTypeSelect = page.getByRole('combobox', { name: 'User type: ' });
+    this.deckSelect = page.getByRole('combobox', { name: 'Deck : ' });
+    this.hands = page.getByRole('group', { name: 'Hands' });
+    this.handsCards = this.hands.getByRole('option', { name: 'Hands card' });
+    this.selectedHandsCard = this.hands.getByRole('option', { name: 'Hands card', selected: true });
+    this.disabledHandsCard = this.hands.getByRole('option', { name: 'Hands card', disabled: true });
+    this.enteringRoomToast = page.getByRole('status').getByText('Entering...');
+    this.haveEnteredRoomToast = page.getByRole('status').getByText('Entry Completed 👍');
+    this.copyUrlToast = page.getByRole('status').getByText('Copied this Room URL');
     this.haveRequestedToSelectToast = page
       .getByRole('status')
-      .getByText('カード未選択のプレイヤーに\n呼びかけました');
+      .getByText('Asked players to choose a card');
     this.hadBeenRequestedToSelectToast = page
       .getByRole('status')
-      .getByText('そろそろカードを選んでください');
-    this.haveNominatedToast = page.getByRole('status').getByText('指名しました！');
-    this.haveBeenNominatedToast = page.getByRole('status').getByText('指名されました！');
+      .getByText("It's time to choose a card");
+    this.haveNominatedToast = page.getByRole('status').getByText('Asked a player for comment');
+    this.haveBeenNominatedToast = page.getByRole('status').getByText('Please comment');
 
     this.head = new Head(page);
   }
@@ -108,7 +109,11 @@ export default class RoomPage {
   }
 
   async selectUserType(userType: IFUserType) {
-    await this.userTypeSelect.selectOption(userType);
+    await this.page.getByLabel(userType).check();
+  }
+
+  async getUserType(userType: IFUserType) {
+    return await this.page.getByLabel(userType);
   }
 
   async selectDeck(deck: IFDeckType) {

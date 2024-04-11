@@ -1,18 +1,14 @@
-import { test, expect } from '@playwright/test';
-import TopPage from '../../models/top-page';
-import RoomPage from '../../models/room-page';
-import TOSPage from '../../models/tos-page';
-import PPPage from '../../models/pp-page';
+import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
+import PPPage from '../../models/pp-page';
+import RoomPage from '../../models/room-page';
+import TopPage from '../../models/top-page';
+import TOSPage from '../../models/tos-page';
 
-const title: string = 'Tenkir | チームでわいわいプランニングポーカーアプリ';
+const title: string = 'Tenkir';
 const description: string =
-  'Tenkirは無料のオンラインプランニングポーカーアプリです。' +
-  'XPやスクラムなどのアジャイルなプロジェクト管理に最適です。' +
-  'チームでの見積もりをリアルタイムで共有できます。' +
-  '参加者はスマートフォンやパソコンのブラウザだけで参加できます。' +
-  '直感的なUIと使いやすさが魅力です。';
-const ogImageUrl: RegExp = /opengraph-image\.jpg\?.*/;
+  'Tenkir is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately.';
+const ogImageUrl: RegExp = /opengraph-image\.jpg$/;
 
 test('トップページで、OGが正しいこと', async ({ page }) => {
   // Given

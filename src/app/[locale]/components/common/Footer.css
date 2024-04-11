@@ -1,0 +1,3 @@
+.footer-item {
+  @apply text-sm hover:underline focus:underline;
+}

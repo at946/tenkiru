@@ -1,0 +1,3 @@
+.header-item {
+  @apply flex items-center hover:text-primary focus:text-primary dark:hover:text-dark-primary dark:focus:text-dark-primary;
+}

@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
-import Head from './common/head';
 import urls from '../helpers/urls';
+import Head from './common/head';
 
 export default class TopPage {
   readonly page: Page;
@@ -10,7 +10,7 @@ export default class TopPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.createRoomButton = page.getByRole('button', { name: '部屋をつくる' });
+    this.createRoomButton = page.getByRole('button', { name: 'Create a room' });
 
     this.head = new Head(page);
   }

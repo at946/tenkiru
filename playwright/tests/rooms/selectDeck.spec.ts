@@ -1,6 +1,6 @@
-import { test, expect } from '@playwright/test';
-import RoomPage from '../../models/room-page';
+import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
+import RoomPage from '../../models/room-page';
 
 test('ルームページで、デッキはデフォルトで「Fibonacci」が選択されていること', async ({ page }) => {
   // Given
@@ -39,7 +39,7 @@ test('ルームページで、デッキを変更するとき、カードの選�
   await expect(roomPage2.faceDownTableCards).toHaveCount(2);
 
   // When
-  await roomPage1.selectDeck('0 - 10');
+  await roomPage1.selectDeck('sequential');
 
   // Then
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);

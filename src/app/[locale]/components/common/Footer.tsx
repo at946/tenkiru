@@ -11,7 +11,7 @@ const Footer: NextPage = () => {
     <footer className='container mx-auto mt-auto pb-5 pt-20 text-center' role='contentinfo'>
       <div className='mb-2 flex justify-center gap-4'>
         <Link href='/tos' className='footer-item'>
-          {t('Terms of Service')}
+          {t('Terms of Use')}
         </Link>
         <Link href='/pp' className='footer-item'>
           {t('Privacy Policy')}

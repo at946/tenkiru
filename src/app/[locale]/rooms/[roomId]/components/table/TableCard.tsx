@@ -9,7 +9,7 @@ interface Props {
 }
 
 const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
-  const t = useTranslations('Room');
+  const t = useTranslations('Room.Table');
 
   const isBlank: boolean = value === null;
 

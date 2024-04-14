@@ -1,6 +1,6 @@
 import { IFDeckType } from '@/interfaces/deckType';
 import { IFUserType } from '@/interfaces/userType';
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import urls from '../helpers/urls';
 import Head from './common/head';
 
@@ -77,6 +77,16 @@ export default class RoomPage {
     this.haveBeenNominatedToast = page.getByRole('status').getByText('Please comment');
 
     this.head = new Head(page);
+
+    const consoleErrorMessages: string[] = [];
+    page.on('console', (message) => {
+      if (message.type() === 'error') {
+        consoleErrorMessages.push(message.text());
+      }
+    });
+    page.on('close', async () => {
+      await expect(consoleErrorMessages[0]).toBeUndefined();
+    });
   }
 
   async goto(roomId: string) {

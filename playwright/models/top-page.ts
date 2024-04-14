@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import urls from '../helpers/urls';
 import Head from './common/head';
 
@@ -13,6 +13,16 @@ export default class TopPage {
     this.createRoomButton = page.getByRole('button', { name: 'Create a room' });
 
     this.head = new Head(page);
+
+    const consoleErrorMessages: string[] = [];
+    page.on('console', (message) => {
+      if (message.type() === 'error') {
+        consoleErrorMessages.push(message.text());
+      }
+    });
+    page.on('close', async () => {
+      await expect(consoleErrorMessages[0]).toBeUndefined();
+    });
   }
 
   async goto() {

@@ -4,12 +4,12 @@ import { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  title?: string;
   color?: 'primary' | 'secondary';
   isOutlined?: boolean;
   disabled?: boolean;
-  className?: string;
+  title?: string;
   ariaLabel?: string;
+  className?: string;
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -19,12 +19,12 @@ interface Props {
 
 const Button: NextPage<Props> = ({
   children,
-  title,
   color = 'primary',
-  isOutlined,
-  disabled,
-  className,
+  isOutlined = false,
+  disabled = false,
+  title,
   ariaLabel,
+  className,
   onClick,
   onMouseEnter,
   onMouseLeave,

@@ -33,7 +33,7 @@ const ClipboardCopyLink: NextPage<Props> = ({
     <button
       onClick={copyText}
       className={clsx(
-        'px-2 hover:text-primary focus:text-primary dark:hover:text-dark-primary dark:focus:text-dark-primary',
+        'px-2 hover:text-primary focus-visible:text-primary dark:hover:text-dark-primary dark:focus-visible:text-dark-primary',
         className,
       )}
     >

@@ -1,5 +1,4 @@
 import MyToaster from '@/app/[locale]/components/common/MyToaster';
-import Button from '@/app/components/Button';
 import ClipboardCopyLink from '@/app/components/ClipboardCopyLink';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -75,6 +74,6 @@ const meta: Meta<typeof ClipboardCopyLink> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof ClipboardCopyLink>;
 
 export const Default: Story = {};

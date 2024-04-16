@@ -13,8 +13,10 @@ const preview: Preview = {
       },
     },
     darkMode: {
-      light: { ...themes.dark },
+      light: { ...themes.normal },
       dark: { ...themes.dark },
+      darkClass: ['dark', 'bg-dark-background', 'text-dark-text'],
+      lightClass: ['bg-background', 'text-text'],
       stylePreview: true,
     },
   },

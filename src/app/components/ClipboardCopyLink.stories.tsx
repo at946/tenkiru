@@ -1,5 +1,5 @@
-import MyToaster from '@/app/[locale]/components/common/MyToaster';
 import ClipboardCopyLink from '@/app/components/ClipboardCopyLink';
+import MyToaster from '@/app/components/MyToaster';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ClipboardCopyLink> = {

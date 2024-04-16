@@ -5,9 +5,10 @@ const MyToaster: NextPage = () => {
   return (
     <Toaster
       toastOptions={{
-        className: 'border-2 border-purple-600',
-        success: { className: 'border-2 border-lime-500' },
-        error: { className: 'border-2 border-red-600' },
+        className: 'border-2 border-gray-500',
+        duration: 3000,
+        success: { className: 'border-2 border-green-500' },
+        error: { className: 'border-2 border-red-500', duration: 5000 },
       }}
     />
   );

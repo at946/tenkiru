@@ -41,7 +41,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   );
 
   const onRecieveRequestToSelect = useCallback((): void => {
-    toast(t("It's time to choose a card"), {
+    toast.success(t("It's time to choose a card"), {
       icon: '🙏',
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
@@ -49,7 +49,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [t]);
 
   const onNominate = useCallback((): void => {
-    toast(t('Please comment'), {
+    toast.success(t('Please comment'), {
       icon: '💬',
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
@@ -96,7 +96,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const requestToSelect = (): void => {
     socket.emit('request-to-select', roomId);
     toast.success(t('Asked players to choose a card'), {
-      icon: '👍',
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
     event({ action: `request-to-select`, category: 'engagement', label: '' });
@@ -117,7 +116,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const nominate = (memberId: string): void => {
     socket.emit('nominate', memberId);
     toast.success(t('Asked a player for comment'), {
-      icon: '👍',
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
     event({ action: 'nominate', category: 'engagement', label: '' });

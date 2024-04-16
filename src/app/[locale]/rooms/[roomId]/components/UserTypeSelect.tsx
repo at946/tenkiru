@@ -25,7 +25,7 @@ const UserTypeSelect: NextPage<Props> = ({ type, className, onChange }) => {
   };
 
   return (
-    <div className={clsx('flex justify-center gap-4', className)}>
+    <div className={clsx('gap-4', className)}>
       {options.map((option) => (
         <label key={option.value} className='inline-flex cursor-pointer items-center'>
           <input

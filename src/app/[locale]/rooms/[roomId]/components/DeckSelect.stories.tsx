@@ -1,6 +1,9 @@
 import { IFDeckType } from '@/interfaces/deckType';
+import enMessages from '@/messages/en.json';
+import jaMessages from '@/messages/ja.json';
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
+import { NextIntlClientProvider } from 'next-intl';
 import DeckSelect from './DeckSelect';
 
 const meta: Meta<typeof DeckSelect> = {
@@ -10,42 +13,64 @@ const meta: Meta<typeof DeckSelect> = {
   argTypes: {
     deckType: {
       type: { name: 'string', required: true },
-      description: '選択中のデッキタイプ',
+      description: 'Selected deck type',
       control: 'select',
       options: ['fibonnaci', 'sequential', 'tShirtSize'],
     },
     disabled: {
       type: { name: 'boolean', required: false },
-      description: 'selectboxが選択可能かどうか',
+      description: 'disabled attribute',
     },
-    extraClass: {
+    className: {
       type: { name: 'string', required: false },
-      description: '追加で適用するクラス名',
+      description: 'className',
     },
     onChange: {
       type: { name: 'function', required: true },
-      description: '選択肢の変更時に呼び出される関数',
+      description: 'Function called on change the value',
       table: {
         category: 'Events',
       },
     },
+  },
+  args: {
+    deckType: 'fibonnaci',
+    disabled: false,
+    className: '',
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof DeckSelect>;
 
-export const Default: Story = {
-  args: {
-    deckType: 'fibonacci',
-  },
+export const English: Story = {
   decorators: [
     () => {
       const [args, setArgs] = useArgs();
       const onChange = (newDeckType: IFDeckType) => {
         setArgs({ deckType: newDeckType });
       };
-      return <DeckSelect {...args} deckType={args.deckType} onChange={onChange} />;
+      return (
+        <NextIntlClientProvider locale='en' messages={enMessages}>
+          <DeckSelect {...args} deckType={args.deckType} onChange={onChange} />
+        </NextIntlClientProvider>
+      );
+    },
+  ],
+};
+
+export const Japanese: Story = {
+  decorators: [
+    () => {
+      const [args, setArgs] = useArgs();
+      const onChange = (newDeckType: IFDeckType) => {
+        setArgs({ deckType: newDeckType });
+      };
+      return (
+        <NextIntlClientProvider locale='ja' messages={jaMessages}>
+          <DeckSelect {...args} deckType={args.deckType} onChange={onChange} />
+        </NextIntlClientProvider>
+      );
     },
   ],
 };
@@ -55,4 +80,17 @@ export const Disabled: Story = {
     deckType: 'fibonacci',
     disabled: true,
   },
+  decorators: [
+    () => {
+      const [args, setArgs] = useArgs();
+      const onChange = (newDeckType: IFDeckType) => {
+        setArgs({ deckType: newDeckType });
+      };
+      return (
+        <NextIntlClientProvider locale='en' messages={enMessages}>
+          <DeckSelect {...args} deckType={args.deckType} onChange={onChange} />
+        </NextIntlClientProvider>
+      );
+    },
+  ],
 };

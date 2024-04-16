@@ -32,15 +32,18 @@ const meta: Meta<typeof Header> = {
       appDirectory: true,
     },
   },
-  render: () => {
-    return (
+  decorators: [
+    (Story, context) => (
       <RecoilRoot>
-        <NextIntlClientProvider locale='en' messages={enMessages}>
-          <Header />
+        <NextIntlClientProvider
+          locale={context.args.currentLocale}
+          messages={context.args.currentLocale === 'ja' ? jaMessages : enMessages}
+        >
+          <Story />
         </NextIntlClientProvider>
       </RecoilRoot>
-    );
-  },
+    ),
+  ],
 };
 
 export default meta;
@@ -71,7 +74,7 @@ export const Japanese: Story = {
     return (
       <RecoilRoot>
         <NextIntlClientProvider locale='ja' messages={jaMessages}>
-          <Header />
+          <Header currentLocale='ja' />
         </NextIntlClientProvider>
       </RecoilRoot>
     );

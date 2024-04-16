@@ -1,6 +1,6 @@
-import LocaleSwitcher from '@/app/[locale]/components/common/LocaleSwitcher';
 import DarkModeToggle from '@/app/components/LightDarkModeToggle';
 import LinkInNewTab from '@/app/components/LinkInNewTab';
+import LocaleSwitcher from '@/app/components/LocaleSwitcher';
 import { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';

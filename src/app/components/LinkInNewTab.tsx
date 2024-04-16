@@ -3,13 +3,13 @@ import { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  className?: string;
   href: string;
   title?: string;
   ariaLabel?: string;
+  className?: string;
 }
 
-const LinkInNewTab: NextPage<Props> = ({ children, className, href, title, ariaLabel }) => {
+const LinkInNewTab: NextPage<Props> = ({ children, href, title, ariaLabel, className }) => {
   return (
     <a
       href={href}

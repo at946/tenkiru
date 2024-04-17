@@ -1,5 +1,7 @@
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import enMessages from '@/messages/en.json';
+import { useArgs } from '@storybook/preview-api';
 import { Meta, StoryObj } from '@storybook/react';
+import { NextIntlClientProvider } from 'next-intl';
 import HandsCard from './HandsCard';
 
 const meta: Meta<typeof HandsCard> = {
@@ -8,65 +10,76 @@ const meta: Meta<typeof HandsCard> = {
   tags: ['autodocs'],
   argTypes: {
     value: {
-      type: { name: 'other', value: 'card', required: true },
-      description: 'カードの値',
-    },
-    isDisabled: {
-      type: { name: 'boolean', required: false },
-      description: '選択可能かどうか',
+      type: { required: true },
+      table: {
+        type: {
+          summary: 'number | string',
+        },
+      },
+      description: 'Card display value',
     },
     isSelected: {
       type: { name: 'boolean', required: false },
-      description: '選択中のカードかどうか',
+      description: 'Whether to be being selected',
+    },
+    isDisabled: {
+      type: { name: 'boolean', required: false },
+      description: 'Whether to be able to be selected',
     },
     onClick: {
       type: { name: 'function', required: true },
-      description: 'カードを選択したときに呼び出される親コンポーネントの関数',
+      description: 'Function called on click this card',
       table: {
         category: 'Events',
       },
     },
   },
+  args: {
+    value: 1,
+    isSelected: false,
+    isDisabled: false,
+  },
+
+  decorators: [
+    () => {
+      const [args, setArgs] = useArgs();
+      const onClick = () => {
+        setArgs({ isSelected: !args.isSelected });
+      };
+      return (
+        <NextIntlClientProvider locale='en' messages={enMessages}>
+          <HandsCard {...args} onClick={onClick} />
+        </NextIntlClientProvider>
+      );
+    },
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof HandsCard>;
 
-export const Default: Story = {
-  args: {
-    value: 1,
-    isSelected: false,
-    isDisabled: false,
-    onClick: (value: IFTableCardValue) => {
-      console.log(value);
-    },
-  },
-};
+export const Default: Story = {};
 
 export const Text: Story = {
   args: {
-    ...Default.args,
     value: 'XS',
   },
 };
 
 export const Selected: Story = {
   args: {
-    ...Default.args,
     isSelected: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    ...Default.args,
     isDisabled: true,
   },
 };
 
 export const SelectedAndDisabled: Story = {
   args: {
-    ...Default.args,
     isSelected: true,
     isDisabled: true,
   },

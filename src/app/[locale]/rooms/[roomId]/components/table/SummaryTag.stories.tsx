@@ -4,25 +4,23 @@ import SummaryTag from './SummaryTag';
 const meta: Meta<typeof SummaryTag> = {
   component: SummaryTag,
   title: 'Room/Table/SummaryTag',
-  tags: ['autodocs'],
   argTypes: {
     name: {
       type: { name: 'string', required: true },
-      description: 'labelエリアに表示されるテキスト',
+      description: 'Text displayed on the left side',
     },
     value: {
       type: { name: 'string', required: true },
-      description: 'valueエリアに表示されるテキスト',
+      description: 'Text displayed on the right side',
     },
+  },
+  args: {
+    name: 'Label',
+    value: 'Value',
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof SummaryTag>;
 
-export const Default: Story = {
-  args: {
-    name: 'Label',
-    value: 'Value',
-  },
-};
+export const Default: Story = {};

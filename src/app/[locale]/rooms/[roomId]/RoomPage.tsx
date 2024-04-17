@@ -134,13 +134,13 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         <>
           <UserTypeSelect
             type={user?.type || 'player'}
-            className='mb-8 flex justify-center'
+            className='mb-8'
             onChange={changeUserType}
           />
           <DeckSelect
             deckType={room.deckType}
             disabled={room.isOpenPhase}
-            className='mb-4 flex justify-center'
+            className='mb-4'
             onChange={changeDeckType}
           />
           <Hands

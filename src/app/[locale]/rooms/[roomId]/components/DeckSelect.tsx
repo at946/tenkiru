@@ -25,7 +25,7 @@ const DeckSelect: NextPage<Props> = ({ deckType, disabled, className, onChange }
 
   return (
     <div className={clsx(className)}>
-      <label className='flex gap-2'>
+      <label className='inline-flex gap-2'>
         <span>{t('Deck')}</span>
         <span>:</span>
         <select

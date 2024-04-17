@@ -9,7 +9,6 @@ import DeckSelect from './DeckSelect';
 const meta: Meta<typeof DeckSelect> = {
   component: DeckSelect,
   title: 'Room/DeckSelect',
-  tags: ['autodocs'],
   argTypes: {
     deckType: {
       type: { name: 'string', required: true },

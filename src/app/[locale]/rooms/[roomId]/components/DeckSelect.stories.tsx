@@ -13,8 +13,8 @@ const meta: Meta<typeof DeckSelect> = {
     deckType: {
       type: { name: 'string', required: true },
       description: 'Selected deck type',
-      control: 'select',
-      options: ['fibonnaci', 'sequential', 'tShirtSize'],
+      control: 'radio',
+      options: ['fibonacci', 'sequential', 'tShirtSize'],
     },
     disabled: {
       type: { name: 'boolean', required: false },

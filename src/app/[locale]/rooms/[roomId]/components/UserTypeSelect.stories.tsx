@@ -13,6 +13,8 @@ const meta: Meta<typeof UserTypeSelect> = {
     type: {
       type: { name: 'string', required: true },
       description: 'User type. If a use chooses "audience", that user can only view the game.',
+      control: 'radio',
+      options: ['player', 'audience'],
     },
     className: {
       type: { name: 'string', required: false },

@@ -1,5 +1,5 @@
+import MyToaster from '@/app/[locale]/components/common/MyToaster';
 import RoomInfo from '@/app/[locale]/rooms/[roomId]/components/RoomInfo';
-import MyToaster from '@/app/components/MyToaster';
 import { pick } from 'lodash';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import RoomPage from './RoomPage';

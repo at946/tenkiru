@@ -1,6 +1,6 @@
 import RecoilProvider from '@/app/RecoilProvider';
 import '@/app/[locale]/components/common/Header.css';
-import LightDarkModeToggle from '@/app/components/LightDarkModeToggle';
+import LightDarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof LightDarkModeToggle> = {

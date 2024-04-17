@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/app/components/Button';
+import Button from '@/app/[locale]/components/common/Button';
 import { event } from '@/lib/gtag';
 import clsx from 'clsx';
 import { NextPage } from 'next';

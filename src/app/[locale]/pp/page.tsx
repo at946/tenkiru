@@ -1,4 +1,4 @@
-import LinkInNewTab from '@/app/components/LinkInNewTab';
+import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import { useFormatter, useTranslations } from 'next-intl';
 
 export default function Page() {

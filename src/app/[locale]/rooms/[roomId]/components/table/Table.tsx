@@ -1,5 +1,5 @@
+import Button from '@/app/[locale]/components/common/Button';
 import getTableCardsFromUsers from '@/app/[locale]/rooms/[roomId]/utils/getTableCardsFromUsers';
-import Button from '@/app/components/Button';
 import { IFRoom } from '@/interfaces/room';
 import { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';

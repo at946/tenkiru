@@ -1,4 +1,4 @@
-import ClipboardCopyLink from '@/app/components/ClipboardCopyLink';
+import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
 import clsx from 'clsx';
 import { NextPage } from 'next';
 import { useTranslations } from 'next-intl';

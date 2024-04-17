@@ -1,4 +1,4 @@
-import LinkInNewTab from '@/app/components/LinkInNewTab';
+import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import { Link } from '@/navigation';
 import { NextPage } from 'next';
 import { useTranslations } from 'next-intl';

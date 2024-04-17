@@ -16,14 +16,14 @@ interface Props {
   className?: string;
 }
 
-const SummaryTags: NextPage<Props> = (props: Props) => {
+const SummaryTags: NextPage<Props> = ({ className }) => {
   const t = useTranslations('Room.Table');
   const room: IFRoom = useRecoilValue(roomState);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (
-    <div className={props.className}>
-      <div className='flex justify-center gap-2'>
+    <div className={className}>
+      <div className='inline-flex gap-2'>
         <SummaryTag
           name={t('Min')}
           value={room.isOpenPhase ? getMinValueAmongTableCards(tableCards) : '?'}

@@ -7,8 +7,7 @@ const meta: Meta<typeof ClipboardCopyLink> = {
   title: 'Common/ClipboardCopyLink',
   argTypes: {
     children: {
-      type: { required: true },
-      description: 'Children',
+      description: '<b>Required</b><br />Children',
       table: {
         type: {
           summary: 'ReactNode',
@@ -16,43 +15,23 @@ const meta: Meta<typeof ClipboardCopyLink> = {
       },
     },
     copiedText: {
-      type: { required: true },
-      description: 'Text copied when this component is clicked',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
+      type: { name: 'string' },
+      description: '<b>Required</b><br />Text copied when this component is clicked',
       control: { type: 'text' },
     },
     messageOnSuccess: {
-      type: { required: true },
-      description: 'Message displayed when text copying is complete',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
+      type: { name: 'string' },
+      description: '<b>Required</b><br />Message displayed when text copying is complete',
       control: { type: 'text' },
     },
     gaAction: {
-      type: { required: false },
+      type: { name: 'string' },
       description: 'Google Analytics Action sent when this component is clicked',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
       control: { type: 'text' },
     },
     className: {
-      type: { required: false },
+      type: { name: 'string' },
       description: 'className',
-      table: {
-        type: {
-          summary: 'string',
-        },
-      },
       control: { type: 'text' },
     },
   },

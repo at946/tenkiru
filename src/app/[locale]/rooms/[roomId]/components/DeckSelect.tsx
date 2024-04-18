@@ -30,7 +30,7 @@ const DeckSelect: NextPage<Props> = ({ deckType, disabled, className, onChange }
         <span>:</span>
         <select
           value={deckType}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value as IFDeckType)}
           disabled={disabled}
           className={clsx(
             'border-0 border-b-2 border-text bg-transparent py-0 pl-2 pr-10 outline-none',

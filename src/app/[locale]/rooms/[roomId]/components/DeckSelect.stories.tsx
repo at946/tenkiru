@@ -33,7 +33,7 @@ const meta: Meta<typeof DeckSelect> = {
     },
   },
   args: {
-    deckType: 'fibonnaci',
+    deckType: 'fibonacci',
     disabled: false,
     className: '',
   },

@@ -46,7 +46,7 @@ export const English: Story = {
       };
       return (
         <NextIntlClientProvider locale='en' messages={enMessages}>
-          <UserTypeSelect {...args} onChange={onChange} />
+          <UserTypeSelect type={args.type} className={args.className} onChange={onChange} />
         </NextIntlClientProvider>
       );
     },
@@ -62,7 +62,7 @@ export const Japanese: Story = {
       };
       return (
         <NextIntlClientProvider locale='ja' messages={jaMessages}>
-          <UserTypeSelect {...args} onChange={onChange} />
+          <UserTypeSelect type={args.type} className={args.className} onChange={onChange} />
         </NextIntlClientProvider>
       );
     },

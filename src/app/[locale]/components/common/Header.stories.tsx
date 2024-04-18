@@ -12,8 +12,7 @@ const meta: Meta<typeof Header> = {
   title: 'common/Header',
   argTypes: {
     currentLocale: {
-      type: { required: true },
-      description: 'Current locale',
+      description: '<b>Required</b><br />Current locale',
       table: {
         type: {
           summary: 'string',

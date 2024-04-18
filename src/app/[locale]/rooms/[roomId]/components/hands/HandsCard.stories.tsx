@@ -10,13 +10,12 @@ const meta: Meta<typeof HandsCard> = {
   tags: ['autodocs'],
   argTypes: {
     value: {
-      type: { required: true },
       table: {
         type: {
           summary: 'number | string',
         },
       },
-      description: 'Card display value',
+      description: '<b>Required</b><br />Card display value',
     },
     isSelected: {
       type: { name: 'boolean', required: false },
@@ -39,7 +38,6 @@ const meta: Meta<typeof HandsCard> = {
     isSelected: false,
     isDisabled: false,
   },
-
   decorators: [
     () => {
       const [args, setArgs] = useArgs();
@@ -48,7 +46,12 @@ const meta: Meta<typeof HandsCard> = {
       };
       return (
         <NextIntlClientProvider locale='en' messages={enMessages}>
-          <HandsCard {...args} onClick={onClick} />
+          <HandsCard
+            value={args.value}
+            isSelected={args.isSelected}
+            isDisabled={args.isDisabled}
+            onClick={onClick}
+          />
         </NextIntlClientProvider>
       );
     },

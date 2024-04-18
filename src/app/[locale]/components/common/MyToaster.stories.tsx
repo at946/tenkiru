@@ -6,7 +6,6 @@ import MyToaster from './MyToaster';
 const meta: Meta<typeof MyToaster> = {
   component: MyToaster,
   title: 'Common/MyToaster',
-  description: 'https://react-hot-toast.com/',
   parameters: {
     docs: {
       description: {

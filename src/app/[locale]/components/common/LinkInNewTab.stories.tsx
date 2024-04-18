@@ -6,8 +6,7 @@ const meta: Meta<typeof LinkInNewTab> = {
   title: 'Common/LinkInNewTab',
   argTypes: {
     children: {
-      type: { required: true },
-      description: 'Children',
+      description: '<b>Required</b><br />Children',
       table: {
         type: {
           summary: 'ReactNode',
@@ -15,8 +14,7 @@ const meta: Meta<typeof LinkInNewTab> = {
       },
     },
     href: {
-      type: { required: true },
-      description: 'href attribute',
+      description: '<b>Required</b><br />href attribute',
       table: {
         type: {
           summary: 'string',
@@ -25,7 +23,6 @@ const meta: Meta<typeof LinkInNewTab> = {
       control: { type: 'text' },
     },
     title: {
-      type: { required: false },
       description: 'title attribute',
       table: {
         type: {
@@ -36,7 +33,6 @@ const meta: Meta<typeof LinkInNewTab> = {
       control: { type: 'text' },
     },
     ariaLabel: {
-      type: { required: false },
       description: 'aria-label attribute',
       table: {
         type: {
@@ -47,7 +43,6 @@ const meta: Meta<typeof LinkInNewTab> = {
       control: { type: 'text' },
     },
     className: {
-      type: { required: false },
       description: 'className',
       table: {
         type: {

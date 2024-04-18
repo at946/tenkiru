@@ -6,8 +6,7 @@ const meta: Meta<typeof Button> = {
   title: 'Common/Button',
   argTypes: {
     children: {
-      type: { required: true },
-      description: 'Children',
+      description: '<b>Required</b><br />Children',
       table: {
         type: {
           summary: 'ReactNode',
@@ -15,7 +14,6 @@ const meta: Meta<typeof Button> = {
       },
     },
     color: {
-      type: { required: false },
       description: 'Color',
       table: {
         type: {
@@ -27,7 +25,6 @@ const meta: Meta<typeof Button> = {
       options: ['primary', 'secondary'],
     },
     isOutlined: {
-      type: { required: false },
       description: 'Whether to apply the outline style',
       table: {
         type: {
@@ -38,7 +35,6 @@ const meta: Meta<typeof Button> = {
       control: { type: 'boolean' },
     },
     disabled: {
-      type: { required: false },
       description: 'Whether to be disabled or not',
       table: {
         type: {
@@ -49,7 +45,6 @@ const meta: Meta<typeof Button> = {
       control: { type: 'boolean' },
     },
     title: {
-      type: { required: false },
       description: 'title attribute',
       table: {
         type: {
@@ -60,7 +55,6 @@ const meta: Meta<typeof Button> = {
       control: { type: 'text' },
     },
     ariaLabel: {
-      type: { required: false },
       description: 'aria-label attribute',
       table: {
         type: {
@@ -71,7 +65,6 @@ const meta: Meta<typeof Button> = {
       control: { type: 'text' },
     },
     className: {
-      type: { required: false },
       description: 'className',
       table: {
         type: {
@@ -82,7 +75,6 @@ const meta: Meta<typeof Button> = {
       control: { type: 'text' },
     },
     onClick: {
-      type: { required: false },
       description: 'Function called when a user clicked',
       table: {
         type: {

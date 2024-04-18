@@ -8,8 +8,7 @@ const meta: Meta<typeof LightDarkModeToggle> = {
   title: 'Common/LightDarkModeToggle',
   argTypes: {
     lightModeTitle: {
-      type: { required: true },
-      description: 'title attribute to switch light mode',
+      description: '<b>Required</b><br />title attribute to switch light mode',
       table: {
         type: {
           summary: 'string',
@@ -18,8 +17,7 @@ const meta: Meta<typeof LightDarkModeToggle> = {
       control: { type: 'text' },
     },
     darkModeTitle: {
-      type: { required: true },
-      description: 'title attribute to switch dark mode',
+      description: '<b>Required</b><br />title attribute to switch dark mode',
       table: {
         type: {
           summary: 'string',
@@ -28,7 +26,6 @@ const meta: Meta<typeof LightDarkModeToggle> = {
       control: { type: 'text' },
     },
     className: {
-      type: { required: false },
       description: 'className',
       table: {
         type: {

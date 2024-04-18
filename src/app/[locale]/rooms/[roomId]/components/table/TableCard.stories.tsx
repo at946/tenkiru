@@ -8,11 +8,14 @@ const meta: Meta<typeof TableCard> = {
   title: 'Room/Table/TableCard',
   argTypes: {
     value: {
-      type: { name: 'string | number | null', required: true },
-      description: 'Card display value',
+      description: '<b>Required</b><br />Card display value',
+      table: {
+        type: {
+          summary: 'string | number | null',
+        },
+      },
     },
     isOpen: {
-      type: { required: false },
       table: {
         type: {
           summary: 'boolean',

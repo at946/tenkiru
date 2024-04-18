@@ -7,8 +7,7 @@ const meta: Meta<typeof LocaleSwitcher> = {
   title: 'Common/LocaleSwitcher',
   argTypes: {
     currentLocale: {
-      type: { required: true },
-      description: 'Current locale',
+      description: '<b>Required</b><br />Current locale',
       table: {
         type: {
           summary: 'string',
@@ -18,8 +17,7 @@ const meta: Meta<typeof LocaleSwitcher> = {
       options: ['en', 'ja'],
     },
     ariaLabel: {
-      type: { required: true },
-      description: 'aria-label attribute',
+      description: '<b>Required</b><br />aria-label attribute',
       table: {
         type: {
           summary: 'string',

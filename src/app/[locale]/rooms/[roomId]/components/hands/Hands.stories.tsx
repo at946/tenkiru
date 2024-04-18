@@ -16,13 +16,12 @@ const meta: Meta<typeof Hands> = {
       options: ['fibonacci', 'sequential', 'tShirtSize'],
     },
     selectedValue: {
-      type: { required: true },
       table: {
         type: {
           summary: 'number | string | null',
         },
       },
-      description: 'Selected card value',
+      description: '<b>Required</b><br />Selected card value',
     },
     isDisabled: {
       type: { name: 'boolean', required: false },

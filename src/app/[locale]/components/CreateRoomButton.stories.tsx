@@ -4,7 +4,6 @@ import CreateRoomButton from './CreateRoomButton';
 const meta: Meta<typeof CreateRoomButton> = {
   component: CreateRoomButton,
   title: 'Top/CreateRoomButton',
-  description: 'https://react-hot-toast.com/',
   parameters: {
     nextjs: {
       appDirectory: true,
@@ -12,8 +11,7 @@ const meta: Meta<typeof CreateRoomButton> = {
   },
   argTypes: {
     name: {
-      type: { required: true },
-      description: 'Text on the button',
+      description: '<b>Required</b><br />Text on the button',
       table: {
         type: {
           summary: 'string',

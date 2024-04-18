@@ -23,8 +23,12 @@ const HandsCard: NextPage<Props> = ({ value, isSelected, isDisabled, onClick }) 
     <button
       onClick={onClickHandler}
       className={clsx(
-        'flex aspect-card w-24 items-center justify-center rounded-md border-2 border-text text-2xl font-bold shadow enabled:focus:shadow-2xl disabled:cursor-not-allowed md:enabled:hover:-translate-y-2 md:enabled:hover:shadow-2xl md:enabled:focus:-translate-y-2',
-        isSelected ? 'bg-primary text-dark-text' : 'bg-background text-text disabled:opacity-50',
+        'flex aspect-card w-24 items-center justify-center rounded-md border-2 border-text text-2xl font-bold shadow',
+        'enabled:focus-visible:shadow-2xl disabled:cursor-not-allowed',
+        'md:enabled:hover:-translate-y-2 md:enabled:hover:shadow-2xl md:enabled:focus-visible:-translate-y-2',
+        isSelected
+          ? 'bg-primary text-dark-text'
+          : 'bg-background text-text disabled:opacity-25 disabled:dark:opacity-50',
       )}
       disabled={isDisabled}
       role='option'

@@ -1,33 +1,59 @@
 import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import enMessages from '@/messages/en.json';
 import { useArgs } from '@storybook/preview-api';
 import { Meta, StoryObj } from '@storybook/react';
+import { NextIntlClientProvider } from 'next-intl';
 import Hands from './Hands';
 
 const meta: Meta<typeof Hands> = {
   component: Hands,
   title: 'Room/Hands/Hands',
-  tags: ['autodocs'],
   argTypes: {
     deckType: {
       type: { name: 'string', required: true },
-      description: 'デッキの種類',
+      description: 'Deck type',
+      control: 'radio',
+      options: ['fibonacci', 'sequential', 'tShirtSize'],
     },
     selectedValue: {
-      type: { name: 'other', value: 'IFTableCard', required: true },
-      description: '選択中のカード',
+      table: {
+        type: {
+          summary: 'number | string | null',
+        },
+      },
+      description: '<b>Required</b><br />Selected card value',
     },
     isDisabled: {
       type: { name: 'boolean', required: false },
-      description: '手札からカードを選択できるかどうか',
+      description: 'Whether to be able to select a card',
+      defaultValue: false,
     },
     onSelect: {
       type: { name: 'function', required: true },
-      description: '手札からカードを選んだときに呼び出される関数',
+      description: 'Function called on selecting a card',
       table: {
         category: 'Events',
       },
     },
   },
+  decorators: [
+    () => {
+      const [args, setArgs] = useArgs();
+      const onSelect = (value: IFTableCardValue) => {
+        setArgs({ selectedValue: args.selectedValue === value ? null : value });
+      };
+      return (
+        <NextIntlClientProvider locale='en' messages={enMessages}>
+          <Hands
+            {...args}
+            deckType={args.deckType}
+            selectedValue={args.selectedValue}
+            onSelect={onSelect}
+          />
+        </NextIntlClientProvider>
+      );
+    },
+  ],
 };
 
 export default meta;
@@ -37,75 +63,30 @@ export const Fibonacci: Story = {
   args: {
     deckType: 'fibonacci',
     selectedValue: 1,
+    isDisabled: false,
   },
-  decorators: [
-    () => {
-      const [args, setArgs] = useArgs();
-      const onSelect = (value: IFTableCardValue) => {
-        setArgs({ selectedValue: args.selectedValue === value ? null : value });
-      };
-      return (
-        <Hands
-          {...args}
-          deckType={args.deckType}
-          selectedValue={args.selectedValue}
-          onSelect={onSelect}
-        />
-      );
-    },
-  ],
 };
 
 export const Sequential: Story = {
   args: {
     deckType: 'sequential',
     selectedValue: 1,
+    isDisabled: false,
   },
-  decorators: [
-    () => {
-      const [args, setArgs] = useArgs();
-      const onSelect = (value: IFTableCardValue) => {
-        setArgs({ selectedValue: value });
-      };
-      return (
-        <Hands
-          {...args}
-          deckType={args.deckType}
-          selectedValue={args.selectedValue}
-          onSelect={onSelect}
-        />
-      );
-    },
-  ],
 };
 
 export const TShirtSize: Story = {
   args: {
     deckType: 'tShirtSize',
     selectedValue: 'S',
+    isDisabled: false,
   },
-  decorators: [
-    () => {
-      const [args, setArgs] = useArgs();
-      const onSelect = (value: IFTableCardValue) => {
-        setArgs({ selectedValue: value });
-      };
-      return (
-        <Hands
-          {...args}
-          deckType={args.deckType}
-          selectedValue={args.selectedValue}
-          onSelect={onSelect}
-        />
-      );
-    },
-  ],
 };
 
 export const Disabled: Story = {
   args: {
     deckType: 'fibonacci',
-    selectedValue: null,
+    selectedValue: 1,
     isDisabled: true,
   },
 };

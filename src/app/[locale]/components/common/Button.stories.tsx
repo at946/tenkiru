@@ -4,65 +4,150 @@ import Button from './Button';
 const meta: Meta<typeof Button> = {
   component: Button,
   title: 'Common/Button',
-  tags: ['autodocs'],
   argTypes: {
     children: {
-      type: { name: 'other', value: 'ReactNode', required: true },
-      description: 'children',
-    },
-    isOutlined: {
-      type: { name: 'boolean', required: false },
-      description: 'Outlined styleを適用するかどうか',
-    },
-    disabled: {
-      type: { name: 'boolean', required: false },
-      description: '操作可能かどうか',
-    },
-    className: {
-      type: { name: 'string', required: false },
-      description: '追加で適用するクラス名',
-    },
-    onClick: {
-      type: { name: 'function', required: false },
-      description: 'クリック時の動作',
+      description: '<b>Required</b><br />Children',
       table: {
-        category: 'Events',
+        type: {
+          summary: 'ReactNode',
+        },
       },
     },
+    color: {
+      description: 'Color',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        DefaultValue: 'primary',
+      },
+      control: { type: 'radio' },
+      options: ['primary', 'secondary'],
+    },
+    isOutlined: {
+      description: 'Whether to apply the outline style',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        DefaultValue: false,
+      },
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      description: 'Whether to be disabled or not',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        DefaultValue: false,
+      },
+      control: { type: 'boolean' },
+    },
+    title: {
+      description: 'title attribute',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        DefaultValue: '',
+      },
+      control: { type: 'text' },
+    },
+    ariaLabel: {
+      description: 'aria-label attribute',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        DefaultValue: '',
+      },
+      control: { type: 'text' },
+    },
+    className: {
+      description: 'className',
+      table: {
+        type: {
+          summary: 'string',
+        },
+        DefaultValue: '',
+      },
+      control: { type: 'text' },
+    },
+    onClick: {
+      description: 'Function called when a user clicked',
+      table: {
+        type: {
+          summary: 'function',
+        },
+        category: 'Events',
+        DefaultValue: '',
+      },
+    },
+  },
+  args: {
+    children: 'Button',
+    color: 'primary',
+    isOutlined: false,
+    disabled: false,
+    title: 'This is a button',
+    ariaLabel: 'A button',
+    className: '',
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = {
-  args: {
-    children: 'Button',
-    isOutlined: false,
-    disabled: false,
-  },
-};
+export const Default: Story = {};
 
-export const Disabled: Story = {
-  args: {
-    children: 'Button',
-    isOutlined: false,
-    disabled: true,
+export const Colors: Story = {
+  render: () => {
+    return (
+      <div className='flex gap-2'>
+        <Button color='primary'>Primary</Button>
+        <Button color='secondary'>Secondary</Button>
+      </div>
+    );
   },
 };
 
 export const Outlined: Story = {
-  args: {
-    children: 'Button',
-    isOutlined: true,
-    disabled: false,
+  render: () => {
+    return (
+      <div className='flex gap-2'>
+        <Button color='primary' isOutlined>
+          Primary
+        </Button>
+        <Button color='secondary' isOutlined>
+          Secondary
+        </Button>
+      </div>
+    );
   },
 };
 
-export const DisabledOutlined: Story = {
-  args: {
-    children: 'Button',
-    isOutlined: true,
-    disabled: true,
+export const Disabled: Story = {
+  render: () => {
+    return (
+      <div className='flex flex-row gap-2'>
+        <div className='flex gap-2'>
+          <Button color='primary' disabled>
+            Primary
+          </Button>
+          <Button color='secondary' disabled>
+            Secondary
+          </Button>
+        </div>
+        <div className='flex gap-2'>
+          <Button color='primary' isOutlined disabled>
+            Primary
+          </Button>
+          <Button color='secondary' isOutlined disabled>
+            Secondary
+          </Button>
+        </div>
+      </div>
+    );
   },
 };

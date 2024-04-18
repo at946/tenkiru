@@ -1,4 +1,3 @@
-import RootLayout from '@/app/[locale]/layout';
 import '@/styles/globals.css';
 import '@storybook/addon-console';
 import type { Preview } from '@storybook/react';
@@ -14,9 +13,10 @@ const preview: Preview = {
       },
     },
     darkMode: {
-      light: { ...themes.dark },
+      light: { ...themes.normal },
       dark: { ...themes.dark },
-      darkClass: ['dark', 'bg-black'],
+      darkClass: ['dark', 'bg-dark-background', 'text-dark-text'],
+      lightClass: ['bg-background', 'text-text'],
       stylePreview: true,
     },
   },
@@ -24,10 +24,4 @@ const preview: Preview = {
 
 export default preview;
 
-export const decorators = [
-  (Story) => (
-    <RootLayout>
-      <div className='p-5'>{Story()}</div>
-    </RootLayout>
-  ),
-];
+export const decorators = [(Story) => <div className='p-5'>{Story()}</div>];

@@ -34,13 +34,13 @@ jobs:
           yarn playwright install
           yarn playwright install-deps
 
-      # - name: start storybook
-      #   run: yarn storybook &
+      - name: start storybook
+        run: yarn storybook &
 
-      # - name: component test
-      #   run: |
-      #     npx wait-on tcp:6006
-      #     yarn test:storybook --url http://localhost:6006
+      - name: component test
+        run: |
+          npx wait-on tcp:6006
+          yarn test:storybook --url http://localhost:6006
 
       - name: start next app
         run: |

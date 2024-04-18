@@ -4,12 +4,12 @@ import { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  title?: string;
   color?: 'primary' | 'secondary';
   isOutlined?: boolean;
   disabled?: boolean;
-  className?: string;
+  title?: string;
   ariaLabel?: string;
+  className?: string;
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -19,12 +19,12 @@ interface Props {
 
 const Button: NextPage<Props> = ({
   children,
-  title,
   color = 'primary',
-  isOutlined,
-  disabled,
-  className,
+  isOutlined = false,
+  disabled = false,
+  title,
   ariaLabel,
+  className,
   onClick,
   onMouseEnter,
   onMouseLeave,
@@ -34,17 +34,18 @@ const Button: NextPage<Props> = ({
   return (
     <button
       className={clsx(
-        'inline-flex items-center gap-1 rounded-full border-2 px-4 py-2 drop-shadow-md enabled:hover:drop-shadow-lg enabled:focus:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
+        'inline-flex items-center gap-1 rounded-full border-2 px-4 py-2 drop-shadow-md enabled:hover:drop-shadow-lg enabled:focus-visible:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
         color === 'primary' && 'border-primary',
         color === 'secondary' && 'border-secondary',
-        isOutlined && 'bg-background enabled:hover:text-background enabled:focus:text-background',
+        isOutlined &&
+          'bg-background enabled:hover:text-background enabled:focus-visible:text-background',
         isOutlined &&
           color === 'primary' &&
-          'text-primary enabled:hover:bg-primary enabled:focus:bg-primary',
+          'text-primary enabled:hover:bg-primary enabled:focus-visible:bg-primary',
         isOutlined &&
           color === 'secondary' &&
-          'text-secondary enabled:hover:bg-secondary enabled:focus:bg-secondary',
-        !isOutlined && 'text-white enabled:hover:opacity-75 enabled:focus:opacity-75',
+          'text-secondary enabled:hover:bg-secondary enabled:focus-visible:bg-secondary',
+        !isOutlined && 'text-white enabled:hover:opacity-75 enabled:focus-visible:opacity-75',
         !isOutlined && color === 'primary' && 'bg-primary',
         !isOutlined && color === 'secondary' && 'bg-secondary',
         className,

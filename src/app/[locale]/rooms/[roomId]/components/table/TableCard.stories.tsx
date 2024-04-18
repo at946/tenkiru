@@ -1,32 +1,46 @@
+import enMessages from '@/messages/en.json';
 import { Meta, StoryObj } from '@storybook/react';
+import { NextIntlClientProvider } from 'next-intl';
 import TableCard from './TableCard';
 
 const meta: Meta<typeof TableCard> = {
   component: TableCard,
   title: 'Room/Table/TableCard',
-  tags: ['autodocs'],
   argTypes: {
     value: {
-      type: { name: 'string', required: true },
-      description: 'カードの値',
+      description: '<b>Required</b><br />Card display value',
+      table: {
+        type: {
+          summary: 'string | number | null',
+        },
+      },
     },
     isOpen: {
-      type: { name: 'boolean', required: false },
-      description: 'カードがオープンかどうか',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+      description: 'Whether to be open or close',
     },
   },
-  decorators: [(story) => <div className='bg-green-400 p-5'>{story()}</div>],
+  args: {
+    value: 1,
+    isOpen: true,
+  },
+  decorators: [
+    (story) => (
+      <NextIntlClientProvider locale='en' messages={enMessages}>
+        {story()}
+      </NextIntlClientProvider>
+    ),
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof TableCard>;
 
-export const NotBlankAndOpen: Story = {
-  args: {
-    value: 1,
-    isOpen: true,
-  },
-};
+export const NotBlankAndOpen: Story = {};
 
 export const NotBlankAndClose: Story = {
   args: {

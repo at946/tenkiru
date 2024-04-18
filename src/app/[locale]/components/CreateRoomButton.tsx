@@ -1,12 +1,12 @@
 'use client';
 
+import Button from '@/app/[locale]/components/common/Button';
 import { event } from '@/lib/gtag';
 import clsx from 'clsx';
 import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { v4 } from 'uuid';
-import Button from './common/Button';
 
 interface Props {
   name: string;

@@ -1,4 +1,4 @@
-import DarkModeToggle from '@/app/[locale]/components/common/DarkModeToggle';
+import DarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import LocaleSwitcher from '@/app/[locale]/components/common/LocaleSwitcher';
 import { NextPage } from 'next';

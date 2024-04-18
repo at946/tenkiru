@@ -65,7 +65,7 @@ export default class RoomPage {
     this.selectedHandsCard = this.hands.getByRole('option', { name: 'Hands card', selected: true });
     this.disabledHandsCard = this.hands.getByRole('option', { name: 'Hands card', disabled: true });
     this.enteringRoomToast = page.getByRole('status').getByText('Entering...');
-    this.haveEnteredRoomToast = page.getByRole('status').getByText('Entry Completed 👍');
+    this.haveEnteredRoomToast = page.getByRole('status').getByText('Entry Completed');
     this.copyUrlToast = page.getByRole('status').getByText('Copied this Room URL');
     this.haveRequestedToSelectToast = page
       .getByRole('status')

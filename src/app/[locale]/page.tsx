@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <div className='container mx-auto px-5 text-center'>
       <div className='my-20'>
-        <h1 className='mb-1 text-3xl font-bold text-primary dark:text-dark-primary'>Tenkir</h1>
+        <h1 className='mb-1 text-3xl font-bold text-primary dark:text-dark-primary'>Tenkiru</h1>
         <p className='break-auto-phrase mb-6 text-lg'>{t('Simple and fun planning poker app')}</p>
         <CreateRoomButton name={t('Create a room')} />
       </div>

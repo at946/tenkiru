@@ -1,14 +1,15 @@
-## Tenkir
+# Tenkiru
 
 https://tenkir.fly.dev/
 
-Tenkir は無料のオンラインプランニングポーカーアプリです。XP やスクラムなどのアジャイルなプロジェクト管理に最適です。チームでの見積もりをリアルタイムで共有できます。参加者はスマートフォンやパソコンのブラウザだけで参加できます。直感的な UI と使いやすさが魅力です。
+Tenkiru is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately.
 
 ## Start app
 
 ```bash
 $ yarn
 $ yarn dev
+$ open http://localhost:3000
 ```
 
 or
@@ -16,9 +17,8 @@ or
 ```bash
 $ docker compose run app yarn
 $ docker compose up app
+$ open http://localhost:3000
 ```
-
-`http://localhost:3000`でアプリが利用できます。
 
 ## E2E test
 

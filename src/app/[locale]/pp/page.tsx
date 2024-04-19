@@ -10,7 +10,7 @@ export default function Page() {
       <h1 className='mb-5 text-2xl font-bold'>{t('Privacy Policy')}</h1>
       <p className='mb-5'>
         {t(
-          'Tenkir has established the following privacy policy regarding the handling of personal information of users of the Service',
+          'Tenkiru has established the following privacy policy regarding the handling of personal information of users of the Service',
         )}
       </p>
 

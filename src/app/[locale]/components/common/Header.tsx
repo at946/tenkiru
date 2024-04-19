@@ -12,7 +12,7 @@ interface Props {
 
 const Header: NextPage<Props> = ({ currentLocale }) => {
   const t = useTranslations('Header');
-  const twitterShareText: string = `Tenkir\n${process.env.NEXT_PUBLIC_BASE_URL}`;
+  const twitterShareText: string = `Tenkiru\n${process.env.NEXT_PUBLIC_BASE_URL}`;
 
   return (
     <nav role='navigation' aria-label='main navigation'>
@@ -20,7 +20,7 @@ const Header: NextPage<Props> = ({ currentLocale }) => {
         <div className='flex items-center justify-between'>
           <Link href='/' className='header-item font-bold'>
             <span className='icon-[mdi--cards-playing-outline] mr-1 text-2xl' />
-            <span>Tenkir</span>
+            <span>Tenkiru</span>
           </Link>
 
           <div className='flex gap-4'>

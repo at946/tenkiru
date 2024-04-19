@@ -7,7 +7,7 @@ export default class Header {
 
   constructor(page: Page) {
     this.header = page.getByRole('navigation');
-    this.logo = this.header.getByRole('link', { name: 'Tenkir' });
+    this.logo = this.header.getByRole('link', { name: 'Tenkiru' });
     this.supportLink = this.header.getByRole('link', { name: '開発者を支援' });
   }
 

@@ -5,9 +5,9 @@ import RoomPage from '../../models/room-page';
 import TopPage from '../../models/top-page';
 import TOSPage from '../../models/tos-page';
 
-const title: string = 'Tenkir';
+const title: string = 'Tenkiru';
 const description: string =
-  'Tenkir is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately.';
+  'Tenkiru is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately.';
 const ogImageUrl: RegExp = /opengraph-image\.jpg$/;
 
 test('トップページで、OGが正しいこと', async ({ page }) => {

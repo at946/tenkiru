@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Tenkir",
-    "description": "Tenkir（テンキル）は、シンプルで楽しいプランニングポーカーアプリです。ルームを作成し、チームメンバーにルームのURLを共有するだけですぐに使い始められます。"
+    "title": "Tenkiru",
+    "description": "Tenkiru（テンキル）は、シンプルで楽しいプランニングポーカーアプリです。ルームを作成し、チームメンバーにルームのURLを共有するだけですぐに使い始められます。"
   },
   "Header": {
     "Share to X": "Xでシェア",
@@ -60,7 +60,7 @@
   },
   "Terms of Use": {
     "Terms of Use": "利用規約",
-    "These Terms of Use shall apply to Tenkir": "この利用規約は（以下、「本規約」といいます。）は、Tenkir（以下、「本サービス」といいます。）の利用条件を定めるものです。",
+    "These Terms of Use shall apply to Tenkiru": "この利用規約は（以下、「本規約」といいます。）は、Tenkiru（以下、「本サービス」といいます。）の利用条件を定めるものです。",
     "All users are requested to use the Service in accordance with these Terms of Use": "ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に従って、本サービスをご利用いただきます。",
     "Application of Terms of Use": "規約の適用",
     "These Terms of Use shall apply to all relationships between the users and the use of this Service": "本規約は、ユーザーと本サービスの利用に関わる一切の関係に適用されるものとします。",
@@ -113,7 +113,7 @@
   },
   "Privacy Policy": {
     "Privacy Policy": "プライバシーポリシー",
-    "Tenkir has established the following privacy policy regarding the handling of personal information of users of the Service": "Tenkir（以下、「本サービス」）では、本サービスをご利用されるユーザーの個人情報の取扱について以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。",
+    "Tenkiru has established the following privacy policy regarding the handling of personal information of users of the Service": "Tenkiru（以下、「本サービス」）では、本サービスをご利用されるユーザーの個人情報の取扱について以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。",
     "Purpose of use of Personal Information": "個人情報の利用目的",
     "The Service uses and collects users' personal information for the following purposes": "本サービスは、以下の利用目的のためにユーザーの個人情報を利用・収集します。",
     "To provide this service": "本サービスを提供するため",

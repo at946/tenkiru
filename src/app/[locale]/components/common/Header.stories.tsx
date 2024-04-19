@@ -52,7 +52,7 @@ export const English: Story = {
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);
-    const logo: HTMLElement = canvas.getByRole('link', { name: 'Tenkir' });
+    const logo: HTMLElement = canvas.getByRole('link', { name: 'Tenkiru' });
     const twitterLink: HTMLElement = canvas.getByRole('link', { name: 'Share to X' });
     const BMCLink: HTMLElement = canvas.getByRole('link', { name: 'Buy me a coffee' });
     // Action
@@ -81,7 +81,7 @@ export const Japanese: Story = {
   play: async ({ canvasElement }) => {
     // Arrange
     const canvas = within(canvasElement);
-    const logo: HTMLElement = canvas.getByRole('link', { name: 'Tenkir' });
+    const logo: HTMLElement = canvas.getByRole('link', { name: 'Tenkiru' });
     const twitterLink: HTMLElement = canvas.getByRole('link', { name: 'Xでシェア' });
     const BMCLink: HTMLElement = canvas.getByRole('link', { name: 'Buy me a coffee' });
     // Action

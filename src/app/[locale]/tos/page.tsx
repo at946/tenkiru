@@ -8,7 +8,7 @@ export default function Page() {
     <div className='container mx-auto my-10 px-5 text-sm dark:text-white'>
       <h1 className='mb-5 text-2xl font-bold'>{t('Terms of Use')}</h1>
       <p className='mb-5'>
-        {t('These Terms of Use shall apply to Tenkir')}
+        {t('These Terms of Use shall apply to Tenkiru')}
         {t('All users are requested to use the Service in accordance with these Terms of Use')}
       </p>
 

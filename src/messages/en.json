@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Tenkir",
-    "description": "Tenkir is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately."
+    "title": "Tenkiru",
+    "description": "Tenkiru is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately."
   },
   "Header": {
     "Share to X": "Share to X",
@@ -60,7 +60,7 @@
   },
   "Terms of Use": {
     "Terms of Use": "Terms of Use",
-    "These Terms of Use shall apply to Tenkir": "These Terms of Use (hereinafter referred to as the \"Terms of Use\") shall apply to Tenkir (hereinafter referred to as the \"Service\"). ",
+    "These Terms of Use shall apply to Tenkiru": "These Terms of Use (hereinafter referred to as the \"Terms of Use\") shall apply to Tenkiru (hereinafter referred to as the \"Service\"). ",
     "All users are requested to use the Service in accordance with these Terms of Use": "All users (hereinafter referred to as \"users\") are requested to use the Service in accordance with these Terms of Use. ",
     "Application of Terms of Use": "Application of Terms of Use",
     "These Terms of Use shall apply to all relationships between the users and the use of this Service": "These Terms of Use shall apply to all relationships between the users and the use of this Service. ",
@@ -114,7 +114,7 @@
   },
   "Privacy Policy": {
     "Privacy Policy": "Privacy Policy",
-    "Tenkir has established the following privacy policy regarding the handling of personal information of users of the Service": "Tenkir (hereinafter referred to as the \"Service\") has established the following privacy policy (hereinafter referred to as the \"Policy\") regarding the handling of personal information of users of the Service. ",
+    "Tenkiru has established the following privacy policy regarding the handling of personal information of users of the Service": "Tenkiru (hereinafter referred to as the \"Service\") has established the following privacy policy (hereinafter referred to as the \"Policy\") regarding the handling of personal information of users of the Service. ",
     "Purpose of use of Personal Information": "Purpose of use of Personal Information",
     "The Service uses and collects users' personal information for the following purposes": "The Service uses and collects users' personal information for the following purposes. ",
     "To provide this service": "To provide this service",

@@ -39,7 +39,7 @@ export default class RoomPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.logo = page.getByRole('link', { name: 'Tenkir' });
+    this.logo = page.getByRole('link', { name: 'Tenkiru' });
     this.roomIdLink = page.getByRole('button', { name: 'Room ID' });
     this.tableCardGroups = page.getByRole('group', { name: 'Table cards group' });
     this.tableCards = this.tableCardGroups.getByLabel('Table card');

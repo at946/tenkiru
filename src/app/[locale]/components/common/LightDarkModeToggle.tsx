@@ -2,7 +2,7 @@
 
 import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useRecoilState } from 'recoil';
 
 interface Props {
@@ -16,16 +16,14 @@ const DarkModeToggle: NextPage<Props> = ({ lightModeTitle, darkModeTitle, classN
 
   return (
     <button
+      type='button'
       onClick={() => setIsDarkMode(!isDarkMode)}
       title={isDarkMode ? darkModeTitle : lightModeTitle}
       aria-label={isDarkMode ? darkModeTitle : lightModeTitle}
       className={className}
     >
       <span
-        className={clsx(
-          'text-2xl',
-          isDarkMode ? 'icon-[mdi--white-balance-sunny]' : 'icon-[mdi--moon-and-stars]',
-        )}
+        className={clsx('text-2xl', isDarkMode ? 'icon-[mdi--white-balance-sunny]' : 'icon-[mdi--moon-and-stars]')}
       />
     </button>
   );

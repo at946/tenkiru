@@ -1,8 +1,8 @@
 'use client';
 
 import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
-import { NextPage } from 'next';
-import { ReactNode, useEffect } from 'react';
+import type { NextPage } from 'next';
+import { type ReactNode, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
 interface Props {
@@ -22,9 +22,7 @@ const ThemeProvider: NextPage<Props> = ({ children }) => {
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
-      <div className='bg-background text-text dark:bg-dark-background dark:text-dark-text'>
-        {children}
-      </div>
+      <div className='bg-background text-text dark:bg-dark-background dark:text-dark-text'>{children}</div>
     </div>
   );
 };

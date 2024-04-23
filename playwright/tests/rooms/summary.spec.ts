@@ -172,9 +172,7 @@ test('ルームページで、0-10デッキを選択しており、カードを�
   await expect(roomPage3.maxTag).toHaveText('Max9');
 });
 
-test('ルームページで、Tシャツサイズデッキを選択しているとき、サマリーは表示されないこと', async ({
-  context,
-}) => {
+test('ルームページで、Tシャツサイズデッキを選択しているとき、サマリーは表示されないこと', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());

@@ -1,8 +1,8 @@
 import Decks from '@/data/deck';
-import { IFDeck } from '@/interfaces/deck';
-import { IFDeckType } from '@/interfaces/deckType';
+import type { IFDeck } from '@/interfaces/deck';
+import type { IFDeckType } from '@/interfaces/deckType';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 
 interface IFOption {
@@ -33,8 +33,8 @@ const DeckSelect: NextPage<Props> = ({ deckType, disabled, className, onChange }
           onChange={(e) => onChange(e.target.value as IFDeckType)}
           disabled={disabled}
           className={clsx(
-            'border-0 border-b-2 border-text bg-transparent py-0 pl-2 pr-10 outline-none',
-            'focus-visible:ring-0 enabled:hover:border-primary enabled:hover:text-primary enabled:focus-visible:border-primary enabled:focus-visible:text-primary',
+            'border-0 border-text border-b-2 bg-transparent py-0 pr-10 pl-2 outline-none',
+            'enabled:focus-visible:border-primary enabled:hover:border-primary enabled:focus-visible:text-primary enabled:hover:text-primary focus-visible:ring-0',
             'disabled:cursor-not-allowed disabled:opacity-50',
             'dark:border-dark-text',
           )}

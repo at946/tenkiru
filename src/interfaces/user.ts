@@ -1,5 +1,5 @@
-import { IFTableCardValue } from './tableCardValue';
-import { IFUserType } from './userType';
+import type { IFTableCardValue } from './tableCardValue';
+import type { IFUserType } from './userType';
 
 export interface IFUser {
   id: string;

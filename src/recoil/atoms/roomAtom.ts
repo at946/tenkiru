@@ -1,4 +1,4 @@
-import { IFRoom } from '@/interfaces/room';
+import type { IFRoom } from '@/interfaces/room';
 import { atom } from 'recoil';
 
 const roomState = atom<IFRoom>({

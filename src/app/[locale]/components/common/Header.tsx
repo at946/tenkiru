@@ -1,7 +1,7 @@
 import DarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import LocaleSwitcher from '@/app/[locale]/components/common/LocaleSwitcher';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import './Header.css';
@@ -15,7 +15,7 @@ const Header: NextPage<Props> = ({ currentLocale }) => {
   const twitterShareText: string = `Tenkiru\n${process.env.NEXT_PUBLIC_BASE_URL}`;
 
   return (
-    <nav role='navigation' aria-label='main navigation'>
+    <nav aria-label='main navigation'>
       <div className='container mx-auto p-5'>
         <div className='flex items-center justify-between'>
           <Link href='/' className='header-item font-bold'>

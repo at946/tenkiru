@@ -262,9 +262,7 @@ test('ルームページで、「観客」選択中かつカードオープン�
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、メンバーが自分ひとりのときに「観客」を選択しても問題ないこと', async ({
-  page,
-}) => {
+test('ルームページで、メンバーが自分ひとりのときに「観客」を選択しても問題ないこと', async ({ page }) => {
   // Given
   const roomPage: RoomPage = new RoomPage(page);
   await roomPage.goto(createRoomId());

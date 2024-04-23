@@ -1,5 +1,5 @@
 import enMessages from '@/messages/en.json';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
 import TableCard from './TableCard';
 

@@ -1,5 +1,5 @@
-import { IFTableCard } from '@/interfaces/tableCard';
-import { IFUser } from '@/interfaces/user';
+import type { IFTableCard } from '@/interfaces/tableCard';
+import type { IFUser } from '@/interfaces/user';
 
 const getTableCardsFromUsers = (users: IFUser[] = []): IFTableCard[] => {
   const players: IFUser[] = users.filter((user: IFUser) => user.type === 'player');

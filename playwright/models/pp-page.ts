@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { type Page, expect } from '@playwright/test';
 import urls from '../helpers/urls';
 import Head from './common/head';
 

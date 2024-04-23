@@ -1,6 +1,6 @@
-import { IFDeckType } from '@/interfaces/deckType';
-import { IFUserType } from '@/interfaces/userType';
-import { Locator, Page, expect } from '@playwright/test';
+import type { IFDeckType } from '@/interfaces/deckType';
+import type { IFUserType } from '@/interfaces/userType';
+import { type Locator, type Page, expect } from '@playwright/test';
 import urls from '../helpers/urls';
 import Head from './common/head';
 
@@ -41,38 +41,42 @@ export default class RoomPage {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkiru' });
     this.roomIdLink = page.getByRole('button', { name: 'Room ID' });
-    this.tableCardGroups = page.getByRole('group', { name: 'Table cards group' });
+    this.tableCardGroups = page.getByRole('group', {
+      name: 'Table cards group',
+    });
     this.tableCards = this.tableCardGroups.getByLabel('Table card');
     this.blankTableCards = this.tableCardGroups.getByLabel('Unselected table card');
     this.faceDownTableCards = this.tableCardGroups.getByLabel('Face-down table card');
     this.faceUpTableCards = this.tableCardGroups.getByLabel('Face-up table card');
     this.nominateButtons = page.getByRole('button', { name: 'Get comments' });
     this.nominateButtonByCard = (card: string) => {
-      return this.tableCardGroups
-        .filter({ hasText: card })
-        .getByRole('button', { name: 'Get comments' });
+      return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: 'Get comments' });
     };
     this.minTag = page.getByLabel('Min');
     this.avgTag = page.getByLabel('Avg');
     this.maxTag = page.getByLabel('Max');
     this.openButton = page.getByRole('button', { name: 'Open' });
-    this.requestToSelectButton = page.getByRole('button', { name: 'Ask to choose' });
+    this.requestToSelectButton = page.getByRole('button', {
+      name: 'Ask to choose',
+    });
     this.replayButton = page.getByRole('button', { name: 'Again' });
     this.userTypeSelect = page.getByRole('combobox', { name: 'User type: ' });
     this.deckSelect = page.getByRole('combobox', { name: 'Deck : ' });
     this.hands = page.getByRole('group', { name: 'Hands' });
     this.handsCards = this.hands.getByRole('option', { name: 'Hands card' });
-    this.selectedHandsCard = this.hands.getByRole('option', { name: 'Hands card', selected: true });
-    this.disabledHandsCard = this.hands.getByRole('option', { name: 'Hands card', disabled: true });
+    this.selectedHandsCard = this.hands.getByRole('option', {
+      name: 'Hands card',
+      selected: true,
+    });
+    this.disabledHandsCard = this.hands.getByRole('option', {
+      name: 'Hands card',
+      disabled: true,
+    });
     this.enteringRoomToast = page.getByRole('status').getByText('Entering...');
     this.haveEnteredRoomToast = page.getByRole('status').getByText('Entry Completed');
     this.copyUrlToast = page.getByRole('status').getByText('Copied this Room URL');
-    this.haveRequestedToSelectToast = page
-      .getByRole('status')
-      .getByText('Asked players to choose a card');
-    this.hadBeenRequestedToSelectToast = page
-      .getByRole('status')
-      .getByText("It's time to choose a card");
+    this.haveRequestedToSelectToast = page.getByRole('status').getByText('Asked players to choose a card');
+    this.hadBeenRequestedToSelectToast = page.getByRole('status').getByText("It's time to choose a card");
     this.haveNominatedToast = page.getByRole('status').getByText('Asked a player for comment');
     this.haveBeenNominatedToast = page.getByRole('status').getByText('Please comment');
 

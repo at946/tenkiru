@@ -1,6 +1,6 @@
 import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import { Link } from '@/navigation';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import './Footer.css';
 
@@ -8,7 +8,7 @@ const Footer: NextPage = () => {
   const t = useTranslations('Footer');
 
   return (
-    <footer className='container mx-auto mt-auto pb-5 pt-20 text-center' role='contentinfo'>
+    <footer className='container mx-auto mt-auto pt-20 pb-5 text-center' role='contentinfo'>
       <div className='mb-2 flex justify-center gap-4'>
         <Link href='/tos' className='footer-item'>
           {t('Terms of Use')}

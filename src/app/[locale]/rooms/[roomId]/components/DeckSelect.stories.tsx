@@ -1,4 +1,4 @@
-import { IFDeckType } from '@/interfaces/deckType';
+import type { IFDeckType } from '@/interfaces/deckType';
 import enMessages from '@/messages/en.json';
 import jaMessages from '@/messages/ja.json';
 import { useArgs } from '@storybook/preview-api';

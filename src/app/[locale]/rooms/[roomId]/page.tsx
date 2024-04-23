@@ -13,7 +13,7 @@ interface Props {
 export default function Page(props: Props) {
   const messages = useMessages();
   return (
-    <div className='container mx-auto mb-10 mt-5 px-5 text-center'>
+    <div className='container mx-auto mt-5 mb-10 px-5 text-center'>
       <RoomInfo roomId={props.params.roomId} className='mb-5' />
       <NextIntlClientProvider messages={pick(messages, 'Room')}>
         <RoomPage roomId={props.params.roomId} />

@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 import urls from '../helpers/urls';
 import Head from './common/head';
 

@@ -1,8 +1,8 @@
 import Button from '@/app/[locale]/components/common/Button';
-import { IFRoom } from '@/interfaces/room';
-import { IFTableCard } from '@/interfaces/tableCard';
+import type { IFRoom } from '@/interfaces/room';
+import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';

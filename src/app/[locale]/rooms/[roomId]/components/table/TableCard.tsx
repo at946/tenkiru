@@ -1,6 +1,6 @@
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 
 interface Props {
@@ -16,7 +16,7 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
   return (
     <div
       className={clsx(
-        'flex aspect-card w-24 items-center justify-center rounded-md border-2 border-text text-2xl font-bold shadow-md',
+        'flex aspect-card w-24 items-center justify-center rounded-md border-2 border-text font-bold text-2xl shadow-md',
         isBlank && 'border-dashed',
         !isBlank && !isOpen && 'bg-secondary',
         !isBlank && isOpen && 'bg-background text-text transition-all duration-1000 ease-out',

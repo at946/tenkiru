@@ -6,7 +6,7 @@ export default function Page() {
 
   return (
     <div className='container mx-auto my-10 px-5 text-sm dark:text-white'>
-      <h1 className='mb-5 text-2xl font-bold'>{t('Terms of Use')}</h1>
+      <h1 className='mb-5 font-bold text-2xl'>{t('Terms of Use')}</h1>
       <p className='mb-5'>
         {t('These Terms of Use shall apply to Tenkiru')}
         {t('All users are requested to use the Service in accordance with these Terms of Use')}
@@ -14,24 +14,18 @@ export default function Page() {
 
       <ul className='mb-5 list-inside list-decimal'>
         <div className='mb-5'>
-          <li className='mb-3 text-lg font-semibold'>{t('Application of Terms of Use')}</li>
+          <li className='mb-3 font-semibold text-lg'>{t('Application of Terms of Use')}</li>
           <p>
-            {t(
-              'These Terms of Use shall apply to all relationships between the users and the use of this Service',
-            )}
+            {t('These Terms of Use shall apply to all relationships between the users and the use of this Service')}
           </p>
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 text-lg font-semibold'>{t('Change of Terms of Use')}</li>
+          <li className='mb-3 font-semibold text-lg'>{t('Change of Terms of Use')}</li>
           <ul className='ml-4 list-disc'>
             <li className='mb-1'>
-              {t(
-                'This Service reserves the right to change these Terms of Use without the consent of users',
-              )}
-              {t(
-                'In such cases, these Terms of Use of this Service shall be governed by the amended Terms of Use',
-              )}
+              {t('This Service reserves the right to change these Terms of Use without the consent of users')}
+              {t('In such cases, these Terms of Use of this Service shall be governed by the amended Terms of Use')}
             </li>
             <li>
               {t(
@@ -42,7 +36,7 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 text-lg font-semibold'>{t('Prohibited Actions')}</li>
+          <li className='mb-3 font-semibold text-lg'>{t('Prohibited Actions')}</li>
           <p className='mb-2'>
             {t(
               'If the Operator determines that a user falls under any of the following items, the Operator may prohibit the user from using this Service or terminate all or part of these Terms of Use without prior notice or demand to the user',
@@ -55,9 +49,7 @@ export default function Page() {
                 'Actions that transmit or distribute harmful computer programs such as computer viruses, actions that aim to send chain mail, spam mail, etc, and actions that significantly burden this Service',
               )}
             </li>
-            <li className='mb-1'>
-              {t('Falsifying or deleting information that may be used by this Service')}
-            </li>
+            <li className='mb-1'>{t('Falsifying or deleting information that may be used by this Service')}</li>
             <li className='mb-1'>
               {t(
                 'Actions that infringes or may infringe the property, privacy, honor or portrait rights of the Operator or a third party, or any stalking behavior',
@@ -83,7 +75,7 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 text-lg font-semibold'>{t('Temporary interruption of Service')}</li>
+          <li className='mb-3 font-semibold text-lg'>{t('Temporary interruption of Service')}</li>
           <p className='mb-2'>
             {t(
               'The Operator may temporarily suspend the operation of the Service without prior notice to users for any of the following reasons',
@@ -91,14 +83,10 @@ export default function Page() {
           </p>
           <ul className='mb-2 ml-4 list-disc'>
             <li className='mb-1'>
-              {t(
-                'When maintenance of this Service or related facilities is performed on a regular or urgent basis',
-              )}
+              {t('When maintenance of this Service or related facilities is performed on a regular or urgent basis')}
             </li>
             <li className='mb-1'>
-              {t(
-                'When the provision of communication lines, electric power, etc used for this Service is interrupted',
-              )}
+              {t('When the provision of communication lines, electric power, etc used for this Service is interrupted')}
             </li>
             <li className='mb-1'>
               {t(
@@ -115,11 +103,9 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 text-lg font-semibold'>{t('Disclaimers')}</li>
+          <li className='mb-3 font-semibold text-lg'>{t('Disclaimers')}</li>
           <p className='mb-2'>
-            {t(
-              'The Service may temporarily suspend the operation of the Service without prior notice to users',
-            )}
+            {t('The Service may temporarily suspend the operation of the Service without prior notice to users')}
           </p>
           <ul className='ml-4 list-disc'>
             <li className='mb-1'>
@@ -138,21 +124,15 @@ export default function Page() {
               )}
             </li>
             <ul className='mb-1 ml-4 list-disc'>
-              <li className='mb-1'>
-                {t('Damages caused by programs not provided by the Operator')}
-              </li>
+              <li className='mb-1'>{t('Damages caused by programs not provided by the Operator')}</li>
               <li className='mb-1'>
                 {t('Damages caused by unauthorized acts of third parties other than the Operator')}
               </li>
               <li className='mb-1'>
-                {t(
-                  'Damage caused by hackers and crackers breaking into or attacking servers or other actions',
-                )}
+                {t('Damage caused by hackers and crackers breaking into or attacking servers or other actions')}
               </li>
               <li className='mb-1'>
-                {t(
-                  'Damage caused by circumstances occurring on the server used by the Operator for the Service',
-                )}
+                {t('Damage caused by circumstances occurring on the server used by the Operator for the Service')}
               </li>
               <li className='mb-1'>{t('Damages caused by bugs in the Service')}</li>
             </ul>
@@ -168,17 +148,13 @@ export default function Page() {
               )}
             </li>
             <li className='mb-1'>
-              {t(
-                'The Operator shall not be responsible for any data or information uploaded by users to the Service',
-              )}
+              {t('The Operator shall not be responsible for any data or information uploaded by users to the Service')}
               {t(
                 'The users are solely responsible for the accuracy of the data and information uploaded to the Service and for updating such information',
               )}
             </li>
             <li className='mb-1'>
-              {t(
-                'The Operator may display and post advertisements on the Site regarding third parties',
-              )}
+              {t('The Operator may display and post advertisements on the Site regarding third parties')}
               {t(
                 'If a user enters into any contract with a third party, such as purchasing products or services from a third party through advertisements on the Site, the parties to such contract are the user and the third party, and the Service assumes no responsibility whatsoever',
               )}
@@ -187,7 +163,7 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 text-lg font-semibold'>{t('Termination of the Service')}</li>
+          <li className='mb-3 font-semibold text-lg'>{t('Termination of the Service')}</li>
           <p className='mb-2'>
             {t(
               'The Operator may terminate the operation of the Service without prior notice to users in any of the following cases',
@@ -213,12 +189,10 @@ export default function Page() {
         </div>
 
         <div>
-          <li className='mb-3 text-lg font-semibold'>{t('Consent Jurisdiction, etc')}</li>
+          <li className='mb-3 font-semibold text-lg'>{t('Consent Jurisdiction, etc')}</li>
           <ul className='ml-4 list-disc'>
             <li className='mb-1'>
-              {t(
-                'These Terms and Use shall be governed by and construed in accordance with the laws of Japan',
-              )}
+              {t('These Terms and Use shall be governed by and construed in accordance with the laws of Japan')}
             </li>
             <li>
               {t(

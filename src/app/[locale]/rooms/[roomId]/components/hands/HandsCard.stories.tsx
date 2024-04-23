@@ -1,6 +1,6 @@
 import enMessages from '@/messages/en.json';
 import { useArgs } from '@storybook/preview-api';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
 import HandsCard from './HandsCard';
 
@@ -46,12 +46,7 @@ const meta: Meta<typeof HandsCard> = {
       };
       return (
         <NextIntlClientProvider locale='en' messages={enMessages}>
-          <HandsCard
-            value={args.value}
-            isSelected={args.isSelected}
-            isDisabled={args.isDisabled}
-            onClick={onClick}
-          />
+          <HandsCard value={args.value} isSelected={args.isSelected} isDisabled={args.isDisabled} onClick={onClick} />
         </NextIntlClientProvider>
       );
     },

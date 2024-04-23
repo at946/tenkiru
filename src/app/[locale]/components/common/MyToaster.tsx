@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { Toaster } from 'react-hot-toast';
 
 const MyToaster: NextPage = () => {

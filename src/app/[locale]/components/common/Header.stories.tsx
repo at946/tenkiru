@@ -53,8 +53,12 @@ export const English: Story = {
     // Arrange
     const canvas = within(canvasElement);
     const logo: HTMLElement = canvas.getByRole('link', { name: 'Tenkiru' });
-    const twitterLink: HTMLElement = canvas.getByRole('link', { name: 'Share to X' });
-    const BMCLink: HTMLElement = canvas.getByRole('link', { name: 'Buy me a coffee' });
+    const twitterLink: HTMLElement = canvas.getByRole('link', {
+      name: 'Share to X',
+    });
+    const BMCLink: HTMLElement = canvas.getByRole('link', {
+      name: 'Buy me a coffee',
+    });
     // Action
     // Assert
     expect(logo.getAttribute('href')).toBe('/');
@@ -82,8 +86,12 @@ export const Japanese: Story = {
     // Arrange
     const canvas = within(canvasElement);
     const logo: HTMLElement = canvas.getByRole('link', { name: 'Tenkiru' });
-    const twitterLink: HTMLElement = canvas.getByRole('link', { name: 'Xでシェア' });
-    const BMCLink: HTMLElement = canvas.getByRole('link', { name: 'Buy me a coffee' });
+    const twitterLink: HTMLElement = canvas.getByRole('link', {
+      name: 'Xでシェア',
+    });
+    const BMCLink: HTMLElement = canvas.getByRole('link', {
+      name: 'Buy me a coffee',
+    });
     // Action
     // Assert
     expect(logo.getAttribute('href')).toBe('/');

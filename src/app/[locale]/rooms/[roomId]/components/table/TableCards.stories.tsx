@@ -1,7 +1,7 @@
-import { IFRoom } from '@/interfaces/room';
+import type { IFRoom } from '@/interfaces/room';
 import enMessages from '@/messages/en.json';
 import roomState from '@/recoil/atoms/roomAtom';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
 import { RecoilRoot } from 'recoil';
 import TableCards from './TableCards';

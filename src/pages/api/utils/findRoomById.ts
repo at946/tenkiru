@@ -1,4 +1,4 @@
-import { Room } from '@/class/room';
+import type { Room } from '@/class/room';
 
 interface args {
   rooms: Room[];

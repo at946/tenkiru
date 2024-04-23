@@ -1,7 +1,7 @@
-import { TLocales } from '@/i18n';
+import type { TLocales } from '@/i18n';
 import '@/styles/globals.css';
 import { getTranslations } from 'next-intl/server';
-import React from 'react';
+import type React from 'react';
 import GoogleAdsense from '../GoogleAdsense';
 import GoogleAnalytics from '../GoogleAnalytics';
 import RecoilProvider from '../RecoilProvider';

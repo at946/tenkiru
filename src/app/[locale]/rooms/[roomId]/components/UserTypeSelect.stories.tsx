@@ -1,4 +1,4 @@
-import { IFUserType } from '@/interfaces/userType';
+import type { IFUserType } from '@/interfaces/userType';
 import enMessages from '@/messages/en.json';
 import jaMessages from '@/messages/ja.json';
 import { useArgs } from '@storybook/preview-api';

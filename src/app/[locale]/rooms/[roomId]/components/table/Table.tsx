@@ -1,10 +1,10 @@
 import Button from '@/app/[locale]/components/common/Button';
 import getTableCardsFromUsers from '@/app/[locale]/rooms/[roomId]/utils/getTableCardsFromUsers';
-import { IFRoom } from '@/interfaces/room';
-import { IFTableCard } from '@/interfaces/tableCard';
+import type { IFRoom } from '@/interfaces/room';
+import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
 import SummaryTags from './SummaryTags';
@@ -23,9 +23,7 @@ const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay,
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
   const allCardsAreNotSelected: boolean =
     tableCards.filter((tableCard: IFTableCard) => tableCard.value !== null).length === 0;
-  const allCardsAreSelected: boolean = !tableCards.find(
-    (tableCard: IFTableCard) => tableCard.value === null,
-  );
+  const allCardsAreSelected: boolean = !tableCards.find((tableCard: IFTableCard) => tableCard.value === null);
 
   const t = useTranslations('Room.Table');
 
@@ -43,12 +41,7 @@ const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay,
           </Button>
         )}
         {!room.isOpenPhase && (
-          <Button
-            isOutlined={true}
-            disabled={allCardsAreSelected}
-            color='secondary'
-            onClick={requestToSelect}
-          >
+          <Button isOutlined={true} disabled={allCardsAreSelected} color='secondary' onClick={requestToSelect}>
             <span className='icon-[fa6-solid--hands-praying]' />
             <span>{t('Ask to choose')}</span>
           </Button>

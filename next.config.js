@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin();
 

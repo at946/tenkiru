@@ -2,9 +2,7 @@ import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
 import RoomPage from '../../models/room-page';
 
-test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async ({
-  context,
-}) => {
+test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -52,9 +50,7 @@ test('ルームページで、誰かがカードを場に出している状態�
   await expect(roomPage2.faceUpTableCards).toHaveCount(1);
 });
 
-test('ルームページで、カードをオープンした後、カードの選択を変更できないこと', async ({
-  context,
-}) => {
+test('ルームページで、カードをオープンした後、カードの選択を変更できないこと', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -80,9 +76,7 @@ test('ルームページで、カードをオープンした後、カードの�
   await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 });
 
-test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async ({
-  context,
-}) => {
+test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());

@@ -1,11 +1,11 @@
-import { IFTableCard } from '@/interfaces/tableCard';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { IFUser } from '@/interfaces/user';
-import { IFUserType } from '@/interfaces/userType';
+import type { IFTableCard } from '@/interfaces/tableCard';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import type { IFUser } from '@/interfaces/user';
+import type { IFUserType } from '@/interfaces/userType';
 
 export class User {
   constructor(
-    private id: string = '',
+    private id = '',
     private type: IFUserType = 'player',
     private selectedCardValue: IFTableCardValue = null,
   ) {}

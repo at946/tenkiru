@@ -1,4 +1,4 @@
-import { IFDeck } from '../interfaces/deck';
+import type { IFDeck } from '../interfaces/deck';
 
 const fibonacci: IFDeck = {
   key: 'fibonacci',

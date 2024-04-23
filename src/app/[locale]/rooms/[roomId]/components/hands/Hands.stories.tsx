@@ -1,7 +1,7 @@
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import enMessages from '@/messages/en.json';
 import { useArgs } from '@storybook/preview-api';
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
 import Hands from './Hands';
 
@@ -44,12 +44,7 @@ const meta: Meta<typeof Hands> = {
       };
       return (
         <NextIntlClientProvider locale='en' messages={enMessages}>
-          <Hands
-            {...args}
-            deckType={args.deckType}
-            selectedValue={args.selectedValue}
-            onSelect={onSelect}
-          />
+          <Hands {...args} deckType={args.deckType} selectedValue={args.selectedValue} onSelect={onSelect} />
         </NextIntlClientProvider>
       );
     },

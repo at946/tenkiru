@@ -25,7 +25,9 @@ test('ルームページで、「早く選んで」ボタンを選択したと�
   await expect(roomPage3.haveRequestedToSelectToast).not.toBeVisible();
 
   // Then - Toastは少ししたら消える
-  await expect(roomPage1.haveRequestedToSelectToast).not.toBeVisible({ timeout: 7500 });
+  await expect(roomPage1.haveRequestedToSelectToast).not.toBeVisible({
+    timeout: 7500,
+  });
 });
 
 test('ルームページで、「早く選んで」ボタンを選択したとき、まだカードを選んでいないプレイヤーに催促のトーストが表示されて音が鳴ること', async ({
@@ -51,12 +53,12 @@ test('ルームページで、「早く選んで」ボタンを選択したと�
   await expect(roomPage3.hadBeenRequestedToSelectToast).not.toBeVisible();
 
   // Then - Toastは少ししたら消える
-  await expect(roomPage2.hadBeenRequestedToSelectToast).not.toBeVisible({ timeout: 7500 });
+  await expect(roomPage2.hadBeenRequestedToSelectToast).not.toBeVisible({
+    timeout: 7500,
+  });
 });
 
-test('ルームページで、カードをオープンにしたとき、「早く選んで」ボタンは表示されないこと', async ({
-  context,
-}) => {
+test('ルームページで、カードをオープンにしたとき、「早く選んで」ボタンは表示されないこと', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage: RoomPage = new RoomPage(await context.newPage());

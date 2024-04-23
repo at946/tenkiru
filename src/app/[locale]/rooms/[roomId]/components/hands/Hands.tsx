@@ -1,9 +1,9 @@
 import Decks from '@/data/deck';
-import { IFDeck } from '@/interfaces/deck';
-import { IFDeckType } from '@/interfaces/deckType';
-import { IFHandsCardValue } from '@/interfaces/handsCardValue';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { NextPage } from 'next';
+import type { IFDeck } from '@/interfaces/deck';
+import type { IFDeckType } from '@/interfaces/deckType';
+import type { IFHandsCardValue } from '@/interfaces/handsCardValue';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import HandsCard from './HandsCard';
 

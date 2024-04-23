@@ -1,5 +1,5 @@
-import { IFDeckType } from './deckType';
-import { IFUser } from './user';
+import type { IFDeckType } from './deckType';
+import type { IFUser } from './user';
 
 export interface IFRoom {
   id: string;

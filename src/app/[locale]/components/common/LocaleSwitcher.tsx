@@ -2,7 +2,7 @@
 
 import { locales } from '@/i18n';
 import { usePathname, useRouter } from '@/navigation';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 
 interface Props {
   currentLocale: string;

@@ -2,9 +2,7 @@ import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
 import RoomPage from '../../models/room-page';
 
-test('ルームページで、他のメンバーがカードを選択したとき、カードが場に伏せて置かれること', async ({
-  context,
-}) => {
+test('ルームページで、他のメンバーがカードを選択したとき、カードが場に伏せて置かれること', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());

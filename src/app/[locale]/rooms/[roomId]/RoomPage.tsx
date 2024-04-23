@@ -1,19 +1,19 @@
 'use client';
 
-import { IFDeckType } from '@/interfaces/deckType';
-import { IFRoom } from '@/interfaces/room';
-import { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { IFUser } from '@/interfaces/user';
-import { IFUserType } from '@/interfaces/userType';
+import type { IFDeckType } from '@/interfaces/deckType';
+import type { IFRoom } from '@/interfaces/room';
+import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import type { IFUser } from '@/interfaces/user';
+import type { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
 import isRoomState from '@/recoil/atoms/roomAtom';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRecoilState } from 'recoil';
-import { Socket, io } from 'socket.io-client';
+import { type Socket, io } from 'socket.io-client';
 import DeckSelect from './components/DeckSelect';
 import UserTypeSelect from './components/UserTypeSelect';
 import Hands from './components/hands/Hands';
@@ -90,7 +90,11 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   const openCards = (): void => {
     socket.emit('open-cards', roomId);
-    event({ action: `open_with_${room.deckType}_deck`, category: 'engagement', label: '' });
+    event({
+      action: `open_with_${room.deckType}_deck`,
+      category: 'engagement',
+      label: '',
+    });
   };
 
   const requestToSelect = (): void => {
@@ -98,7 +102,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     toast.success(t('Asked players to choose a card'), {
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
-    event({ action: `request-to-select`, category: 'engagement', label: '' });
+    event({ action: 'request-to-select', category: 'engagement', label: '' });
   };
 
   const replay = (): void => {
@@ -132,17 +136,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       />
       {isConnected && (
         <>
-          <UserTypeSelect
-            type={user?.type || 'player'}
-            className='mb-8'
-            onChange={changeUserType}
-          />
-          <DeckSelect
-            deckType={room.deckType}
-            disabled={room.isOpenPhase}
-            className='mb-4'
-            onChange={changeDeckType}
-          />
+          <UserTypeSelect type={user?.type || 'player'} className='mb-8' onChange={changeUserType} />
+          <DeckSelect deckType={room.deckType} disabled={room.isOpenPhase} className='mb-4' onChange={changeDeckType} />
           <Hands
             deckType={room.deckType}
             selectedValue={user === undefined ? null : user.selectedCardValue}

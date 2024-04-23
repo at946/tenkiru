@@ -3,7 +3,7 @@
 import Button from '@/app/[locale]/components/common/Button';
 import { event } from '@/lib/gtag';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { v4 } from 'uuid';
@@ -29,11 +29,7 @@ const CreateRoomButton: NextPage<Props> = ({ name }) => {
       onFocus={() => setIsHovering(true)}
       onBlur={() => setIsHovering(false)}
     >
-      <span
-        className={clsx(
-          isHovering ? 'icon-[fa6-solid--door-open]' : 'icon-[fa6-solid--door-closed]',
-        )}
-      />
+      <span className={clsx(isHovering ? 'icon-[fa6-solid--door-open]' : 'icon-[fa6-solid--door-closed]')} />
       <span>{name}</span>
     </Button>
   );

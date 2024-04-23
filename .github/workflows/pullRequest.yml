@@ -22,27 +22,26 @@ jobs:
       - run: yarn --frozen-lockfile
         if: steps.cache_node_modules.outputs.cache-hit != true
 
-      - name: lint
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
-          auto_fix: true
+      - name: biome (linter and formatter)
+        run: yarn biome:check
 
-      - name: install playwright
+      - name: typescript
+        run: yarn type:check
+
+      - name: prepare component tests
+        run: yarn storybook &
+  
+      - name: prepare component and E2E tests (install playwright)
         run: |
           yarn playwright install
           yarn playwright install-deps
 
-      - name: start storybook
-        run: yarn storybook &
-
-      - name: component test
+      - name: component tests
         run: |
           npx wait-on tcp:6006
           yarn test:storybook --url http://localhost:6006
 
-      - name: start next app
+      - name: prepare E2E tests (start next app)
         run: |
           yarn build
           yarn start &

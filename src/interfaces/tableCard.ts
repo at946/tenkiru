@@ -1,4 +1,4 @@
-import { IFTableCardValue } from './tableCardValue';
+import type { IFTableCardValue } from './tableCardValue';
 
 export interface IFTableCard {
   userId: string;

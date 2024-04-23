@@ -1,7 +1,7 @@
-import { IFDeckType } from './deckType';
-import { IFRoom } from './room';
-import { IFTableCardValue } from './tableCardValue';
-import { IFUserType } from './userType';
+import type { IFDeckType } from './deckType';
+import type { IFRoom } from './room';
+import type { IFTableCardValue } from './tableCardValue';
+import type { IFUserType } from './userType';
 
 export interface IFServerToClientEvents {
   'update-room': (room: IFRoom) => void;

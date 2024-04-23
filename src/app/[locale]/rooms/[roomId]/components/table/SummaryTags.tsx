@@ -1,7 +1,7 @@
-import { IFRoom } from '@/interfaces/room';
-import { IFTableCard } from '@/interfaces/tableCard';
+import type { IFRoom } from '@/interfaces/room';
+import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/recoil/atoms/roomAtom';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
 import {
@@ -24,18 +24,9 @@ const SummaryTags: NextPage<Props> = ({ className }) => {
   return (
     <div className={className}>
       <div className='inline-flex gap-2'>
-        <SummaryTag
-          name={t('Min')}
-          value={room.isOpenPhase ? getMinValueAmongTableCards(tableCards) : '?'}
-        />
-        <SummaryTag
-          name={t('Avg')}
-          value={room.isOpenPhase ? getAvgValueAmongTableCards(tableCards) : '?'}
-        />
-        <SummaryTag
-          name={t('Max')}
-          value={room.isOpenPhase ? getMaxValueAmongTableCards(tableCards) : '?'}
-        />
+        <SummaryTag name={t('Min')} value={room.isOpenPhase ? getMinValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag name={t('Avg')} value={room.isOpenPhase ? getAvgValueAmongTableCards(tableCards) : '?'} />
+        <SummaryTag name={t('Max')} value={room.isOpenPhase ? getMaxValueAmongTableCards(tableCards) : '?'} />
       </div>
     </div>
   );

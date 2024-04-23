@@ -1,16 +1,16 @@
 import Decks from '@/data/deck';
-import { IFDeck } from '@/interfaces/deck';
-import { IFDeckType } from '@/interfaces/deckType';
-import { IFRoom } from '@/interfaces/room';
-import { IFTableCard } from '@/interfaces/tableCard';
-import { IFTableCardValue } from '@/interfaces/tableCardValue';
-import { User } from './user';
+import type { IFDeck } from '@/interfaces/deck';
+import type { IFDeckType } from '@/interfaces/deckType';
+import type { IFRoom } from '@/interfaces/room';
+import type { IFTableCard } from '@/interfaces/tableCard';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import type { User } from './user';
 
 export class Room {
   constructor(
-    private id: string = '',
+    private id = '',
     private deckType: IFDeckType = 'fibonacci',
-    private isOpenPhase: boolean = false,
+    private isOpenPhase = false,
     private users: User[] = [],
   ) {}
 
@@ -110,9 +110,7 @@ export class Room {
   getAverageOfTableCards(): number | undefined {
     if (!this.areNumberCardsExist()) return;
     const numberCardsValues: number[] = this.getNumberCardsValues();
-    return (
-      Math.round((numberCardsValues.reduce((a, b) => a + b) / numberCardsValues.length) * 10) / 10
-    );
+    return Math.round((numberCardsValues.reduce((a, b) => a + b) / numberCardsValues.length) * 10) / 10;
   }
 
   getTableCards(): IFTableCard[] {
@@ -125,9 +123,9 @@ export class Room {
   }
 
   resetCards(): void {
-    this.users.forEach((user: User) => {
+    for (const user of this.users) {
       user.resetCard();
-    });
+    }
   }
 
   replay(): void {

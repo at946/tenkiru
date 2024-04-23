@@ -1,7 +1,7 @@
 'use client';
 
 import { GA_TRACKING_ID, pageview } from '@/lib/gtag';
-import { ReadonlyURLSearchParams, usePathname, useSearchParams } from 'next/navigation';
+import { type ReadonlyURLSearchParams, usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect } from 'react';
 
@@ -32,6 +32,7 @@ const GoogleAnalytics = () => {
           <Script
             id='ga_script'
             defer
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analytics recommends
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];

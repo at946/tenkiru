@@ -2,9 +2,7 @@ import { expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
 import RoomPage from '../../models/room-page';
 
-test('ルームページで、カードを選択したとき、カードが選択中になり、場に伏せて置かれること', async ({
-  context,
-}) => {
+test('ルームページで、カードを選択したとき、カードが選択中になり、場に伏せて置かれること', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -36,9 +34,7 @@ test('ルームページで、カードを選択したとき、カードが選�
   await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 });
 
-test('ルームページで、選択中のカードを選択したとき、カードが未選択状態に戻ること', async ({
-  context,
-}) => {
+test('ルームページで、選択中のカードを選択したとき、カードが未選択状態に戻ること', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());

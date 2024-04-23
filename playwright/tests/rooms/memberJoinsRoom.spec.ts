@@ -1,10 +1,8 @@
-import { Locator, expect, test } from '@playwright/test';
+import { type Locator, expect, test } from '@playwright/test';
 import createRoomId from '../../helpers/createRoomId';
 import RoomPage from '../../models/room-page';
 
-test('ルームページで、同じ部屋に他のメンバーが入ってきたとき、カード置き場が増えること', async ({
-  context,
-}) => {
+test('ルームページで、同じ部屋に他のメンバーが入ってきたとき、カード置き場が増えること', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -20,9 +18,7 @@ test('ルームページで、同じ部屋に他のメンバーが入ってき�
   await expect(roomPage2.tableCards).toHaveCount(2);
 });
 
-test('ルームページで、別の部屋に別のメンバーが入ってきたとき、カード置き場は増えないこと', async ({
-  context,
-}) => {
+test('ルームページで、別の部屋に別のメンバーが入ってきたとき、カード置き場は増えないこと', async ({ context }) => {
   // Given
   const roomId1: string = createRoomId();
   const roomId2: string = createRoomId();

@@ -1,4 +1,4 @@
-import { IFHandsCardValue } from './handsCardValue';
+import type { IFHandsCardValue } from './handsCardValue';
 
 export interface IFDeck {
   key: string;

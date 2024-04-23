@@ -1,6 +1,6 @@
-import { IFUserType } from '@/interfaces/userType';
+import type { IFUserType } from '@/interfaces/userType';
 import { event } from '@/lib/gtag';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 
 interface Props {
@@ -20,7 +20,11 @@ const UserTypeSelect: NextPage<Props> = ({ type, className, onChange }) => {
 
   const handleOnChange = (value: string): void => {
     onChange(value as IFUserType);
-    event({ action: `change_member_type_${value}`, category: 'engagement', label: '' });
+    event({
+      action: `change_member_type_${value}`,
+      category: 'engagement',
+      label: '',
+    });
   };
 
   return (
@@ -29,7 +33,7 @@ const UserTypeSelect: NextPage<Props> = ({ type, className, onChange }) => {
         {options.map((option) => (
           <label key={option.value} className='inline-flex cursor-pointer items-center'>
             <input
-              className='mr-1 text-primary accent-primary checked:bg-primary dark:text-dark-primary dark:checked:bg-dark-primary'
+              className='mr-1 text-primary accent-primary checked:bg-primary dark:checked:bg-dark-primary dark:text-dark-primary'
               type='radio'
               value={option.value}
               checked={type === option.value}

@@ -31,15 +31,15 @@ jobs:
       - name: prepare component tests
         run: yarn storybook &
   
+      - name: prepare component and E2E tests (install playwright)
+        run: |
+          yarn playwright install
+          yarn playwright install-deps
+
       - name: component tests
         run: |
           npx wait-on tcp:6006
           yarn test:storybook --url http://localhost:6006
-
-      - name: prepare E2E tests (install playwright)
-        run: |
-          yarn playwright install
-          yarn playwright install-deps
 
       - name: prepare E2E tests (start next app)
         run: |

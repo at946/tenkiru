@@ -13,11 +13,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test:storybook": "test-storybook",
-    "test:playwright": "yarn playwright test",
-    "test:playwright:report": "yarn playwright show-report playwright/playwright-report"
+    "test:playwright": "playwright test",
+    "test:playwright:report": "playwright show-report playwright/playwright-report"
   },
   "dependencies": {
-    "bufferutil": "^4.0.8",
     "express": "^4.19.2",
     "next": "14.2.2",
     "next-intl": "^3.11.3",
@@ -49,11 +48,13 @@
     "@storybook/blocks": "^8.0.9",
     "@storybook/jest": "^0.2.3",
     "@storybook/nextjs": "^8.0.9",
+    "@storybook/preview-api": "^8.0.9",
     "@storybook/react": "^8.0.8",
     "@storybook/test-runner": "^0.17.0",
     "@storybook/testing-library": "^0.2.2",
     "@tailwindcss/forms": "^0.5.7",
     "@types/gtag.js": "^0.0.19",
+    "@types/lodash": "^4.17.0",
     "@types/node": "20.12.7",
     "@types/react": "^18.2.77",
     "@types/react-dom": "^18.2.23",

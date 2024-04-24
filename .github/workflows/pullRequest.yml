@@ -9,47 +9,45 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20.1.0
+          cache: 'pnpm'
 
-      - uses: actions/cache@v4
-        id: cache_node_modules
-        with:
-          path: node_modules
-          key: ${{ hashFiles('yarn.lock') }}
-
-      - run: yarn --frozen-lockfile
-        if: steps.cache_node_modules.outputs.cache-hit != true
+      - run: pnpm install --frozen-lockfile
 
       - name: biome (linter and formatter)
-        run: yarn biome:check
+        run: pnpm biome:check
 
       - name: typescript
-        run: yarn type:check
+        run: pnpm type:check
 
       - name: prepare component tests
-        run: yarn storybook &
+        run: pnpm storybook &
   
       - name: prepare component and E2E tests (install playwright)
         run: |
-          yarn playwright install
-          yarn playwright install-deps
+          pnpm playwright install
+          pnpm playwright install-deps
 
       - name: component tests
         run: |
-          npx wait-on tcp:6006
-          yarn test:storybook --url http://localhost:6006
+          pnpx wait-on tcp:6006
+          pnpm test:storybook --url http://localhost:6006
 
       - name: prepare E2E tests (start next app)
         run: |
-          yarn build
-          yarn start &
+          pnpm build
+          pnpm start &
         env:
           NEXT_PUBLIC_BASE_URL: http://localhost:3000
 
       - name: E2E test
-        run: yarn test:playwright
+        run: pnpm test:playwright
 
       - uses: actions/upload-artifact@v4
         if: failure()

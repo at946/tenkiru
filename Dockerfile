@@ -5,7 +5,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 WORKDIR /app
 COPY . .
-RUN pnpm installl --frozen-lockfile --prod
+RUN pnpm install --frozen-lockfile --prod
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Add `ARG` instructions below if you need `NEXT_PUBLIC_` variables

@@ -10,3 +10,9 @@ updates:
     schedule:
       interval: 'daily'
       time: '22:00'
+    open-pull-requests-limit: 10
+  - package-ecosystem: 'github-actions' # See documentation for possible values
+    directory: '/' # Location of package manifests
+    schedule:
+      interval: 'monthly'
+      time: '22:00'

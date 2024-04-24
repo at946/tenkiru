@@ -21,6 +21,9 @@ RUN pnpm build && pnpm postBuild
 # Production image, copy all the files and run next
 FROM node:20.1.0 AS runner
 
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /app
 
 ENV NODE_ENV production

@@ -94,6 +94,9 @@ devDependencies:
   '@storybook/nextjs':
     specifier: ^8.0.9
     version: 8.0.9(@swc/core@1.4.14)(esbuild@0.20.2)(next@14.2.2)(node-sass@9.0.0)(react-dom@18.2.0)(react@18.2.0)(sass@1.75.0)(typescript@5.4.5)(webpack@5.91.0)
+  '@storybook/preview-api':
+    specifier: ^8.0.9
+    version: 8.0.9
   '@storybook/react':
     specifier: ^8.0.8
     version: 8.0.9(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5)
@@ -109,6 +112,9 @@ devDependencies:
   '@types/gtag.js':
     specifier: ^0.0.19
     version: 0.0.19
+  '@types/lodash':
+    specifier: ^4.17.0
+    version: 4.17.0
   '@types/node':
     specifier: 20.12.7
     version: 20.12.7

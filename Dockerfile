@@ -5,7 +5,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 WORKDIR /app
 COPY . .
-RUN pnpm install --frozen-lockfile --prod
+RUN pnpm install --frozen-lockfile
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Add `ARG` instructions below if you need `NEXT_PUBLIC_` variables
@@ -13,7 +13,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 # Example:
 # ARG NEXT_PUBLIC_EXAMPLE="value here"
 ARG NEXT_PUBLIC_BASE_URL
-ARG NEXT_PUBLIC_GA_ID
+ARG NEXT_PUBLIC_GA_ID 
 ARG NEXT_PUBLIC_GOOGLE_ADSENSE_ID
 
 RUN pnpm build && pnpm postBuild

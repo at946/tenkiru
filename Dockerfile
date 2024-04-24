@@ -1,8 +1,11 @@
 # Install dependencies only when needed
 FROM node:20.1.0 AS builder
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /app
 COPY . .
-RUN yarn install --frozen-lockfile
+RUN pnpm installl --frozen-lockfile --prod
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Add `ARG` instructions below if you need `NEXT_PUBLIC_` variables
@@ -13,7 +16,7 @@ ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_GA_ID
 ARG NEXT_PUBLIC_GOOGLE_ADSENSE_ID
 
-RUN yarn build && yarn postBuild
+RUN pnpm build && pnpm postBuild
 
 # Production image, copy all the files and run next
 FROM node:20.1.0 AS runner
@@ -30,4 +33,4 @@ COPY --from=builder /app ./
 
 USER nextjs
 
-CMD ["yarn", "start"]
+CMD ["pnpm", "start"]

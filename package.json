@@ -13,11 +13,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test:storybook": "test-storybook",
-    "test:playwright": "yarn playwright test",
-    "test:playwright:report": "yarn playwright show-report playwright/playwright-report"
+    "test:playwright": "playwright test",
+    "test:playwright:report": "playwright show-report playwright/playwright-report"
   },
   "dependencies": {
-    "bufferutil": "^4.0.8",
     "express": "^4.19.2",
     "next": "14.2.2",
     "next-intl": "^3.11.3",

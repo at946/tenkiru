@@ -38,5 +38,5 @@ $ pnpm storybook
 Storybook must be launched.
 
 ```bash
-$ yarn test:storybook
+$ pnpm test:storybook
 ```

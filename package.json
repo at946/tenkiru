@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "express": "^4.19.2",
-    "next": "14.2.2",
+    "next": "14.2.3",
     "next-intl": "^3.11.3",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",

@@ -38,7 +38,7 @@
     "@iconify-json/ic": "^1.1.17",
     "@iconify-json/mdi": "^1.1.65",
     "@iconify-json/simple-icons": "^1.1.100",
-    "@iconify/tailwind": "^0.1.4",
+    "@iconify/tailwind": "^1.0.1",
     "@playwright/test": "^1.42.1",
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addon-console": "^3.0.0",

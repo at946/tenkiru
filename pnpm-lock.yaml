@@ -71,8 +71,8 @@ devDependencies:
     specifier: ^1.42.1
     version: 1.43.1
   '@storybook/addon-a11y':
-    specifier: ^8.0.9
-    version: 8.0.9
+    specifier: ^8.0.10
+    version: 8.0.10
   '@storybook/addon-console':
     specifier: ^3.0.0
     version: 3.0.0(@storybook/addon-actions@8.0.10)(react@18.3.1)
@@ -2706,10 +2706,10 @@ packages:
     resolution: {integrity: sha512-dzJtaDAAoXx4GCOJpbB2eG/Qj8VDpdwkLsWGzGm+0L7E8/434RyMbAHmk9ubXWVAb9nXmc44jUf8GKqVDiKezg==}
     dev: false
 
-  /@storybook/addon-a11y@8.0.9:
-    resolution: {integrity: sha512-HgIlhOI3yBS3ztnuqOquGztnju7LE+BgCMYbDQEZjQkddiQPtjwLC6h0/LkvHL5993avbq1vYEWfUGHLtGzYfQ==}
+  /@storybook/addon-a11y@8.0.10:
+    resolution: {integrity: sha512-ymeTRE1uWplifWUMc3tO5lLGn4buS/hUVWKRM11SqugmxRym55B4thCJU089HAEMY+V/imiCeOE63TT+DGsk8g==}
     dependencies:
-      '@storybook/addon-highlight': 8.0.9
+      '@storybook/addon-highlight': 8.0.10
       axe-core: 4.9.0
     dev: true
 
@@ -2812,12 +2812,6 @@ packages:
 
   /@storybook/addon-highlight@8.0.10:
     resolution: {integrity: sha512-40GB82t1e2LCCjqXcC6Z5lq1yIpA1+Yl5E2tKeggOVwg5HHAX02ESNDdBaIOlCqMkU3WKzjGPurDNOLUAbsV2g==}
-    dependencies:
-      '@storybook/global': 5.0.0
-    dev: true
-
-  /@storybook/addon-highlight@8.0.9:
-    resolution: {integrity: sha512-vaRHGDbx7dpNpQECAHk5wczlZO3ntstprGlqnZt0o7ylz6xB5+pTQwTuIFty0hwKv+3TPcskzzifATUyEOEmyg==}
     dependencies:
       '@storybook/global': 5.0.0
     dev: true

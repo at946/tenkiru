@@ -1,4 +1,5 @@
-import type { Server as NetServer, Socket } from 'node:net';
+import type { Http2Server } from 'node:http2';
+import type { Socket } from 'node:net';
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
 import type { IFDeckType } from '@/interfaces/deckType';
@@ -6,21 +7,20 @@ import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interface
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUserType } from '@/interfaces/userType';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Server as SocketIOServer } from 'socket.io';
+import { Server } from 'socket.io';
 import { findRoomById } from './utils/findRoomById';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {
-    server: NetServer & {
-      io: SocketIOServer;
+    server: Http2Server & {
+      io: Server;
     };
   };
 };
 
 const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
   if (!res.socket.server.io) {
-    // biome-ignore lint/suspicious/noExplicitAny: There is no alternative solution for me now
-    const io = new SocketIOServer<IFClientToServerEvents, IFServerToClientEvents>(res.socket.server as any);
+    const io = new Server<IFClientToServerEvents, IFServerToClientEvents>(res.socket.server);
     const rooms: Room[] = [];
 
     const removeRoomById = (roomId: string): void => {

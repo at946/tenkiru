@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import PPPage from '../../models/pp-page';
-import RoomPage from '../../models/room-page';
-import TopPage from '../../models/top-page';
-import TOSPage from '../../models/tos-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import PPPage from '@pw/models/pp-page';
+import RoomPage from '@pw/models/room-page';
+import TopPage from '@pw/models/top-page';
+import TOSPage from '@pw/models/tos-page';
 
 const title: string = 'Tenkiru';
 const description: string =

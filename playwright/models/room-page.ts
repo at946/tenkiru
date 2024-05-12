@@ -2,7 +2,6 @@ import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFUserType } from '@/interfaces/userType';
 import { type Locator, type Page, expect } from '@playwright/test';
 import urls from '../helpers/urls';
-import Head from './common/head';
 
 export default class RoomPage {
   readonly page: Page;
@@ -34,8 +33,6 @@ export default class RoomPage {
   readonly hadBeenRequestedToSelectToast: Locator;
   readonly haveNominatedToast: Locator;
   readonly haveBeenNominatedToast: Locator;
-
-  readonly head: Head;
 
   constructor(page: Page) {
     this.page = page;
@@ -79,8 +76,6 @@ export default class RoomPage {
     this.hadBeenRequestedToSelectToast = page.getByRole('status').getByText("It's time to choose a card");
     this.haveNominatedToast = page.getByRole('status').getByText('Asked a player for comment');
     this.haveBeenNominatedToast = page.getByRole('status').getByText('Please comment');
-
-    this.head = new Head(page);
 
     const consoleErrorMessages: string[] = [];
     page.on('console', (message) => {

@@ -7,9 +7,9 @@ import Head from '@pw/models/common/head';
 test('OG contents must be default values', async ({ page }) => {
   // Given
   const head: Head = new Head(page);
-  await page.goto(urls.room(createRoomId()));
 
   // When
+  await page.goto(urls.room(createRoomId()));
 
   // Then
   await expect(page).toHaveTitle(contents.title);

@@ -1,8 +1,10 @@
 import { expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import RoomPage from '../../models/room-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import RoomPage from '@pw/models/room-page';
 
-test('ルームページで、カードを選択したとき、カードが選択中になり、場に伏せて置かれること', async ({ context }) => {
+test('When a player selects a card, the card should become selected and be placed face down on the table.', async ({
+  context,
+}) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -34,7 +36,7 @@ test('ルームページで、カードを選択したとき、カードが選�
   await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 });
 
-test('ルームページで、選択中のカードを選択したとき、カードが未選択状態に戻ること', async ({ context }) => {
+test('When a player selects the selected card again, the card should become unselected.', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -67,7 +69,7 @@ test('ルームページで、選択中のカードを選択したとき、カ�
   await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 });
 
-test('ルームページで、カードを選択中に別のカードを選択したとき、新たに選択したカードだけが選択中になること', async ({
+test('When a player selects another card rather than the present selected card, the selected card at the this time should become selected and the previous selected card should become unselected.', async ({
   context,
 }) => {
   // Given

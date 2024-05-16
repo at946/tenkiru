@@ -12,8 +12,8 @@ dependencies:
     specifier: 14.2.3
     version: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)
   next-intl:
-    specifier: ^3.13.0
-    version: 3.13.0(next@14.2.3)(react@18.3.1)
+    specifier: ^3.14.0
+    version: 3.14.0(next@14.2.3)(react@18.3.1)
   node-sass:
     specifier: ^9.0.0
     version: 9.0.0
@@ -9676,8 +9676,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-intl@3.13.0(next@14.2.3)(react@18.3.1):
-    resolution: {integrity: sha512-qCfjOkdUtSPWRnyAkNbZWJREzBGxSHGoqbfV1F7m+msztXTly26USwJeKLTCvXIi6HP38IOC1Zegg7sYJoD/lA==}
+  /next-intl@3.14.0(next@14.2.3)(react@18.3.1):
+    resolution: {integrity: sha512-Z/7Y7DSAivEm3pRYlUyOEc0LGV/xCdE7p+DqWdyhLcdxVxMwT1CZVXIqjdWsC0OOEuWeJiGzoPwMCeDpp4urEA==}
     peerDependencies:
       next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -9686,7 +9686,7 @@ packages:
       negotiator: 0.6.3
       next: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)
       react: 18.3.1
-      use-intl: 3.13.0(react@18.3.1)
+      use-intl: 3.14.0(react@18.3.1)
     dev: false
 
   /next-sitemap@4.2.3(next@14.2.3):
@@ -12346,8 +12346,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /use-intl@3.13.0(react@18.3.1):
-    resolution: {integrity: sha512-+Oo7Q5+Br3/ReqC8fMomK/PHGx8kZ/V+E1mAMIEL7EdQcuS/yIcE4l8VM5BQNesucM/40qmcKDNyyd70VBXFvg==}
+  /use-intl@3.14.0(react@18.3.1):
+    resolution: {integrity: sha512-Dy3B4C7ICGDM5ZDrnNpf8bDfFbnYYjK5vNzij0kPfJNM2G0nfLWGQvhBXEyPPKZpNvnkKkFasXR8AAxSwXTAoA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:

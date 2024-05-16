@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import RoomPage from '../../models/room-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import RoomPage from '@pw/models/room-page';
 
 test('On the room page, when nobody place a card on the table, users should not be able to select the open button.', async ({
   context,

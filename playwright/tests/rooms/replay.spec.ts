@@ -1,10 +1,8 @@
 import { expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import RoomPage from '../../models/room-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import RoomPage from '@pw/models/room-page';
 
-test('ルームページで、カードをオープン後リプレイボタンを選択したとき、ゲームをリプレイできること', async ({
-  context,
-}) => {
+test('On the room page, when a user selects the replay button, the table should be reset.', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -35,8 +33,10 @@ test('ルームページで、カードをオープン後リプレイボタン�
   await expect(roomPage2.openButton).toBeVisible();
   await expect(roomPage2.openButton).toBeDisabled();
 
+  // When - A user should be able to select a card after the table is reset
   await roomPage1.selectCard('3');
 
+  // Then
   await expect(roomPage1.tableCards).toHaveCount(2);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.blankTableCards).toHaveCount(1);

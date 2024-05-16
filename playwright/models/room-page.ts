@@ -12,8 +12,8 @@ export default class RoomPage {
   readonly blankTableCards: Locator;
   readonly faceDownTableCards: Locator;
   readonly faceUpTableCards: Locator;
-  readonly nominateButtons: Locator;
-  readonly nominateButtonByCard: (card: string) => Locator;
+  readonly getCommentsButtons: Locator;
+  readonly getCommentsButton: (cardValue: string) => Locator;
   readonly minTag: Locator;
   readonly avgTag: Locator;
   readonly maxTag: Locator;
@@ -31,8 +31,8 @@ export default class RoomPage {
   readonly copyUrlToast: Locator;
   readonly haveRequestedToSelectToast: Locator;
   readonly hadBeenRequestedToSelectToast: Locator;
-  readonly haveNominatedToast: Locator;
-  readonly haveBeenNominatedToast: Locator;
+  readonly haveRequestedCommentsToast: Locator;
+  readonly haveBeenRequestedCommentsToast: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -45,8 +45,8 @@ export default class RoomPage {
     this.blankTableCards = this.tableCardGroups.getByLabel('Unselected table card');
     this.faceDownTableCards = this.tableCardGroups.getByLabel('Face-down table card');
     this.faceUpTableCards = this.tableCardGroups.getByLabel('Face-up table card');
-    this.nominateButtons = page.getByRole('button', { name: 'Get comments' });
-    this.nominateButtonByCard = (card: string) => {
+    this.getCommentsButtons = page.getByRole('button', { name: 'Get comments' });
+    this.getCommentsButton = (card: string) => {
       return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: 'Get comments' });
     };
     this.minTag = page.getByLabel('Min');
@@ -74,8 +74,8 @@ export default class RoomPage {
     this.copyUrlToast = page.getByRole('status').getByText('Copied this Room URL');
     this.haveRequestedToSelectToast = page.getByRole('status').getByText('Asked players to choose a card');
     this.hadBeenRequestedToSelectToast = page.getByRole('status').getByText("It's time to choose a card");
-    this.haveNominatedToast = page.getByRole('status').getByText('Asked a player for comment');
-    this.haveBeenNominatedToast = page.getByRole('status').getByText('Please comment');
+    this.haveRequestedCommentsToast = page.getByRole('status').getByText('Asked a player for comment');
+    this.haveBeenRequestedCommentsToast = page.getByRole('status').getByText('Please comment');
 
     const consoleErrorMessages: string[] = [];
     page.on('console', (message) => {
@@ -113,8 +113,8 @@ export default class RoomPage {
     await this.replayButton.click();
   }
 
-  async nominateByCard(value: string) {
-    await this.nominateButtonByCard(value).click();
+  async getComments(cardValue: string) {
+    await this.getCommentsButton(cardValue).click();
   }
 
   async selectUserType(userType: IFUserType) {

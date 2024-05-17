@@ -1,8 +1,10 @@
 import { expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import RoomPage from '../../models/room-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import RoomPage from '@pw/models/room-page';
 
-test('ルームページで、誰もカードを場に出していないとき、カードをオープンできないこと', async ({ context }) => {
+test('On the room page, when nobody place a card on the table, users should not be able to select the open button.', async ({
+  context,
+}) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -21,7 +23,7 @@ test('ルームページで、誰もカードを場に出していないとき�
   await expect(roomPage2.openButton).toBeDisabled();
 });
 
-test('ルームページで、誰かがカードを場に出している状態で、オープンボタンを選択したとき、場に出たカードがオープンすること', async ({
+test('On the room page, when someone placed their cards and a user selects the open button, cards should become face up.', async ({
   context,
 }) => {
   // Given
@@ -50,7 +52,9 @@ test('ルームページで、誰かがカードを場に出している状態�
   await expect(roomPage2.faceUpTableCards).toHaveCount(1);
 });
 
-test('ルームページで、カードをオープンした後、カードの選択を変更できないこと', async ({ context }) => {
+test('On the room page, after cards became face up, users should not be able to change cards they placed.', async ({
+  context,
+}) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -76,7 +80,7 @@ test('ルームページで、カードをオープンした後、カードの�
   await expect(roomPage2.selectedHandsCard).toHaveCount(0);
 });
 
-test('ルームページで、カードをオープンした後、オープンボタンが表示されないこと', async ({ context }) => {
+test('On the room page, after cards bocame face up, the open button should not appear.', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());

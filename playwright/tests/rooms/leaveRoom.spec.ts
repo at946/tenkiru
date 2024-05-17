@@ -1,8 +1,8 @@
 import { type Page, expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import RoomPage from '../../models/room-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import RoomPage from '@pw/models/room-page';
 
-test('ルームページで、別のページに遷移したとき、ルームから抜け出すこと', async ({ context }) => {
+test('When a player leaves the room page, the card storage place should decrease', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -18,7 +18,7 @@ test('ルームページで、別のページに遷移したとき、ルーム�
   await expect(roomPage1.tableCards).toHaveCount(1);
 });
 
-test('ルームページで、ブラウザを閉じたとき、ルームから抜け出すこと', async ({ context }) => {
+test('When a player close the tab in the room page, the card storage place should decrease', async ({ context }) => {
   // Given
   const roomId: string = createRoomId();
   const page1: Page = await context.newPage();

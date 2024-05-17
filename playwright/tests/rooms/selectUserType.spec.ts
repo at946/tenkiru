@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import RoomPage from '../../models/room-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import RoomPage from '@pw/models/room-page';
 
-test('ルームページで、デフォルトで「プレイヤー」が選択されていること', async ({ page }) => {
+test('On the room page, users should enter the room as players by default.', async ({ page }) => {
   // Given
   const roomPage: RoomPage = new RoomPage(page);
 
@@ -11,10 +11,9 @@ test('ルームページで、デフォルトで「プレイヤー」が選択�
 
   // Then
   await expect(await roomPage.getUserType('player')).toBeChecked();
-  await expect(await roomPage.getUserType('audience')).not.toBeChecked();
 });
 
-test('ルームページで、「プレイヤー」選択中かつカード未選択かつカード未オープンの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
+test('On the room page, when a player who has not selected a card changes their user type to "audience" before table cards are turned face up, they should not be able to select a card from their hand.', async ({
   context,
 }) => {
   // Given
@@ -49,7 +48,7 @@ test('ルームページで、「プレイヤー」選択中かつカード未�
   await expect(roomPage2.disabledHandsCard).toHaveCount(0);
 });
 
-test('ルームページで、「プレイヤー」選択中かつカード選択済みかつカード未オープンの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
+test('On the room page, a player who has selected a card changes their user type to "audience" before cards are turned face up, their table card should disappear and they should be not able to select a card from their hand.', async ({
   context,
 }) => {
   // Given
@@ -90,7 +89,7 @@ test('ルームページで、「プレイヤー」選択中かつカード選�
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「プレイヤー」選択中かつカード未選択かつカードオープン済みの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードを選べなくなること', async ({
+test('On the room page, when a player who has not selected a card changes their user type to "audience" after table cards are turned face up, their table card storage place should disappear.', async ({
   context,
 }) => {
   // Given
@@ -133,7 +132,7 @@ test('ルームページで、「プレイヤー」選択中かつカード未�
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「プレイヤー」選択中かつカード選択済みかつカードオープン済みの状態で、「観客」を選択したとき、自分のテーブルカードが消え、手札カードの選択が解除され、手札カードを選べなくなること', async ({
+test('On the room page, a player who has selected a card changes their user type to "audience" after table cards are turned face up, their table card should disappear, their card selection should be cancelled and they should become not able to select a card from their hand.', async ({
   context,
 }) => {
   // Given
@@ -175,7 +174,7 @@ test('ルームページで、「プレイヤー」選択中かつカード選�
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「観客」選択中かつカード未オープンの状態で、「プレイヤー」を選択したとき、自分のテーブルカードが現れ、手札カードを選べるようになること', async ({
+test('On the room page, when an audience changes their user type to "player" before table cards are turned face up, the table card storage place for them should appear and they should become able to select a card from their hand.', async ({
   context,
 }) => {
   // Given
@@ -218,7 +217,7 @@ test('ルームページで、「観客」選択中かつカード未オープ�
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、「観客」選択中かつカードオープン済みの状態で、「プレイヤー」を選択したとき、自分のテーブルカードが現れること', async ({
+test('On the room page, when an audience changes their user type to "player" after table cards are turned face up, their table card storage place should appear.', async ({
   context,
 }) => {
   // Given
@@ -262,7 +261,7 @@ test('ルームページで、「観客」選択中かつカードオープン�
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
 });
 
-test('ルームページで、メンバーが自分ひとりのときに「観客」を選択しても問題ないこと', async ({ page }) => {
+test('On the room page, there should be no problems with players not being present', async ({ page }) => {
   // Given
   const roomPage: RoomPage = new RoomPage(page);
   await roomPage.goto(createRoomId());

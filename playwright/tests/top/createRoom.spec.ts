@@ -1,16 +1,16 @@
 import { expect, test } from '@playwright/test';
-import TopPage from '../../models/top-page';
+import TopPage from '@pw/models/top-page';
 
-test('トップページで、「部屋をつくる」ボタンを選択したとき、ランダムのルームページが作成され遷移すること', async ({
+test('When a user clicks create a room button on top page, the user moves to room page with random room id', async ({
   page,
 }) => {
   // Given
   const top = new TopPage(page);
   await top.goto();
 
-  // When - ルームを作成
+  // When
   await top.createRoom();
 
-  // Then - ルームが作成され、ルームページに遷移する
+  // Then
   await expect(page).toHaveURL(/http:\/\/.*\/rooms\/.*/);
 });

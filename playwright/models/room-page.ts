@@ -7,6 +7,7 @@ export default class RoomPage {
   readonly page: Page;
   readonly logo: Locator;
   readonly roomIdLink: Locator;
+  readonly ToastToNotifyToHaveCopiedThisRoomURL: Locator;
   readonly tableCardGroups: Locator;
   readonly tableCards: Locator;
   readonly blankTableCards: Locator;
@@ -38,6 +39,8 @@ export default class RoomPage {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkiru' });
     this.roomIdLink = page.getByRole('button', { name: 'Room ID' });
+    this.ToastToNotifyToHaveCopiedThisRoomURL = page.getByRole('status').getByText('Copied this Room URL');
+
     this.tableCardGroups = page.getByRole('group', {
       name: 'Table cards group',
     });

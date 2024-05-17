@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
-import createRoomId from '../../helpers/createRoomId';
-import RoomPage from '../../models/room-page';
+import createRoomId from '@pw/helpers/createRoomId';
+import RoomPage from '@pw/models/room-page';
 
-test('ルームページで、フィボナッチ数列デッキを選択しており、カードがオープンされてないとき、サマリーはすべて「？」であること', async ({
+test('On the room page, when the deck type is fibonacci and table cards are face-down, the summary results should be "?".', async ({
   context,
 }) => {
   // Given
@@ -46,7 +46,7 @@ test('ルームページで、フィボナッチ数列デッキを選択して�
   await expect(roomPage3.maxTag).toHaveText('Max?');
 });
 
-test('ルームページで、フィボナッチ数列デッキを選択しており、カードをオープンしたとき、場に出されたカードのMax値、Min値、Avg値が表示されること', async ({
+test('On the room page, when the deck type is fibonacci and table cards are face-up, the maximum, minimum and avarage values of table cards should be displayed.', async ({
   context,
 }) => {
   // Given
@@ -86,7 +86,7 @@ test('ルームページで、フィボナッチ数列デッキを選択して�
   await expect(roomPage3.maxTag).toHaveText('Max13');
 });
 
-test('ルームページで、0-10デッキを選択しており、カードがオープンされてないとき、サマリーはすべて「？」であること', async ({
+test('On the room page, when the deck type is sequential and table cards are face-down, the summary results should be "?".', async ({
   context,
 }) => {
   // Given
@@ -131,7 +131,7 @@ test('ルームページで、0-10デッキを選択しており、カードが�
   await expect(roomPage3.maxTag).toHaveText('Max?');
 });
 
-test('ルームページで、0-10デッキを選択しており、カードをオープンしたとき、場に出されたカードのMax値、Min値、Avg値が表示されること', async ({
+test('On the room page, when the deck type is sequential and table cards are face-up, the maximum, minimum and average values of table cards should be displayed.', async ({
   context,
 }) => {
   // Given
@@ -172,7 +172,9 @@ test('ルームページで、0-10デッキを選択しており、カードを�
   await expect(roomPage3.maxTag).toHaveText('Max9');
 });
 
-test('ルームページで、Tシャツサイズデッキを選択しているとき、サマリーは表示されないこと', async ({ context }) => {
+test('On the room page, when the deck type is T shirt size, the summary results should not be displayed.', async ({
+  context,
+}) => {
   // Given
   const roomId: string = createRoomId();
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
@@ -229,7 +231,7 @@ test('ルームページで、Tシャツサイズデッキを選択している�
   await expect(roomPage3.maxTag).not.toBeVisible();
 });
 
-test('ルームページで、カードを出していないプレイヤーがいる状態で、カードをオープンにしたとき、場に出されたカードのMax値、Min値、Avg値が正しく表示されること', async ({
+test('On the room page, when some players have not selected their cards, the summary results should be calculated on  the selected cards only.', async ({
   context,
 }) => {
   // Given
@@ -268,7 +270,7 @@ test('ルームページで、カードを出していないプレイヤーが�
   await expect(roomPage3.maxTag).toHaveText('Max3');
 });
 
-test('ルームページで、「？」のカードがある状態で、カードをオープンしたとき、場に出されたカードのMax値、Min値、Avg値が正しく表示されること', async ({
+test('On the room page, when some players have selected "?" as their cards, the summary results should be calculated on  the numbered cards only.', async ({
   context,
 }) => {
   // Given
@@ -308,7 +310,7 @@ test('ルームページで、「？」のカードがある状態で、カー�
   await expect(roomPage3.maxTag).toHaveText('Max2');
 });
 
-test('ルームページで、カードをオープンにしたあとで、プレイヤーがオーディエンスに変わっても、場に出されたカードのMax値、Min値、Avg値が再計算され正しく表示されること', async ({
+test('On the room page, when a player becomes an audience after table cards are turned face up, the summary results should be re-calculated.', async ({
   context,
 }) => {
   // Given

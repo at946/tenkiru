@@ -10,7 +10,7 @@ dependencies:
     version: 4.19.2
   next:
     specifier: 14.2.3
-    version: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)
+    version: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.2)
   next-intl:
     specifier: ^3.14.0
     version: 3.14.0(next@14.2.3)(react@18.3.1)
@@ -30,8 +30,8 @@ dependencies:
     specifier: ^0.7.7
     version: 0.7.7(react-dom@18.3.1)(react@18.3.1)
   sass:
-    specifier: ^1.77.0
-    version: 1.77.1
+    specifier: ^1.77.2
+    version: 1.77.2
   socket.io:
     specifier: ^4.7.5
     version: 4.7.5(utf-8-validate@6.0.4)
@@ -93,7 +93,7 @@ devDependencies:
     version: 0.2.3(jest@29.7.0)
   '@storybook/nextjs':
     specifier: ^8.1.1
-    version: 8.1.1(@swc/core@1.5.5)(esbuild@0.20.2)(jest@29.7.0)(next@14.2.3)(node-sass@9.0.0)(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)(typescript@5.4.5)(webpack@5.91.0)
+    version: 8.1.1(@swc/core@1.5.5)(esbuild@0.20.2)(jest@29.7.0)(next@14.2.3)(node-sass@9.0.0)(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.2)(typescript@5.4.5)(webpack@5.91.0)
   '@storybook/preview-api':
     specifier: ^8.1.1
     version: 8.1.1
@@ -3735,7 +3735,7 @@ packages:
     resolution: {integrity: sha512-b3Oa9QsCbkTpH0LCKkMYDXtFYb1QpDc45EIFIm5Ib2tlilPQkx+a7jNpJG1/SKnYBwAO7iYjxN8iW9MwMLoCig==}
     dev: true
 
-  /@storybook/nextjs@8.1.1(@swc/core@1.5.5)(esbuild@0.20.2)(jest@29.7.0)(next@14.2.3)(node-sass@9.0.0)(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)(typescript@5.4.5)(webpack@5.91.0):
+  /@storybook/nextjs@8.1.1(@swc/core@1.5.5)(esbuild@0.20.2)(jest@29.7.0)(next@14.2.3)(node-sass@9.0.0)(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.2)(typescript@5.4.5)(webpack@5.91.0):
     resolution: {integrity: sha512-N9rXQ+vhjdVXGPQqD8k8m/iEyodSmYDyNihsogjyeIhbP9xtBAOuGpzur8w1Ftg+2kP37nIyU3l4h3T/LCA39g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -3781,7 +3781,7 @@ packages:
       fs-extra: 11.2.0
       image-size: 1.1.1
       loader-utils: 3.2.1
-      next: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)
+      next: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.2)
       node-polyfill-webpack-plugin: 2.0.1(webpack@5.91.0)
       pnp-webpack-plugin: 1.7.0(typescript@5.4.5)
       postcss: 8.4.38
@@ -3790,7 +3790,7 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
       react-refresh: 0.14.2
       resolve-url-loader: 5.0.0
-      sass-loader: 12.6.0(node-sass@9.0.0)(sass@1.77.1)(webpack@5.91.0)
+      sass-loader: 12.6.0(node-sass@9.0.0)(sass@1.77.2)(webpack@5.91.0)
       semver: 7.6.2
       style-loader: 3.3.4(webpack@5.91.0)
       styled-jsx: 5.1.1(@babel/core@7.24.5)(react@18.3.1)
@@ -9504,7 +9504,7 @@ packages:
     dependencies:
       '@formatjs/intl-localematcher': 0.2.32
       negotiator: 0.6.3
-      next: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)
+      next: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.2)
       react: 18.3.1
       use-intl: 3.14.0(react@18.3.1)
     dev: false
@@ -9520,10 +9520,10 @@ packages:
       '@next/env': 13.5.6
       fast-glob: 3.3.2
       minimist: 1.2.8
-      next: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1)
+      next: 14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.2)
     dev: true
 
-  /next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.1):
+  /next@14.2.3(@babel/core@7.24.5)(@playwright/test@1.44.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.2):
     resolution: {integrity: sha512-dowFkFTR8v79NPJO4QsBUtxv0g9BrS/phluVpMAt2ku7H+cbcBJlopXjkWlwxrk/xGqMemr7JkGPGemPrLLX7A==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -9550,7 +9550,7 @@ packages:
       postcss: 8.4.31
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      sass: 1.77.1
+      sass: 1.77.2
       styled-jsx: 5.1.1(@babel/core@7.24.5)(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.3
@@ -11035,7 +11035,7 @@ packages:
       scss-tokenizer: 0.4.3
       yargs: 17.7.2
 
-  /sass-loader@12.6.0(node-sass@9.0.0)(sass@1.77.1)(webpack@5.91.0):
+  /sass-loader@12.6.0(node-sass@9.0.0)(sass@1.77.2)(webpack@5.91.0):
     resolution: {integrity: sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
@@ -11057,12 +11057,12 @@ packages:
       klona: 2.0.6
       neo-async: 2.6.2
       node-sass: 9.0.0
-      sass: 1.77.1
+      sass: 1.77.2
       webpack: 5.91.0(@swc/core@1.5.5)(esbuild@0.20.2)
     dev: true
 
-  /sass@1.77.1:
-    resolution: {integrity: sha512-OMEyfirt9XEfyvocduUIOlUSkWOXS/LAt6oblR/ISXCTukyavjex+zQNm51pPCOiFKY1QpWvEH1EeCkgyV3I6w==}
+  /sass@1.77.2:
+    resolution: {integrity: sha512-eb4GZt1C3avsX3heBNlrc7I09nyT00IUuo4eFhAbeXWU2fvA7oXI53SxODVAA+zgZCk9aunAZgO+losjR3fAwA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:

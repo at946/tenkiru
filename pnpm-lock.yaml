@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^1.1.65
     version: 1.1.66
   '@iconify-json/simple-icons':
-    specifier: ^1.1.101
-    version: 1.1.101
+    specifier: ^1.1.102
+    version: 1.1.102
   '@iconify/tailwind':
     specifier: ^1.1.1
     version: 1.1.1
@@ -1935,8 +1935,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
-  /@iconify-json/simple-icons@1.1.101:
-    resolution: {integrity: sha512-7h7iUvCok031UcYUt2+wPD21tOwu/AzFB2I2PzzoC3R1jsNJjn5YV3v1q0g2CXcMYAzcsCyH00RbpFPFAiqjcw==}
+  /@iconify-json/simple-icons@1.1.102:
+    resolution: {integrity: sha512-ErRQGs7tjGsq4sj5SSeYwBOQ766yd9LtWblWakyL+ugg1k48ImabkI3mptDN5o+XSUb9SC+b7YNSStlrrecqNQ==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

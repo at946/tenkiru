@@ -47,7 +47,7 @@
     "@storybook/addon-links": "^8.1.2",
     "@storybook/blocks": "^8.1.1",
     "@storybook/jest": "^0.2.3",
-    "@storybook/nextjs": "^8.1.1",
+    "@storybook/nextjs": "^8.1.2",
     "@storybook/preview-api": "^8.1.2",
     "@storybook/react": "^8.1.2",
     "@storybook/test-runner": "^0.18.1",

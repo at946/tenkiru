@@ -71,11 +71,11 @@ devDependencies:
     specifier: ^1.44.1
     version: 1.44.1
   '@storybook/addon-a11y':
-    specifier: ^8.1.2
-    version: 8.1.2
+    specifier: ^8.1.3
+    version: 8.1.3
   '@storybook/addon-console':
     specifier: ^3.0.0
-    version: 3.0.0(@storybook/addon-actions@8.1.2)(react@18.3.1)
+    version: 3.0.0(@storybook/addon-actions@8.1.3)(react@18.3.1)
   '@storybook/addon-essentials':
     specifier: ^8.1.3
     version: 8.1.3(@types/react-dom@18.3.0)(@types/react@18.3.2)(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)
@@ -2962,22 +2962,11 @@ packages:
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
     dev: false
 
-  /@storybook/addon-a11y@8.1.2:
-    resolution: {integrity: sha512-A9T5vp2j1nI7adm0YWeOV4OS6TDBb70gZDwcOlGApsL1hHDQGNKrY3N4Wpymk9v21K062QHpvPH+Fw1ZVffrQw==}
+  /@storybook/addon-a11y@8.1.3:
+    resolution: {integrity: sha512-CJCfXD9cB5jyPlQFo9WZSTeT7l9UPrI0Bte8ytkMU8EquB7PI701OT+CHLsSSjb75tZzGSM7f1+TjUgI9QIhYw==}
     dependencies:
-      '@storybook/addon-highlight': 8.1.2
+      '@storybook/addon-highlight': 8.1.3
       axe-core: 4.9.1
-    dev: true
-
-  /@storybook/addon-actions@8.1.2:
-    resolution: {integrity: sha512-EW8sYgA1vpn67pTheBjfLCfPO82w0jMkKYFDFMMvxVoEDbJ3fgsUDDd058zBBFiDtnngv3VUrXASPTxK51F2mQ==}
-    dependencies:
-      '@storybook/core-events': 8.1.2
-      '@storybook/global': 5.0.0
-      '@types/uuid': 9.0.8
-      dequal: 2.0.3
-      polished: 4.3.1
-      uuid: 9.0.1
     dev: true
 
   /@storybook/addon-actions@8.1.3:
@@ -2999,13 +2988,13 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/addon-console@3.0.0(@storybook/addon-actions@8.1.2)(react@18.3.1):
+  /@storybook/addon-console@3.0.0(@storybook/addon-actions@8.1.3)(react@18.3.1):
     resolution: {integrity: sha512-2pD2c9KNWuPIWlprqmWoZYrNQnG2qoDg7fAAXXNK6YDc5x/ZpK0cfOyfz/Gpdeje4QUmttZKAVjH0nOZDuxfvw==}
     peerDependencies:
       '@storybook/addon-actions': '*'
       react: '*'
     dependencies:
-      '@storybook/addon-actions': 8.1.2
+      '@storybook/addon-actions': 8.1.3
       '@storybook/global': 5.0.0
       react: 18.3.1
     dev: true
@@ -3082,12 +3071,6 @@ packages:
       - react
       - react-dom
       - supports-color
-    dev: true
-
-  /@storybook/addon-highlight@8.1.2:
-    resolution: {integrity: sha512-1PDE2RRV33oMGZJ4ZJ9GbLlsWEIq/opEfbSa9cy1C4K0mcfLtdSbDk5bT23wfU78HFYF2q5+aJ7jVFwHJjueTA==}
-    dependencies:
-      '@storybook/global': 5.0.0
     dev: true
 
   /@storybook/addon-highlight@8.1.3:

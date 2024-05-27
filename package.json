@@ -37,7 +37,7 @@
     "@iconify-json/fa6-solid": "^1.1.21",
     "@iconify-json/ic": "^1.1.17",
     "@iconify-json/mdi": "^1.1.65",
-    "@iconify-json/simple-icons": "^1.1.102",
+    "@iconify-json/simple-icons": "^1.1.103",
     "@iconify/tailwind": "^1.1.1",
     "@playwright/test": "^1.44.1",
     "@storybook/addon-a11y": "^8.1.3",

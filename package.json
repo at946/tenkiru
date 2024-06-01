@@ -40,7 +40,7 @@
     "@iconify-json/simple-icons": "^1.1.103",
     "@iconify/tailwind": "^1.1.1",
     "@playwright/test": "^1.44.1",
-    "@storybook/addon-a11y": "^8.1.4",
+    "@storybook/addon-a11y": "^8.1.5",
     "@storybook/addon-console": "^3.0.0",
     "@storybook/addon-essentials": "^8.1.5",
     "@storybook/addon-interactions": "^8.1.5",

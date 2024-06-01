@@ -75,7 +75,7 @@ devDependencies:
     version: 8.1.4
   '@storybook/addon-console':
     specifier: ^3.0.0
-    version: 3.0.0(@storybook/addon-actions@8.1.4)(react@18.3.1)
+    version: 3.0.0(@storybook/addon-actions@8.1.5)(react@18.3.1)
   '@storybook/addon-essentials':
     specifier: ^8.1.5
     version: 8.1.5(@types/react-dom@18.3.0)(@types/react@18.3.3)(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)
@@ -110,8 +110,8 @@ devDependencies:
     specifier: ^0.5.7
     version: 0.5.7(tailwindcss@3.4.3)
   '@types/gtag.js':
-    specifier: ^0.0.19
-    version: 0.0.19
+    specifier: ^0.0.20
+    version: 0.0.20
   '@types/lodash':
     specifier: ^4.17.4
     version: 4.17.4
@@ -2969,17 +2969,6 @@ packages:
       axe-core: 4.9.1
     dev: true
 
-  /@storybook/addon-actions@8.1.4:
-    resolution: {integrity: sha512-3q/DCcnSjpuWBoKpA+0j1etXyMOu+GsdUtxv041tsNjMMwyc+CfHUGiAHMyQ0TpEf8MPQoTeZsRPrEZwVUNXow==}
-    dependencies:
-      '@storybook/core-events': 8.1.4
-      '@storybook/global': 5.0.0
-      '@types/uuid': 9.0.8
-      dequal: 2.0.3
-      polished: 4.3.1
-      uuid: 9.0.1
-    dev: true
-
   /@storybook/addon-actions@8.1.5:
     resolution: {integrity: sha512-XbCUGGXQ4XX/zTRgUsR1l1yZJQIWR33P/M1OEAn0HbsfwS+P87GqfApkj4N7QrMfLkUkoLtdfprp5BZul98AKA==}
     dependencies:
@@ -2999,13 +2988,13 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/addon-console@3.0.0(@storybook/addon-actions@8.1.4)(react@18.3.1):
+  /@storybook/addon-console@3.0.0(@storybook/addon-actions@8.1.5)(react@18.3.1):
     resolution: {integrity: sha512-2pD2c9KNWuPIWlprqmWoZYrNQnG2qoDg7fAAXXNK6YDc5x/ZpK0cfOyfz/Gpdeje4QUmttZKAVjH0nOZDuxfvw==}
     peerDependencies:
       '@storybook/addon-actions': '*'
       react: '*'
     dependencies:
-      '@storybook/addon-actions': 8.1.4
+      '@storybook/addon-actions': 8.1.5
       '@storybook/global': 5.0.0
       react: 18.3.1
     dev: true
@@ -3667,23 +3656,6 @@ packages:
     resolution: {integrity: sha512-t4syFIeSyufieNovZbLruPt2DmRKpbwL4fERCZ1MifWDRIORCKLc4NCEHy+IqvIqd71/SJV2k4B51nF7vlJfmQ==}
     dev: true
 
-  /@storybook/docs-tools@8.1.4(prettier@3.2.5):
-    resolution: {integrity: sha512-taAyvDUYwOj/GOmmB850osdjLc4rW9rwfpGUewQOG17CAAZYRPchMjUGPTS96jt3RzPMPiJkV9TS7BLXmJ9kQg==}
-    dependencies:
-      '@storybook/core-common': 8.1.4(prettier@3.2.5)
-      '@storybook/core-events': 8.1.4
-      '@storybook/preview-api': 8.1.4
-      '@storybook/types': 8.1.4
-      '@types/doctrine': 0.0.3
-      assert: 2.1.0
-      doctrine: 3.0.0
-      lodash: 4.17.21
-    transitivePeerDependencies:
-      - encoding
-      - prettier
-      - supports-color
-    dev: true
-
   /@storybook/docs-tools@8.1.5(prettier@3.2.5):
     resolution: {integrity: sha512-zlHv8fi1Bw8RbjkGGBJoO/RbM41bwxU1kV76TPQUyqQmzqPRsHi3zt+8bdddQLNrC6rhTF+Cj3yEdPfTZrB0aA==}
     dependencies:
@@ -4010,16 +3982,6 @@ packages:
       webpack: 5.91.0(@swc/core@1.5.7)(esbuild@0.20.2)
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@storybook/react-dom-shim@8.1.4(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-NJBuOml3o/kgwapMB4EAt92wX1lQUgG2fG6qfBkkJ1Djk4bUW/GZndCv9sArp+wncD4rfAVYdEtI8bxmqmv49A==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
     dev: true
 
   /@storybook/react-dom-shim@8.1.5(react-dom@18.3.1)(react@18.3.1):
@@ -4608,8 +4570,8 @@ packages:
       '@types/node': 20.13.0
     dev: true
 
-  /@types/gtag.js@0.0.19:
-    resolution: {integrity: sha512-KHoDzrf9rSd0mooKN576PjExpdk/XRrNu4RQnmigsScSTSidwyOUe9kDrHz9UPKjiBrx2QEsSkexbJSgS0j72w==}
+  /@types/gtag.js@0.0.20:
+    resolution: {integrity: sha512-wwAbk3SA2QeU67unN7zPxjEHmPmlXwZXZvQEpbEUQuMCRGgKyE1m6XDuTUA9b6pCGb/GqJmdfMOY5LuDjJSbbg==}
     dev: true
 
   /@types/hast@3.0.4:

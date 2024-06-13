@@ -75,7 +75,7 @@ devDependencies:
     version: 8.1.6
   '@storybook/addon-console':
     specifier: ^3.0.0
-    version: 3.0.0(@storybook/addon-actions@8.1.6)(react@18.3.1)
+    version: 3.0.0(@storybook/addon-actions@8.1.7)(react@18.3.1)
   '@storybook/addon-essentials':
     specifier: ^8.1.7
     version: 8.1.7(@types/react-dom@18.3.0)(@types/react@18.3.3)(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)
@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^8.1.7
     version: 8.1.7
   '@storybook/react':
-    specifier: ^8.1.6
-    version: 8.1.6(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5)
+    specifier: ^8.1.7
+    version: 8.1.7(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5)
   '@storybook/test-runner':
     specifier: ^0.18.2
     version: 0.18.2(@types/node@20.14.2)(prettier@3.2.5)
@@ -2969,17 +2969,6 @@ packages:
       axe-core: 4.9.1
     dev: true
 
-  /@storybook/addon-actions@8.1.6:
-    resolution: {integrity: sha512-EbiAdbtXN/UM4by3+qisbrQmElaIfahgNqffbst6GiCTmUCVE5if6geL1mzKd/u/rZOzx5g0EG76x8N9yDjOtg==}
-    dependencies:
-      '@storybook/core-events': 8.1.6
-      '@storybook/global': 5.0.0
-      '@types/uuid': 9.0.8
-      dequal: 2.0.3
-      polished: 4.3.1
-      uuid: 9.0.1
-    dev: true
-
   /@storybook/addon-actions@8.1.7:
     resolution: {integrity: sha512-QBk9pDQS0OSmzxTXQAxSGiI1yueB0m+Ybsm1+6k6r7QlegXRPt+3WiE/9npXbeFU5DFR60+6jV1OOTuvzG3qtQ==}
     dependencies:
@@ -2999,13 +2988,13 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/addon-console@3.0.0(@storybook/addon-actions@8.1.6)(react@18.3.1):
+  /@storybook/addon-console@3.0.0(@storybook/addon-actions@8.1.7)(react@18.3.1):
     resolution: {integrity: sha512-2pD2c9KNWuPIWlprqmWoZYrNQnG2qoDg7fAAXXNK6YDc5x/ZpK0cfOyfz/Gpdeje4QUmttZKAVjH0nOZDuxfvw==}
     peerDependencies:
       '@storybook/addon-actions': '*'
       react: '*'
     dependencies:
-      '@storybook/addon-actions': 8.1.6
+      '@storybook/addon-actions': 8.1.7
       '@storybook/global': 5.0.0
       react: 18.3.1
     dev: true
@@ -4176,16 +4165,6 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/react-dom-shim@8.1.6(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-qP5nkAmpGFy/gshO+bVjRo1rgo/6UVDElgOd2dlUtYnfdPONiOfWko2XGYKKfxa6Cp7KU35JlZz/kHGqWG31zQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    dev: true
-
   /@storybook/react-dom-shim@8.1.7(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-EG5KVCOKEjW0JL9VGflCSCHg399uUusjJI5ebTWfmnFuDbJHtBbzIdAZSMHFxQnVEUI1cl1fc1L/1ztjdrXkjw==}
     peerDependencies:
@@ -4194,47 +4173,6 @@ packages:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-    dev: true
-
-  /@storybook/react@8.1.6(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5):
-    resolution: {integrity: sha512-2CSc3MLeaY7QaYAQLwaXRboKkgQnWrSZAo/WTJcSHUr2YFxH5+iECB0Kci12GqaJklhhgmfTfVZ4Jo9ZJ6LQfg==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      typescript: '>= 4.2.x'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@storybook/client-logger': 8.1.6
-      '@storybook/docs-tools': 8.1.6(prettier@3.2.5)
-      '@storybook/global': 5.0.0
-      '@storybook/preview-api': 8.1.6
-      '@storybook/react-dom-shim': 8.1.6(react-dom@18.3.1)(react@18.3.1)
-      '@storybook/types': 8.1.6
-      '@types/escodegen': 0.0.6
-      '@types/estree': 0.0.51
-      '@types/node': 18.19.33
-      acorn: 7.4.1
-      acorn-jsx: 5.3.2(acorn@7.4.1)
-      acorn-walk: 7.2.0
-      escodegen: 2.1.0
-      html-tags: 3.3.1
-      lodash: 4.17.21
-      prop-types: 15.8.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-element-to-jsx-string: 15.0.0(react-dom@18.3.1)(react@18.3.1)
-      semver: 7.6.2
-      ts-dedent: 2.2.0
-      type-fest: 2.19.0
-      typescript: 5.4.5
-      util-deprecate: 1.0.2
-    transitivePeerDependencies:
-      - encoding
-      - prettier
-      - supports-color
     dev: true
 
   /@storybook/react@8.1.7(prettier@3.2.5)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5):

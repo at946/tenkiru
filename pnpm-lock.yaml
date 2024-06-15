@@ -134,7 +134,7 @@ devDependencies:
     specifier: ^2.1.1
     version: 2.1.1
   lefthook:
-    specifier: ^1.6.15
+    specifier: ^1.6.16
     version: 1.6.16
   lodash:
     specifier: ^4.17.21

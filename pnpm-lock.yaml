@@ -71,7 +71,7 @@ devDependencies:
     specifier: ^1.44.1
     version: 1.44.1
   '@storybook/addon-a11y':
-    specifier: ^8.1.7
+    specifier: ^8.1.9
     version: 8.1.9
   '@storybook/addon-console':
     specifier: ^3.0.0

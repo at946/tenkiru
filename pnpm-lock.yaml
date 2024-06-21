@@ -12,8 +12,8 @@ dependencies:
     specifier: 14.2.4
     version: 14.2.4(@babel/core@7.24.7)(@playwright/test@1.44.1)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.5)
   next-intl:
-    specifier: ^3.15.0
-    version: 3.15.0(next@14.2.4)(react@18.3.1)
+    specifier: ^3.15.2
+    version: 3.15.2(next@14.2.4)(react@18.3.1)
   node-sass:
     specifier: ^9.0.0
     version: 9.0.0
@@ -1926,13 +1926,6 @@ packages:
   /@fal-works/esbuild-plugin-global-externals@2.1.2:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
-
-  /@formatjs/ecma402-abstract@1.18.3:
-    resolution: {integrity: sha512-J961RbhyjHWeCIv+iOceNxpoZ/qomJOs5lH+rUJCeKNa59gME4KC0LJVMeWODjHsnv/hTH8Hvd6sevzcAzjuaQ==}
-    dependencies:
-      '@formatjs/intl-localematcher': 0.5.4
-      tslib: 2.6.3
-    dev: false
 
   /@formatjs/ecma402-abstract@2.0.0:
     resolution: {integrity: sha512-rRqXOqdFmk7RYvj4khklyqzcfQl9vEL/usogncBHRZfZBDOwMGuSRNFl02fu5KGHXdbinju+YXyuR+Nk8xlr/g==}
@@ -6317,6 +6310,7 @@ packages:
 
   /color-string@1.9.1:
     resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
+    requiresBuild: true
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
@@ -6330,6 +6324,7 @@ packages:
   /color@4.2.3:
     resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
     engines: {node: '>=12.5.0'}
+    requiresBuild: true
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
@@ -6826,6 +6821,7 @@ packages:
   /detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
     engines: {node: '>=8'}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -8250,6 +8246,7 @@ packages:
   /iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       safer-buffer: 2.1.2
     optional: true
@@ -8386,6 +8383,7 @@ packages:
 
   /is-arrayish@0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -9971,8 +9969,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-intl@3.15.0(next@14.2.4)(react@18.3.1):
-    resolution: {integrity: sha512-mccmy6oIbgV3QY2GsgHrgRLoEYYVEIXa+hEaK6OBeG3zYJ+H5AACVBAhLcf+5ctY06RFr95hYt1XcJJ+bNtkag==}
+  /next-intl@3.15.2(next@14.2.4)(react@18.3.1):
+    resolution: {integrity: sha512-OkKHvsnLiX3brG78I+DYHn9mz3Ui+fsXS8iHi8ulxr89wBrVu78CSVin7sMe+snGZuh4wg+aedbOUPwPr2OKVg==}
     peerDependencies:
       next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -9981,7 +9979,7 @@ packages:
       negotiator: 0.6.3
       next: 14.2.4(@babel/core@7.24.7)(@playwright/test@1.44.1)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.5)
       react: 18.3.1
-      use-intl: 3.15.0(react@18.3.1)
+      use-intl: 3.15.2(react@18.3.1)
     dev: false
 
   /next-sitemap@4.2.3(next@14.2.4):
@@ -11757,6 +11755,7 @@ packages:
 
   /simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+    requiresBuild: true
     dependencies:
       is-arrayish: 0.3.2
     dev: true
@@ -12701,12 +12700,11 @@ packages:
       tslib: 2.6.3
     dev: true
 
-  /use-intl@3.15.0(react@18.3.1):
-    resolution: {integrity: sha512-vPCa7nbmH3RLfsy4pLLag8PvlzxQYHd5CkPE/AobkX72NE7JjhXk9UFtuFmD1UWiwQzM7njysnuwQlhtV6vV2Q==}
+  /use-intl@3.15.2(react@18.3.1):
+    resolution: {integrity: sha512-dYq8bMjFXwtsZti2j6Z8KeIKV0XeNXmUX9M6/8wShOk9iYd2+0rMyAgJ4hbu/vDKDoOpAWAXcRKhqGz6kpnzOQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@formatjs/ecma402-abstract': 1.18.3
       intl-messageformat: 10.5.14
       react: 18.3.1
     dev: false

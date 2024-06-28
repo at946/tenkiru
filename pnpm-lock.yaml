@@ -88,8 +88,8 @@ importers:
         specifier: ^8.1.11
         version: 8.1.11(react@18.3.1)
       '@storybook/blocks':
-        specifier: ^8.1.10
-        version: 8.1.10(@types/react-dom@18.3.0)(@types/react@18.3.3)(encoding@0.1.13)(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^8.1.11
+        version: 8.1.11(@types/react-dom@18.3.0)(@types/react@18.3.3)(encoding@0.1.13)(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@storybook/jest':
         specifier: ^0.2.3
         version: 0.2.3(@jest/globals@29.7.0)(jest@29.7.0(@types/node@20.14.9))
@@ -1705,17 +1705,6 @@ packages:
 
   '@storybook/addon-viewport@8.1.11':
     resolution: {integrity: sha512-qk4IcGnAgiAUQxt8l5PIQ293Za+w6wxlJQIpxr7+QM8OVkADPzXY0MmQfYWU9EQplrxAC2MSx3/C1gZeq+MDOQ==}
-
-  '@storybook/blocks@8.1.10':
-    resolution: {integrity: sha512-8ZGgLIUBdSafcyaKR5Zs0CFisFCPoxZBVt3GMUCZtN+G17YhEg4+OnZs5aMZknfnh28BUnZS2STjWTGStAE5Rw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
 
   '@storybook/blocks@8.1.11':
     resolution: {integrity: sha512-eMed7PpL/hAVM6tBS7h70bEAyzbiSU9I/kye4jZ7DkCbAsrX6OKmC7pcHSDn712WTcf3vVqxy5jOKUmOXpc0eg==}
@@ -8390,42 +8379,6 @@ snapshots:
   '@storybook/addon-viewport@8.1.11':
     dependencies:
       memoizerific: 1.11.3
-
-  '@storybook/blocks@8.1.10(@types/react-dom@18.3.0)(@types/react@18.3.3)(encoding@0.1.13)(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@storybook/channels': 8.1.10
-      '@storybook/client-logger': 8.1.10
-      '@storybook/components': 8.1.10(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/core-events': 8.1.10
-      '@storybook/csf': 0.1.8
-      '@storybook/docs-tools': 8.1.10(encoding@0.1.13)(prettier@3.3.2)
-      '@storybook/global': 5.0.0
-      '@storybook/icons': 1.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/manager-api': 8.1.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/preview-api': 8.1.10
-      '@storybook/theming': 8.1.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/types': 8.1.10
-      '@types/lodash': 4.17.5
-      color-convert: 2.0.1
-      dequal: 2.0.3
-      lodash: 4.17.21
-      markdown-to-jsx: 7.3.2(react@18.3.1)
-      memoizerific: 1.11.3
-      polished: 4.3.1
-      react-colorful: 5.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      telejson: 7.2.0
-      tocbot: 4.28.2
-      ts-dedent: 2.2.0
-      util-deprecate: 1.0.2
-    optionalDependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - '@types/react-dom'
-      - encoding
-      - prettier
-      - supports-color
 
   '@storybook/blocks@8.1.11(@types/react-dom@18.3.0)(@types/react@18.3.3)(encoding@0.1.13)(prettier@3.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:

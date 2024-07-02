@@ -33,7 +33,7 @@ const UserTypeSelect: NextPage<Props> = ({ type, className, onChange }) => {
         {options.map((option) => (
           <label key={option.value} className='inline-flex cursor-pointer items-center'>
             <input
-              className='mr-1 text-primary accent-primary checked:bg-primary dark:checked:bg-dark-primary dark:text-dark-primary'
+              className='mr-1 text-primary accent-primary checked:bg-primary dark:text-dark-primary dark:checked:bg-dark-primary'
               type='radio'
               value={option.value}
               checked={type === option.value}

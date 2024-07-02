@@ -8,7 +8,7 @@
     "postBuild": "next-sitemap",
     "start": "next start",
     "biome:check": "biome check .",
-    "biome:fix": "biome check --apply .",
+    "biome:fix": "biome check --write .",
     "type:check": "tsc",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

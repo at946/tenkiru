@@ -8,7 +8,7 @@
     "postBuild": "next-sitemap",
     "start": "next start",
     "biome:check": "biome check .",
-    "biome:fix": "biome check --apply .",
+    "biome:fix": "biome check --write .",
     "type:check": "tsc",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -32,9 +32,9 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.2",
-    "@iconify-json/fa6-brands": "^1.1.19",
-    "@iconify-json/fa6-solid": "^1.1.21",
+    "@biomejs/biome": "^1.8.3",
+    "@iconify-json/fa6-brands": "^1.1.20",
+    "@iconify-json/fa6-solid": "^1.1.22",
     "@iconify-json/ic": "^1.1.17",
     "@iconify-json/mdi": "^1.1.67",
     "@iconify-json/simple-icons": "^1.1.108",

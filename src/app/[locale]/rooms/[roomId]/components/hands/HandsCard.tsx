@@ -29,11 +29,11 @@ const HandsCard: NextPage<Props> = ({ value, isSelected, isDisabled, onClick }) 
       aria-selected={isSelected}
       className={clsx(
         'flex aspect-card w-24 items-center justify-center rounded-md border-2 border-text font-bold text-2xl shadow',
-        'disabled:cursor-not-allowed enabled:focus-visible:shadow-2xl',
+        'enabled:focus-visible:shadow-2xl disabled:cursor-not-allowed',
         'md:enabled:hover:-translate-y-2 md:enabled:focus-visible:-translate-y-2 md:enabled:hover:shadow-2xl',
         isSelected
           ? 'bg-primary text-dark-text'
-          : 'bg-background text-text disabled:dark:opacity-50 disabled:opacity-25',
+          : 'bg-background text-text disabled:opacity-25 disabled:dark:opacity-50',
       )}
       onClick={onClickHandler}
     >

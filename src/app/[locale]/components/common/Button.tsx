@@ -35,7 +35,7 @@ const Button: NextPage<Props> = ({
     <button
       type='button'
       className={clsx(
-        'inline-flex items-center gap-1 rounded-full border-2 px-4 py-2 drop-shadow-md disabled:cursor-not-allowed disabled:opacity-50 enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg',
+        'inline-flex items-center gap-1 rounded-full border-2 px-4 py-2 drop-shadow-md enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
         color === 'primary' && 'border-primary',
         color === 'secondary' && 'border-secondary',
         isOutlined && 'bg-background enabled:focus-visible:text-background enabled:hover:text-background',

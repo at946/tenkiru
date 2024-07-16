@@ -103,8 +103,8 @@ importers:
         specifier: ^8.2.1
         version: 8.2.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.1(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))(typescript@5.5.3)
       '@storybook/test-runner':
-        specifier: ^0.19.0
-        version: 0.19.0(@swc/helpers@0.5.5)(@types/node@20.14.10)(encoding@0.1.13)(prettier@3.3.2)(storybook@8.2.1(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))
+        specifier: ^0.19.1
+        version: 0.19.1(@swc/helpers@0.5.5)(@types/node@20.14.10)(encoding@0.1.13)(prettier@3.3.2)(storybook@8.2.1(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))
       '@storybook/testing-library':
         specifier: ^0.2.2
         version: 0.2.2
@@ -1893,8 +1893,8 @@ packages:
   '@storybook/router@8.1.11':
     resolution: {integrity: sha512-nU5lsBvy0L8wBYOkjagh29ztZicDATpZNYrHuavlhQ2jznmmHdJvXKYk+VrMAbthjQ6ZBqfeeMNPR1UlnqR5Rw==}
 
-  '@storybook/test-runner@0.19.0':
-    resolution: {integrity: sha512-7bA+hUcIYM1j8IcWE43FaUoTRXeYsISQycQFSztZwbcx9mSAEWDbiVfuwl6G7R71nK2hfNgKO5VjEBeVDsnWcw==}
+  '@storybook/test-runner@0.19.1':
+    resolution: {integrity: sha512-Nc4djXw3Lv3AAXg6TJ7yVTeuMryjMsTDd8GCbE/PStU602rpe8syEqElz78GPoJqB1VYWQ3T9pcu93MKyHT+xQ==}
     engines: {node: ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
 
@@ -8644,7 +8644,7 @@ snapshots:
       memoizerific: 1.11.3
       qs: 6.12.2
 
-  '@storybook/test-runner@0.19.0(@swc/helpers@0.5.5)(@types/node@20.14.10)(encoding@0.1.13)(prettier@3.3.2)(storybook@8.2.1(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))':
+  '@storybook/test-runner@0.19.1(@swc/helpers@0.5.5)(@types/node@20.14.10)(encoding@0.1.13)(prettier@3.3.2)(storybook@8.2.1(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))':
     dependencies:
       '@babel/core': 7.24.7
       '@babel/generator': 7.24.7

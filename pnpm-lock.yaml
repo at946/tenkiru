@@ -55,8 +55,8 @@ importers:
         specifier: ^1.1.20
         version: 1.1.20
       '@iconify-json/fa6-solid':
-        specifier: ^1.1.22
-        version: 1.1.22
+        specifier: ^1.1.23
+        version: 1.1.23
       '@iconify-json/ic':
         specifier: ^1.1.17
         version: 1.1.17
@@ -1076,8 +1076,8 @@ packages:
   '@iconify-json/fa6-brands@1.1.20':
     resolution: {integrity: sha512-YwEyaLDkOVLcZO/gI8uf3IIqy2s7abHHgljjCMpdWDyfZr98tQ6GbdHxeBk7Pq9OoWJ3KJU0wDHmgrEGYt3Z1Q==}
 
-  '@iconify-json/fa6-solid@1.1.22':
-    resolution: {integrity: sha512-iHc4hE/BVPwQ84/1z31kfuPauhfrOgLTaba5dmpfYuLsvh67gByUK0yfNyQuo/Y6NAPOx/6s6guj0f0qjzoxbg==}
+  '@iconify-json/fa6-solid@1.1.23':
+    resolution: {integrity: sha512-wiQqnNBm8FlwmPK2KK6d+W7u2fKcqQR1kfILTR817WjNzI/pjRJqqI9kAx/uys2u1L79/Myg4trdCIy0gInObg==}
 
   '@iconify-json/ic@1.1.17':
     resolution: {integrity: sha512-EvAjZzVESmN36zlyefylePUNaU2BQ3eRKVZ6KQSQ2bG01ppoZaiFZRri74VTyvp5Mlv2yn68ux1fgCoT+etGmA==}
@@ -7457,7 +7457,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fa6-solid@1.1.22':
+  '@iconify-json/fa6-solid@1.1.23':
     dependencies:
       '@iconify/types': 2.0.0
 

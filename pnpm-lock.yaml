@@ -136,8 +136,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       lefthook:
-        specifier: ^1.7.4
-        version: 1.7.4
+        specifier: ^1.7.7
+        version: 1.7.7
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -4377,48 +4377,48 @@ packages:
     resolution: {integrity: sha512-aXpZJRnTkpK6gQ/z4nk+ZBLd/Qdp118cvPruLSIQzQNRhKwEcdXCOzXuF55VDqIiuAaY3UGZ10DJtvZzDcvsxg==}
     engines: {node: '>=14.0.0'}
 
-  lefthook-darwin-arm64@1.7.4:
-    resolution: {integrity: sha512-6XpenaP0W7ZYA3lhHey/C1U+KmYz6eCq2cGswQsrTX+xdtHdWW3NbbOKngxATRTF8+CtF6m9UB2afP7qqkCghQ==}
+  lefthook-darwin-arm64@1.7.7:
+    resolution: {integrity: sha512-EtINYW/1jJDMSlBbCwiZhHRMwybJkuawg9/dtHMll9gE63yBTOQSoqLzjOJWioHKK9DrgAfe2Mh5+PSt0cLVRA==}
     cpu: [arm64]
     os: [darwin]
 
-  lefthook-darwin-x64@1.7.4:
-    resolution: {integrity: sha512-lpQXbPMHiaWE7+9fV+spjuMKiZ3J/+oI6hY1/l48MO3LmSpIv6DNy0VHho1fZVQnHdBU4bDh5c1G0r1f5T0irg==}
+  lefthook-darwin-x64@1.7.7:
+    resolution: {integrity: sha512-77fHVtvLeInztn88fZOsiNMlP5Ql6eG8D233k1G1zndRxwCnVVlB6GVLC/0SRmdE9cR7U66CSphN6EClZrvyHQ==}
     cpu: [x64]
     os: [darwin]
 
-  lefthook-freebsd-arm64@1.7.4:
-    resolution: {integrity: sha512-wv+JZgkD1/wi4X5aKKNodvxNcFcYmvL7uyzKkbtd/LgX5ssh9r5pO9J/71ULGtEuTXH4kqORRtez7u/ygqMEew==}
+  lefthook-freebsd-arm64@1.7.7:
+    resolution: {integrity: sha512-y2+T2ONfr9DYxyx1JGItBf1ARGx0RJcAOn9pEfSN1LrEOAvcVlQKDE8+evdmt8uhMo5TVi+gFe1tdtsIbsiQTA==}
     cpu: [arm64]
     os: [freebsd]
 
-  lefthook-freebsd-x64@1.7.4:
-    resolution: {integrity: sha512-xoYR0Ay8pbyY9W9mI+iI9VDkkCVYSXhMf9XyOChSlu2XmjKiqi23hjCXvSOpvHQ7jphGvAVpE3Byijr6Xjuihw==}
+  lefthook-freebsd-x64@1.7.7:
+    resolution: {integrity: sha512-6zbprxvq7bBG7ihSA1R/GCC5iN+q9tbjQXKiOI+d63F/Oo5ld/kF5fIZv50K39ujx1Ykdmg5llEIBeDEHuybZQ==}
     cpu: [x64]
     os: [freebsd]
 
-  lefthook-linux-arm64@1.7.4:
-    resolution: {integrity: sha512-WvXWzSM/e08n2f5lcC8j+pUMS0RzZftJK4zuBQ36TstSYXfBjWiw+FMnKCVZk6Q8Zc0icyF8sTmKQAyKCgX+UA==}
+  lefthook-linux-arm64@1.7.7:
+    resolution: {integrity: sha512-bUpDortnX1ACCd38uv2+I9vdsyP9Oe9FXZ4E/xX8nl+hnkgC80/nv1KxRI7MlaDdb1z4VgEO/0pT2OU1nM1C/A==}
     cpu: [arm64]
     os: [linux]
 
-  lefthook-linux-x64@1.7.4:
-    resolution: {integrity: sha512-eR5NxGzqPJm3wDTm4HStwGxOZ8Omb0ooodyuQdEOxtYidLrd4U18N14huwCEFd3BAOrjIWYV8plH+ReTZE56eg==}
+  lefthook-linux-x64@1.7.7:
+    resolution: {integrity: sha512-8dEuO0AzQkWFKSRvd2rzb/LtmgtEoQHhzgTANeq/2EyWgcfVb62b/qib75oZ0m9W4uvRvqTiLdaGELoS8ohWGA==}
     cpu: [x64]
     os: [linux]
 
-  lefthook-windows-arm64@1.7.4:
-    resolution: {integrity: sha512-C+MdHH+0ylermetMHwfHsYYNI5HI6QEOx7N4Iw4Ea6c3Yuj3eG3LsAzrhsup7KLSSBmDgIHOCJUx/Mfh2z+ATw==}
+  lefthook-windows-arm64@1.7.7:
+    resolution: {integrity: sha512-ZO45ynUnMPm+I8xGgmSc5BqtfByRJSRrhjXQ2lwNE9V+Zl3oMjCMPrs+3KLmrnKxi/k2bq/VHY86XvIhRo7o+g==}
     cpu: [arm64]
     os: [win32]
 
-  lefthook-windows-x64@1.7.4:
-    resolution: {integrity: sha512-BDQhiRzmMYPFQFtVtkRfUfeZuSlemG1oJfGKYXlCGFskvK9Jm1nGFnG0Ig63FAQaFdW33DFoLdr9ZKFTUQeSwQ==}
+  lefthook-windows-x64@1.7.7:
+    resolution: {integrity: sha512-z4/MxR+GMYZwgCxvLPGU4ebuXNUFdJrtrsAxMVbCw0LU/n7VCP+nfdaxcGO6ELqd4OOfpJCpBhzkvupFefmhhw==}
     cpu: [x64]
     os: [win32]
 
-  lefthook@1.7.4:
-    resolution: {integrity: sha512-lVv3nKH9l3KMDS3bySROvWJSw1+AsBHUO7xaA0rg1IEBZrj3+ePmM+a8elX+GU3Go1OzsZEYjo5AOOeLoZ7FQg==}
+  lefthook@1.7.7:
+    resolution: {integrity: sha512-b1giMxEuEb4MBcSkrEpQSFs5W9+vPlahAltxhWCqqarNzz8oisD4bMA/UGYAn/lvUhhC6oFo98zetQNpvjXp5Q==}
     hasBin: true
 
   leven@3.1.0:
@@ -4804,7 +4804,7 @@ packages:
   node-sass@9.0.0:
     resolution: {integrity: sha512-yltEuuLrfH6M7Pq2gAj5B6Zm7m+gdZoG66wTqG6mIZV/zijq3M2OO2HswtT6oBspPyFhHDcaxWpsBm0fRNDHPg==}
     engines: {node: '>=16'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    deprecated: Node Sass is no longer supported. Please use `sass` or `sass-embedded` instead.
     hasBin: true
 
   nopt@5.0.0:
@@ -11640,40 +11640,40 @@ snapshots:
       dotenv: 16.4.5
       dotenv-expand: 10.0.0
 
-  lefthook-darwin-arm64@1.7.4:
+  lefthook-darwin-arm64@1.7.7:
     optional: true
 
-  lefthook-darwin-x64@1.7.4:
+  lefthook-darwin-x64@1.7.7:
     optional: true
 
-  lefthook-freebsd-arm64@1.7.4:
+  lefthook-freebsd-arm64@1.7.7:
     optional: true
 
-  lefthook-freebsd-x64@1.7.4:
+  lefthook-freebsd-x64@1.7.7:
     optional: true
 
-  lefthook-linux-arm64@1.7.4:
+  lefthook-linux-arm64@1.7.7:
     optional: true
 
-  lefthook-linux-x64@1.7.4:
+  lefthook-linux-x64@1.7.7:
     optional: true
 
-  lefthook-windows-arm64@1.7.4:
+  lefthook-windows-arm64@1.7.7:
     optional: true
 
-  lefthook-windows-x64@1.7.4:
+  lefthook-windows-x64@1.7.7:
     optional: true
 
-  lefthook@1.7.4:
+  lefthook@1.7.7:
     optionalDependencies:
-      lefthook-darwin-arm64: 1.7.4
-      lefthook-darwin-x64: 1.7.4
-      lefthook-freebsd-arm64: 1.7.4
-      lefthook-freebsd-x64: 1.7.4
-      lefthook-linux-arm64: 1.7.4
-      lefthook-linux-x64: 1.7.4
-      lefthook-windows-arm64: 1.7.4
-      lefthook-windows-x64: 1.7.4
+      lefthook-darwin-arm64: 1.7.7
+      lefthook-darwin-x64: 1.7.7
+      lefthook-freebsd-arm64: 1.7.7
+      lefthook-freebsd-x64: 1.7.7
+      lefthook-linux-arm64: 1.7.7
+      lefthook-linux-x64: 1.7.7
+      lefthook-windows-arm64: 1.7.7
+      lefthook-windows-x64: 1.7.7
 
   leven@3.1.0: {}
 

@@ -73,8 +73,8 @@ importers:
         specifier: ^1.45.3
         version: 1.45.3
       '@storybook/addon-a11y':
-        specifier: ^8.2.6
-        version: 8.2.6(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))
+        specifier: ^8.2.7
+        version: 8.2.7(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))
       '@storybook/addon-console':
         specifier: ^3.0.0
         version: 3.0.0(@storybook/addon-actions@8.2.6(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4)))(react@18.3.1)
@@ -1638,10 +1638,10 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@storybook/addon-a11y@8.2.6':
-    resolution: {integrity: sha512-GRD50atWJz/V9E6Wyvx4HZWIBAR9m8A0Zn+yBoDVmWzXPOKI62HmWG5zpznCUR7stTt+gAkda1HG7H4KysTZWg==}
+  '@storybook/addon-a11y@8.2.7':
+    resolution: {integrity: sha512-fHr8a/+srayg1S8nBt6Urdi/4tHc/fO08V+5xJNZBXqjmWCxBkxslDxg1fYPixwFctoorpX279SxeVP7p/Px4w==}
     peerDependencies:
-      storybook: ^8.2.6
+      storybook: ^8.2.7
 
   '@storybook/addon-actions@8.2.6':
     resolution: {integrity: sha512-iCsf3V28/jJ95w2zd8aSvR4denoA2UYV3fpNCTGOURqICyKOG3cyVxvqKp8Hhcwn7trNOsK+HlL6q5gpv56ViA==}
@@ -1678,6 +1678,11 @@ packages:
     resolution: {integrity: sha512-03cV9USsfP3bS4wYV06DYcIaGPfoheQe53Q0Jr1B2yJUVyIPKvmO2nGjLBsqzeL3Wl7vSfLQn0/dUdxCcbqLsw==}
     peerDependencies:
       storybook: ^8.2.6
+
+  '@storybook/addon-highlight@8.2.7':
+    resolution: {integrity: sha512-YhiLtyJ3NBNV3FQoQo8RFjj59QGSmmeSwRvCjoac6No2DY5vkMW5a8mW6ORr6QYd7ratRNtd3AsPqksZIehRwQ==}
+    peerDependencies:
+      storybook: ^8.2.7
 
   '@storybook/addon-interactions@8.2.7':
     resolution: {integrity: sha512-WZXlwpBNLE483uKuR70A7nm+ZbcZNEmuVz/J1/u7dbi0BUWzmJUa9YIgVeQ/1KTwW8KTkxvB0TuUUH3aA4ZKlA==}
@@ -8036,9 +8041,9 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@storybook/addon-a11y@8.2.6(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))':
+  '@storybook/addon-a11y@8.2.7(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))':
     dependencies:
-      '@storybook/addon-highlight': 8.2.6(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))
+      '@storybook/addon-highlight': 8.2.7(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))
       axe-core: 4.9.1
       storybook: 8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4)
 
@@ -8107,6 +8112,11 @@ snapshots:
       - supports-color
 
   '@storybook/addon-highlight@8.2.6(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      storybook: 8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4)
+
+  '@storybook/addon-highlight@8.2.7(storybook@8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.2.7(@babel/preset-env@7.24.7(@babel/core@7.24.7))(utf-8-validate@6.0.4)

@@ -52,8 +52,8 @@ importers:
         specifier: ^1.8.3
         version: 1.8.3
       '@iconify-json/fa6-brands':
-        specifier: ^1.1.21
-        version: 1.1.21
+        specifier: ^1.1.22
+        version: 1.1.22
       '@iconify-json/fa6-solid':
         specifier: ^1.1.24
         version: 1.1.24
@@ -1073,8 +1073,8 @@ packages:
   '@hapi/topo@5.1.0':
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
 
-  '@iconify-json/fa6-brands@1.1.21':
-    resolution: {integrity: sha512-NS/BszVo8fUVpzA7/5b9tmkHzisZSUlm8kjdznk1Bux5p5QH3BxHZXrZUM5QsT90/7+omQC0EKukwf7H7nujZg==}
+  '@iconify-json/fa6-brands@1.1.22':
+    resolution: {integrity: sha512-a7x0hTjNI/cQ1XFyRQCyFfXJbYboYDRSmxeNgImRi8WwREDi00/U1e2WH+Xc4zBDFixBj/PQ5VOfCDaNy2ELTw==}
 
   '@iconify-json/fa6-solid@1.1.24':
     resolution: {integrity: sha512-ovO4kIW3CjoY36/QUTORg+7ZVlVpJqGSck+FUsqrvVJAr9MPeh3QN2UBnc9zyny41znxs7Kdc0Oz6aun4UUsyw==}
@@ -7485,7 +7485,7 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@iconify-json/fa6-brands@1.1.21':
+  '@iconify-json/fa6-brands@1.1.22':
     dependencies:
       '@iconify/types': 2.0.0
 

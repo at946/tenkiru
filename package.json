@@ -39,7 +39,7 @@
     "@iconify-json/mdi": "^1.1.68",
     "@iconify-json/simple-icons": "^1.1.111",
     "@iconify/tailwind": "^1.1.2",
-    "@playwright/test": "^1.45.3",
+    "@playwright/test": "^1.46.0",
     "@storybook/addon-a11y": "^8.2.7",
     "@storybook/addon-console": "^3.0.0",
     "@storybook/addon-essentials": "^8.2.7",

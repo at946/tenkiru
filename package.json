@@ -36,7 +36,7 @@
     "@iconify-json/fa6-brands": "^1.1.21",
     "@iconify-json/fa6-solid": "^1.1.24",
     "@iconify-json/ic": "^1.1.17",
-    "@iconify-json/mdi": "^1.1.67",
+    "@iconify-json/mdi": "^1.1.68",
     "@iconify-json/simple-icons": "^1.1.111",
     "@iconify/tailwind": "^1.1.2",
     "@playwright/test": "^1.45.3",

@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
-    "@iconify-json/fa6-brands": "^1.1.21",
+    "@iconify-json/fa6-brands": "^1.1.22",
     "@iconify-json/fa6-solid": "^1.1.24",
     "@iconify-json/ic": "^1.1.18",
     "@iconify-json/mdi": "^1.1.68",

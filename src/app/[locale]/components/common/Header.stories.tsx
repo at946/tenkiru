@@ -90,7 +90,7 @@ export const Japanese: Story = {
       name: 'Xでシェア',
     });
     const BMCLink: HTMLElement = canvas.getByRole('link', {
-      name: 'Buy me a coffee',
+      name: 'Sponser',
     });
     // Action
     // Assert

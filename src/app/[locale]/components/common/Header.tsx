@@ -34,11 +34,11 @@ const Header: NextPage<Props> = ({ currentLocale }) => {
             </LinkInNewTab>
             <LinkInNewTab
               href='https://www.buymeacoffee.com/at946'
-              title='Buy me a coffee'
-              ariaLabel='Buy me a coffee'
+              title={t('Sponser')}
+              ariaLabel={'Sponser'}
               className='header-item'
             >
-              <span className='icon-[simple-icons--buymeacoffee] text-2xl' />
+              <span className='icon-[mdi--heart] text-2xl' />
             </LinkInNewTab>
             <DarkModeToggle
               lightModeTitle={t('Switch to dark mode')}

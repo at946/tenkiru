@@ -57,7 +57,7 @@ export const English: Story = {
       name: 'Share to X',
     });
     const BMCLink: HTMLElement = canvas.getByRole('link', {
-      name: 'Buy me a coffee',
+      name: 'Sponser',
     });
     // Action
     // Assert

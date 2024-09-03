@@ -61,8 +61,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       '@iconify-json/mdi':
-        specifier: ^1.1.68
-        version: 1.1.68
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/simple-icons':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1079,8 +1079,8 @@ packages:
   '@iconify-json/ic@1.2.0':
     resolution: {integrity: sha512-L4+m77xTQB08X3I+3xs1+IrvK+aNcuN/7ODu5aUPznHKLU+/8UYcsjUgNHze6vPOGPQ0AG+kCwvy91EYPXSRxw==}
 
-  '@iconify-json/mdi@1.1.68':
-    resolution: {integrity: sha512-7//TKCiXLU6kNWeOJRTBbisofVO7rF1sD1TZTL4/V9nqlmVNczQ5IOY0GgKOTsitkcTnX9GXgrgbjw3OI5B69w==}
+  '@iconify-json/mdi@1.2.0':
+    resolution: {integrity: sha512-E9/3l5Syg3wfuarorFodhn4s8YorxhH3U3U20LaNBNiqw1kFNIDWhF6HymuzAD35k7RH0OBasJ+ZUyFtVVV6eg==}
 
   '@iconify-json/simple-icons@1.2.1':
     resolution: {integrity: sha512-eBXREU+jazfOBTl944Uq/ZpOJnbx1/IBw1MpLw0VmmNk0HSvmnvhdcz+3obja7uAp25yNtVcKo3I04ppnuv3NQ==}
@@ -7457,7 +7457,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/mdi@1.1.68':
+  '@iconify-json/mdi@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 

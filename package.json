@@ -17,7 +17,7 @@
     "test:playwright:report": "playwright show-report playwright/playwright-report"
   },
   "dependencies": {
-    "express": "^4.19.2",
+    "express": "^4.20.0",
     "next": "14.2.9",
     "next-intl": "^3.19.1",
     "node-sass": "^9.0.0",

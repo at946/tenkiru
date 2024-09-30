@@ -36,8 +36,8 @@ importers:
         specifier: ^1.79.3
         version: 1.79.3
       socket.io:
-        specifier: ^4.7.5
-        version: 4.7.5(utf-8-validate@6.0.4)
+        specifier: ^4.8.0
+        version: 4.8.0(utf-8-validate@6.0.4)
       socket.io-client:
         specifier: ^4.7.5
         version: 4.7.5(utf-8-validate@6.0.4)
@@ -3248,8 +3248,8 @@ packages:
     resolution: {integrity: sha512-RcyUFKA93/CXH20l4SoVvzZfrSDMOTUS3bWVpTt2FuFP+XYrL8i8oonHP7WInRyVHXh0n/ORtoeiE1os+8qkSw==}
     engines: {node: '>=10.0.0'}
 
-  engine.io@6.5.5:
-    resolution: {integrity: sha512-C5Pn8Wk+1vKBoHghJODM63yk8MvrO9EWZUfkAt5HAqIgPE4/8FF0PEGHXtEd40l223+cE5ABWuPzm38PHFXfMA==}
+  engine.io@6.6.1:
+    resolution: {integrity: sha512-NEpDCw9hrvBW+hVEOK4T7v0jFJ++KgtPl4jKFwsZVfG1XhS0dCrSb3VMb9gPAd7VAdW52VT1EnaNiU2vM8C0og==}
     engines: {node: '>=10.2.0'}
 
   enhanced-resolve@5.17.0:
@@ -5578,8 +5578,8 @@ packages:
     resolution: {integrity: sha512-/GbIKmo8ioc+NIWIhwdecY0ge+qVBSMdgxGygevmdHj24bsfgtCmcUUcQ5ZzcylGFHsN3k4HB4Cgkl96KVnuew==}
     engines: {node: '>=10.0.0'}
 
-  socket.io@4.7.5:
-    resolution: {integrity: sha512-DmeAkF6cwM9jSfmp6Dr/5/mfMwb5Z5qRrSXLpo3Fq5SqyU8CMF15jIN4ZhfSwu35ksM1qmHZDQ/DK5XTccSTvA==}
+  socket.io@4.8.0:
+    resolution: {integrity: sha512-8U6BEgGjQOfGz3HHTYaC/L1GaxDCJ/KM0XTkJly0EhZ5U/du9uNEZy4ZgYzEzIqlx2CMm25CrCqr1ck899eLNA==}
     engines: {node: '>=10.2.0'}
 
   socks-proxy-agent@6.2.1:
@@ -10031,7 +10031,7 @@ snapshots:
 
   engine.io-parser@5.2.2: {}
 
-  engine.io@6.5.5(utf-8-validate@6.0.4):
+  engine.io@6.6.1(utf-8-validate@6.0.4):
     dependencies:
       '@types/cookie': 0.4.1
       '@types/cors': 2.8.17
@@ -12824,13 +12824,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  socket.io@4.7.5(utf-8-validate@6.0.4):
+  socket.io@4.8.0(utf-8-validate@6.0.4):
     dependencies:
       accepts: 1.3.8
       base64id: 2.0.0
       cors: 2.8.5
       debug: 4.3.5
-      engine.io: 6.5.5(utf-8-validate@6.0.4)
+      engine.io: 6.6.1(utf-8-validate@6.0.4)
       socket.io-adapter: 2.5.5(utf-8-validate@6.0.4)
       socket.io-parser: 4.2.4
     transitivePeerDependencies:

@@ -82,8 +82,8 @@ importers:
         specifier: ^8.3.5
         version: 8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))
       '@storybook/addon-interactions':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))
+        specifier: ^8.3.5
+        version: 8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))
       '@storybook/addon-links':
         specifier: ^8.3.5
         version: 8.3.5(react@18.3.1)(storybook@8.3.5(utf-8-validate@6.0.4))
@@ -1653,10 +1653,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/addon-interactions@8.3.4':
-    resolution: {integrity: sha512-ORxqe35wUmF7EDHo45mdDHiju3Ryk2pZ1vO9PyvW6ZItNlHt/IxAr7T/TysGejZ/eTBg6tMZR3ExGky3lTg/CQ==}
+  '@storybook/addon-interactions@8.3.5':
+    resolution: {integrity: sha512-GtTy/A+mG7vDOahQr2avT4dpWtCRiFDSYcWyuQOZm10y8VDDw157HQM+FuhxjV9Owrrohy9F24oBUwRG8H3b5A==}
     peerDependencies:
-      storybook: ^8.3.4
+      storybook: ^8.3.5
 
   '@storybook/addon-links@8.3.5':
     resolution: {integrity: sha512-giRCpn6cfJMYPnVJkojoQDO5ae6098fgY9YgAhwaJej/9dufNcioFdbiyfK1vyzbG6TGeTmJ9ncWCXgWRtzxPQ==}
@@ -1776,11 +1776,6 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  '@storybook/instrumenter@8.3.4':
-    resolution: {integrity: sha512-jVhfNOPekOyJmta0BTkQl9Z6rgRbFHlc0eV4z1oSrzaawSlc9TFzAeDCtCP57vg3FuBX8ydDYAvyZ7s4xPpLyg==}
-    peerDependencies:
-      storybook: ^8.3.4
-
   '@storybook/instrumenter@8.3.5':
     resolution: {integrity: sha512-NLDXai5y2t1ITgHVK9chyL0rMFZbICCOGcnTbyWhkLbiEWZKPJ8FuB8+g+Ba6zwtCve1A1Cnb4O2LOWy7TgWQw==}
     peerDependencies:
@@ -1869,11 +1864,6 @@ packages:
     resolution: {integrity: sha512-Nc4djXw3Lv3AAXg6TJ7yVTeuMryjMsTDd8GCbE/PStU602rpe8syEqElz78GPoJqB1VYWQ3T9pcu93MKyHT+xQ==}
     engines: {node: ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
-
-  '@storybook/test@8.3.4':
-    resolution: {integrity: sha512-HRiUenitln8QPHu6DEWUg9s9cEoiGN79lMykzXzw9shaUvdEIhWCsh82YKtmB3GJPj6qcc6dZL/Aio8srxyGAg==}
-    peerDependencies:
-      storybook: ^8.3.4
 
   '@storybook/test@8.3.5':
     resolution: {integrity: sha512-1BXWsUGWk9FiKKelZZ55FDJdeoL8uRBHbjTYBRM2xJLhdNSvGzI4Tb3bkmxPpGn72Ua6AyldhlTxr2BpUFKOHA==}
@@ -7858,11 +7848,11 @@ snapshots:
       '@storybook/global': 5.0.0
       storybook: 8.3.5(utf-8-validate@6.0.4)
 
-  '@storybook/addon-interactions@8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))':
+  '@storybook/addon-interactions@8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))
-      '@storybook/test': 8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))
+      '@storybook/instrumenter': 8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))
+      '@storybook/test': 8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))
       polished: 4.3.1
       storybook: 8.3.5(utf-8-validate@6.0.4)
       ts-dedent: 2.2.0
@@ -8098,13 +8088,6 @@ snapshots:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-
-  '@storybook/instrumenter@8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))':
-    dependencies:
-      '@storybook/global': 5.0.0
-      '@vitest/utils': 2.1.1
-      storybook: 8.3.5(utf-8-validate@6.0.4)
-      util: 0.12.5
 
   '@storybook/instrumenter@8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))':
     dependencies:
@@ -8342,19 +8325,6 @@ snapshots:
       - storybook
       - supports-color
       - ts-node
-
-  '@storybook/test@8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))':
-    dependencies:
-      '@storybook/csf': 0.1.11
-      '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))
-      '@testing-library/dom': 10.4.0
-      '@testing-library/jest-dom': 6.5.0
-      '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
-      '@vitest/expect': 2.0.5
-      '@vitest/spy': 2.0.5
-      storybook: 8.3.5(utf-8-validate@6.0.4)
-      util: 0.12.5
 
   '@storybook/test@8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))':
     dependencies:

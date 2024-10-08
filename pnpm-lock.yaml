@@ -73,8 +73,8 @@ importers:
         specifier: ^1.47.2
         version: 1.47.2
       '@storybook/addon-a11y':
-        specifier: ^8.3.4
-        version: 8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))
+        specifier: ^8.3.5
+        version: 8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))
       '@storybook/addon-console':
         specifier: ^3.0.0
         version: 3.0.0(@storybook/addon-actions@8.3.5(storybook@8.3.5(utf-8-validate@6.0.4)))(react@18.3.1)
@@ -1607,10 +1607,10 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@storybook/addon-a11y@8.3.4':
-    resolution: {integrity: sha512-mbLAJ9vW879Fq66zTUp7Gn7GQ9ZieYDj90ngMsZIjX42SsJEkeIrwbpkwbHlJBlWm2cm7hcF+BrULI0CmTIFpQ==}
+  '@storybook/addon-a11y@8.3.5':
+    resolution: {integrity: sha512-/19UO8IXbyfcYK5K8ejSYF+hC+EK79c0bBPHMNeYSFOHSqQM3KoMo+TLIcLsuhuRClmlM+4Zs+VSIYDwc+d3ig==}
     peerDependencies:
-      storybook: ^8.3.4
+      storybook: ^8.3.5
 
   '@storybook/addon-actions@8.3.5':
     resolution: {integrity: sha512-t8D5oo+4XfD+F8091wLa2y/CDd/W2lExCeol5Vm1tp5saO+u6f2/d7iykLhTowWV84Uohi3D073uFeyTAlGebg==}
@@ -1642,11 +1642,6 @@ packages:
     resolution: {integrity: sha512-hXTtPuN4/IsXjUrkMPAuz1qKAl8DovdXpjQgjQs7jSAVx3kc4BZaGqJ3gaVenKtO8uDchmA92BoQygpkc8eWhw==}
     peerDependencies:
       storybook: ^8.3.5
-
-  '@storybook/addon-highlight@8.3.4':
-    resolution: {integrity: sha512-rxZTeuZyZ7RnU+xmRhS01COFLbGnVEmlUNxBw8ArsrTEZKW5PbKpIxNLTj9F0zdH8H0MfryJGP+Aadcm0oHWlw==}
-    peerDependencies:
-      storybook: ^8.3.4
 
   '@storybook/addon-highlight@8.3.5':
     resolution: {integrity: sha512-ku0epul9aReCR3Gv/emwYnsqg3vgux5OmYMjoDcJC7s+LyfweSzLV/f5t9gSHazikJElh5TehtVkWbC4QfbGSw==}
@@ -7772,9 +7767,9 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@storybook/addon-a11y@8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))':
+  '@storybook/addon-a11y@8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))':
     dependencies:
-      '@storybook/addon-highlight': 8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))
+      '@storybook/addon-highlight': 8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))
       axe-core: 4.9.1
       storybook: 8.3.5(utf-8-validate@6.0.4)
 
@@ -7837,11 +7832,6 @@ snapshots:
       '@storybook/addon-viewport': 8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))
       storybook: 8.3.5(utf-8-validate@6.0.4)
       ts-dedent: 2.2.0
-
-  '@storybook/addon-highlight@8.3.4(storybook@8.3.5(utf-8-validate@6.0.4))':
-    dependencies:
-      '@storybook/global': 5.0.0
-      storybook: 8.3.5(utf-8-validate@6.0.4)
 
   '@storybook/addon-highlight@8.3.5(storybook@8.3.5(utf-8-validate@6.0.4))':
     dependencies:

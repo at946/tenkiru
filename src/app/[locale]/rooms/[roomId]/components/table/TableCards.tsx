@@ -24,7 +24,7 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
         const isAbleToGetComments: boolean = room.isOpenPhase && !isTableCardBlank;
 
         return (
-          <div key={tableCard.userId} role='group' aria-label={t('Table cards group')}>
+          <fieldset key={tableCard.userId} aria-label={t('Table cards group')}>
             <div className='mb-2 flex justify-center'>
               <TableCard value={tableCard.value} isOpen={room.isOpenPhase} />
             </div>
@@ -42,7 +42,7 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
                 <span className='icon-[fa6-solid--comment]' />
               </Button>
             </div>
-          </div>
+          </fieldset>
         );
       })}
     </div>

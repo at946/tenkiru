@@ -28,7 +28,7 @@ test('When a player selects a card, the card should become selected and be place
   await expect(roomPage1.blankTableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage1.selectedHandsCard).toHaveText(/^0$/);
+  await expect(roomPage1.selectedHandsCard).toHaveValue(/^0$/);
 
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.blankTableCards).toHaveCount(1);
@@ -49,7 +49,7 @@ test('When a player selects the selected card again, the card should become unse
   await expect(roomPage1.blankTableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage1.selectedHandsCard).toHaveText(/^0$/);
+  await expect(roomPage1.selectedHandsCard).toHaveValue(/^0$/);
 
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.blankTableCards).toHaveCount(1);
@@ -84,7 +84,7 @@ test('When a player selects another card rather than the present selected card, 
   await expect(roomPage1.blankTableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage1.selectedHandsCard).toHaveText(/^0$/);
+  await expect(roomPage1.selectedHandsCard).toHaveValue(/^0$/);
 
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.blankTableCards).toHaveCount(1);
@@ -99,7 +99,7 @@ test('When a player selects another card rather than the present selected card, 
   await expect(roomPage1.blankTableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage1.selectedHandsCard).toHaveText(/^1$/);
+  await expect(roomPage1.selectedHandsCard).toHaveValue(/^1$/);
 
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.blankTableCards).toHaveCount(1);

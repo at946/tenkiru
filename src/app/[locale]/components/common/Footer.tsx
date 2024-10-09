@@ -8,7 +8,7 @@ const Footer: NextPage = () => {
   const t = useTranslations('Footer');
 
   return (
-    <footer className='container mx-auto mt-auto pt-20 pb-5 text-center' role='contentinfo'>
+    <footer className='container mx-auto mt-auto pt-20 pb-5 text-center'>
       <div className='mb-2 flex justify-center gap-4'>
         <Link href='/tos' className='footer-item'>
           {t('Terms of Use')}

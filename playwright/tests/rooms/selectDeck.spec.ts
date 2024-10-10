@@ -14,7 +14,7 @@ test('On the room page, the fibonacci deck should be selected by default.', asyn
   await expect(roomPage.deckSelect).toHaveValue('fibonacci');
   await expect(roomPage.handsCards).toHaveCount(fibonacciDeck.length);
   (await roomPage.handsCards.all()).forEach(async (handsCard, index) => {
-    await expect(handsCard).toHaveText(fibonacciDeck[index]);
+    await expect(handsCard).toHaveValue(fibonacciDeck[index]);
   });
 });
 
@@ -31,12 +31,12 @@ test('On the room page, when the deck type is changed, the selected card should 
   await roomPage2.selectCard('1');
 
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage1.selectedHandsCard).toHaveText('0');
+  await expect(roomPage1.selectedHandsCard).toHaveValue('0');
   await expect(roomPage1.tableCards).toHaveCount(2);
   await expect(roomPage1.faceDownTableCards).toHaveCount(2);
 
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
-  await expect(roomPage2.selectedHandsCard).toHaveText('1');
+  await expect(roomPage2.selectedHandsCard).toHaveValue('1');
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.faceDownTableCards).toHaveCount(2);
 
@@ -108,13 +108,13 @@ test("On the room page, when a user selects 'fibonacci' as the deck, the players
   await expect(roomPage1.deckSelect).toHaveValue('fibonacci');
   await expect(roomPage1.handsCards).toHaveCount(fibonacciDeck.length);
   (await roomPage1.handsCards.all()).forEach(async (handsCard, index) => {
-    await expect(handsCard).toHaveText(fibonacciDeck[index]);
+    await expect(handsCard).toHaveValue(fibonacciDeck[index]);
   });
 
   await expect(roomPage2.deckSelect).toHaveValue('fibonacci');
   await expect(roomPage2.handsCards).toHaveCount(fibonacciDeck.length);
   (await roomPage2.handsCards.all()).forEach(async (handsCard, index) => {
-    await expect(handsCard).toHaveText(fibonacciDeck[index]);
+    await expect(handsCard).toHaveValue(fibonacciDeck[index]);
   });
 });
 
@@ -136,13 +136,13 @@ test("On the room page, when a user selects '0-10' as the deck, the players' han
   await expect(roomPage1.deckSelect).toHaveValue('sequential');
   await expect(roomPage1.handsCards).toHaveCount(sequentialDeck.length);
   (await roomPage1.handsCards.all()).forEach(async (handsCard, index) => {
-    await expect(handsCard).toHaveText(sequentialDeck[index]);
+    await expect(handsCard).toHaveValue(sequentialDeck[index]);
   });
 
   await expect(roomPage2.deckSelect).toHaveValue('sequential');
   await expect(roomPage2.handsCards).toHaveCount(sequentialDeck.length);
   (await roomPage2.handsCards.all()).forEach(async (handsCard, index) => {
-    await expect(handsCard).toHaveText(sequentialDeck[index]);
+    await expect(handsCard).toHaveValue(sequentialDeck[index]);
   });
 });
 
@@ -164,12 +164,12 @@ test("On the room page, when a user selects 'T Shirt Size' as the deck, the play
   await expect(roomPage1.deckSelect).toHaveValue('tShirtSize');
   await expect(roomPage1.handsCards).toHaveCount(tShirtSizeDeck.length);
   (await roomPage1.handsCards.all()).forEach(async (handsCard, index) => {
-    await expect(handsCard).toHaveText(tShirtSizeDeck[index]);
+    await expect(handsCard).toHaveValue(tShirtSizeDeck[index]);
   });
 
   await expect(roomPage2.deckSelect).toHaveValue('tShirtSize');
   await expect(roomPage2.handsCards).toHaveCount(tShirtSizeDeck.length);
   (await roomPage2.handsCards.all()).forEach(async (handsCard, index) => {
-    await expect(handsCard).toHaveText(tShirtSizeDeck[index]);
+    await expect(handsCard).toHaveValue(tShirtSizeDeck[index]);
   });
 });

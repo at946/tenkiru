@@ -62,13 +62,12 @@ export default class RoomPage {
     this.replayButton = page.getByRole('button', { name: 'Again' });
     this.userTypeSelect = page.getByRole('combobox', { name: 'User type: ' });
     this.deckSelect = page.getByRole('combobox', { name: 'Deck : ' });
-    this.hands = page.getByRole('group', { name: 'Hands' });
-    this.handsCards = this.hands.getByRole('option', { name: 'Hands card' });
-    this.selectedHandsCard = this.hands.getByRole('option', {
-      name: 'Hands card',
-      selected: true,
+    this.hands = page.getByRole('radiogroup', { name: 'Hands' });
+    this.handsCards = this.hands.getByRole('radio', { name: 'Hands card' });
+    this.selectedHandsCard = this.hands.getByRole('radio', {
+      checked: true,
     });
-    this.disabledHandsCard = this.hands.getByRole('option', {
+    this.disabledHandsCard = this.hands.getByRole('radio', {
       name: 'Hands card',
       disabled: true,
     });
@@ -100,8 +99,7 @@ export default class RoomPage {
   }
 
   async selectCard(value: string) {
-    const reg: RegExp = new RegExp(`^${value.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')}$`);
-    await this.handsCards.filter({ hasText: reg }).click();
+    await this.hands.getByText(value, { exact: true }).click();
   }
 
   async openCards() {

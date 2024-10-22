@@ -82,8 +82,8 @@ importers:
         specifier: ^8.3.6
         version: 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))(webpack-sources@3.2.3)
       '@storybook/addon-interactions':
-        specifier: ^8.3.5
-        version: 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+        specifier: ^8.3.6
+        version: 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/addon-links':
         specifier: ^8.3.6
         version: 8.3.6(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))
@@ -1543,10 +1543,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.6
 
-  '@storybook/addon-interactions@8.3.5':
-    resolution: {integrity: sha512-GtTy/A+mG7vDOahQr2avT4dpWtCRiFDSYcWyuQOZm10y8VDDw157HQM+FuhxjV9Owrrohy9F24oBUwRG8H3b5A==}
+  '@storybook/addon-interactions@8.3.6':
+    resolution: {integrity: sha512-Y0YUJj0oE1+6DFkaTPXM/8+dwTSoy0ltj2Sn2KOTJYzxKQYXBp8TlUv0QOQiGH7o/GKXIWek/VlTuvG/JEeiWw==}
     peerDependencies:
-      storybook: ^8.3.5
+      storybook: ^8.3.6
 
   '@storybook/addon-links@8.3.6':
     resolution: {integrity: sha512-EGEH/kEjndEldbqyiJ8XSASkxqwzL/lgA/+6mHpa6Ljxhk1s5IMGcdA1ymJYJ2BpNdkUxRj/uxAa38eGcQiJ/g==}
@@ -1652,11 +1652,6 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-
-  '@storybook/instrumenter@8.3.5':
-    resolution: {integrity: sha512-NLDXai5y2t1ITgHVK9chyL0rMFZbICCOGcnTbyWhkLbiEWZKPJ8FuB8+g+Ba6zwtCve1A1Cnb4O2LOWy7TgWQw==}
-    peerDependencies:
-      storybook: ^8.3.5
 
   '@storybook/instrumenter@8.3.6':
     resolution: {integrity: sha512-0RowbKwoB/s7rtymlnKNiyWN1Z3ZK5mwgzVjlRmzxDL8hrdi5KDjTNExuJTRR3ZaBP2RR0/I3m/n0p9JhHAZvg==}
@@ -1764,11 +1759,6 @@ packages:
     resolution: {integrity: sha512-Nc4djXw3Lv3AAXg6TJ7yVTeuMryjMsTDd8GCbE/PStU602rpe8syEqElz78GPoJqB1VYWQ3T9pcu93MKyHT+xQ==}
     engines: {node: ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
-
-  '@storybook/test@8.3.5':
-    resolution: {integrity: sha512-1BXWsUGWk9FiKKelZZ55FDJdeoL8uRBHbjTYBRM2xJLhdNSvGzI4Tb3bkmxPpGn72Ua6AyldhlTxr2BpUFKOHA==}
-    peerDependencies:
-      storybook: ^8.3.5
 
   '@storybook/test@8.3.6':
     resolution: {integrity: sha512-WIc8LzK9jaEw+e3OiweEM2j3cppPzsWod59swuf6gDBf176EQLIyjtVc+Kh3qO4NNkcL+lwmqaLPjOxlBLaDbg==}
@@ -7432,11 +7422,11 @@ snapshots:
       '@storybook/global': 5.0.0
       storybook: 8.3.6(utf-8-validate@6.0.4)
 
-  '@storybook/addon-interactions@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))':
+  '@storybook/addon-interactions@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
-      '@storybook/test': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/instrumenter': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/test': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       polished: 4.3.1
       storybook: 8.3.6(utf-8-validate@6.0.4)
       ts-dedent: 2.2.0
@@ -7599,13 +7589,6 @@ snapshots:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-
-  '@storybook/instrumenter@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))':
-    dependencies:
-      '@storybook/global': 5.0.0
-      '@vitest/utils': 2.1.2
-      storybook: 8.3.6(utf-8-validate@6.0.4)
-      util: 0.12.5
 
   '@storybook/instrumenter@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
     dependencies:
@@ -7846,19 +7829,6 @@ snapshots:
       - storybook
       - supports-color
       - ts-node
-
-  '@storybook/test@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))':
-    dependencies:
-      '@storybook/csf': 0.1.11
-      '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
-      '@testing-library/dom': 10.4.0
-      '@testing-library/jest-dom': 6.5.0
-      '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
-      '@vitest/expect': 2.0.5
-      '@vitest/spy': 2.0.5
-      storybook: 8.3.6(utf-8-validate@6.0.4)
-      util: 0.12.5
 
   '@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
     dependencies:

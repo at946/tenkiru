@@ -97,8 +97,8 @@ importers:
         specifier: ^8.3.6
         version: 8.3.6(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(next@14.2.15(@babel/core@7.25.8)(@playwright/test@1.48.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2))(node-sass@9.0.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2)(storybook@8.3.6(utf-8-validate@6.0.4))(type-fest@2.19.0)(typescript@5.6.3)(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))
       '@storybook/preview-api':
-        specifier: ^8.3.5
-        version: 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+        specifier: ^8.3.6
+        version: 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/react':
         specifier: ^8.3.5
         version: 8.3.5(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
@@ -1704,11 +1704,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  '@storybook/preview-api@8.3.5':
-    resolution: {integrity: sha512-VPqpudE8pmjTLvdNJoW/2//nqElDgUOmIn3QxbbCmdZTHDg5tFtxuqwdlNfArF0TxvTSBDIulXt/Q6K56TAfTg==}
-    peerDependencies:
-      storybook: ^8.3.5
 
   '@storybook/preview-api@8.3.6':
     resolution: {integrity: sha512-/Wxvb7wbI2O2iH63arRQQyyojA630vibdshkFjuC/u1nYdptEV1jkxa0OYmbZbKCn4/ze6uH4hfsKOpDPV9SWg==}
@@ -7730,10 +7725,6 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@storybook/preview-api@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))':
-    dependencies:
-      storybook: 8.3.6(utf-8-validate@6.0.4)
-
   '@storybook/preview-api@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
     dependencies:
       storybook: 8.3.6(utf-8-validate@6.0.4)
@@ -7769,7 +7760,7 @@ snapshots:
       '@storybook/components': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/global': 5.0.0
       '@storybook/manager-api': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
-      '@storybook/preview-api': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/preview-api': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/react-dom-shim': 8.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/theming': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
       '@types/escodegen': 0.0.6
@@ -7832,7 +7823,7 @@ snapshots:
       '@storybook/core-common': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/csf': 0.1.11
       '@storybook/csf-tools': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
-      '@storybook/preview-api': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/preview-api': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       '@swc/core': 1.7.35(@swc/helpers@0.5.5)
       '@swc/jest': 0.2.36(@swc/core@1.7.35(@swc/helpers@0.5.5))
       expect-playwright: 0.8.0

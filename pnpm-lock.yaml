@@ -94,14 +94,14 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3
       '@storybook/nextjs':
-        specifier: ^8.3.5
-        version: 8.3.5(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(next@14.2.15(@babel/core@7.25.8)(@playwright/test@1.48.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2))(node-sass@9.0.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2)(storybook@8.3.6(utf-8-validate@6.0.4))(type-fest@2.19.0)(typescript@5.6.3)(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))
+        specifier: ^8.3.6
+        version: 8.3.6(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(next@14.2.15(@babel/core@7.25.8)(@playwright/test@1.48.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2))(node-sass@9.0.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2)(storybook@8.3.6(utf-8-validate@6.0.4))(type-fest@2.19.0)(typescript@5.6.3)(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))
       '@storybook/preview-api':
         specifier: ^8.3.5
         version: 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/react':
         specifier: ^8.3.5
-        version: 8.3.5(@storybook/test@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
+        version: 8.3.5(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
       '@storybook/test-runner':
         specifier: ^0.19.1
         version: 0.19.1(@swc/helpers@0.5.5)(@types/node@22.7.6)(storybook@8.3.6(utf-8-validate@6.0.4))
@@ -1589,10 +1589,10 @@ packages:
       react-dom:
         optional: true
 
-  '@storybook/builder-webpack5@8.3.5':
-    resolution: {integrity: sha512-rhmfdiSlDn3Arki7IMYk11PO29rYuYM4LZ8GlNqREU7VUl/8Vngo/jFIa4pKaIns3ql1RrwzO1wm9JvuL/4ydA==}
+  '@storybook/builder-webpack5@8.3.6':
+    resolution: {integrity: sha512-Eqn2k8aA9f0o6IMQNAxGAMfSDeTP3YYCQAtOL5Gt5lgrqLV5JMTbZOfmaRBZ82ej/BBSAopnQKIJjQBBFx6kAQ==}
     peerDependencies:
-      storybook: ^8.3.5
+      storybook: ^8.3.6
       typescript: '*'
     peerDependenciesMeta:
       typescript:
@@ -1602,6 +1602,11 @@ packages:
     resolution: {integrity: sha512-Rq28YogakD3FO4F8KwAtGpo1g3t4V/gfCLqTQ8B6oQUFoxLqegkWk/DlwCzvoJndXuQJfdSyM6+r1JcA4Nql5A==}
     peerDependencies:
       storybook: ^8.3.5
+
+  '@storybook/components@8.3.6':
+    resolution: {integrity: sha512-TXuoGZY7X3iixF45lXkYOFk8k2q9OHcqHyHyem1gATLLQXgyOvDgzm+VB7uKBNzssRQPEE+La70nfG8bq/viRw==}
+    peerDependencies:
+      storybook: ^8.3.6
 
   '@storybook/core-common@8.3.5':
     resolution: {integrity: sha512-Dz91pcUH4mGgKRyo5AKiD6bhjC511d7J30SmMs5lgQl7nJWlepqon7Qhy+SzsEWTWtFTgRGPs//lKTmEaVT9ug==}
@@ -1613,10 +1618,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/core-webpack@8.3.5':
-    resolution: {integrity: sha512-mN8BHNc6lSGUf/nKgDr6XoTt1cX+Tap9RnKMUiROCDzfVlJPeJBrG4qrTOok7AwObzeDl9DNFyun6+pVgXJe7A==}
+  '@storybook/core-webpack@8.3.6':
+    resolution: {integrity: sha512-ks306CFKD7FePQzRYyTjddiLsSriceblzv4rI+IjVtftkJvcEbxub2yWkV27kPP/e9kSd4Li3M34bX5mkiwkZA==}
     peerDependencies:
-      storybook: ^8.3.5
+      storybook: ^8.3.6
 
   '@storybook/core@8.3.6':
     resolution: {integrity: sha512-frwfgf0EJ7QL29DWZ5bla/g0eOOWqJGd14t+VUBlpP920zB6sdDfo7+p9JoCjD9u08lGeFDqbPNKayUk+0qDag==}
@@ -1653,6 +1658,11 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
+  '@storybook/instrumenter@8.3.6':
+    resolution: {integrity: sha512-0RowbKwoB/s7rtymlnKNiyWN1Z3ZK5mwgzVjlRmzxDL8hrdi5KDjTNExuJTRR3ZaBP2RR0/I3m/n0p9JhHAZvg==}
+    peerDependencies:
+      storybook: ^8.3.6
+
   '@storybook/jest@0.2.3':
     resolution: {integrity: sha512-ov5izrmbAFObzKeh9AOC5MlmFxAcf0o5i6YFGae9sDx6DGh6alXsRM+chIbucVkUwVHVlSzdfbLDEFGY/ShaYw==}
     deprecated: In Storybook 8, this package functionality has been integrated to a new package called @storybook/test, which uses Vitest APIs for an improved experience. When upgrading to Storybook 8 with 'npx storybook@latest upgrade', you will get prompted and will get an automigration for the new package. Please migrate when you can.
@@ -1662,14 +1672,19 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/nextjs@8.3.5':
-    resolution: {integrity: sha512-YMjDSVd7BHIvj6oLMEFMKRvfZ83INxZinxtrx4ZZXGe+5iP8j7rcV7D67lxKQKWNy36d9Foj4pjT85yYj5s+ZQ==}
+  '@storybook/manager-api@8.3.6':
+    resolution: {integrity: sha512-Xt5VFZcL+G/9uzaHjzWFhxRNrP+4rPhSRKEvCZorAbC9+Hv+ZDs1JSZS5wMb4WKpXBZ0rwDVOLwngqbVtfRHuQ==}
+    peerDependencies:
+      storybook: ^8.3.6
+
+  '@storybook/nextjs@8.3.6':
+    resolution: {integrity: sha512-jNrEcS26OER645kJ3nMuSSgu8BWJhEY8MM9rDlE/133A/hojTBc2vZXwSfgZ22tAc7ckrbyw2gygEUPI2rHImA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       next: ^13.5.0 || ^14.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.3.5
+      storybook: ^8.3.6
       typescript: '*'
       webpack: ^5.0.0
     peerDependenciesMeta:
@@ -1678,13 +1693,13 @@ packages:
       webpack:
         optional: true
 
-  '@storybook/preset-react-webpack@8.3.5':
-    resolution: {integrity: sha512-laS9CiZrZ4CSnBTBfkBba3hmlDhzcjIfCvx8/rk3SZ+zh93NpqXixzRt6m0UH2po63dpdu21nXrsW5Cfs88Ypw==}
+  '@storybook/preset-react-webpack@8.3.6':
+    resolution: {integrity: sha512-Ar0vhJITXa4xsXT3RdgYZ2mhXxE3jfUisQzsITey5a2RVgnSBIENggmRZ/6j1oVgEXFthbarNEsebGiA+2vDZg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.3.5
+      storybook: ^8.3.6
       typescript: '*'
     peerDependenciesMeta:
       typescript:
@@ -1694,6 +1709,11 @@ packages:
     resolution: {integrity: sha512-VPqpudE8pmjTLvdNJoW/2//nqElDgUOmIn3QxbbCmdZTHDg5tFtxuqwdlNfArF0TxvTSBDIulXt/Q6K56TAfTg==}
     peerDependencies:
       storybook: ^8.3.5
+
+  '@storybook/preview-api@8.3.6':
+    resolution: {integrity: sha512-/Wxvb7wbI2O2iH63arRQQyyojA630vibdshkFjuC/u1nYdptEV1jkxa0OYmbZbKCn4/ze6uH4hfsKOpDPV9SWg==}
+    peerDependencies:
+      storybook: ^8.3.6
 
   '@storybook/react-docgen-typescript-plugin@1.0.6--canary.9.0c3f3b7.0':
     resolution: {integrity: sha512-KUqXC3oa9JuQ0kZJLBhVdS4lOneKTOopnNBK4tUAgoxWQ3u/IjzdueZjFr7gyBrXMoU6duutk3RQR9u8ZpYJ4Q==}
@@ -1708,6 +1728,13 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       storybook: ^8.3.5
 
+  '@storybook/react-dom-shim@8.3.6':
+    resolution: {integrity: sha512-9BO6VXIdli4GHSfiP/Z0gwAf7oQig3D/yWK2U1+91UWDV8nIAgnNBAi76U4ORC6MiK5MdkDfIikIxnLLeLnahA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      storybook: ^8.3.6
+
   '@storybook/react@8.3.5':
     resolution: {integrity: sha512-kuBPe/wBin10SWr4EWPKxiTRGQ4RD2etGEVWVQLqVpOuJp/J2hVvXQHtCfZXU4TZT5x4PBbPRswbr58+XlF+kQ==}
     engines: {node: '>=18.0.0'}
@@ -1716,6 +1743,21 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       storybook: ^8.3.5
+      typescript: '>= 4.2.x'
+    peerDependenciesMeta:
+      '@storybook/test':
+        optional: true
+      typescript:
+        optional: true
+
+  '@storybook/react@8.3.6':
+    resolution: {integrity: sha512-s3COryqIOYK7urgZaCPb77zlxGjPKr6dIsYmblQJcsFY2ZlG2x0Ysm8b5oRgD8Pv71hCJ0PKYA4RzDgBVYJS9A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@storybook/test': 8.3.6
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      storybook: ^8.3.6
       typescript: '>= 4.2.x'
     peerDependenciesMeta:
       '@storybook/test':
@@ -1733,6 +1775,11 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
+  '@storybook/test@8.3.6':
+    resolution: {integrity: sha512-WIc8LzK9jaEw+e3OiweEM2j3cppPzsWod59swuf6gDBf176EQLIyjtVc+Kh3qO4NNkcL+lwmqaLPjOxlBLaDbg==}
+    peerDependencies:
+      storybook: ^8.3.6
+
   '@storybook/testing-library@0.2.2':
     resolution: {integrity: sha512-L8sXFJUHmrlyU2BsWWZGuAjv39Jl1uAqUHdxmN42JY15M4+XCMjGlArdCCjDe1wpTSW6USYISA9axjZojgtvnw==}
     deprecated: In Storybook 8, this package functionality has been integrated to a new package called @storybook/test, which uses Vitest APIs for an improved experience. When upgrading to Storybook 8 with 'npx storybook@latest upgrade', you will get prompted and will get an automigration for the new package. Please migrate when you can.
@@ -1741,6 +1788,11 @@ packages:
     resolution: {integrity: sha512-9HmDDyC691oqfg4RziIM9ElsS2HITaxmH7n/yeUPtuirkPdAQzqOzhvH/Sa0qOhifzs8VjR+Gd/a/ZQ+S38r7w==}
     peerDependencies:
       storybook: ^8.3.5
+
+  '@storybook/theming@8.3.6':
+    resolution: {integrity: sha512-LQjUk6GXRW9ELkoBKuqzQKFUW+ajfGPfVELcfs3/VQX61VhthJ4olov4bGPc04wsmmFMgN/qODxT485IwOHfPQ==}
+    peerDependencies:
+      storybook: ^8.3.6
 
   '@swc/core-darwin-arm64@1.7.35':
     resolution: {integrity: sha512-BQSSozVxjxS+SVQz6e3GC/+OBWGIK3jfe52pWdANmycdjF3ch7lrCKTHTU7eHwyoJ96mofszPf5AsiVJF34Fwg==}
@@ -7445,9 +7497,9 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@storybook/builder-webpack5@8.3.5(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)':
+  '@storybook/builder-webpack5@8.3.6(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)':
     dependencies:
-      '@storybook/core-webpack': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/core-webpack': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       '@types/node': 22.7.6
       '@types/semver': 7.5.8
       browser-assert: 1.2.1
@@ -7489,6 +7541,10 @@ snapshots:
     dependencies:
       storybook: 8.3.6(utf-8-validate@6.0.4)
 
+  '@storybook/components@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
+    dependencies:
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+
   '@storybook/core-common@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))':
     dependencies:
       storybook: 8.3.6(utf-8-validate@6.0.4)
@@ -7497,7 +7553,7 @@ snapshots:
     dependencies:
       storybook: 8.3.6(utf-8-validate@6.0.4)
 
-  '@storybook/core-webpack@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))':
+  '@storybook/core-webpack@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
     dependencies:
       '@types/node': 22.7.6
       storybook: 8.3.6(utf-8-validate@6.0.4)
@@ -7556,6 +7612,13 @@ snapshots:
       storybook: 8.3.6(utf-8-validate@6.0.4)
       util: 0.12.5
 
+  '@storybook/instrumenter@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@vitest/utils': 2.1.2
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+      util: 0.12.5
+
   '@storybook/jest@0.2.3':
     dependencies:
       '@storybook/expect': 28.1.3-5
@@ -7567,7 +7630,11 @@ snapshots:
     dependencies:
       storybook: 8.3.6(utf-8-validate@6.0.4)
 
-  '@storybook/nextjs@8.3.5(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(next@14.2.15(@babel/core@7.25.8)(@playwright/test@1.48.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2))(node-sass@9.0.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2)(storybook@8.3.6(utf-8-validate@6.0.4))(type-fest@2.19.0)(typescript@5.6.3)(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))':
+  '@storybook/manager-api@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
+    dependencies:
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+
+  '@storybook/nextjs@8.3.6(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(next@14.2.15(@babel/core@7.25.8)(@playwright/test@1.48.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2))(node-sass@9.0.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.80.2)(storybook@8.3.6(utf-8-validate@6.0.4))(type-fest@2.19.0)(typescript@5.6.3)(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))':
     dependencies:
       '@babel/core': 7.25.8
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.25.8)
@@ -7583,10 +7650,10 @@ snapshots:
       '@babel/preset-typescript': 7.25.7(@babel/core@7.25.8)
       '@babel/runtime': 7.25.7
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))
-      '@storybook/builder-webpack5': 8.3.5(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
-      '@storybook/preset-react-webpack': 8.3.5(@storybook/test@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4)))(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
-      '@storybook/react': 8.3.5(@storybook/test@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
-      '@storybook/test': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/builder-webpack5': 8.3.6(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
+      '@storybook/preset-react-webpack': 8.3.6(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
+      '@storybook/react': 8.3.6(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
+      '@storybook/test': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       '@types/node': 22.7.6
       '@types/semver': 7.5.8
       babel-loader: 9.2.1(@babel/core@7.25.8)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))
@@ -7635,10 +7702,10 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@storybook/preset-react-webpack@8.3.5(@storybook/test@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4)))(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)':
+  '@storybook/preset-react-webpack@8.3.6(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)':
     dependencies:
-      '@storybook/core-webpack': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
-      '@storybook/react': 8.3.5(@storybook/test@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
+      '@storybook/core-webpack': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/react': 8.3.6(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)
       '@storybook/react-docgen-typescript-plugin': 1.0.6--canary.9.0c3f3b7.0(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))
       '@types/node': 22.7.6
       '@types/semver': 7.5.8
@@ -7667,6 +7734,10 @@ snapshots:
     dependencies:
       storybook: 8.3.6(utf-8-validate@6.0.4)
 
+  '@storybook/preview-api@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
+    dependencies:
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+
   '@storybook/react-docgen-typescript-plugin@1.0.6--canary.9.0c3f3b7.0(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))':
     dependencies:
       debug: 4.3.7
@@ -7687,7 +7758,13 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.3.6(utf-8-validate@6.0.4)
 
-  '@storybook/react@8.3.5(@storybook/test@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)':
+  '@storybook/react-dom-shim@8.3.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))':
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+
+  '@storybook/react@8.3.5(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)':
     dependencies:
       '@storybook/components': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
       '@storybook/global': 5.0.0
@@ -7713,7 +7790,36 @@ snapshots:
       type-fest: 2.19.0
       util-deprecate: 1.0.2
     optionalDependencies:
-      '@storybook/test': 8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/test': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      typescript: 5.6.3
+
+  '@storybook/react@8.3.6(@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))(typescript@5.6.3)':
+    dependencies:
+      '@storybook/components': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/global': 5.0.0
+      '@storybook/manager-api': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/preview-api': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/react-dom-shim': 8.3.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@storybook/theming': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@types/escodegen': 0.0.6
+      '@types/estree': 0.0.51
+      '@types/node': 22.7.6
+      acorn: 7.4.1
+      acorn-jsx: 5.3.2(acorn@7.4.1)
+      acorn-walk: 7.2.0
+      escodegen: 2.1.0
+      html-tags: 3.3.1
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-element-to-jsx-string: 15.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      semver: 7.6.3
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+      ts-dedent: 2.2.0
+      type-fest: 2.19.0
+      util-deprecate: 1.0.2
+    optionalDependencies:
+      '@storybook/test': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
       typescript: 5.6.3
 
   '@storybook/test-runner@0.19.1(@swc/helpers@0.5.5)(@types/node@22.7.6)(storybook@8.3.6(utf-8-validate@6.0.4))':
@@ -7763,6 +7869,19 @@ snapshots:
       storybook: 8.3.6(utf-8-validate@6.0.4)
       util: 0.12.5
 
+  '@storybook/test@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
+    dependencies:
+      '@storybook/csf': 0.1.11
+      '@storybook/global': 5.0.0
+      '@storybook/instrumenter': 8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))
+      '@testing-library/dom': 10.4.0
+      '@testing-library/jest-dom': 6.5.0
+      '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
+      '@vitest/expect': 2.0.5
+      '@vitest/spy': 2.0.5
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+      util: 0.12.5
+
   '@storybook/testing-library@0.2.2':
     dependencies:
       '@testing-library/dom': 9.3.4
@@ -7770,6 +7889,10 @@ snapshots:
       ts-dedent: 2.2.0
 
   '@storybook/theming@8.3.5(storybook@8.3.6(utf-8-validate@6.0.4))':
+    dependencies:
+      storybook: 8.3.6(utf-8-validate@6.0.4)
+
+  '@storybook/theming@8.3.6(storybook@8.3.6(utf-8-validate@6.0.4))':
     dependencies:
       storybook: 8.3.6(utf-8-validate@6.0.4)
 

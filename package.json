@@ -28,7 +28,7 @@
     "sass": "^1.80.5",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
-    "utf-8-validate": "^6.0.4",
+    "utf-8-validate": "^6.0.5",
     "uuid": "^11.0.2"
   },
   "devDependencies": {

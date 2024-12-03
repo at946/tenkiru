@@ -25,7 +25,7 @@
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
     "recoil": "^0.7.7",
-    "sass": "^1.81.0",
+    "sass": "^1.81.1",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "utf-8-validate": "^6.0.5",

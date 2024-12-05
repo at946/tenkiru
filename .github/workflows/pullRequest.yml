@@ -55,22 +55,3 @@ jobs:
           name: playwright-report
           path: playwright/playwright-report/
           retention-days: 1
-
-      - name: notify success to slack
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: |
-            Success
-            https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
-
-      - name: notify failure to slack
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: |
-            Failure
-            https://github.com/${{ github.repository }}/pull/${{ github.event.number }}

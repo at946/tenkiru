@@ -97,8 +97,8 @@ importers:
         specifier: ^8.4.7
         version: 8.4.7(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1)(next@14.2.15(@babel/core@7.25.8)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.83.4))(node-sass@9.0.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.83.4)(storybook@8.5.0(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.7.3)(webpack-hot-middleware@2.26.1)(webpack@5.95.0(@swc/core@1.7.35(@swc/helpers@0.5.5))(esbuild@0.23.1))
       '@storybook/preview-api':
-        specifier: ^8.4.7
-        version: 8.4.7(storybook@8.5.0(utf-8-validate@6.0.5))
+        specifier: ^8.5.0
+        version: 8.5.0(storybook@8.5.0(utf-8-validate@6.0.5))
       '@storybook/react':
         specifier: ^8.4.7
         version: 8.4.7(@storybook/test@8.4.7(storybook@8.5.0(utf-8-validate@6.0.5)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.0(utf-8-validate@6.0.5))(typescript@5.7.3)
@@ -1697,6 +1697,11 @@ packages:
 
   '@storybook/preview-api@8.4.7':
     resolution: {integrity: sha512-0QVQwHw+OyZGHAJEXo6Knx+6/4er7n2rTDE5RYJ9F2E2Lg42E19pfdLlq2Jhoods2Xrclo3wj6GWR//Ahi39Eg==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+
+  '@storybook/preview-api@8.5.0':
+    resolution: {integrity: sha512-g0XbD54zMUkl6bpuA7qEBCE9rW1QV6KKmwkO4bkxMOJcMke3x9l00JTaYn7Un8wItjXiS3BIG15B6mnfBG7fng==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
@@ -7514,6 +7519,10 @@ snapshots:
       - webpack-cli
 
   '@storybook/preview-api@8.4.7(storybook@8.5.0(utf-8-validate@6.0.5))':
+    dependencies:
+      storybook: 8.5.0(utf-8-validate@6.0.5)
+
+  '@storybook/preview-api@8.5.0(storybook@8.5.0(utf-8-validate@6.0.5))':
     dependencies:
       storybook: 8.5.0(utf-8-validate@6.0.5)
 

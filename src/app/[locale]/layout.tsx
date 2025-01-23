@@ -1,6 +1,7 @@
-import type { TLocales } from '@/i18n';
+import type { TLocales } from '@/i18n/routing';
 import '@/styles/globals.css';
-import { getTranslations } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, getTranslations } from 'next-intl/server';
 import type React from 'react';
 import GoogleAdsense from '../GoogleAdsense';
 import GoogleAnalytics from '../GoogleAnalytics';
@@ -49,17 +50,21 @@ interface Props {
   };
 }
 
-export default function RootLayout({ children, params: { locale } }: Props) {
+export default async function RootLayout({ children, params: { locale } }: Props) {
+  const messages = await getMessages();
+
   return (
     <html lang={locale}>
       <body>
         <RecoilProvider>
           <ThemeProvider>
-            <div className='flex min-h-screen flex-col'>
-              <Header currentLocale={locale} />
-              <main>{children}</main>
-              <Footer />
-            </div>
+            <NextIntlClientProvider messages={messages}>
+              <div className='flex min-h-screen flex-col'>
+                <Header currentLocale={locale} />
+                <main>{children}</main>
+                <Footer />
+              </div>
+            </NextIntlClientProvider>
           </ThemeProvider>
         </RecoilProvider>
         <GoogleAnalytics />

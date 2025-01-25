@@ -20,6 +20,20 @@
   }
 }
 
+@theme {
+  --color-primary: var(--color-green-500);
+  --color-secondary: var(--color-purple-600);
+  --color-background: var(--color-gray-100);
+  --color-text: var(--color-gray-800);
+
+  --color-dark-primary: var(--color-green-400);
+  --color-dark-secondary: var(--color-purple-600);
+  --color-dark-background: var(--color-gray-900);
+  --color-dark-text: var(--color-gray-100);
+
+  --aspect-card: 1 / 1.4;
+}
+
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid San,

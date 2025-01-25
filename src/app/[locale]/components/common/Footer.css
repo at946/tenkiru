@@ -1,3 +1,5 @@
+@reference "../../../../styles/globals.css";
+
 .footer-item {
-  @reference text-sm hover:underline focus-visible:underline;
+  @apply text-sm hover:underline focus-visible:underline;
 }

@@ -28,7 +28,7 @@ const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay,
   const t = useTranslations('Room.Table');
 
   return (
-    <div className={clsx('rounded bg-green-400 py-5 text-center shadow-md', className)}>
+    <div className={clsx('rounded-sm bg-green-400 py-5 text-center shadow-md', className)}>
       {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
 
       <TableCards nominate={nominate} />

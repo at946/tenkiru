@@ -33,7 +33,7 @@ const DeckSelect: NextPage<Props> = ({ deckType, disabled, className, onChange }
           onChange={(e) => onChange(e.target.value as IFDeckType)}
           disabled={disabled}
           className={clsx(
-            'border-0 border-text border-b-2 bg-transparent py-0 pr-10 pl-2 outline-none',
+            'border-0 border-text border-b-2 bg-transparent py-0 pr-10 pl-2 outline-hidden',
             'focus-visible:ring-0 enabled:focus-visible:border-primary enabled:focus-visible:text-primary enabled:hover:border-primary enabled:hover:text-primary',
             'disabled:cursor-not-allowed disabled:opacity-50',
             'dark:border-dark-text',

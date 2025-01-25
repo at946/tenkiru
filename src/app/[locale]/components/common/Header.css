@@ -1,3 +1,5 @@
+@reference "../../../../styles/globals.css";
+
 .header-item {
   @apply flex items-center hover:text-primary focus-visible:text-primary dark:hover:text-dark-primary dark:focus-visible:text-dark-primary;
 }

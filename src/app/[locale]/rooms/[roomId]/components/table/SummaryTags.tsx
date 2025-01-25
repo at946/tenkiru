@@ -1,9 +1,9 @@
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
-import roomState from '@/recoil/atoms/roomAtom';
+import roomState from '@/jotai/atoms/roomAtom';
+import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
 import {
   getAvgValueAmongTableCards,
   getMaxValueAmongTableCards,
@@ -18,7 +18,7 @@ interface Props {
 
 const SummaryTags: NextPage<Props> = ({ className }) => {
   const t = useTranslations('Room.Table');
-  const room: IFRoom = useRecoilValue(roomState);
+  const room: IFRoom = useAtomValue(roomState);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (

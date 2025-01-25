@@ -2,11 +2,11 @@ import Button from '@/app/[locale]/components/common/Button';
 import getTableCardsFromUsers from '@/app/[locale]/rooms/[roomId]/utils/getTableCardsFromUsers';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
-import roomState from '@/recoil/atoms/roomAtom';
+import roomState from '@/jotai/atoms/roomAtom';
 import clsx from 'clsx';
+import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
 import SummaryTags from './SummaryTags';
 import TableCards from './TableCards';
 
@@ -19,7 +19,7 @@ interface Props {
 }
 
 const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay, nominate }) => {
-  const room: IFRoom = useRecoilValue(roomState);
+  const room: IFRoom = useAtomValue(roomState);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
   const allCardsAreNotSelected: boolean =
     tableCards.filter((tableCard: IFTableCard) => tableCard.value !== null).length === 0;

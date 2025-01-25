@@ -1,7 +1,6 @@
 'use client';
 
-import { locales } from '@/i18n';
-import { usePathname, useRouter } from '@/navigation';
+import { routing, usePathname, useRouter } from '@/i18n/routing';
 import type { NextPage } from 'next';
 
 interface Props {
@@ -26,7 +25,7 @@ const LocaleSwitcher: NextPage<Props> = ({ currentLocale, ariaLabel }) => {
         onChange={(e) => switchLolale(e.target.value)}
         aria-label={ariaLabel}
       >
-        {locales.map((locale) => (
+        {routing.locales.map((locale) => (
           <option value={locale} key={locale}>
             {locale}
           </option>

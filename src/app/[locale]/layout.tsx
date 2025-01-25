@@ -1,21 +1,25 @@
-import type { TLocales } from '@/i18n';
+import type { TLocales } from '@/i18n/routing';
 import '@/styles/globals.css';
-import { getTranslations } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, getTranslations } from 'next-intl/server';
 import type React from 'react';
 import GoogleAdsense from '../GoogleAdsense';
 import GoogleAnalytics from '../GoogleAnalytics';
-import RecoilProvider from '../RecoilProvider';
 import ThemeProvider from '../ThemeProvider';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
 
 interface MetaProps {
-  params: {
+  params: Promise<{
     locale: TLocales;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params: { locale } }: MetaProps) {
+export async function generateMetadata(props: MetaProps) {
+  const params = await props.params;
+
+  const { locale } = params;
+
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {
@@ -44,24 +48,32 @@ export const dynamic = 'force-dynamic';
 
 interface Props {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function RootLayout({ children, params: { locale } }: Props) {
+export default async function RootLayout(props: Props) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  const { children } = props;
+
+  const messages = await getMessages();
+
   return (
     <html lang={locale}>
       <body>
-        <RecoilProvider>
-          <ThemeProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
             <div className='flex min-h-screen flex-col'>
               <Header currentLocale={locale} />
               <main>{children}</main>
               <Footer />
             </div>
-          </ThemeProvider>
-        </RecoilProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
         <GoogleAnalytics />
         <GoogleAdsense />
       </body>

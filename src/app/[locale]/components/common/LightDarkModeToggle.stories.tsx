@@ -1,4 +1,3 @@
-import RecoilProvider from '@/app/RecoilProvider';
 import '@/app/[locale]/components/common/Header.css';
 import LightDarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -40,13 +39,7 @@ const meta: Meta<typeof LightDarkModeToggle> = {
     darkModeTitle: 'Switch to dark mode',
     className: 'header-item',
   },
-  decorators: [
-    (Story) => (
-      <RecoilProvider>
-        <Story />
-      </RecoilProvider>
-    ),
-  ],
+  decorators: [(Story) => <Story />],
 };
 
 export default meta;

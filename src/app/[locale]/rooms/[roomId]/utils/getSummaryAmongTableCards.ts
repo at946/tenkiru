@@ -11,7 +11,7 @@ export const getAvgValueAmongTableCards = (tableCards: IFTableCard[]): number | 
 
 export const getMaxValueAmongTableCards = (tableCards: IFTableCard[]): number | '-' => {
   const numberValues: number[] = extractNumberValuesFromTableCards(tableCards);
-  if (numberValues.length === 9) {
+  if (numberValues.length === 0) {
     return '-';
   }
   return Math.max(...numberValues);

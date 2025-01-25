@@ -1,9 +1,9 @@
 import type { IFRoom } from '@/interfaces/room';
+import roomState from '@/jotai/atoms/roomAtom';
 import enMessages from '@/messages/en.json';
-import roomState from '@/recoil/atoms/roomAtom';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Provider, createStore } from 'jotai';
 import { NextIntlClientProvider } from 'next-intl';
-import { RecoilRoot } from 'recoil';
 import TableCards from './TableCards';
 
 const meta: Meta<typeof TableCards> = {
@@ -45,24 +45,34 @@ const getRoom = ({ isOpenPhase }: { isOpenPhase: boolean }): IFRoom => {
 
 export const OpenPhase: Story = {
   decorators: [
-    (story) => (
-      <RecoilRoot initializeState={({ set }) => set(roomState, getRoom({ isOpenPhase: true }))}>
-        <NextIntlClientProvider locale='en' messages={enMessages}>
-          {story()}
-        </NextIntlClientProvider>
-      </RecoilRoot>
-    ),
+    (story) => {
+      const store = createStore();
+      store.set(roomState, getRoom({ isOpenPhase: true }));
+
+      return (
+        <Provider store={store}>
+          <NextIntlClientProvider locale='en' messages={enMessages}>
+            {story()}
+          </NextIntlClientProvider>
+        </Provider>
+      );
+    },
   ],
 };
 
 export const ClosePhase: Story = {
   decorators: [
-    (story) => (
-      <RecoilRoot initializeState={({ set }) => set(roomState, getRoom({ isOpenPhase: false }))}>
-        <NextIntlClientProvider locale='en' messages={enMessages}>
-          {story()}
-        </NextIntlClientProvider>
-      </RecoilRoot>
-    ),
+    (story) => {
+      const store = createStore();
+      store.set(roomState, getRoom({ isOpenPhase: false }));
+
+      return (
+        <Provider store={store}>
+          <NextIntlClientProvider locale='en' messages={enMessages}>
+            {story()}
+          </NextIntlClientProvider>
+        </Provider>
+      );
+    },
   ],
 };

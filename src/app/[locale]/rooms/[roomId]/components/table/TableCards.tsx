@@ -1,10 +1,10 @@
 import Button from '@/app/[locale]/components/common/Button';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
-import roomState from '@/recoil/atoms/roomAtom';
+import roomState from '@/jotai/atoms/roomAtom';
+import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import TableCard from './TableCard';
 
@@ -14,7 +14,7 @@ interface Props {
 
 const TableCards: NextPage<Props> = ({ nominate }) => {
   const t = useTranslations('Room.Table');
-  const room: IFRoom = useRecoilValue(roomState);
+  const room: IFRoom = useAtomValue(roomState);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (

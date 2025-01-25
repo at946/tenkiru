@@ -4,7 +4,6 @@ import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
 import { within } from '@storybook/testing-library';
 import { NextIntlClientProvider } from 'next-intl';
-import { RecoilRoot } from 'recoil';
 import Header from './Header';
 
 const meta: Meta<typeof Header> = {
@@ -33,14 +32,12 @@ const meta: Meta<typeof Header> = {
   },
   decorators: [
     (Story, context) => (
-      <RecoilRoot>
-        <NextIntlClientProvider
-          locale={context.args.currentLocale}
-          messages={context.args.currentLocale === 'ja' ? jaMessages : enMessages}
-        >
-          <Story />
-        </NextIntlClientProvider>
-      </RecoilRoot>
+      <NextIntlClientProvider
+        locale={context.args.currentLocale}
+        messages={context.args.currentLocale === 'ja' ? jaMessages : enMessages}
+      >
+        <Story />
+      </NextIntlClientProvider>
     ),
   ],
 };
@@ -75,11 +72,9 @@ export const Japanese: Story = {
   },
   render: () => {
     return (
-      <RecoilRoot>
-        <NextIntlClientProvider locale='ja' messages={jaMessages}>
-          <Header currentLocale='ja' />
-        </NextIntlClientProvider>
-      </RecoilRoot>
+      <NextIntlClientProvider locale='ja' messages={jaMessages}>
+        <Header currentLocale='ja' />
+      </NextIntlClientProvider>
     );
   },
   play: async ({ canvasElement }) => {

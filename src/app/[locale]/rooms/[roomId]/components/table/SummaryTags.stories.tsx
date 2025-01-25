@@ -1,10 +1,9 @@
-import type { IFRoom } from '@/interfaces/room';
+import roomState from '@/jotai/atoms/roomAtom';
 import enMessages from '@/messages/en.json';
 import jaMessages from '@/messages/ja.json';
-import roomState from '@/recoil/atoms/roomAtom';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Provider, createStore } from 'jotai';
 import { NextIntlClientProvider } from 'next-intl';
-import { RecoilRoot } from 'recoil';
 import SummaryTags from './SummaryTags';
 
 const meta: Meta<typeof SummaryTags> = {
@@ -24,7 +23,8 @@ type Story = StoryObj<typeof SummaryTags>;
 export const OpenPhase: Story = {
   decorators: [
     (story) => {
-      const room: IFRoom = {
+      const store = createStore();
+      store.set(roomState, {
         id: '1',
         deckType: 'fibonacci',
         isOpenPhase: true,
@@ -34,13 +34,14 @@ export const OpenPhase: Story = {
           { id: '13', type: 'player', selectedCardValue: 5 },
           { id: '14', type: 'audience', selectedCardValue: null },
         ],
-      };
+      });
+
       return (
-        <RecoilRoot initializeState={({ set }) => set(roomState, room)}>
+        <Provider store={store}>
           <NextIntlClientProvider locale='en' messages={enMessages}>
             {story()}
           </NextIntlClientProvider>
-        </RecoilRoot>
+        </Provider>
       );
     },
   ],
@@ -49,7 +50,8 @@ export const OpenPhase: Story = {
 export const ClosePhase: Story = {
   decorators: [
     (story) => {
-      const room: IFRoom = {
+      const store = createStore();
+      store.set(roomState, {
         id: '1',
         deckType: 'fibonacci',
         isOpenPhase: false,
@@ -59,13 +61,13 @@ export const ClosePhase: Story = {
           { id: '13', type: 'player', selectedCardValue: 5 },
           { id: '14', type: 'audience', selectedCardValue: null },
         ],
-      };
+      });
       return (
-        <RecoilRoot initializeState={({ set }) => set(roomState, room)}>
+        <Provider store={store}>
           <NextIntlClientProvider locale='en' messages={enMessages}>
             {story()}
           </NextIntlClientProvider>
-        </RecoilRoot>
+        </Provider>
       );
     },
   ],
@@ -74,7 +76,8 @@ export const ClosePhase: Story = {
 export const OpenPhaseWithNoNumberCard: Story = {
   decorators: [
     (story) => {
-      const room: IFRoom = {
+      const store = createStore();
+      store.set(roomState, {
         id: '1',
         deckType: 'fibonacci',
         isOpenPhase: true,
@@ -84,13 +87,13 @@ export const OpenPhaseWithNoNumberCard: Story = {
           { id: '13', type: 'player', selectedCardValue: null },
           { id: '14', type: 'audience', selectedCardValue: null },
         ],
-      };
+      });
       return (
-        <RecoilRoot initializeState={({ set }) => set(roomState, room)}>
+        <Provider store={store}>
           <NextIntlClientProvider locale='en' messages={enMessages}>
             {story()}
           </NextIntlClientProvider>
-        </RecoilRoot>
+        </Provider>
       );
     },
   ],
@@ -99,7 +102,8 @@ export const OpenPhaseWithNoNumberCard: Story = {
 export const Japanese: Story = {
   decorators: [
     (story) => {
-      const room: IFRoom = {
+      const store = createStore();
+      store.set(roomState, {
         id: '1',
         deckType: 'fibonacci',
         isOpenPhase: true,
@@ -109,13 +113,14 @@ export const Japanese: Story = {
           { id: '13', type: 'player', selectedCardValue: 5 },
           { id: '14', type: 'audience', selectedCardValue: null },
         ],
-      };
+      });
+
       return (
-        <RecoilRoot initializeState={({ set }) => set(roomState, room)}>
+        <Provider store={store}>
           <NextIntlClientProvider locale='ja' messages={jaMessages}>
             {story()}
           </NextIntlClientProvider>
-        </RecoilRoot>
+        </Provider>
       );
     },
   ],

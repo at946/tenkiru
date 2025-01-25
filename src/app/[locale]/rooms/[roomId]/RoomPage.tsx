@@ -6,13 +6,13 @@ import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interface
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUser } from '@/interfaces/user';
 import type { IFUserType } from '@/interfaces/userType';
+import isRoomState from '@/jotai/atoms/roomAtom';
 import { event } from '@/lib/gtag';
-import isRoomState from '@/recoil/atoms/roomAtom';
+import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useRecoilState } from 'recoil';
 import { type Socket, io } from 'socket.io-client';
 import DeckSelect from './components/DeckSelect';
 import UserTypeSelect from './components/UserTypeSelect';
@@ -27,7 +27,7 @@ interface Props {
 }
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
-  const [room, setRoom] = useRecoilState<IFRoom>(isRoomState);
+  const [room, setRoom] = useAtom<IFRoom>(isRoomState);
   const users: IFUser[] = room.users;
   const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
   const [isConnected, setIsConnected] = useState(false);

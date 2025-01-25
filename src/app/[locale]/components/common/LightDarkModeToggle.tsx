@@ -1,9 +1,9 @@
 'use client';
 
-import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
+import isDarkModeState from '@/jotai/atoms/isDarkModeAtom';
 import clsx from 'clsx';
+import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
-import { useRecoilState } from 'recoil';
 
 interface Props {
   lightModeTitle: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const DarkModeToggle: NextPage<Props> = ({ lightModeTitle, darkModeTitle, className }) => {
-  const [isDarkMode, setIsDarkMode] = useRecoilState<boolean>(isDarkModeState);
+  const [isDarkMode, setIsDarkMode] = useAtom<boolean>(isDarkModeState);
 
   return (
     <button

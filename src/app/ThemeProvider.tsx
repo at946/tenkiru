@@ -1,16 +1,16 @@
 'use client';
 
-import isDarkModeState from '@/recoil/atoms/isDarkModeAtom';
+import isDarkModeState from '@/jotai/atoms/isDarkModeAtom';
+import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
 import { type ReactNode, useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 
 interface Props {
   children: ReactNode;
 }
 
 const ThemeProvider: NextPage<Props> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useRecoilState<boolean>(isDarkModeState);
+  const [isDarkMode, setIsDarkMode] = useAtom<boolean>(isDarkModeState);
 
   useEffect(() => {
     if (localStorage.theme !== undefined) {

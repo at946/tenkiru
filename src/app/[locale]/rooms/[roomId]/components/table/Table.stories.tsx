@@ -1,10 +1,10 @@
 import type { IFRoom } from '@/interfaces/room';
+import roomState from '@/jotai/atoms/roomAtom';
 import enMessages from '@/messages/en.json';
 import jaMessages from '@/messages/ja.json';
-import roomState from '@/recoil/atoms/roomAtom';
 import type { Meta, StoryObj } from '@storybook/react';
+import { Provider, createStore } from 'jotai';
 import { NextIntlClientProvider } from 'next-intl';
-import { RecoilRoot } from 'recoil';
 import Table from './Table';
 
 const meta: Meta<typeof Table> = {
@@ -80,48 +80,68 @@ type Story = StoryObj<typeof Table>;
 
 export const OpenPhaseInEnglish: Story = {
   decorators: [
-    (story) => (
-      <RecoilRoot initializeState={({ set }) => set(roomState, getRoom({ isOpenPhase: true }))}>
-        <NextIntlClientProvider locale='en' messages={enMessages}>
-          {story()}
-        </NextIntlClientProvider>
-      </RecoilRoot>
-    ),
+    (story) => {
+      const store = createStore();
+      store.set(roomState, getRoom({ isOpenPhase: true }));
+
+      return (
+        <Provider store={store}>
+          <NextIntlClientProvider locale='en' messages={enMessages}>
+            {story()}
+          </NextIntlClientProvider>
+        </Provider>
+      );
+    },
   ],
 };
 
 export const ClosePhaseInEnglish: Story = {
   decorators: [
-    (story) => (
-      <RecoilRoot initializeState={({ set }) => set(roomState, getRoom({ isOpenPhase: false }))}>
-        <NextIntlClientProvider locale='en' messages={enMessages}>
-          {story()}
-        </NextIntlClientProvider>
-      </RecoilRoot>
-    ),
+    (story) => {
+      const store = createStore();
+      store.set(roomState, getRoom({ isOpenPhase: false }));
+
+      return (
+        <Provider store={store}>
+          <NextIntlClientProvider locale='en' messages={enMessages}>
+            {story()}
+          </NextIntlClientProvider>
+        </Provider>
+      );
+    },
   ],
 };
 
 export const OpenPhaseInJapanese: Story = {
   decorators: [
-    (story) => (
-      <RecoilRoot initializeState={({ set }) => set(roomState, getRoom({ isOpenPhase: true }))}>
-        <NextIntlClientProvider locale='ja' messages={jaMessages}>
-          {story()}
-        </NextIntlClientProvider>
-      </RecoilRoot>
-    ),
+    (story) => {
+      const store = createStore();
+      store.set(roomState, getRoom({ isOpenPhase: true }));
+
+      return (
+        <Provider store={store}>
+          <NextIntlClientProvider locale='ja' messages={jaMessages}>
+            {story()}
+          </NextIntlClientProvider>
+        </Provider>
+      );
+    },
   ],
 };
 
 export const ClosePhaseInJapanese: Story = {
   decorators: [
-    (story) => (
-      <RecoilRoot initializeState={({ set }) => set(roomState, getRoom({ isOpenPhase: false }))}>
-        <NextIntlClientProvider locale='ja' messages={jaMessages}>
-          {story()}
-        </NextIntlClientProvider>
-      </RecoilRoot>
-    ),
+    (story) => {
+      const store = createStore();
+      store.set(roomState, getRoom({ isOpenPhase: false }));
+
+      return (
+        <Provider store={store}>
+          <NextIntlClientProvider locale='ja' messages={jaMessages}>
+            {story()}
+          </NextIntlClientProvider>
+        </Provider>
+      );
+    },
   ],
 };

@@ -26,10 +26,10 @@ const Hands: NextPage<Props> = ({ deckType, selectedValue, isDisabled, onSelect 
           <label
             key={value}
             className={clsx(
-              'flex aspect-card w-24 cursor-pointer items-center justify-center rounded-md border-2 border-text bg-background font-bold text-2xl text-text shadow',
+              'flex aspect-card w-24 cursor-pointer items-center justify-center rounded-md border-2 border-text bg-background font-bold text-2xl text-text shadow-sm',
               'enabled:focus-visible:shadow-2xl',
-              'has-[:checked]:bg-primary has-[:checked]:text-dark-text',
-              'has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-25 has-[:disabled]:dark:opacity-50',
+              'has-checked:bg-primary has-checked:text-dark-text',
+              'has-disabled:cursor-not-allowed has-disabled:opacity-25 dark:has-disabled:opacity-50',
               'md:enabled:hover:-translate-y-2 md:enabled:focus-visible:-translate-y-2 md:enabled:hover:shadow-2xl',
             )}
           >

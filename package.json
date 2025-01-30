@@ -44,7 +44,7 @@
     "@storybook/addon-console": "^3.0.0",
     "@storybook/addon-essentials": "^8.5.2",
     "@storybook/addon-interactions": "^8.5.2",
-    "@storybook/addon-links": "^8.5.0",
+    "@storybook/addon-links": "^8.5.2",
     "@storybook/blocks": "^8.5.0",
     "@storybook/jest": "^0.2.3",
     "@storybook/nextjs": "^8.5.0",

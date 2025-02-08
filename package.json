@@ -42,7 +42,7 @@
     "@playwright/test": "^1.50.1",
     "@storybook/addon-a11y": "^8.5.3",
     "@storybook/addon-console": "^3.0.0",
-    "@storybook/addon-essentials": "^8.5.2",
+    "@storybook/addon-essentials": "^8.5.3",
     "@storybook/addon-interactions": "^8.5.3",
     "@storybook/addon-links": "^8.5.3",
     "@storybook/blocks": "^8.5.3",

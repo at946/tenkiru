@@ -89,8 +89,8 @@ importers:
         specifier: ^8.6.3
         version: 8.6.3(storybook@8.6.3(utf-8-validate@6.0.5))
       '@storybook/addon-links':
-        specifier: ^8.5.3
-        version: 8.6.2(react@19.0.0)(storybook@8.6.3(utf-8-validate@6.0.5))
+        specifier: ^8.6.3
+        version: 8.6.3(react@19.0.0)(storybook@8.6.3(utf-8-validate@6.0.5))
       '@storybook/blocks':
         specifier: ^8.6.3
         version: 8.6.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.3(utf-8-validate@6.0.5))
@@ -1549,11 +1549,11 @@ packages:
     peerDependencies:
       storybook: ^8.6.3
 
-  '@storybook/addon-links@8.6.2':
-    resolution: {integrity: sha512-/7ARtUZ0lCEbAiaE5z+tXxrTHiUgSuPXK7yx9Vnekba68vOBLmxVEqw05tZGikzIm4sFi3dpH3iKT325wAYDmg==}
+  '@storybook/addon-links@8.6.3':
+    resolution: {integrity: sha512-3wGiMZxWbgdjEgymUrCVG5PwU0vAYF9EiSHsGxiSxje69l08GLD6s7FTLx0HwvuyiNFcigLcuF45XZnB252RtA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.6.2
+      storybook: ^8.6.3
     peerDependenciesMeta:
       react:
         optional: true
@@ -7310,7 +7310,7 @@ snapshots:
       storybook: 8.6.3(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
 
-  '@storybook/addon-links@8.6.2(react@19.0.0)(storybook@8.6.3(utf-8-validate@6.0.5))':
+  '@storybook/addon-links@8.6.3(react@19.0.0)(storybook@8.6.3(utf-8-validate@6.0.5))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.6.3(utf-8-validate@6.0.5)

@@ -104,8 +104,8 @@ importers:
         specifier: ^8.6.4
         version: 8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))
       '@storybook/react':
-        specifier: ^8.5.3
-        version: 8.6.2(@storybook/test@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))(typescript@5.8.2)
+        specifier: ^8.6.4
+        version: 8.6.4(@storybook/test@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))(typescript@5.8.2)
       '@storybook/test-runner':
         specifier: ^0.22.0
         version: 0.22.0(@swc/helpers@0.5.15)(@types/node@22.13.9)(storybook@8.6.4(utf-8-validate@6.0.5))
@@ -1713,11 +1713,6 @@ packages:
       typescript:
         optional: true
 
-  '@storybook/preview-api@8.6.2':
-    resolution: {integrity: sha512-hkKmQ9OWlCpS2mHYsuWTbXMfeLx90fiWdUblTBIUQnj8VLhSbNtmeBZdZRkz33uYHFkAqZ3F2nQ9I2iTv8AmwA==}
-    peerDependencies:
-      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-
   '@storybook/preview-api@8.6.4':
     resolution: {integrity: sha512-5HBfxggzxGz0dg2c61NpPiQJav7UAmzsQlzmI5SzWOS6lkaylcDG8giwKzASVCXVWBxNji9qIDFM++UH090aDg==}
     peerDependencies:
@@ -1729,34 +1724,12 @@ packages:
       typescript: '>= 4.x'
       webpack: '>= 4'
 
-  '@storybook/react-dom-shim@8.6.2':
-    resolution: {integrity: sha512-8VTAaYtvtP3dx9AXk2lMTQ/o/hTBpL/a6C48JYWhfbU1UO6O0B4PUGADFJ8XWzobXRkTm7CR3RGLzA2oYgWxdA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.6.2
-
   '@storybook/react-dom-shim@8.6.4':
     resolution: {integrity: sha512-kTGJ3aFdmfCFzYaDFGmZWfTXr9xhbUaf0tJ6+nEjc4tME6mFwMI+tTUT6U/J6mJhZuc2DjvIRA7bM0x77dIDqw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       storybook: ^8.6.4
-
-  '@storybook/react@8.6.2':
-    resolution: {integrity: sha512-f6mS9nydU2KGY3nIvu4WVUFmJNEjzmFLj86iznO9CK/pELH53e4RjuzXgIqfWIGxBpR0QyFMdwyWjaOB5ZKr7Q==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      '@storybook/test': 8.6.2
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.6.2
-      typescript: '>= 4.2.x'
-    peerDependenciesMeta:
-      '@storybook/test':
-        optional: true
-      typescript:
-        optional: true
 
   '@storybook/react@8.6.4':
     resolution: {integrity: sha512-pfv4hMhu3AScOh0l86uIzmXLSQ0XA/e0reIVwQcxKht6miaKArhx9GkS4mMp6SO23ZoV5G/nfLgUaMVPVE0ZPg==}
@@ -7602,10 +7575,6 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@storybook/preview-api@8.6.2(storybook@8.6.4(utf-8-validate@6.0.5))':
-    dependencies:
-      storybook: 8.6.4(utf-8-validate@6.0.5)
-
   '@storybook/preview-api@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))':
     dependencies:
       storybook: 8.6.4(utf-8-validate@6.0.5)
@@ -7624,32 +7593,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/react-dom-shim@8.6.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))':
-    dependencies:
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      storybook: 8.6.4(utf-8-validate@6.0.5)
-
   '@storybook/react-dom-shim@8.6.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))':
     dependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       storybook: 8.6.4(utf-8-validate@6.0.5)
-
-  '@storybook/react@8.6.2(@storybook/test@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))(typescript@5.8.2)':
-    dependencies:
-      '@storybook/components': 8.6.2(storybook@8.6.4(utf-8-validate@6.0.5))
-      '@storybook/global': 5.0.0
-      '@storybook/manager-api': 8.6.2(storybook@8.6.4(utf-8-validate@6.0.5))
-      '@storybook/preview-api': 8.6.2(storybook@8.6.4(utf-8-validate@6.0.5))
-      '@storybook/react-dom-shim': 8.6.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))
-      '@storybook/theming': 8.6.2(storybook@8.6.4(utf-8-validate@6.0.5))
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      storybook: 8.6.4(utf-8-validate@6.0.5)
-    optionalDependencies:
-      '@storybook/test': 8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))
-      typescript: 5.8.2
 
   '@storybook/react@8.6.4(@storybook/test@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))(typescript@5.8.2)':
     dependencies:

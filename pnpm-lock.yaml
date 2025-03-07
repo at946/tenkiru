@@ -86,8 +86,8 @@ importers:
         specifier: ^8.6.4
         version: 8.6.4(@types/react@19.0.8)(storybook@8.6.4(utf-8-validate@6.0.5))
       '@storybook/addon-interactions':
-        specifier: ^8.6.3
-        version: 8.6.3(storybook@8.6.4(utf-8-validate@6.0.5))
+        specifier: ^8.6.4
+        version: 8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))
       '@storybook/addon-links':
         specifier: ^8.6.3
         version: 8.6.3(react@19.0.0)(storybook@8.6.4(utf-8-validate@6.0.5))
@@ -1544,10 +1544,10 @@ packages:
     peerDependencies:
       storybook: ^8.6.4
 
-  '@storybook/addon-interactions@8.6.3':
-    resolution: {integrity: sha512-cDvxuMcjoQdtimNrT4BM9AK0qZJhA0Ep/CWPcVK1bAFzqlzBbe//UZa5It/AeC4EMYAr5rFY+LWEli3YPeOnjQ==}
+  '@storybook/addon-interactions@8.6.4':
+    resolution: {integrity: sha512-MZAAZjyvmJXCvM35zEiPpXz7vK+fimovt+WZKAMayAbXy5fT+7El0c9dDyTQ2norNKNj9QU/8hiU/1zARSUELQ==}
     peerDependencies:
-      storybook: ^8.6.3
+      storybook: ^8.6.4
 
   '@storybook/addon-links@8.6.3':
     resolution: {integrity: sha512-3wGiMZxWbgdjEgymUrCVG5PwU0vAYF9EiSHsGxiSxje69l08GLD6s7FTLx0HwvuyiNFcigLcuF45XZnB252RtA==}
@@ -7336,11 +7336,11 @@ snapshots:
       '@storybook/global': 5.0.0
       storybook: 8.6.4(utf-8-validate@6.0.5)
 
-  '@storybook/addon-interactions@8.6.3(storybook@8.6.4(utf-8-validate@6.0.5))':
+  '@storybook/addon-interactions@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.6.3(storybook@8.6.4(utf-8-validate@6.0.5))
-      '@storybook/test': 8.6.3(storybook@8.6.4(utf-8-validate@6.0.5))
+      '@storybook/instrumenter': 8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))
+      '@storybook/test': 8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))
       polished: 4.3.1
       storybook: 8.6.4(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
@@ -7485,6 +7485,12 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
 
   '@storybook/instrumenter@8.6.3(storybook@8.6.4(utf-8-validate@6.0.5))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@vitest/utils': 2.1.9
+      storybook: 8.6.4(utf-8-validate@6.0.5)
+
+  '@storybook/instrumenter@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))':
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.9
@@ -7701,6 +7707,17 @@ snapshots:
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/instrumenter': 8.6.3(storybook@8.6.4(utf-8-validate@6.0.5))
+      '@testing-library/dom': 10.4.0
+      '@testing-library/jest-dom': 6.5.0
+      '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
+      '@vitest/expect': 2.0.5
+      '@vitest/spy': 2.0.5
+      storybook: 8.6.4(utf-8-validate@6.0.5)
+
+  '@storybook/test@8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/instrumenter': 8.6.4(storybook@8.6.4(utf-8-validate@6.0.5))
       '@testing-library/dom': 10.4.0
       '@testing-library/jest-dom': 6.5.0
       '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)

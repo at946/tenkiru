@@ -19,7 +19,7 @@
   "dependencies": {
     "express": "^4.21.2",
     "jotai": "^2.11.3",
-    "next": "15.2.3",
+    "next": "15.2.4",
     "next-intl": "^4.0.2",
     "node-sass": "^9.0.0",
     "react": "19.0.0",

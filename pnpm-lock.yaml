@@ -92,8 +92,8 @@ importers:
         specifier: ^8.6.3
         version: 8.6.7(react@19.0.0)(storybook@8.6.9(utf-8-validate@6.0.5))
       '@storybook/blocks':
-        specifier: ^8.6.4
-        version: 8.6.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.9(utf-8-validate@6.0.5))
+        specifier: ^8.6.9
+        version: 8.6.9(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.9(utf-8-validate@6.0.5))
       '@storybook/jest':
         specifier: ^0.2.3
         version: 0.2.3
@@ -1582,6 +1582,18 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       storybook: ^8.6.7
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  '@storybook/blocks@8.6.9':
+    resolution: {integrity: sha512-+vSRkHLD7ho3Wd1WVA1KrYAnv7BnGHOhHWHAgTR5IdeMdgzQxm6+HHeqGB5sncilA0AjVC6udBIgHbCSuD61dA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      storybook: ^8.6.9
     peerDependenciesMeta:
       react:
         optional: true
@@ -7306,6 +7318,15 @@ snapshots:
       storybook: 8.6.9(utf-8-validate@6.0.5)
 
   '@storybook/blocks@8.6.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.9(utf-8-validate@6.0.5))':
+    dependencies:
+      '@storybook/icons': 1.4.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      storybook: 8.6.9(utf-8-validate@6.0.5)
+      ts-dedent: 2.2.0
+    optionalDependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
+  '@storybook/blocks@8.6.9(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.9(utf-8-validate@6.0.5))':
     dependencies:
       '@storybook/icons': 1.4.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       storybook: 8.6.9(utf-8-validate@6.0.5)

@@ -17,7 +17,7 @@
     "test:playwright:report": "playwright show-report playwright/playwright-report"
   },
   "dependencies": {
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "jotai": "^2.11.3",
     "next": "15.2.4",
     "next-intl": "^4.0.2",

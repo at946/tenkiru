@@ -101,8 +101,8 @@ importers:
         specifier: ^8.6.4
         version: 8.6.7(@swc/core@1.11.11(@swc/helpers@0.5.15))(esbuild@0.25.1)(next@15.2.4(@babel/core@7.26.10)(@playwright/test@1.51.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.86.1))(node-sass@9.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.86.1)(storybook@8.6.11(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.8.2)(webpack-hot-middleware@2.26.1)(webpack@5.98.0(@swc/core@1.11.11(@swc/helpers@0.5.15))(esbuild@0.25.1))
       '@storybook/preview-api':
-        specifier: ^8.6.9
-        version: 8.6.9(storybook@8.6.11(utf-8-validate@6.0.5))
+        specifier: ^8.6.11
+        version: 8.6.11(storybook@8.6.11(utf-8-validate@6.0.5))
       '@storybook/react':
         specifier: ^8.5.3
         version: 8.6.7(@storybook/test@8.6.7(storybook@8.6.11(utf-8-validate@6.0.5)))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.11(utf-8-validate@6.0.5))(typescript@5.8.2)
@@ -1693,13 +1693,13 @@ packages:
       typescript:
         optional: true
 
-  '@storybook/preview-api@8.6.7':
-    resolution: {integrity: sha512-Rz83Nx43v3Dn9/SjhIsorkcx1gPmlclueuzf6YywJTqE1E/L4dgoe2mOA9MfF0jr0bh3TwEA2J3ii0Jstg1Orw==}
+  '@storybook/preview-api@8.6.11':
+    resolution: {integrity: sha512-NpSVJFa9MkPq3u/h+bvx+iSnm6OG6mMUzMgmY67mA0dgIgOWcaoP2Y7254SZlBeho97HCValTDKJyqZMwiVlyQ==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@storybook/preview-api@8.6.9':
-    resolution: {integrity: sha512-hW3Z8NBrGs2bNunaHgrLjpfrOcWsxH0ejAqaba8MolPXjzNs0lTFF/Ela7pUsh2m1R4/kiD+WfddQzyipUo4Mg==}
+  '@storybook/preview-api@8.6.7':
+    resolution: {integrity: sha512-Rz83Nx43v3Dn9/SjhIsorkcx1gPmlclueuzf6YywJTqE1E/L4dgoe2mOA9MfF0jr0bh3TwEA2J3ii0Jstg1Orw==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
@@ -7544,11 +7544,11 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@storybook/preview-api@8.6.7(storybook@8.6.11(utf-8-validate@6.0.5))':
+  '@storybook/preview-api@8.6.11(storybook@8.6.11(utf-8-validate@6.0.5))':
     dependencies:
       storybook: 8.6.11(utf-8-validate@6.0.5)
 
-  '@storybook/preview-api@8.6.9(storybook@8.6.11(utf-8-validate@6.0.5))':
+  '@storybook/preview-api@8.6.7(storybook@8.6.11(utf-8-validate@6.0.5))':
     dependencies:
       storybook: 8.6.11(utf-8-validate@6.0.5)
 

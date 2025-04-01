@@ -61,7 +61,7 @@
     "@types/react-dom": "19.0.4",
     "@types/uuid": "^10.0.0",
     "clsx": "^2.1.1",
-    "lefthook": "^1.11.5",
+    "lefthook": "^1.11.6",
     "lodash": "^4.17.21",
     "next-sitemap": "^4.2.3",
     "postcss": "^8.5.2",

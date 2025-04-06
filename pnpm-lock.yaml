@@ -86,8 +86,8 @@ importers:
         specifier: ^8.6.12
         version: 8.6.12(@types/react@19.0.8)(storybook@8.6.12(utf-8-validate@6.0.5))
       '@storybook/addon-interactions':
-        specifier: ^8.6.11
-        version: 8.6.11(storybook@8.6.12(utf-8-validate@6.0.5))
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.12(utf-8-validate@6.0.5))
       '@storybook/addon-links':
         specifier: ^8.6.11
         version: 8.6.11(react@19.0.0)(storybook@8.6.12(utf-8-validate@6.0.5))
@@ -1559,10 +1559,10 @@ packages:
     peerDependencies:
       storybook: ^8.6.12
 
-  '@storybook/addon-interactions@8.6.11':
-    resolution: {integrity: sha512-j9wUf8lQF922eC2HbWG4LdeflOu/togry80QB+Sqxs4+dg4iWhjxmN8gWav14/oa0vJBLN7Z2Tr4ifsJUEwRkg==}
+  '@storybook/addon-interactions@8.6.12':
+    resolution: {integrity: sha512-cTAJlTq6uVZBEbtwdXkXoPQ4jHOAGKQnYSezBT4pfNkdjn/FnEeaQhMBDzf14h2wr5OgBnJa6Lmd8LD9ficz4A==}
     peerDependencies:
-      storybook: ^8.6.11
+      storybook: ^8.6.12
 
   '@storybook/addon-links@8.6.11':
     resolution: {integrity: sha512-1srydJWDiXUkYCbhibvZT3IqzMMiTR1hbC4UYPpvh3vT3G3NcZT17OsIyl/F/cYPWnjtYHZ5RI83h7dm0qK5cg==}
@@ -7353,11 +7353,11 @@ snapshots:
       '@storybook/global': 5.0.0
       storybook: 8.6.12(utf-8-validate@6.0.5)
 
-  '@storybook/addon-interactions@8.6.11(storybook@8.6.12(utf-8-validate@6.0.5))':
+  '@storybook/addon-interactions@8.6.12(storybook@8.6.12(utf-8-validate@6.0.5))':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.6.11(storybook@8.6.12(utf-8-validate@6.0.5))
-      '@storybook/test': 8.6.11(storybook@8.6.12(utf-8-validate@6.0.5))
+      '@storybook/instrumenter': 8.6.12(storybook@8.6.12(utf-8-validate@6.0.5))
+      '@storybook/test': 8.6.12(storybook@8.6.12(utf-8-validate@6.0.5))
       polished: 4.3.1
       storybook: 8.6.12(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0

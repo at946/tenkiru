@@ -92,8 +92,8 @@ importers:
         specifier: ^8.6.12
         version: 8.6.12(react@19.0.0)(storybook@8.6.12(utf-8-validate@6.0.5))
       '@storybook/blocks':
-        specifier: ^8.6.11
-        version: 8.6.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.12(utf-8-validate@6.0.5))
+        specifier: ^8.6.12
+        version: 8.6.12(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.12(utf-8-validate@6.0.5))
       '@storybook/jest':
         specifier: ^0.2.3
         version: 0.2.3
@@ -1592,18 +1592,6 @@ packages:
     resolution: {integrity: sha512-EXK2LArAnABsPP0leJKy78L/lbMWow+EIJfytEP5fHaW4EhMR6h7Hzaqzre6U0IMMr/jVFa1ci+m0PJ0eQc2bw==}
     peerDependencies:
       storybook: ^8.6.12
-
-  '@storybook/blocks@8.6.11':
-    resolution: {integrity: sha512-2IyS3nB6SoEjIt0nWUMxtRIjJRUvDU8EF/eMbM4F/FuwIM402P3kNQ4n4+q1xZtYjvoMr5QUq+K8YF4ZlxIz0A==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      storybook: ^8.6.11
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
 
   '@storybook/blocks@8.6.12':
     resolution: {integrity: sha512-DohlTq6HM1jDbHYiXL4ZvZ00VkhpUp5uftzj/CZDLY1fYHRjqtaTwWm2/OpceivMA8zDitLcq5atEZN+f+siTg==}
@@ -7339,15 +7327,6 @@ snapshots:
     dependencies:
       memoizerific: 1.11.3
       storybook: 8.6.12(utf-8-validate@6.0.5)
-
-  '@storybook/blocks@8.6.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.12(utf-8-validate@6.0.5))':
-    dependencies:
-      '@storybook/icons': 1.4.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      storybook: 8.6.12(utf-8-validate@6.0.5)
-      ts-dedent: 2.2.0
-    optionalDependencies:
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
 
   '@storybook/blocks@8.6.12(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.12(utf-8-validate@6.0.5))':
     dependencies:

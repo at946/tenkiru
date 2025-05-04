@@ -22,8 +22,8 @@
     "next": "15.3.1",
     "next-intl": "^4.1.0",
     "node-sass": "^9.0.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-hot-toast": "^2.5.1",
     "sass": "^1.87.0",
     "socket.io": "^4.8.1",
@@ -57,7 +57,7 @@
     "@types/gtag.js": "^0.0.20",
     "@types/lodash": "^4.17.16",
     "@types/node": "22.15.3",
-    "@types/react": "19.0.8",
+    "@types/react": "19.1.2",
     "@types/react-dom": "19.0.4",
     "@types/uuid": "^10.0.0",
     "clsx": "^2.1.1",
@@ -72,7 +72,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/react": "19.0.8",
+      "@types/react": "19.1.2",
       "@types/react-dom": "19.0.4"
     }
   }

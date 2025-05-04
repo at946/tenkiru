@@ -5,7 +5,6 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  swcMinify: true,
   webpack: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname);
     return config;

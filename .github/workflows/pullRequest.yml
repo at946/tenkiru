@@ -1,4 +1,4 @@
-name: 'プルリクエストでLintとE2E'
+name: lint and e2e tests for pull requests
 on:
   pull_request:
 

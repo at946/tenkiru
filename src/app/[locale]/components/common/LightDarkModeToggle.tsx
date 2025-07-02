@@ -1,9 +1,9 @@
 'use client';
 
-import isDarkModeState from '@/jotai/atoms/isDarkModeAtom';
 import clsx from 'clsx';
 import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
+import isDarkModeState from '@/jotai/atoms/isDarkModeAtom';
 
 interface Props {
   lightModeTitle: string;

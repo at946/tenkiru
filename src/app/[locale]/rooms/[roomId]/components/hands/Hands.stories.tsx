@@ -1,8 +1,8 @@
-import type { IFTableCardValue } from '@/interfaces/tableCardValue';
-import enMessages from '@/messages/en.json';
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import enMessages from '@/messages/en.json';
 import Hands from './Hands';
 
 const meta: Meta<typeof Hands> = {

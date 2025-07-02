@@ -1,7 +1,7 @@
 'use client';
 
-import { routing, usePathname, useRouter } from '@/i18n/routing';
 import type { NextPage } from 'next';
+import { routing, usePathname, useRouter } from '@/i18n/routing';
 
 interface Props {
   currentLocale: string;

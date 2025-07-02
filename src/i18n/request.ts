@@ -1,5 +1,5 @@
-import { type TLocales, routing } from '@/i18n/routing';
 import { getRequestConfig } from 'next-intl/server';
+import { routing, type TLocales } from '@/i18n/routing';
 
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;

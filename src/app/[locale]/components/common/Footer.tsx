@@ -1,7 +1,7 @@
-import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
-import { Link } from '@/i18n/routing';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
+import { Link } from '@/i18n/routing';
 import './Footer.css';
 
 const Footer: NextPage = () => {

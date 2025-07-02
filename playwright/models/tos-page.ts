@@ -1,4 +1,4 @@
-import { type Page, expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import urls from '../helpers/urls';
 
 export default class TOSPage {

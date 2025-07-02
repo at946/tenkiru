@@ -1,9 +1,9 @@
-import Decks from '@/data/deck';
-import type { IFDeck } from '@/interfaces/deck';
-import type { IFDeckType } from '@/interfaces/deckType';
 import clsx from 'clsx';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import Decks from '@/data/deck';
+import type { IFDeck } from '@/interfaces/deck';
+import type { IFDeckType } from '@/interfaces/deckType';
 
 interface IFOption {
   value: string;

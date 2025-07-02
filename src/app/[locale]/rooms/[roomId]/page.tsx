@@ -1,8 +1,8 @@
-import MyToaster from '@/app/[locale]/components/common/MyToaster';
-import RoomInfo from '@/app/[locale]/rooms/[roomId]/components/RoomInfo';
 import { pick } from 'lodash';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import MyToaster from '@/app/[locale]/components/common/MyToaster';
+import RoomInfo from '@/app/[locale]/rooms/[roomId]/components/RoomInfo';
 import RoomPage from './RoomPage';
 
 type Params = Promise<{

@@ -7,12 +7,7 @@ export const pageview = (url: string): void => {
   });
 };
 
-export const event = (props: {
-  action: string;
-  category: string;
-  label: string;
-  value?: string;
-}) => {
+export const event = (props: { action: string; category: string; label: string; value?: string }) => {
   if (!GA_TRACKING_ID) return;
   window.gtag('event', props.action, {
     event_category: props.category,

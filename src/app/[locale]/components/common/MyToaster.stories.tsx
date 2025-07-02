@@ -1,6 +1,6 @@
-import Button from '@/app/[locale]/components/common/Button';
 import type { Meta, StoryObj } from '@storybook/react';
 import toast from 'react-hot-toast';
+import Button from '@/app/[locale]/components/common/Button';
 import MyToaster from './MyToaster';
 
 const meta: Meta<typeof MyToaster> = {

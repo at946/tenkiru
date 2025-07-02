@@ -1,9 +1,9 @@
-import type { IFUserType } from '@/interfaces/userType';
-import enMessages from '@/messages/en.json';
-import jaMessages from '@/messages/ja.json';
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
+import type { IFUserType } from '@/interfaces/userType';
+import enMessages from '@/messages/en.json';
+import jaMessages from '@/messages/ja.json';
 import UserTypeSelect from './UserTypeSelect';
 
 const meta: Meta<typeof UserTypeSelect> = {

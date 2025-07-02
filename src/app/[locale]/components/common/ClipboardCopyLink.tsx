@@ -1,10 +1,10 @@
 'use client';
 
-import { event } from '@/lib/gtag';
 import clsx from 'clsx';
 import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
 import toast from 'react-hot-toast';
+import { event } from '@/lib/gtag';
 
 interface Props {
   children: ReactNode;

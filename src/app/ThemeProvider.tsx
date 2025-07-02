@@ -1,9 +1,9 @@
 'use client';
 
-import isDarkModeState from '@/jotai/atoms/isDarkModeAtom';
 import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
 import { type ReactNode, useEffect } from 'react';
+import isDarkModeState from '@/jotai/atoms/isDarkModeAtom';
 
 interface Props {
   children: ReactNode;

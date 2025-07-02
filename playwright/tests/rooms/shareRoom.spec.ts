@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import createRoomId from '@pw/helpers/createRoomId';
 import RoomPage from '@pw/models/room-page';
 

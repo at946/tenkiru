@@ -1,13 +1,13 @@
 import type { Http2Server } from 'node:http2';
 import type { Socket } from 'node:net';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { Server } from 'socket.io';
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
 import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUserType } from '@/interfaces/userType';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { Server } from 'socket.io';
 import { findRoomById } from './utils/findRoomById';
 
 type NextApiResponseSocketIO = NextApiResponse & {
@@ -18,7 +18,7 @@ type NextApiResponseSocketIO = NextApiResponse & {
   };
 };
 
-const SocketHandler = (req: NextApiRequest, res: NextApiResponseSocketIO) => {
+const SocketHandler = (_req: NextApiRequest, res: NextApiResponseSocketIO) => {
   if (!res.socket.server.io) {
     const io = new Server<IFClientToServerEvents, IFServerToClientEvents>(res.socket.server);
     const rooms: Room[] = [];

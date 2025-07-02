@@ -1,9 +1,9 @@
-import type { IFRoom } from '@/interfaces/room';
-import type { IFTableCard } from '@/interfaces/tableCard';
-import roomState from '@/jotai/atoms/roomAtom';
 import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import type { IFRoom } from '@/interfaces/room';
+import type { IFTableCard } from '@/interfaces/tableCard';
+import roomState from '@/jotai/atoms/roomAtom';
 import {
   getAvgValueAmongTableCards,
   getMaxValueAmongTableCards,

@@ -1,6 +1,6 @@
+import { expect, type Locator, type Page } from '@playwright/test';
 import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFUserType } from '@/interfaces/userType';
-import { type Locator, type Page, expect } from '@playwright/test';
 import urls from '../helpers/urls';
 
 export default class RoomPage {
@@ -52,9 +52,9 @@ export default class RoomPage {
     this.getCommentsButton = (card: string) => {
       return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: 'Get comments' });
     };
-    this.minTag = page.getByLabel('Min');
-    this.avgTag = page.getByLabel('Avg');
-    this.maxTag = page.getByLabel('Max');
+    this.minTag = page.getByTitle('Min');
+    this.avgTag = page.getByTitle('Avg');
+    this.maxTag = page.getByTitle('Max');
     this.openButton = page.getByRole('button', { name: 'Open', exact: true });
     this.requestToSelectButton = page.getByRole('button', {
       name: 'Ask to choose',

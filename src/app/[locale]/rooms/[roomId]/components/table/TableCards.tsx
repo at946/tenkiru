@@ -1,10 +1,10 @@
+import { useAtomValue } from 'jotai';
+import type { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
 import Button from '@/app/[locale]/components/common/Button';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
-import { useAtomValue } from 'jotai';
-import type { NextPage } from 'next';
-import { useTranslations } from 'next-intl';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import TableCard from './TableCard';
 

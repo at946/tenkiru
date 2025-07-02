@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
 import MyToaster from '@/app/[locale]/components/common/MyToaster';
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ClipboardCopyLink> = {
   component: ClipboardCopyLink,

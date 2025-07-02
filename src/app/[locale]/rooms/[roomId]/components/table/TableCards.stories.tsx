@@ -1,9 +1,9 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { createStore, Provider } from 'jotai';
+import { NextIntlClientProvider } from 'next-intl';
 import type { IFRoom } from '@/interfaces/room';
 import roomState from '@/jotai/atoms/roomAtom';
 import enMessages from '@/messages/en.json';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Provider, createStore } from 'jotai';
-import { NextIntlClientProvider } from 'next-intl';
 import TableCards from './TableCards';
 
 const meta: Meta<typeof TableCards> = {

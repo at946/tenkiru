@@ -1,12 +1,12 @@
+import clsx from 'clsx';
+import { useAtomValue } from 'jotai';
+import type { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
 import Button from '@/app/[locale]/components/common/Button';
 import getTableCardsFromUsers from '@/app/[locale]/rooms/[roomId]/utils/getTableCardsFromUsers';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
-import clsx from 'clsx';
-import { useAtomValue } from 'jotai';
-import type { NextPage } from 'next';
-import { useTranslations } from 'next-intl';
 import SummaryTags from './SummaryTags';
 import TableCards from './TableCards';
 

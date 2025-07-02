@@ -1,5 +1,5 @@
-import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import { useFormatter, useTranslations } from 'next-intl';
+import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 
 export default function Page() {
   const t = useTranslations('Privacy Policy');

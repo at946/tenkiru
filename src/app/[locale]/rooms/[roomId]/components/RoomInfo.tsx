@@ -1,7 +1,7 @@
-import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
 import clsx from 'clsx';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
 
 interface Props {
   roomId: string;

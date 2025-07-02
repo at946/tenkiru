@@ -1,7 +1,7 @@
-import type { IFUserType } from '@/interfaces/userType';
-import { event } from '@/lib/gtag';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import type { IFUserType } from '@/interfaces/userType';
+import { event } from '@/lib/gtag';
 
 interface Props {
   type: IFUserType;

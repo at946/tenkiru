@@ -1,5 +1,5 @@
-import type { IFRoom } from '@/interfaces/room';
 import { atom } from 'jotai';
+import type { IFRoom } from '@/interfaces/room';
 
 const roomState = atom<IFRoom>({
   id: '',

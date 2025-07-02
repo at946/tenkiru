@@ -1,5 +1,11 @@
 'use client';
 
+import { useAtom } from 'jotai';
+import type { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
+import { useCallback, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { io, type Socket } from 'socket.io-client';
 import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
@@ -8,16 +14,10 @@ import type { IFUser } from '@/interfaces/user';
 import type { IFUserType } from '@/interfaces/userType';
 import isRoomState from '@/jotai/atoms/roomAtom';
 import { event } from '@/lib/gtag';
-import { useAtom } from 'jotai';
-import type { NextPage } from 'next';
-import { useTranslations } from 'next-intl';
-import { useCallback, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import { type Socket, io } from 'socket.io-client';
 import DeckSelect from './components/DeckSelect';
-import UserTypeSelect from './components/UserTypeSelect';
 import Hands from './components/hands/Hands';
 import Table from './components/table/Table';
+import UserTypeSelect from './components/UserTypeSelect';
 import { playAudio } from './utils/playAudio';
 
 let socket: Socket<IFServerToClientEvents, IFClientToServerEvents>;

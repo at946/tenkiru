@@ -1,6 +1,6 @@
-import enMessages from '@/messages/en.json';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
+import enMessages from '@/messages/en.json';
 import TableCard from './TableCard';
 
 const meta: Meta<typeof TableCard> = {

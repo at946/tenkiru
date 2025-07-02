@@ -1,9 +1,9 @@
+import type { NextPage } from 'next';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import DarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 import LinkInNewTab from '@/app/[locale]/components/common/LinkInNewTab';
 import LocaleSwitcher from '@/app/[locale]/components/common/LocaleSwitcher';
-import type { NextPage } from 'next';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import './Header.css';
 
 interface Props {

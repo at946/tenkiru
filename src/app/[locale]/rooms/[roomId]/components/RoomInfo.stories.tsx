@@ -1,8 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { NextIntlClientProvider } from 'next-intl';
 import MyToaster from '@/app/[locale]/components/common/MyToaster';
 import enMessages from '@/messages/en.json';
 import jaMessages from '@/messages/ja.json';
-import type { Meta, StoryObj } from '@storybook/react';
-import { NextIntlClientProvider } from 'next-intl';
 import RoomInfo from './RoomInfo';
 
 const meta: Meta<typeof RoomInfo> = {

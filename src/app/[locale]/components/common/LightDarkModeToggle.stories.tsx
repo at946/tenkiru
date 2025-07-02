@@ -1,6 +1,6 @@
 import '@/app/[locale]/components/common/Header.css';
-import LightDarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 import type { Meta, StoryObj } from '@storybook/react';
+import LightDarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 
 const meta: Meta<typeof LightDarkModeToggle> = {
   component: LightDarkModeToggle,

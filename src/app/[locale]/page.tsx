@@ -1,5 +1,5 @@
-import CreateRoomButton from '@/app/[locale]/components/CreateRoomButton';
 import { useTranslations } from 'next-intl';
+import CreateRoomButton from '@/app/[locale]/components/CreateRoomButton';
 import './Home.css';
 
 export default function Page() {

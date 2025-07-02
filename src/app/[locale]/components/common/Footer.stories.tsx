@@ -1,9 +1,9 @@
-import enMessages from '@/messages/en.json';
-import jaMessages from '@/messages/ja.json';
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
 import { within } from '@storybook/testing-library';
 import { NextIntlClientProvider } from 'next-intl';
+import enMessages from '@/messages/en.json';
+import jaMessages from '@/messages/ja.json';
 import Footer from './Footer';
 
 const meta: Meta<typeof Footer> = {

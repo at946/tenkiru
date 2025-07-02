@@ -1,9 +1,9 @@
-import type { IFDeckType } from '@/interfaces/deckType';
-import enMessages from '@/messages/en.json';
-import jaMessages from '@/messages/ja.json';
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NextIntlClientProvider } from 'next-intl';
+import type { IFDeckType } from '@/interfaces/deckType';
+import enMessages from '@/messages/en.json';
+import jaMessages from '@/messages/ja.json';
 import DeckSelect from './DeckSelect';
 
 const meta: Meta<typeof DeckSelect> = {

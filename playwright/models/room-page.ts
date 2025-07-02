@@ -119,7 +119,7 @@ export default class RoomPage {
   }
 
   async selectUserType(userType: IFUserType) {
-    await this.page.getByLabel(userType).check();
+    await this.page.getByLabel(userType).click();
   }
 
   async getUserType(userType: IFUserType) {

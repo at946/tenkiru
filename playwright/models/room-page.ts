@@ -55,7 +55,7 @@ export default class RoomPage {
     this.minTag = page.getByLabel('Min');
     this.avgTag = page.getByLabel('Avg');
     this.maxTag = page.getByLabel('Max');
-    this.openButton = page.getByRole('button', { name: 'Open' });
+    this.openButton = page.getByRole('button', { name: 'Open', exact: true });
     this.requestToSelectButton = page.getByRole('button', {
       name: 'Ask to choose',
     });
@@ -119,7 +119,7 @@ export default class RoomPage {
   }
 
   async selectUserType(userType: IFUserType) {
-    await this.page.getByLabel(userType).check();
+    await this.page.getByLabel(userType).click();
   }
 
   async getUserType(userType: IFUserType) {

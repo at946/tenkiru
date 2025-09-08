@@ -22,8 +22,8 @@ importers:
         specifier: 15.4.7
         version: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.55.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.91.0)
       next-intl:
-        specifier: ^4.3.5
-        version: 4.3.5(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.55.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.91.0))(react@19.1.0)(typescript@5.9.2)
+        specifier: ^4.3.6
+        version: 4.3.6(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.55.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.91.0))(react@19.1.0)(typescript@5.9.2)
       node-sass:
         specifier: ^9.0.0
         version: 9.0.0
@@ -4501,8 +4501,8 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  next-intl@4.3.5:
-    resolution: {integrity: sha512-tT3SltfpPOCAQ9kVNr+8t6FUtVf8G0WFlJcVc8zj4WCMfuF8XFk4gZCN/MtjgDgkUISw5aKamOClJB4EsV95WQ==}
+  next-intl@4.3.6:
+    resolution: {integrity: sha512-CLKbucu4w9WyX7qqVe+AJSn6q8EYAci+uA0+j3O/fRNTfP0QyNdRvXUwwdf7ZhgLS48K68gn8y1X8QNSuljVTQ==}
     peerDependencies:
       next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
@@ -5715,8 +5715,8 @@ packages:
     resolution: {integrity: sha512-oCwdVC7mTuWiPyjLUz/COz5TLk6wgp0RCsN+wHZ2Ekneac9w8uuV0njcbbie2ME+Vs+d6duwmYuR3HgQXs1fOg==}
     engines: {node: '>= 0.4'}
 
-  use-intl@4.3.5:
-    resolution: {integrity: sha512-qyL1TZNesVbzj/75ZbYsi+xzNSiFqp5rIVsiAN0JT8rPMSjX0/3KQz76aJIrngI1/wIQdVYFVdImWh5yAv+dWA==}
+  use-intl@4.3.6:
+    resolution: {integrity: sha512-MXB26v/U9JQimCHXWHPZAjqYGpOJf9aIGr6GeTzAemvHC0HecExVExp9LMhn1S8IY+O2OSoFzTSKHLknQSDKvw==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
 
@@ -10963,13 +10963,13 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-intl@4.3.5(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.55.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.91.0))(react@19.1.0)(typescript@5.9.2):
+  next-intl@4.3.6(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.55.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.91.0))(react@19.1.0)(typescript@5.9.2):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.10
       negotiator: 1.0.0
       next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.55.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.91.0)
       react: 19.1.0
-      use-intl: 4.3.5(react@19.1.0)
+      use-intl: 4.3.6(react@19.1.0)
     optionalDependencies:
       typescript: 5.9.2
 
@@ -12372,7 +12372,7 @@ snapshots:
       punycode: 1.4.1
       qs: 6.14.0
 
-  use-intl@4.3.5(react@19.1.0):
+  use-intl@4.3.6(react@19.1.0):
     dependencies:
       '@formatjs/fast-memoize': 2.2.7
       '@schummar/icu-type-parser': 1.21.5

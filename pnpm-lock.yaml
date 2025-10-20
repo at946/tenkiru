@@ -20,10 +20,10 @@ importers:
         version: 2.15.0(@babel/core@7.28.0)(@babel/template@7.27.2)(@types/react@19.1.2)(react@19.1.0)
       next:
         specifier: 15.4.7
-        version: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
+        version: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
       next-intl:
         specifier: ^4.3.12
-        version: 4.3.12(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(react@19.1.0)(typescript@5.9.3)
+        version: 4.3.12(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(react@19.1.0)(typescript@5.9.3)
       node-sass:
         specifier: ^9.0.0
         version: 9.0.0
@@ -74,8 +74,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       '@playwright/test':
-        specifier: ^1.56.0
-        version: 1.56.0
+        specifier: ^1.56.1
+        version: 1.56.1
       '@storybook/addon-a11y':
         specifier: ^8.6.12
         version: 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
@@ -99,7 +99,7 @@ importers:
         version: 0.2.3
       '@storybook/nextjs':
         specifier: ^8.6.12
-        version: 8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(node-sass@9.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
+        version: 8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(node-sass@9.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
       '@storybook/preview-api':
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
@@ -147,7 +147,7 @@ importers:
         version: 4.17.21
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))
+        version: 4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -1589,8 +1589,8 @@ packages:
     resolution: {integrity: sha512-dfUnCxiN9H4ap84DvD2ubjw+3vUNpstxa0TneY/Paat8a3R4uQZDLSvWjmznAY/DoahqTHl9V46HF/Zs3F29pg==}
     engines: {node: '>= 10.0.0'}
 
-  '@playwright/test@1.56.0':
-    resolution: {integrity: sha512-Tzh95Twig7hUwwNe381/K3PggZBZblKUe2wv25oIpzWLr6Z0m4KgV1ZVIjnR6GM9ANEqjZD7XsZEa6JL/7YEgg==}
+  '@playwright/test@1.56.1':
+    resolution: {integrity: sha512-vSMYtL/zOcFpvJCW71Q/OEGQb7KYBPAdKh35WNSkaZA75JlAO8ED8UN6GUNTm3drWomcbcqRPFqQbLae8yBTdg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3237,6 +3237,7 @@ packages:
 
   expect-playwright@0.8.0:
     resolution: {integrity: sha512-+kn8561vHAY+dt+0gMqqj1oY+g5xWrsuGMk4QGxotT2WS545nVqqjs37z6hrYfIuucwqthzwJfCJUEYqixyljg==}
+    deprecated: ⚠️ The 'expect-playwright' package is deprecated. The Playwright core assertions (via @playwright/test) now cover the same functionality. Please migrate to built-in expect. See https://playwright.dev/docs/test-assertions for migration.
 
   expect@29.7.0:
     resolution: {integrity: sha512-2Zks0hf1VLFYI1kbh0I5jP3KHHyCHpkfyHBzsSXRFgl/Bg9mWYfMW8oD+PdMPlEwy5HNsR9JutYy6pMeOh61nw==}
@@ -3940,6 +3941,7 @@ packages:
 
   jest-playwright-preset@4.0.0:
     resolution: {integrity: sha512-+dGZ1X2KqtwXaabVjTGxy0a3VzYfvYsWaRcuO8vMhyclHSOpGSI1+5cmlqzzCwQ3+fv0EjkTc7I5aV9lo08dYw==}
+    deprecated: ⚠️ The 'jest-playwright-preset' package is deprecated. Please migrate to Playwright's built-in test runner (@playwright/test) which now includes full Jest-style features and parallel testing. See https://playwright.dev/docs/intro for details.
     peerDependencies:
       jest: ^29.3.1
       jest-circus: ^29.3.1
@@ -3957,6 +3959,7 @@ packages:
 
   jest-process-manager@0.4.0:
     resolution: {integrity: sha512-80Y6snDyb0p8GG83pDxGI/kQzwVTkCxc7ep5FPe/F6JYdvRDhwr6RzRmPSP7SEwuLhxo80lBS/NqOdUIbHIfhw==}
+    deprecated: ⚠️ The 'jest-process-manager' package is deprecated. Please migrate to Playwright's built-in test runner (@playwright/test) which now includes full Jest-style features and parallel testing. See https://playwright.dev/docs/intro for details.
 
   jest-regex-util@29.6.3:
     resolution: {integrity: sha512-KJJBsRCyyLNWCNBOvZyRDnAIfUiRJ8v+hOBQYGn8gDyF3UegwiP4gwRR3/SDa42g1YbVycTidUF3rKjyLFDWbg==}
@@ -4791,8 +4794,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright-core@1.56.0:
-    resolution: {integrity: sha512-1SXl7pMfemAMSDn5rkPeZljxOCYAmQnYLBTExuh6E8USHXGSX3dx6lYZN/xPpTz1vimXmPA9CDnILvmJaB8aSQ==}
+  playwright-core@1.56.1:
+    resolution: {integrity: sha512-hutraynyn31F+Bifme+Ps9Vq59hKuUCz7H1kDOcBs+2oGguKkWTU50bBWrtz34OUWmIwpBTWDxaRPXrIXkgvmQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4801,8 +4804,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.56.0:
-    resolution: {integrity: sha512-X5Q1b8lOdWIE4KAoHpW3SE8HvUB+ZZsUoN64ZhjnN8dOb1UpujxBtENGiZFE+9F/yhzJwYa+ca3u43FeLbboHA==}
+  playwright@1.56.1:
+    resolution: {integrity: sha512-aFi5B0WovBHTEvpM3DzXTUaeN6eN0qWnTkKx4NQaH4Wvcmc153PdaY2UBdSYKaGYw+UyWXSVyxDUg5DoPEttjw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -7470,9 +7473,9 @@ snapshots:
       '@parcel/watcher-win32-x64': 2.5.1
     optional: true
 
-  '@playwright/test@1.56.0':
+  '@playwright/test@1.56.1':
     dependencies:
-      playwright: 1.56.0
+      playwright: 1.56.1
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.17(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))':
     dependencies:
@@ -7732,7 +7735,7 @@ snapshots:
     dependencies:
       storybook: 8.6.14(utf-8-validate@6.0.5)
 
-  '@storybook/nextjs@8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(node-sass@9.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))':
+  '@storybook/nextjs@8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(node-sass@9.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.28.0)
@@ -7758,7 +7761,7 @@ snapshots:
       find-up: 5.0.0
       image-size: 1.2.1
       loader-utils: 3.3.1
-      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
+      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
       node-polyfill-webpack-plugin: 2.0.1(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
       pnp-webpack-plugin: 1.7.0(typescript@5.9.3)
       postcss: 8.5.6
@@ -10977,25 +10980,25 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-intl@4.3.12(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(react@19.1.0)(typescript@5.9.3):
+  next-intl@4.3.12(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2))(react@19.1.0)(typescript@5.9.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.10
       negotiator: 1.0.0
-      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
+      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
       react: 19.1.0
       use-intl: 4.3.12(react@19.1.0)
     optionalDependencies:
       typescript: 5.9.3
 
-  next-sitemap@4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)):
+  next-sitemap@4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)):
     dependencies:
       '@corex/deepmerge': 4.0.43
       '@next/env': 13.5.11
       fast-glob: 3.3.3
       minimist: 1.2.8
-      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
+      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2)
 
-  next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2):
+  next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.2):
     dependencies:
       '@next/env': 15.4.7
       '@swc/helpers': 0.5.15
@@ -11013,7 +11016,7 @@ snapshots:
       '@next/swc-linux-x64-musl': 15.4.7
       '@next/swc-win32-arm64-msvc': 15.4.7
       '@next/swc-win32-x64-msvc': 15.4.7
-      '@playwright/test': 1.56.0
+      '@playwright/test': 1.56.1
       sass: 1.93.2
       sharp: 0.34.3
     transitivePeerDependencies:
@@ -11336,7 +11339,7 @@ snapshots:
 
   playwright-core@1.53.2: {}
 
-  playwright-core@1.56.0: {}
+  playwright-core@1.56.1: {}
 
   playwright@1.53.2:
     dependencies:
@@ -11344,9 +11347,9 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.2
 
-  playwright@1.56.0:
+  playwright@1.56.1:
     dependencies:
-      playwright-core: 1.56.0
+      playwright-core: 1.56.1
     optionalDependencies:
       fsevents: 2.3.2
 

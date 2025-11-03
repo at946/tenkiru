@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@types/react': 19.1.2
+  '@types/react': 19.2.2
   '@types/react-dom': 19.1.6
 
 importers:
@@ -17,25 +17,25 @@ importers:
         version: 5.1.0
       jotai:
         specifier: ^2.15.1
-        version: 2.15.1(@babel/core@7.28.0)(@babel/template@7.27.2)(@types/react@19.1.2)(react@19.1.0)
+        version: 2.15.1(@babel/core@7.28.0)(@babel/template@7.27.2)(@types/react@19.2.2)(react@19.2.0)
       next:
         specifier: 15.4.7
-        version: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3)
+        version: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3)
       next-intl:
         specifier: ^4.4.0
-        version: 4.4.0(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3))(react@19.1.0)(typescript@5.9.3)
+        version: 4.4.0(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3))(react@19.2.0)(typescript@5.9.3)
       node-sass:
         specifier: ^9.0.0
         version: 9.0.0
       react:
-        specifier: 19.1.0
-        version: 19.1.0
+        specifier: 19.2.0
+        version: 19.2.0
       react-dom:
         specifier: 19.1.0
-        version: 19.1.0(react@19.1.0)
+        version: 19.1.0(react@19.2.0)
       react-hot-toast:
         specifier: ^2.6.0
-        version: 2.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 2.6.0(react-dom@19.1.0(react@19.2.0))(react@19.2.0)
       sass:
         specifier: ^1.93.3
         version: 1.93.3
@@ -81,31 +81,31 @@ importers:
         version: 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-console':
         specifier: ^3.0.0
-        version: 3.0.0(@storybook/addon-actions@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react@19.1.0)
+        version: 3.0.0(@storybook/addon-actions@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react@19.2.0)
       '@storybook/addon-essentials':
         specifier: ^8.6.12
-        version: 8.6.14(@types/react@19.1.2)(storybook@8.6.14(utf-8-validate@6.0.5))
+        version: 8.6.14(@types/react@19.2.2)(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-interactions':
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-links':
         specifier: ^8.6.12
-        version: 8.6.14(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))
+        version: 8.6.14(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/blocks':
         specifier: ^8.6.14
-        version: 8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))
+        version: 8.6.14(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/jest':
         specifier: ^0.2.3
         version: 0.2.3
       '@storybook/nextjs':
         specifier: ^8.6.12
-        version: 8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3))(node-sass@9.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
+        version: 8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3))(node-sass@9.0.0)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
       '@storybook/preview-api':
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/react':
         specifier: ^8.6.12
-        version: 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
+        version: 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
       '@storybook/test-runner':
         specifier: ^0.23.0
         version: 0.23.0(@types/node@24.10.0)(storybook@8.6.14(utf-8-validate@6.0.5))
@@ -128,11 +128,11 @@ importers:
         specifier: 24.10.0
         version: 24.10.0
       '@types/react':
-        specifier: 19.1.2
-        version: 19.1.2
+        specifier: 19.2.2
+        version: 19.2.2
       '@types/react-dom':
         specifier: 19.1.6
-        version: 19.1.6(@types/react@19.1.2)
+        version: 19.1.6(@types/react@19.2.2)
       '@types/uuid':
         specifier: ^11.0.0
         version: 11.0.0
@@ -147,7 +147,7 @@ importers:
         version: 4.17.21
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3))
+        version: 4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3))
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -156,7 +156,7 @@ importers:
         version: 8.6.14(utf-8-validate@6.0.5)
       storybook-dark-mode:
         specifier: ^4.0.2
-        version: 4.0.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))
+        version: 4.0.2(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))
       tailwindcss:
         specifier: ^4.1.16
         version: 4.1.16
@@ -1417,7 +1417,7 @@ packages:
   '@mdx-js/react@3.1.0':
     resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
     peerDependencies:
-      '@types/react': 19.1.2
+      '@types/react': 19.2.2
       react: '>=16'
 
   '@next/env@13.5.11':
@@ -2165,10 +2165,10 @@ packages:
   '@types/react-dom@19.1.6':
     resolution: {integrity: sha512-4hOiT/dwO8Ko0gV1m/TJZYk3y0KBnY9vzDh7W+DH17b2HFSOGgdj33dhihPeuy3l0q23+4e+hoXHV6hCC4dCXw==}
     peerDependencies:
-      '@types/react': 19.1.2
+      '@types/react': 19.2.2
 
-  '@types/react@19.1.2':
-    resolution: {integrity: sha512-oxLPMytKchWGbnQM9O7D67uPa9paTNxO7jVoNMXgkkErULBPhPARCfkKL9ytcIJJRGjbsVwW4ugJzyFFvm/Tiw==}
+  '@types/react@19.2.2':
+    resolution: {integrity: sha512-6mDvHUFSjyT2B2yeNx2nUgMxh9LtOWvkhIU3uePn2I2oyNymUAX1NIsdgviM4CH+JSrp2D2hsMvJOkxY+0wNRA==}
 
   '@types/resolve@1.20.6':
     resolution: {integrity: sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==}
@@ -4033,7 +4033,7 @@ packages:
     peerDependencies:
       '@babel/core': '>=7.0.0'
       '@babel/template': '>=7.0.0'
-      '@types/react': 19.1.2
+      '@types/react': 19.2.2
       react: '>=17.0.0'
     peerDependenciesMeta:
       '@babel/core':
@@ -4988,8 +4988,8 @@ packages:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
     engines: {node: '>=0.10.0'}
 
-  react@19.1.0:
-    resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
+  react@19.2.0:
+    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
     engines: {node: '>=0.10.0'}
 
   read-pkg-up@7.0.1:
@@ -7324,11 +7324,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mdx-js/react@3.1.0(@types/react@19.1.2)(react@19.1.0)':
+  '@mdx-js/react@3.1.0(@types/react@19.2.2)(react@19.2.0)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 19.1.2
-      react: 19.1.0
+      '@types/react': 19.2.2
+      react: 19.2.0
 
   '@next/env@13.5.11': {}
 
@@ -7518,11 +7518,11 @@ snapshots:
       storybook: 8.6.14(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
 
-  '@storybook/addon-console@3.0.0(@storybook/addon-actions@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react@19.1.0)':
+  '@storybook/addon-console@3.0.0(@storybook/addon-actions@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react@19.2.0)':
     dependencies:
       '@storybook/addon-actions': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/global': 5.0.0
-      react: 19.1.0
+      react: 19.2.0
 
   '@storybook/addon-controls@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
@@ -7531,25 +7531,25 @@ snapshots:
       storybook: 8.6.14(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
 
-  '@storybook/addon-docs@8.6.14(@types/react@19.1.2)(storybook@8.6.14(utf-8-validate@6.0.5))':
+  '@storybook/addon-docs@8.6.14(@types/react@19.2.2)(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
-      '@mdx-js/react': 3.1.0(@types/react@19.1.2)(react@19.1.0)
-      '@storybook/blocks': 8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))
+      '@mdx-js/react': 3.1.0(@types/react@19.2.2)(react@19.2.0)
+      '@storybook/blocks': 8.6.14(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/csf-plugin': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
-      '@storybook/react-dom-shim': 8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      '@storybook/react-dom-shim': 8.6.14(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
       storybook: 8.6.14(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-essentials@8.6.14(@types/react@19.1.2)(storybook@8.6.14(utf-8-validate@6.0.5))':
+  '@storybook/addon-essentials@8.6.14(@types/react@19.2.2)(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
       '@storybook/addon-actions': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-backgrounds': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-controls': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
-      '@storybook/addon-docs': 8.6.14(@types/react@19.1.2)(storybook@8.6.14(utf-8-validate@6.0.5))
+      '@storybook/addon-docs': 8.6.14(@types/react@19.2.2)(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-highlight': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-measure': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/addon-outline': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
@@ -7574,13 +7574,13 @@ snapshots:
       storybook: 8.6.14(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
 
-  '@storybook/addon-links@8.6.14(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))':
+  '@storybook/addon-links@8.6.14(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.6.14(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
     optionalDependencies:
-      react: 19.1.0
+      react: 19.2.0
 
   '@storybook/addon-measure@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
@@ -7603,14 +7603,14 @@ snapshots:
       memoizerific: 1.11.3
       storybook: 8.6.14(utf-8-validate@6.0.5)
 
-  '@storybook/blocks@8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))':
+  '@storybook/blocks@8.6.14(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
-      '@storybook/icons': 1.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@storybook/icons': 1.4.0(react-dom@19.1.0(react@19.2.0))(react@19.2.0)
       storybook: 8.6.14(utf-8-validate@6.0.5)
       ts-dedent: 2.2.0
     optionalDependencies:
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
 
   '@storybook/builder-webpack5@8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)':
     dependencies:
@@ -7691,10 +7691,10 @@ snapshots:
 
   '@storybook/global@5.0.0': {}
 
-  '@storybook/icons@1.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@storybook/icons@1.4.0(react-dom@19.1.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
 
   '@storybook/instrumenter@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
@@ -7713,7 +7713,7 @@ snapshots:
     dependencies:
       storybook: 8.6.14(utf-8-validate@6.0.5)
 
-  '@storybook/nextjs@8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3))(node-sass@9.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))':
+  '@storybook/nextjs@8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3))(node-sass@9.0.0)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3)(storybook@8.6.14(utf-8-validate@6.0.5))(type-fest@2.19.0)(typescript@5.9.3)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.28.0)
@@ -7730,8 +7730,8 @@ snapshots:
       '@babel/runtime': 7.27.6
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.17(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-hot-middleware@2.26.1)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
       '@storybook/builder-webpack5': 8.6.14(@swc/core@1.12.9)(esbuild@0.25.5)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
-      '@storybook/preset-react-webpack': 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(@swc/core@1.12.9)(esbuild@0.25.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
-      '@storybook/react': 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
+      '@storybook/preset-react-webpack': 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(@swc/core@1.12.9)(esbuild@0.25.5)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
+      '@storybook/react': 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
       '@storybook/test': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@types/semver': 7.7.0
       babel-loader: 9.2.1(@babel/core@7.28.0)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
@@ -7739,20 +7739,20 @@ snapshots:
       find-up: 5.0.0
       image-size: 1.2.1
       loader-utils: 3.3.1
-      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3)
+      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3)
       node-polyfill-webpack-plugin: 2.0.1(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
       pnp-webpack-plugin: 1.7.0(typescript@5.9.3)
       postcss: 8.5.6
       postcss-loader: 8.1.1(postcss@8.5.6)(typescript@5.9.3)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
       react-refresh: 0.14.2
       resolve-url-loader: 5.0.0
       sass-loader: 14.2.1(node-sass@9.0.0)(sass@1.93.3)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
       semver: 7.7.2
       storybook: 8.6.14(utf-8-validate@6.0.5)
       style-loader: 3.3.4(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
-      styled-jsx: 5.1.7(@babel/core@7.28.0)(react@19.1.0)
+      styled-jsx: 5.1.7(@babel/core@7.28.0)(react@19.2.0)
       ts-dedent: 2.2.0
       tsconfig-paths: 4.2.0
       tsconfig-paths-webpack-plugin: 4.2.0
@@ -7778,17 +7778,17 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@storybook/preset-react-webpack@8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(@swc/core@1.12.9)(esbuild@0.25.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)':
+  '@storybook/preset-react-webpack@8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(@swc/core@1.12.9)(esbuild@0.25.5)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)':
     dependencies:
       '@storybook/core-webpack': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
-      '@storybook/react': 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
+      '@storybook/react': 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)
       '@storybook/react-docgen-typescript-plugin': 1.0.6--canary.9.0c3f3b7.0(typescript@5.9.3)(webpack@5.99.9(@swc/core@1.12.9)(esbuild@0.25.5))
       '@types/semver': 7.7.0
       find-up: 5.0.0
       magic-string: 0.30.17
-      react: 19.1.0
+      react: 19.2.0
       react-docgen: 7.1.1
-      react-dom: 19.1.0(react@19.1.0)
+      react-dom: 19.1.0(react@19.2.0)
       resolve: 1.22.10
       semver: 7.7.2
       storybook: 8.6.14(utf-8-validate@6.0.5)
@@ -7822,22 +7822,22 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/react-dom-shim@8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))':
+  '@storybook/react-dom-shim@8.6.14(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))':
     dependencies:
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
       storybook: 8.6.14(utf-8-validate@6.0.5)
 
-  '@storybook/react@8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)':
+  '@storybook/react@8.6.14(@storybook/test@8.6.14(storybook@8.6.14(utf-8-validate@6.0.5)))(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))(typescript@5.9.3)':
     dependencies:
       '@storybook/components': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/global': 5.0.0
       '@storybook/manager-api': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/preview-api': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
-      '@storybook/react-dom-shim': 8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5))
+      '@storybook/react-dom-shim': 8.6.14(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/theming': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
       storybook: 8.6.14(utf-8-validate@6.0.5)
     optionalDependencies:
       '@storybook/test': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
@@ -8165,11 +8165,11 @@ snapshots:
 
   '@types/parse-json@4.0.2': {}
 
-  '@types/react-dom@19.1.6(@types/react@19.1.2)':
+  '@types/react-dom@19.1.6(@types/react@19.2.2)':
     dependencies:
-      '@types/react': 19.1.2
+      '@types/react': 19.2.2
 
-  '@types/react@19.1.2':
+  '@types/react@19.2.2':
     dependencies:
       csstype: 3.1.3
 
@@ -10531,12 +10531,12 @@ snapshots:
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
 
-  jotai@2.15.1(@babel/core@7.28.0)(@babel/template@7.27.2)(@types/react@19.1.2)(react@19.1.0):
+  jotai@2.15.1(@babel/core@7.28.0)(@babel/template@7.27.2)(@types/react@19.2.2)(react@19.2.0):
     optionalDependencies:
       '@babel/core': 7.28.0
       '@babel/template': 7.27.2
-      '@types/react': 19.1.2
-      react: 19.1.0
+      '@types/react': 19.2.2
+      react: 19.2.0
 
   js-base64@2.6.4: {}
 
@@ -10951,33 +10951,33 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-intl@4.4.0(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3))(react@19.1.0)(typescript@5.9.3):
+  next-intl@4.4.0(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3))(react@19.2.0)(typescript@5.9.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.10
       negotiator: 1.0.0
-      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3)
-      react: 19.1.0
-      use-intl: 4.4.0(react@19.1.0)
+      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3)
+      react: 19.2.0
+      use-intl: 4.4.0(react@19.2.0)
     optionalDependencies:
       typescript: 5.9.3
 
-  next-sitemap@4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3)):
+  next-sitemap@4.2.3(next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3)):
     dependencies:
       '@corex/deepmerge': 4.0.43
       '@next/env': 13.5.11
       fast-glob: 3.3.3
       minimist: 1.2.8
-      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3)
+      next: 15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3)
 
-  next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.93.3):
+  next@15.4.7(@babel/core@7.28.0)(@playwright/test@1.56.1)(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(sass@1.93.3):
     dependencies:
       '@next/env': 15.4.7
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001735
       postcss: 8.4.31
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      styled-jsx: 5.1.6(@babel/core@7.28.0)(react@19.1.0)
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
+      styled-jsx: 5.1.6(@babel/core@7.28.0)(react@19.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.4.7
       '@next/swc-darwin-x64': 15.4.7
@@ -11504,17 +11504,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-dom@19.1.0(react@19.1.0):
+  react-dom@19.1.0(react@19.2.0):
     dependencies:
-      react: 19.1.0
+      react: 19.2.0
       scheduler: 0.26.0
 
-  react-hot-toast@2.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-hot-toast@2.6.0(react-dom@19.1.0(react@19.2.0))(react@19.2.0):
     dependencies:
       csstype: 3.1.3
       goober: 2.1.16(csstype@3.1.3)
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.2.0
+      react-dom: 19.1.0(react@19.2.0)
 
   react-is@17.0.2: {}
 
@@ -11522,7 +11522,7 @@ snapshots:
 
   react-refresh@0.14.2: {}
 
-  react@19.1.0: {}
+  react@19.2.0: {}
 
   read-pkg-up@7.0.1:
     dependencies:
@@ -12062,12 +12062,12 @@ snapshots:
       es-errors: 1.3.0
       internal-slot: 1.1.0
 
-  storybook-dark-mode@4.0.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(utf-8-validate@6.0.5)):
+  storybook-dark-mode@4.0.2(react-dom@19.1.0(react@19.2.0))(react@19.2.0)(storybook@8.6.14(utf-8-validate@6.0.5)):
     dependencies:
       '@storybook/components': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/core-events': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/global': 5.0.0
-      '@storybook/icons': 1.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@storybook/icons': 1.4.0(react-dom@19.1.0(react@19.2.0))(react@19.2.0)
       '@storybook/manager-api': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       '@storybook/theming': 8.6.14(storybook@8.6.14(utf-8-validate@6.0.5))
       fast-deep-equal: 3.1.3
@@ -12149,17 +12149,17 @@ snapshots:
     dependencies:
       webpack: 5.99.9(@swc/core@1.12.9)(esbuild@0.25.5)
 
-  styled-jsx@5.1.6(@babel/core@7.28.0)(react@19.1.0):
+  styled-jsx@5.1.6(@babel/core@7.28.0)(react@19.2.0):
     dependencies:
       client-only: 0.0.1
-      react: 19.1.0
+      react: 19.2.0
     optionalDependencies:
       '@babel/core': 7.28.0
 
-  styled-jsx@5.1.7(@babel/core@7.28.0)(react@19.1.0):
+  styled-jsx@5.1.7(@babel/core@7.28.0)(react@19.2.0):
     dependencies:
       client-only: 0.0.1
-      react: 19.1.0
+      react: 19.2.0
     optionalDependencies:
       '@babel/core': 7.28.0
 
@@ -12353,12 +12353,12 @@ snapshots:
       punycode: 1.4.1
       qs: 6.14.0
 
-  use-intl@4.4.0(react@19.1.0):
+  use-intl@4.4.0(react@19.2.0):
     dependencies:
       '@formatjs/fast-memoize': 2.2.7
       '@schummar/icu-type-parser': 1.21.5
       intl-messageformat: 10.7.18
-      react: 19.1.0
+      react: 19.2.0
 
   utf-8-validate@6.0.5:
     dependencies:

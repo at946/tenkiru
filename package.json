@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "express": "^5.1.0",
-    "jotai": "^2.15.0",
+    "jotai": "^2.15.1",
     "next": "15.4.7",
     "next-intl": "^4.4.0",
     "node-sass": "^9.0.0",

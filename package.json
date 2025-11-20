@@ -14,7 +14,8 @@
     "build-storybook": "storybook build",
     "test:storybook": "test-storybook",
     "test:playwright": "playwright test",
-    "test:playwright:report": "playwright show-report playwright/playwright-report"
+    "test:playwright:report": "playwright show-report playwright/playwright-report",
+    "recreate:pnpm-lock": "rm -rf node_modules && rm pnpm-lock.yaml && pnpm i"
   },
   "dependencies": {
     "express": "^5.1.0",
@@ -22,7 +23,7 @@
     "next": "15.4.7",
     "next-intl": "^4.5.3",
     "node-sass": "^9.0.0",
-    "react": "19.1.0",
+    "react": "19.2.0",
     "react-dom": "19.1.0",
     "react-hot-toast": "^2.6.0",
     "sass": "^1.94.0",
@@ -57,7 +58,7 @@
     "@types/gtag.js": "^0.0.20",
     "@types/lodash": "^4.17.19",
     "@types/node": "24.10.1",
-    "@types/react": "19.1.2",
+    "@types/react": "19.2.2",
     "@types/react-dom": "19.1.6",
     "@types/uuid": "^11.0.0",
     "clsx": "^2.1.1",
@@ -72,7 +73,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/react": "19.1.2",
+      "@types/react": "19.2.2",
       "@types/react-dom": "19.1.6"
     }
   }

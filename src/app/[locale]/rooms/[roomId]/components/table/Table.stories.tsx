@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { createStore, Provider } from 'jotai';
 import { NextIntlClientProvider } from 'next-intl';
 import type { IFRoom } from '@/interfaces/room';

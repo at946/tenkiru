@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import '@storybook/addon-console';
-import type { Preview } from '@storybook/react';
-import { themes } from '@storybook/theming';
+import type { Preview } from '@storybook/nextjs';
+import { themes } from 'storybook/theming';
 
 const preview: Preview = {
   parameters: {
@@ -20,6 +20,8 @@ const preview: Preview = {
       stylePreview: true,
     },
   },
+
+  tags: ['autodocs']
 };
 
 export default preview;

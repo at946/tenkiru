@@ -1,6 +1,6 @@
-import { useArgs } from '@storybook/preview-api';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { NextIntlClientProvider } from 'next-intl';
+import { useArgs } from 'storybook/preview-api';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import enMessages from '@/messages/en.json';
 import Hands from './Hands';

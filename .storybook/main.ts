@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-console',
     'storybook-dark-mode',
-    '@storybook/addon-docs'
+    '@storybook/addon-docs',
   ],
 
   framework: {
@@ -18,6 +18,6 @@ const config: StorybookConfig = {
 
   features: {
     experimentalRSC: true,
-  }
+  },
 };
 export default config;

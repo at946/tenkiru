@@ -41,7 +41,7 @@
     "@iconify/tailwind": "^1.2.0",
     "@playwright/test": "^1.57.0",
     "@storybook/addon-a11y": "9.1.16",
-    "@storybook/addon-console": "^3.0.0",
+    "@storybook/addon-docs": "9.1.16",
     "@storybook/addon-links": "9.1.16",
     "@storybook/jest": "^0.2.3",
     "@storybook/nextjs": "9.1.16",
@@ -61,10 +61,8 @@
     "next-sitemap": "^4.2.3",
     "postcss": "^8.5.6",
     "storybook": "9.1.16",
-    "storybook-dark-mode": "^4.0.2",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5.9.3",
-    "@storybook/addon-docs": "9.1.16"
+    "typescript": "^5.9.3"
   },
   "pnpm": {
     "overrides": {

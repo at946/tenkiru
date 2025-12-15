@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import LinkInNewTab from './LinkInNewTab';
 
 const meta: Meta<typeof LinkInNewTab> = {

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import toast from 'react-hot-toast';
 import Button from '@/app/[locale]/components/common/Button';
 import MyToaster from './MyToaster';

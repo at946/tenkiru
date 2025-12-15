@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
 import MyToaster from '@/app/[locale]/components/common/MyToaster';
 

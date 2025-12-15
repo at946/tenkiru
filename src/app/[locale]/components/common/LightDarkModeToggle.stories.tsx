@@ -1,5 +1,5 @@
 import '@/app/[locale]/components/common/Header.css';
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import LightDarkModeToggle from '@/app/[locale]/components/common/LightDarkModeToggle';
 
 const meta: Meta<typeof LightDarkModeToggle> = {

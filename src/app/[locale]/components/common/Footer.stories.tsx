@@ -1,5 +1,5 @@
 import { expect } from '@storybook/jest';
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { within } from '@storybook/testing-library';
 import { NextIntlClientProvider } from 'next-intl';
 import enMessages from '@/messages/en.json';

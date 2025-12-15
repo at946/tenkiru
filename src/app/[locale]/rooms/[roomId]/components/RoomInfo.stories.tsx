@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { NextIntlClientProvider } from 'next-intl';
 import MyToaster from '@/app/[locale]/components/common/MyToaster';
 import enMessages from '@/messages/en.json';

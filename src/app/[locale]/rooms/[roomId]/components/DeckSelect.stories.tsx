@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { NextIntlClientProvider } from 'next-intl';
 import { useArgs } from 'storybook/preview-api';
 import type { IFDeckType } from '@/interfaces/deckType';

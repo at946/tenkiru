@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import CreateRoomButton from './CreateRoomButton';
 
 const meta: Meta<typeof CreateRoomButton> = {

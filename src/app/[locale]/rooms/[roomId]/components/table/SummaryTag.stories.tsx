@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import SummaryTag from './SummaryTag';
 
 const meta: Meta<typeof SummaryTag> = {

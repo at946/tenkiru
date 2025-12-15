@@ -8,7 +8,7 @@ import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUserType } from '@/interfaces/userType';
-import { findRoomById } from './utils/findRoomById';
+import findRoomById from './utils/findRoomById';
 
 type NextApiResponseSocketIO = NextApiResponse & {
   socket: Socket & {

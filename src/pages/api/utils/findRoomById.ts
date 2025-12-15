@@ -5,6 +5,8 @@ interface args {
   roomId: string;
 }
 
-export const findRoomById = ({ rooms, roomId }: args): Room | undefined => {
+const findRoomById = ({ rooms, roomId }: args): Room | undefined => {
   return rooms.find((room: Room) => room.getId() === roomId);
 };
+
+export default findRoomById;

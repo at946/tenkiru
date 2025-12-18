@@ -30,7 +30,7 @@ const Hands: NextPage<Props> = ({ deckType, selectedValue, isDisabled, onSelect 
               'enabled:focus-visible:shadow-2xl',
               'has-checked:bg-primary has-checked:text-dark-text',
               'has-disabled:cursor-not-allowed has-disabled:opacity-25 dark:has-disabled:opacity-50',
-              'md:enabled:hover:-translate-y-2 md:enabled:focus-visible:-translate-y-2 md:enabled:hover:shadow-2xl',
+              'md:enabled:focus-visible:-translate-y-2 md:enabled:hover:-translate-y-2 md:enabled:hover:shadow-2xl',
             )}
           >
             <input

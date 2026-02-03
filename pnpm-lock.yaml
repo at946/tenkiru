@@ -73,8 +73,8 @@ importers:
         specifier: ^1.57.0
         version: 1.57.0
       '@storybook/addon-a11y':
-        specifier: 10.1.11
-        version: 10.1.11(storybook@10.2.0(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))
+        specifier: 10.2.0
+        version: 10.2.0(storybook@10.2.0(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))
       '@storybook/addon-docs':
         specifier: 10.1.11
         version: 10.1.11(@types/react@19.2.8)(esbuild@0.27.2)(rollup@4.55.1)(storybook@10.2.0(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))(vite@7.3.1(@types/node@25.0.10)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.97.3))
@@ -1301,10 +1301,10 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@storybook/addon-a11y@10.1.11':
-    resolution: {integrity: sha512-3sr6HmcDgW1+TQAV9QtWBE3HlGyfFXVZY3RECTNLNH6fRC+rYQCItisvQIVxQpyftLSQ8EAMN9JQzs495MjWNg==}
+  '@storybook/addon-a11y@10.2.0':
+    resolution: {integrity: sha512-PJVvEr6KpuOvCr1megfp39RNvFSut6XmFxaiDKtf8kxYbD8tMYL2n/9xFcPIvozJCO4zRmug50X+OIoh0GsSGQ==}
     peerDependencies:
-      storybook: ^10.1.11
+      storybook: ^10.2.0
 
   '@storybook/addon-docs@10.1.11':
     resolution: {integrity: sha512-Jwm291Fhim2eVcZIVlkG1B2skb0ZI9oru6nqMbJxceQZlvZmcIa4oxvS1oaMTKw2DJnCv97gLm57P/YvRZ8eUg==}
@@ -2008,8 +2008,8 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
-  axe-core@4.11.0:
-    resolution: {integrity: sha512-ilYanEU8vxxBexpJd8cWM4ElSQq4QctCLKih0TSfjIfCQTeyH/6zVrmIJfLPrKTKJRbiG+cfnZbQIjAlJmF1jQ==}
+  axe-core@4.11.1:
+    resolution: {integrity: sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==}
     engines: {node: '>=4'}
 
   axios@1.13.2:
@@ -5801,10 +5801,10 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@storybook/addon-a11y@10.1.11(storybook@10.2.0(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))':
+  '@storybook/addon-a11y@10.2.0(storybook@10.2.0(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))':
     dependencies:
       '@storybook/global': 5.0.0
-      axe-core: 4.11.0
+      axe-core: 4.11.1
       storybook: 10.2.0(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6)
 
   '@storybook/addon-docs@10.1.11(@types/react@19.2.8)(esbuild@0.27.2)(rollup@4.55.1)(storybook@10.2.0(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))(vite@7.3.1(@types/node@25.0.10)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.97.3))':
@@ -6482,7 +6482,7 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
-  axe-core@4.11.0: {}
+  axe-core@4.11.1: {}
 
   axios@1.13.2:
     dependencies:

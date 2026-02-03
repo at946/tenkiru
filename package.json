@@ -20,7 +20,7 @@
     "express": "^5.2.1",
     "jotai": "^2.16.2",
     "next": "16.1.5",
-    "next-intl": "^4.7.0",
+    "next-intl": "^4.8.2",
     "node-sass": "^9.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",

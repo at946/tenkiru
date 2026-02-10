@@ -62,7 +62,7 @@
     "storybook": "10.2.8",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
-    "@storybook/nextjs-vite": "10.1.11",
+    "@storybook/nextjs-vite": "10.2.8",
     "vite": "^7.3.1"
   }
 }

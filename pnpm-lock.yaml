@@ -79,8 +79,8 @@ importers:
         specifier: 10.2.17
         version: 10.2.17(@types/react@19.2.8)(esbuild@0.27.4)(rollup@4.55.1)(storybook@10.3.3(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(sass@1.98.0))
       '@storybook/addon-links':
-        specifier: 10.2.17
-        version: 10.2.17(react@19.2.3)(storybook@10.3.3(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))
+        specifier: 10.3.3
+        version: 10.3.3(react@19.2.3)(storybook@10.3.3(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))
       '@storybook/jest':
         specifier: ^0.2.3
         version: 0.2.3
@@ -1425,11 +1425,11 @@ packages:
     peerDependencies:
       storybook: ^10.2.17
 
-  '@storybook/addon-links@10.2.17':
-    resolution: {integrity: sha512-KY2usxhPpt9AAzD22uBEfdPj1NZyCNyaYXgKkr8r/UeCNt7E7OdVBLNA1QMYZZ5dtIWj9EtY8c55OPuBM7aUkQ==}
+  '@storybook/addon-links@10.3.3':
+    resolution: {integrity: sha512-tazBHlB+YbU62bde5DWsq0lnxZjcAsPB3YRUpN2hSMfAySsudRingyWrgu5KeOxXhJvKJj0ohjQvGcMx/wgQUA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      storybook: ^10.2.17
+      storybook: ^10.3.3
     peerDependenciesMeta:
       react:
         optional: true
@@ -6069,7 +6069,7 @@ snapshots:
       - vite
       - webpack
 
-  '@storybook/addon-links@10.2.17(react@19.2.3)(storybook@10.3.3(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))':
+  '@storybook/addon-links@10.3.3(react@19.2.3)(storybook@10.3.3(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 10.3.3(@testing-library/dom@9.3.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(utf-8-validate@6.0.6)

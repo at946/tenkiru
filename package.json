@@ -17,6 +17,7 @@
     "test:playwright:report": "playwright show-report playwright/playwright-report"
   },
   "dependencies": {
+    "@sentry/nextjs": "^10.48.0",
     "express": "^5.2.1",
     "jotai": "^2.19.0",
     "next": "16.2.2",
@@ -44,6 +45,7 @@
     "@storybook/addon-docs": "10.3.3",
     "@storybook/addon-links": "10.3.3",
     "@storybook/jest": "^0.2.3",
+    "@storybook/nextjs-vite": "10.3.3",
     "@storybook/test-runner": "^0.24.2",
     "@storybook/testing-library": "^0.2.2",
     "@tailwindcss/forms": "^0.5.11",
@@ -62,7 +64,6 @@
     "storybook": "10.3.4",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3",
-    "@storybook/nextjs-vite": "10.3.3",
     "vite": "^7.3.1"
   }
 }

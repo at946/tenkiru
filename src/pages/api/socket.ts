@@ -2,6 +2,7 @@ import type { Http2Server } from 'node:http2';
 import type { Socket } from 'node:net';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Server } from 'socket.io';
+import * as Sentry from '@sentry/nextjs';
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
 import type { IFDeckType } from '@/interfaces/deckType';
@@ -30,125 +31,165 @@ const SocketHandler = (_req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
     io.on('connection', (socket) => {
       socket.on('join-room', (roomId: string): void => {
-        let room: Room | undefined = findRoomById({
-          rooms: rooms,
-          roomId: roomId,
-        });
-        if (!room) {
-          room = new Room(roomId);
-          rooms.push(room);
-        }
-        socket.join(roomId);
-        room.addUser(new User(socket.id));
+        try {
+          let room: Room | undefined = findRoomById({
+            rooms: rooms,
+            roomId: roomId,
+          });
+          if (!room) {
+            room = new Room(roomId);
+            rooms.push(room);
+          }
+          socket.join(roomId);
+          room.addUser(new User(socket.id));
 
-        io.to(roomId).emit('update-room', room.toObject());
+          io.to(roomId).emit('update-room', room.toObject());
+        } catch (error) {
+          Sentry.captureException(error);
+        }
       });
 
       socket.on('change-deck-type', (roomId: string, newDeckType: IFDeckType): void => {
-        const room: Room | undefined = findRoomById({
-          rooms: rooms,
-          roomId: roomId,
-        });
-        if (!room) return;
+        try {
+          const room: Room | undefined = findRoomById({
+            rooms: rooms,
+            roomId: roomId,
+          });
+          if (!room) return;
 
-        room.setDeckType(newDeckType);
-        room.resetCards();
+          room.setDeckType(newDeckType);
+          room.resetCards();
 
-        io.to(roomId).emit('update-room', room.toObject());
+          io.to(roomId).emit('update-room', room.toObject());
+        } catch (error) {
+          Sentry.captureException(error);
+        }
       });
 
       socket.on('change-user-type', (roomId: string, newUserType: IFUserType): void => {
-        const room: Room | undefined = findRoomById({
-          rooms: rooms,
-          roomId: roomId,
-        });
-        if (!room) return;
+        try {
+          const room: Room | undefined = findRoomById({
+            rooms: rooms,
+            roomId: roomId,
+          });
+          if (!room) return;
 
-        const user: User | undefined = room.findUserById(socket.id);
-        if (!user) return;
+          const user: User | undefined = room.findUserById(socket.id);
+          if (!user) return;
 
-        user.setType(newUserType);
-        user.resetCard();
-        room.reorderUser(user.getId());
+          user.setType(newUserType);
+          user.resetCard();
+          room.reorderUser(user.getId());
 
-        io.to(roomId).emit('update-room', room.toObject());
+          io.to(roomId).emit('update-room', room.toObject());
+        } catch (error) {
+          Sentry.captureException(error);
+        }
       });
 
       socket.on('select-card', (roomId: string, selectedCardValue: IFTableCardValue): void => {
-        const room: Room | undefined = findRoomById({
-          rooms: rooms,
-          roomId: roomId,
-        });
-        if (!room) return;
+        try {
+          const room: Room | undefined = findRoomById({
+            rooms: rooms,
+            roomId: roomId,
+          });
+          if (!room) return;
 
-        const user: User | undefined = room.findUserById(socket.id);
-        if (!user) return;
+          const user: User | undefined = room.findUserById(socket.id);
+          if (!user) return;
 
-        user.selectCard(selectedCardValue);
-        room.reorderUser(user.getId());
+          user.selectCard(selectedCardValue);
+          room.reorderUser(user.getId());
 
-        io.to(roomId).emit('update-room', room.toObject());
+          io.to(roomId).emit('update-room', room.toObject());
+        } catch (error) {
+          Sentry.captureException(error);
+        }
       });
 
       socket.on('open-cards', (roomId: string): void => {
-        const room: Room | undefined = findRoomById({
-          rooms: rooms,
-          roomId: roomId,
-        });
-        if (!room) return;
+        try {
+          const room: Room | undefined = findRoomById({
+            rooms: rooms,
+            roomId: roomId,
+          });
+          if (!room) return;
 
-        room.openCards();
+          room.openCards();
 
-        io.to(roomId).emit('update-room', room.toObject());
+          io.to(roomId).emit('update-room', room.toObject());
+        } catch (error) {
+          Sentry.captureException(error);
+        }
       });
 
       socket.on('request-to-select', (roomId: string) => {
-        const room: Room | undefined = findRoomById({
-          rooms: rooms,
-          roomId: roomId,
-        });
-        if (!room) return;
+        try {
+          const room: Room | undefined = findRoomById({
+            rooms: rooms,
+            roomId: roomId,
+          });
+          if (!room) return;
 
-        const players: User[] = room.getPlayersNotSelectCard();
+          const players: User[] = room.getPlayersNotSelectCard();
 
-        for (const player of players) {
-          io.to(player.getId()).emit('receive-request-to-select');
+          for (const player of players) {
+            io.to(player.getId()).emit('receive-request-to-select');
+          }
+        } catch (error) {
+          Sentry.captureException(error);
         }
       });
 
       socket.on('replay', (roomId: string): void => {
-        const room: Room | undefined = findRoomById({
-          rooms: rooms,
-          roomId: roomId,
-        });
-        if (!room) return;
+        try {
+          const room: Room | undefined = findRoomById({
+            rooms: rooms,
+            roomId: roomId,
+          });
+          if (!room) return;
 
-        room.replay();
+          room.replay();
 
-        io.to(roomId).emit('update-room', room.toObject());
+          io.to(roomId).emit('update-room', room.toObject());
+        } catch (error) {
+          Sentry.captureException(error);
+        }
       });
 
       socket.on('nominate', (memberId: string): void => {
-        io.to(memberId).emit('nominate');
+        try {
+          io.to(memberId).emit('nominate');
+        } catch (error) {
+          Sentry.captureException(error);
+        }
       });
 
       socket.on('disconnecting', (): void => {
-        for (const socketRoom of socket.rooms) {
-          if (socketRoom === socket.id) {
-            continue;
-          }
-          const roomId: string = socketRoom;
-          const room: Room | undefined = rooms.find((room: Room) => room.getId() === roomId);
-          if (!room) continue;
+        try {
+          for (const socketRoom of socket.rooms) {
+            if (socketRoom === socket.id) {
+              continue;
+            }
+            const roomId: string = socketRoom;
+            const room: Room | undefined = rooms.find((room: Room) => room.getId() === roomId);
+            if (!room) continue;
 
-          room.removeUser(socket.id);
+            room.removeUser(socket.id);
 
-          if (!room.hasUsers()) {
-            removeRoomById(roomId);
-          } else {
-            io.to(roomId).emit('update-room', room.toObject());
+            if (!room.hasUsers()) {
+              removeRoomById(roomId);
+            } else {
+              io.to(roomId).emit('update-room', room.toObject());
+            }
           }
+        } catch (error) {
+          Sentry.captureException(error);
         }
+      });
+
+      socket.on('error', (error: Error) => {
+        Sentry.captureException(error);
       });
     });
     res.socket.server.io = io;

@@ -1,8 +1,8 @@
 import type { Http2Server } from 'node:http2';
 import type { Socket } from 'node:net';
+import * as Sentry from '@sentry/nextjs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Server } from 'socket.io';
-import * as Sentry from '@sentry/nextjs';
 import { Room } from '@/class/room';
 import { User } from '@/class/user';
 import type { IFDeckType } from '@/interfaces/deckType';

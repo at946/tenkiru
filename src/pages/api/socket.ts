@@ -1,5 +1,6 @@
 import type { Http2Server } from 'node:http2';
 import type { Socket } from 'node:net';
+import * as Sentry from '@sentry/nextjs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Server } from 'socket.io';
 import { Room } from '@/class/room';
@@ -149,6 +150,10 @@ const SocketHandler = (_req: NextApiRequest, res: NextApiResponseSocketIO) => {
             io.to(roomId).emit('update-room', room.toObject());
           }
         }
+      });
+
+      socket.on('error', (error: Error) => {
+        Sentry.captureException(error);
       });
     });
     res.socket.server.io = io;

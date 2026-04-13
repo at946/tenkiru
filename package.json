@@ -41,7 +41,7 @@
     "@iconify-json/simple-icons": "^1.2.76",
     "@iconify/tailwind": "^1.2.0",
     "@playwright/test": "^1.57.0",
-    "@storybook/addon-a11y": "10.3.3",
+    "@storybook/addon-a11y": "10.3.5",
     "@storybook/addon-docs": "10.3.3",
     "@storybook/addon-links": "10.3.4",
     "@storybook/jest": "^0.2.3",

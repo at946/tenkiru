@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM node:20.1.0 AS builder
+FROM node:24.12.0 AS builder
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -19,7 +19,7 @@ ARG NEXT_PUBLIC_GOOGLE_ADSENSE_ID
 RUN pnpm build && pnpm postBuild
 
 # Production image, copy all the files and run next
-FROM node:20.1.0 AS runner
+FROM node:24.12.0 AS runner
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"

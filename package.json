@@ -15,7 +15,7 @@
     "test:storybook": "test-storybook",
     "test:playwright": "playwright test",
     "test:playwright:report": "playwright show-report playwright/playwright-report",
-    "reinstall": "rm -rf node_modules/ && rm pnpm-lock.yaml && pnpm i"
+    "reinstall": "rm -rf node_modules/ && rm pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.48.0",
@@ -24,8 +24,8 @@
     "next": "16.2.3",
     "next-intl": "^4.8.3",
     "node-sass": "^9.0.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "react-hot-toast": "^2.6.0",
     "sass": "^1.99.0",
     "socket.io": "^4.8.3",
@@ -54,7 +54,7 @@
     "@types/gtag.js": "^0.0.20",
     "@types/lodash": "^4.17.24",
     "@types/node": "25.6.0",
-    "@types/react": "19.2.8",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/uuid": "^11.0.0",
     "clsx": "^2.1.1",

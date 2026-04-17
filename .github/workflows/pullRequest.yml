@@ -2,6 +2,9 @@ name: lint and e2e tests for pull requests
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   job:
     runs-on: ubuntu-latest

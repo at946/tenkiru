@@ -14,7 +14,8 @@
     "build-storybook": "storybook build",
     "test:storybook": "test-storybook",
     "test:playwright": "playwright test",
-    "test:playwright:report": "playwright show-report playwright/playwright-report"
+    "test:playwright:report": "playwright show-report playwright/playwright-report",
+    "reinstall": "rm -rf node_modules/ && rm pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.48.0",

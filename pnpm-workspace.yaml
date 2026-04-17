@@ -1,0 +1,10 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@sentry/cli': true
+  '@swc/core': true
+  esbuild: true
+  lefthook: true
+  node-sass: true
+  sharp: true
+  unrs-resolver: true
+  utf-8-validate: true

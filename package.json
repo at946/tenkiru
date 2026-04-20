@@ -31,7 +31,7 @@
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
     "utf-8-validate": "^6.0.6",
-    "uuid": "^13.0.0"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.11",

@@ -21,6 +21,7 @@
 
 # debug
 .pnpm-debug.log*
+*.log
 
 # local env files
 .env*.local

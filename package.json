@@ -23,7 +23,6 @@
     "jotai": "^2.19.0",
     "next": "16.2.4",
     "next-intl": "^4.8.3",
-    "node-sass": "^9.0.0",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "react-hot-toast": "^2.6.0",

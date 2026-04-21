@@ -1,3 +1,11 @@
+/// <reference types="gtag.js" />
+
+declare global {
+  interface Window {
+    gtag: Gtag.Gtag;
+  }
+}
+
 export const GA_TRACKING_ID: string = process.env.NEXT_PUBLIC_GA_ID || '';
 
 export const pageview = (url: string): void => {

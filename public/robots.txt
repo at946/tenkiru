@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /rooms/
+
+Sitemap: https://tenkir.fly.dev/sitemap.xml

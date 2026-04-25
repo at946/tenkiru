@@ -16,7 +16,7 @@ ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_GA_ID 
 ARG NEXT_PUBLIC_GOOGLE_ADSENSE_ID
 
-RUN pnpm build && pnpm postBuild
+RUN pnpm build
 
 # Production image, copy all the files and run next
 FROM node:24.12.0 AS runner

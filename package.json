@@ -41,7 +41,7 @@
     "@iconify/tailwind": "^1.2.0",
     "@playwright/test": "^1.57.0",
     "@storybook/addon-a11y": "10.3.6",
-    "@storybook/addon-docs": "10.3.5",
+    "@storybook/addon-docs": "10.3.6",
     "@storybook/addon-links": "10.3.6",
     "@storybook/nextjs-vite": "10.3.6",
     "@storybook/test": "^8.6.15",

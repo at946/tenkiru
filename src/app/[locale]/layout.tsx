@@ -25,11 +25,18 @@ export async function generateMetadata(props: MetaProps) {
   return {
     title: t('title'),
     description: t('description'),
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: '/en',
+        ja: '/ja',
+      },
+    },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: '/',
+      url: `/${locale}`,
       siteName: t('title'),
       type: 'website',
       images: '/opengraph-image.jpg',

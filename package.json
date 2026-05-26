@@ -54,7 +54,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "clsx": "^2.1.1",
-    "lefthook": "^2.1.5",
+    "lefthook": "^2.1.8",
     "lodash": "^4.18.1",
     "postcss": "^8.5.14",
     "storybook": "10.4.1",

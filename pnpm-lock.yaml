@@ -74,22 +74,22 @@ importers:
         version: 1.59.1
       '@storybook/addon-a11y':
         specifier: 10.3.6
-        version: 10.3.6(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
+        version: 10.3.6(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
       '@storybook/addon-docs':
         specifier: 10.3.6
-        version: 10.3.6(@types/react@19.2.14)(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
+        version: 10.3.6(@types/react@19.2.14)(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
       '@storybook/addon-links':
         specifier: 10.3.6
-        version: 10.3.6(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
+        version: 10.3.6(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
       '@storybook/nextjs-vite':
         specifier: 10.3.6
-        version: 10.3.6(@babel/core@7.29.0)(esbuild@0.27.7)(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
+        version: 10.3.6(@babel/core@7.29.0)(esbuild@0.27.7)(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
       '@storybook/test':
         specifier: ^8.6.15
-        version: 8.6.15(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
+        version: 8.6.15(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
       '@storybook/test-runner':
         specifier: ^0.24.3
-        version: 0.24.3(@types/node@25.9.1)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
+        version: 0.24.3(@types/node@25.9.1)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
       '@tailwindcss/forms':
         specifier: ^0.5.11
         version: 0.5.11(tailwindcss@4.3.0)
@@ -124,8 +124,8 @@ importers:
         specifier: ^8.5.14
         version: 8.5.14
       storybook:
-        specifier: 10.4.0
-        version: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+        specifier: 10.4.1
+        version: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.0
@@ -140,6 +140,9 @@ packages:
 
   '@adobe/css-tools@4.4.4':
     resolution: {integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==}
+
+  '@adobe/css-tools@4.5.0':
+    resolution: {integrity: sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q==}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -4425,8 +4428,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.8.0:
-    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
+  semver@7.8.1:
+    resolution: {integrity: sha512-rkVq3IXh+4FDGch+KwzX3aV9W3kO54GyEgpvBzSyctDA6Xtd7RJQV1xmXbeQp5v7+VzLOfVqiutSE6GICgPFvg==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4541,8 +4544,8 @@ packages:
     resolution: {integrity: sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==}
     engines: {node: '>= 0.8'}
 
-  storybook@10.4.0:
-    resolution: {integrity: sha512-zrtctbVa6xEXCXuE3vsiR0At31zLOtzj8QudN/GaBJLZl0Z2DfF1rDPtTxdAbAp11M2J/7JVHaTIQKXauQPbmg==}
+  storybook@10.4.1:
+    resolution: {integrity: sha512-V1Zd2e+gBFufqAQVZ1JR8KLqALsEZ3JYSBnWwQbKa6zCfWWanR6AFMyuOkLt2gZOgGp3h2Riuz88pGNVTQSG0A==}
     hasBin: true
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -4983,8 +4986,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.20.1:
-    resolution: {integrity: sha512-It4dO0K5v//JtTXuPkfEOaI3uUN87iYPnqo/ZzqCoG3g8uhA66QUMs/SrM0YK7/NAu+r4LMh/9dq2A7k+rHs+w==}
+  ws@8.21.0:
+    resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -5043,6 +5046,8 @@ packages:
 snapshots:
 
   '@adobe/css-tools@4.4.4': {}
+
+  '@adobe/css-tools@4.5.0': {}
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -6609,21 +6614,21 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@storybook/addon-a11y@10.3.6(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
+  '@storybook/addon-a11y@10.3.6(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
     dependencies:
       '@storybook/global': 5.0.0
       axe-core: 4.11.4
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
 
-  '@storybook/addon-docs@10.3.6(@types/react@19.2.14)(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
+  '@storybook/addon-docs@10.3.6(@types/react@19.2.14)(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.2.14)(react@19.2.6)
-      '@storybook/csf-plugin': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
+      '@storybook/csf-plugin': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
       '@storybook/icons': 2.0.2(react-dom@19.2.5(react@19.2.6))(react@19.2.6)
-      '@storybook/react-dom-shim': 10.3.6(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
+      '@storybook/react-dom-shim': 10.3.6(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
       react: 19.2.6
       react-dom: 19.2.5(react@19.2.6)
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
@@ -6632,17 +6637,17 @@ snapshots:
       - vite
       - webpack
 
-  '@storybook/addon-links@10.3.6(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
+  '@storybook/addon-links@10.3.6(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
     optionalDependencies:
       react: 19.2.6
 
-  '@storybook/builder-vite@10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
+  '@storybook/builder-vite@10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
     dependencies:
-      '@storybook/csf-plugin': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      '@storybook/csf-plugin': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       ts-dedent: 2.2.0
       vite: 8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0)
     transitivePeerDependencies:
@@ -6650,9 +6655,9 @@ snapshots:
       - rollup
       - webpack
 
-  '@storybook/csf-plugin@10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
+  '@storybook/csf-plugin@10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
     dependencies:
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       unplugin: 2.3.11
     optionalDependencies:
       esbuild: 0.27.7
@@ -6672,24 +6677,24 @@ snapshots:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
 
-  '@storybook/instrumenter@8.6.15(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
+  '@storybook/instrumenter@8.6.15(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.9
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
 
-  '@storybook/nextjs-vite@10.3.6(@babel/core@7.29.0)(esbuild@0.27.7)(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
+  '@storybook/nextjs-vite@10.3.6(@babel/core@7.29.0)(esbuild@0.27.7)(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
     dependencies:
-      '@storybook/builder-vite': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
-      '@storybook/react': 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)
-      '@storybook/react-vite': 10.3.6(esbuild@0.27.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
+      '@storybook/builder-vite': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
+      '@storybook/react': 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)
+      '@storybook/react-vite': 10.3.6(esbuild@0.27.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
       next: 16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0)
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       styled-jsx: 5.1.6(@babel/core@7.29.0)(react@19.2.6)
       vite: 8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0)
-      vite-plugin-storybook-nextjs: 3.2.4(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))
+      vite-plugin-storybook-nextjs: 3.2.4(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -6700,31 +6705,31 @@ snapshots:
       - supports-color
       - webpack
 
-  '@storybook/react-dom-shim@10.3.6(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
+  '@storybook/react-dom-shim@10.3.6(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
     dependencies:
       react: 19.2.6
       react-dom: 19.2.5(react@19.2.6)
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
 
-  '@storybook/react-dom-shim@10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
+  '@storybook/react-dom-shim@10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
     dependencies:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
 
-  '@storybook/react-vite@10.3.6(esbuild@0.27.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
+  '@storybook/react-vite@10.3.6(esbuild@0.27.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))':
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.7.0(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))
       '@rollup/pluginutils': 5.3.0(rollup@4.60.4)
-      '@storybook/builder-vite': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
-      '@storybook/react': 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)
+      '@storybook/builder-vite': 10.3.6(esbuild@0.27.7)(rollup@4.60.4)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))(webpack@5.106.2(@swc/core@1.15.30)(esbuild@0.27.7)(postcss@8.5.14))
+      '@storybook/react': 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)
       empathic: 2.0.1
       magic-string: 0.30.21
       react: 19.2.6
       react-docgen: 8.0.3
       react-dom: 19.2.6(react@19.2.6)
       resolve: 1.22.12
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       tsconfig-paths: 4.2.0
       vite: 8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0)
     transitivePeerDependencies:
@@ -6734,21 +6739,21 @@ snapshots:
       - typescript
       - webpack
 
-  '@storybook/react@10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)':
+  '@storybook/react@10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/react-dom-shim': 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
+      '@storybook/react-dom-shim': 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
       react: 19.2.6
       react-docgen: 8.0.3
       react-docgen-typescript: 2.4.0(typescript@6.0.3)
       react-dom: 19.2.6(react@19.2.6)
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/test-runner@0.24.3(@types/node@25.9.1)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
+  '@storybook/test-runner@0.24.3(@types/node@25.9.1)(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/generator': 7.29.1
@@ -6770,7 +6775,7 @@ snapshots:
       playwright: 1.59.1
       playwright-core: 1.59.1
       rimraf: 3.0.2
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       uuid: 8.3.2
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -6782,16 +6787,16 @@ snapshots:
       - supports-color
       - ts-node
 
-  '@storybook/test@8.6.15(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
+  '@storybook/test@8.6.15(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/instrumenter': 8.6.15(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
+      '@storybook/instrumenter': 8.6.15(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))
       '@testing-library/dom': 10.4.0
       '@testing-library/jest-dom': 6.5.0
       '@testing-library/user-event': 14.5.2(@testing-library/dom@10.4.0)
       '@vitest/expect': 2.0.5
       '@vitest/spy': 2.0.5
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
 
   '@swc/core-darwin-arm64@1.15.30':
     optional: true
@@ -7015,7 +7020,7 @@ snapshots:
 
   '@testing-library/jest-dom@6.9.1':
     dependencies:
-      '@adobe/css-tools': 4.4.4
+      '@adobe/css-tools': 4.5.0
       aria-query: 5.3.2
       css.escape: 1.5.1
       dom-accessibility-api: 0.6.3
@@ -8336,7 +8341,7 @@ snapshots:
       '@babel/parser': 7.29.3
       '@istanbuljs/schema': 0.1.6
       istanbul-lib-coverage: 3.2.2
-      semver: 7.8.0
+      semver: 7.8.1
     transitivePeerDependencies:
       - supports-color
 
@@ -8664,7 +8669,7 @@ snapshots:
       jest-message-util: 30.3.0
       jest-util: 30.3.0
       pretty-format: 30.3.0
-      semver: 7.8.0
+      semver: 7.8.1
       synckit: 0.11.12
     transitivePeerDependencies:
       - supports-color
@@ -8906,7 +8911,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.8.0
+      semver: 7.8.1
 
   makeerror@1.0.12:
     dependencies:
@@ -9510,7 +9515,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.8.0: {}
+  semver@7.8.1: {}
 
   send@1.2.1:
     dependencies:
@@ -9545,7 +9550,7 @@ snapshots:
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
-      semver: 7.8.0
+      semver: 7.8.1
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.34.5
       '@img/sharp-darwin-x64': 0.34.5
@@ -9702,7 +9707,7 @@ snapshots:
 
   statuses@2.0.2: {}
 
-  storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6):
+  storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6):
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/icons': 2.0.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -9716,9 +9721,9 @@ snapshots:
       oxc-parser: 0.127.0
       oxc-resolver: 11.19.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       recast: 0.23.11
-      semver: 7.8.0
+      semver: 7.8.1
       use-sync-external-store: 1.6.0(react@19.2.6)
-      ws: 8.20.1(utf-8-validate@6.0.6)
+      ws: 8.21.0(utf-8-validate@6.0.6)
     optionalDependencies:
       '@types/react': 19.2.14
     transitivePeerDependencies:
@@ -9959,14 +9964,14 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-plugin-storybook-nextjs@3.2.4(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0)):
+  vite-plugin-storybook-nextjs@3.2.4(next@16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0))(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6))(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0)):
     dependencies:
       '@next/env': 16.0.0
       image-size: 2.0.2
       magic-string: 0.30.21
       module-alias: 2.3.4
       next: 16.2.6(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(@playwright/test@1.59.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(sass@1.99.0)
-      storybook: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
+      storybook: 10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.0)(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(utf-8-validate@6.0.6)
       ts-dedent: 2.2.0
       vite: 8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0)
       vite-tsconfig-paths: 5.1.4(typescript@6.0.3)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.99.0)(terser@5.48.0))
@@ -10124,7 +10129,7 @@ snapshots:
     optionalDependencies:
       utf-8-validate: 6.0.6
 
-  ws@8.20.1(utf-8-validate@6.0.6):
+  ws@8.21.0(utf-8-validate@6.0.6):
     optionalDependencies:
       utf-8-validate: 6.0.6
 

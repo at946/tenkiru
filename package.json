@@ -17,7 +17,7 @@
     "reinstall": "rm -rf node_modules/ && rm pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
-    "@sentry/nextjs": "^10.56.0",
+    "@sentry/nextjs": "^10.58.0",
     "express": "^5.2.1",
     "jotai": "^2.20.1",
     "next": "16.2.7",

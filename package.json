@@ -19,7 +19,7 @@
   "dependencies": {
     "@sentry/nextjs": "^10.56.0",
     "express": "^5.2.1",
-    "jotai": "^2.20.0",
+    "jotai": "^2.20.1",
     "next": "16.2.7",
     "next-intl": "^4.13.0",
     "react": "19.2.6",

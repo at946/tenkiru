@@ -23,7 +23,7 @@
     "next": "16.2.9",
     "next-intl": "^4.13.0",
     "react": "19.2.7",
-    "react-dom": "19.2.6",
+    "react-dom": "19.2.7",
     "react-hot-toast": "^2.6.0",
     "sass": "^1.100.0",
     "socket.io": "^4.8.3",

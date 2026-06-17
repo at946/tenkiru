@@ -70,7 +70,7 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       '@playwright/test':
-        specifier: ^1.57.0
+        specifier: ^1.61.0
         version: 1.61.0
       '@storybook/addon-a11y':
         specifier: 10.4.2
@@ -88,7 +88,7 @@ importers:
         specifier: ^8.6.15
         version: 8.6.15(storybook@10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))
       '@storybook/test-runner':
-        specifier: ^0.24.3
+        specifier: ^0.24.4
         version: 0.24.4(@types/node@25.9.3)(storybook@10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))
       '@tailwindcss/forms':
         specifier: ^0.5.11
@@ -4138,11 +4138,6 @@ packages:
     resolution: {integrity: sha512-aEZ9qP+/M+58x2qgfSFEWH1BxLyHe5+qkLNJOZQb5iGS017jpbRnoKhNRrXPeA6RfBrZO5wZrT9DMC1UqE1f1w==}
     engines: {node: ^20.9.0 || >=22}
 
-  react-dom@19.2.6:
-    resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
-    peerDependencies:
-      react: ^19.2.6
-
   react-dom@19.2.7:
     resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
     peerDependencies:
@@ -6215,10 +6210,10 @@ snapshots:
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.7)
       '@storybook/csf-plugin': 10.4.2(esbuild@0.27.7)(rollup@4.62.0)(storybook@10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))(vite@8.0.16(@types/node@25.9.3)(esbuild@0.27.7)(jiti@2.7.0)(sass@1.101.0)(terser@5.48.0))(webpack@5.107.2(@swc/core@1.15.41)(esbuild@0.27.7)(postcss@8.5.15))
-      '@storybook/icons': 2.0.2(react-dom@19.2.6(react@19.2.7))(react@19.2.7)
-      '@storybook/react-dom-shim': 10.4.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(storybook@10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))
+      '@storybook/icons': 2.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@storybook/react-dom-shim': 10.4.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))
       react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
+      react-dom: 19.2.7(react@19.2.7)
       storybook: 10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6)
       ts-dedent: 2.3.0
     optionalDependencies:
@@ -6261,11 +6256,6 @@ snapshots:
 
   '@storybook/global@5.0.0': {}
 
-  '@storybook/icons@2.0.2(react-dom@19.2.6(react@19.2.7))(react@19.2.7)':
-    dependencies:
-      react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
-
   '@storybook/icons@2.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       react: 19.2.7
@@ -6300,15 +6290,6 @@ snapshots:
       - rollup
       - supports-color
       - webpack
-
-  '@storybook/react-dom-shim@10.4.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.7))(react@19.2.7)(storybook@10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))':
-    dependencies:
-      react: 19.2.7
-      react-dom: 19.2.6(react@19.2.7)
-      storybook: 10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6)
-    optionalDependencies:
-      '@types/react': 19.2.17
-      '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
   '@storybook/react-dom-shim@10.4.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(storybook@10.4.5(@testing-library/dom@10.4.0)(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(utf-8-validate@6.0.6))':
     dependencies:
@@ -8840,11 +8821,6 @@ snapshots:
       strip-indent: 4.1.1
     transitivePeerDependencies:
       - supports-color
-
-  react-dom@19.2.6(react@19.2.7):
-    dependencies:
-      react: 19.2.7
-      scheduler: 0.27.0
 
   react-dom@19.2.7(react@19.2.7):
     dependencies:

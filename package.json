@@ -42,7 +42,7 @@
     "@playwright/test": "^1.61.0",
     "@storybook/addon-a11y": "10.4.5",
     "@storybook/addon-docs": "10.4.5",
-    "@storybook/addon-links": "10.4.2",
+    "@storybook/addon-links": "10.4.5",
     "@storybook/nextjs-vite": "10.4.5",
     "@storybook/test": "^8.6.15",
     "@storybook/test-runner": "^0.24.4",

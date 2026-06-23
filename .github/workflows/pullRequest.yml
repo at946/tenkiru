@@ -3,7 +3,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   job:
@@ -11,6 +11,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - uses: pnpm/action-setup@v6
         with:
@@ -24,7 +27,15 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: biome (linter and formatter)
-        run: pnpm biome:check
+        run: |
+          pnpm biome:fix
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "chore: format and lint fix with Biome [skip ci]"
+            git push
+          fi
 
       - name: typescript
         run: pnpm type:check

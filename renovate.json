@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "minimumReleaseAge": "3 days",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch", "minor", "major", "github-actions"],
+      "rebaseWhen": "behind",
+      "automerge": true
+    }
+  ],
+  "lockFileMaintenance": {
+    "enable": true,
+    "autoMerge": true
+  },
+  "timezone": "Asia/Tokyo"
+}

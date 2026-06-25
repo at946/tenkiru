@@ -14,10 +14,10 @@
     "test:storybook": "test-storybook",
     "test:playwright": "playwright test",
     "test:playwright:report": "playwright show-report playwright/playwright-report",
-    "reinstall": "rm -rf node_modules/ && rm pnpm-lock.yaml && pnpm install"
+    "reinstall": "pnpm clean --lockfile && pnpm i"
   },
   "dependencies": {
-    "@sentry/nextjs": "^10.58.0",
+    "@sentry/nextjs": "^10.59.0",
     "express": "^5.2.1",
     "jotai": "^2.20.1",
     "next": "16.2.9",

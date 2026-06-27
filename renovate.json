@@ -10,7 +10,7 @@
     }
   ],
   "lockFileMaintenance": {
-    "enable": true,
+    "enabled": true,
     "automerge": true
   },
   "timezone": "Asia/Tokyo"

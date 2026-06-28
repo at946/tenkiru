@@ -25,12 +25,12 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
             : t('Face-down table card')
       }
     >
-      <div className='absolute inset-0 rounded-md border-2 border-text border-dashed' aria-hidden='true' />
+      <div className='absolute inset-0 rounded-2xl border border-white/30 border' aria-hidden='true' />
 
       {!isBlank && (
         <div
           className={clsx(
-            'absolute inset-0 flex aspect-card w-24 items-center justify-center rounded-md border-2 border-text font-bold text-2xl shadow-md',
+            'absolute inset-1 flex aspect-card w-24 items-center justify-center rounded-xl border-2 border-text font-bold text-2xl shadow-lg',
             !isOpen && 'bg-secondary',
             isOpen && 'bg-background text-text transition-all duration-1000 ease-out',
           )}

@@ -35,6 +35,7 @@ jobs:
             git add .
             git commit -m "chore: format and lint fix with Biome [skip ci]"
             git push
+            exit 0
           fi
 
       - name: typescript

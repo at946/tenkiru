@@ -25,7 +25,7 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
             : t('Face-down table card')
       }
     >
-      <div className='absolute inset-0 rounded-2xl border border-white/30 border' aria-hidden='true' />
+      <div className='absolute inset-0 rounded-2xl border border-white/30' aria-hidden='true' />
 
       {!isBlank && (
         <div

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { NextPage } from 'next';
-import { useTranslations } from 'next-intl';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import PokerCardSlot from '../poker-card/PokerCardSlot';
 
 interface Props {
   value: IFTableCardValue;
@@ -9,11 +9,10 @@ interface Props {
 }
 
 const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
-  const t = useTranslations('Room.Table');
-
   const isBlank: boolean = value === null;
 
   return (
+    <PokerCardSlot>
       {!isBlank && (
         <div
           className={clsx(
@@ -27,6 +26,7 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
           {isOpen && value}
         </div>
       )}
+    </PokerCardSlot>
   );
 };
 

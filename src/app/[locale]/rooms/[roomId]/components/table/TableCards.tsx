@@ -6,7 +6,6 @@ import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
-import PokerCardSlot from '../poker-card/PokerCardSlot';
 import TableCard from './TableCard';
 
 interface Props {
@@ -27,9 +26,7 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
         return (
           <fieldset key={tableCard.userId} aria-label={t('Table cards group')}>
             <div className='mb-2 flex justify-center'>
-              <PokerCardSlot>
-                <TableCard value={tableCard.value} isOpen={room.isOpenPhase} />
-              </PokerCardSlot>
+              <TableCard value={tableCard.value} isOpen={room.isOpenPhase} />
             </div>
 
             <div className='text-center'>

@@ -6,8 +6,8 @@ import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
-import TableCard from './TableCard';
 import PokerCardSlot from '../poker-card/PokerCardSlot';
+import TableCard from './TableCard';
 
 interface Props {
   nominate: (userId: string) => void;

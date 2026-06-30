@@ -14,19 +14,6 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
   const isBlank: boolean = value === null;
 
   return (
-    <div
-      className='relative aspect-card w-24'
-      role='img'
-      aria-label={
-        isBlank
-          ? t('Unselected table card')
-          : isOpen
-            ? `${t('Face-up table card')} ${value}`
-            : t('Face-down table card')
-      }
-    >
-      <div className='absolute inset-0 rounded-2xl border border-white/30' aria-hidden='true' />
-
       {!isBlank && (
         <div
           className={clsx(
@@ -40,7 +27,6 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
           {isOpen && value}
         </div>
       )}
-    </div>
   );
 };
 

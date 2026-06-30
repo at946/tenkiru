@@ -6,7 +6,7 @@ const PokerCardBack = ({ className, ...props }: ComponentPropsWithoutRef<'div'>)
     <div
       {...props}
       className={clsx(
-        'flex items-center justify-center rounded-md border-2 border-text bg-secondary shadow-lg',
+        'flex aspect-card items-center justify-center rounded-lg border-2 border-text bg-secondary shadow-lg',
         className,
       )}
     />

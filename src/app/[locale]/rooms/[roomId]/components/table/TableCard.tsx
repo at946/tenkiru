@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useTranslations } from 'next-intl';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import PokerCardBack from '../poker-card/PokerCardBack';
 import PokerCardFront from '../poker-card/PokerCardFront';
@@ -10,8 +11,13 @@ interface Props {
 }
 
 const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
+  const t = useTranslations('Room.Table');
+  const isBlank: boolean = value === null;
+
   return (
-    <TableCardSlot>{value !== null && (isOpen ? <PokerCardFront value={value} /> : <PokerCardBack />)}</TableCardSlot>
+    <TableCardSlot aria-label={isBlank ? t('Unselected table card') : ''}>
+      {!isBlank && (isOpen ? <PokerCardFront value={value} /> : <PokerCardBack />)}
+    </TableCardSlot>
   );
 };
 

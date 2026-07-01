@@ -1,14 +1,18 @@
 import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const PokerCardBack = ({ className, ...props }: ComponentPropsWithoutRef<'div'>) => {
+  const t = useTranslations('Room.Table');
   return (
     <div
+      role='img'
       className={clsx(
         'relative flex aspect-card items-center justify-center overflow-hidden rounded-xl border-2 border-white/90 bg-[#B11C1C] shadow-lg',
         className,
       )}
       {...props}
+      aria-label={t('Face-down table card')}
     >
       {/* Pattern */}
       <div

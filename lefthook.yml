@@ -4,9 +4,6 @@ pre-commit:
     check:
       run: pnpm run biome:fix {staged_files}
       stage_fixed: true
-pre-push:
-  parallel: true
-  commands:
     check-typescript:
       run: pnpm type:check
 

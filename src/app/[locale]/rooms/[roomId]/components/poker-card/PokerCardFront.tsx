@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
+import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 
 type Props = ComponentPropsWithoutRef<'div'> & {
-  value: number | '?';
+  value: IFTableCardValue;
 };
 
 const PokerCardFront = ({ value, className, ...props }: Props) => {

@@ -8,7 +8,7 @@ const PokerCardBack = ({ className, ...props }: ComponentPropsWithoutRef<'div'>)
     <div
       role='img'
       className={clsx(
-        'relative flex aspect-card items-center justify-center overflow-hidden rounded-xl border-2 border-white/90 bg-[#B11C1C] shadow-lg',
+        'relative flex aspect-card items-center justify-center overflow-hidden rounded-xl border-2 border-white/90 bg-rose-700 shadow-lg',
         className,
       )}
       {...props}

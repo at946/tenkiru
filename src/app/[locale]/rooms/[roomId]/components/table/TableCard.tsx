@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'motion/react';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
@@ -16,7 +17,18 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
 
   return (
     <TableCardSlot aria-label={isBlank ? t('Unselected table card') : ''}>
-      {!isBlank && (isOpen ? <PokerCardFront value={value} /> : <PokerCardBack />)}
+      <AnimatePresence mode='wait'>
+        {!isBlank && (
+          <motion.div
+            initial={{ opacity: 0, scale: 1.2, filter: 'blur(3px)' }}
+            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+            // exit={{ opacity: 0, scale: 0.8, filter: 'blur(3px)' }}
+            transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
+          >
+            {isOpen ? <PokerCardFront value={value} /> : <PokerCardBack />}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </TableCardSlot>
   );
 };

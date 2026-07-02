@@ -8,6 +8,7 @@ export class User {
     private id = '',
     private type: IFUserType = 'player',
     private selectedCardValue: IFTableCardValue = null,
+    private selectedAt: number | null = null,
   ) {}
 
   toObject(): IFUser {
@@ -15,6 +16,7 @@ export class User {
       id: this.id,
       type: this.type,
       selectedCardValue: this.selectedCardValue,
+      selectedAt: this.selectedAt,
     };
   }
 
@@ -46,6 +48,10 @@ export class User {
     return this.selectedCardValue;
   }
 
+  getSelectedAt(): number | null {
+    return this.selectedAt;
+  }
+
   getCard(): IFTableCard {
     return {
       userId: this.id,
@@ -55,9 +61,11 @@ export class User {
 
   selectCard(cardValue: IFTableCardValue): void {
     this.selectedCardValue = cardValue;
+    this.selectedAt = cardValue === null ? null : Date.now();
   }
 
   resetCard(): void {
     this.selectedCardValue = null;
+    this.selectedAt = null;
   }
 }

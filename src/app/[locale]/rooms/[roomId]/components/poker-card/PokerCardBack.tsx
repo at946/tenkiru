@@ -7,11 +7,17 @@ const PokerCardBack = ({ className, ...props }: ComponentPropsWithoutRef<'div'>)
   return (
     <div
       role='img'
+      {...props}
       className={clsx(
-        'relative flex aspect-card items-center justify-center overflow-hidden rounded-xl border-2 border-white/90 bg-rose-700 shadow-lg',
+        'flex aspect-card items-center justify-center overflow-hidden rounded-xl border-2 border-white/90 bg-rose-700 shadow-lg',
+        'rotate-y-0',
         className,
       )}
-      {...props}
+      style={{
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        ...props.style,
+      }}
       aria-label={t('Face-down table card')}
     >
       {/* Pattern */}

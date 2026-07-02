@@ -25,17 +25,19 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false, delay = 0 }) => {
             animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
             exit={{ opacity: 0, scale: 0.8, filter: 'blur(3px)' }}
             transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
+            className='relative size-full'
           >
             <motion.div
               initial={false}
-              animate={{ rotateY: isOpen ? 0 : 180, y: isOpen ? [0, -16, 0] : 0 }}
+              animate={{ rotateY: isOpen ? 180 : 0, y: isOpen ? [0, -16, 0] : 0 }}
               transition={{
                 rotateY: { duration: 0.5, delay, ease: 'easeInOut' },
                 y: { duration: 0.5, delay, ease: 'easeInOut' },
               }}
-              className='transform-3d relative'
+              className='transform-3d relative size-full h-full w-hull'
             >
-              {isOpen ? <PokerCardFront value={value} /> : <PokerCardBack />}
+              <PokerCardBack className='absolute inset-0' />
+              <PokerCardFront value={value} className='absolute inset-0' />
             </motion.div>
           </motion.div>
         )}

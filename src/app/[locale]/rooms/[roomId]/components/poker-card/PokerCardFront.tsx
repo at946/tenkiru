@@ -15,9 +15,15 @@ const PokerCardFront = ({ value, className, ...props }: Props) => {
       role='img'
       {...props}
       className={clsx(
-        'relative flex aspect-card items-center justify-center rounded-xl border-2 border-white/40 bg-white shadow-lg',
+        'flex aspect-card items-center justify-center rounded-xl border-2 border-white/40 bg-white shadow-lg',
+        'rotate-y-180',
         className,
       )}
+      style={{
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        ...props.style,
+      }}
       aria-label={`${t('Face-up table card')} ${value}`}
     >
       <span className='absolute top-2 left-2 font-bold text-rose-700 text-xs'>{value}</span>

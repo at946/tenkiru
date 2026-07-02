@@ -19,14 +19,14 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
 
   return (
     <div className='mb-5 flex flex-wrap justify-center gap-4'>
-      {tableCards.map((tableCard: IFTableCard) => {
+      {tableCards.map((tableCard: IFTableCard, index: number) => {
         const isTableCardBlank: boolean = tableCard.value === null;
         const isAbleToGetComments: boolean = room.isOpenPhase && !isTableCardBlank;
 
         return (
           <fieldset key={tableCard.userId} aria-label={t('Table cards group')}>
             <div className='mb-2 flex justify-center'>
-              <TableCard value={tableCard.value} isOpen={room.isOpenPhase} />
+              <TableCard value={tableCard.value} isOpen={room.isOpenPhase} delay={index * 0.1} />
             </div>
 
             <div className='text-center'>

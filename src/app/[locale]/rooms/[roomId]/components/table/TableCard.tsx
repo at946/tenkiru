@@ -9,9 +9,10 @@ import TableCardSlot from './TableCardSlot';
 interface Props {
   value: IFTableCardValue;
   isOpen?: boolean;
+  delay?: number;
 }
 
-const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
+const TableCard: NextPage<Props> = ({ value, isOpen = false, delay = 0 }) => {
   const t = useTranslations('Room.Table');
   const isBlank: boolean = value === null;
 
@@ -22,10 +23,20 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false }) => {
           <motion.div
             initial={{ opacity: 0, scale: 1.2, filter: 'blur(3px)' }}
             animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            // exit={{ opacity: 0, scale: 0.8, filter: 'blur(3px)' }}
+            exit={{ opacity: 0, scale: 0.8, filter: 'blur(3px)' }}
             transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
           >
-            {isOpen ? <PokerCardFront value={value} /> : <PokerCardBack />}
+            <motion.div
+              initial={false}
+              animate={{ rotateY: isOpen ? 0 : 180, y: isOpen ? [0, -16, 0] : 0 }}
+              transition={{
+                rotateY: { duration: 0.5, delay, ease: 'easeInOut' },
+                y: { duration: 0.5, delay, ease: 'easeInOut' },
+              }}
+              className='transform-3d relative'
+            >
+              {isOpen ? <PokerCardFront value={value} /> : <PokerCardBack />}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
@@ -18,30 +18,27 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false, delay = 0 }) => {
 
   return (
     <TableCardSlot aria-label={isBlank ? t('Unselected table card') : ''}>
-      <AnimatePresence mode='wait'>
-        {!isBlank && (
+      {!isBlank && (
+        <motion.div
+          initial={{ opacity: 0, scale: 1.2, filter: 'blur(3px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
+          className='relative size-full'
+        >
           <motion.div
-            initial={{ opacity: 0, scale: 1.2, filter: 'blur(3px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, scale: 0.8, filter: 'blur(3px)' }}
-            transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
-            className='relative size-full'
+            initial={false}
+            animate={{ rotateY: isOpen ? 180 : 0, y: isOpen ? [0, -16, 0] : 0 }}
+            transition={{
+              rotateY: { duration: 0.5, delay, ease: 'easeInOut' },
+              y: { duration: 0.5, delay, ease: 'easeInOut' },
+            }}
+            className='transform-3d relative size-full h-full w-hull'
           >
-            <motion.div
-              initial={false}
-              animate={{ rotateY: isOpen ? 180 : 0, y: isOpen ? [0, -16, 0] : 0 }}
-              transition={{
-                rotateY: { duration: 0.5, delay, ease: 'easeInOut' },
-                y: { duration: 0.5, delay, ease: 'easeInOut' },
-              }}
-              className='transform-3d relative size-full h-full w-hull'
-            >
-              <PokerCardBack className='absolute inset-0' />
-              <PokerCardFront value={value} className='absolute inset-0' />
-            </motion.div>
+            <PokerCardBack className='absolute inset-0' />
+            <PokerCardFront value={value} className='absolute inset-0' />
           </motion.div>
-        )}
-      </AnimatePresence>
+        </motion.div>
+      )}
     </TableCardSlot>
   );
 };

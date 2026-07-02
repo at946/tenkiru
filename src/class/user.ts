@@ -66,6 +66,5 @@ export class User {
 
   resetCard(): void {
     this.selectedCardValue = null;
-    this.selectedAt = null;
   }
 }

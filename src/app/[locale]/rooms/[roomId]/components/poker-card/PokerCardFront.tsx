@@ -8,27 +8,19 @@ type Props = ComponentPropsWithoutRef<'div'> & {
 };
 
 const PokerCardFront = ({ value, className, ...props }: Props) => {
-  const t = useTranslations('Room.Table');
+  const _t = useTranslations('Room.Table');
 
   return (
     <div
       role='img'
       {...props}
-      className={clsx(
-        'flex aspect-card items-center justify-center rounded-xl border-2 border-white/40 bg-white shadow-lg',
-        'rotate-y-180',
-        className,
-      )}
-      style={{
-        backfaceVisibility: 'hidden',
-        WebkitBackfaceVisibility: 'hidden',
-        ...props.style,
-      }}
-      aria-label={`${t('Face-up table card')} ${value}`}
+      className={clsx('aspect-card rounded-xl border-2 border-white/40 bg-white shadow-lg', className)}
     >
-      <span className='absolute top-2 left-2 font-bold text-rose-700 text-xs'>{value}</span>
-      <span className='font-bold text-3xl text-rose-700'>{value}</span>
-      <span className='absolute right-2 bottom-2 rotate-180 font-bold text-rose-700 text-xs'>{value}</span>
+      <div className='relative flex size-full items-center justify-center'>
+        <span className='absolute top-2 left-2 font-bold text-rose-700 text-xs'>{value}</span>
+        <span className='font-bold text-3xl text-rose-700'>{value}</span>
+        <span className='absolute right-2 bottom-2 rotate-180 font-bold text-rose-700 text-xs'>{value}</span>
+      </div>
     </div>
   );
 };

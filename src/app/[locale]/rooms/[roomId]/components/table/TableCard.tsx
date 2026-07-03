@@ -34,8 +34,12 @@ const TableCard: NextPage<Props> = ({ value, isOpen = false, delay = 0 }) => {
             }}
             className='transform-3d relative size-full h-full w-hull'
           >
-            <PokerCardBack className='absolute inset-0' />
-            <PokerCardFront value={value} className='absolute inset-0' />
+            <PokerCardBack className='backface-hidden absolute inset-0' aria-label={t('Face-down table card')} />
+            <PokerCardFront
+              value={value}
+              className='backface-hidden absolute inset-0 rotate-y-180'
+              aria-label={`${t('Face-up table card')} ${value}`}
+            />
           </motion.div>
         </motion.div>
       )}

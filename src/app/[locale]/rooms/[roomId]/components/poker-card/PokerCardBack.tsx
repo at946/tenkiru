@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const PokerCardBack = ({ className, ...props }: ComponentPropsWithoutRef<'div'>) => {
-  const t = useTranslations('Room.Table');
+  const _t = useTranslations('Room.Table');
   return (
     <div
       role='img'
@@ -13,12 +13,6 @@ const PokerCardBack = ({ className, ...props }: ComponentPropsWithoutRef<'div'>)
         'rotate-y-0',
         className,
       )}
-      style={{
-        backfaceVisibility: 'hidden',
-        WebkitBackfaceVisibility: 'hidden',
-        ...props.style,
-      }}
-      aria-label={t('Face-down table card')}
     >
       {/* Pattern */}
       <div

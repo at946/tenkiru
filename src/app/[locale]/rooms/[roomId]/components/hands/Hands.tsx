@@ -35,20 +35,22 @@ const Hands: NextPage<Props> = ({ deckType, selectedValue, isDisabled, onSelect 
   };
 
   return (
-    <div role='radiogroup' className='mt-10 flex flex-wrap justify-center gap-3' aria-label={t('Hands')}>
-      {deck?.cardValues.map((value: IFHandsCardValue) => {
-        const _isSelected: boolean = value === selectedValue;
-        return (
-          <HandCard
-            key={value}
-            value={value}
-            selected={value === selectedValue}
-            disabled={isDisabled}
-            onSelect={onSelect}
-          />
-        );
-      })}
-    </div>
+    <fieldset>
+      <legend className='sr-only'>{t('Hands')}</legend>
+      <div className='mt-10 flex flex-wrap justify-center gap-3'>
+        {deck?.cardValues.map((value: IFHandsCardValue) => {
+          return (
+            <HandCard
+              key={value}
+              value={value}
+              selected={value === selectedValue}
+              disabled={isDisabled}
+              onSelect={onSelect}
+            />
+          );
+        })}
+      </div>
+    </fieldset>
   );
 };
 

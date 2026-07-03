@@ -40,31 +40,22 @@ const HandCard: NextPage<Props> = ({ value, selected, disabled = false, onSelect
   const currentVariant: string = selected ? 'selected' : hovered ? 'hover' : 'default';
 
   return (
-    <label>
-      <input
-        type='radio'
-        name='hand-card'
-        className='hidden'
-        value={value}
-        checked={selected}
-        disabled={disabled}
-        aria-label={t('Hands card')}
-        onClick={() => {
-          selected && onSelect(null);
-        }}
-        onChange={() => onSelect(value)}
-      />
-      <motion.div
-        variants={variants}
-        animate={currentVariant}
-        transition={{ duration: 0.15 }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        whileTap={{ scale: 0.9 }}
-      >
-        <PokerCardFront value={value} className='w-24' />
-      </motion.div>
-    </label>
+    <motion.button
+      type='button'
+      variants={variants}
+      animate={currentVariant}
+      transition={{ duration: 0.15 }}
+      whileTap={{ scale: 0.9 }}
+      disabled={disabled}
+      aria-label={`${t('Hands card')} ${value}`}
+      aria-pressed={selected}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => onSelect(selected ? null : value)}
+      className='rounded-xl disabled:cursor-not-allowed disabled:opacity-50'
+    >
+      <PokerCardFront value={value} className='w-24' />
+    </motion.button>
   );
 };
 

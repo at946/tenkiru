@@ -62,12 +62,13 @@ export default class RoomPage {
     this.replayButton = page.getByRole('button', { name: 'Again' });
     this.userTypeSelect = page.getByRole('combobox', { name: 'User type: ' });
     this.deckSelect = page.getByRole('combobox', { name: 'Deck : ' });
-    this.hands = page.getByRole('radiogroup', { name: 'Hands' });
-    this.handsCards = this.hands.getByRole('radio', { name: 'Hands card' });
-    this.selectedHandsCard = this.hands.getByRole('radio', {
-      checked: true,
+    this.hands = page.getByRole('group', { name: 'Hands' });
+    this.handsCards = this.hands.getByRole('button', { name: 'Hands card' });
+    this.selectedHandsCard = this.hands.getByRole('button', {
+      name: 'Hands card',
+      pressed: true,
     });
-    this.disabledHandsCard = this.hands.getByRole('radio', {
+    this.disabledHandsCard = this.hands.getByRole('button', {
       name: 'Hands card',
       disabled: true,
     });
@@ -98,8 +99,8 @@ export default class RoomPage {
     await this.roomIdLink.click();
   }
 
-  async selectCard(value: string) {
-    await this.hands.getByText(value, { exact: true }).click();
+  async selectCard(value: number | string) {
+    await this.hands.getByRole('button', { name: `Hands card ${value}`, exact: true }).click();
   }
 
   async openCards() {

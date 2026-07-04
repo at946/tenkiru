@@ -5,4 +5,5 @@ export interface IFUser {
   id: string;
   type: IFUserType;
   selectedCardValue: IFTableCardValue;
+  selectedAt: number | null;
 }

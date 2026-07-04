@@ -14,6 +14,7 @@ test('When players enter a room where cards are faced down, cards must keep the 
   const roomPage2: RoomPage = new RoomPage(await context.newPage());
   await roomPage1.goto(roomId);
   await roomPage1.selectCard('0');
+  await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.openButton).toBeVisible();
@@ -24,9 +25,9 @@ test('When players enter a room where cards are faced down, cards must keep the 
 
   // Then
   for (const roomPage of [roomPage1, roomPage2]) {
-    await expect(roomPage.tableCards).toHaveCount(2);
+    await expect(roomPage.tableCardSlots).toHaveCount(2);
+    await expect(roomPage.tableCards).toHaveCount(1);
     await expect(roomPage.faceDownTableCards).toHaveCount(1);
-    await expect(roomPage.blankTableCards).toHaveCount(1);
     await expect(roomPage.openButton).toBeVisible();
     await expect(roomPage.replayButton).not.toBeVisible();
   }
@@ -40,6 +41,7 @@ test('When players enter a room where cards are faced up, cards must keep the si
   await roomPage1.goto(roomId);
   await roomPage1.selectCard('0');
   await roomPage1.openCards();
+  await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceUpTableCards).toHaveCount(1);
   await expect(roomPage1.openButton).not.toBeVisible();
@@ -50,9 +52,9 @@ test('When players enter a room where cards are faced up, cards must keep the si
 
   // Then
   for (const roomPage of [roomPage1, roomPage2]) {
-    await expect(roomPage.tableCards).toHaveCount(2);
+    await expect(roomPage.tableCardSlots).toHaveCount(2);
+    await expect(roomPage.tableCards).toHaveCount(1);
     await expect(roomPage.faceUpTableCards).toHaveCount(1);
-    await expect(roomPage.blankTableCards).toHaveCount(1);
     await expect(roomPage.openButton).not.toBeVisible();
     await expect(roomPage.replayButton).toBeVisible();
   }

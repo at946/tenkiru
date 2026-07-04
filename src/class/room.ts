@@ -2,7 +2,6 @@ import Decks from '@/data/deck';
 import type { IFDeck } from '@/interfaces/deck';
 import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFRoom } from '@/interfaces/room';
-import type { IFTableCard } from '@/interfaces/tableCard';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { User } from './user';
 
@@ -68,19 +67,6 @@ export class Room {
     this.users = this.users.filter((user: User) => user.getId() !== userId);
   }
 
-  reorderUser(userId: string): void {
-    const targetUser: User | undefined = this.findUserById(userId);
-    if (!targetUser) return;
-
-    this.removeUser(targetUser.getId());
-
-    if (targetUser.hasSelectedCard()) {
-      this.users.unshift(targetUser);
-    } else {
-      this.users.push(targetUser);
-    }
-  }
-
   private getUsersHaveSelectedNumberCard(): User[] {
     return this.users.filter((user: User) => user.hasSelectedNumberCard());
   }
@@ -111,11 +97,6 @@ export class Room {
     if (!this.areNumberCardsExist()) return;
     const numberCardsValues: number[] = this.getNumberCardsValues();
     return Math.round((numberCardsValues.reduce((a, b) => a + b) / numberCardsValues.length) * 10) / 10;
-  }
-
-  getTableCards(): IFTableCard[] {
-    const players: User[] = this.users.filter((user: User) => user.isPlayer());
-    return players.map((player: User) => player.getCard());
   }
 
   openCards(): void {

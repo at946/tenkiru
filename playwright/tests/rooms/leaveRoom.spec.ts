@@ -9,13 +9,13 @@ test('When a player leaves the room page, the card storage place should decrease
   const roomPage2: RoomPage = new RoomPage(await context.newPage());
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
-  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.tableCardSlots).toHaveCount(2);
 
   // When
   await roomPage2.clickHeaderLogo();
 
   // Then
-  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.tableCardSlots).toHaveCount(1);
 });
 
 test('When a player close the tab in the room page, the card storage place should decrease', async ({ context }) => {
@@ -27,11 +27,11 @@ test('When a player close the tab in the room page, the card storage place shoul
   const roomPage2: RoomPage = new RoomPage(page2);
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
-  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.tableCardSlots).toHaveCount(2);
 
   // When
   await page2.close();
 
   // Then
-  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.tableCardSlots).toHaveCount(1);
 });

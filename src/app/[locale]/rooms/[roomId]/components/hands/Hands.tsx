@@ -1,6 +1,7 @@
-import clsx from 'clsx';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import HandCard from '@/app/[locale]/rooms/[roomId]/components/hands/HandCard';
 import Decks from '@/data/deck';
 import type { IFDeck } from '@/interfaces/deck';
 import type { IFDeckType } from '@/interfaces/deckType';
@@ -16,41 +17,40 @@ interface Props {
 
 const Hands: NextPage<Props> = ({ deckType, selectedValue, isDisabled, onSelect }) => {
   const t = useTranslations('Room.Hands');
+  const [_hovered, _setHovered] = useState<IFTableCardValue>(null);
   const deck: IFDeck | undefined = Decks.find((deck: IFDeck) => deck.key === deckType);
+  const _cardVariants = {
+    default: {
+      y: 0,
+      scale: 1,
+    },
+    hover: {
+      y: -8,
+      scale: 1.05,
+    },
+    selected: {
+      y: -20,
+      scale: 1.08,
+    },
+  };
 
   return (
-    <div role='radiogroup' className='flex flex-wrap justify-center gap-2' aria-label={t('Hands')}>
-      {deck?.cardValues.map((value: IFHandsCardValue) => {
-        const isSelected: boolean = value === selectedValue;
-        return (
-          <label
-            key={value}
-            className={clsx(
-              'flex aspect-card w-24 cursor-pointer items-center justify-center rounded-md border-2 border-text bg-background font-bold text-2xl text-text shadow-sm',
-              'enabled:focus-visible:shadow-2xl',
-              'has-checked:bg-primary has-checked:text-dark-text',
-              'has-disabled:cursor-not-allowed has-disabled:opacity-25 dark:has-disabled:opacity-50',
-              'md:enabled:focus-visible:-translate-y-2 md:enabled:hover:-translate-y-2 md:enabled:hover:shadow-2xl',
-            )}
-          >
-            <input
-              type='radio'
-              name='hand-card'
-              className='absolute left-[-9999px]'
+    <fieldset>
+      <legend className='sr-only'>{t('Hands')}</legend>
+      <div className='mt-10 flex flex-wrap justify-center gap-3'>
+        {deck?.cardValues.map((value: IFHandsCardValue) => {
+          return (
+            <HandCard
+              key={value}
               value={value}
-              checked={isSelected}
+              selected={value === selectedValue}
               disabled={isDisabled}
-              aria-label={t('Hands card')}
-              onClick={() => {
-                isSelected && onSelect(null);
-              }}
-              onChange={() => onSelect(value)}
+              onSelect={onSelect}
             />
-            {value}
-          </label>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </fieldset>
   );
 };
 

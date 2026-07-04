@@ -7,8 +7,8 @@ import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
 import SummaryTags from './SummaryTags';
-import TableCards from './TableCards';
 import TableBoard from './TableBoard';
+import TableCards from './TableCards';
 
 interface Props {
   className?: string;

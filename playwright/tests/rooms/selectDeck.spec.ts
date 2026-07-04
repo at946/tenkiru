@@ -32,12 +32,12 @@ test('On the room page, when the deck type is changed, the selected card should 
 
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
   await expect(roomPage1.selectedHandsCard).toHaveAccessibleName('Hands card 0');
-  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.faceDownTableCards).toHaveCount(2);
 
   await expect(roomPage2.selectedHandsCard).toHaveCount(1);
   await expect(roomPage2.selectedHandsCard).toHaveAccessibleName('Hands card 1');
-  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.faceDownTableCards).toHaveCount(2);
 
   // When
@@ -45,12 +45,12 @@ test('On the room page, when the deck type is changed, the selected card should 
 
   // Then
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
-  await expect(roomPage1.tableCards).toHaveCount(2);
-  await expect(roomPage1.blankTableCards).toHaveCount(2);
+  await expect(roomPage1.tableCardSlots).toHaveCount(2);
+  await expect(roomPage1.tableCards).toHaveCount(0);
 
   await expect(roomPage2.selectedHandsCard).toHaveCount(0);
-  await expect(roomPage2.tableCards).toHaveCount(2);
-  await expect(roomPage2.blankTableCards).toHaveCount(2);
+  await expect(roomPage2.tableCardSlots).toHaveCount(2);
+  await expect(roomPage2.tableCards).toHaveCount(0);
 });
 
 test('On the room page, when cards are face up, users should not be able to change the deck type.', async ({

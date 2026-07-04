@@ -8,11 +8,12 @@ export default class RoomPage {
   readonly logo: Locator;
   readonly roomIdLink: Locator;
   readonly ToastToNotifyToHaveCopiedThisRoomURL: Locator;
-  readonly tableCardGroups: Locator;
-  readonly tableCards: Locator;
-  readonly blankTableCards: Locator;
+  readonly table: Locator;
+  readonly tableCardSlots: Locator;
   readonly faceDownTableCards: Locator;
   readonly faceUpTableCards: Locator;
+  readonly tableCards: Locator;
+  readonly tableCardGroups: Locator;
   readonly getCommentsButtons: Locator;
   readonly getCommentsButton: (cardValue: string) => Locator;
   readonly minTag: Locator;
@@ -41,13 +42,14 @@ export default class RoomPage {
     this.roomIdLink = page.getByRole('button', { name: 'Room ID' });
     this.ToastToNotifyToHaveCopiedThisRoomURL = page.getByRole('status').getByText('Copied this Room URL');
 
+    this.table = page.getByRole('img', { name: /^Table$/ });
     this.tableCardGroups = page.getByRole('group', {
       name: 'Table cards group',
     });
-    this.tableCards = this.tableCardGroups.getByLabel('Table card');
-    this.blankTableCards = this.tableCardGroups.getByLabel('Unselected table card');
-    this.faceDownTableCards = this.tableCardGroups.getByLabel('Face-down table card');
-    this.faceUpTableCards = this.tableCardGroups.getByLabel('Face-up table card');
+    this.tableCardSlots = this.table.getByRole('img', { name: /^Table card slot$/ });
+    this.tableCards = this.tableCardSlots.getByRole('img', { name: /^(Face-down|Face-up) table card/ });
+    this.faceDownTableCards = this.tableCardSlots.getByRole('img', { name: /^Face-down table card$/ });
+    this.faceUpTableCards = this.tableCardSlots.getByRole('img', { name: /^Face-up table card/ });
     this.getCommentsButtons = page.getByRole('button', { name: 'Get comments' });
     this.getCommentsButton = (card: string) => {
       return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: 'Get comments' });

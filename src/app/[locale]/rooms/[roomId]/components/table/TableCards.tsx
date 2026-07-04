@@ -2,6 +2,7 @@ import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import Button from '@/app/[locale]/components/common/Button';
+import TableCardSlot from '@/app/[locale]/rooms/[roomId]/components/table/TableCardSlot';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
@@ -20,20 +21,21 @@ const TableCards: NextPage<Props> = ({ nominate }) => {
   return (
     <div className='mb-5 flex flex-wrap justify-center gap-4'>
       {tableCards.map((tableCard: IFTableCard, index: number) => {
-        const isTableCardBlank: boolean = tableCard.value === null;
-        const isAbleToGetComments: boolean = room.isOpenPhase && !isTableCardBlank;
+        const isSet: boolean = tableCard.value !== null;
 
         return (
           <fieldset key={tableCard.userId} aria-label={t('Table cards group')}>
             <div className='mb-2 flex justify-center'>
-              <TableCard value={tableCard.value} isOpen={room.isOpenPhase} delay={index * 0.1} />
+              <TableCardSlot>
+                {isSet && <TableCard value={tableCard.value} isOpen={room.isOpenPhase} delay={index * 0.1} />}
+              </TableCardSlot>
             </div>
 
             <div className='text-center'>
               <Button
                 isOutlined={true}
                 color='secondary'
-                disabled={!isAbleToGetComments}
+                disabled={!room.isOpenPhase || !isSet}
                 onClick={() => nominate(tableCard.userId)}
                 className='text-sm'
                 title={t('Get comments')}

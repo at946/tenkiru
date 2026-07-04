@@ -29,10 +29,10 @@ export const OpenPhase: Story = {
         deckType: 'fibonacci',
         isOpenPhase: true,
         users: [
-          { id: '11', type: 'player', selectedCardValue: 2 },
-          { id: '12', type: 'player', selectedCardValue: 3 },
-          { id: '13', type: 'player', selectedCardValue: 5 },
-          { id: '14', type: 'audience', selectedCardValue: null },
+          { id: '11', type: 'player', selectedCardValue: 2, selectedAt: 20260702121212 },
+          { id: '12', type: 'player', selectedCardValue: 3, selectedAt: 20260702121213 },
+          { id: '13', type: 'player', selectedCardValue: 5, selectedAt: 20260702121214 },
+          { id: '14', type: 'audience', selectedCardValue: null, selectedAt: null },
         ],
       });
 
@@ -56,10 +56,10 @@ export const ClosePhase: Story = {
         deckType: 'fibonacci',
         isOpenPhase: false,
         users: [
-          { id: '11', type: 'player', selectedCardValue: 2 },
-          { id: '12', type: 'player', selectedCardValue: 3 },
-          { id: '13', type: 'player', selectedCardValue: 5 },
-          { id: '14', type: 'audience', selectedCardValue: null },
+          { id: '11', type: 'player', selectedCardValue: 2, selectedAt: 20260702121212 },
+          { id: '12', type: 'player', selectedCardValue: 3, selectedAt: 20260702121213 },
+          { id: '13', type: 'player', selectedCardValue: 5, selectedAt: 20260702121214 },
+          { id: '14', type: 'audience', selectedCardValue: null, selectedAt: null },
         ],
       });
       return (
@@ -82,10 +82,10 @@ export const OpenPhaseWithNoNumberCard: Story = {
         deckType: 'fibonacci',
         isOpenPhase: true,
         users: [
-          { id: '11', type: 'player', selectedCardValue: '?' },
-          { id: '12', type: 'player', selectedCardValue: '?' },
-          { id: '13', type: 'player', selectedCardValue: null },
-          { id: '14', type: 'audience', selectedCardValue: null },
+          { id: '11', type: 'player', selectedCardValue: '?', selectedAt: 20260702121212 },
+          { id: '12', type: 'player', selectedCardValue: '?', selectedAt: 20260702121213 },
+          { id: '13', type: 'player', selectedCardValue: null, selectedAt: null },
+          { id: '14', type: 'audience', selectedCardValue: null, selectedAt: null },
         ],
       });
       return (
@@ -108,10 +108,10 @@ export const Japanese: Story = {
         deckType: 'fibonacci',
         isOpenPhase: true,
         users: [
-          { id: '11', type: 'player', selectedCardValue: 2 },
-          { id: '12', type: 'player', selectedCardValue: 3 },
-          { id: '13', type: 'player', selectedCardValue: 5 },
-          { id: '14', type: 'audience', selectedCardValue: null },
+          { id: '11', type: 'player', selectedCardValue: 2, selectedAt: 20260702121212 },
+          { id: '12', type: 'player', selectedCardValue: 3, selectedAt: 20260702121213 },
+          { id: '13', type: 'player', selectedCardValue: 5, selectedAt: 20260702121214 },
+          { id: '14', type: 'audience', selectedCardValue: null, selectedAt: null },
         ],
       });
 

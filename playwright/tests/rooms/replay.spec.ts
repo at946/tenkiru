@@ -13,10 +13,10 @@ test('On the room page, when a user selects the replay button, the table should 
   await roomPage2.selectCard('1');
   await roomPage1.openCards();
 
-  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.faceUpTableCards).toHaveCount(2);
   await expect(roomPage1.openButton).not.toBeVisible();
-  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.faceUpTableCards).toHaveCount(2);
   await expect(roomPage2.openButton).not.toBeVisible();
 
@@ -24,12 +24,12 @@ test('On the room page, when a user selects the replay button, the table should 
   await roomPage1.replay();
 
   // Then
-  await expect(roomPage1.tableCards).toHaveCount(2);
-  await expect(roomPage1.blankTableCards).toHaveCount(2);
+  await expect(roomPage1.tableCardSlots).toHaveCount(2);
+  await expect(roomPage1.tableCards).toHaveCount(0);
   await expect(roomPage1.openButton).toBeVisible();
   await expect(roomPage1.openButton).toBeDisabled();
-  await expect(roomPage2.tableCards).toHaveCount(2);
-  await expect(roomPage2.blankTableCards).toHaveCount(2);
+  await expect(roomPage2.tableCardSlots).toHaveCount(2);
+  await expect(roomPage2.tableCards).toHaveCount(0);
   await expect(roomPage2.openButton).toBeVisible();
   await expect(roomPage2.openButton).toBeDisabled();
 
@@ -37,14 +37,14 @@ test('On the room page, when a user selects the replay button, the table should 
   await roomPage1.selectCard('3');
 
   // Then
-  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.tableCardSlots).toHaveCount(2);
+  await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
-  await expect(roomPage1.blankTableCards).toHaveCount(1);
   await expect(roomPage1.openButton).toBeVisible();
   await expect(roomPage1.openButton).not.toBeDisabled();
-  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.tableCardSlots).toHaveCount(2);
+  await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceDownTableCards).toHaveCount(1);
-  await expect(roomPage2.blankTableCards).toHaveCount(1);
   await expect(roomPage2.openButton).toBeVisible();
   await expect(roomPage2.openButton).not.toBeDisabled();
 });

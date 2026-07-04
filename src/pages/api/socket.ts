@@ -70,7 +70,6 @@ const SocketHandler = (_req: NextApiRequest, res: NextApiResponseSocketIO) => {
 
         user.setType(newUserType);
         user.resetCard();
-        room.reorderUser(user.getId());
 
         io.to(roomId).emit('update-room', room.toObject());
       });
@@ -86,7 +85,6 @@ const SocketHandler = (_req: NextApiRequest, res: NextApiResponseSocketIO) => {
         if (!user) return;
 
         user.selectCard(selectedCardValue);
-        room.reorderUser(user.getId());
 
         io.to(roomId).emit('update-room', room.toObject());
       });

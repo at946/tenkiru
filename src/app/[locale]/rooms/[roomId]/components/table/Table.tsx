@@ -9,6 +9,7 @@ import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
 import SummaryTags from './SummaryTags';
 import TableCards from './TableCards';
+import TableBoard from './TableBoard';
 
 interface Props {
   className?: string;
@@ -28,11 +29,7 @@ const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay,
   const t = useTranslations('Room.Table');
 
   return (
-    <div
-      className={clsx('rounded-sm bg-green-400 py-5 text-center shadow-md', className)}
-      role='img'
-      aria-label={t('Table')}
-    >
+    <TableBoard>
       {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
 
       <TableCards nominate={nominate} />
@@ -57,7 +54,7 @@ const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay,
           </Button>
         )}
       </div>
-    </div>
+    </TableBoard>
   );
 };
 

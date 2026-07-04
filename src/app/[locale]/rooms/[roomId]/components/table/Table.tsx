@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
@@ -29,7 +28,7 @@ const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay,
   const t = useTranslations('Room.Table');
 
   return (
-    <TableBoard>
+    <TableBoard className={className}>
       {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
 
       <TableCards nominate={nominate} />

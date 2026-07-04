@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef } from 'react';
 import { useTranslations } from 'next-intl';
+import type { ComponentPropsWithoutRef } from 'react';
 
 type Props = ComponentPropsWithoutRef<'div'>;
 
-const TableBoard = ({ children, className, ...props}: Props) => {
+const TableBoard = ({ children, className, ...props }: Props) => {
   const t = useTranslations('Room.Table');
 
   return (

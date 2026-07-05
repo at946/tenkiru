@@ -1,20 +1,16 @@
 import clsx from 'clsx';
-import { useTranslations } from 'next-intl';
 import type { ComponentPropsWithoutRef } from 'react';
 
 type Props = ComponentPropsWithoutRef<'div'>;
 
 const TableBoard = ({ children, className, ...props }: Props) => {
-  const t = useTranslations('Room.Table');
-
   return (
     <div
       {...props}
-      role='img'
-      aria-label={t('Table')}
       className={clsx(
-        'rounded-sm py-5 text-center shadow-xl',
-        'bg-radial from-emerald-500 via-emerald-700 to-emerald-900',
+        'rounded-xs py-5',
+        'bg-radial from-emerald-300 via-emerald-400 to-emerald-500',
+        'shadow-[inset-0_2px_3px_rgba(255,255,255,.18),inset-0_0_18px_rgba(0,0,0,.35)]',
         className,
       )}
     >

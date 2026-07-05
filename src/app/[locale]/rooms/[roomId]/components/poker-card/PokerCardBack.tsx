@@ -1,9 +1,7 @@
 import clsx from 'clsx';
-import { useTranslations } from 'next-intl';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const PokerCardBack = ({ className, ...props }: ComponentPropsWithoutRef<'div'>) => {
-  const _t = useTranslations('Room.Table');
   return (
     <div
       role='img'

@@ -12,7 +12,11 @@ const TableBoard = ({ children, className, ...props }: Props) => {
       {...props}
       role='img'
       aria-label={t('Table')}
-      className={clsx('rounded-sm bg-green-400 py-5 text-center shadow-md', className)}
+      className={clsx(
+        'rounded-sm py-5 text-center shadow-xl',
+        'bg-radial from-emerald-500 via-emerald-700 to-emerald-900',
+        className,
+      )}
     >
       {children}
     </div>

@@ -7,3 +7,5 @@ export interface IFRoom {
   isOpenPhase: boolean;
   users: IFUser[];
 }
+
+export type IFRoomId = string;

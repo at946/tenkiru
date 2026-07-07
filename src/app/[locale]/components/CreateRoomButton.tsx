@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { v4 } from 'uuid';
 import Button from '@/app/[locale]/components/common/Button';
+import generateRoomId from '@/app/[locale]/utils/generateRoomId';
 import { event } from '@/lib/gtag';
 
 interface Props {
@@ -18,7 +18,7 @@ const CreateRoomButton: NextPage<Props> = ({ name }) => {
 
   const click = (): void => {
     event({ action: 'create_room', category: 'engagement', label: '' });
-    router.push(`/rooms/${encodeURIComponent(v4())}`);
+    router.push(`/rooms/${encodeURIComponent(generateRoomId())}`);
   };
 
   return (

@@ -1,9 +1,11 @@
-import { v4 } from 'uuid';
+import { adjectives, animals, type Config, colors, uniqueNamesGenerator } from 'unique-names-generator';
 
 const generateRoomId = (): string => {
-  return v4();
+  const customConfig: Config = {
+    dictionaries: [adjectives, colors, animals],
+    separator: '-',
+  };
+  return uniqueNamesGenerator(customConfig);
 };
 
 export default generateRoomId;
-
-export type roomId = string;

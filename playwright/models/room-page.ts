@@ -28,8 +28,6 @@ export default class RoomPage {
   readonly handsCards: Locator;
   readonly selectedHandsCard: Locator;
   readonly disabledHandsCard: Locator;
-  readonly enteringRoomToast: Locator;
-  readonly haveEnteredRoomToast: Locator;
   readonly copyUrlToast: Locator;
   readonly haveRequestedToSelectToast: Locator;
   readonly hadBeenRequestedToSelectToast: Locator;
@@ -74,8 +72,6 @@ export default class RoomPage {
       name: 'Hands card',
       disabled: true,
     });
-    this.enteringRoomToast = page.getByRole('status').getByText('Entering...');
-    this.haveEnteredRoomToast = page.getByRole('status').getByText('Entry Completed');
     this.copyUrlToast = page.getByRole('status').getByText('Copied this Room URL');
     this.haveRequestedToSelectToast = page.getByRole('status').getByText('Asked players to choose a card');
     this.hadBeenRequestedToSelectToast = page.getByRole('status').getByText("It's time to choose a card");

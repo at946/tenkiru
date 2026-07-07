@@ -57,7 +57,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [t]);
 
   useEffect(() => {
-    const socketPromise = fetch('/api/socket').then(() => {
+    fetch('/api/socket').then(() => {
       socket = io();
 
       socket.on('connect', () => setIsConnected(true));
@@ -69,20 +69,10 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       socket.emit('join-room', roomId);
     });
 
-    toast.promise(
-      socketPromise,
-      {
-        loading: t('Entering'),
-        success: t('Entry completed'),
-        error: t('Could not enter'),
-      },
-      { ariaProps: { role: 'status', 'aria-live': 'polite' } },
-    );
-
     return () => {
       socket.close();
     };
-  }, [roomId, t, onUpdateRoom, onNominate, onRecieveRequestToSelect]);
+  }, [roomId, onUpdateRoom, onNominate, onRecieveRequestToSelect]);
 
   const changeDeckType = (newDeckType: IFDeckType): void => {
     socket.emit('change-deck-type', roomId, newDeckType);

@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useTranslations } from 'next-intl';
 import type { ComponentPropsWithoutRef } from 'react';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 
@@ -8,8 +7,6 @@ type Props = ComponentPropsWithoutRef<'div'> & {
 };
 
 const PokerCardFront = ({ value, className, ...props }: Props) => {
-  const _t = useTranslations('Room.Table');
-
   return (
     <div
       role='img'

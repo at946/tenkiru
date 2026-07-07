@@ -1,11 +1,9 @@
 import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
-import Button from '@/app/[locale]/components/common/Button';
+import TableActions from '@/app/[locale]/rooms/[roomId]/components/table/TableActions';
 import TableFrame from '@/app/[locale]/rooms/[roomId]/components/table/TableFrame';
-import getTableCardsFromUsers from '@/app/[locale]/rooms/[roomId]/utils/getTableCardsFromUsers';
 import type { IFRoom } from '@/interfaces/room';
-import type { IFTableCard } from '@/interfaces/tableCard';
 import roomState from '@/jotai/atoms/roomAtom';
 import SummaryTags from './SummaryTags';
 import TableBoard from './TableBoard';
@@ -21,10 +19,6 @@ interface Props {
 
 const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay, nominate }) => {
   const room: IFRoom = useAtomValue(roomState);
-  const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
-  const allCardsAreNotSelected: boolean =
-    tableCards.filter((tableCard: IFTableCard) => tableCard.value !== null).length === 0;
-  const allCardsAreSelected: boolean = !tableCards.find((tableCard: IFTableCard) => tableCard.value === null);
 
   const t = useTranslations('Room.Table');
 
@@ -35,27 +29,7 @@ const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay,
           {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
 
           <TableCards nominate={nominate} />
-
-          <div className='flex justify-center gap-2'>
-            {!room.isOpenPhase && (
-              <Button disabled={allCardsAreNotSelected} color='secondary' onClick={openCards}>
-                <span className='icon-[fa6-solid--hand]' />
-                <span>{t('Open')}</span>
-              </Button>
-            )}
-            {!room.isOpenPhase && (
-              <Button isOutlined={true} disabled={allCardsAreSelected} color='secondary' onClick={requestToSelect}>
-                <span className='icon-[fa6-solid--hands-praying]' />
-                <span>{t('Ask to choose')}</span>
-              </Button>
-            )}
-            {room.isOpenPhase && (
-              <Button color='secondary' onClick={replay}>
-                <span className='icon-[fa6-solid--repeat]' />
-                <span>{t('Again')}</span>
-              </Button>
-            )}
-          </div>
+          <TableActions openCards={openCards} requestToSelect={requestToSelect} replay={replay} />
         </TableBoard>
       </TableFrame>
     </div>

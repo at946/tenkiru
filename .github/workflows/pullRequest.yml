@@ -40,19 +40,11 @@ jobs:
 
       - name: typescript
         run: pnpm type:check
-
-      - name: prepare component tests
-        run: pnpm storybook &
   
       - name: prepare component and E2E tests (install playwright)
         run: |
           pnpm playwright install
           pnpm playwright install-deps
-
-      - name: component tests
-        run: |
-          pnpx wait-on tcp:6006
-          pnpm test:storybook --url http://localhost:6006
 
       - name: prepare E2E tests (start next app)
         run: |

@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^10.59.0",
-    "express": "^5.2.1",
     "jotai": "^2.20.1",
     "motion": "^12.42.1",
     "next": "16.2.10",
@@ -25,9 +24,7 @@
     "react-hot-toast": "^2.6.0",
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
-    "unique-names-generator": "^4.7.1",
-    "utf-8-validate": "^6.0.6",
-    "uuid": "^14.0.1"
+    "unique-names-generator": "^4.7.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.0",
@@ -35,7 +32,6 @@
     "@iconify-json/fa6-solid": "^1.2.4",
     "@iconify-json/ic": "^1.2.4",
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/simple-icons": "^1.2.87",
     "@iconify/tailwind": "^1.2.0",
     "@playwright/test": "^1.61.0",
     "@tailwindcss/forms": "^0.5.11",
@@ -44,13 +40,11 @@
     "@types/lodash": "^4.17.24",
     "@types/node": "26.1.0",
     "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
     "clsx": "^2.1.1",
     "lefthook": "^2.1.9",
     "lodash": "^4.18.1",
     "postcss": "^8.5.15",
     "tailwindcss": "^4.3.1",
-    "typescript": "^6.0.3",
-    "vite": "^8.0.16"
+    "typescript": "^6.0.3"
   }
 }

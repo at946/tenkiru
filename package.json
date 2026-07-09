@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^10.59.0",
-    "express": "^5.2.1",
     "jotai": "^2.20.1",
     "motion": "^12.42.1",
     "next": "16.2.10",
@@ -26,7 +25,6 @@
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
     "unique-names-generator": "^4.7.1",
-    "utf-8-validate": "^6.0.6",
     "uuid": "^14.0.1"
   },
   "devDependencies": {

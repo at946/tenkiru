@@ -41,9 +41,6 @@ importers:
       unique-names-generator:
         specifier: ^4.7.1
         version: 4.7.1
-      uuid:
-        specifier: ^14.0.1
-        version: 14.0.1
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.5.0
@@ -2182,10 +2179,6 @@ packages:
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
 
-  uuid@14.0.1:
-    resolution: {integrity: sha512-6ZxzVpzDXDa3bJWaHilVayA+BH/1zmxCJoVgvmqJnid/gPoKHxUrS/aC/T6LGQtNHT+XHG9fXPJB4d+IrU30Ew==}
-    hasBin: true
-
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
@@ -4105,8 +4098,6 @@ snapshots:
       icu-minify: 4.13.1
       intl-messageformat: 11.2.9
       react: 19.2.7
-
-  uuid@14.0.1: {}
 
   vary@1.1.2: {}
 

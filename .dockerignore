@@ -12,10 +12,6 @@ fly.toml
 .prettierignore
 .prettierrc.json
 
-# Storybook
-.storybook
-*/*.stories.*
-
 # playwright
 playwright
 playwright.config.ts

@@ -12,7 +12,6 @@ import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUser } from '@/interfaces/user';
 import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
-import { event } from '@/lib/gtag';
 import DeckSelect from './components/DeckSelect';
 import Hands from './components/hands/Hands';
 import Table from './components/table/Table';
@@ -79,27 +78,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     };
   }, [roomId, onUpdateRoom, onNominate, onRecieveRequestToSelect, setSocket]);
 
-  const openCards = (): void => {
-    socket.emit('open-cards', roomId);
-    event({
-      action: `open_with_${room.deckType}_deck`,
-      category: 'engagement',
-      label: '',
-    });
-  };
-
-  const requestToSelect = (): void => {
-    socket.emit('request-to-select', roomId);
-    toast.success(t('Asked players to choose a card'), {
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
-    event({ action: 'request-to-select', category: 'engagement', label: '' });
-  };
-
-  const replay = (): void => {
-    socket.emit('replay', roomId);
-  };
-
   const selectCard = (value: IFTableCardValue): void => {
     socket.emit('select-card', roomId, value);
   };
@@ -113,7 +91,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       <MenuHeader roomId={roomId} />
       <UserTypeSelect type={user.type} />
       <DeckSelect disabled={room.isOpenPhase} />
-      <Table className='mb-5' openCards={openCards} requestToSelect={requestToSelect} replay={replay} />
+      <Table className='mb-5' />
       <Hands
         deckType={room.deckType}
         selectedValue={user === undefined ? null : user.selectedCardValue}

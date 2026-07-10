@@ -8,13 +8,9 @@ import SummaryTags from './SummaryTags';
 import TableBoard from './TableBoard';
 import TableCards from './TableCards';
 
-type Props = ComponentPropsWithoutRef<'div'> & {
-  openCards: () => void;
-  requestToSelect: () => void;
-  replay: () => void;
-};
+type Props = ComponentPropsWithoutRef<'div'>;
 
-const Table = ({ openCards, requestToSelect, replay, className, ...props }: Props) => {
+const Table = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.Table');
   const room = useAtomValue(roomAtom);
 
@@ -25,7 +21,7 @@ const Table = ({ openCards, requestToSelect, replay, className, ...props }: Prop
           {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
 
           <TableCards />
-          <TableActions openCards={openCards} requestToSelect={requestToSelect} replay={replay} />
+          <TableActions />
         </TableBoard>
       </TableFrame>
     </div>

@@ -5,7 +5,7 @@ import Button from '@/app/[locale]/components/common/Button';
 import TableCardSlot from '@/app/[locale]/rooms/[roomId]/components/table/TableCardSlot';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
-import roomState from '@/jotai/atoms/roomAtom';
+import roomAtom from '@/jotai/atoms/roomAtom';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import TableCard from './TableCard';
 
@@ -15,7 +15,7 @@ interface Props {
 
 const TableCards: NextPage<Props> = ({ nominate }) => {
   const t = useTranslations('Room.Table');
-  const room: IFRoom = useAtomValue(roomState);
+  const room: IFRoom = useAtomValue(roomAtom);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (

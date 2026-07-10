@@ -13,7 +13,7 @@ import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interface
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUser } from '@/interfaces/user';
 import type { IFUserType } from '@/interfaces/userType';
-import isRoomState from '@/jotai/atoms/roomAtom';
+import roomAtom from '@/jotai/atoms/roomAtom';
 import { event } from '@/lib/gtag';
 import DeckSelect from './components/DeckSelect';
 import Hands from './components/hands/Hands';
@@ -28,7 +28,7 @@ interface Props {
 }
 
 const RoomPage: NextPage<Props> = ({ roomId }) => {
-  const [room, setRoom] = useAtom<IFRoom>(isRoomState);
+  const [room, setRoom] = useAtom<IFRoom>(roomAtom);
   const users: IFUser[] = room.users;
   const user: IFUser | undefined = users.find((user: IFUser) => user.id === socket?.id);
   const [isConnected, setIsConnected] = useState(false);

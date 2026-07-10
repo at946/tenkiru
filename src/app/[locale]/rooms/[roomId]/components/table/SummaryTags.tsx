@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCard } from '@/interfaces/tableCard';
-import roomState from '@/jotai/atoms/roomAtom';
+import roomAtom from '@/jotai/atoms/roomAtom';
 import {
   getAvgValueAmongTableCards,
   getMaxValueAmongTableCards,
@@ -18,7 +18,7 @@ interface Props {
 
 const SummaryTags: NextPage<Props> = ({ className }) => {
   const t = useTranslations('Room.Table');
-  const room: IFRoom = useAtomValue(roomState);
+  const room: IFRoom = useAtomValue(roomAtom);
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (

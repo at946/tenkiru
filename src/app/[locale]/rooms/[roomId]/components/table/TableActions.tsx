@@ -5,7 +5,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 import Button from '@/app/[locale]/components/common/Button';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFUser } from '@/interfaces/user';
-import roomState from '@/jotai/atoms/roomAtom';
+import roomAtom from '@/jotai/atoms/roomAtom';
 
 type Props = ComponentPropsWithoutRef<'div'> & {
   openCards: () => void;
@@ -16,7 +16,7 @@ type Props = ComponentPropsWithoutRef<'div'> & {
 const TableActions = ({ openCards, requestToSelect, replay, className, ...props }: Props) => {
   const t = useTranslations('Room.Table');
 
-  const room: IFRoom = useAtomValue(roomState);
+  const room: IFRoom = useAtomValue(roomAtom);
   const users: IFUser[] = room.users;
   const players: IFUser[] = users.filter((user) => user.type === 'player');
   const readyPlayers: IFUser[] = players.filter((player) => player.selectedCardValue !== null);

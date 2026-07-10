@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import TableActions from '@/app/[locale]/rooms/[roomId]/components/table/TableActions';
 import TableFrame from '@/app/[locale]/rooms/[roomId]/components/table/TableFrame';
 import type { IFRoom } from '@/interfaces/room';
-import roomState from '@/jotai/atoms/roomAtom';
+import roomAtom from '@/jotai/atoms/roomAtom';
 import SummaryTags from './SummaryTags';
 import TableBoard from './TableBoard';
 import TableCards from './TableCards';
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay, nominate }) => {
-  const room: IFRoom = useAtomValue(roomState);
+  const room: IFRoom = useAtomValue(roomAtom);
 
   const t = useTranslations('Room.Table');
 

@@ -1,25 +1,31 @@
+import { useAtomValue } from 'jotai';
 import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import type { ComponentPropsWithoutRef } from 'react';
+import type { IFUser } from '@/interfaces/user';
 import type { IFUserType } from '@/interfaces/userType';
+import roomAtom from '@/jotai/atoms/roomAtom';
+import { socketAtom } from '@/jotai/atoms/socketAtom';
 import { event } from '@/lib/gtag';
 
-interface Props {
-  type: IFUserType;
-  className?: string;
-  onChange: (userType: IFUserType) => void;
-}
+type Props = ComponentPropsWithoutRef<'div'>;
 
-const UserTypeSelect: NextPage<Props> = ({ type, className, onChange }) => {
+const UserTypeSelect: NextPage<Props> = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.Settings');
+  const socket = useAtomValue(socketAtom);
+  const room = useAtomValue(roomAtom);
+  const user: IFUser | undefined = room.users.find((user) => user.id === socket?.id);
 
-  type option = { value: string; displayValue: string };
+  type option = { value: IFUserType; displayValue: string };
   const options: option[] = [
     { value: 'player', displayValue: t('Player') },
     { value: 'audience', displayValue: t('Audience') },
   ];
 
-  const handleOnChange = (value: string): void => {
-    onChange(value as IFUserType);
+  const onChange = (value: IFUserType): void => {
+    if (socket && room) {
+      socket.emit('change-user-type', room.id, value);
+    }
     event({
       action: `change_member_type_${value}`,
       category: 'engagement',
@@ -36,8 +42,8 @@ const UserTypeSelect: NextPage<Props> = ({ type, className, onChange }) => {
               className='mr-1 text-primary accent-primary checked:bg-primary dark:text-dark-primary dark:checked:bg-dark-primary'
               type='radio'
               value={option.value}
-              checked={type === option.value}
-              onChange={(e) => handleOnChange(e.target.value)}
+              checked={user.type === option.value}
+              onChange={(e) => onChange(e.target.value)}
             />
             <span>{option.displayValue}</span>
           </label>

@@ -104,14 +104,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     socket.emit('select-card', roomId, value);
   };
 
-  const nominate = (memberId: string): void => {
-    socket.emit('nominate', memberId);
-    toast.success(t('Asked a player for comment'), {
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
-    event({ action: 'nominate', category: 'engagement', label: '' });
-  };
-
   if (!isConnected || user === undefined) {
     return;
   }
@@ -121,13 +113,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
       <MenuHeader roomId={roomId} />
       <UserTypeSelect type={user.type} />
       <DeckSelect disabled={room.isOpenPhase} />
-      <Table
-        className='mb-5'
-        openCards={openCards}
-        requestToSelect={requestToSelect}
-        replay={replay}
-        nominate={nominate}
-      />
+      <Table className='mb-5' openCards={openCards} requestToSelect={requestToSelect} replay={replay} />
       <Hands
         deckType={room.deckType}
         selectedValue={user === undefined ? null : user.selectedCardValue}

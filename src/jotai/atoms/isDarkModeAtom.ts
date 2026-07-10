@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
 
-const isDarkModeState = atom<boolean>(false);
+const isDarkModeAtom = atom<boolean>(false);
 
-export default isDarkModeState;
+export default isDarkModeAtom;

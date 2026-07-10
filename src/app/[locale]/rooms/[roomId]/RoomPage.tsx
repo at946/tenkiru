@@ -7,7 +7,6 @@ import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 import MenuHeader from '@/app/[locale]/rooms/[roomId]/components/MenuHeader';
-import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUser } from '@/interfaces/user';
@@ -80,10 +79,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     };
   }, [roomId, onUpdateRoom, onNominate, onRecieveRequestToSelect, setSocket]);
 
-  const changeDeckType = (newDeckType: IFDeckType): void => {
-    socket.emit('change-deck-type', roomId, newDeckType);
-  };
-
   const openCards = (): void => {
     socket.emit('open-cards', roomId);
     event({
@@ -125,7 +120,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     <>
       <MenuHeader roomId={roomId} />
       <UserTypeSelect type={user.type} />
-      <DeckSelect deckType={room.deckType} disabled={room.isOpenPhase} className='mb-4' onChange={changeDeckType} />
+      <DeckSelect disabled={room.isOpenPhase} />
       <Table
         className='mb-5'
         openCards={openCards}

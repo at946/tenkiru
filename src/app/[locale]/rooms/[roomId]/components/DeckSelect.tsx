@@ -1,27 +1,34 @@
 import clsx from 'clsx';
-import type { NextPage } from 'next';
+import { useAtomValue } from 'jotai';
 import { useTranslations } from 'next-intl';
+import type { ComponentPropsWithoutRef } from 'react';
 import Decks from '@/data/deck';
 import type { IFDeck } from '@/interfaces/deck';
 import type { IFDeckType } from '@/interfaces/deckType';
+import roomAtom from '@/jotai/atoms/roomAtom';
+import { socketAtom } from '@/jotai/atoms/socketAtom';
 
-interface IFOption {
+type TOption = {
   value: string;
   displayValue: string;
-}
+};
 
-interface Props {
-  deckType: IFDeckType;
+type Props = ComponentPropsWithoutRef<'div'> & {
   disabled?: boolean;
-  className?: string;
-  onChange: (deckType: IFDeckType) => void;
-}
+};
 
-const DeckSelect: NextPage<Props> = ({ deckType, disabled, className, onChange }) => {
+const DeckSelect = ({ disabled, className }: Props) => {
   const t = useTranslations('Room.Settings');
-  const options: IFOption[] = Decks.map((deck: IFDeck) => {
+  const socket = useAtomValue(socketAtom);
+  const room = useAtomValue(roomAtom);
+
+  const options: TOption[] = Decks.map((deck: IFDeck) => {
     return { value: deck.key, displayValue: t(deck.displayName) };
   });
+
+  const onChange = (newDeckType: IFDeckType) => {
+    socket.emit('change-deck-type', room.id, newDeckType);
+  };
 
   return (
     <div className={clsx(className)}>
@@ -29,7 +36,7 @@ const DeckSelect: NextPage<Props> = ({ deckType, disabled, className, onChange }
         <span>{t('Deck')}</span>
         <span>:</span>
         <select
-          value={deckType}
+          value={room.deckType}
           onChange={(e) => onChange(e.target.value as IFDeckType)}
           disabled={disabled}
           className={clsx(

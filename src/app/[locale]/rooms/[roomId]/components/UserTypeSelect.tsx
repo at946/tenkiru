@@ -9,6 +9,7 @@ import { socketAtom } from '@/jotai/atoms/socketAtom';
 import { event } from '@/lib/gtag';
 
 type Props = ComponentPropsWithoutRef<'div'>;
+type TOption = { value: IFUserType; displayValue: string };
 
 const UserTypeSelect: NextPage<Props> = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.Settings');
@@ -16,8 +17,7 @@ const UserTypeSelect: NextPage<Props> = ({ className, ...props }: Props) => {
   const room = useAtomValue(roomAtom);
   const user: IFUser | undefined = room.users.find((user) => user.id === socket?.id);
 
-  type option = { value: IFUserType; displayValue: string };
-  const options: option[] = [
+  const options: TOption[] = [
     { value: 'player', displayValue: t('Player') },
     { value: 'audience', displayValue: t('Audience') },
   ];

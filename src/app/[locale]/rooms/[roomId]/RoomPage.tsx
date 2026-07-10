@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { io, type Socket } from 'socket.io-client';
+import MenuHeader from '@/app/[locale]/rooms/[roomId]/components/MenuHeader';
 import type { IFDeckType } from '@/interfaces/deckType';
 import type { IFRoom } from '@/interfaces/room';
 import type { IFClientToServerEvents, IFServerToClientEvents } from '@/interfaces/socket';
@@ -115,8 +116,15 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     event({ action: 'nominate', category: 'engagement', label: '' });
   };
 
+  if (!isConnected || user === undefined) {
+    return;
+  }
+
   return (
-    <div>
+    <>
+      <MenuHeader roomId={roomId} />
+      <UserTypeSelect type={user.type} className='mb-8' onChange={changeUserType} />
+      <DeckSelect deckType={room.deckType} disabled={room.isOpenPhase} className='mb-4' onChange={changeDeckType} />
       <Table
         className='mb-5'
         openCards={openCards}
@@ -124,19 +132,13 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         replay={replay}
         nominate={nominate}
       />
-      {isConnected && (
-        <>
-          <UserTypeSelect type={user?.type || 'player'} className='mb-8' onChange={changeUserType} />
-          <DeckSelect deckType={room.deckType} disabled={room.isOpenPhase} className='mb-4' onChange={changeDeckType} />
-          <Hands
-            deckType={room.deckType}
-            selectedValue={user === undefined ? null : user.selectedCardValue}
-            isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}
-            onSelect={selectCard}
-          />
-        </>
-      )}
-    </div>
+      <Hands
+        deckType={room.deckType}
+        selectedValue={user === undefined ? null : user.selectedCardValue}
+        isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}
+        onSelect={selectCard}
+      />
+    </>
   );
 };
 

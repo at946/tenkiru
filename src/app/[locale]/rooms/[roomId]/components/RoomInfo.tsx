@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
 import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
 
@@ -8,7 +7,7 @@ interface Props {
   className?: string;
 }
 
-const RoomInfo: NextPage<Props> = ({ roomId, className }) => {
+const RoomInfo = ({ roomId, className }: Props) => {
   const t = useTranslations('Room.RoomInfo');
   return (
     <ClipboardCopyLink

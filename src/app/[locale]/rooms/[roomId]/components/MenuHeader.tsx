@@ -1,16 +1,17 @@
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
+import DeckSelect from '@/app/[locale]/rooms/[roomId]/components/DeckSelect';
 import RoomInfo from '@/app/[locale]/rooms/[roomId]/components/RoomInfo';
-import type { IFRoomId } from '@/interfaces/room';
+import UserTypeSelect from '@/app/[locale]/rooms/[roomId]/components/UserTypeSelect';
 
-type Props = ComponentPropsWithoutRef<'div'> & {
-  roomId: IFRoomId;
-};
+type Props = ComponentPropsWithoutRef<'div'>;
 
-const MenuHeader = ({ roomId, className, ...props }: Props) => {
+const MenuHeader = ({ className, ...props }: Props) => {
   return (
     <div {...props} className={clsx('flex', className)}>
-      <RoomInfo roomId={roomId} />
+      <RoomInfo />
+      <UserTypeSelect />
+      <DeckSelect />
     </div>
   );
 };

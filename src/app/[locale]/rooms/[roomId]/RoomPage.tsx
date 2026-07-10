@@ -11,10 +11,8 @@ import type { IFRoom } from '@/interfaces/room';
 import type { IFUser } from '@/interfaces/user';
 import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
-import DeckSelect from './components/DeckSelect';
 import Hands from './components/hands/Hands';
 import Table from './components/table/Table';
-import UserTypeSelect from './components/UserTypeSelect';
 import { playAudio } from './utils/playAudio';
 
 interface Props {
@@ -83,9 +81,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   return (
     <>
-      <MenuHeader roomId={roomId} />
-      <UserTypeSelect type={user.type} />
-      <DeckSelect disabled={room.isOpenPhase} />
+      <MenuHeader />
       <Table className='mb-5' />
       <Hands
         deckType={room.deckType}

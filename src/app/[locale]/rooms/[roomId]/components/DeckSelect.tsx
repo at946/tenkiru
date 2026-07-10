@@ -13,11 +13,9 @@ type TOption = {
   displayValue: string;
 };
 
-type Props = ComponentPropsWithoutRef<'div'> & {
-  disabled?: boolean;
-};
+type Props = ComponentPropsWithoutRef<'div'>;
 
-const DeckSelect = ({ disabled, className }: Props) => {
+const DeckSelect = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.Settings');
   const socket = useAtomValue(socketAtom);
   const room = useAtomValue(roomAtom);
@@ -31,14 +29,14 @@ const DeckSelect = ({ disabled, className }: Props) => {
   };
 
   return (
-    <div className={clsx(className)}>
+    <div className={clsx(className)} {...props}>
       <label className='inline-flex gap-2'>
         <span>{t('Deck')}</span>
         <span>:</span>
         <select
           value={room.deckType}
           onChange={(e) => onChange(e.target.value as IFDeckType)}
-          disabled={disabled}
+          disabled={room.isOpenPhase}
           className={clsx(
             'border-0 border-text border-b-2 bg-transparent py-0 pr-10 pl-2 outline-hidden',
             'focus-visible:ring-0 enabled:focus-visible:border-primary enabled:focus-visible:text-primary enabled:hover:border-primary enabled:hover:text-primary',

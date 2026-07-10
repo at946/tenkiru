@@ -1,17 +1,18 @@
+import { useAtomValue } from 'jotai';
 import { motion } from 'motion/react';
-import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { type ComponentPropsWithoutRef, useState } from 'react';
 import PokerCardFront from '@/app/[locale]/rooms/[roomId]/components/poker-card/PokerCardFront';
 import type { IFHandsCardValue } from '@/interfaces/handsCardValue';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import roomAtom from '@/jotai/atoms/roomAtom';
+import { socketAtom } from '@/jotai/atoms/socketAtom';
 
-interface Props {
+type Props = ComponentPropsWithoutRef<'div'> & {
   value: IFHandsCardValue;
   selected: boolean;
   disabled?: boolean;
-  onSelect: (value: IFTableCardValue) => void;
-}
+};
 
 const variants = {
   default: {
@@ -34,10 +35,16 @@ const variants = {
   },
 };
 
-const HandCard: NextPage<Props> = ({ value, selected, disabled = false, onSelect }) => {
+const HandCard = ({ value, selected, disabled = false }: Props) => {
   const t = useTranslations('Room.Hands');
+  const socket = useAtomValue(socketAtom);
+  const room = useAtomValue(roomAtom);
   const [hovered, setHovered] = useState(false);
   const currentVariant: string = selected ? 'selected' : hovered ? 'hover' : 'default';
+
+  const onSelect = (value: IFTableCardValue): void => {
+    socket.emit('select-card', room.id, value);
+  };
 
   return (
     <motion.button

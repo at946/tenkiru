@@ -8,7 +8,6 @@ import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 import MenuHeader from '@/app/[locale]/rooms/[roomId]/components/MenuHeader';
 import type { IFRoom } from '@/interfaces/room';
-import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import type { IFUser } from '@/interfaces/user';
 import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
@@ -78,10 +77,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     };
   }, [roomId, onUpdateRoom, onNominate, onRecieveRequestToSelect, setSocket]);
 
-  const selectCard = (value: IFTableCardValue): void => {
-    socket.emit('select-card', roomId, value);
-  };
-
   if (!isConnected || user === undefined) {
     return;
   }
@@ -96,7 +91,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
         deckType={room.deckType}
         selectedValue={user === undefined ? null : user.selectedCardValue}
         isDisabled={room.isOpenPhase || user === undefined || user.type !== 'player'}
-        onSelect={selectCard}
       />
     </>
   );

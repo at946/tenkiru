@@ -25,7 +25,7 @@ const DeckSelect = ({ className, ...props }: Props) => {
   });
 
   const onChange = (newDeckType: IFDeckType) => {
-    socket.emit('change-deck-type', room.id, newDeckType);
+    socket?.emit('change-deck-type', room.id, newDeckType);
   };
 
   return (

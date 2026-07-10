@@ -24,7 +24,7 @@ const TableActions = ({ className, ...props }: Props) => {
   const readyPlayers: IFUser[] = players.filter((player) => player.selectedCardValue !== null);
 
   const openCards = (): void => {
-    socket.emit('open-cards', room.id);
+    socket?.emit('open-cards', room.id);
     event({
       action: `open_with_${room.deckType}_deck`,
       category: 'engagement',
@@ -33,7 +33,7 @@ const TableActions = ({ className, ...props }: Props) => {
   };
 
   const requestToSelect = (): void => {
-    socket.emit('request-to-select', room.id);
+    socket?.emit('request-to-select', room.id);
     toast.success(tRoom('Asked players to choose a card'), {
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
@@ -41,7 +41,7 @@ const TableActions = ({ className, ...props }: Props) => {
   };
 
   const replay = (): void => {
-    socket.emit('replay', room.id);
+    socket?.emit('replay', room.id);
   };
 
   return (

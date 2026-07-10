@@ -12,7 +12,7 @@ import { event } from '@/lib/gtag';
 import getTableCardsFromUsers from '../../utils/getTableCardsFromUsers';
 import TableCard from './TableCard';
 
-type Props = ComponentPropsWithoutRef;
+type Props = ComponentPropsWithoutRef<'div'>;
 
 const TableCards = ({ className, ...props }: Props) => {
   const tTable = useTranslations('Room.Table');
@@ -22,7 +22,7 @@ const TableCards = ({ className, ...props }: Props) => {
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   const nominate = (memberId: string): void => {
-    socket.emit('nominate', memberId);
+    socket?.emit('nominate', memberId);
     toast.success(tRoom('Asked a player for comment'), {
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });

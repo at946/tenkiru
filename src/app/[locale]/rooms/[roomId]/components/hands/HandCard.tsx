@@ -43,7 +43,7 @@ const HandCard = ({ value, selected, disabled = false }: Props) => {
   const currentVariant: string = selected ? 'selected' : hovered ? 'hover' : 'default';
 
   const onSelect = (value: IFTableCardValue): void => {
-    socket.emit('select-card', room.id, value);
+    socket?.emit('select-card', room.id, value);
   };
 
   return (

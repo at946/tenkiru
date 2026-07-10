@@ -42,8 +42,8 @@ const UserTypeSelect: NextPage<Props> = ({ className, ...props }: Props) => {
               className='mr-1 text-primary accent-primary checked:bg-primary dark:text-dark-primary dark:checked:bg-dark-primary'
               type='radio'
               value={option.value}
-              checked={user.type === option.value}
-              onChange={(e) => onChange(e.target.value)}
+              checked={user?.type === option.value}
+              onChange={(e) => onChange(e.target.value as IFUserType)}
             />
             <span>{option.displayValue}</span>
           </label>

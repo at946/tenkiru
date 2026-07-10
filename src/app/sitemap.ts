@@ -21,6 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
           locales.map((locale) => [locale, `${baseUrl}/${locale}${page}`]),
         )
       },
-    }));
+    }))
   )
 }

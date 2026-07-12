@@ -81,7 +81,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   return (
     <>
-      <MenuHeader />
+      <MenuHeader className='mb-8' />
       <Table className='mb-5' />
       <Hands
         deckType={room.deckType}

@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { useTranslations } from 'next-intl';
 import type { ComponentPropsWithoutRef } from 'react';
+import Select from '@/app/[locale]/components/common/Select';
 import Decks from '@/data/deck';
 import type { IFDeck } from '@/interfaces/deck';
 import type { IFDeckType } from '@/interfaces/deckType';
@@ -19,6 +20,7 @@ const DeckSelect = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.Settings');
   const socket = useAtomValue(socketAtom);
   const room = useAtomValue(roomAtom);
+  const disabled: boolean = room.isOpenPhase;
 
   const options: TOption[] = Decks.map((deck: IFDeck) => {
     return { value: deck.key, displayValue: t(deck.displayName) };
@@ -29,28 +31,18 @@ const DeckSelect = ({ className, ...props }: Props) => {
   };
 
   return (
-    <div className={clsx(className)} {...props}>
-      <label className='flex items-center'>
-        <span className='icon-[mdi--cards] text-2xl' />
-        <select
-          value={room.deckType}
-          onChange={(e) => onChange(e.target.value as IFDeckType)}
-          disabled={room.isOpenPhase}
-          className={clsx(
-            'cursor-pointer border-0 border-text border-b-2 bg-transparent py-0 pr-8 outline-hidden',
-            'focus-visible:ring-0 enabled:focus-visible:border-primary enabled:focus-visible:text-primary enabled:hover:border-primary enabled:hover:text-primary',
-            'disabled:cursor-not-allowed disabled:opacity-50',
-            'dark:border-dark-text',
-          )}
-        >
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.displayValue}
-            </option>
-          ))}
-        </select>
-      </label>
-    </div>
+    <Select
+      label={<span className={clsx('icon-[mdi--cards] text-2xl', disabled && 'opacity-50')} />}
+      value={room.deckType}
+      onChange={(e) => onChange(e.target.value)}
+      disabled={room.isOpenPhase}
+    >
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.displayValue}
+        </option>
+      ))}
+    </Select>
   );
 };
 

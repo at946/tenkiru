@@ -11,7 +11,7 @@ const RoomInfo = () => {
       copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${room.id}`}
       messageOnSuccess={t('Copied this Room URL')}
       gaAction='copy_room_url'
-      className='flex cursor-pointer items-center gap-2'
+      className='px- flex cursor-pointer items-center gap-2 leading-10'
     >
       <span className='icon-[ic--round-home] text-2xl' />
       <span className='uppercase'>{room.id}</span>

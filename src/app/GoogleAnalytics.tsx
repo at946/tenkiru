@@ -19,10 +19,12 @@ const usePageView = () => {
 const GoogleAnalytics = () => {
   usePageView();
 
+  if (!GA_TRACKING_ID) {
+    return null;
+  }
+
   return (
     <>
-      {GA_TRACKING_ID && (
-        <>
           <Script
             id='ga_url'
             defer
@@ -45,8 +47,6 @@ const GoogleAnalytics = () => {
             }}
             strategy='afterInteractive'
           />
-        </>
-      )}
     </>
   );
 };

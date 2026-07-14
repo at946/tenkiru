@@ -38,7 +38,7 @@ const UserTypeSelect: NextPage<Props> = ({ ...props }: Props) => {
     <Select
       label={<span className='icon-[mdi--user-circle] text-2xl' />}
       value={user?.type}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value as IFUserType)}
       {...props}
     >
       {options.map((option) => (

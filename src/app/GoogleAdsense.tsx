@@ -3,16 +3,18 @@
 import Script from 'next/script';
 
 const GoogleAdsense = () => {
+  const clientId = process.env.NEXT_GOOGLE_ADSENSE_ID;
+
+  if (!clientId) {
+    return null;
+  }
+
   return (
-    <>
-      {process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID && (
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}`}
-          crossOrigin='anonymous'
-        />
-      )}
-    </>
+    <Script
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
+      crossOrigin='anonymous'
+    />
   );
 };
 

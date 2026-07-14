@@ -14,9 +14,9 @@ type TOption = {
   displayValue: string;
 };
 
-type Props = ComponentPropsWithoutRef<'div'>;
+type Props = ComponentPropsWithoutRef<'select'>;
 
-const DeckSelect = ({ className, ...props }: Props) => {
+const DeckSelect = ({ ...props }: Props) => {
   const t = useTranslations('Room.Settings');
   const socket = useAtomValue(socketAtom);
   const room = useAtomValue(roomAtom);
@@ -36,6 +36,7 @@ const DeckSelect = ({ className, ...props }: Props) => {
       value={room.deckType}
       onChange={(e) => onChange(e.target.value)}
       disabled={room.isOpenPhase}
+      {...props}
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>

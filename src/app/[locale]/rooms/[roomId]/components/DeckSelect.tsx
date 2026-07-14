@@ -34,7 +34,7 @@ const DeckSelect = ({ ...props }: Props) => {
     <Select
       label={<span className={clsx('icon-[mdi--cards] text-2xl', disabled && 'opacity-50')} />}
       value={room.deckType}
-      onChange={(e) => onChange(e.target.value as IFDeckTYpe)}
+      onChange={(e) => onChange(e.target.value as IFDeckType)}
       disabled={room.isOpenPhase}
       {...props}
     >

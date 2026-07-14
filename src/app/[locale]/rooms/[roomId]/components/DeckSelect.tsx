@@ -30,15 +30,14 @@ const DeckSelect = ({ className, ...props }: Props) => {
 
   return (
     <div className={clsx(className)} {...props}>
-      <label className='inline-flex gap-2'>
-        <span>{t('Deck')}</span>
-        <span>:</span>
+      <label className='flex items-center'>
+        <span className='icon-[mdi--cards] text-2xl' />
         <select
           value={room.deckType}
           onChange={(e) => onChange(e.target.value as IFDeckType)}
           disabled={room.isOpenPhase}
           className={clsx(
-            'border-0 border-text border-b-2 bg-transparent py-0 pr-10 pl-2 outline-hidden',
+            'cursor-pointer border-0 border-text border-b-2 bg-transparent py-0 pr-8 outline-hidden',
             'focus-visible:ring-0 enabled:focus-visible:border-primary enabled:focus-visible:text-primary enabled:hover:border-primary enabled:hover:text-primary',
             'disabled:cursor-not-allowed disabled:opacity-50',
             'dark:border-dark-text',

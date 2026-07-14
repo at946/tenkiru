@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { useTranslations } from 'next-intl';
-import type { ComponentPropsWithoutRef } from 'react';
 import Select from '@/app/[locale]/components/common/Select';
 import Decks from '@/data/deck';
 import type { IFDeck } from '@/interfaces/deck';
@@ -14,9 +13,7 @@ type TOption = {
   displayValue: string;
 };
 
-type Props = ComponentPropsWithoutRef<'select'>;
-
-const DeckSelect = ({ ...props }: Props) => {
+const DeckSelect = () => {
   const t = useTranslations('Room.Settings');
   const socket = useAtomValue(socketAtom);
   const room = useAtomValue(roomAtom);
@@ -36,7 +33,7 @@ const DeckSelect = ({ ...props }: Props) => {
       value={room.deckType}
       onChange={(e) => onChange(e.target.value as IFDeckType)}
       disabled={room.isOpenPhase}
-      {...props}
+      className='uppercase'
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>

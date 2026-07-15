@@ -34,6 +34,7 @@ const DeckSelect = () => {
       onChange={(e) => onChange(e.target.value as IFDeckType)}
       disabled={room.isOpenPhase}
       className='uppercase'
+      aria-label={t('Deck Setting')}
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>

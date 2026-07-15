@@ -61,7 +61,7 @@ export default class RoomPage {
     });
     this.replayButton = page.getByRole('button', { name: 'Again' });
     this.userTypeSelect = page.getByRole('combobox', { name: 'User Type Setting' });
-    this.deckSelect = page.getByRole('combobox', { name: 'Deck : ' });
+    this.deckSelect = page.getByRole('combobox', { name: 'Deck Setting' });
     this.hands = page.getByRole('group', { name: 'Hands' });
     this.handsCards = this.hands.getByRole('button', { name: 'Hands card' });
     this.selectedHandsCard = this.hands.getByRole('button', {
@@ -119,10 +119,6 @@ export default class RoomPage {
 
   async selectUserType(userType: IFUserType) {
     await this.userTypeSelect.selectOption(userType);
-  }
-
-  async getUserType(userType: IFUserType) {
-    return await this.page.getByLabel(userType);
   }
 
   async selectDeck(deck: IFDeckType) {

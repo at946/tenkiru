@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { useTranslations } from 'next-intl';
+import type { ComponentPropsWithoutRef } from 'react';
 import Select from '@/app/[locale]/components/common/Select';
 import Decks from '@/data/deck';
 import type { IFDeck } from '@/interfaces/deck';
@@ -8,12 +9,14 @@ import type { IFDeckType } from '@/interfaces/deckType';
 import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
 
+type Props = ComponentPropsWithoutRef<'div'>;
+
 type TOption = {
   value: string;
   displayValue: string;
 };
 
-const DeckSelect = () => {
+const DeckSelect = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.Settings');
   const socket = useAtomValue(socketAtom);
   const room = useAtomValue(roomAtom);
@@ -28,20 +31,22 @@ const DeckSelect = () => {
   };
 
   return (
-    <Select
-      label={<span className={clsx('icon-[mdi--cards] text-2xl', disabled && 'opacity-50')} />}
-      value={room.deckType}
-      onChange={(e) => onChange(e.target.value as IFDeckType)}
-      disabled={room.isOpenPhase}
-      className='uppercase'
-      aria-label={t('Deck Setting')}
-    >
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.displayValue}
-        </option>
-      ))}
-    </Select>
+    <div {...props} className={className}>
+      <Select
+        label={<span className={clsx('icon-[mdi--cards] text-2xl', disabled && 'opacity-50')} />}
+        value={room.deckType}
+        onChange={(e) => onChange(e.target.value as IFDeckType)}
+        disabled={room.isOpenPhase}
+        className={clsx('uppercase')}
+        aria-label={t('Deck Setting')}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.displayValue}
+          </option>
+        ))}
+      </Select>
+    </div>
   );
 };
 

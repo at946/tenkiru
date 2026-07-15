@@ -8,10 +8,10 @@ type Props = ComponentPropsWithoutRef<'div'>;
 
 const MenuHeader = ({ className, ...props }: Props) => {
   return (
-    <div {...props} className={clsx('flex flex-col items-center gap-2 md:flex-row md:justify-between', className)}>
-      <RoomInfo />
-      <DeckSelect />
-      <UserTypeSelect />
+    <div {...props} className={clsx('grid grid-cols-1 gap-2 md:grid-cols-3', className)}>
+      <RoomInfo className='mx-auto md:mx-0' />
+      <DeckSelect className='mx-auto' />
+      <UserTypeSelect className='mx-auto md:mr-0 md:ml-auto' />
     </div>
   );
 };

@@ -12,6 +12,7 @@ const RoomInfo = () => {
       messageOnSuccess={t('Copied this Room URL')}
       gaAction='copy_room_url'
       className='px- flex cursor-pointer items-center gap-2 leading-10'
+      aria-label={t('Room invitation button')}
     >
       <span className='icon-[ic--round-home] text-2xl' />
       <span className='uppercase'>{room.id}</span>

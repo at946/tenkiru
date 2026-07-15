@@ -2,19 +2,24 @@
 
 import clsx from 'clsx';
 import type { NextPage } from 'next';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import toast from 'react-hot-toast';
 import { event } from '@/lib/gtag';
 
-interface Props {
-  children: ReactNode;
+type Props = ComponentPropsWithoutRef<'button'> & {
   copiedText: string;
   messageOnSuccess: string;
   gaAction?: string;
-  className?: string;
-}
+};
 
-const ClipboardCopyLink: NextPage<Props> = ({ children, copiedText, messageOnSuccess, gaAction, className }) => {
+const ClipboardCopyLink: NextPage<Props> = ({
+  children,
+  copiedText,
+  messageOnSuccess,
+  gaAction,
+  className,
+  ...props
+}) => {
   const copyText = async () => {
     await navigator.clipboard.writeText(copiedText);
     toast.success(messageOnSuccess, {
@@ -25,6 +30,7 @@ const ClipboardCopyLink: NextPage<Props> = ({ children, copiedText, messageOnSuc
 
   return (
     <button
+      {...props}
       type='button'
       onClick={copyText}
       className={clsx(

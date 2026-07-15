@@ -37,6 +37,7 @@ const UserTypeSelect = () => {
       value={user?.type}
       onChange={(e) => onChange(e.target.value as IFUserType)}
       className='uppercase'
+      aria-label={t('User Type Setting')}
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>

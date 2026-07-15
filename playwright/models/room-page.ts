@@ -60,7 +60,7 @@ export default class RoomPage {
       name: 'Ask to choose',
     });
     this.replayButton = page.getByRole('button', { name: 'Again' });
-    this.userTypeSelect = page.getByRole('combobox', { name: 'User type: ' });
+    this.userTypeSelect = page.getByRole('combobox', { name: 'User Type Setting' });
     this.deckSelect = page.getByRole('combobox', { name: 'Deck : ' });
     this.hands = page.getByRole('group', { name: 'Hands' });
     this.handsCards = this.hands.getByRole('button', { name: 'Hands card' });
@@ -118,7 +118,7 @@ export default class RoomPage {
   }
 
   async selectUserType(userType: IFUserType) {
-    await this.page.getByLabel(userType).click();
+    await this.userTypeSelect.selectOption(userType);
   }
 
   async getUserType(userType: IFUserType) {

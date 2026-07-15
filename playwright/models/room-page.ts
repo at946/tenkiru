@@ -6,7 +6,7 @@ import urls from '../helpers/urls';
 export default class RoomPage {
   readonly page: Page;
   readonly logo: Locator;
-  readonly roomIdLink: Locator;
+  readonly roomInvitationButton: Locator;
   readonly ToastToNotifyToHaveCopiedThisRoomURL: Locator;
   readonly table: Locator;
   readonly tableCardSlots: Locator;
@@ -37,7 +37,7 @@ export default class RoomPage {
   constructor(page: Page) {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkiru' });
-    this.roomIdLink = page.getByRole('button', { name: 'Room ID' });
+    this.roomInvitationButton = page.getByRole('button', { name: 'Room invitation button' });
     this.ToastToNotifyToHaveCopiedThisRoomURL = page.getByRole('status').getByText('Copied this Room URL');
 
     this.table = page.getByRole('img', { name: /^Table$/ });
@@ -60,8 +60,8 @@ export default class RoomPage {
       name: 'Ask to choose',
     });
     this.replayButton = page.getByRole('button', { name: 'Again' });
-    this.userTypeSelect = page.getByRole('combobox', { name: 'User type: ' });
-    this.deckSelect = page.getByRole('combobox', { name: 'Deck : ' });
+    this.userTypeSelect = page.getByRole('combobox', { name: 'User Type Setting' });
+    this.deckSelect = page.getByRole('combobox', { name: 'Deck Setting' });
     this.hands = page.getByRole('group', { name: 'Hands' });
     this.handsCards = this.hands.getByRole('button', { name: 'Hands card' });
     this.selectedHandsCard = this.hands.getByRole('button', {
@@ -94,7 +94,7 @@ export default class RoomPage {
   }
 
   async copyRoomUrl() {
-    await this.roomIdLink.click();
+    await this.roomInvitationButton.click();
   }
 
   async selectCard(value: number | string) {
@@ -118,11 +118,7 @@ export default class RoomPage {
   }
 
   async selectUserType(userType: IFUserType) {
-    await this.page.getByLabel(userType).click();
-  }
-
-  async getUserType(userType: IFUserType) {
-    return await this.page.getByLabel(userType);
+    await this.userTypeSelect.selectOption(userType);
   }
 
   async selectDeck(deck: IFDeckType) {

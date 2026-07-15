@@ -24,6 +24,7 @@
   },
   "Room": {
     "RoomInfo": {
+      "Room invitation button": "ルームへ招待ボタン",
       "Copied this Room URL": "この部屋のURLをコピーしました"
     },
     "Table": {
@@ -42,9 +43,10 @@
       "Again": "もう一度"
     },
     "Settings": {
+      "User Type Setting": "ユーザータイプ設定",
       "Player": "プレイヤー",
       "Audience": "観客",
-      "Deck": "デッキ",
+      "Deck Setting": "デッキ設定",
       "Fibonacci": "フィボナッチ数列",
       "0 - 10": "0 - 10",
       "T-Shirt Size": "Tシャツサイズ"

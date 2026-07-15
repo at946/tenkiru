@@ -24,6 +24,7 @@
   },
   "Room": {
     "RoomInfo": {
+      "Room invitation button": "Room invitation button",
       "Copied this Room URL": "Copied this Room URL"
     },
     "Table": {
@@ -42,9 +43,10 @@
       "Again": "Again"
     },
     "Settings": {
+      "User Type Setting": "User Type Setting",
       "Player": "Player",
       "Audience": "Audience",
-      "Deck": "Deck",
+      "Deck Setting": "Deck Setting",
       "Fibonacci": "Fibonacci",
       "0 - 10": "0 - 10",
       "T-Shirt Size": "T-Shirt Size"

@@ -45,7 +45,7 @@ const Header: NextPage<Props> = ({ currentLocale }) => {
               darkModeTitle={t('Switch to light mode')}
               className='header-item'
             />
-            <LocaleSwitcher currentLocale={currentLocale} ariaLabel={t('Switch language')} />
+            <LocaleSwitcher currentLocale={currentLocale} />
           </div>
         </div>
       </div>

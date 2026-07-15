@@ -10,7 +10,7 @@ test('On the room page, users should enter the room as players by default.', asy
   await roomPage.goto(createRoomId());
 
   // Then
-  await expect(await roomPage.getUserType('player')).toBeChecked();
+  await expect(roomPage.userTypeSelect).toHaveValue('player');
 });
 
 test('On the room page, when a player who has not selected a card changes their user type to "audience" before table cards are turned face up, they should not be able to select a card from their hand.', async ({
@@ -23,12 +23,12 @@ test('On the room page, when a player who has not selected a card changes their 
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
 
-  await expect(await roomPage1.getUserType('player')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('player');
   await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.tableCards).toHaveCount(0);
   await expect(roomPage1.disabledHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.tableCards).toHaveCount(0);
   await expect(roomPage2.disabledHandsCard).toHaveCount(0);
@@ -37,12 +37,12 @@ test('On the room page, when a player who has not selected a card changes their 
   await roomPage1.selectUserType('audience');
 
   // Then
-  await expect(await roomPage1.getUserType('audience')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('audience');
   await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(0);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(1);
   await expect(roomPage2.tableCards).toHaveCount(0);
   await expect(roomPage2.disabledHandsCard).toHaveCount(0);
@@ -60,14 +60,14 @@ test('On the room page, a player who has selected a card changes their user type
   await roomPage1.selectCard('0');
   await roomPage2.selectCard('13');
 
-  await expect(await roomPage1.getUserType('player')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('player');
   await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.tableCards).toHaveCount(2);
   await expect(roomPage1.faceDownTableCards).toHaveCount(2);
   await expect(roomPage1.disabledHandsCard).toHaveCount(0);
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.faceDownTableCards).toHaveCount(2);
@@ -78,14 +78,14 @@ test('On the room page, a player who has selected a card changes their user type
   await roomPage1.selectUserType('audience');
 
   // Then
-  await expect(await roomPage1.getUserType('audience')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('audience');
   await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(1);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceDownTableCards).toHaveCount(1);
@@ -105,14 +105,14 @@ test('On the room page, when a player who has not selected a card changes their 
   await roomPage2.selectCard('13');
   await roomPage1.openCards();
 
-  await expect(await roomPage1.getUserType('player')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('player');
   await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceUpTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceUpTableCards).toHaveCount(1);
@@ -123,14 +123,14 @@ test('On the room page, when a player who has not selected a card changes their 
   await roomPage1.selectUserType('audience');
 
   // Then
-  await expect(await roomPage1.getUserType('audience')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('audience');
   await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceUpTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(1);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceUpTableCards).toHaveCount(1);
@@ -151,14 +151,14 @@ test('On the room page, a player who has selected a card changes their user type
   await roomPage2.selectCard('13');
   await roomPage1.openCards();
 
-  await expect(await roomPage1.getUserType('player')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('player');
   await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.tableCards).toHaveCount(2);
   await expect(roomPage1.faceUpTableCards).toHaveCount(2);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(1);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.faceUpTableCards).toHaveCount(2);
@@ -169,14 +169,14 @@ test('On the room page, a player who has selected a card changes their user type
   await roomPage1.selectUserType('audience');
 
   // Then
-  await expect(await roomPage1.getUserType('audience')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('audience');
   await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceUpTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(1);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceUpTableCards).toHaveCount(1);
@@ -196,14 +196,14 @@ test('On the room page, when an audience changes their user type to "player" bef
   await roomPage1.selectUserType('audience');
   await roomPage2.selectCard('5');
 
-  await expect(await roomPage1.getUserType('audience')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('audience');
   await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(1);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceDownTableCards).toHaveCount(1);
@@ -214,14 +214,14 @@ test('On the room page, when an audience changes their user type to "player" bef
   await roomPage1.selectUserType('player');
 
   // Then
-  await expect(await roomPage1.getUserType('player')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('player');
   await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceDownTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(0);
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceDownTableCards).toHaveCount(1);
@@ -242,14 +242,14 @@ test('On the room page, when an audience changes their user type to "player" aft
   await roomPage2.selectCard('5');
   await roomPage1.openCards();
 
-  await expect(await roomPage1.getUserType('audience')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('audience');
   await expect(roomPage1.tableCardSlots).toHaveCount(1);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceUpTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(1);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceUpTableCards).toHaveCount(1);
@@ -260,14 +260,14 @@ test('On the room page, when an audience changes their user type to "player" aft
   await roomPage1.selectUserType('player');
 
   // Then
-  await expect(await roomPage1.getUserType('player')).toBeChecked();
+  await expect(roomPage1.userTypeSelect).toHaveValue('player');
   await expect(roomPage1.tableCardSlots).toHaveCount(2);
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.faceUpTableCards).toHaveCount(1);
   await expect(roomPage1.disabledHandsCard).toHaveCount(await roomPage1.handsCards.count());
   await expect(roomPage1.selectedHandsCard).toHaveCount(0);
 
-  await expect(await roomPage2.getUserType('player')).toBeChecked();
+  await expect(roomPage2.userTypeSelect).toHaveValue('player');
   await expect(roomPage2.tableCardSlots).toHaveCount(2);
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.faceUpTableCards).toHaveCount(1);
@@ -281,7 +281,7 @@ test('On the room page, there should be no problems with players not being prese
   await roomPage.goto(createRoomId());
   await roomPage.selectCard('1');
 
-  await expect(await roomPage.getUserType('player')).toBeChecked();
+  await expect(roomPage.userTypeSelect).toHaveValue('player');
   await expect(roomPage.tableCardSlots).toHaveCount(1);
   await expect(roomPage.tableCards).toHaveCount(1);
   await expect(roomPage.faceDownTableCards).toHaveCount(1);
@@ -292,7 +292,7 @@ test('On the room page, there should be no problems with players not being prese
   await roomPage.selectUserType('audience');
 
   // Then
-  await expect(await roomPage.getUserType('audience')).toBeChecked();
+  await expect(roomPage.userTypeSelect).toHaveValue('audience');
   await expect(roomPage.tableCardSlots).toHaveCount(0);
   await expect(roomPage.disabledHandsCard).toHaveCount(await roomPage.handsCards.count());
   await expect(roomPage.selectedHandsCard).toHaveCount(0);
@@ -301,7 +301,7 @@ test('On the room page, there should be no problems with players not being prese
   await roomPage.selectUserType('player');
 
   // Then
-  await expect(await roomPage.getUserType('player')).toBeChecked();
+  await expect(roomPage.userTypeSelect).toHaveValue('player');
   await expect(roomPage.tableCardSlots).toHaveCount(1);
   await expect(roomPage.tableCards).toHaveCount(0);
   await expect(roomPage.disabledHandsCard).toHaveCount(0);

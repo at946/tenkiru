@@ -11,7 +11,7 @@ test('On the room page, users should be able to get the room ID.', async ({ page
   await roomPage.goto(roomId);
 
   // Then
-  await expect(roomPage.roomIdLink).toHaveText(`Room ID:${roomId}`);
+  await expect(roomPage.roomInvitationButton).toHaveText(`${roomId}`);
 });
 
 test('On the room page, when a user clicks the room ID, their clipboard should have copied the URL of this room.', async ({

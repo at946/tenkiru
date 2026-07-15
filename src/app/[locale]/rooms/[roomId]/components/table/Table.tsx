@@ -1,35 +1,27 @@
 import { useAtomValue } from 'jotai';
-import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import type { ComponentPropsWithoutRef } from 'react';
 import TableActions from '@/app/[locale]/rooms/[roomId]/components/table/TableActions';
 import TableFrame from '@/app/[locale]/rooms/[roomId]/components/table/TableFrame';
-import type { IFRoom } from '@/interfaces/room';
-import roomState from '@/jotai/atoms/roomAtom';
+import roomAtom from '@/jotai/atoms/roomAtom';
 import SummaryTags from './SummaryTags';
 import TableBoard from './TableBoard';
 import TableCards from './TableCards';
 
-interface Props {
-  className?: string;
-  openCards: () => void;
-  requestToSelect: () => void;
-  replay: () => void;
-  nominate: (userId: string) => void;
-}
+type Props = ComponentPropsWithoutRef<'div'>;
 
-const Table: NextPage<Props> = ({ className, openCards, requestToSelect, replay, nominate }) => {
-  const room: IFRoom = useAtomValue(roomState);
-
+const Table = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.Table');
+  const room = useAtomValue(roomAtom);
 
   return (
-    <div role='img' aria-label={t('Table')} className={className}>
+    <div role='img' aria-label={t('Table')} className={className} {...props}>
       <TableFrame>
         <TableBoard>
           {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
 
-          <TableCards nominate={nominate} />
-          <TableActions openCards={openCards} requestToSelect={requestToSelect} replay={replay} />
+          <TableCards />
+          <TableActions />
         </TableBoard>
       </TableFrame>
     </div>

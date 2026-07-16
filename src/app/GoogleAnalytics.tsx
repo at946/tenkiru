@@ -6,8 +6,8 @@ import { useEffect } from 'react';
 import { GA_TRACKING_ID, pageview } from '@/lib/gtag';
 
 const usePageView = () => {
-  const pathname: string | null = usePathname();
-  const searchParams: ReadonlyURLSearchParams | null = useSearchParams();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (!GA_TRACKING_ID || pathname === null) return;

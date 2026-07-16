@@ -11,7 +11,8 @@ const usePageView = () => {
 
   useEffect(() => {
     if (!GA_TRACKING_ID || pathname === null) return;
-    const url: string = `${pathname}${searchParams?.toString() ?? ''}`;
+    const query: string = searchParams?.toString();
+    const url: string = !query ? pathname : `${pathname}?${query}`;
     pageview(url);
   }, [pathname, searchParams]);
 };
@@ -25,18 +26,18 @@ const GoogleAnalytics = () => {
 
   return (
     <>
-      <Script
-        id='ga_url'
-        defer
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        strategy='afterInteractive'
-      />
-      <Script
-        id='ga_script'
-        defer
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analytics recommends
-        dangerouslySetInnerHTML={{
-          __html: `
+          <Script
+            id='ga_url'
+            defer
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            strategy='afterInteractive'
+          />
+          <Script
+            id='ga_script'
+            defer
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analytics recommends
+            dangerouslySetInnerHTML={{
+              __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
@@ -44,9 +45,9 @@ const GoogleAnalytics = () => {
                   page_path: window.location.pathname,
                 });
               `,
-        }}
-        strategy='afterInteractive'
-      />
+            }}
+            strategy='afterInteractive'
+          />
     </>
   );
 };

@@ -14,7 +14,7 @@ const usePageView = () => {
     const query: string = searchParams?.toString();
     const url: string = !query ? pathname : `${pathname}?${query}`;
     pageview(url);
-  }, [pathname, searchParams]);
+  }, [pathname, query]);
 };
 
 const GoogleAnalytics = () => {

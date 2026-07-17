@@ -7,9 +7,10 @@ export default function Page() {
   return (
     <div className='container mx-auto px-5 text-center'>
       <div className='my-20'>
-        <h1 className='mb-5 font-bold text-6xl text-primary tracking-wider dark:text-dark-primary'>Tenkiru</h1>
-        <p className='break-auto-phrase mb-6 text-2xl'>{t('See the differences Spark real dialogue')}</p>
-        <CreateRoomButton name={t('Create a room')} />
+        <h1 className='mb-4 font-bold text-6xl text-primary tracking-wider dark:text-dark-primary'>Tenkiru</h1>
+        <p className='break-auto-phrase mb-6 text-3xl'>{t('See the differences Spark real dialogue')}</p>
+        <CreateRoomButton name={t('Create a room')} className='mb-4' />
+        <p className='text-sm'>{t('Create a room and share the URL No sign up required Start in seconds')}</p>
       </div>
 
       <div className='grid grid-cols-none items-center gap-5 md:grid-cols-10'>

@@ -50,7 +50,7 @@ const TableCards = ({ className, ...props }: Props) => {
                 onClick={() => nominate(tableCard.userId)}
                 className='text-sm'
                 title={tTable('Get comments')}
-                ariaLabel={tTable('Get comments')}
+                aria-label={tTable('Get comments')}
               >
                 <span className='icon-[fa6-solid--comment]' />
               </Button>

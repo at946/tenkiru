@@ -6,24 +6,10 @@ type Props = ComponentPropsWithoutRef<'button'> & {
   isOutlined?: boolean;
 };
 
-const Button = ({
-  children,
-  color = 'primary',
-  isOutlined = false,
-  disabled,
-  title,
-  ariaLabel,
-  className,
-  onClick,
-  onMouseEnter,
-  onMouseLeave,
-  onFocus,
-  onBlur,
-  ...props
-}: Props) => {
+const Button = ({ children, color = 'primary', isOutlined = false, title, className, ...rest }: Props) => {
   return (
     <button
-      {...props}
+      {...rest}
       type='button'
       className={clsx(
         'inline-flex items-center gap-1 rounded-xl border-2 px-4 py-2 drop-shadow-md enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
@@ -40,13 +26,6 @@ const Button = ({
         className,
       )}
       title={title}
-      disabled={disabled}
-      aria-label={ariaLabel}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onFocus={onFocus}
-      onBlur={onBlur}
     >
       {children}
     </button>

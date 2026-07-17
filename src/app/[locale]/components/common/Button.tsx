@@ -1,27 +1,16 @@
 import clsx from 'clsx';
-import type { NextPage } from 'next';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-interface Props {
-  children: ReactNode;
+type Props = ComponentPropsWithoutRef<'button'> & {
   color?: 'primary' | 'secondary';
   isOutlined?: boolean;
-  disabled?: boolean;
-  title?: string;
-  ariaLabel?: string;
-  className?: string;
-  onClick?: () => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-}
+};
 
-const Button: NextPage<Props> = ({
+const Button = ({
   children,
   color = 'primary',
   isOutlined = false,
-  disabled = false,
+  disabled,
   title,
   ariaLabel,
   className,
@@ -30,12 +19,14 @@ const Button: NextPage<Props> = ({
   onMouseLeave,
   onFocus,
   onBlur,
-}) => {
+  ...props
+}: Props) => {
   return (
     <button
+      {...props}
       type='button'
       className={clsx(
-        'inline-flex items-center gap-1 rounded-full border-2 px-4 py-2 drop-shadow-md enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
+        'inline-flex items-center gap-1 rounded-xl border-2 px-4 py-2 drop-shadow-md enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
         color === 'primary' && 'border-primary',
         color === 'secondary' && 'border-secondary',
         isOutlined && 'bg-background enabled:focus-visible:text-background enabled:hover:text-background',

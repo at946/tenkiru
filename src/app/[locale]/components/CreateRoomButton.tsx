@@ -11,7 +11,7 @@ type Props = ComponentPropsWithoutRef<'button'> & {
   name: string;
 };
 
-const CreateRoomButton = ({ name, ...rest }: Props) => {
+const CreateRoomButton = ({ name, className }: Props) => {
   const router = useRouter();
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -27,7 +27,7 @@ const CreateRoomButton = ({ name, ...rest }: Props) => {
       onMouseLeave={() => setIsHovering(false)}
       onFocus={() => setIsHovering(true)}
       onBlur={() => setIsHovering(false)}
-      {...rest}
+      className={className}
     >
       <span className={clsx(isHovering ? 'icon-[fa6-solid--door-open]' : 'icon-[fa6-solid--door-closed]')} />
       <span>{name}</span>

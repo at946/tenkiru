@@ -87,8 +87,6 @@ export default function Page() {
           </Box>
         </div>
       </section>
-
-      <CreateRoomButton name={t('Create a room')} className='mb-4' />
     </div>
   );
 }

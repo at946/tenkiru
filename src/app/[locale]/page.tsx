@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import Box from '@/app/[locale]/components/box/Box';
 import BoxDescription from '@/app/[locale]/components/box/BoxDescription';
 import BoxIcon from '@/app/[locale]/components/box/BoxIcon';
+import BoxTag from '@/app/[locale]/components/box/BoxTag';
 import BoxTitle from '@/app/[locale]/components/box/BoxTitle';
 import CreateRoomButton from '@/app/[locale]/components/CreateRoomButton';
 
@@ -12,7 +13,10 @@ export default function Page() {
     <div className='container mx-auto px-5 text-center'>
       <section className='my-20'>
         <h1 className='mb-4 font-bold text-6xl text-primary tracking-wider dark:text-dark-primary'>Tenkiru</h1>
-        <p className='break-auto-phrase mb-6 text-3xl'>{t('See the differences Spark real dialogue')}</p>
+        <p className='break-auto-phrase mb-6 text-3xl'>
+          <span className='my-2 inline-block'>{t('See the differences dot')}</span>
+          <span className='my-2 inline-block'>{t('Spark real dialogue dot')}</span>
+        </p>
         <CreateRoomButton name={t('Create a room')} className='mb-4' />
         <p className='text-sm'>{t('Create a room and share the URL No sign up required Start in seconds')}</p>
       </section>
@@ -31,7 +35,7 @@ export default function Page() {
           </Box>
 
           <Box>
-            <BoxIcon className='icon-[mdi--comments-outline]' />
+            <BoxIcon className='icon-[mdi--comment-outline]' />
             <BoxTitle>{t('Ask why, spark dialogue')}</BoxTitle>
             <BoxDescription>
               {t('Request comments on any card to uncover context, assumptions, and different perspectives')}
@@ -55,35 +59,36 @@ export default function Page() {
 
         <div className='grid grid-cols-1 gap-4 md:grid-cols-4'>
           <Box>
-            <BoxTitle>1. Create a room</BoxTitle>
+            <BoxTitle>{t('1 Create a room')}</BoxTitle>
             <BoxIcon className='icon-[fa6-solid--door-open]' />
-            <BoxDescription>
-              {t('No titles or seniority Everyone can speak up and share their true thoughts with confidence')}
-            </BoxDescription>
+            <BoxDescription>{t('Create a room, and then choose a deck')}</BoxDescription>
+            <BoxTag>{t('A URL is generated')}</BoxTag>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('2 Share the URL and invite your team')}</BoxTitle>
+            <BoxIcon className='icon-[mdi--invite]' />
+            <BoxDescription>{t('Share the room URL with your team No sign up required')}</BoxDescription>
+            <BoxTag>{t('Join instantly')}</BoxTag>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('3 Vote anonymously')}</BoxTitle>
+            <BoxIcon className='icon-[mdi--cards-playing-heart-multiple]' />
+            <BoxDescription>{t('Each person selects a card anonymously Differences become visible')}</BoxDescription>
+            <BoxTag>{t('See the differences')}</BoxTag>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('4 Share reasons and align understandings')}</BoxTitle>
+            <BoxIcon className='icon-[mdi--comments-outline]' />
+            <BoxDescription>{t('Request comments and dive deeper into the dialogue Align as a team')}</BoxDescription>
+            <BoxTag>{t('Dialogue begins')}</BoxTag>
           </Box>
         </div>
       </section>
 
-      <div className='grid grid-cols-none items-center gap-5 md:grid-cols-10'>
-        <div className='md:col-span-2 md:col-start-2'>
-          <span className='icon-[fa6-solid--door-open] text-5xl' />
-          <p className='break-auto-phrase mt-2'>{t('Create a room for planning poker')}</p>
-        </div>
-        <div>
-          <span className='icon-[fa6-solid--angle-down] md:icon-[fa6-solid--angle-right] col-span-1 text-3xl' />
-        </div>
-        <div className='md:col-span-2'>
-          <span className='icon-[mdi--share-all-outline] text-5xl' />
-          <p className='break-auto-phrase mt-2'>{t('Share the room URL with your team')}</p>
-        </div>
-        <div>
-          <span className='icon-[fa6-solid--angle-down] md:icon-[fa6-solid--angle-right] col-span-1 text-3xl' />
-        </div>
-        <div className='md:col-span-2'>
-          <span className='icon-[mdi--cards-playing-outline] text-5xl' />
-          <p className='break-auto-phrase mt-2'>{t('Enjoy planning poker together')}</p>
-        </div>
-      </div>
+      <CreateRoomButton name={t('Create a room')} className='mb-4' />
     </div>
   );
 }

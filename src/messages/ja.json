@@ -16,7 +16,8 @@
     "Contact Us": "お問い合わせ"
   },
   "Home": {
-    "See the differences Spark real dialogue": "違いが見える。対話が生まれる。",
+    "See the differences dot": "違いが見える。",
+    "Spark real dialogue dot": "対話が生まれる。",
     "Create a room": "ルームを作成する",
     "Create a room and share the URL No sign up required Start in seconds": "ルームを作成してURLを共有するだけ。登録不要ですぐに始められます。",
     "Anonymous means honest": "匿名だから本音が出る",
@@ -25,9 +26,18 @@
     "Request comments on any card to uncover context, assumptions, and different perspectives": "気になるカードにはコメントを依頼できます。数字だけではわからない背景や前提を共有し合えます。",
     "Start with your team in seconds": "いますぐチームで始められる",
     "Create a room, share the URL, and your team can join instantly No sign up required": "ルームを作成してURLを共有するだけ。登録不要でチーム全員がすぐに参加できます。",
-    "Create a room for planning poker": "部屋をつくります",
-    "Share the room URL with your team": "部屋のURLをチームに共有します",
-    "Enjoy planning poker together": "みんなでプランニングポーカーを楽しみます"
+    "1 Create a room": "1. ルームを作成する",
+    "Create a room, and then choose a deck": "ルームを作成し、デッキを選びます。",
+    "A URL is generated": "URLが発行されます",
+    "2 Share the URL and invite your team": "2. URLを共有してチームを招待する",
+    "Share the room URL with your team No sign up required": "URLを共有してチームを招待。登録不要ですぐに参加できます。",
+    "Join instantly": "すぐに集まれる",
+    "3 Vote anonymously": "3. 匿名でカードを選ぶ",
+    "Each person selects a card anonymously Differences become visible": "それぞれが匿名でカードを公開。本音だから、違いが見えてきます。",
+    "See the differences": "違いが見える",
+    "4 Share reasons and align understandings": "4. 理由を共有し、共通認識をつくる",
+    "Request comments and dive deeper into the dialogue Align as a team": "コメントを依頼して対話を深め、チームの集合知を引き出します。",
+    "Dialogue begins": "対話が生まれる"
   },
   "Room": {
     "RoomInfo": {

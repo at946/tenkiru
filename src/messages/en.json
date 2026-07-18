@@ -16,7 +16,8 @@
     "Contact Us": "Contact Us"
   },
   "Home": {
-    "See the differences Spark real dialogue": "See the differences. Spark real dialogue.",
+    "See the differences dot": "See the differences.",
+    "Spark real dialogue dot": "Spark real dialogue.",
     "Create a room": "Create a room",
     "Create a room and share the URL No sign up required Start in seconds": "Create a room and share the URL. No sign up required. Start in seconds.",
     "Anonymous means honest": "Anonymous means honest.",
@@ -25,9 +26,18 @@
     "Request comments on any card to uncover context, assumptions, and different perspectives": "Request comments on any card to uncover context, assumptions, and different perspectives.",
     "Start with your team in seconds": "Start with your team in seconds.",
     "Create a room, share the URL, and your team can join instantly No sign up required": "Create a room, share the URL, and your team can join instantly. No sign up required.",
-    "Create a room for planning poker": "Create a room for planning poker",
-    "Share the room URL with your team": "Share the room URL with your team",
-    "Enjoy planning poker together": "Enjoy planning poker together"
+    "1 Create a room": "1. Create a room",
+    "Create a room, and then choose a deck": "Create a room, and then choose a deck.",
+    "A URL is generated": "A URL is generated",
+    "2 Share the URL and invite your team": "2. Share the URL and invite your team",
+    "Share the room URL with your team No sign up required": "Share the room URL with your team. No sign up required.",
+    "Join instantly": "Join instantly",
+    "3 Vote anonymously": "3. Vote anonymously",
+    "Each person selects a card anonymously Differences become visible": "Each person selects a card anonymously. Differences become visible.",
+    "See the differences": "See the differences",
+    "4 Share reasons and align understandings": "4. Share reasons and align understandings",
+    "Request comments and dive deeper into the dialogue Align as a team": "Request comments and dive deeper into the dialogue. Align as a team.",
+    "Dialogue begins": "Dialogue begins"
   },
   "Room": {
     "RoomInfo": {

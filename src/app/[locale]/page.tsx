@@ -1,9 +1,9 @@
 import { useTranslations } from 'next-intl';
+import Box from '@/app/[locale]/components/box/Box';
+import BoxDescription from '@/app/[locale]/components/box/BoxDescription';
+import BoxIcon from '@/app/[locale]/components/box/BoxIcon';
+import BoxTitle from '@/app/[locale]/components/box/BoxTitle';
 import CreateRoomButton from '@/app/[locale]/components/CreateRoomButton';
-import ReasonBox from '@/app/[locale]/components/ReasonBox/ReasonBox';
-import ReasonBoxDescription from '@/app/[locale]/components/ReasonBox/ReasonBoxDescription';
-import ReasonBoxIcon from '@/app/[locale]/components/ReasonBox/ReasonBoxIcon';
-import ReasonBoxTitle from '@/app/[locale]/components/ReasonBox/ReasonBoxTitle';
 
 export default function Page() {
   const t = useTranslations('Home');
@@ -22,29 +22,45 @@ export default function Page() {
           Why Tenkiru?
         </h2>
         <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
-          <ReasonBox>
-            <ReasonBoxIcon className='icon-[mdi--anonymous]' />
-            <ReasonBoxTitle>{t('Anonymous means honest')}</ReasonBoxTitle>
-            <ReasonBoxDescription>
+          <Box>
+            <BoxIcon className='icon-[mdi--anonymous]' />
+            <BoxTitle>{t('Anonymous means honest')}</BoxTitle>
+            <BoxDescription>
               {t('No titles or seniority Everyone can speak up and share their true thoughts with confidence')}
-            </ReasonBoxDescription>
-          </ReasonBox>
+            </BoxDescription>
+          </Box>
 
-          <ReasonBox>
-            <ReasonBoxIcon className='icon-[mdi--comments-outline]' />
-            <ReasonBoxTitle>{t('Ask why, spark dialogue')}</ReasonBoxTitle>
-            <ReasonBoxDescription>
+          <Box>
+            <BoxIcon className='icon-[mdi--comments-outline]' />
+            <BoxTitle>{t('Ask why, spark dialogue')}</BoxTitle>
+            <BoxDescription>
               {t('Request comments on any card to uncover context, assumptions, and different perspectives')}
-            </ReasonBoxDescription>
-          </ReasonBox>
+            </BoxDescription>
+          </Box>
 
-          <ReasonBox>
-            <ReasonBoxIcon className='icon-[mdi--link-variant]' />
-            <ReasonBoxTitle>{t('Start with your team in seconds')}</ReasonBoxTitle>
-            <ReasonBoxDescription>
+          <Box>
+            <BoxIcon className='icon-[mdi--link-variant]' />
+            <BoxTitle>{t('Start with your team in seconds')}</BoxTitle>
+            <BoxDescription>
               {t('Create a room, share the URL, and your team can join instantly No sign up required')}
-            </ReasonBoxDescription>
-          </ReasonBox>
+            </BoxDescription>
+          </Box>
+        </div>
+      </section>
+
+      <section className='my-20'>
+        <h2 className="mb-6 flex items-center justify-center gap-4 text-2xl before:h-px before:w-12 before:bg-current before:content-[''] after:h-px after:w-12 after:bg-current after:content-['']">
+          How it works?
+        </h2>
+
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-4'>
+          <Box>
+            <BoxTitle>1. Create a room</BoxTitle>
+            <BoxIcon className='icon-[fa6-solid--door-open]' />
+            <BoxDescription>
+              {t('No titles or seniority Everyone can speak up and share their true thoughts with confidence')}
+            </BoxDescription>
+          </Box>
         </div>
       </section>
 

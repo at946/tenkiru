@@ -16,7 +16,7 @@ const RoomInfo = ({ className, ...props }: Props) => {
         messageOnSuccess={t('Copied this Room URL')}
         gaAction='copy_room_url'
         aria-label={t('Room invitation button')}
-        className='flex cursor-pointer items-center gap-2 leading-10'
+        className='flex cursor-pointer items-center gap-2'
       >
         <span className='icon-[ic--round-home] text-2xl' />
         <span className='uppercase'>{room.id}</span>

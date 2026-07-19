@@ -13,12 +13,16 @@ export default function Page() {
     <div className='container mx-auto px-5 text-center'>
       <section className='my-20'>
         <h1 className='mb-4 font-bold text-6xl text-primary tracking-wider dark:text-dark-primary'>Tenkiru</h1>
-        <p className='break-auto-phrase mb-6 text-3xl'>
-          <span className='my-2 inline-block'>{t('See the differences dot')}</span>
-          <span className='my-2 inline-block'>{t('Spark real dialogue dot')}</span>
+        <p className='break-auto-phrase mb-2 text-xl md:text-3xl'>
+          <span className='my-2 inline-block'>{t('See the differences Spark real dialogue')}</span>
+        </p>
+        <p className='break-auto-phrase mb-6 font-semibold text-lg'>
+          {t("Bring out your team's collective intelligence with online Planning Poker")}
         </p>
         <CreateRoomButton name={t('Create a room')} className='mb-4' />
-        <p className='text-sm'>{t('Create a room and share the URL No sign up required Start in seconds')}</p>
+        <p className='break-auto-phrase text-sm'>
+          {t('Create a room and share the URL No sign up required Start in seconds')}
+        </p>
       </section>
 
       <section className='my-20'>
@@ -86,6 +90,12 @@ export default function Page() {
             <BoxTag>{t('Dialogue begins')}</BoxTag>
           </Box>
         </div>
+      </section>
+
+      <section className='my-20'>
+        <h2 className="mb-6 flex items-center justify-center gap-4 text-2xl before:h-px before:w-12 before:bg-current before:content-[''] after:h-px after:w-12 after:bg-current after:content-['']">
+          FAQ
+        </h2>
       </section>
     </div>
   );

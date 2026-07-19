@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-type Props = ComponentPropsWithoutRef;
+type Props = ComponentPropsWithoutRef<'p'>;
 
 const BoxTitle = ({ children, className, ...rest }: Props) => {
   return (

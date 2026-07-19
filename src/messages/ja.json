@@ -37,7 +37,19 @@
     "See the differences": "違いが見える",
     "4 Share reasons and align understandings": "4. 理由を共有し、共通認識をつくる",
     "Request comments and dive deeper into the dialogue Align as a team": "コメントを依頼して対話を深め、チームの集合知を引き出します。",
-    "Dialogue begins": "対話が生まれる"
+    "Dialogue begins": "対話が生まれる",
+    "What is Tenkiru?": "Tenkiruとはなんですか？",
+    "Tenkiru is an online Planning Poker tool that helps teams discover differences in understanding and turn them into productive conversation": "Tenkiru（てんきる）は、チームの認識の違いを可視化し、対話につなげるオンラインプランニングポーカーツールです。",
+    "What is Planning Poker?": "プランニングポーカーとは何ですか？",
+    "Planning Poker is a collaborative estimation technique widely used in Agile development and Scrum teams Team members reveal their cards simultaneously and discuss differences to build a shared understanding": "プランニングポーカーは、アジャイル開発やスクラムで広く使われている見積もり手法です。カードを一斉に公開し、その違いをもとに対話することで、見積もりだけでなくチームの認識を揃えることにも役立ちます。",
+    "Why does Tenkiru use anonymity?": "なぜ匿名にこだわっているのですか？",
+    "Anonymous voting helps everyone express their own perspective without being influenced by titles, seniority, or other opinions Comment requests are anonymous too, encouraging discussions based on ideas rather than roles It also adds a playful element to the experience": "匿名で投票することで、役職や経験に左右されず、自分の考えを安心して表現できます。コメント依頼も匿名なので、人ではなく考えに興味を持った自然な対話が生まれ、ゲームとしての楽しさも高まります。",
+    "What is Comment Request?": "コメント依頼とは何ですか？",
+    "Request comments on any card to discover the thinking behind it Anonymous requests encourage conversations based on ideas rather than roles": "気になったカードにコメントを依頼し、その数字に至った考え方を知ることができます。コメント依頼も匿名だから、肩書きではなく「この考えをもっと知りたい」という気持ちから対話が始まります。",
+    "How does my team join?": "チームメンバーはどうやって参加しますか？",
+    "Simply create a room and share the URL Your team can join instantly No sign-up required": "ルームを作成してURLを共有するだけです。アカウント登録は不要で、すぐに参加できます。",
+    "Is Tenkiru free?": "無料で利用できますか？",
+    "Yes Tenkiru is currently free to use If you enjoy using it, you can support its development through Buy Me a Coffee": "はい。Tenkiruは現在無料で利用できます。気に入っていただけたら、<a>Buy Me a Coffee</a> から応援していただけると嬉しいです。"
   },
   "Room": {
     "RoomInfo": {

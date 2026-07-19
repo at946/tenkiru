@@ -1,9 +1,13 @@
-type Props = {
-  children: React.ReactNode;
-};
+import type { ComponentPropsWithoutRef } from 'react';
 
-const BoxTitle = ({ children }: Props) => {
-  return <p className='break-auto-phrase font-semibold text-lg'>{children}</p>;
+type Props = ComponentPropsWithoutRef;
+
+const BoxTitle = ({ children, className, ...rest }: Props) => {
+  return (
+    <p {...rest} className={`break-auto-phrase font-semibold text-lg ${className}`}>
+      {children}
+    </p>
+  );
 };
 
 export default BoxTitle;

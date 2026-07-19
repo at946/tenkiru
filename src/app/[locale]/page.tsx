@@ -96,6 +96,72 @@ export default function Page() {
         <h2 className="mb-6 flex items-center justify-center gap-4 text-2xl before:h-px before:w-12 before:bg-current before:content-[''] after:h-px after:w-12 after:bg-current after:content-['']">
           FAQ
         </h2>
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+          <Box>
+            <BoxTitle>{t('What is Tenkiru?')}</BoxTitle>
+            <hr className='w-full border' />
+            <BoxDescription className='md:text-left'>
+              {t(
+                'Tenkiru is an online Planning Poker tool that helps teams discover differences in understanding and turn them into productive conversation',
+              )}
+            </BoxDescription>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('What is Planning Poker?')}</BoxTitle>
+            <hr className='w-full border' />
+            <BoxDescription className='md:text-left'>
+              {t(
+                'Planning Poker is a collaborative estimation technique widely used in Agile development and Scrum teams Team members reveal their cards simultaneously and discuss differences to build a shared understanding',
+              )}
+            </BoxDescription>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('Why does Tenkiru use anonymity?')}</BoxTitle>
+            <hr className='w-full border' />
+            <BoxDescription className='md:text-left'>
+              {t(
+                'Anonymous voting helps everyone express their own perspective without being influenced by titles, seniority, or other opinions Comment requests are anonymous too, encouraging discussions based on ideas rather than roles It also adds a playful element to the experience',
+              )}
+            </BoxDescription>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('What is Comment Request?')}</BoxTitle>
+            <hr className='w-full border' />
+            <BoxDescription className='md:text-left'>
+              {t(
+                'Request comments on any card to discover the thinking behind it Anonymous requests encourage conversations based on ideas rather than roles',
+              )}
+            </BoxDescription>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('How does my team join?')}</BoxTitle>
+            <hr className='w-full border' />
+            <BoxDescription className='md:text-left'>
+              {t('Simply create a room and share the URL Your team can join instantly No sign-up required')}
+            </BoxDescription>
+          </Box>
+
+          <Box>
+            <BoxTitle>{t('Is Tenkiru free?')}</BoxTitle>
+            <hr className='w-full border' />
+            <BoxDescription className='md:text-left'>
+              {t.rich(
+                'Yes Tenkiru is currently free to use If you enjoy using it, you can support its development through Buy Me a Coffee',
+                {
+                  a: (chunks) => (
+                    <a href='https://www.buymeacoffee.com/at946' target='_blank' rel='noopener' className='underline'>
+                      {chunks}
+                    </a>
+                  ),
+                },
+              )}
+            </BoxDescription>
+          </Box>
+        </div>
       </section>
     </div>
   );

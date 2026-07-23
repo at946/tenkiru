@@ -40,11 +40,9 @@ const Header: NextPage<Props> = ({ currentLocale }) => {
             >
               <span className='icon-[mdi--heart] text-2xl' />
             </LinkInNewTab>
-            <DarkModeToggle
-              lightModeTitle={t('Switch to dark mode')}
-              darkModeTitle={t('Switch to light mode')}
-              className='header-item'
-            />
+
+            <DarkModeToggle className='header-item' />
+
             <LocaleSwitcher currentLocale={currentLocale} />
           </div>
         </div>

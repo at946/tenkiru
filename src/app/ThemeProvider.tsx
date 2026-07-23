@@ -1,29 +1,16 @@
 'use client';
 
-import { useAtom } from 'jotai';
-import type { NextPage } from 'next';
-import { type ReactNode, useEffect } from 'react';
-import isDarkModeAtom from '@/jotai/atoms/isDarkModeAtom';
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-const ThemeProvider: NextPage<Props> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useAtom<boolean>(isDarkModeAtom);
-
-  useEffect(() => {
-    if (localStorage.theme !== undefined) {
-      setIsDarkMode(localStorage.theme === 'dark');
-    } else {
-      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
-  }, [setIsDarkMode]);
-
+const ThemeProvider = ({ children }: Props) => {
   return (
-    <div className={isDarkMode ? 'dark' : ''}>
-      <div className='bg-background text-text dark:bg-dark-background dark:text-dark-text'>{children}</div>
-    </div>
+    <NextThemeProvider attribute='class' disableTransitionOnChange>
+      {children}
+    </NextThemeProvider>
   );
 };
 

@@ -3,9 +3,9 @@ import '@/styles/globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import type React from 'react';
+import ThemeProvider from '@/app/ThemeProvider';
 import GoogleAdsense from '../GoogleAdsense';
 import GoogleAnalytics from '../GoogleAnalytics';
-import ThemeProvider from '../ThemeProvider';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
 
@@ -71,7 +71,7 @@ export default async function RootLayout(props: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>

@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
-import isDarkModeState from '@/jotai/atoms/isDarkModeAtom';
+import isDarkModeAtom from '@/jotai/atoms/isDarkModeAtom';
 
 interface Props {
   lightModeTitle: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const DarkModeToggle: NextPage<Props> = ({ lightModeTitle, darkModeTitle, className }) => {
-  const [isDarkMode, setIsDarkMode] = useAtom<boolean>(isDarkModeState);
+  const [isDarkMode, setIsDarkMode] = useAtom<boolean>(isDarkModeAtom);
 
   return (
     <button

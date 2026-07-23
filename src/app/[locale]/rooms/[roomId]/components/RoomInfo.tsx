@@ -1,27 +1,28 @@
-import clsx from 'clsx';
-import type { NextPage } from 'next';
+import { useAtomValue } from 'jotai';
 import { useTranslations } from 'next-intl';
+import type { ComponentPropsWithoutRef } from 'react';
 import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
+import roomAtom from '@/jotai/atoms/roomAtom';
 
-interface Props {
-  roomId: string;
-  className?: string;
-}
+type Props = ComponentPropsWithoutRef<'div'>;
 
-const RoomInfo: NextPage<Props> = ({ roomId, className }) => {
+const RoomInfo = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.RoomInfo');
+  const room = useAtomValue(roomAtom);
   return (
-    <ClipboardCopyLink
-      copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${roomId}`}
-      messageOnSuccess={t('Copied this Room URL')}
-      gaAction='copy_room_url'
-      className={clsx(className, 'mx-auto flex flex-col items-center gap-1 md:flex-row md:gap-2')}
-    >
-      <span>Room ID</span>
-      <span className='hidden md:inline'>:</span>
-      <span>{roomId}</span>
-      <span className='icon-[fa6-solid--link]' />
-    </ClipboardCopyLink>
+    <div {...props} className={className}>
+      <ClipboardCopyLink
+        copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${room.id}`}
+        messageOnSuccess={t('Copied this Room URL')}
+        gaAction='copy_room_url'
+        aria-label={t('Room invitation button')}
+        className='flex cursor-pointer items-center gap-2'
+      >
+        <span className='icon-[ic--round-home] text-2xl' />
+        <span className='uppercase'>{room.id}</span>
+        <span className='icon-[fa6-solid--link]' />
+      </ClipboardCopyLink>
+    </div>
   );
 };
 

@@ -45,9 +45,11 @@ const RoomInfo = ({ className, ...props }: Props) => {
       aria-label={t('Room invitation button')}
     >
       <span className='icon-[ic--round-home] text-2xl' />
-      <span className='uppercase'>{room.id}</span>
-      <span className={copied ? 'icon-[mdi--check-bold]' : 'icon-[fa6-solid--link]'} />
-      {copied && <span className='text-xs'>Copied</span>}
+      <span className='uppercase'>{!copied && room.id}</span>
+      <span className='flex'>
+        <span className={clsx('text-2xl', copied ? 'icon-[mdi--check-bold]' : 'icon-[ic--round-link]')} />
+        {copied && <span className='ml-1'>Copied</span>}
+      </span>
     </button>
   );
 };

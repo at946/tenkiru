@@ -36,11 +36,10 @@ const RoomInfo = ({ className, ...props }: Props) => {
     <button
       {...props}
       type='button'
+      disabled={copied}
       onClick={handleCopyRoomUrl}
       className={clsx(
-        'flex items-center gap-2',
-        !copied &&
-          'cursor-pointer hover:text-primary focus-visible:text-primary dark:focus-visible:text-dark-primary dark:hover:text-dark-primary',
+        'flex cursor-pointer items-center gap-2 not-disabled:hover:text-primary not-disabled:focus-visible:text-primary disabled:cursor-not-allowed dark:not-disabled:focus-visible:text-dark-primary dark:not-disabled:hover:text-dark-primary',
         className,
       )}
       aria-label={t('Room invitation button')}

@@ -1,28 +1,56 @@
+import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { useTranslations } from 'next-intl';
-import type { ComponentPropsWithoutRef } from 'react';
-import ClipboardCopyLink from '@/app/[locale]/components/common/ClipboardCopyLink';
+import { type ComponentPropsWithoutRef, useState } from 'react';
 import roomAtom from '@/jotai/atoms/roomAtom';
+import { event } from '@/lib/gtag';
 
-type Props = ComponentPropsWithoutRef<'div'>;
+type Props = ComponentPropsWithoutRef<'button'>;
+
+const COPIED_DURATION_MS = 2000;
 
 const RoomInfo = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.RoomInfo');
   const room = useAtomValue(roomAtom);
+  const [copied, setCopied] = useState(false);
+
+  const copiedText: string = `${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${room.id}`;
+
+  const handleCopyRoomUrl = async () => {
+    if (copied) {
+      return;
+    }
+
+    await navigator.clipboard.writeText(copiedText);
+
+    setCopied(true);
+
+    window.setTimeout(() => {
+      setCopied(false);
+    }, COPIED_DURATION_MS);
+
+    event({ action: 'copy_room_url', category: 'engagement', label: '' });
+  };
+
   return (
-    <div {...props} className={className}>
-      <ClipboardCopyLink
-        copiedText={`${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${room.id}`}
-        messageOnSuccess={t('Copied this Room URL')}
-        gaAction='copy_room_url'
-        aria-label={t('Room invitation button')}
-        className='flex cursor-pointer items-center gap-2'
-      >
-        <span className='icon-[ic--round-home] text-2xl' />
-        <span className='uppercase'>{room.id}</span>
-        <span className='icon-[fa6-solid--link]' />
-      </ClipboardCopyLink>
-    </div>
+    <button
+      {...props}
+      type='button'
+      disabled={copied}
+      onClick={handleCopyRoomUrl}
+      className={clsx(
+        'flex cursor-pointer items-center gap-2 not-disabled:hover:text-primary not-disabled:focus-visible:text-primary disabled:cursor-not-allowed dark:not-disabled:focus-visible:text-dark-primary dark:not-disabled:hover:text-dark-primary',
+        className,
+      )}
+      aria-label={t('Room invitation button')}
+    >
+      <span className='icon-[ic--round-home] text-2xl' />
+      <span className='uppercase'>{!copied && room.id}</span>
+      <span className='flex'>
+        <span className={clsx('text-2xl', copied ? 'icon-[mdi--check-bold]' : 'icon-[ic--round-link]')} />
+        {copied && <span className='ml-1'>Copied</span>}
+      </span>
+    </button>
   );
 };
 

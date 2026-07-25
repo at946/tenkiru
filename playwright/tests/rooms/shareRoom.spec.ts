@@ -23,14 +23,16 @@ test('On the room page, when a user clicks the room ID, their clipboard should h
   const page: Page = await context.newPage();
   const roomPage: RoomPage = new RoomPage(page);
   await roomPage.goto(roomId);
+  await expect(roomPage.roomInvitationButton).not.toContainText('Copied');
 
   // When
   await roomPage.copyRoomUrl();
   await page.mouse.move(0, 0);
 
   // Then
-  await expect(roomPage.ToastToNotifyToHaveCopiedThisRoomURL).toBeVisible();
+  await expect(roomPage.roomInvitationButton).toContainText('Copied');
   const clipboardText: string = await page.evaluate('navigator.clipboard.readText()');
   await expect(clipboardText).toBe(`http://localhost:3000/rooms/${roomId}`);
-  await expect(roomPage.ToastToNotifyToHaveCopiedThisRoomURL).not.toBeVisible({ timeout: 7500 });
+
+  await expect(roomPage.roomInvitationButton).not.toContainText('Copied');
 });

@@ -12,12 +12,11 @@ const COPIED_DURATION_MS = 2000;
 const RoomInfo = ({ className, ...props }: Props) => {
   const t = useTranslations('Room.RoomInfo');
   const room = useAtomValue(roomAtom);
-
   const [copied, setCopied] = useState(false);
 
   const copiedText: string = `${process.env.NEXT_PUBLIC_BASE_URL}/rooms/${room.id}`;
 
-  const handleCopyRoomUrl = async (): void => {
+  const handleCopyRoomUrl = async () => {
     if (copied) {
       return;
     }

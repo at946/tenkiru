@@ -12,9 +12,6 @@ export default class RoomPage {
   readonly faceDownTableCards: Locator;
   readonly faceUpTableCards: Locator;
   readonly tableCards: Locator;
-  readonly tableCardGroups: Locator;
-  readonly getCommentsButtons: Locator;
-  readonly getCommentsButton: (cardValue: string) => Locator;
   readonly minTag: Locator;
   readonly avgTag: Locator;
   readonly maxTag: Locator;
@@ -38,17 +35,10 @@ export default class RoomPage {
     this.roomInvitationButton = page.getByRole('button', { name: 'Room invitation button' });
 
     this.table = page.getByRole('img', { name: /^Table$/ });
-    this.tableCardGroups = page.getByRole('group', {
-      name: 'Table cards group',
-    });
     this.tableCardSlots = this.table.getByRole('img', { name: /^Table card slot$/ });
     this.tableCards = this.tableCardSlots.getByRole('img', { name: /^(Face-down|Face-up) table card/ });
     this.faceDownTableCards = this.tableCardSlots.getByRole('img', { name: /^Face-down table card$/ });
     this.faceUpTableCards = this.tableCardSlots.getByRole('img', { name: /^Face-up table card/ });
-    this.getCommentsButtons = page.getByRole('button', { name: 'Get comments' });
-    this.getCommentsButton = (card: string) => {
-      return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: 'Get comments' });
-    };
     this.minTag = page.getByTitle('Min');
     this.avgTag = page.getByTitle('Avg');
     this.maxTag = page.getByTitle('Max');
@@ -107,10 +97,6 @@ export default class RoomPage {
 
   async replay() {
     await this.replayButton.click();
-  }
-
-  async getComments(cardValue: string) {
-    await this.getCommentsButton(cardValue).click();
   }
 
   async selectUserType(userType: IFUserType) {

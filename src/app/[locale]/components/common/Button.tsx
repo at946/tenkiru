@@ -12,7 +12,7 @@ const Button = ({ children, color = 'primary', isOutlined = false, title, classN
       {...rest}
       type='button'
       className={clsx(
-        'inline-flex items-center gap-1 rounded-xl border-2 px-4 py-2 drop-shadow-md enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
+        'inline-flex cursor-pointer items-center gap-1 rounded-xl border-2 px-4 py-2 drop-shadow-md enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
         color === 'primary' && 'border-primary',
         color === 'secondary' && 'border-secondary',
         isOutlined && 'bg-background enabled:focus-visible:text-background enabled:hover:text-background',

@@ -8,11 +8,7 @@ type Props = ComponentPropsWithoutRef<'div'> & {
 
 const PokerCardFront = ({ value, className, ...props }: Props) => {
   return (
-    <div
-      role='img'
-      {...props}
-      className={clsx('aspect-card rounded-xl border-2 border-white/40 bg-white shadow-lg', className)}
-    >
+    <div role='img' {...props} className={clsx('aspect-card rounded-xl border-2 bg-white', className)}>
       <div className='relative flex size-full items-center justify-center'>
         <span className='absolute top-2 left-2 font-bold text-rose-700 text-xs' aria-hidden='true'>
           {value}

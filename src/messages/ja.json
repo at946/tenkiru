@@ -69,7 +69,8 @@
       "Get comments": "コメントをもらう",
       "Open": "開く",
       "Ask to choose": "そろそろ選んで",
-      "Again": "もう一度"
+      "Again": "もう一度",
+      "Asked a player for comment": "コメントを求めました"
     },
     "Settings": {
       "User Type Setting": "ユーザータイプ設定",
@@ -85,7 +86,6 @@
       "Hands card": "手札カード"
     },
     "Please comment": "コメントお願いします",
-    "Asked a player for comment": "コメントを求めました",
     "It's time to choose a card": "そろそろカードを選んでください",
     "Asked players to choose a card": "カードの選択を依頼しました"
   },

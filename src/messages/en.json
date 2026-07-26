@@ -69,7 +69,8 @@
       "Get comments": "Get comments",
       "Open": "Open",
       "Ask to choose": "Ask to choose",
-      "Again": "Again"
+      "Again": "Again",
+      "Asked a player for comment": "Asked a player for comment"
     },
     "Settings": {
       "User Type Setting": "User Type Setting",
@@ -85,7 +86,6 @@
       "Hands card": "Hands card"
     },
     "Please comment": "Please comment",
-    "Asked a player for comment": "Asked a player for comment",
     "It's time to choose a card": "It's time to choose a card",
     "Asked players to choose a card": "Asked players to choose a card"
   },

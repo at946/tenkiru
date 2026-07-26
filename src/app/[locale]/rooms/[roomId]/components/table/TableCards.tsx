@@ -38,7 +38,14 @@ const TableCards = ({ className, ...props }: Props) => {
           <fieldset key={tableCard.userId} aria-label={tTable('Table cards group')}>
             <div className='mb-2 flex justify-center'>
               <TableCardSlot>
-                {isSet && <TableCard value={tableCard.value} isOpen={room.isOpenPhase} delay={index * 0.1} />}
+                {isSet && (
+                  <TableCard
+                    value={tableCard.value}
+                    playerId={tableCard.userId}
+                    isOpen={room.isOpenPhase}
+                    delay={index * 0.1}
+                  />
+                )}
               </TableCardSlot>
             </div>
 

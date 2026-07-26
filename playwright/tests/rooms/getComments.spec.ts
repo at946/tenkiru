@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import createRoomId from '@pw/helpers/createRoomId';
 import RoomPage from '@pw/models/room-page';
 
-test('When cards are face down on the room page, users should not be able to select get comments buttons.', async ({
+test('When cards are face down on the room page, then users should not be able to select table cards to request comments.', async ({
   context,
 }) => {
   // Given
@@ -16,16 +16,14 @@ test('When cards are face down on the room page, users should not be able to sel
   // When
 
   // Then
-  await expect(roomPage1.getCommentsButtons).toHaveCount(2);
-  await expect(roomPage1.getCommentsButtons.nth(0)).toBeDisabled();
-  await expect(roomPage1.getCommentsButtons.nth(1)).toBeDisabled();
+  await expect(roomPage1.tableCards).toHaveCount(1);
+  await expect(roomPage1.tableCards.nth(0)).toBeDisabled();
 
-  await expect(roomPage2.getCommentsButtons).toHaveCount(2);
-  await expect(roomPage2.getCommentsButtons.nth(0)).toBeDisabled();
-  await expect(roomPage2.getCommentsButtons.nth(1)).toBeDisabled();
+  await expect(roomPage2.tableCards).toHaveCount(1);
+  await expect(roomPage2.tableCards.nth(0)).toBeDisabled();
 });
 
-test('On the room page, when cards are open, users should be able to select get comments buttons for open cards.', async ({
+test('On the room page, when cards are open, users should be able to select table cards to request comments', async ({
   context,
 }) => {
   // Given
@@ -39,42 +37,36 @@ test('On the room page, when cards are open, users should be able to select get 
   await roomPage1.selectCard('0');
   await roomPage2.selectCard('2');
 
-  await expect(roomPage1.getCommentsButtons).toHaveCount(3);
-  await expect(roomPage1.getCommentsButtons.nth(0)).toBeDisabled();
-  await expect(roomPage1.getCommentsButtons.nth(1)).toBeDisabled();
-  await expect(roomPage1.getCommentsButtons.nth(2)).toBeDisabled();
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.tableCards.nth(0)).toBeDisabled();
+  await expect(roomPage1.tableCards.nth(1)).toBeDisabled();
 
-  await expect(roomPage2.getCommentsButtons).toHaveCount(3);
-  await expect(roomPage2.getCommentsButtons.nth(0)).toBeDisabled();
-  await expect(roomPage2.getCommentsButtons.nth(1)).toBeDisabled();
-  await expect(roomPage2.getCommentsButtons.nth(2)).toBeDisabled();
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.tableCards.nth(0)).toBeDisabled();
+  await expect(roomPage2.tableCards.nth(1)).toBeDisabled();
 
-  await expect(roomPage3.getCommentsButtons).toHaveCount(3);
-  await expect(roomPage3.getCommentsButtons.nth(0)).toBeDisabled();
-  await expect(roomPage3.getCommentsButtons.nth(1)).toBeDisabled();
-  await expect(roomPage3.getCommentsButtons.nth(2)).toBeDisabled();
+  await expect(roomPage3.tableCards).toHaveCount(2);
+  await expect(roomPage3.tableCards.nth(0)).toBeDisabled();
+  await expect(roomPage3.tableCards.nth(1)).toBeDisabled();
 
   // When
   await roomPage1.openCards();
 
   // Then
-  await expect(roomPage1.getCommentsButtons).toHaveCount(3);
-  await expect(roomPage1.getCommentsButtons.nth(0)).not.toBeDisabled();
-  await expect(roomPage1.getCommentsButtons.nth(1)).not.toBeDisabled();
-  await expect(roomPage1.getCommentsButtons.nth(2)).toBeDisabled();
+  await expect(roomPage1.tableCards).toHaveCount(2);
+  await expect(roomPage1.tableCards.nth(0)).not.toBeDisabled();
+  await expect(roomPage1.tableCards.nth(1)).not.toBeDisabled();
 
-  await expect(roomPage2.getCommentsButtons).toHaveCount(3);
-  await expect(roomPage2.getCommentsButtons.nth(0)).not.toBeDisabled();
-  await expect(roomPage2.getCommentsButtons.nth(1)).not.toBeDisabled();
-  await expect(roomPage2.getCommentsButtons.nth(2)).toBeDisabled();
+  await expect(roomPage2.tableCards).toHaveCount(2);
+  await expect(roomPage2.tableCards.nth(0)).not.toBeDisabled();
+  await expect(roomPage2.tableCards.nth(1)).not.toBeDisabled();
 
-  await expect(roomPage3.getCommentsButtons).toHaveCount(3);
-  await expect(roomPage3.getCommentsButtons.nth(0)).not.toBeDisabled();
-  await expect(roomPage3.getCommentsButtons.nth(1)).not.toBeDisabled();
-  await expect(roomPage3.getCommentsButtons.nth(2)).toBeDisabled();
+  await expect(roomPage3.tableCards).toHaveCount(2);
+  await expect(roomPage3.tableCards.nth(0)).not.toBeDisabled();
+  await expect(roomPage3.tableCards.nth(1)).not.toBeDisabled();
 });
 
-test('On the room page, when a user selects the get comments button for a card placed by another player, the player who put the card down should receive the notification to ask to get comments.', async ({
+test('On the room page, when a user selects a table card, the player who put the card down should receive the notification to request a comment.', async ({
   context,
 }) => {
   // Given
@@ -91,7 +83,7 @@ test('On the room page, when a user selects the get comments button for a card p
   await roomPage1.openCards();
 
   // When
-  await roomPage2.getComments('0');
+  await roomPage2.tableCards.filter({ hasText: '0' }).click();
 
   // Then
   // The browser of the user who selects the Get Comment button should display the notification requesting a comment
@@ -109,7 +101,7 @@ test('On the room page, when a user selects the get comments button for a card p
   await expect(roomPage1.haveBeenRequestedCommentsToast).not.toBeVisible();
 });
 
-test('On the room page, when a user selects the get comments button for the card placed by the user, the user should receive the notification to ask to get comments.', async ({
+test('On the room page, when a user selects a table card, the user should receive the notification to ask to get comments.', async ({
   context,
 }) => {
   // Given
@@ -126,7 +118,7 @@ test('On the room page, when a user selects the get comments button for the card
   await roomPage1.openCards();
 
   // When
-  await roomPage1.getComments('0');
+  await roomPage1.tableCards.filter({ hasText: '0' }).click();
 
   // Then
   // The browser of the user who selects the Get Comment button should display the notification requesting a comment

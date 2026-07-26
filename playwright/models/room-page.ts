@@ -7,7 +7,6 @@ export default class RoomPage {
   readonly page: Page;
   readonly logo: Locator;
   readonly roomInvitationButton: Locator;
-  readonly ToastToNotifyToHaveCopiedThisRoomURL: Locator;
   readonly table: Locator;
   readonly tableCardSlots: Locator;
   readonly faceDownTableCards: Locator;
@@ -28,7 +27,6 @@ export default class RoomPage {
   readonly handsCards: Locator;
   readonly selectedHandsCard: Locator;
   readonly disabledHandsCard: Locator;
-  readonly copyUrlToast: Locator;
   readonly haveRequestedToSelectToast: Locator;
   readonly hadBeenRequestedToSelectToast: Locator;
   readonly haveRequestedCommentsToast: Locator;
@@ -38,7 +36,6 @@ export default class RoomPage {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkiru' });
     this.roomInvitationButton = page.getByRole('button', { name: 'Room invitation button' });
-    this.ToastToNotifyToHaveCopiedThisRoomURL = page.getByRole('status').getByText('Copied this Room URL');
 
     this.table = page.getByRole('img', { name: /^Table$/ });
     this.tableCardGroups = page.getByRole('group', {
@@ -72,7 +69,6 @@ export default class RoomPage {
       name: 'Hands card',
       disabled: true,
     });
-    this.copyUrlToast = page.getByRole('status').getByText('Copied this Room URL');
     this.haveRequestedToSelectToast = page.getByRole('status').getByText('Asked players to choose a card');
     this.hadBeenRequestedToSelectToast = page.getByRole('status').getByText("It's time to choose a card");
     this.haveRequestedCommentsToast = page.getByRole('status').getByText('Asked a player for comment');

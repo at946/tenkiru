@@ -53,8 +53,7 @@
   },
   "Room": {
     "RoomInfo": {
-      "Room invitation button": "ルームへ招待ボタン",
-      "Copied this Room URL": "この部屋のURLをコピーしました"
+      "Room invitation button": "ルームへ招待ボタン"
     },
     "Table": {
       "Min": "最小",

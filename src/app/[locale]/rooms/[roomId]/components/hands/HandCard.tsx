@@ -55,9 +55,9 @@ const HandCard = ({ value, selected, disabled = false }: Props) => {
       onFocus={() => setHovered(true)}
       onBlur={() => setHovered(false)}
       onClick={() => onSelect(selected ? null : value)}
-      className='rounded-xl shadow-lg disabled:cursor-not-allowed disabled:opacity-50'
+      className='cursor-pointer rounded-xl shadow-lg disabled:cursor-not-allowed disabled:opacity-50'
     >
-      <PokerCardFront value={value} className='w-24 cursor-pointer' />
+      <PokerCardFront value={value} className='w-24' />
     </motion.button>
   );
 };

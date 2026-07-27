@@ -14,7 +14,7 @@ const TableCards = ({ className, ...props }: Props) => {
   const tableCards: IFTableCard[] = getTableCardsFromUsers(room.users);
 
   return (
-    <div {...props} className={clsx('mb-5 flex flex-wrap justify-center gap-4', className)}>
+    <div {...props} className={clsx('flex flex-wrap justify-center gap-4', className)}>
       {tableCards.map((tableCard: IFTableCard, index: number) => {
         const isSet: boolean = tableCard.value !== null;
 

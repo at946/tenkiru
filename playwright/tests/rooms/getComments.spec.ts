@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import createRoomId from '@pw/helpers/createRoomId';
 import RoomPage from '@pw/models/room-page';
 
-test('When cards are face down on the room page, then users should not be able to select table cards to request comments.', async ({
+test('When cards are face down on the room page, then users should not be able to select a table card to ask for a comment.', async ({
   context,
 }) => {
   // Given
@@ -18,12 +18,14 @@ test('When cards are face down on the room page, then users should not be able t
   // Then
   await expect(roomPage1.tableCards).toHaveCount(1);
   await expect(roomPage1.tableCards.nth(0)).toBeDisabled();
+  await expect(roomPage1.table).not.toContainText('Click a table card to ask for a comment.');
 
   await expect(roomPage2.tableCards).toHaveCount(1);
   await expect(roomPage2.tableCards.nth(0)).toBeDisabled();
+  await expect(roomPage2.table).not.toContainText('Click a table card to ask for a comment.');
 });
 
-test('On the room page, when cards are open, users should be able to select table cards to request comments', async ({
+test('On the room page, when cards are open, users should be able to select a table card to ask for a comment', async ({
   context,
 }) => {
   // Given
@@ -40,14 +42,17 @@ test('On the room page, when cards are open, users should be able to select tabl
   await expect(roomPage1.tableCards).toHaveCount(2);
   await expect(roomPage1.tableCards.nth(0)).toBeDisabled();
   await expect(roomPage1.tableCards.nth(1)).toBeDisabled();
+  await expect(roomPage1.table).not.toContainText('Click a table card to ask for a comment.');
 
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.tableCards.nth(0)).toBeDisabled();
   await expect(roomPage2.tableCards.nth(1)).toBeDisabled();
+  await expect(roomPage2.table).not.toContainText('Click a table card to ask for a comment.');
 
   await expect(roomPage3.tableCards).toHaveCount(2);
   await expect(roomPage3.tableCards.nth(0)).toBeDisabled();
   await expect(roomPage3.tableCards.nth(1)).toBeDisabled();
+  await expect(roomPage3.table).not.toContainText('Click a table card to ask for a comment.');
 
   // When
   await roomPage1.openCards();
@@ -56,14 +61,17 @@ test('On the room page, when cards are open, users should be able to select tabl
   await expect(roomPage1.tableCards).toHaveCount(2);
   await expect(roomPage1.tableCards.nth(0)).not.toBeDisabled();
   await expect(roomPage1.tableCards.nth(1)).not.toBeDisabled();
+  await expect(roomPage1.table).toContainText('Click a table card to ask for a comment.');
 
   await expect(roomPage2.tableCards).toHaveCount(2);
   await expect(roomPage2.tableCards.nth(0)).not.toBeDisabled();
   await expect(roomPage2.tableCards.nth(1)).not.toBeDisabled();
+  await expect(roomPage2.table).toContainText('Click a table card to ask for a comment.');
 
   await expect(roomPage3.tableCards).toHaveCount(2);
   await expect(roomPage3.tableCards.nth(0)).not.toBeDisabled();
   await expect(roomPage3.tableCards.nth(1)).not.toBeDisabled();
+  await expect(roomPage3.table).toContainText('Click a table card to ask for a comment.');
 });
 
 test('On the room page, when a user selects a table card, the player who put the card down should receive the notification to request a comment.', async ({

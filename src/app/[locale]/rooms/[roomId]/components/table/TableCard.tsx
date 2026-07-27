@@ -1,23 +1,26 @@
+import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { motion } from 'motion/react';
-import type { NextPage } from 'next';
 import { useTranslations } from 'next-intl';
+import type { ComponentPropsWithoutRef } from 'react';
 import toast from 'react-hot-toast';
 import PokerCardBack from '@/app/[locale]/rooms/[roomId]/components/poker-card/PokerCardBack';
 import PokerCardFront from '@/app/[locale]/rooms/[roomId]/components/poker-card/PokerCardFront';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
+import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
 import { event } from '@/lib/gtag';
 
-interface Props {
+type Props = ComponentPropsWithoutRef<'button'> & {
   value: IFTableCardValue;
   playerId: string;
   isOpen?: boolean;
   delay?: number;
-}
+};
 
-const TableCard: NextPage<Props> = ({ value, playerId, isOpen = false, delay = 0 }) => {
+const TableCard = ({ value, playerId, isOpen = false, delay = 0, className, ...rest }: Props) => {
   const t = useTranslations('Room.Table');
+  const room = useAtomValue(roomAtom);
   const socket = useAtomValue(socketAtom);
 
   const nominate = (): void => {
@@ -33,11 +36,16 @@ const TableCard: NextPage<Props> = ({ value, playerId, isOpen = false, delay = 0
       initial={{ opacity: 0, scale: 1.2, filter: 'blur(3px)' }}
       animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
       transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
-      className='relative size-full'
+      className={clsx(
+        'relative size-full rounded-xl',
+        room.isOpenPhase ? 'cursor-pointer hover:shadow-2xl' : 'cursor-not-allowed',
+        className,
+      )}
       disabled={!isOpen}
       onClick={nominate}
       role='img'
       aria-label={isOpen ? `${t('Face-up table card')} ${value}` : t('Face-down table card')}
+      {...rest}
     >
       <motion.div
         initial={false}

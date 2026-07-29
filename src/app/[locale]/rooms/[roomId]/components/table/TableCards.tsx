@@ -19,7 +19,7 @@ const TableCards = ({ className, ...props }: Props) => {
         const isSet: boolean = tableCard.value !== null;
 
         return (
-          <div className='mb-2 flex justify-center' key={tableCard.userId}>
+          <div className='mt-6 mb-2 flex justify-center' key={tableCard.userId}>
             <TableCardSlot>
               {isSet && (
                 <TableCard

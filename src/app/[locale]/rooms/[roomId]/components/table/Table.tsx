@@ -19,7 +19,7 @@ const Table = ({ className, ...props }: Props) => {
       <TableFrame>
         <TableBoard>
           {room.deckType !== 'tShirtSize' && <SummaryTags className='mb-5' />}
-          <TableCards className={!room.isOpenPhase && 'mb-5'} />
+          <TableCards className={!room.isOpenPhase ? 'mb-5' : undefined} />
           {room.isOpenPhase && (
             <p className='my-3 flex items-center justify-center gap-1.5 bg-white/50 py-2 text-gray-600 text-sm'>
               <span className='icon-[ic--baseline-ads-click] text-lg' />

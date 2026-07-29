@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
-import { motion } from 'motion/react';
+import { type HTMLMotionProps, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import type { ComponentPropsWithoutRef } from 'react';
 import toast from 'react-hot-toast';
 import PokerCardBack from '@/app/[locale]/rooms/[roomId]/components/poker-card/PokerCardBack';
 import PokerCardFront from '@/app/[locale]/rooms/[roomId]/components/poker-card/PokerCardFront';
@@ -11,14 +10,14 @@ import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
 import { event } from '@/lib/gtag';
 
-type Props = ComponentPropsWithoutRef<'button'> & {
-  value: IFTableCardValue;
+type Props = HTMLMotionProps<'button'> & {
+  cardValue: IFTableCardValue;
   playerId: string;
   isOpen?: boolean;
   delay?: number;
 };
 
-const TableCard = ({ value, playerId, isOpen = false, delay = 0, className, ...rest }: Props) => {
+const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, ...rest }: Props) => {
   const t = useTranslations('Room.Table');
   const room = useAtomValue(roomAtom);
   const socket = useAtomValue(socketAtom);
@@ -46,7 +45,7 @@ const TableCard = ({ value, playerId, isOpen = false, delay = 0, className, ...r
       disabled={!isOpen}
       onClick={nominate}
       role='img'
-      aria-label={isOpen ? `${t('Face-up table card')} ${value}` : t('Face-down table card')}
+      aria-label={isOpen ? `${t('Face-up table card')} ${cardValue}` : t('Face-down table card')}
       {...rest}
     >
       <motion.div
@@ -59,7 +58,7 @@ const TableCard = ({ value, playerId, isOpen = false, delay = 0, className, ...r
         className='transform-3d relative size-full h-full w-hull'
       >
         <PokerCardBack className='backface-hidden absolute inset-0' />
-        <PokerCardFront value={value} className='backface-hidden absolute inset-0 rotate-y-180' />
+        <PokerCardFront value={cardValue} className='backface-hidden absolute inset-0 rotate-y-180' />
       </motion.div>
     </motion.button>
   );

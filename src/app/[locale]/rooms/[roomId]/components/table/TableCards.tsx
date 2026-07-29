@@ -23,7 +23,7 @@ const TableCards = ({ className, ...props }: Props) => {
             <TableCardSlot>
               {isSet && (
                 <TableCard
-                  value={tableCard.value}
+                  cardValue={tableCard.value}
                   playerId={tableCard.userId}
                   isOpen={room.isOpenPhase}
                   delay={index * 0.1}

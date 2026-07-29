@@ -38,7 +38,9 @@ const TableCard = ({ value, playerId, isOpen = false, delay = 0, className, ...r
       transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
       className={clsx(
         'relative size-full rounded-xl',
-        room.isOpenPhase ? 'cursor-pointer hover:shadow-2xl' : 'cursor-not-allowed',
+        room.isOpenPhase
+          ? 'cursor-pointer hover:ring-4 hover:ring-blue-500 focus-visible:ring-4 focus-visible:ring-blue-500'
+          : 'cursor-not-allowed',
         className,
       )}
       disabled={!isOpen}

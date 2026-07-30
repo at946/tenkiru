@@ -118,5 +118,6 @@ export class Room {
   replay(): void {
     this.isOpenPhase = false;
     this.resetCards();
+    this.selectedPlayerId = null;
   }
 }

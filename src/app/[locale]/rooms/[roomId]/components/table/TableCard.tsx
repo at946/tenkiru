@@ -8,6 +8,7 @@ import PokerCardFront from '@/app/[locale]/rooms/[roomId]/components/poker-card/
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
+import tableAtom from '@/jotai/atoms/tableAtom';
 import { event } from '@/lib/gtag';
 
 type Props = HTMLMotionProps<'button'> & {
@@ -21,9 +22,13 @@ const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, 
   const t = useTranslations('Room.Table');
   const room = useAtomValue(roomAtom);
   const socket = useAtomValue(socketAtom);
+  const table = useAtomValue(tableAtom);
+
+  const isSelected: boolean = table.selectedPlayerId === playerId;
+  const isYours: boolean = playerId === socket?.id;
 
   const nominate = (): void => {
-    socket?.emit('nominate', playerId);
+    socket?.emit('nominate', room.id, playerId);
     toast.success(t('Asked a player for comment'), {
       ariaProps: { role: 'status', 'aria-live': 'polite' },
     });
@@ -36,10 +41,9 @@ const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, 
       animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
       transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
       className={clsx(
-        'size-full rounded-xl',
-        room.isOpenPhase
-          ? 'cursor-pointer hover:ring-4 hover:ring-blue-500 focus-visible:ring-4 focus-visible:ring-blue-500'
-          : 'cursor-not-allowed',
+        'size-full rounded-xl transition duration-300 ease-in-out',
+        room.isOpenPhase ? 'cursor-pointer hover:-translate-y-2' : 'cursor-not-allowed',
+        isSelected ? 'selected ring-8 ring-orange-500' : '',
         className,
       )}
       disabled={!isOpen}
@@ -48,13 +52,19 @@ const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, 
       aria-label={isOpen ? `${t('Face-up table card')} ${cardValue}` : t('Face-down table card')}
       {...rest}
     >
-      <div className='absolute -top-8 left-1/2 z-10 -translate-x-1/2 rounded-full bg-secondary px-4 py-1 text-sm text-white shadow'>
-        <p className='flex items-center'>
-          <span className='icon-[mdi--speak-outline] mr-1 text-lg' />
-          <span>You</span>
-        </p>
-        <div className='absolute top-full left-1/2 -translate-x-1/2 border-transparent border-x-8 border-y-8 border-t-secondary' />
-      </div>
+      {isSelected && isYours && (
+        <div
+          className={clsx(
+            'absolute -top-6 left-1/2 z-10 -translate-x-1/2 animate-[bounce_1s_ease-in-out_5.5] rounded-full bg-orange-500 px-3 py-2 text-sm text-white',
+          )}
+        >
+          <p className='flex items-center'>
+            <span className='mx-1'>{table.selectedPlayerId === socket?.id ? 'You' : 'Who?'}</span>
+            <span className='icon-[mdi--speak-outline] text-lg' />
+          </p>
+          {/* <div className='absolute top-full left-1/2 -translate-x-1/2 border-transparent border-x-8 border-y-8 border-t-secondary' /> */}
+        </div>
+      )}
       <motion.div
         initial={false}
         animate={{ rotateY: isOpen ? 180 : 0, y: isOpen ? [0, -16, 0] : 0 }}

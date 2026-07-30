@@ -6,7 +6,7 @@ import type { IFUserType } from './userType';
 export interface IFServerToClientEvents {
   'update-room': (room: IFRoom) => void;
   'receive-request-to-select': () => void;
-  nominate: () => void;
+  nominate: (selectedPlayerId: string) => void;
 }
 
 export interface IFClientToServerEvents {
@@ -17,5 +17,5 @@ export interface IFClientToServerEvents {
   'request-to-select': (roomId: string) => void;
   replay: (roomId: string) => void;
   'change-user-type': (roomId: string, userType: IFUserType) => void;
-  nominate: (memberId: string) => void;
+  nominate: (roomId: string, selectedPlayerId: string) => void;
 }

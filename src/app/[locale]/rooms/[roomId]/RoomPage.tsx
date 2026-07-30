@@ -11,6 +11,7 @@ import type { IFRoom } from '@/interfaces/room';
 import type { IFUser } from '@/interfaces/user';
 import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
+import tableAtom from '@/jotai/atoms/tableAtom';
 import Hands from './components/hands/Hands';
 import Table from './components/table/Table';
 import { playAudio } from './utils/playAudio';
@@ -23,6 +24,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   const socket = useAtomValue(socketAtom);
   const setSocket = useSetAtom(socketAtom);
   const [room, setRoom] = useAtom(roomAtom);
+  const [_table, setTable] = useAtom(tableAtom);
   const t = useTranslations('Room');
 
   const users: IFUser[] = room.users;
@@ -44,13 +46,17 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     playAudio('/audio/alert.mp3');
   }, [t]);
 
-  const onNominate = useCallback((): void => {
-    toast.success(t('Please comment'), {
-      icon: '💬',
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
-    playAudio('/audio/notify.mp3');
-  }, [t]);
+  const onNominate = useCallback(
+    (selectedPlayerId: string): void => {
+      setTable({ selectedPlayerId: selectedPlayerId });
+      toast.success(selectedPlayerId, {
+        icon: '💬',
+        ariaProps: { role: 'status', 'aria-live': 'polite' },
+      });
+      playAudio('/audio/notify.mp3');
+    },
+    [setTable],
+  );
 
   useEffect(() => {
     fetch('/api/socket').then(() => {

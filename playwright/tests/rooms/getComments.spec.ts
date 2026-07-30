@@ -74,7 +74,7 @@ test('On the room page, when cards are open, users should be able to select a ta
   await expect(roomPage3.table).toContainText('Select a card above to hear their thoughts');
 });
 
-test('On the room page, when a user selects a table card, the player who put the card down should receive the notification to request a comment.', async ({
+test('On the room page, when a user selects a table card, then all users can see which table card is selected and the player who put the card down can see that they are asked for sharing their thoughts.', async ({
   context,
 }) => {
   // Given
@@ -141,7 +141,7 @@ test('On the room page, when a user selects a table card, the player who put the
   await expect(roomPage3.tableCards.filter({ hasText: '2' })).toContainText('You');
 });
 
-test('On the room page, when a user selects a table card, all users can see which table card is being selected.', async ({
+test('On the room page, when a user selects to replay the game, then the selected player is also refreshed.', async ({
   context,
 }) => {
   // Given
@@ -157,21 +157,56 @@ test('On the room page, when a user selects a table card, all users can see whic
   await roomPage3.selectCard('2');
   await roomPage1.openCards();
 
-  // When
   await roomPage1.tableCards.filter({ hasText: '0' }).click();
 
+  await expect(roomPage1.tableCards.filter({ hasText: '0' })).toContainClass('selected');
+  await expect(roomPage1.tableCards.filter({ hasText: '0' })).toContainText('You');
+  await expect(roomPage1.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
+  await expect(roomPage1.tableCards.filter({ hasText: '1' })).not.toContainText('You');
+  await expect(roomPage1.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
+  await expect(roomPage1.tableCards.filter({ hasText: '2' })).not.toContainText('You');
+
+  await expect(roomPage2.tableCards.filter({ hasText: '0' })).toContainClass('selected');
+  await expect(roomPage2.tableCards.filter({ hasText: '0' })).not.toContainText('You');
+  await expect(roomPage2.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
+  await expect(roomPage2.tableCards.filter({ hasText: '1' })).not.toContainText('You');
+  await expect(roomPage2.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
+  await expect(roomPage2.tableCards.filter({ hasText: '2' })).not.toContainText('You');
+
+  await expect(roomPage3.tableCards.filter({ hasText: '0' })).toContainClass('selected');
+  await expect(roomPage3.tableCards.filter({ hasText: '0' })).not.toContainText('You');
+  await expect(roomPage3.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
+  await expect(roomPage3.tableCards.filter({ hasText: '1' })).not.toContainText('You');
+  await expect(roomPage3.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
+  await expect(roomPage3.tableCards.filter({ hasText: '2' })).not.toContainText('You');
+
+  // When
+
+  await roomPage1.replay();
+  await roomPage1.selectCard('0');
+  await roomPage2.selectCard('1');
+  await roomPage3.selectCard('2');
+  await roomPage1.openCards();
+
   // Then
-  // The browser of the user who selects the Get Comment button should display the notification requesting a comment
-  await expect(roomPage1.haveRequestedCommentsToast).toBeVisible();
-  await expect(roomPage2.haveRequestedCommentsToast).not.toBeVisible();
-  await expect(roomPage3.haveRequestedCommentsToast).not.toBeVisible();
+  await expect(roomPage1.tableCards.filter({ hasText: '0' })).not.toContainClass('selected');
+  await expect(roomPage1.tableCards.filter({ hasText: '0' })).not.toContainText('You');
+  await expect(roomPage1.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
+  await expect(roomPage1.tableCards.filter({ hasText: '1' })).not.toContainText('You');
+  await expect(roomPage1.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
+  await expect(roomPage1.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 
-  // The browser of the user who placed the card which was requested a comment should display the notification of the request for commentt
-  await expect(roomPage1.haveBeenRequestedCommentsToast).toBeVisible();
-  await expect(roomPage2.haveBeenRequestedCommentsToast).not.toBeVisible();
-  await expect(roomPage3.haveBeenRequestedCommentsToast).not.toBeVisible();
+  await expect(roomPage2.tableCards.filter({ hasText: '0' })).not.toContainClass('selected');
+  await expect(roomPage2.tableCards.filter({ hasText: '0' })).not.toContainText('You');
+  await expect(roomPage2.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
+  await expect(roomPage2.tableCards.filter({ hasText: '1' })).not.toContainText('You');
+  await expect(roomPage2.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
+  await expect(roomPage2.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 
-  // Notifications should disappear after a short time
-  await expect(roomPage1.haveRequestedCommentsToast).not.toBeVisible();
-  await expect(roomPage1.haveBeenRequestedCommentsToast).not.toBeVisible();
+  await expect(roomPage3.tableCards.filter({ hasText: '0' })).not.toContainClass('selected');
+  await expect(roomPage3.tableCards.filter({ hasText: '0' })).not.toContainText('You');
+  await expect(roomPage3.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
+  await expect(roomPage3.tableCards.filter({ hasText: '1' })).not.toContainText('You');
+  await expect(roomPage3.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
+  await expect(roomPage3.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 });

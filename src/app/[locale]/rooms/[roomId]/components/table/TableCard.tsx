@@ -8,7 +8,6 @@ import PokerCardFront from '@/app/[locale]/rooms/[roomId]/components/poker-card/
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
 import roomAtom from '@/jotai/atoms/roomAtom';
 import { socketAtom } from '@/jotai/atoms/socketAtom';
-import tableAtom from '@/jotai/atoms/tableAtom';
 import { event } from '@/lib/gtag';
 
 type Props = HTMLMotionProps<'button'> & {
@@ -22,9 +21,8 @@ const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, 
   const t = useTranslations('Room.Table');
   const room = useAtomValue(roomAtom);
   const socket = useAtomValue(socketAtom);
-  const table = useAtomValue(tableAtom);
 
-  const isSelected: boolean = table.selectedPlayerId === playerId;
+  const isSelected: boolean = room.selectedPlayerId === playerId;
   const isYours: boolean = playerId === socket?.id;
 
   const nominate = (): void => {
@@ -59,10 +57,9 @@ const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, 
           )}
         >
           <p className='flex items-center'>
-            <span className='mx-1'>{table.selectedPlayerId === socket?.id ? 'You' : 'Who?'}</span>
+            <span className='mr-1'>You</span>
             <span className='icon-[mdi--speak-outline] text-lg' />
           </p>
-          {/* <div className='absolute top-full left-1/2 -translate-x-1/2 border-transparent border-x-8 border-y-8 border-t-secondary' /> */}
         </div>
       )}
       <motion.div

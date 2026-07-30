@@ -6,6 +6,7 @@ export interface IFRoom {
   deckType: IFDeckType;
   isOpenPhase: boolean;
   users: IFUser[];
+  selectedPlayerId: string | null;
 }
 
 export type IFRoomId = string;

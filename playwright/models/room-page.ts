@@ -27,7 +27,7 @@ export default class RoomPage {
   readonly haveRequestedToSelectToast: Locator;
   readonly hadBeenRequestedToSelectToast: Locator;
 
-  constructor(private readonly page: Page) {
+  constructor(page: Page) {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkiru' });
     this.roomInvitationButton = page.getByRole('button', { name: 'Room invitation button' });

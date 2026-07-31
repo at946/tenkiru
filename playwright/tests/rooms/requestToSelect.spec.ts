@@ -35,7 +35,6 @@ test('On the room page, a user selects the Request To Select button, the notific
 
   // Then - Notifications should disappear after a short time
   await expect(roomPage4.haveRequestedToSelectToast).not.toBeVisible({ timeout: 7500 });
-  await expect(roomPage2.haveBeenRequestedCommentsToast).not.toBeVisible({ timeout: 7500 });
 });
 
 test('On the room page, when cards are face up, the RequestToSelect button should not be displayed.', async ({

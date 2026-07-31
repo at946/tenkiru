@@ -127,8 +127,16 @@ const SocketHandler = (_req: NextApiRequest, res: NextApiResponseSocketIO) => {
         io.to(roomId).emit('update-room', room.toObject());
       });
 
-      socket.on('nominate', (memberId: string): void => {
-        io.to(memberId).emit('nominate');
+      socket.on('nominate', (roomId: string, selectedPlayerId: string): void => {
+        const room: Room | undefined = findRoomById({
+          rooms: rooms,
+          roomId: roomId,
+        });
+        if (!room) return;
+
+        room.setSelectedPlayerId(selectedPlayerId);
+        io.to(roomId).emit('update-room', room.toObject());
+        io.to(selectedPlayerId).emit('nominate');
       });
 
       socket.on('disconnecting', (): void => {

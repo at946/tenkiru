@@ -6,6 +6,7 @@ const roomAtom = atom<IFRoom>({
   deckType: 'fibonacci',
   isOpenPhase: false,
   users: [],
+  selectedPlayerId: null,
 });
 
 export default roomAtom;

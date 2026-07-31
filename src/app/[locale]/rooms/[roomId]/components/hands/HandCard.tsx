@@ -17,21 +17,15 @@ type Props = ComponentPropsWithoutRef<'div'> & {
 const variants = {
   default: {
     y: 0,
-    scale: 1,
     rotate: 0,
-    filter: 'brightness(1)',
   },
   hover: {
-    y: -8,
-    scale: 1.05,
-    rotate: 2,
-    filter: 'brightness(1.5)',
+    y: -20,
+    rotate: 3,
   },
   selected: {
     y: -20,
-    scale: 1.08,
     rotate: 0,
-    filter: 'brightness(2)',
   },
 };
 
@@ -58,8 +52,10 @@ const HandCard = ({ value, selected, disabled = false }: Props) => {
       aria-pressed={selected}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
       onClick={() => onSelect(selected ? null : value)}
-      className='rounded-xl disabled:cursor-not-allowed disabled:opacity-50'
+      className='cursor-pointer rounded-xl shadow-lg disabled:cursor-not-allowed disabled:opacity-50'
     >
       <PokerCardFront value={value} className='w-24' />
     </motion.button>

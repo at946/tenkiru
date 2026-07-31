@@ -53,23 +53,21 @@
   },
   "Room": {
     "RoomInfo": {
-      "Room invitation button": "ルームへ招待ボタン",
-      "Copied this Room URL": "この部屋のURLをコピーしました"
+      "Room invitation button": "ルームへ招待ボタン"
     },
     "Table": {
       "Min": "最小",
       "Avg": "平均",
       "Max": "最大",
       "Table": "テーブル",
-      "Table cards group": "テーブルカードグループ",
       "Table card slot": "カード置き場",
       "Unselected table card": "未選択のテーブルカード",
       "Face-up table card": "めくられたテーブルカード",
       "Face-down table card": "伏せられたテーブルカード",
-      "Get comments": "コメントをもらう",
       "Open": "開く",
       "Ask to choose": "そろそろ選んで",
-      "Again": "もう一度"
+      "Again": "もう一度",
+      "Select a card above to hear their thoughts": "上のカードを選んで、考えを聞いてみましょう"
     },
     "Settings": {
       "User Type Setting": "ユーザータイプ設定",
@@ -84,8 +82,6 @@
       "Hands": "手札",
       "Hands card": "手札カード"
     },
-    "Please comment": "コメントお願いします",
-    "Asked a player for comment": "コメントを求めました",
     "It's time to choose a card": "そろそろカードを選んでください",
     "Asked players to choose a card": "カードの選択を依頼しました"
   },

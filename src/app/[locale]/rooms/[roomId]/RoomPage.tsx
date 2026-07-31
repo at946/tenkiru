@@ -45,12 +45,8 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
   }, [t]);
 
   const onNominate = useCallback((): void => {
-    toast.success(t('Please comment'), {
-      icon: '💬',
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
     playAudio('/audio/notify.mp3');
-  }, [t]);
+  }, []);
 
   useEffect(() => {
     fetch('/api/socket').then(() => {

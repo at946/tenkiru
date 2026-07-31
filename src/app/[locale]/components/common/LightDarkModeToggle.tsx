@@ -31,7 +31,7 @@ const DarkModeToggle: NextPage<Props> = ({ className }) => {
       onClick={() => (isDark ? setTheme('light') : setTheme('dark'))}
       title={isDark ? t('Switch to light mode') : t('Switch to dark mode')}
       aria-label={isDark ? t('Switch to light mode') : t('Switch to dark mode')}
-      className={className}
+      className={clsx('cursor-pointer', className)}
     >
       <span className={clsx('text-2xl', isDark ? 'icon-[mdi--white-balance-sunny]' : 'icon-[mdi--moon-and-stars]')} />
     </button>

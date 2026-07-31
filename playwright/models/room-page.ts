@@ -7,15 +7,11 @@ export default class RoomPage {
   readonly page: Page;
   readonly logo: Locator;
   readonly roomInvitationButton: Locator;
-  readonly ToastToNotifyToHaveCopiedThisRoomURL: Locator;
   readonly table: Locator;
   readonly tableCardSlots: Locator;
   readonly faceDownTableCards: Locator;
   readonly faceUpTableCards: Locator;
   readonly tableCards: Locator;
-  readonly tableCardGroups: Locator;
-  readonly getCommentsButtons: Locator;
-  readonly getCommentsButton: (cardValue: string) => Locator;
   readonly minTag: Locator;
   readonly avgTag: Locator;
   readonly maxTag: Locator;
@@ -28,30 +24,19 @@ export default class RoomPage {
   readonly handsCards: Locator;
   readonly selectedHandsCard: Locator;
   readonly disabledHandsCard: Locator;
-  readonly copyUrlToast: Locator;
   readonly haveRequestedToSelectToast: Locator;
   readonly hadBeenRequestedToSelectToast: Locator;
-  readonly haveRequestedCommentsToast: Locator;
-  readonly haveBeenRequestedCommentsToast: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkiru' });
     this.roomInvitationButton = page.getByRole('button', { name: 'Room invitation button' });
-    this.ToastToNotifyToHaveCopiedThisRoomURL = page.getByRole('status').getByText('Copied this Room URL');
 
     this.table = page.getByRole('img', { name: /^Table$/ });
-    this.tableCardGroups = page.getByRole('group', {
-      name: 'Table cards group',
-    });
     this.tableCardSlots = this.table.getByRole('img', { name: /^Table card slot$/ });
     this.tableCards = this.tableCardSlots.getByRole('img', { name: /^(Face-down|Face-up) table card/ });
     this.faceDownTableCards = this.tableCardSlots.getByRole('img', { name: /^Face-down table card$/ });
     this.faceUpTableCards = this.tableCardSlots.getByRole('img', { name: /^Face-up table card/ });
-    this.getCommentsButtons = page.getByRole('button', { name: 'Get comments' });
-    this.getCommentsButton = (card: string) => {
-      return this.tableCardGroups.filter({ hasText: card }).getByRole('button', { name: 'Get comments' });
-    };
     this.minTag = page.getByTitle('Min');
     this.avgTag = page.getByTitle('Avg');
     this.maxTag = page.getByTitle('Max');
@@ -72,11 +57,8 @@ export default class RoomPage {
       name: 'Hands card',
       disabled: true,
     });
-    this.copyUrlToast = page.getByRole('status').getByText('Copied this Room URL');
     this.haveRequestedToSelectToast = page.getByRole('status').getByText('Asked players to choose a card');
     this.hadBeenRequestedToSelectToast = page.getByRole('status').getByText("It's time to choose a card");
-    this.haveRequestedCommentsToast = page.getByRole('status').getByText('Asked a player for comment');
-    this.haveBeenRequestedCommentsToast = page.getByRole('status').getByText('Please comment');
 
     const consoleErrorMessages: string[] = [];
     page.on('console', (message) => {
@@ -86,6 +68,26 @@ export default class RoomPage {
     });
     page.on('close', async () => {
       await expect(consoleErrorMessages[0]).toBeUndefined();
+    });
+  }
+
+  async preparePlayedAudios() {
+    await this.page.addInitScript(() => {
+      window.__playedAudios = [];
+      HTMLAudioElement.prototype.play = function () {
+        window.__playedAudios.push(this.src);
+        return Promise.resolve();
+      };
+    });
+  }
+
+  async playedAudios() {
+    return this.page.evaluate(() => window.__playedAudios);
+  }
+
+  async clearPlayedAudios() {
+    await this.page.evaluate(() => {
+      window.__playedAudios = [];
     });
   }
 
@@ -111,10 +113,6 @@ export default class RoomPage {
 
   async replay() {
     await this.replayButton.click();
-  }
-
-  async getComments(cardValue: string) {
-    await this.getCommentsButton(cardValue).click();
   }
 
   async selectUserType(userType: IFUserType) {

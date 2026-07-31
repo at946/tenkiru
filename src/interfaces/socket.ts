@@ -17,5 +17,5 @@ export interface IFClientToServerEvents {
   'request-to-select': (roomId: string) => void;
   replay: (roomId: string) => void;
   'change-user-type': (roomId: string, userType: IFUserType) => void;
-  nominate: (memberId: string) => void;
+  nominate: (roomId: string, selectedPlayerId: string) => void;
 }

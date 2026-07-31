@@ -11,6 +11,7 @@ export class Room {
     private deckType: IFDeckType = 'fibonacci',
     private isOpenPhase = false,
     private users: User[] = [],
+    private selectedPlayerId: string | null = null,
   ) {}
 
   toObject(): IFRoom {
@@ -19,6 +20,7 @@ export class Room {
       deckType: this.deckType,
       isOpenPhase: this.isOpenPhase,
       users: this.users.map((user: User) => user.toObject()),
+      selectedPlayerId: this.selectedPlayerId,
     };
   }
 
@@ -99,6 +101,10 @@ export class Room {
     return Math.round((numberCardsValues.reduce((a, b) => a + b) / numberCardsValues.length) * 10) / 10;
   }
 
+  setSelectedPlayerId(selectedPlayerId: string): void {
+    this.selectedPlayerId = selectedPlayerId;
+  }
+
   openCards(): void {
     this.isOpenPhase = true;
   }
@@ -112,5 +118,6 @@ export class Room {
   replay(): void {
     this.isOpenPhase = false;
     this.resetCards();
+    this.selectedPlayerId = null;
   }
 }

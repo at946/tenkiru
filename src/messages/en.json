@@ -53,23 +53,21 @@
   },
   "Room": {
     "RoomInfo": {
-      "Room invitation button": "Room invitation button",
-      "Copied this Room URL": "Copied this Room URL"
+      "Room invitation button": "Room invitation button"
     },
     "Table": {
       "Min": "Min",
       "Avg": "Avg",
       "Max": "Max",
       "Table": "Table",
-      "Table cards group": "Table cards group",
       "Table card slot": "Table card slot",
       "Unselected table card": "Unselected table card",
       "Face-up table card": "Face-up table card",
       "Face-down table card": "Face-down table card",
-      "Get comments": "Get comments",
       "Open": "Open",
       "Ask to choose": "Ask to choose",
-      "Again": "Again"
+      "Again": "Again",
+      "Select a card above to hear their thoughts": "Select a card above to hear their thoughts"
     },
     "Settings": {
       "User Type Setting": "User Type Setting",
@@ -84,8 +82,6 @@
       "Hands": "Hands",
       "Hands card": "Hands card"
     },
-    "Please comment": "Please comment",
-    "Asked a player for comment": "Asked a player for comment",
     "It's time to choose a card": "It's time to choose a card",
     "Asked players to choose a card": "Asked players to choose a card"
   },

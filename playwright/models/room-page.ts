@@ -26,8 +26,6 @@ export default class RoomPage {
   readonly disabledHandsCard: Locator;
   readonly haveRequestedToSelectToast: Locator;
   readonly hadBeenRequestedToSelectToast: Locator;
-  readonly haveRequestedCommentsToast: Locator;
-  readonly haveBeenRequestedCommentsToast: Locator;
 
   constructor(private readonly page: Page) {
     this.page = page;
@@ -61,8 +59,6 @@ export default class RoomPage {
     });
     this.haveRequestedToSelectToast = page.getByRole('status').getByText('Asked players to choose a card');
     this.hadBeenRequestedToSelectToast = page.getByRole('status').getByText("It's time to choose a card");
-    this.haveRequestedCommentsToast = page.getByRole('status').getByText('Asked a player for comment');
-    this.haveBeenRequestedCommentsToast = page.getByRole('status').getByText('Please comment');
 
     const consoleErrorMessages: string[] = [];
     page.on('console', (message) => {

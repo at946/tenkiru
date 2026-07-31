@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { type HTMLMotionProps, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import toast from 'react-hot-toast';
 import PokerCardBack from '@/app/[locale]/rooms/[roomId]/components/poker-card/PokerCardBack';
 import PokerCardFront from '@/app/[locale]/rooms/[roomId]/components/poker-card/PokerCardFront';
 import type { IFTableCardValue } from '@/interfaces/tableCardValue';
@@ -27,9 +26,6 @@ const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, 
 
   const nominate = (): void => {
     socket?.emit('nominate', room.id, playerId);
-    toast.success(t('Asked a player for comment'), {
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
     event({ action: 'nominate', category: 'engagement', label: '' });
   };
 

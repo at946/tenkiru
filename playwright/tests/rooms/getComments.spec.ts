@@ -82,18 +82,26 @@ test('On the room page, when a user selects a table card, then all users can see
   const roomPage1: RoomPage = new RoomPage(await context.newPage());
   const roomPage2: RoomPage = new RoomPage(await context.newPage());
   const roomPage3: RoomPage = new RoomPage(await context.newPage());
+
+  await roomPage1.preparePlayedAudios();
+  await roomPage2.preparePlayedAudios();
+  await roomPage3.preparePlayedAudios();
+
   await roomPage1.goto(roomId);
   await roomPage2.goto(roomId);
   await roomPage3.goto(roomId);
+
   await roomPage1.selectCard('0');
   await roomPage2.selectCard('1');
   await roomPage3.selectCard('2');
+
   await roomPage1.openCards();
 
   // When
   await roomPage2.tableCards.filter({ hasText: '0' }).click();
 
   // Then
+  await expect.poll(() => roomPage1.playedAudios()).toContainEqual(expect.stringContaining('notify.mp3'));
   await expect(roomPage1.tableCards.filter({ hasText: '0' })).toContainClass('selected');
   await expect(roomPage1.tableCards.filter({ hasText: '0' })).toContainText('You');
   await expect(roomPage1.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
@@ -101,6 +109,7 @@ test('On the room page, when a user selects a table card, then all users can see
   await expect(roomPage1.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
   await expect(roomPage1.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 
+  await expect.poll(() => roomPage2.playedAudios()).toHaveLength(0);
   await expect(roomPage2.tableCards.filter({ hasText: '0' })).toContainClass('selected');
   await expect(roomPage2.tableCards.filter({ hasText: '0' })).not.toContainText('You');
   await expect(roomPage2.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
@@ -108,6 +117,7 @@ test('On the room page, when a user selects a table card, then all users can see
   await expect(roomPage2.tableCards.filter({ hasText: '2' })).not.toContainClass('selected');
   await expect(roomPage2.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 
+  await expect.poll(() => roomPage3.playedAudios()).toHaveLength(0);
   await expect(roomPage3.tableCards.filter({ hasText: '0' })).toContainClass('selected');
   await expect(roomPage3.tableCards.filter({ hasText: '0' })).not.toContainText('You');
   await expect(roomPage3.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
@@ -116,9 +126,14 @@ test('On the room page, when a user selects a table card, then all users can see
   await expect(roomPage3.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 
   // When a user selects another table card
+  await roomPage1.clearPlayedAudios();
+  await roomPage2.clearPlayedAudios();
+  await roomPage3.clearPlayedAudios();
+
   await roomPage3.tableCards.filter({ hasText: '2' }).click();
 
   // Then
+  await expect.poll(() => roomPage1.playedAudios()).toHaveLength(0);
   await expect(roomPage1.tableCards.filter({ hasText: '0' })).not.toContainClass('selected');
   await expect(roomPage1.tableCards.filter({ hasText: '0' })).not.toContainText('You');
   await expect(roomPage1.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
@@ -126,6 +141,7 @@ test('On the room page, when a user selects a table card, then all users can see
   await expect(roomPage1.tableCards.filter({ hasText: '2' })).toContainClass('selected');
   await expect(roomPage1.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 
+  await expect.poll(() => roomPage2.playedAudios()).toHaveLength(0);
   await expect(roomPage2.tableCards.filter({ hasText: '0' })).not.toContainClass('selected');
   await expect(roomPage2.tableCards.filter({ hasText: '0' })).not.toContainText('You');
   await expect(roomPage2.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');
@@ -133,6 +149,7 @@ test('On the room page, when a user selects a table card, then all users can see
   await expect(roomPage2.tableCards.filter({ hasText: '2' })).toContainClass('selected');
   await expect(roomPage2.tableCards.filter({ hasText: '2' })).not.toContainText('You');
 
+  await expect.poll(() => roomPage3.playedAudios()).toContainEqual(expect.stringContaining('notify.mp3'));
   await expect(roomPage3.tableCards.filter({ hasText: '0' })).not.toContainClass('selected');
   await expect(roomPage3.tableCards.filter({ hasText: '0' })).not.toContainText('You');
   await expect(roomPage3.tableCards.filter({ hasText: '1' })).not.toContainClass('selected');

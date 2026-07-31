@@ -31,7 +31,6 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
 
   const onUpdateRoom = useCallback(
     (room: IFRoom): void => {
-      console.log(room);
       setRoom(room);
     },
     [setRoom],
@@ -45,11 +44,7 @@ const RoomPage: NextPage<Props> = ({ roomId }) => {
     playAudio('/audio/alert.mp3');
   }, [t]);
 
-  const onNominate = useCallback((selectedPlayerId: string): void => {
-    toast.success(selectedPlayerId, {
-      icon: '💬',
-      ariaProps: { role: 'status', 'aria-live': 'polite' },
-    });
+  const onNominate = useCallback((): void => {
     playAudio('/audio/notify.mp3');
   }, []);
 

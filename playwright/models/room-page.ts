@@ -29,7 +29,7 @@ export default class RoomPage {
   readonly haveRequestedCommentsToast: Locator;
   readonly haveBeenRequestedCommentsToast: Locator;
 
-  constructor(page: Page) {
+  constructor(private readonly page: Page) {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'Tenkiru' });
     this.roomInvitationButton = page.getByRole('button', { name: 'Room invitation button' });
@@ -72,6 +72,26 @@ export default class RoomPage {
     });
     page.on('close', async () => {
       await expect(consoleErrorMessages[0]).toBeUndefined();
+    });
+  }
+
+  async preparePlayedAudios() {
+    await this.page.addInitScript(() => {
+      window.__playedAudios = [];
+      HTMLAudioElement.prototype.play = function () {
+        window.__playedAudios.push(this.src);
+        return Promise.resolve();
+      };
+    });
+  }
+
+  async playedAudios() {
+    return this.page.evaluate(() => window.__playedAudios);
+  }
+
+  async clearPlayedAudios() {
+    await this.page.evaluate(() => {
+      window.__playedAudios = [];
     });
   }
 

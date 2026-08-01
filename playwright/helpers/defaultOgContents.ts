@@ -5,9 +5,9 @@ interface contents {
 }
 
 const contents: contents = {
-  title: 'Tenkiru',
+  title: 'Tenkiru – Free Online Planning Poker for Agile & Scrum Teams',
   description:
-    'Tenkiru is a simple and fun planning poker app. Simply create a room, share the room URL with your team members and start using it immediately.',
+    'Free online Planning Poker for Agile and Scrum teams. Vote anonymously, request comments, and turn estimation differences into productive team discussions. No sign-up required.',
   ogImageUrl: 'http://localhost:3000/opengraph-image.jpg',
 };
 

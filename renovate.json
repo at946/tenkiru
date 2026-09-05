@@ -4,9 +4,14 @@
   "minimumReleaseAge": "3 days",
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch", "minor", "major", "github-actions"],
+      "matchUpdateTypes": ["patch", "minor", "github-actions"],
       "rebaseWhen": "behind",
       "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "rebaseWhen": "behind",
+      "automerge": false
     }
   ],
   "lockFileMaintenance": {

@@ -4,13 +4,13 @@
   "minimumReleaseAge": "3 days",
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch", "minor", "github-actions"],
-      "rebaseWhen": "behind",
+      "matchUpdateTypes": ["patch", "minor"],
+      "rebaseWhen": "behind-base-branch",
       "automerge": true
     },
     {
       "matchUpdateTypes": ["major"],
-      "rebaseWhen": "behind",
+      "rebaseWhen": "behind-base-branch",
       "automerge": false
     }
   ],

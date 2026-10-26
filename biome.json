@@ -11,7 +11,7 @@
     "rules": {
       "preset": "recommended",
       "nursery": {
-        "useSortedClasses": "error"
+        "useTailwindSortedClasses": "error"
       },
       "correctness": {
         "noUnusedImports": "error"

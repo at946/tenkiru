@@ -20,7 +20,7 @@ const Button = ({ children, color = 'primary', isOutlined = false, title, classN
         isOutlined &&
           color === 'secondary' &&
           'text-secondary enabled:focus-visible:bg-secondary enabled:hover:bg-secondary',
-        !isOutlined && 'text-white enabled:focus-visible:opacity-75 enabled:hover:opacity-75',
+        !isOutlined && 'text-white enabled:hover:opacity-75 enabled:focus-visible:opacity-75',
         !isOutlined && color === 'primary' && 'bg-primary',
         !isOutlined && color === 'secondary' && 'bg-secondary',
         className,

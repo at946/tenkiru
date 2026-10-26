@@ -3,7 +3,7 @@ type Props = {
 };
 
 const BoxTag = ({ children }: Props) => {
-  return <span className='font-semibold text-sm underline underline-offset-4'># {children}</span>;
+  return <span className='text-sm font-semibold underline underline-offset-4'># {children}</span>;
 };
 
 export default BoxTag;

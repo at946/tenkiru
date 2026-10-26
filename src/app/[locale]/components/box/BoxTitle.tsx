@@ -4,7 +4,7 @@ type Props = ComponentPropsWithoutRef<'p'>;
 
 const BoxTitle = ({ children, className, ...rest }: Props) => {
   return (
-    <p {...rest} className={`break-auto-phrase font-semibold text-lg ${className}`}>
+    <p {...rest} className={`break-auto-phrase text-lg font-semibold ${className}`}>
       {children}
     </p>
   );

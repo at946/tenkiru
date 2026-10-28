@@ -65,10 +65,10 @@ const TableCard = ({ cardValue, playerId, isOpen = false, delay = 0, className, 
           rotateY: { duration: 0.5, delay, ease: 'easeInOut' },
           y: { duration: 0.5, delay, ease: 'easeInOut' },
         }}
-        className='transform-3d relative size-full h-full w-hull'
+        className='w-hull relative size-full h-full transform-3d'
       >
-        <PokerCardBack className='backface-hidden absolute inset-0' />
-        <PokerCardFront value={cardValue} className='backface-hidden absolute inset-0 rotate-y-180' />
+        <PokerCardBack className='absolute inset-0 backface-hidden' />
+        <PokerCardFront value={cardValue} className='absolute inset-0 rotate-y-180 backface-hidden' />
       </motion.div>
     </motion.button>
   );

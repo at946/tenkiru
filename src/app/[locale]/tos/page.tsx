@@ -6,7 +6,7 @@ export default function Page() {
 
   return (
     <div className='container mx-auto my-10 px-5 text-sm dark:text-white'>
-      <h1 className='mb-5 font-bold text-2xl'>{t('Terms of Use')}</h1>
+      <h1 className='mb-5 text-2xl font-bold'>{t('Terms of Use')}</h1>
       <p className='mb-5'>
         {t('These Terms of Use shall apply to Tenkiru')}
         {t('All users are requested to use the Service in accordance with these Terms of Use')}
@@ -14,14 +14,14 @@ export default function Page() {
 
       <ul className='mb-5 list-inside list-decimal'>
         <div className='mb-5'>
-          <li className='mb-3 font-semibold text-lg'>{t('Application of Terms of Use')}</li>
+          <li className='mb-3 text-lg font-semibold'>{t('Application of Terms of Use')}</li>
           <p>
             {t('These Terms of Use shall apply to all relationships between the users and the use of this Service')}
           </p>
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 font-semibold text-lg'>{t('Change of Terms of Use')}</li>
+          <li className='mb-3 text-lg font-semibold'>{t('Change of Terms of Use')}</li>
           <ul className='ml-4 list-disc'>
             <li className='mb-1'>
               {t('This Service reserves the right to change these Terms of Use without the consent of users')}
@@ -36,7 +36,7 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 font-semibold text-lg'>{t('Prohibited Actions')}</li>
+          <li className='mb-3 text-lg font-semibold'>{t('Prohibited Actions')}</li>
           <p className='mb-2'>
             {t(
               'If the Operator determines that a user falls under any of the following items, the Operator may prohibit the user from using this Service or terminate all or part of these Terms of Use without prior notice or demand to the user',
@@ -75,7 +75,7 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 font-semibold text-lg'>{t('Temporary interruption of Service')}</li>
+          <li className='mb-3 text-lg font-semibold'>{t('Temporary interruption of Service')}</li>
           <p className='mb-2'>
             {t(
               'The Operator may temporarily suspend the operation of the Service without prior notice to users for any of the following reasons',
@@ -103,7 +103,7 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 font-semibold text-lg'>{t('Disclaimers')}</li>
+          <li className='mb-3 text-lg font-semibold'>{t('Disclaimers')}</li>
           <p className='mb-2'>
             {t('The Service may temporarily suspend the operation of the Service without prior notice to users')}
           </p>
@@ -163,7 +163,7 @@ export default function Page() {
         </div>
 
         <div className='mb-5'>
-          <li className='mb-3 font-semibold text-lg'>{t('Termination of the Service')}</li>
+          <li className='mb-3 text-lg font-semibold'>{t('Termination of the Service')}</li>
           <p className='mb-2'>
             {t(
               'The Operator may terminate the operation of the Service without prior notice to users in any of the following cases',
@@ -189,7 +189,7 @@ export default function Page() {
         </div>
 
         <div>
-          <li className='mb-3 font-semibold text-lg'>{t('Consent Jurisdiction, etc')}</li>
+          <li className='mb-3 text-lg font-semibold'>{t('Consent Jurisdiction, etc')}</li>
           <ul className='ml-4 list-disc'>
             <li className='mb-1'>
               {t('These Terms and Use shall be governed by and construed in accordance with the laws of Japan')}

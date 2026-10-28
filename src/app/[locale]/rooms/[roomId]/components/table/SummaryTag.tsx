@@ -8,10 +8,10 @@ interface Props {
 const SummaryTag: NextPage<Props> = ({ name, value }) => {
   return (
     <div className='text-sm' title={`${name} ${value}`}>
-      <span className='rounded-l border-2 border-dark-background bg-dark-background px-2 py-1 text-dark-text'>
+      <span className='border-dark-background bg-dark-background text-dark-text rounded-l border-2 px-2 py-1'>
         {name}
       </span>
-      <span className='rounded-r border-2 border-dark-background bg-background px-2 py-1 text-text'>{value}</span>
+      <span className='border-dark-background bg-background text-text rounded-r border-2 px-2 py-1'>{value}</span>
     </div>
   );
 };

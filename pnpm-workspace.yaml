@@ -1,6 +1,6 @@
 allowBuilds:
-  '@parcel/watcher': true
-  '@sentry/cli': true
-  '@swc/core': true
+  "@parcel/watcher": true
+  "@sentry/cli": true
+  "@swc/core": true
   lefthook: true
   sharp: true

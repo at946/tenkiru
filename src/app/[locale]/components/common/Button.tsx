@@ -12,7 +12,7 @@ const Button = ({ children, color = 'primary', isOutlined = false, title, classN
       {...rest}
       type='button'
       className={clsx(
-        'inline-flex cursor-pointer items-center gap-1 rounded-xl border-2 px-4 py-2 drop-shadow-md enabled:focus-visible:drop-shadow-lg enabled:hover:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
+        'inline-flex cursor-pointer items-center gap-1 rounded-xl border-2 px-4 py-2 drop-shadow-md enabled:hover:drop-shadow-lg enabled:focus-visible:drop-shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
         color === 'primary' && 'border-primary',
         color === 'secondary' && 'border-secondary',
         isOutlined && 'bg-background enabled:focus-visible:text-background enabled:hover:text-background',
@@ -20,7 +20,7 @@ const Button = ({ children, color = 'primary', isOutlined = false, title, classN
         isOutlined &&
           color === 'secondary' &&
           'text-secondary enabled:focus-visible:bg-secondary enabled:hover:bg-secondary',
-        !isOutlined && 'text-white enabled:focus-visible:opacity-75 enabled:hover:opacity-75',
+        !isOutlined && 'text-white enabled:hover:opacity-75 enabled:focus-visible:opacity-75',
         !isOutlined && color === 'primary' && 'bg-primary',
         !isOutlined && color === 'secondary' && 'bg-secondary',
         className,

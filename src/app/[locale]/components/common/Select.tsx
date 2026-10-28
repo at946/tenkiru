@@ -15,7 +15,7 @@ const Select = ({ label, children, className, ...props }: Props) => {
           'cursor-pointer border-0 bg-transparent',
           'hover:text-primary',
           'focus-visible:text-primary',
-          'disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:text-text',
+          'disabled:hover:text-text disabled:cursor-not-allowed disabled:opacity-50',
           'dark:hover:text-dark-primary',
           'dark:focus-visible:text-dark-primary',
           className,

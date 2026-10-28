@@ -12,11 +12,11 @@ export default function Page() {
   return (
     <div className='container mx-auto px-5 text-center'>
       <section className='my-20'>
-        <h1 className='mb-4 font-bold text-6xl text-primary tracking-wider dark:text-dark-primary'>Tenkiru</h1>
+        <h1 className='text-primary dark:text-dark-primary mb-4 text-6xl font-bold tracking-wider'>Tenkiru</h1>
         <p className='break-auto-phrase mb-2 text-xl md:text-3xl'>
           <span className='my-2 inline-block'>{t('See the differences Spark real dialogue')}</span>
         </p>
-        <p className='break-auto-phrase mb-6 font-semibold text-lg'>
+        <p className='break-auto-phrase mb-6 text-lg font-semibold'>
           {t("Bring out your team's collective intelligence with online Planning Poker")}
         </p>
         <CreateRoomButton name={t('Create a room')} className='mb-4' />

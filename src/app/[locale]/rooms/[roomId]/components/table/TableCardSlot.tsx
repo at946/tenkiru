@@ -9,7 +9,7 @@ const TableCardSlot = ({ children, className, ...props }: Props) => {
   return (
     <div
       {...props}
-      className={clsx('perspective-distant relative aspect-card w-24', className)}
+      className={clsx('aspect-card relative w-24 perspective-distant', className)}
       role='img'
       aria-label={t('Table card slot')}
     >

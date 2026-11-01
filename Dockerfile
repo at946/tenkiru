@@ -2,6 +2,7 @@
 FROM node:26.12.0 AS builder
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+RUN npm install -g corepack && corepack enable
 RUN corepack enable
 WORKDIR /app
 COPY . .
@@ -23,6 +24,7 @@ FROM node:26.12.0 AS runner
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+RUN npm install -g corepack && corepack enable
 RUN corepack enable
 WORKDIR /app
 
